@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "97C146ED1CF9000F007C117D"
-               BuildableName = "UoNAfyaApp360 Daktari.app"
+               BuildableName = "myCareHub Professional Demo.app"
                BlueprintName = "Runner"
                ReferencedContainer = "container:Runner.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "97C146ED1CF9000F007C117D"
-            BuildableName = "UoNAfyaApp360 Daktari.app"
+            BuildableName = "myCareHub Professional Demo.app"
             BlueprintName = "Runner"
             ReferencedContainer = "container:Runner.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "97C146ED1CF9000F007C117D"
-            BuildableName = "UoNAfyaApp360 Daktari.app"
+            BuildableName = "myCareHub Professional Demo.app"
             BlueprintName = "Runner"
             ReferencedContainer = "container:Runner.xcodeproj">
          </BuildableReference>
@@ -73,7 +73,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release-demo"
-      customArchiveName = "UoNAfyaApp360 Daktari Demo"
+      customArchiveName = "myCareHub Professional Demo"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
