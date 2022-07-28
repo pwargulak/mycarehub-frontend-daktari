@@ -24,12 +24,14 @@ class AppSetupData {
 
   /// The environment this app is running on. Will mostly be used for sentry
   final String environment;
+  final String appName;
 
   AppSetupData({
     required this.appContexts,
     required this.sentryDNS,
     required this.streamAPIKey,
     required this.environment,
+    required this.appName,
     this.customContext,
   });
 
