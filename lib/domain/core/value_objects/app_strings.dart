@@ -2,8 +2,8 @@ import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 
-const String appName = 'UoNAfyaApp360 Daktari';
-const String consumerAppName = 'UoNAfyaApp360';
+const String appName = 'myCareHub Professional';
+const String consumerAppName = 'myCareHub';
 const String adminEmail = 'feedback@prohealth360.org';
 
 //Create New Pin Page
@@ -94,7 +94,7 @@ const String joinGroup = 'Join Group';
 const String declineInvite = 'Decline Invite';
 
 //Phone Login
-const String phoneLoginPageTitle = 'Welcome to $appName';
+const String phoneLoginPageTitle = 'Welcome to ';
 const String phoneLoginPageDescription = 'Enter your provided PIN to continue';
 const String pinString = 'PIN';
 const String forgotPinString = 'Forgot Pin';
