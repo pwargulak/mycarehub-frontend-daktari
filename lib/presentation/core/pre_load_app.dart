@@ -5,6 +5,7 @@ import 'package:async_redux/async_redux.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/core/batch_update_misc_state_action.dart';
 import 'package:rxdart/src/streams/merge.dart';
@@ -47,6 +48,9 @@ class PreLoadApp extends StatefulWidget {
 class _PreLoadAppState extends State<PreLoadApp> with WidgetsBindingObserver {
   final ConnectivityChecker connectivityChecker = ConnectivityChecker.initial();
   StreamSubscription<bool>? connectivityCheckerSubscription;
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
@@ -90,10 +94,11 @@ class _PreLoadAppState extends State<PreLoadApp> with WidgetsBindingObserver {
     StoreProvider.dispatch(
       context,
       SetPushToken(
-        firebaseMessaging: FirebaseMessaging.instance,
+        firebaseMessaging: _firebaseMessaging,
         client: AppWrapperBase.of(context)!.graphQLClient,
       ),
     );
+    initializeFCMListener();
   }
 
   @override
@@ -201,5 +206,44 @@ class _PreLoadAppState extends State<PreLoadApp> with WidgetsBindingObserver {
         );
       },
     );
+  }
+
+  void initializeFCMListener() {
+    const AndroidInitializationSettings androidInit =
+        AndroidInitializationSettings(
+      '@mipmap/ic_launcher',
+    ); //for logo
+    const IOSInitializationSettings iosInit = IOSInitializationSettings();
+    const InitializationSettings initSetting = InitializationSettings(
+      android: androidInit,
+      iOS: iosInit,
+    );
+    flutterLocalNotificationsPlugin.initialize(initSetting);
+    const AndroidNotificationDetails androidDetails =
+        AndroidNotificationDetails(
+      '1',
+      'channelName',
+      channelDescription: 'channel Description',
+    );
+    const IOSNotificationDetails iosDetails = IOSNotificationDetails();
+
+    const NotificationDetails generalNotificationDetails = NotificationDetails(
+      android: androidDetails,
+      iOS: iosDetails,
+    );
+
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      final RemoteNotification? notification = message.notification;
+      final AndroidNotification? android = message.notification?.android;
+      final AppleNotification? apple = message.notification?.apple;
+      if (notification != null && (android != null || apple != null)) {
+        flutterLocalNotificationsPlugin.show(
+          notification.hashCode,
+          notification.title,
+          notification.body,
+          generalNotificationDetails,
+        );
+      }
+    });
   }
 }
