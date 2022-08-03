@@ -6,6 +6,7 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:overlay_support/overlay_support.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/core/batch_update_misc_state_action.dart';
 import 'package:rxdart/src/streams/merge.dart';
@@ -132,77 +133,79 @@ class _PreLoadAppState extends State<PreLoadApp> with WidgetsBindingObserver {
           initialRoute = bottomNavItems[vm.currentIndex ?? 0].onTapRoute;
         }
 
-        return MaterialApp(
-          builder: (BuildContext context, Widget? childWidget) {
-            connectivityCheckerSubscription = connectivityChecker
-                .checkConnection()
-                .asStream()
-                .mergeWith(
-                  <Stream<bool>>[connectivityChecker.onConnectivityChanged],
-                )
-                .distinct()
-                .listen((bool hasConnection) {
-                  final bool hasConn = StoreProvider.state<AppState>(context)
-                          ?.connectivityState
-                          ?.isConnected ??
-                      false;
+        return OverlaySupport(
+          child: MaterialApp(
+            builder: (BuildContext context, Widget? childWidget) {
+              connectivityCheckerSubscription = connectivityChecker
+                  .checkConnection()
+                  .asStream()
+                  .mergeWith(
+                    <Stream<bool>>[connectivityChecker.onConnectivityChanged],
+                  )
+                  .distinct()
+                  .listen((bool hasConnection) {
+                    final bool hasConn = StoreProvider.state<AppState>(context)
+                            ?.connectivityState
+                            ?.isConnected ??
+                        false;
 
-                  if (!hasConnection && hasConn) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text(connectionLostText)),
-                    );
-                  }
-                  StoreProvider.dispatch(
-                    context,
-                    UpdateConnectivityAction(hasConnection: hasConnection),
-                  );
-                });
-
-            return UserExceptionDialog<AppState>(
-              onShowUserExceptionDialog: (
-                BuildContext context,
-                UserException userException,
-                bool useLocalContext,
-              ) {
-                showDialog(
-                  context: globalAppNavigatorKey.currentContext!,
-                  builder: (BuildContext context) {
-                    String? subtitle;
-
-                    if (userException.cause != null &&
-                        userException.cause?.runtimeType == String) {
-                      subtitle = userException.cause! as String;
+                    if (!hasConnection && hasConn) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text(connectionLostText)),
+                      );
                     }
-
-                    return ErrorDialog(
-                      title: userException.msg ?? defaultUserFriendlyMessage,
-                      subTitle: subtitle,
-                      buttonAction: () =>
-                          globalAppNavigatorKey.currentState?.pop(),
+                    StoreProvider.dispatch(
+                      context,
+                      UpdateConnectivityAction(hasConnection: hasConnection),
                     );
-                  },
-                );
-              },
-              child: StreamChat(
-                client: widget.streamClient,
-                streamChatThemeData: StreamChatThemeData(
-                  channelHeaderTheme: const StreamChannelHeaderThemeData(),
+                  });
+
+              return UserExceptionDialog<AppState>(
+                onShowUserExceptionDialog: (
+                  BuildContext context,
+                  UserException userException,
+                  bool useLocalContext,
+                ) {
+                  showDialog(
+                    context: globalAppNavigatorKey.currentContext!,
+                    builder: (BuildContext context) {
+                      String? subtitle;
+
+                      if (userException.cause != null &&
+                          userException.cause?.runtimeType == String) {
+                        subtitle = userException.cause! as String;
+                      }
+
+                      return ErrorDialog(
+                        title: userException.msg ?? defaultUserFriendlyMessage,
+                        subTitle: subtitle,
+                        buttonAction: () =>
+                            globalAppNavigatorKey.currentState?.pop(),
+                      );
+                    },
+                  );
+                },
+                child: StreamChat(
+                  client: widget.streamClient,
+                  streamChatThemeData: StreamChatThemeData(
+                    channelHeaderTheme: const StreamChannelHeaderThemeData(),
+                  ),
+                  child: childWidget,
                 ),
-                child: childWidget,
-              ),
-            );
-          },
-          theme: AppTheme.getAppTheme(),
-          debugShowCheckedModeBanner: false,
-          navigatorKey: globalAppNavigatorKey,
-          navigatorObservers: <NavigatorObserver>[
-            widget.analyticsObserver,
-            SentryNavigatorObserver(),
-          ],
-          initialRoute: initialRoute,
-          onGenerateRoute: RouteGenerator.generateRoute,
-          localizationsDelegates: localizationDelegates,
-          supportedLocales: locales,
+              );
+            },
+            theme: AppTheme.getAppTheme(),
+            debugShowCheckedModeBanner: false,
+            navigatorKey: globalAppNavigatorKey,
+            navigatorObservers: <NavigatorObserver>[
+              widget.analyticsObserver,
+              SentryNavigatorObserver(),
+            ],
+            initialRoute: initialRoute,
+            onGenerateRoute: RouteGenerator.generateRoute,
+            localizationsDelegates: localizationDelegates,
+            supportedLocales: locales,
+          ),
         );
       },
     );
@@ -243,6 +246,7 @@ class _PreLoadAppState extends State<PreLoadApp> with WidgetsBindingObserver {
           notification.body,
           generalNotificationDetails,
         );
+        headsUpNotification(notification.title, notification.body);
       }
     });
   }

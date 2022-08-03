@@ -9,6 +9,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 // Project imports:
 import 'package:flutter_config/flutter_config.dart';
+import 'package:overlay_support/overlay_support.dart';
 import 'package:prohealth360_daktari/application/core/services/helpers.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_contexts.dart';
@@ -49,11 +50,13 @@ Future<void> buildTestWidget({
         appContexts: testAppContexts,
         baseContext: devAppSetupData.customContext,
         graphQLClient: graphQlClient ?? mockGraphQlClient,
-        child: MaterialApp(
-          onGenerateRoute: RouteGenerator.generateRoute,
-          navigatorKey: globalAppNavigatorKey,
-          navigatorObservers: navigatorObservers ?? <NavigatorObserver>[],
-          home: Scaffold(endDrawer: endDrawer, body: widget),
+        child: OverlaySupport(
+          child: MaterialApp(
+            onGenerateRoute: RouteGenerator.generateRoute,
+            navigatorKey: globalAppNavigatorKey,
+            navigatorObservers: navigatorObservers ?? <NavigatorObserver>[],
+            home: Scaffold(endDrawer: endDrawer, body: widget),
+          ),
         ),
       ),
     ),
