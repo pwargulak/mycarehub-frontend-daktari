@@ -152,7 +152,31 @@ class _SearchFacilitiesPageState extends State<SearchFacilitiesPage> {
                           ),
                           borderColor: Colors.white,
                           customFillColor: AppColors.galleryColor,
-                          onChanged: (String val) {},
+                          onChanged: (_) {},
+                          onSubmitted: (_) => StoreProvider.dispatch(
+                            context,
+                            SearchFacilitiesAction(
+                              client: AppWrapperBase.of(context)!.graphQLClient,
+                              onFailure: (String message) {
+                                ScaffoldMessenger.of(context)
+                                  ..hideCurrentSnackBar()
+                                  ..showSnackBar(
+                                    SnackBar(
+                                      content: const Text(
+                                        connectionLostText,
+                                      ),
+                                      duration: const Duration(seconds: 5),
+                                      action: dismissSnackBar(
+                                        closeString,
+                                        Colors.white,
+                                        context,
+                                      ),
+                                    ),
+                                  );
+                              },
+                              mflCode: facilitySearchCode,
+                            ),
+                          ),
                         ),
                         const SizedBox(height: 24),
                         if (facilities.isNotEmpty) ...<Widget>{

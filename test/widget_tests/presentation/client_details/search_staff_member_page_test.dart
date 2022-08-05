@@ -26,7 +26,7 @@ void main() {
     setupFirebaseAnalyticsMocks();
     await Firebase.initializeApp();
   });
-  
+
   group('SearchClientPage', () {
     testWidgets('renders correctly', (WidgetTester tester) async {
       store.dispatch(
@@ -55,6 +55,28 @@ void main() {
 
       await tester.pumpAndSettle();
       expect(find.byType(SearchPageDetailView), findsWidgets);
+    });
+    testWidgets('renders correctly with the CustomTextField onSubmit function',
+        (WidgetTester tester) async {
+      store.dispatch(
+        UpdateConnectivityAction(hasConnection: true),
+      );
+
+      await buildTestWidget(
+        tester: tester,
+        store: store,
+        graphQlClient: MockTestGraphQlClient(),
+        widget: const SearchStaffMemberPage(),
+      );
+
+      final Finder searchNameFinder = find.byType(CustomTextField);
+      await tester.tap(searchNameFinder);
+      await tester.enterText(searchNameFinder, '1234');
+
+      await tester.testTextInput.receiveAction(TextInputAction.done);
+      await tester.pumpAndSettle();
+
+      expect(find.byType(SearchUserItem), findsWidgets);
     });
 
     testWidgets(

@@ -403,29 +403,7 @@ void main() {
       expect(find.text('test snackbar'), findsNothing);
     });
   });
-  group('headsUpNotification', () {
-    testWidgets('renders correctly', (WidgetTester tester) async {
-      await buildTestWidget(
-        tester: tester,
-        widget: Builder(
-          builder: (BuildContext context) {
-            return Center(
-              child: MaterialButton(
-                onPressed: () => headsUpNotification('testTitle', 'testBody'),
-              ),
-            );
-          },
-        ),
-      );
-      await tester.pumpAndSettle();
 
-      final Finder button = find.byType(MaterialButton);
-      await tester.tap(button);
-      await tester.pump(const Duration(seconds: 4));
-
-      expect(find.text('testTitle'), findsOneWidget);
-    });
-  });
   test('userBannedMessage should return the correct message', () {
     expect(userBannedMessage(), 'User banned successfully');
     expect(

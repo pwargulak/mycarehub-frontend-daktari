@@ -17,7 +17,6 @@ import 'package:prohealth360_daktari/presentation/core/bottom_nav/bottom_nav_bar
 import 'package:prohealth360_daktari/presentation/core/bottom_nav/bottom_nav_items.dart';
 import 'package:prohealth360_daktari/presentation/notifications/notification_list_item.dart'
     as pro;
-import 'package:afya_moja_core/src/domain/core/entities/notifications/notification_filter.dart';
 import 'package:prohealth360_daktari/presentation/notifications/widgets/custom_chip_widget.dart';
 
 class NotificationsPage extends StatelessWidget {

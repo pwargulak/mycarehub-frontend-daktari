@@ -54,6 +54,29 @@ void main() {
 
       expect(find.byType(ScaffoldMessenger), findsOneWidget);
     });
+    testWidgets('renders correctly with the CustomTextField onSubmit function',
+        (WidgetTester tester) async {
+      store.dispatch(UpdateConnectivityAction(hasConnection: true));
+
+      await buildTestWidget(
+        tester: tester,
+        store: store,
+        graphQlClient: MockTestGraphQlClient(),
+        widget: const InviteMembersPage(channelId: 'some-channel-id'),
+      );
+
+      await tester.pumpAndSettle();
+
+      final Finder searchNameFinder = find.byType(CustomTextField);
+      expect(searchNameFinder, findsOneWidget);
+      await tester.tap(searchNameFinder);
+      await tester.enterText(searchNameFinder, 'David');
+
+      await tester.testTextInput.receiveAction(TextInputAction.done);
+      await tester.pumpAndSettle();
+
+      expect(find.byType(MemberListItem), findsWidgets);
+    });
 
     testWidgets('search renders correctly', (WidgetTester tester) async {
       store.dispatch(
@@ -170,6 +193,30 @@ void main() {
       expect(find.byType(ScaffoldMessenger), findsOneWidget);
     });
 
+    testWidgets(
+        'displays error if there is no internet connection when the CustomTextField onSubmit function is triggered to search members',
+        (WidgetTester tester) async {
+      store.dispatch(UpdateConnectivityAction(hasConnection: true));
+      await buildTestWidget(
+        tester: tester,
+        store: store,
+        graphQlClient: MockTestGraphQlClient(),
+        widget: const InviteMembersPage(channelId: 'some-channel-id'),
+      );
+
+      await tester.pumpAndSettle();
+
+      store.dispatch(UpdateConnectivityAction(hasConnection: false));
+
+      final Finder searchNameFinder = find.byType(CustomTextField);
+      expect(searchNameFinder, findsOneWidget);
+      await tester.tap(searchNameFinder);
+      await tester.enterText(searchNameFinder, 'David');
+
+      await tester.testTextInput.receiveAction(TextInputAction.done);
+      await tester.pumpAndSettle();
+      expect(find.text(connectionLostText), findsOneWidget);
+    });
     testWidgets(
         'displays error if there is no internet connection when fetching members',
         (WidgetTester tester) async {

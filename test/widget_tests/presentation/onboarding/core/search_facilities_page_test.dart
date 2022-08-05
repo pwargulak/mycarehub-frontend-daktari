@@ -13,7 +13,6 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart'
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/core/search_facilities_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/core/widgets/facility_list_item.dart';
-
 import '../../../../mocks/mocks.dart';
 import '../../../../mocks/test_helpers.dart';
 
@@ -63,7 +62,7 @@ void main() {
         graphQlClient: MockTestGraphQlClient(),
         widget: SearchFacilitiesPage(),
       );
-      
+
       await tester.pumpAndSettle();
       final Finder searchNameFinder = find.byType(CustomTextField);
       expect(searchNameFinder, findsOneWidget);
@@ -88,6 +87,54 @@ void main() {
         graphQlClient: MockTestGraphQlClient(),
         widget: SearchFacilitiesPage(),
       );
+      await tester.pumpAndSettle();
+
+      expect(find.text(connectionLostText), findsOneWidget);
+    });
+
+    testWidgets('renders correctly with the onSubmit function',
+        (WidgetTester tester) async {
+      store.dispatch(UpdateConnectivityAction(hasConnection: true));
+
+      await buildTestWidget(
+        tester: tester,
+        store: store,
+        graphQlClient: MockTestGraphQlClient(),
+        widget: SearchFacilitiesPage(),
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Kanairo'));
+
+      final Finder searchNameFinder = find.byType(CustomTextField);
+      expect(searchNameFinder, findsOneWidget);
+      await tester.tap(searchNameFinder);
+      await tester.enterText(searchNameFinder, '1234');
+
+      await tester.testTextInput.receiveAction(TextInputAction.done);
+      await tester.pumpAndSettle();
+
+      expect(find.byType(FacilityListItem), findsNWidgets(2));
+    });
+
+    testWidgets(
+        'displays error if there is no internet connection when fetching facilities by search using onSubmit',
+        (WidgetTester tester) async {
+      store.dispatch(UpdateConnectivityAction(hasConnection: false));
+
+      await buildTestWidget(
+        tester: tester,
+        store: store,
+        graphQlClient: MockTestGraphQlClient(),
+        widget: SearchFacilitiesPage(),
+      );
+
+      await tester.pumpAndSettle();
+      final Finder searchNameFinder = find.byType(CustomTextField);
+      expect(searchNameFinder, findsOneWidget);
+      await tester.tap(searchNameFinder);
+      await tester.enterText(searchNameFinder, '1234');
+
+      await tester.testTextInput.receiveAction(TextInputAction.done);
       await tester.pumpAndSettle();
 
       expect(find.text(connectionLostText), findsOneWidget);

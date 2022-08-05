@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:afya_moja_core/afya_moja_core.dart' as afya_moja_core;
 import 'package:app_wrapper/app_wrapper.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
@@ -246,7 +247,10 @@ class _PreLoadAppState extends State<PreLoadApp> with WidgetsBindingObserver {
           notification.body,
           generalNotificationDetails,
         );
-        headsUpNotification(notification.title, notification.body);
+        afya_moja_core.headsUpNotification(
+          notification.title,
+          notification.body,
+        );
       }
     });
   }

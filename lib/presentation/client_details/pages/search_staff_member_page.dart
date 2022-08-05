@@ -86,6 +86,18 @@ class _SearchStaffMemberPageState extends State<SearchStaffMemberPage> {
                         CustomTextField(
                           controller: searchController,
                           hintText: searchStaffMembersHintString,
+                          onSubmitted: (_) {
+                            if (staffNumberQuery.isNotEmpty) {
+                              StoreProvider.dispatch(
+                                context,
+                                SearchStaffMemberAction(
+                                  client:
+                                      AppWrapperBase.of(context)!.graphQLClient,
+                                  staffNumberQuery: staffNumberQuery,
+                                ),
+                              );
+                            }
+                          },
                           suffixIcon: Padding(
                             padding: const EdgeInsets.only(right: 4.0),
                             child: IconButton(

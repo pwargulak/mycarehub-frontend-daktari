@@ -109,6 +109,17 @@ class _RedFlagsPageState extends State<RedFlagsPage> {
                             CustomTextField(
                               controller: searchController,
                               hintText: redFlagsSearchBarString,
+                              onSubmitted: (_) => StoreProvider.dispatch(
+                                context,
+                                SearchServiceRequestsAction(
+                                  client:
+                                      AppWrapperBase.of(context)!.graphQLClient,
+                                  flavour: Flavour.consumer,
+                                  serviceRequestType:
+                                      ServiceRequestType.RED_FLAG,
+                                  searchTerm: searchKeyWord,
+                                ),
+                              ),
                               suffixIcon: Padding(
                                 padding: const EdgeInsets.only(
                                   right: 4.0,
@@ -134,7 +145,7 @@ class _RedFlagsPageState extends State<RedFlagsPage> {
                               borderColor: Colors.transparent,
                               focusedBorderColor: Colors.transparent,
                               customFillColor: AppColors.searchBackgroundColor,
-                              onChanged: (String val) {},
+                              onChanged: (_) {},
                             ),
                           },
                         ],

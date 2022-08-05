@@ -138,6 +138,25 @@ class _InviteMembersPageState extends State<InviteMembersPage> {
                         CustomTextField(
                           controller: searchController,
                           hintText: searchMembersString,
+                          onSubmitted: (_) {
+                            if (memberSearchName.isNotEmpty) {
+                              StoreProvider.dispatch(
+                                context,
+                                FetchMembersAction(
+                                  client:
+                                      AppWrapperBase.of(context)!.graphQLClient,
+                                  isSearching: isSearching,
+                                  memberSearchName: memberSearchName,
+                                  onFailure: (String message) {
+                                    showTextSnackbar(
+                                      ScaffoldMessenger.of(context),
+                                      content: message,
+                                    );
+                                  },
+                                ),
+                              );
+                            }
+                          },
                           suffixIcon: Padding(
                             padding: const EdgeInsets.only(
                               right: 4.0,

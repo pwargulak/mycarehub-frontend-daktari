@@ -51,6 +51,27 @@ void main() {
 
       expect(redFlagItem, findsNWidgets(5));
     });
+    testWidgets('renders correctly when search form field is submitted',
+        (WidgetTester tester) async {
+      await buildTestWidget(
+        tester: tester,
+        store: store,
+        graphQlClient: MockTestGraphQlClient(),
+        widget: RedFlagsPage(),
+      );
+      await tester.pumpAndSettle();
+      final Finder redFlagItem = find.byType(RedFlagListItem);
+
+      final Finder searchNameFinder = find.byType(CustomTextField);
+      expect(searchNameFinder, findsOneWidget);
+      await tester.tap(searchNameFinder);
+      await tester.enterText(searchNameFinder, 'test');
+
+      await tester.testTextInput.receiveAction(TextInputAction.done);
+      await tester.pumpAndSettle();
+
+      expect(redFlagItem, findsNWidgets(5));
+    });
 
     testWidgets('should refresh red flags correctly',
         (WidgetTester tester) async {

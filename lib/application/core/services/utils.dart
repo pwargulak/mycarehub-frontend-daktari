@@ -5,7 +5,6 @@ import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
-import 'package:overlay_support/overlay_support.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/actions/user_state_actions/logout_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
@@ -437,63 +436,4 @@ String? encodeQueryParameters(Map<String, String> params) {
             '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}',
       )
       .join('&');
-}
-
-OverlaySupportEntry headsUpNotification(String? title, String? body) {
-  return showOverlayNotification(
-    (BuildContext context) {
-      return SafeArea(
-        child: Container(
-          width: double.infinity,
-          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-          child: Row(
-            children: <Widget>[
-              Container(
-                width: 60,
-                height: 60,
-                padding: const EdgeInsets.all(10.0),
-                margin: const EdgeInsets.only(right: 8),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-                child: SvgPicture.asset(
-                  notificationIconSvgPath,
-                  color: Theme.of(context).primaryColor,
-                ),
-              ),
-              Expanded(
-                child: DefaultTextStyle(
-                  style: normalSize13Text(AppColors.greyTextColor),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        title ?? '',
-                        style: boldSize15Text(AppColors.blackColor),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                      ),
-                      Text(
-                        body ?? '',
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      );
-    },
-    duration: const Duration(seconds: 5),
-  );
 }

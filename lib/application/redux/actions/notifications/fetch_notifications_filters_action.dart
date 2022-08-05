@@ -11,7 +11,6 @@ import 'package:prohealth360_daktari/application/redux/actions/notifications/upd
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:afya_moja_core/src/domain/core/entities/notifications/notification_filter.dart';
 
 class FetchNotificationFiltersAction extends ReduxAction<AppState> {
   FetchNotificationFiltersAction({

@@ -88,6 +88,18 @@ class _SearchClientPageState extends State<SearchClientPage> {
                         CustomTextField(
                           controller: searchController,
                           hintText: searchClientsHintString,
+                          onSubmitted: (_) {
+                            if (cccNumber.isNotEmpty) {
+                              StoreProvider.dispatch(
+                                context,
+                                SearchClientAction(
+                                  client:
+                                      AppWrapperBase.of(context)!.graphQLClient,
+                                  searchParameter: cccNumber,
+                                ),
+                              );
+                            }
+                          },
                           suffixIcon: Padding(
                             padding: const EdgeInsets.only(
                               right: 4.0,
