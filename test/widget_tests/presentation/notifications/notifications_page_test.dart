@@ -123,6 +123,9 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(notificationListItem, findsNWidgets(2));
+      await tester.ensureVisible(notificationListItem.last);
+
+      await tester.tap(find.byType(CustomChipWidget).at(3));
 
       await tester.fling(
         find.byKey(notificationsListViewKey),
@@ -131,6 +134,12 @@ void main() {
       );
       await tester.pumpAndSettle();
       expect(notificationListItem, findsNWidgets(2));
+      await tester.pumpAndSettle();
+
+      addTearDown(() {
+        tester.binding.window.clearPhysicalSizeTestValue();
+        tester.binding.window.clearDevicePixelRatioTestValue();
+      });
     });
 
     testWidgets('Shows loading indicator when fetching client',
