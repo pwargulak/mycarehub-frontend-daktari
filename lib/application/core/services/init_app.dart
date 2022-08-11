@@ -103,6 +103,7 @@ Future<void> initApp(List<AppContext> appContexts) async {
         (SentryFlutterOptions options) {
           options
             ..dsn = appSetupData.sentryDNS
+            ..environment = appSetupData.environment
             ..diagnosticLevel = SentryLevel.error;
         },
         appRunner: () => runApp(

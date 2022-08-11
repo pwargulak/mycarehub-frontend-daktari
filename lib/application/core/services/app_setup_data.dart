@@ -22,10 +22,14 @@ class AppSetupData {
   // The Stream API key
   final String streamAPIKey;
 
+  /// The environment this app is running on. Will mostly be used for sentry
+  final String environment;
+
   AppSetupData({
     required this.appContexts,
     required this.sentryDNS,
     required this.streamAPIKey,
+    required this.environment,
     this.customContext,
   });
 
