@@ -88,10 +88,9 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
                           return PatientDetailsTextFormField(
                             textFieldKey: cccFieldKey,
                             hintText: cccNumberHint,
-                            keyboardType: TextInputType.number,
+                            keyboardType: TextInputType.text,
                             inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.digitsOnly,
-                              LengthLimitingTextInputFormatter(10),
+                              LengthLimitingTextInputFormatter(15),
                             ],
                             label: CCCNumberLabel,
                             onChanged: (String value) {

@@ -243,7 +243,7 @@ const String noNotificationsDescription =
 
 // Add patient page
 const String CCCNumberLabel = 'CCC Number *';
-const String cccNumberHint = 'Enter a 7 to 10 digit number...';
+const String cccNumberHint = 'Enter CCC Number...';
 const String facilityLabel = 'Facility *';
 const String firstNameLabel = 'First Name *';
 const String lastNameLabel = 'Last Name *';
@@ -435,8 +435,7 @@ String fetchingResolvedRequestsString =
     'fetching ${resolvedRequestsString.toLowerCase()}';
 String fetchingResolvedRedFlagsString =
     'fetching ${redFlagString.toLowerCase()}';
-String fetchingPINResetRequestsString =
-    'fetching $pinResetRequestsTitle';
+String fetchingPINResetRequestsString = 'fetching $pinResetRequestsTitle';
 String fetchingStaffPINResetRequestsString =
     'fetching $staffPinResetRequestsTitle';
 String redFlagsSearchBarString = 'Search using their name or phone number...';

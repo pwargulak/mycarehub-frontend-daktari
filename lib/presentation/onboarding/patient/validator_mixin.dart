@@ -94,6 +94,6 @@ mixin Validator {
 
   static bool isValidCccNumber(String number) {
     final int length = number.length;
-    return number.isNotEmpty && length >= 7 && length <= 10;
+    return number.isNotEmpty && length >= 7 && length <= 15;
   }
 }
