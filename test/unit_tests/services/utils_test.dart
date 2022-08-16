@@ -482,8 +482,8 @@ void main() {
     expect(
       getNotificationInfo(NotificationType.COMMUNITIES),
       NotificationActionInfo(
-        actionTitle: 'View Conversations',
-        route: AppRoutes.communityPage,
+        actionTitle: 'View Community Invites',
+        route: AppRoutes.groupInvitesPage,
       ),
     );
   });
