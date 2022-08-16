@@ -31,13 +31,20 @@ class _CommunityListPageState extends State<CommunityListPage> {
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    final stream.Filter channelsFilter = stream.Filter.and(
+    final AppState state = StoreProvider.state<AppState>(context)!;
+    final String staffID = state.staffState?.id ?? '';
+
+    final stream.Filter invitedFilter = stream.Filter.and(
       <stream.Filter>[
         stream.Filter.equal('invite', 'accepted'),
-        stream.Filter.in_(
-          'members',
-          <String>[stream.StreamChat.of(context).currentUser?.id ?? ''],
-        ),
+        stream.Filter.in_('members', <String>[staffID]),
+      ],
+    );
+
+    final stream.Filter channelsFilter = stream.Filter.or(
+      <stream.Filter>[
+        invitedFilter,
+        stream.Filter.equal('created_by_id', staffID),
       ],
     );
 
@@ -49,7 +56,6 @@ class _CommunityListPageState extends State<CommunityListPage> {
       ],
       limit: 20,
     );
-    final AppState state = StoreProvider.state<AppState>(context)!;
     if (state != AppState.initial()) {
       StoreProvider.dispatch(
         context,
