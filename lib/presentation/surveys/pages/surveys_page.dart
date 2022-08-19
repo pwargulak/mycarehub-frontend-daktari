@@ -95,12 +95,20 @@ class SurveysPage extends StatelessWidget {
                                 surveys[index]?.name ?? '';
                             return SurveysCard(
                               title: surveyTitle,
-                              buttonKey: mentalHealthSurveyButtonKey,
-                              onPressButton: () =>
+                              primaryButtonKey: Key(surveyTitle),
+                              onPrimaryButtonPressed: () =>
                                   Navigator.of(context).pushNamed(
-                                AppRoutes.surveysSenderListPage,
+                                AppRoutes.surveysSendConfigurationsPage,
                                 arguments: surveys[index],
                               ),
+                              secondaryButtonText: viewResponses,
+                              onSecondaryButtonPressed: () {
+                                Navigator.of(context).pushNamed(
+                                  AppRoutes.surveyResponsesPage,
+                                  arguments: surveyTitle,
+                                );
+                              },
+                              secondaryButtonKey: viewResponsesButtonKey,
                             );
                           },
                         )

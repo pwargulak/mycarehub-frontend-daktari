@@ -56,8 +56,8 @@ import 'package:prohealth360_daktari/presentation/service_requests/pages/staff_p
 import 'package:prohealth360_daktari/presentation/service_requests/pages/verify_security_questions_help_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/successful_survey_submission.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_page.dart';
+import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_responses_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_send_configuration_page.dart';
-import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_sender_list_page.dart';
 
 import '../../../mocks/mocks.dart';
 
@@ -256,18 +256,6 @@ void main() {
         routeGenerator(settings) as MaterialPageRoute<SearchPage>?;
     expect(route, isA<MaterialPageRoute<SearchPage>>());
     expect(route?.builder(context), isA<SearchPage>());
-  });
-
-  test('Test router returns SurveysSenderListPage', () {
-    final RouteSettings settings = RouteSettings(
-      name: AppRoutes.surveysSenderListPage,
-      arguments: Survey.initial(),
-    );
-
-    final MaterialPageRoute<SurveysSenderListPage>? route =
-        routeGenerator(settings) as MaterialPageRoute<SurveysSenderListPage>?;
-    expect(route, isA<MaterialPageRoute<SurveysSenderListPage>>());
-    expect(route?.builder(context), isA<SurveysSenderListPage>());
   });
 
   test('Test router returns SurveysSendConfigurationsPage', () {
@@ -585,5 +573,16 @@ void main() {
 
     expect(route, isA<MaterialPageRoute<DocumentContentPage>>());
     expect(route?.builder(context), isA<DocumentContentPage>());
+  });
+
+  test('Test router returns successful Surveys Responses Page', () {
+    const RouteSettings settings =
+        RouteSettings(name: AppRoutes.surveyResponsesPage, arguments: 'phq 9');
+
+    final MaterialPageRoute<SurveyResponsesPage>? route =
+        routeGenerator(settings) as MaterialPageRoute<SurveyResponsesPage>?;
+
+    expect(route, isA<MaterialPageRoute<SurveyResponsesPage>>());
+    expect(route?.builder(context), isA<SurveyResponsesPage>());
   });
 }

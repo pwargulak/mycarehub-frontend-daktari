@@ -62,8 +62,8 @@ import 'package:prohealth360_daktari/presentation/service_requests/pages/staff_p
 import 'package:prohealth360_daktari/presentation/service_requests/pages/verify_security_questions_help_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/successful_survey_submission.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_page.dart';
+import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_responses_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_send_configuration_page.dart';
-import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_sender_list_page.dart';
 
 class RouteGenerator {
   static Route<dynamic>? generateRoute(RouteSettings settings) {
@@ -217,14 +217,6 @@ class RouteGenerator {
           settings: const RouteSettings(name: 'Surveys page'),
         );
 
-      case AppRoutes.surveysSenderListPage:
-        return MaterialPageRoute<SurveysSenderListPage>(
-          builder: (_) => SurveysSenderListPage(
-            survey: args as Survey,
-          ),
-          settings: const RouteSettings(name: 'Surveys sender list page'),
-        );
-
       case AppRoutes.surveysSendConfigurationsPage:
         return MaterialPageRoute<SurveysSendConfigurationsPage>(
           builder: (_) => SurveysSendConfigurationsPage(survey: args as Survey),
@@ -315,8 +307,7 @@ class RouteGenerator {
 
       case AppRoutes.facilityContactsPage:
         return MaterialPageRoute<FacilityContactsPage>(
-          builder: (_) => FacilityContactsPage(
-          ),
+          builder: (_) => FacilityContactsPage(),
           settings: const RouteSettings(name: 'Facility Contacts Page'),
         );
 
@@ -510,6 +501,14 @@ class RouteGenerator {
         return MaterialPageRoute<SearchFacilitiesPage>(
           builder: (_) => SearchFacilitiesPage(),
           settings: const RouteSettings(name: 'Search facilities page'),
+        );
+
+      case AppRoutes.surveyResponsesPage:
+        return MaterialPageRoute<SurveyResponsesPage>(
+          builder: (_) => SurveyResponsesPage(
+            appBarTitle: args as String,
+          ),
+          settings: const RouteSettings(name: 'Survey responses page'),
         );
     }
 

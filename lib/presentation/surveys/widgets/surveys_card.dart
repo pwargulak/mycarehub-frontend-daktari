@@ -1,7 +1,5 @@
-// Flutter imports:
 import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:flutter/material.dart';
-// Project imports:
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 
@@ -9,21 +7,26 @@ class SurveysCard extends StatelessWidget {
   const SurveysCard({
     required this.title,
     this.message,
-    this.showButton = true,
     this.isLoading = false,
-    this.buttonKey,
-    this.buttonText = sendOutString,
+    this.primaryButtonKey,
+    this.primaryButtonText = sendOutString,
     this.onTapCard,
-    this.onPressButton,
+    this.onPrimaryButtonPressed,
+    this.onSecondaryButtonPressed,
+    this.secondaryButtonKey,
+    this.secondaryButtonText,
   });
-  final String title;
-  final String? message;
-  final Key? buttonKey;
-  final String? buttonText;
-  final bool? showButton;
+
+  final void Function()? onPrimaryButtonPressed;
+  final void Function()? onSecondaryButtonPressed;
   final bool isLoading;
+  final String? message;
   final VoidCallback? onTapCard;
-  final void Function()? onPressButton;
+  final Key? primaryButtonKey;
+  final String? primaryButtonText;
+  final Key? secondaryButtonKey;
+  final String? secondaryButtonText;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -55,17 +58,36 @@ class SurveysCard extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
                     ],
-                  ),
-                if (buttonKey != null)
+                  )
+                else
+                  mediumVerticalSizedBox,
+                if (primaryButtonKey != null)
                   SizedBox(
                     width: double.infinity,
                     height: 48,
                     child: isLoading
                         ? const PlatformLoader()
                         : MyAfyaHubPrimaryButton(
-                            buttonKey: buttonKey,
-                            text: buttonText,
-                            onPressed: onPressButton,
+                            buttonKey: primaryButtonKey,
+                            text: primaryButtonText,
+                            onPressed: onPrimaryButtonPressed,
+                          ),
+                  ),
+                mediumVerticalSizedBox,
+                if (secondaryButtonKey != null)
+                  SizedBox(
+                    width: double.infinity,
+                    height: 48,
+                    child: isLoading
+                        ? const PlatformLoader()
+                        : MyAfyaHubPrimaryButton(
+                            buttonColor:
+                                AppColors.primaryColor.withOpacity(0.14),
+                            textColor: AppColors.primaryColor,
+                            borderColor: Colors.transparent,
+                            buttonKey: secondaryButtonKey,
+                            text: secondaryButtonText,
+                            onPressed: onSecondaryButtonPressed,
                           ),
                   )
               ],

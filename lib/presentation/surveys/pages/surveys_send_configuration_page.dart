@@ -101,9 +101,9 @@ class _SurveysSendConfigurationsPageState
                     message: tapToSendToAllClientsString,
                     isLoading:
                         vm.state.wait?.isWaitingFor(sendSurveysFlag) ?? false,
-                    buttonKey: mentalHealthSurveyButtonKey,
-                    buttonText: sendToAllClientsString,
-                    onPressButton: () {
+                    primaryButtonKey: mentalHealthSurveyButtonKey,
+                    primaryButtonText: sendToAllClientsString,
+                    onPrimaryButtonPressed: () {
                       final String facilityID =
                           StoreProvider.state<AppState>(context)
                                   ?.staffState

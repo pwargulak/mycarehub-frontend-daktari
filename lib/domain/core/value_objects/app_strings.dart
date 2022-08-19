@@ -921,3 +921,7 @@ const String noFacilityContactsDescription =
     'No Worries though. They will show up here once they have been added';
 const String all = 'All';
 const String unread = 'Unread';
+const String viewResponses = 'View responses';
+const String noResponsesTitle = 'Oops! no responses';
+const String noResponsesDescription =
+    'There seems to be no responses for this survey. We will notify you when new responses are available';

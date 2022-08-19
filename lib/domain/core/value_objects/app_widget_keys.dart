@@ -186,3 +186,4 @@ const Key searchNotFoundKey = Key('search_not_found_key');
 const Key searchIconButtonKey = Key('search_icon_button_key');
 const Key notificationFiltersKey = Key('notification_filters_key');
 const Key notificationsListViewKey = Key('notifications_list_view_key');
+const Key viewResponsesButtonKey = Key('view_responses_btn_key');

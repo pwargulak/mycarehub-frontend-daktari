@@ -16,7 +16,7 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.d
 import 'package:prohealth360_daktari/presentation/engagement/home/pages/home_page.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_page.dart';
-import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_sender_list_page.dart';
+import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_responses_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/widgets/surveys_card.dart';
 
 import '../../../../mocks/mocks.dart';
@@ -74,8 +74,32 @@ void main() {
       await tester.ensureVisible(mentalHealthSurveyFinder);
       await tester.pumpAndSettle();
       await tester.tap(mentalHealthSurveyFinder);
+    });
+    testWidgets('Survey Card button pressed navigates to responses page',
+        (WidgetTester tester) async {
+      await buildTestWidget(
+        tester: tester,
+        store: store,
+        widget: Builder(
+          builder: (BuildContext context) {
+            return StoreProvider<AppState>(
+              store: store,
+              child: const SurveysPage(),
+            );
+          },
+        ),
+      );
       await tester.pumpAndSettle();
-      expect(find.byType(SurveysSenderListPage), findsOneWidget);
+
+      final Finder viewResponsesFinder =
+          find.byKey(viewResponsesButtonKey).first;
+
+      await tester.ensureVisible(viewResponsesFinder);
+      await tester.pumpAndSettle();
+      await tester.tap(viewResponsesFinder);
+      await tester.pumpAndSettle();
+
+      expect(find.byType(SurveyResponsesPage), findsOneWidget);
     });
     testWidgets(
         'should display zero state widget that navigates to Home when tapped',
