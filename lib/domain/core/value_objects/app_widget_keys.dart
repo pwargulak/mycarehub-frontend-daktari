@@ -161,6 +161,7 @@ const Key resolvedStaffRequestsActionCardKey =
     Key('resolved_staff_requests_action_card_key');
 const Key screeningToolsActionCardKey = Key('screening_tools_action_card_key');
 const Key clientPINResetActionCardKey = Key('client_pin_reset_action_card_key');
+const Key surveysServiceRequestsActionCardKey = Key('surveys_service_requests_action_card_key');
 const Key staffPINResetActionCardKey = Key('staff_pin_reset_action_card_key');
 const Key lowerBoundKey = Key('lower_bound_key');
 const Key higherBoundKey = Key('higher_bound_key');

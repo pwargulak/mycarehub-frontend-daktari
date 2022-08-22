@@ -100,6 +100,11 @@ class _ServiceRequestsWidgetState extends State<ServiceRequestsWidget> {
       ServiceRequestType.STAFF_PIN_RESET,
     );
 
+    final int surveysCount = _getServiceRequestTypeCount(
+      clientServiceRequestsCount,
+      ServiceRequestType.SURVEY,
+    );
+
     final int totalCount =
         redFlagCount + pinResetCount + staffPINResetCount + screeningToolsCount;
 
@@ -172,6 +177,21 @@ class _ServiceRequestsWidgetState extends State<ServiceRequestsWidget> {
                             ),
                           ),
 
+                        // SURVEY SERVICE REQUESTS
+                        if (surveysCount > 0)
+                          ActionCard(
+                            key: surveysServiceRequestsActionCardKey,
+                            count: surveysCount,
+                            iconUrl: surveysImagePath,
+                            title: surveysString,
+                            backgroundColor:
+                                Theme.of(context).primaryColor.withOpacity(0.2),
+                            onTap: () => Navigator.pushNamed(
+                              context,
+                              AppRoutes.surveyServiceRequestsPage,
+                            ),
+                          ),
+                      
                         // CLIENT PIN RESET REQUESTS
                         if (pinResetCount > 0)
                           ActionCard(

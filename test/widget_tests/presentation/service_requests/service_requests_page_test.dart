@@ -20,6 +20,7 @@ import 'package:prohealth360_daktari/presentation/service_requests/pages/red_fla
 import 'package:prohealth360_daktari/presentation/service_requests/pages/screening_tools_list_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/service_requests_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/staff_pin_reset_requests_page.dart';
+import 'package:prohealth360_daktari/presentation/service_requests/pages/survey_service_requests_page.dart';
 
 import '../../../mocks/mocks.dart';
 import '../../../mocks/test_helpers.dart';
@@ -183,6 +184,29 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.byType(StaffPinResetRequestsPage), findsOneWidget);
+    });
+    testWidgets(
+        'should navigate to surveys service requests page when the '
+        'surveys card is tapped', (WidgetTester tester) async {
+      await buildTestWidget(
+        tester: tester,
+        graphQlClient: MockTestGraphQlClient(),
+        store: store,
+        widget: const ServiceRequestsPage(),
+      );
+
+      await tester.pumpAndSettle();
+
+      final Finder surveysServiceRequestsActionCard =
+          find.byKey(surveysServiceRequestsActionCardKey);
+      await tester.scrollUntilVisible(surveysServiceRequestsActionCard, 500);
+      await tester.pumpAndSettle();
+      expect(surveysServiceRequestsActionCard, findsOneWidget);
+
+      await tester.tap(surveysServiceRequestsActionCard);
+      await tester.pumpAndSettle();
+
+      expect(find.byType(SurveyServiceRequestsPage), findsOneWidget);
     });
 
     testWidgets(

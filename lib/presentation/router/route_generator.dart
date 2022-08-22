@@ -59,6 +59,7 @@ import 'package:prohealth360_daktari/presentation/service_requests/pages/resolve
 import 'package:prohealth360_daktari/presentation/service_requests/pages/screening_tools_list_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/service_requests_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/staff_pin_reset_requests_page.dart';
+import 'package:prohealth360_daktari/presentation/service_requests/pages/survey_service_requests_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/verify_security_questions_help_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/successful_survey_submission.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_page.dart';
@@ -445,6 +446,14 @@ class RouteGenerator {
         return MaterialPageRoute<ResolvedServiceRequestsListPage>(
           builder: (_) => ResolvedServiceRequestsListPage(
             flavour: args as Flavour,
+          ),
+          settings:
+              const RouteSettings(name: 'Resolved service requests list page'),
+        );
+
+      case AppRoutes.surveyServiceRequestsPage:
+        return MaterialPageRoute<SurveyServiceRequestsPage>(
+          builder: (_) => const SurveyServiceRequestsPage(
           ),
           settings:
               const RouteSettings(name: 'Resolved service requests list page'),

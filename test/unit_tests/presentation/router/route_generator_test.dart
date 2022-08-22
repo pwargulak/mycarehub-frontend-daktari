@@ -53,6 +53,7 @@ import 'package:prohealth360_daktari/presentation/service_requests/pages/resolve
 import 'package:prohealth360_daktari/presentation/service_requests/pages/resolved_service_requests_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/screening_tools_list_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/staff_pin_reset_requests_page.dart';
+import 'package:prohealth360_daktari/presentation/service_requests/pages/survey_service_requests_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/verify_security_questions_help_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/successful_survey_submission.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_page.dart';
@@ -368,6 +369,19 @@ void main() {
 
     expect(route, isA<MaterialPageRoute<ResolvedServiceRequestsListPage>>());
     expect(route?.builder(context), isA<ResolvedServiceRequestsListPage>());
+  });
+
+  test('Test router returns SurveyServiceRequestsPage', () {
+    const RouteSettings settings = RouteSettings(
+      name: AppRoutes.surveyServiceRequestsPage,
+    );
+
+    final MaterialPageRoute<SurveyServiceRequestsPage>? route =
+        routeGenerator(settings)
+            as MaterialPageRoute<SurveyServiceRequestsPage>?;
+
+    expect(route, isA<MaterialPageRoute<SurveyServiceRequestsPage>>());
+    expect(route?.builder(context), isA<SurveyServiceRequestsPage>());
   });
 
   test('Test router returns SearchClientPage', () {

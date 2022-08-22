@@ -201,11 +201,13 @@ const String surveysInvitedToString =
     'Surveys you have been invited to respond to';
 const String sendOutString = 'Send Out';
 const String fetchingSurveysString = 'fetching surveys';
+const String surveyServiceRequestsLeadingString =
+    'Surveys you have been invited to respond to';
+const String surveyServiceRequestsString = 'Survey service requests';
 
 const String noSurveysTitle = 'No Surveys available';
 const String noSurveysDescription =
     'No worries though, check back in later and we will have them ready for you';
-const String mentalHealthSurveyString = 'Mental health survey';
 const String usabilitySurveyString = 'Usability survey';
 const String surveyDescriptionString =
     'A simple Yes or No question set about your mental health';
@@ -925,3 +927,9 @@ const String viewResponses = 'View responses';
 const String noResponsesTitle = 'Oops! no responses';
 const String noResponsesDescription =
     'There seems to be no responses for this survey. We will notify you when new responses are available';
+
+const String phq9String = 'PHQ-9';
+const String mentalHealthSurveyString = 'Mental health survey';
+String getSurveyServiceRequestActionString(String surveyName) {
+  return 'Tap to view service requests for the $surveyName';
+}

@@ -31,6 +31,8 @@ class AppRoutes {
   static const String serviceRequestsPage = '/ServiceRequestsPage';
   static const String resolvedServiceRequestsListPage =
       '/resolvedServiceRequestsListPage';
+  static const String surveyServiceRequestsPage =
+      '/surveyServiceRequestsPage';
 
   static const String redFlagsPage = '/redFlagsPage';
 
