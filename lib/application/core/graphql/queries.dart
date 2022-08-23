@@ -429,6 +429,35 @@ query fetchNotificationTypeFilters($flavour: Flavour!) {
   }
 }
 ''';
+const String listSurveyRespondentsQuery = r'''
+query listSurveyRespondents(
+  $projectID: Int!,
+  $formID: String!,
+  $paginationInput: PaginationsInput!,
+){
+  listSurveyRespondents(
+    projectID: $projectID,
+    formID: $formID,
+    paginationInput: $paginationInput,
+  ){
+    surveyRespondents{
+      id
+      name
+      projectID
+      submitterID
+      submittedAt
+      formID
+    }
+    pagination{
+      Limit
+      CurrentPage
+      Count
+      TotalPages
+      NextPage
+      PreviousPage
+    }
+  }
+}''';
 
 const String surveyResponseQuery = r'''
 query surveyResponse($input: SurveyResponseInput!) {

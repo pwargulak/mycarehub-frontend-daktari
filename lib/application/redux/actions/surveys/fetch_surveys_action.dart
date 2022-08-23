@@ -23,7 +23,6 @@ class FetchSurveysAction extends ReduxAction<AppState> {
   void before() {
     super.before();
     dispatch(WaitAction<AppState>.add(fetchSurveysFlag));
-
     dispatch(UpdateSurveyStateAction(errorFetchingSurveys: false));
   }
 
