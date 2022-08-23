@@ -416,7 +416,7 @@ final Map<String, dynamic> mockAuthLoginResponse = <String, dynamic>{
 };
 final Map<String, dynamic> mockAssessmentResponsesByToolType =
     <String, dynamic>{
-  'clientName': 'Byron Kimani',
+  'clientName': 'John Doe',
   'dateAnswered': '2022-02-18T12:54:53Z',
   'clientID': '58074133-2d76-43ac-b233-3f33504a0bd8',
 };
@@ -442,10 +442,7 @@ final Map<String, dynamic> mockPendingServiceRequestCount = <String, dynamic>{
             'requestType': 'SCREENING_TOOLS_RED_FLAG',
             'total': 2
           },
-          <String, dynamic>{
-            'requestType': 'SURVEY',
-            'total': 2
-          },
+          <String, dynamic>{'requestType': 'SURVEY', 'total': 2},
         ],
       },
       'staffServiceRequestCount': <String, dynamic>{
@@ -1580,6 +1577,10 @@ final Map<String, dynamic> groupStateMock = <String, dynamic>{
 
 final Map<String, dynamic> mockSurvey = <String, dynamic>{
   'projectId': 2,
+  'name': 'project-name',
+};
+
+final Map<String, dynamic> mockSurveyResponse = <String, dynamic>{
   'name': 'project-name',
 };
 

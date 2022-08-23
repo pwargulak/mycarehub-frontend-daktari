@@ -927,6 +927,8 @@ const String viewResponses = 'View responses';
 const String noResponsesTitle = 'Oops! no responses';
 const String noResponsesDescription =
     'There seems to be no responses for this survey. We will notify you when new responses are available';
+const String tapToViewTheirResponse = 'Tap to view their response';
+const String responsesForTheSurvey = 'Responses for the survey';
 
 //Survey service requests
 const String phq9String = 'PHQ-9';

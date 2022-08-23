@@ -12,11 +12,16 @@ _$_SurveyState _$$_SurveyStateFromJson(Map<String, dynamic> json) =>
           ?.map((e) =>
               e == null ? null : Survey.fromJson(e as Map<String, dynamic>))
           .toList(),
+      surveyResponseState: json['surveyResponseState'] == null
+          ? null
+          : SurveyResponseState.fromJson(
+              json['surveyResponseState'] as Map<String, dynamic>),
       errorFetchingSurveys: json['errorFetchingSurveys'] as bool?,
     );
 
 Map<String, dynamic> _$$_SurveyStateToJson(_$_SurveyState instance) =>
     <String, dynamic>{
       'listSurveys': instance.surveys,
+      'surveyResponseState': instance.surveyResponseState,
       'errorFetchingSurveys': instance.errorFetchingSurveys,
     };

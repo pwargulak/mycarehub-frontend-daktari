@@ -5,7 +5,6 @@ import 'package:prohealth360_daktari/domain/core/entities/surveys/survey.dart';
 
 class UpdateSurveyStateAction extends ReduxAction<AppState> {
   final List<Survey?>? surveys;
-
   final bool? errorFetchingSurveys;
 
   UpdateSurveyStateAction({
@@ -21,9 +20,7 @@ class UpdateSurveyStateAction extends ReduxAction<AppState> {
           errorFetchingSurveys ?? state.surveyState?.errorFetchingSurveys,
     );
 
-    final AppState newState = state.copyWith(
-      surveyState: surveyState,
-    );
+    final AppState newState = state.copyWith(surveyState: surveyState);
 
     return newState;
   }
