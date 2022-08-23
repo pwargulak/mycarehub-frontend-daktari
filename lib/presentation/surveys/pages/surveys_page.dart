@@ -10,7 +10,7 @@ import 'package:prohealth360_daktari/application/redux/actions/surveys/update_su
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/surveys/surveys_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/entities/surveys/survey.dart';
-import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_response.dart';
+import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_respondent.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
@@ -107,10 +107,10 @@ class SurveysPage extends StatelessWidget {
                                 await StoreProvider.dispatch(
                                   context,
                                   UpdateSurveyResponseStateAction(
-                                    surveyResponses: <SurveyResponse>[
-                                      SurveyResponse(name: 'Juha'),
-                                      SurveyResponse(name: 'Jenny'),
-                                      SurveyResponse(name: 'Johnte'),
+                                    surveyRespondents: <SurveyRespondent>[
+                                      SurveyRespondent(name: 'Juha'),
+                                      SurveyRespondent(name: 'Jenny'),
+                                      SurveyRespondent(name: 'Johnte'),
                                     ],
                                   ),
                                 );

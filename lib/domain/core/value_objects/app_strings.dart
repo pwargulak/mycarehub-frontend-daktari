@@ -956,3 +956,7 @@ const String surveyResponsesSearchHintText =
 const String surveyResponseString = 'Survey response';
 const String previewResponsesString = 'Preview Response';
 const String fetchingSurveyResponsesString = 'fetching survey responses';
+
+String getSurveyPreviewDescriptionText(String surveyTitle) {
+  return 'Some very long description about the $surveyTitle response';
+}

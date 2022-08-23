@@ -20,9 +20,12 @@ SurveyResponse _$SurveyResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SurveyResponse {
-// name of the respondent
-  @JsonKey(name: 'name')
-  String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'question')
+  String? get question => throw _privateConstructorUsedError;
+  @JsonKey(name: 'answers')
+  List<String>? get answers => throw _privateConstructorUsedError;
+  @JsonKey(name: 'questionType')
+  QuestionType? get questionType => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +38,10 @@ abstract class $SurveyResponseCopyWith<$Res> {
   factory $SurveyResponseCopyWith(
           SurveyResponse value, $Res Function(SurveyResponse) then) =
       _$SurveyResponseCopyWithImpl<$Res>;
-  $Res call({@JsonKey(name: 'name') String? name});
+  $Res call(
+      {@JsonKey(name: 'question') String? question,
+      @JsonKey(name: 'answers') List<String>? answers,
+      @JsonKey(name: 'questionType') QuestionType? questionType});
 }
 
 /// @nodoc
@@ -49,13 +55,23 @@ class _$SurveyResponseCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? name = freezed,
+    Object? question = freezed,
+    Object? answers = freezed,
+    Object? questionType = freezed,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      question: question == freezed
+          ? _value.question
+          : question // ignore: cast_nullable_to_non_nullable
               as String?,
+      answers: answers == freezed
+          ? _value.answers
+          : answers // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      questionType: questionType == freezed
+          ? _value.questionType
+          : questionType // ignore: cast_nullable_to_non_nullable
+              as QuestionType?,
     ));
   }
 }
@@ -67,7 +83,10 @@ abstract class _$$_SurveyResponseCopyWith<$Res>
           _$_SurveyResponse value, $Res Function(_$_SurveyResponse) then) =
       __$$_SurveyResponseCopyWithImpl<$Res>;
   @override
-  $Res call({@JsonKey(name: 'name') String? name});
+  $Res call(
+      {@JsonKey(name: 'question') String? question,
+      @JsonKey(name: 'answers') List<String>? answers,
+      @JsonKey(name: 'questionType') QuestionType? questionType});
 }
 
 /// @nodoc
@@ -83,13 +102,23 @@ class __$$_SurveyResponseCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? name = freezed,
+    Object? question = freezed,
+    Object? answers = freezed,
+    Object? questionType = freezed,
   }) {
     return _then(_$_SurveyResponse(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      question: question == freezed
+          ? _value.question
+          : question // ignore: cast_nullable_to_non_nullable
               as String?,
+      answers: answers == freezed
+          ? _value._answers
+          : answers // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      questionType: questionType == freezed
+          ? _value.questionType
+          : questionType // ignore: cast_nullable_to_non_nullable
+              as QuestionType?,
     ));
   }
 }
@@ -97,19 +126,35 @@ class __$$_SurveyResponseCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_SurveyResponse implements _SurveyResponse {
-  _$_SurveyResponse({@JsonKey(name: 'name') this.name});
+  _$_SurveyResponse(
+      {@JsonKey(name: 'question') this.question,
+      @JsonKey(name: 'answers') final List<String>? answers,
+      @JsonKey(name: 'questionType') this.questionType})
+      : _answers = answers;
 
   factory _$_SurveyResponse.fromJson(Map<String, dynamic> json) =>
       _$$_SurveyResponseFromJson(json);
 
-// name of the respondent
   @override
-  @JsonKey(name: 'name')
-  final String? name;
+  @JsonKey(name: 'question')
+  final String? question;
+  final List<String>? _answers;
+  @override
+  @JsonKey(name: 'answers')
+  List<String>? get answers {
+    final value = _answers;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  @JsonKey(name: 'questionType')
+  final QuestionType? questionType;
 
   @override
   String toString() {
-    return 'SurveyResponse(name: $name)';
+    return 'SurveyResponse(question: $question, answers: $answers, questionType: $questionType)';
   }
 
   @override
@@ -117,13 +162,19 @@ class _$_SurveyResponse implements _SurveyResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SurveyResponse &&
-            const DeepCollectionEquality().equals(other.name, name));
+            const DeepCollectionEquality().equals(other.question, question) &&
+            const DeepCollectionEquality().equals(other._answers, _answers) &&
+            const DeepCollectionEquality()
+                .equals(other.questionType, questionType));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(name));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(question),
+      const DeepCollectionEquality().hash(_answers),
+      const DeepCollectionEquality().hash(questionType));
 
   @JsonKey(ignore: true)
   @override
@@ -137,15 +188,24 @@ class _$_SurveyResponse implements _SurveyResponse {
 }
 
 abstract class _SurveyResponse implements SurveyResponse {
-  factory _SurveyResponse({@JsonKey(name: 'name') final String? name}) =
+  factory _SurveyResponse(
+          {@JsonKey(name: 'question') final String? question,
+          @JsonKey(name: 'answers') final List<String>? answers,
+          @JsonKey(name: 'questionType') final QuestionType? questionType}) =
       _$_SurveyResponse;
 
   factory _SurveyResponse.fromJson(Map<String, dynamic> json) =
       _$_SurveyResponse.fromJson;
 
-  @override // name of the respondent
-  @JsonKey(name: 'name')
-  String? get name => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'question')
+  String? get question => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'answers')
+  List<String>? get answers => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'questionType')
+  QuestionType? get questionType => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_SurveyResponseCopyWith<_$_SurveyResponse> get copyWith =>

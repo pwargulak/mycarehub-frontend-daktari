@@ -6,7 +6,7 @@ import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/actions/surveys/update_survey_response_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/surveys/surveys_view_model.dart';
-import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_response.dart';
+import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_respondent.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
@@ -36,14 +36,14 @@ class SurveyResponsesPage extends StatelessWidget {
         },
         converter: (Store<AppState> store) => SurveysViewModel.fromStore(store),
         builder: (BuildContext context, SurveysViewModel vm) {
-          final List<SurveyResponse?> surveyResponses =
-              vm.surveyResponses ?? <SurveyResponse>[];
+          final List<SurveyRespondent?> surveyResponses =
+              vm.surveyRespondents ?? <SurveyRespondent>[];
           final List<Widget> surveysWidgetList = <Widget>[];
 
           if (surveyResponses.isNotEmpty) {
             surveyResponses
                 .map(
-                  (SurveyResponse? response) => surveysWidgetList.add(
+                  (SurveyRespondent? response) => surveysWidgetList.add(
                     SurveyResponseItemCard(
                       title: response?.name ?? '',
                     ),

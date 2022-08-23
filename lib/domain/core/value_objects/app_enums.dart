@@ -104,3 +104,9 @@ enum AnalyticsEventType {
   /// Events used in the onboarding workflow
   ONBOARDING
 }
+
+enum QuestionType {
+  SINGLE_CHOICE,
+  MULTIPLE_CHOICE,
+  UNKNOWN
+}

@@ -1,34 +1,34 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/application/redux/states/survey_response_state.dart';
+import 'package:prohealth360_daktari/application/redux/states/survey_respondents_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/survey_state.dart';
-import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_response.dart';
+import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_respondent.dart';
 
 class UpdateSurveyResponseStateAction extends ReduxAction<AppState> {
-  final List<SurveyResponse?>? surveyResponses;
+  final List<SurveyRespondent?>? surveyRespondents;
   final bool? errorOccurred;
   final bool? timeOutOccurred;
 
   UpdateSurveyResponseStateAction({
-    this.surveyResponses,
+    this.surveyRespondents,
     this.errorOccurred,
     this.timeOutOccurred,
   });
 
   @override
   Future<AppState> reduce() async {
-    final SurveyResponseState? newSurveyResponseState =
-        state.surveyState?.surveyResponseState?.copyWith(
-      surveyResponses: surveyResponses ??
-          state.surveyState?.surveyResponseState?.surveyResponses,
+    final SurveyRespondentsState? newSurveyRespondentsState =
+        state.surveyState?.surveyRespondentsState?.copyWith(
+      surveyRespondents: surveyRespondents ??
+          state.surveyState?.surveyRespondentsState?.surveyRespondents,
       errorOccurred: errorOccurred ??
-          state.surveyState?.surveyResponseState?.errorOccurred,
+          state.surveyState?.surveyRespondentsState?.errorOccurred,
       timeOutOccurred: timeOutOccurred ??
-          state.surveyState?.surveyResponseState?.timeOutOccurred,
+          state.surveyState?.surveyRespondentsState?.timeOutOccurred,
     );
 
     final SurveyState? surveyState = state.surveyState?.copyWith(
-      surveyResponseState: newSurveyResponseState,
+      surveyRespondentsState: newSurveyRespondentsState,
     );
 
     final AppState newState = state.copyWith(

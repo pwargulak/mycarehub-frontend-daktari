@@ -429,3 +429,13 @@ query fetchNotificationTypeFilters($flavour: Flavour!) {
   }
 }
 ''';
+
+const String surveyResponseQuery = r'''
+query surveyResponse($input: SurveyResponseInput!) {
+  getSurveyResponse(input: $input) {
+    question
+    questionType
+    answer
+  }
+}
+''';

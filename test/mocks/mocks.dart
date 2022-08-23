@@ -1580,8 +1580,13 @@ final Map<String, dynamic> mockSurvey = <String, dynamic>{
   'name': 'project-name',
 };
 
-final Map<String, dynamic> mockSurveyResponse = <String, dynamic>{
+final Map<String, dynamic> mockSurveyRespondent = <String, dynamic>{
   'name': 'project-name',
+};
+
+final Map<String, dynamic> mockSurveyResponse = <String, dynamic>{
+  'question': 'testQ',
+  'answers': <dynamic>['testA'],
 };
 
 final Map<String, dynamic> surveysMock = <String, dynamic>{

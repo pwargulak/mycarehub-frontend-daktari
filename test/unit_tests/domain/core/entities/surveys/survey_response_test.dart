@@ -7,8 +7,10 @@ void main() {
   group('Survey', () {
     test('expects to convert Survey from json', () {
       expect(SurveyResponse.initial(), isA<SurveyResponse>());
-      final SurveyResponse mock = SurveyResponse.fromJson(mockSurveyResponse);
+      final SurveyResponse mock =
+          SurveyResponse.fromJson(mockSurveyResponse);
       expect(mock, isA<SurveyResponse>());
+      expect(mock.answers!.first, 'testA');
     });
   });
 }

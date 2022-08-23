@@ -66,6 +66,7 @@ import 'package:prohealth360_daktari/presentation/service_requests/pages/verify_
 import 'package:prohealth360_daktari/presentation/surveys/pages/successful_survey_submission.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_responses_page.dart';
+import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_responses_preview_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_send_configuration_page.dart';
 
 class RouteGenerator {
@@ -427,7 +428,16 @@ class RouteGenerator {
           builder: (_) => SurveyServiceRequestActionsPage(
             serviceRequest: args as ServiceRequest?,
           ),
-          settings: const RouteSettings(name: 'Survey Service Request Actions Page'),
+          settings:
+              const RouteSettings(name: 'Survey Service Request Actions Page'),
+        );
+
+      case AppRoutes.surveyResponsesPreviewPage:
+        return MaterialPageRoute<SurveyResponsesPreviewPage>(
+          builder: (_) => SurveyResponsesPreviewPage(
+            survey: args as Survey,
+          ),
+          settings: const RouteSettings(name: 'Survey Responses Preview Page'),
         );
 
       case AppRoutes.screeningToolsListPage:
@@ -462,8 +472,7 @@ class RouteGenerator {
 
       case AppRoutes.surveyServiceRequestsPage:
         return MaterialPageRoute<SurveyServiceRequestsPage>(
-          builder: (_) => const SurveyServiceRequestsPage(
-          ),
+          builder: (_) => const SurveyServiceRequestsPage(),
           settings:
               const RouteSettings(name: 'Resolved service requests list page'),
         );
@@ -492,7 +501,9 @@ class RouteGenerator {
           builder: (_) => SurveyServiceRequestResponsesPage(
             surveyTitle: args as String,
           ),
-          settings: const RouteSettings(name: 'Survey Service Request Responses Page'),
+          settings: const RouteSettings(
+            name: 'Survey Service Request Responses Page',
+          ),
         );
 
       case AppRoutes.acceptGroupInvitesPage:
