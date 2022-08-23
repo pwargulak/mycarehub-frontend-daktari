@@ -53,7 +53,9 @@ import 'package:prohealth360_daktari/presentation/service_requests/pages/resolve
 import 'package:prohealth360_daktari/presentation/service_requests/pages/resolved_service_requests_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/screening_tools_list_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/staff_pin_reset_requests_page.dart';
-import 'package:prohealth360_daktari/presentation/service_requests/pages/survey_service_requests_page.dart';
+import 'package:prohealth360_daktari/presentation/service_requests/pages/surveys/survey_service_request_actions_page.dart';
+import 'package:prohealth360_daktari/presentation/service_requests/pages/surveys/survey_service_request_responses_page.dart';
+import 'package:prohealth360_daktari/presentation/service_requests/pages/surveys/survey_service_requests_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/verify_security_questions_help_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/successful_survey_submission.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_page.dart';
@@ -409,6 +411,20 @@ void main() {
     expect(route, isA<MaterialPageRoute<SearchPageDetailView>>());
     expect(route?.builder(context), isA<SearchPageDetailView>());
   });
+
+  test('Test router returns Survey Service Request Responses Page', () {
+    const RouteSettings settings = RouteSettings(
+      name: AppRoutes.surveyServiceRequestResponsesPage,
+      arguments: 'test',
+    );
+
+    final MaterialPageRoute<SurveyServiceRequestResponsesPage>? route =
+        routeGenerator(settings)
+            as MaterialPageRoute<SurveyServiceRequestResponsesPage>?;
+
+    expect(route, isA<MaterialPageRoute<SurveyServiceRequestResponsesPage>>());
+    expect(route?.builder(context), isA<SurveyServiceRequestResponsesPage>());
+  });
   test('Test router returns PendingPINRequestPage', () {
     const RouteSettings settings =
         RouteSettings(name: AppRoutes.pendingPINRequestPage);
@@ -502,6 +518,18 @@ void main() {
 
     expect(route, isA<MaterialPageRoute<RedFlagActionsPage>>());
     expect(route?.builder(context), isA<RedFlagActionsPage>());
+  });
+  test('Test router returns SurveyServiceRequestActionsPage', () {
+    final RouteSettings settings = RouteSettings(
+      name: AppRoutes.surveyServiceRequestActionsPage,
+      arguments: ServiceRequest(),
+    );
+
+    final MaterialPageRoute<SurveyServiceRequestActionsPage>? route =
+        routeGenerator(settings) as MaterialPageRoute<SurveyServiceRequestActionsPage>?;
+
+    expect(route, isA<MaterialPageRoute<SurveyServiceRequestActionsPage>>());
+    expect(route?.builder(context), isA<SurveyServiceRequestActionsPage>());
   });
   test('Test router returns ScreeningToolsListPage', () {
     const RouteSettings settings = RouteSettings(

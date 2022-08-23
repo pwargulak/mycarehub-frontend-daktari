@@ -93,7 +93,6 @@ class SurveysCard extends StatelessWidget {
               ],
             ),
           ),
-          mediumVerticalSizedBox,
         ],
       ),
     );

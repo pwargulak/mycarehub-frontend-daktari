@@ -928,8 +928,29 @@ const String noResponsesTitle = 'Oops! no responses';
 const String noResponsesDescription =
     'There seems to be no responses for this survey. We will notify you when new responses are available';
 
+//Survey service requests
 const String phq9String = 'PHQ-9';
+const String responseString = 'response';
 const String mentalHealthSurveyString = 'Mental health survey';
 String getSurveyServiceRequestActionString(String surveyName) {
   return 'Tap to view service requests for the $surveyName';
 }
+
+const String tapToViewResponseString = 'Tap to view their response';
+String getSurveyResponsesAppBarTitle(String surveyTitle) {
+  return '$surveyTitle responses';
+}
+
+String getSurveyResponsesPageDescString(String surveyTitle) {
+  return 'Responses from the $surveyTitle survey';
+}
+
+String getSurveyActionCardMessageString(String clientName) {
+  return "Tap below to preview $clientName's response to this survey";
+}
+
+const String surveyResponsesSearchHintText =
+    'Search for a client using their name...';
+const String surveyResponseString = 'Survey response';
+const String previewResponsesString = 'Preview Response';
+const String fetchingSurveyResponsesString = 'fetching survey responses';

@@ -59,7 +59,9 @@ import 'package:prohealth360_daktari/presentation/service_requests/pages/resolve
 import 'package:prohealth360_daktari/presentation/service_requests/pages/screening_tools_list_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/service_requests_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/staff_pin_reset_requests_page.dart';
-import 'package:prohealth360_daktari/presentation/service_requests/pages/survey_service_requests_page.dart';
+import 'package:prohealth360_daktari/presentation/service_requests/pages/surveys/survey_service_request_actions_page.dart';
+import 'package:prohealth360_daktari/presentation/service_requests/pages/surveys/survey_service_request_responses_page.dart';
+import 'package:prohealth360_daktari/presentation/service_requests/pages/surveys/survey_service_requests_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/verify_security_questions_help_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/successful_survey_submission.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_page.dart';
@@ -420,6 +422,13 @@ class RouteGenerator {
           ),
           settings: const RouteSettings(name: 'Red flag actions page'),
         );
+      case AppRoutes.surveyServiceRequestActionsPage:
+        return MaterialPageRoute<SurveyServiceRequestActionsPage>(
+          builder: (_) => SurveyServiceRequestActionsPage(
+            serviceRequest: args as ServiceRequest?,
+          ),
+          settings: const RouteSettings(name: 'Survey Service Request Actions Page'),
+        );
 
       case AppRoutes.screeningToolsListPage:
         return MaterialPageRoute<ScreeningToolsListPage>(
@@ -477,6 +486,13 @@ class RouteGenerator {
             images: args as List<GalleryImage>,
           ),
           settings: const RouteSettings(name: 'Gallery images page'),
+        );
+      case AppRoutes.surveyServiceRequestResponsesPage:
+        return MaterialPageRoute<SurveyServiceRequestResponsesPage>(
+          builder: (_) => SurveyServiceRequestResponsesPage(
+            surveyTitle: args as String,
+          ),
+          settings: const RouteSettings(name: 'Survey Service Request Responses Page'),
         );
 
       case AppRoutes.acceptGroupInvitesPage:

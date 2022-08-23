@@ -20,7 +20,7 @@ import 'package:prohealth360_daktari/presentation/service_requests/pages/red_fla
 import 'package:prohealth360_daktari/presentation/service_requests/pages/screening_tools_list_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/service_requests_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/staff_pin_reset_requests_page.dart';
-import 'package:prohealth360_daktari/presentation/service_requests/pages/survey_service_requests_page.dart';
+import 'package:prohealth360_daktari/presentation/service_requests/pages/surveys/survey_service_requests_page.dart';
 
 import '../../../mocks/mocks.dart';
 import '../../../mocks/test_helpers.dart';

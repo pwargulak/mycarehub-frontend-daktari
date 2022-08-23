@@ -15,6 +15,7 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
+import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/widgets/survey_service_request_item_widget.dart';
 
 class SurveyServiceRequestsPage extends StatelessWidget {
@@ -90,6 +91,11 @@ class SurveyServiceRequestsPage extends StatelessWidget {
                               title: surveyTitle,
                               description: getSurveyServiceRequestActionString(
                                 surveyTitle,
+                              ),
+                              onTapCallback: () => Navigator.pushNamed(
+                                context,
+                                AppRoutes.surveyServiceRequestResponsesPage,
+                                arguments: surveyTitle,
                               ),
                             );
                           },

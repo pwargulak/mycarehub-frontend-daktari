@@ -11,7 +11,8 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart'
 // Project imports:
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
-import 'package:prohealth360_daktari/presentation/service_requests/pages/survey_service_requests_page.dart';
+import 'package:prohealth360_daktari/presentation/service_requests/pages/surveys/survey_service_request_responses_page.dart';
+import 'package:prohealth360_daktari/presentation/service_requests/pages/surveys/survey_service_requests_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/widgets/survey_service_request_item_widget.dart';
 import '../../../mocks/mocks.dart';
 import '../../../mocks/test_helpers.dart';
@@ -68,6 +69,24 @@ void main() {
         expect(genericNoDataButton, findsOneWidget);
       },
     );
+
+        testWidgets('Routes to SurveyServiceRequestResponsesPage correctly',
+        (WidgetTester tester) async {
+      await buildTestWidget(
+        tester: tester,
+        store: store,
+        graphQlClient: MockTestGraphQlClient(),
+        widget: const SurveyServiceRequestsPage(
+        ),
+      );
+      await tester.pumpAndSettle();
+      final Finder surveyItem = find.byType(SurveyServiceRequestItemWidget);
+
+      await tester.tap(surveyItem.first);
+      await tester.pumpAndSettle();
+
+      expect(find.byType(SurveyServiceRequestResponsesPage), findsOneWidget);
+    });
 
     testWidgets('should show a loading indicator', (WidgetTester tester) async {
       store.dispatch(WaitAction<AppState>.add(fetchSurveysFlag));

@@ -117,4 +117,6 @@ class AppRoutes {
 
   static const String searchFacilitiesPage = '/searchFacilitiesPage';
   static const String surveyResponsesPage = '/surveyResponsesPage';
+  static const String surveyServiceRequestResponsesPage = '/surveyServiceRequestResponsesPage';
+  static const String surveyServiceRequestActionsPage = '/surveyServiceRequestActionsPage';
 }
