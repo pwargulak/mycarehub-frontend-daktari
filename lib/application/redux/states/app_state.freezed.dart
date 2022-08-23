@@ -21,7 +21,6 @@ AppState _$AppStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AppState {
   AuthCredentials? get credentials => throw _privateConstructorUsedError;
-  HomeState? get homeState => throw _privateConstructorUsedError;
   OnboardingState? get onboardingState => throw _privateConstructorUsedError;
   BottomNavigationState? get bottomNavigationState =>
       throw _privateConstructorUsedError;
@@ -47,7 +46,6 @@ abstract class $AppStateCopyWith<$Res> {
       _$AppStateCopyWithImpl<$Res>;
   $Res call(
       {AuthCredentials? credentials,
-      HomeState? homeState,
       OnboardingState? onboardingState,
       BottomNavigationState? bottomNavigationState,
       MiscState? miscState,
@@ -58,7 +56,6 @@ abstract class $AppStateCopyWith<$Res> {
       @JsonKey(ignore: true) Wait? wait});
 
   $AuthCredentialsCopyWith<$Res>? get credentials;
-  $HomeStateCopyWith<$Res>? get homeState;
   $OnboardingStateCopyWith<$Res>? get onboardingState;
   $BottomNavigationStateCopyWith<$Res>? get bottomNavigationState;
   $MiscStateCopyWith<$Res>? get miscState;
@@ -79,7 +76,6 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
   @override
   $Res call({
     Object? credentials = freezed,
-    Object? homeState = freezed,
     Object? onboardingState = freezed,
     Object? bottomNavigationState = freezed,
     Object? miscState = freezed,
@@ -94,10 +90,6 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
           ? _value.credentials
           : credentials // ignore: cast_nullable_to_non_nullable
               as AuthCredentials?,
-      homeState: homeState == freezed
-          ? _value.homeState
-          : homeState // ignore: cast_nullable_to_non_nullable
-              as HomeState?,
       onboardingState: onboardingState == freezed
           ? _value.onboardingState
           : onboardingState // ignore: cast_nullable_to_non_nullable
@@ -141,17 +133,6 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
 
     return $AuthCredentialsCopyWith<$Res>(_value.credentials!, (value) {
       return _then(_value.copyWith(credentials: value));
-    });
-  }
-
-  @override
-  $HomeStateCopyWith<$Res>? get homeState {
-    if (_value.homeState == null) {
-      return null;
-    }
-
-    return $HomeStateCopyWith<$Res>(_value.homeState!, (value) {
-      return _then(_value.copyWith(homeState: value));
     });
   }
 
@@ -242,7 +223,6 @@ abstract class _$$_StateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
   @override
   $Res call(
       {AuthCredentials? credentials,
-      HomeState? homeState,
       OnboardingState? onboardingState,
       BottomNavigationState? bottomNavigationState,
       MiscState? miscState,
@@ -254,8 +234,6 @@ abstract class _$$_StateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
 
   @override
   $AuthCredentialsCopyWith<$Res>? get credentials;
-  @override
-  $HomeStateCopyWith<$Res>? get homeState;
   @override
   $OnboardingStateCopyWith<$Res>? get onboardingState;
   @override
@@ -284,7 +262,6 @@ class __$$_StateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? credentials = freezed,
-    Object? homeState = freezed,
     Object? onboardingState = freezed,
     Object? bottomNavigationState = freezed,
     Object? miscState = freezed,
@@ -299,10 +276,6 @@ class __$$_StateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
           ? _value.credentials
           : credentials // ignore: cast_nullable_to_non_nullable
               as AuthCredentials?,
-      homeState: homeState == freezed
-          ? _value.homeState
-          : homeState // ignore: cast_nullable_to_non_nullable
-              as HomeState?,
       onboardingState: onboardingState == freezed
           ? _value.onboardingState
           : onboardingState // ignore: cast_nullable_to_non_nullable
@@ -344,7 +317,6 @@ class __$$_StateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
 class _$_State implements _State {
   _$_State(
       {this.credentials,
-      this.homeState,
       this.onboardingState,
       this.bottomNavigationState,
       this.miscState,
@@ -359,8 +331,6 @@ class _$_State implements _State {
 
   @override
   final AuthCredentials? credentials;
-  @override
-  final HomeState? homeState;
   @override
   final OnboardingState? onboardingState;
   @override
@@ -381,7 +351,7 @@ class _$_State implements _State {
 
   @override
   String toString() {
-    return 'AppState(credentials: $credentials, homeState: $homeState, onboardingState: $onboardingState, bottomNavigationState: $bottomNavigationState, miscState: $miscState, staffState: $staffState, surveyState: $surveyState, serviceRequestState: $serviceRequestState, connectivityState: $connectivityState, wait: $wait)';
+    return 'AppState(credentials: $credentials, onboardingState: $onboardingState, bottomNavigationState: $bottomNavigationState, miscState: $miscState, staffState: $staffState, surveyState: $surveyState, serviceRequestState: $serviceRequestState, connectivityState: $connectivityState, wait: $wait)';
   }
 
   @override
@@ -391,7 +361,6 @@ class _$_State implements _State {
             other is _$_State &&
             const DeepCollectionEquality()
                 .equals(other.credentials, credentials) &&
-            const DeepCollectionEquality().equals(other.homeState, homeState) &&
             const DeepCollectionEquality()
                 .equals(other.onboardingState, onboardingState) &&
             const DeepCollectionEquality()
@@ -413,7 +382,6 @@ class _$_State implements _State {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(credentials),
-      const DeepCollectionEquality().hash(homeState),
       const DeepCollectionEquality().hash(onboardingState),
       const DeepCollectionEquality().hash(bottomNavigationState),
       const DeepCollectionEquality().hash(miscState),
@@ -437,7 +405,6 @@ class _$_State implements _State {
 abstract class _State implements AppState {
   factory _State(
       {final AuthCredentials? credentials,
-      final HomeState? homeState,
       final OnboardingState? onboardingState,
       final BottomNavigationState? bottomNavigationState,
       final MiscState? miscState,
@@ -451,8 +418,6 @@ abstract class _State implements AppState {
 
   @override
   AuthCredentials? get credentials => throw _privateConstructorUsedError;
-  @override
-  HomeState? get homeState => throw _privateConstructorUsedError;
   @override
   OnboardingState? get onboardingState => throw _privateConstructorUsedError;
   @override

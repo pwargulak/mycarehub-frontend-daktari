@@ -5,7 +5,6 @@ import 'package:prohealth360_daktari/application/redux/states/connectivity_state
 
 // Project imports:
 import 'package:prohealth360_daktari/application/redux/states/home/bottom_nav_state.dart';
-import 'package:prohealth360_daktari/application/redux/states/home_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/misc_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/onboarding/onboarding_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/service_requests/service_requests_state.dart';
@@ -22,7 +21,6 @@ part 'app_state.g.dart';
 class AppState with _$AppState {
   factory AppState({
     AuthCredentials? credentials,
-    HomeState? homeState,
     OnboardingState? onboardingState,
     BottomNavigationState? bottomNavigationState,
     MiscState? miscState,
@@ -38,7 +36,6 @@ class AppState with _$AppState {
 
   factory AppState.initial() => AppState(
         credentials: AuthCredentials.initial(),
-        homeState: HomeState.initial(),
         onboardingState: OnboardingState.initial(),
         bottomNavigationState: BottomNavigationState.initial(),
         miscState: MiscState.initial(),

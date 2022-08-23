@@ -6,7 +6,6 @@ import 'package:flutter_graphql_client/graph_sqlite.dart';
 // Project imports:
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/home/bottom_nav_state.dart';
-import 'package:prohealth360_daktari/application/redux/states/home_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/misc_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/onboarding/onboarding_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/service_requests/service_requests_state.dart';
@@ -55,7 +54,6 @@ class MyCareHubProfessionalStateDatabase
     await Future<dynamic>.delayed(saveDuration!);
 
     if (lastPersistedState == null ||
-        lastPersistedState.homeState != newState.homeState ||
         lastPersistedState.onboardingState != newState.onboardingState ||
         lastPersistedState.miscState != newState.miscState ||
         lastPersistedState.staffState != newState.staffState ||
@@ -113,12 +111,6 @@ class MyCareHubProfessionalStateDatabase
       table: Tables.AuthCredentials,
     );
 
-    // save home state
-    await database.saveState(
-      data: newState.homeState!.toJson(),
-      table: Tables.HomeState,
-    );
-
     // save onboarding state
     await database.saveState(
       data: newState.onboardingState!.toJson(),
@@ -164,11 +156,6 @@ class MyCareHubProfessionalStateDatabase
       // retrieve credentials
       credentials: AuthCredentials.fromJson(
         await database.retrieveState(Tables.AuthCredentials),
-      ),
-
-      // retrieve home state
-      homeState: HomeState.fromJson(
-        await database.retrieveState(Tables.HomeState),
       ),
 
       // retrieve onboarding state

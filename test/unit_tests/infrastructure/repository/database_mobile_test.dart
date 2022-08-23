@@ -80,7 +80,6 @@ void main() {
 
     test('isDatabaseEmpty should return false', () async {
       buildWhenMock('credentials', 10);
-      buildWhenMock('homeState', 10);
       buildWhenMock('onboardingState', 10);
       buildWhenMock('bottomNavigationState', 10);
       buildWhenMock('miscState', 10);
@@ -92,7 +91,6 @@ void main() {
 
     test('isDatabaseEmpty should return true', () async {
       buildWhenMock('credentials', 0);
-      buildWhenMock('homeState', 0);
       buildWhenMock('onboardingState', 0);
       buildWhenMock('bottomNavigationState', 0);
       buildWhenMock('miscState', 0);

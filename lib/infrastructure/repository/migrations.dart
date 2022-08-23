@@ -6,9 +6,6 @@ final List<String> migrations = <String>[
   CREATE TABLE IF NOT EXISTS ${Tables.AuthCredentials.name} (id INTEGER PRIMARY KEY, 
           credentials TEXT)''',
   '''
-  CREATE TABLE IF NOT EXISTS ${Tables.HomeState.name} (id INTEGER PRIMARY KEY, 
-          homeState TEXT)''',
-  '''
   CREATE TABLE IF NOT EXISTS ${Tables.OnboardingState.name} (id INTEGER PRIMARY KEY, 
           onboardingState TEXT)''',
   '''

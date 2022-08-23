@@ -28,7 +28,6 @@ abstract class MyCareHubProfessionalDatabaseBase<T> {
 /// [Tables] definitions
 enum Tables {
   AuthCredentials,
-  HomeState,
   OnboardingState,
   BottomNavigationState,
   MiscState,
@@ -44,8 +43,6 @@ extension TablesEx on Tables {
     switch (this) {
       case Tables.AuthCredentials:
         return 'credentials';
-      case Tables.HomeState:
-        return 'homeState';
       case Tables.OnboardingState:
         return 'onboardingState';
       case Tables.BottomNavigationState:

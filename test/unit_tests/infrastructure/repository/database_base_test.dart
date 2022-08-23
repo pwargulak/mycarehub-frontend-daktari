@@ -8,7 +8,6 @@ void main() {
   group('MyCareHubProfessionalDatabaseMobile', () {
     test('Tables enum returns correct values', () {
       expect(Tables.AuthCredentials.name, 'credentials');
-      expect(Tables.HomeState.name, 'homeState');
       expect(Tables.OnboardingState.name, 'onboardingState');
       expect(Tables.BottomNavigationState.name, 'bottomNavigationState');
       expect(Tables.MiscState.name, 'miscState');
@@ -19,7 +18,7 @@ void main() {
 
     test('migrations', () {
       expect(migrations, isA<List<String>>());
-      expect(migrations.length, 8);
+      expect(migrations.length, 7);
     });
   });
 }

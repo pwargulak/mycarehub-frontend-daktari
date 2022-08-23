@@ -1722,7 +1722,6 @@ final Map<String, dynamic> appStateMock = <String, dynamic>{
     'isSignedIn': false,
     'signedInTime': 'UNKNOWN',
   },
-  'homeState': <String, dynamic>{},
   'onboardingState': mockOnboardingState,
   'bottomNavigationState': <String, dynamic>{'currentBottomNavIndex': 0},
   'miscState': mockMiscState,

@@ -11,9 +11,6 @@ _$_State _$$_StateFromJson(Map<String, dynamic> json) => _$_State(
           ? null
           : AuthCredentials.fromJson(
               json['credentials'] as Map<String, dynamic>),
-      homeState: json['homeState'] == null
-          ? null
-          : HomeState.fromJson(json['homeState'] as Map<String, dynamic>),
       onboardingState: json['onboardingState'] == null
           ? null
           : OnboardingState.fromJson(
@@ -43,7 +40,6 @@ _$_State _$$_StateFromJson(Map<String, dynamic> json) => _$_State(
 
 Map<String, dynamic> _$$_StateToJson(_$_State instance) => <String, dynamic>{
       'credentials': instance.credentials,
-      'homeState': instance.homeState,
       'onboardingState': instance.onboardingState,
       'bottomNavigationState': instance.bottomNavigationState,
       'miscState': instance.miscState,
