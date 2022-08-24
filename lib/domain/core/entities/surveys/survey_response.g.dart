@@ -10,7 +10,7 @@ _$_SurveyResponse _$$_SurveyResponseFromJson(Map<String, dynamic> json) =>
     _$_SurveyResponse(
       question: json['question'] as String?,
       answers:
-          (json['answers'] as List<dynamic>?)?.map((e) => e as String).toList(),
+          (json['answer'] as List<dynamic>?)?.map((e) => e as String).toList(),
       questionType:
           $enumDecodeNullable(_$QuestionTypeEnumMap, json['questionType']),
     );
@@ -18,7 +18,7 @@ _$_SurveyResponse _$$_SurveyResponseFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_SurveyResponseToJson(_$_SurveyResponse instance) =>
     <String, dynamic>{
       'question': instance.question,
-      'answers': instance.answers,
+      'answer': instance.answers,
       'questionType': _$QuestionTypeEnumMap[instance.questionType],
     };
 

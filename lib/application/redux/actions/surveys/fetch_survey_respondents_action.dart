@@ -74,7 +74,7 @@ class FetchSurveyRespondentsAction extends ReduxAction<AppState> {
     final List<SurveyRespondent?>? respondents =
         surveyState.surveyRespondentsState?.surveyRespondents;
 
-    await dispatch(
+    dispatch(
       UpdateSurveyRespondentsStateAction(surveyRespondents: respondents),
     );
 

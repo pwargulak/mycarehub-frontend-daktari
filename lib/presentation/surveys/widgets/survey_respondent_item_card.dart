@@ -7,14 +7,16 @@ class SurveyRespondentItemCard extends StatelessWidget {
   const SurveyRespondentItemCard({
     Key? key,
     required this.title,
+    this.onTapCallback,
   }) : super(key: key);
 
   final String title;
+  final VoidCallback? onTapCallback;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      // TODO: (Eugene) Add on tap handler to navigate to responses page here
+      onTap: onTapCallback,
       behavior: HitTestBehavior.opaque,
       child: Container(
         width: double.infinity,

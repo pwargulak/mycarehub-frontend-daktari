@@ -5,6 +5,7 @@ import 'package:prohealth360_daktari/application/core/services/analytics_service
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/domain/core/entities/service_requests/service_request.dart';
 import 'package:prohealth360_daktari/domain/core/entities/surveys/survey.dart';
+import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_respondent.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_events.dart';
 // Project imports:
@@ -435,7 +436,9 @@ class RouteGenerator {
       case AppRoutes.surveyResponsesPreviewPage:
         return MaterialPageRoute<SurveyResponsesPreviewPage>(
           builder: (_) => SurveyResponsesPreviewPage(
-            survey: args as Survey,
+            surveyRespondent: (args as Map<String, dynamic>)['surveyRespondent']
+                as SurveyRespondent?,
+            surveyName: args['surveyName'] as String?,
           ),
           settings: const RouteSettings(name: 'Survey Responses Preview Page'),
         );

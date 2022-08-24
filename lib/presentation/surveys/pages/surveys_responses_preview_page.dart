@@ -1,28 +1,32 @@
 import 'package:afya_moja_core/afya_moja_core.dart';
+import 'package:app_wrapper/app_wrapper.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
-import 'package:prohealth360_daktari/application/redux/actions/surveys/update_survey_state_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/surveys/fetch_survey_responses_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/surveys/surveys_view_model.dart';
-import 'package:prohealth360_daktari/domain/core/entities/surveys/survey.dart';
+import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_respondent.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
 import 'package:prohealth360_daktari/presentation/surveys/widgets/survey_preview_response_item.dart';
 
 class SurveyResponsesPreviewPage extends StatelessWidget {
-  final Survey survey;
+  final SurveyRespondent? surveyRespondent;
+  final String? surveyName;
   const SurveyResponsesPreviewPage({
     Key? key,
-    required this.survey,
+    this.surveyRespondent,
+    required this.surveyName,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "${survey.name}'s $responseString"),
+      appBar:
+          CustomAppBar(title: "${surveyRespondent?.name}'s $responseString"),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
@@ -30,8 +34,11 @@ class SurveyResponsesPreviewPage extends StatelessWidget {
             converter: (Store<AppState> store) =>
                 SurveysViewModel.fromStore(store),
             onInit: (Store<AppState> store) => store.dispatch(
-              UpdateSurveyStateAction(
-                surveyResponses: dummySurveyResponses,
+              FetchSurveyResponsesAction(
+                client: AppWrapperBase.of(context)!.graphQLClient,
+                formID: surveyRespondent?.formID ?? '',
+                projectID: surveyRespondent?.projectID ?? 0,
+                submitterID: surveyRespondent?.submitterID?.toString() ?? '',
               ),
             ),
             builder: (BuildContext context, SurveysViewModel vm) {
@@ -45,13 +52,13 @@ class SurveyResponsesPreviewPage extends StatelessWidget {
                   children: <Widget>[
                     if (!error) ...<Widget>{
                       Text(
-                        phq9String,
+                        surveyName ?? '',
                         style:
                             veryBoldSize16Text(AppColors.lightBlackTextColor),
                       ),
                       mediumVerticalSizedBox,
                       Text(
-                        getSurveyPreviewDescriptionText(phq9String),
+                        getSurveyPreviewDescriptionText(surveyName ?? ''),
                         style: normalSize14Text(darkGreyTextColor),
                       ),
                       if (isLoading)
@@ -79,7 +86,30 @@ class SurveyResponsesPreviewPage extends StatelessWidget {
                           );
                         }),
                       }
-                    }
+                    } else
+                      GenericErrorWidget(
+                        actionKey: helpNoDataWidgetKey,
+                        recoverCallback: () => StoreProvider.dispatch<AppState>(
+                          context,
+                          FetchSurveyResponsesAction(
+                            client: AppWrapperBase.of(context)!.graphQLClient,
+                            formID: surveyRespondent?.formID ?? '',
+                            projectID: surveyRespondent?.projectID ?? 0,
+                            submitterID:
+                                surveyRespondent?.submitterID?.toString() ?? '',
+                          ),
+                        ),
+                        messageTitle: '',
+                        messageBody: <TextSpan>[
+                          TextSpan(
+                            text:
+                                getErrorMessage(fetchingSurveyResponsesString),
+                            style: normalSize16Text(
+                              AppColors.greyTextColor,
+                            ),
+                          ),
+                        ],
+                      ),
                   ],
                 ),
               );

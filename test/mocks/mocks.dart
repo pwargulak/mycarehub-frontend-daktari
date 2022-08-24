@@ -779,6 +779,23 @@ class MockTestGraphQlClient extends IGraphQlClient {
         ),
       );
     }
+    if (queryString.contains(surveyResponseQuery)) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(
+            <String, dynamic>{
+              'data': <String, dynamic>{
+                'getSurveyResponse': <dynamic>[
+                  mockSurveyResponse,
+                  mockSurveyResponse
+                ]
+              }
+            },
+          ),
+          201,
+        ),
+      );
+    }
 
     if (queryString.contains(registerClientMutation)) {
       return Future<http.Response>.value(
@@ -1599,7 +1616,7 @@ final Map<String, dynamic> mockSurveyRespondent = <String, dynamic>{
 
 final Map<String, dynamic> mockSurveyResponse = <String, dynamic>{
   'question': 'testQ',
-  'answers': <dynamic>['testA'],
+  'answer': <dynamic>['testA'],
 };
 
 final Map<String, dynamic> surveysMock = <String, dynamic>{

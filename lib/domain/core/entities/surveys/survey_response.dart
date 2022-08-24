@@ -9,7 +9,7 @@ part 'survey_response.g.dart';
 class SurveyResponse with _$SurveyResponse {
   factory SurveyResponse({
     @JsonKey(name: 'question') String? question,
-    @JsonKey(name: 'answers') List<String>? answers,
+    @JsonKey(name: 'answer') List<String>? answers,
     @JsonKey(name: 'questionType') QuestionType? questionType,
   }) = _SurveyResponse;
 

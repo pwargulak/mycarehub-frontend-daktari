@@ -14,7 +14,7 @@ class UpdateSurveyRespondentsStateAction extends ReduxAction<AppState> {
   });
 
   @override
-  Future<AppState> reduce() async {
+  AppState reduce() {
     final SurveyRespondentsState? newSurveyRespondentsState =
         state.surveyState?.surveyRespondentsState?.copyWith(
       surveyRespondents: surveyRespondents ??

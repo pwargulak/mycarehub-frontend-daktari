@@ -10,7 +10,6 @@ import 'package:prohealth360_daktari/application/redux/actions/user_state_action
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/onboarding_path_info.dart';
 import 'package:prohealth360_daktari/domain/core/entities/health_diary/mood_item_data.dart';
-import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_response.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
@@ -438,34 +437,3 @@ String? encodeQueryParameters(Map<String, String> params) {
       )
       .join('&');
 }
-
-final List<SurveyResponse> dummySurveyResponses = <SurveyResponse>[
-  SurveyResponse(
-    question:
-        'In the past, has anyone made you feel threatened, fearful, or in danger?',
-    answers: <String>[
-      'Yes',
-    ],
-  ),
-  SurveyResponse(
-    question:
-        'In the past, has anyone made you feel threatened, fearful, or in danger?',
-    answers: <String>[
-      'Yes',
-    ],
-  ),
-  SurveyResponse(
-    question:
-        'Over the last 2 weeks how often have you been bothered by feeling tired or having little energy?',
-    answers: <String>[
-      'Nearly every day',
-    ],
-  ),
-  SurveyResponse(
-    question:
-        'In the past, has anyone made you feel threatened, fearful, or in danger?',
-    answers: <String>[
-      'Yes',
-    ],
-  ),
-];

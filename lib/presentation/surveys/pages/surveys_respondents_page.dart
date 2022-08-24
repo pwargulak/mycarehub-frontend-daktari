@@ -58,6 +58,14 @@ class _SurveyRespondentsPageState extends State<SurveyRespondentsPage> {
                   (SurveyRespondent? response) => surveysWidgetList.add(
                     SurveyRespondentItemCard(
                       title: response?.name ?? '',
+                      onTapCallback: () => Navigator.pushNamed(
+                        context,
+                        AppRoutes.surveyResponsesPreviewPage,
+                        arguments: <String, dynamic>{
+                          'surveyRespondent': response,
+                          'surveyName': widget.selectedSurvey.name,
+                        },
+                      ),
                     ),
                   ),
                 )

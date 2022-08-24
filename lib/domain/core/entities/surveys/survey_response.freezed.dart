@@ -22,7 +22,7 @@ SurveyResponse _$SurveyResponseFromJson(Map<String, dynamic> json) {
 mixin _$SurveyResponse {
   @JsonKey(name: 'question')
   String? get question => throw _privateConstructorUsedError;
-  @JsonKey(name: 'answers')
+  @JsonKey(name: 'answer')
   List<String>? get answers => throw _privateConstructorUsedError;
   @JsonKey(name: 'questionType')
   QuestionType? get questionType => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $SurveyResponseCopyWith<$Res> {
       _$SurveyResponseCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'question') String? question,
-      @JsonKey(name: 'answers') List<String>? answers,
+      @JsonKey(name: 'answer') List<String>? answers,
       @JsonKey(name: 'questionType') QuestionType? questionType});
 }
 
@@ -85,7 +85,7 @@ abstract class _$$_SurveyResponseCopyWith<$Res>
   @override
   $Res call(
       {@JsonKey(name: 'question') String? question,
-      @JsonKey(name: 'answers') List<String>? answers,
+      @JsonKey(name: 'answer') List<String>? answers,
       @JsonKey(name: 'questionType') QuestionType? questionType});
 }
 
@@ -128,7 +128,7 @@ class __$$_SurveyResponseCopyWithImpl<$Res>
 class _$_SurveyResponse implements _SurveyResponse {
   _$_SurveyResponse(
       {@JsonKey(name: 'question') this.question,
-      @JsonKey(name: 'answers') final List<String>? answers,
+      @JsonKey(name: 'answer') final List<String>? answers,
       @JsonKey(name: 'questionType') this.questionType})
       : _answers = answers;
 
@@ -140,7 +140,7 @@ class _$_SurveyResponse implements _SurveyResponse {
   final String? question;
   final List<String>? _answers;
   @override
-  @JsonKey(name: 'answers')
+  @JsonKey(name: 'answer')
   List<String>? get answers {
     final value = _answers;
     if (value == null) return null;
@@ -190,7 +190,7 @@ class _$_SurveyResponse implements _SurveyResponse {
 abstract class _SurveyResponse implements SurveyResponse {
   factory _SurveyResponse(
           {@JsonKey(name: 'question') final String? question,
-          @JsonKey(name: 'answers') final List<String>? answers,
+          @JsonKey(name: 'answer') final List<String>? answers,
           @JsonKey(name: 'questionType') final QuestionType? questionType}) =
       _$_SurveyResponse;
 
@@ -201,7 +201,7 @@ abstract class _SurveyResponse implements SurveyResponse {
   @JsonKey(name: 'question')
   String? get question => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: 'answers')
+  @JsonKey(name: 'answer')
   List<String>? get answers => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'questionType')

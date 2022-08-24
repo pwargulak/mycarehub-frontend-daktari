@@ -9,6 +9,7 @@ import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/surveys/survey.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_respondents_page.dart';
+import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_responses_preview_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/widgets/survey_respondent_item_card.dart';
 
 import '../../../../mocks/mocks.dart';
@@ -40,6 +41,30 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.byType(SurveyRespondentItemCard), findsNWidgets(2));
+    });
+    testWidgets('navigates to survey responses preview page correctly',
+        (WidgetTester tester) async {
+      await buildTestWidget(
+        tester: tester,
+        store: store,
+        widget: Builder(
+          builder: (BuildContext context) {
+            return StoreProvider<AppState>(
+              store: store,
+              child: SurveyRespondentsPage(selectedSurvey: Survey.initial()),
+            );
+          },
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      final Finder respondentItem = find.byType(SurveyRespondentItemCard);
+
+      expect(respondentItem, findsNWidgets(2));
+
+      await tester.tap(respondentItem.first);
+      await tester.pumpAndSettle();
+      expect(find.byType(SurveyResponsesPreviewPage), findsOneWidget);
     });
 
     testWidgets(

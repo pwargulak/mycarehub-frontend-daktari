@@ -9,6 +9,7 @@ import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/domain/core/entities/service_requests/service_request.dart';
 import 'package:prohealth360_daktari/domain/core/entities/surveys/survey.dart';
+import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_respondent.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 // Project imports:
 import 'package:prohealth360_daktari/presentation/client_details/pages/search_client_page.dart';
@@ -634,7 +635,10 @@ void main() {
   test('Test router returns successful Survey Responses Preview Page', () {
     final RouteSettings settings = RouteSettings(
       name: AppRoutes.surveyResponsesPreviewPage,
-      arguments: Survey.initial(),
+      arguments: <String, dynamic>{
+        'surveyRespondent': SurveyRespondent.initial(),
+        'surveyName':'testName',
+      },
     );
 
     final MaterialPageRoute<SurveyResponsesPreviewPage>? route =
