@@ -7,8 +7,11 @@ part 'survey_respondent.g.dart';
 @freezed
 class SurveyRespondent with _$SurveyRespondent {
   factory SurveyRespondent({
-    // name of the respondent
+    @JsonKey(name: 'id') String? id,
     @JsonKey(name: 'name') String? name,
+    @JsonKey(name: 'projectID') int? projectID,
+    @JsonKey(name: 'submitterID') int? submitterID,
+    @JsonKey(name: 'formID') String? formID,
   }) = _SurveyRespondent;
 
   factory SurveyRespondent.fromJson(Map<String, dynamic> json) =>
@@ -16,5 +19,9 @@ class SurveyRespondent with _$SurveyRespondent {
 
   factory SurveyRespondent.initial() => SurveyRespondent(
         name: UNKNOWN,
+        formID: UNKNOWN,
+        id: UNKNOWN,
+        projectID: 0,
+        submitterID: 0,
       );
 }

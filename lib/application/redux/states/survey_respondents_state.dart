@@ -7,10 +7,9 @@ part 'survey_respondents_state.g.dart';
 @freezed
 class SurveyRespondentsState with _$SurveyRespondentsState {
   factory SurveyRespondentsState({
-    @JsonKey(name: 'listSurveyResponses')
+    @JsonKey(name: 'surveyRespondents')
         List<SurveyRespondent?>? surveyRespondents,
     bool? errorOccurred,
-    bool? timeOutOccurred,
   }) = _SurveyRespondentsState;
 
   factory SurveyRespondentsState.fromJson(Map<String, dynamic> json) =>
@@ -19,6 +18,5 @@ class SurveyRespondentsState with _$SurveyRespondentsState {
   factory SurveyRespondentsState.initial() => SurveyRespondentsState(
         surveyRespondents: <SurveyRespondent>[],
         errorOccurred: false,
-        timeOutOccurred: false,
       );
 }

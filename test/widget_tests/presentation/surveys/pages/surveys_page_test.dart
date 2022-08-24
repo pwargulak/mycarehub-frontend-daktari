@@ -16,7 +16,7 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.d
 import 'package:prohealth360_daktari/presentation/engagement/home/pages/home_page.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_page.dart';
-import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_responses_page.dart';
+import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_respondents_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/widgets/surveys_card.dart';
 
 import '../../../../mocks/mocks.dart';
@@ -99,7 +99,7 @@ void main() {
       await tester.tap(viewResponsesFinder);
       await tester.pumpAndSettle();
 
-      expect(find.byType(SurveyResponsesPage), findsOneWidget);
+      expect(find.byType(SurveyRespondentsPage), findsOneWidget);
     });
     testWidgets(
         'should display zero state widget that navigates to Home when tapped',

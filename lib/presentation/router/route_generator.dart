@@ -65,7 +65,7 @@ import 'package:prohealth360_daktari/presentation/service_requests/pages/surveys
 import 'package:prohealth360_daktari/presentation/service_requests/pages/verify_security_questions_help_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/successful_survey_submission.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_page.dart';
-import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_responses_page.dart';
+import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_respondents_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_responses_preview_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_send_configuration_page.dart';
 
@@ -539,10 +539,10 @@ class RouteGenerator {
           settings: const RouteSettings(name: 'Search facilities page'),
         );
 
-      case AppRoutes.surveyResponsesPage:
-        return MaterialPageRoute<SurveyResponsesPage>(
-          builder: (_) => SurveyResponsesPage(
-            appBarTitle: args as String,
+      case AppRoutes.surveyRespondentsPage:
+        return MaterialPageRoute<SurveyRespondentsPage>(
+          builder: (_) => SurveyRespondentsPage(
+            selectedSurvey: args as Survey,
           ),
           settings: const RouteSettings(name: 'Survey responses page'),
         );

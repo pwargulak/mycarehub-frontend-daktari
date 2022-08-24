@@ -1122,6 +1122,15 @@ class MockTestGraphQlClient extends IGraphQlClient {
         ),
       );
     }
+
+    if (queryString.contains(listSurveyRespondentsQuery)) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(<String, dynamic>{'data': surveyRespondentsMock}),
+          200,
+        ),
+      );
+    }
     if (queryString.contains(getAvailableFacilityScreeningToolsQuery)) {
       return Future<http.Response>.value(
         http.Response(
@@ -1581,7 +1590,11 @@ final Map<String, dynamic> mockSurvey = <String, dynamic>{
 };
 
 final Map<String, dynamic> mockSurveyRespondent = <String, dynamic>{
-  'name': 'project-name',
+  'id': 'some-id',
+  'name': 'John  Doe',
+  'projectID': 1,
+  'submitterID': 1,
+  'formID': 'some-id'
 };
 
 final Map<String, dynamic> mockSurveyResponse = <String, dynamic>{
@@ -1596,6 +1609,14 @@ final Map<String, dynamic> surveysMock = <String, dynamic>{
   ],
 };
 
+final Map<String, dynamic> surveyRespondentsMock = <String, dynamic>{
+  'listSurveyRespondents': <String, dynamic>{
+    'surveyRespondents': <dynamic>[
+      mockSurveyRespondent,
+      mockSurveyRespondent,
+    ],
+  }
+};
 final Map<String, dynamic> clientResponseMock = <String, dynamic>{
   'searchClientUser': <dynamic>[
     <String, dynamic>{

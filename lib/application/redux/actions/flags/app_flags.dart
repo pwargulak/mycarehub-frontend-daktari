@@ -118,3 +118,4 @@ const String fetchNotificationsFlag = 'fetch_notifications_flag';
 const String fetchSurveysFlag = 'fetch_surveys_flag';
 const String sendSurveysFlag = 'send_surveys_flag';
 const String fetchSurveyResponsesFlag = 'fetch_survey_responses_flag';
+const String fetchSurveyRespondentsFlag = 'fetch_survey_respondents_flag';

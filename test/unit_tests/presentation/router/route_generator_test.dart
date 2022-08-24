@@ -59,7 +59,7 @@ import 'package:prohealth360_daktari/presentation/service_requests/pages/surveys
 import 'package:prohealth360_daktari/presentation/service_requests/pages/verify_security_questions_help_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/successful_survey_submission.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_page.dart';
-import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_responses_page.dart';
+import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_respondents_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_responses_preview_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_send_configuration_page.dart';
 
@@ -619,15 +619,17 @@ void main() {
     expect(route?.builder(context), isA<DocumentContentPage>());
   });
 
-  test('Test router returns successful Surveys Responses Page', () {
-    const RouteSettings settings =
-        RouteSettings(name: AppRoutes.surveyResponsesPage, arguments: 'phq 9');
+  test('Test router returns successful Surveys Respondents Page', () {
+    final RouteSettings settings = RouteSettings(
+      name: AppRoutes.surveyRespondentsPage,
+      arguments: Survey.initial(),
+    );
 
-    final MaterialPageRoute<SurveyResponsesPage>? route =
-        routeGenerator(settings) as MaterialPageRoute<SurveyResponsesPage>?;
+    final MaterialPageRoute<SurveyRespondentsPage>? route =
+        routeGenerator(settings) as MaterialPageRoute<SurveyRespondentsPage>?;
 
-    expect(route, isA<MaterialPageRoute<SurveyResponsesPage>>());
-    expect(route?.builder(context), isA<SurveyResponsesPage>());
+    expect(route, isA<MaterialPageRoute<SurveyRespondentsPage>>());
+    expect(route?.builder(context), isA<SurveyRespondentsPage>());
   });
   test('Test router returns successful Survey Responses Preview Page', () {
     final RouteSettings settings = RouteSettings(

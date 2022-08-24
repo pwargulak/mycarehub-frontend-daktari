@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 
-class SurveyResponseItemCard extends StatelessWidget {
-  const SurveyResponseItemCard({
+class SurveyRespondentItemCard extends StatelessWidget {
+  const SurveyRespondentItemCard({
     Key? key,
     required this.title,
   }) : super(key: key);

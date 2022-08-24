@@ -31,8 +31,7 @@ class AppRoutes {
   static const String serviceRequestsPage = '/ServiceRequestsPage';
   static const String resolvedServiceRequestsListPage =
       '/resolvedServiceRequestsListPage';
-  static const String surveyServiceRequestsPage =
-      '/surveyServiceRequestsPage';
+  static const String surveyServiceRequestsPage = '/surveyServiceRequestsPage';
 
   static const String redFlagsPage = '/redFlagsPage';
 
@@ -116,8 +115,11 @@ class AppRoutes {
   static const String editGroupInfoPage = '/editGroupInfoPage';
 
   static const String searchFacilitiesPage = '/searchFacilitiesPage';
-  static const String surveyResponsesPage = '/surveyResponsesPage';
-  static const String surveyServiceRequestResponsesPage = '/surveyServiceRequestResponsesPage';
-  static const String surveyServiceRequestActionsPage = '/surveyServiceRequestActionsPage';
-  static const String surveyResponsesPreviewPage = '/surveyResponsesPreviewPage';
+  static const String surveyRespondentsPage = '/surveyRespondentsPage';
+  static const String surveyServiceRequestResponsesPage =
+      '/surveyServiceRequestResponsesPage';
+  static const String surveyServiceRequestActionsPage =
+      '/surveyServiceRequestActionsPage';
+  static const String surveyResponsesPreviewPage =
+      '/surveyResponsesPreviewPage';
 }

@@ -4,15 +4,13 @@ import 'package:prohealth360_daktari/application/redux/states/survey_respondents
 import 'package:prohealth360_daktari/application/redux/states/survey_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_respondent.dart';
 
-class UpdateSurveyResponseStateAction extends ReduxAction<AppState> {
+class UpdateSurveyRespondentsStateAction extends ReduxAction<AppState> {
   final List<SurveyRespondent?>? surveyRespondents;
   final bool? errorOccurred;
-  final bool? timeOutOccurred;
 
-  UpdateSurveyResponseStateAction({
+  UpdateSurveyRespondentsStateAction({
     this.surveyRespondents,
     this.errorOccurred,
-    this.timeOutOccurred,
   });
 
   @override
@@ -23,8 +21,6 @@ class UpdateSurveyResponseStateAction extends ReduxAction<AppState> {
           state.surveyState?.surveyRespondentsState?.surveyRespondents,
       errorOccurred: errorOccurred ??
           state.surveyState?.surveyRespondentsState?.errorOccurred,
-      timeOutOccurred: timeOutOccurred ??
-          state.surveyState?.surveyRespondentsState?.timeOutOccurred,
     );
 
     final SurveyState? surveyState = state.surveyState?.copyWith(

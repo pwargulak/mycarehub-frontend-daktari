@@ -6,11 +6,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/actions/surveys/fetch_surveys_action.dart';
-import 'package:prohealth360_daktari/application/redux/actions/surveys/update_survey_response_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/surveys/surveys_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/entities/surveys/survey.dart';
-import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_respondent.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
@@ -102,22 +100,9 @@ class SurveysPage extends StatelessWidget {
                               ),
                               secondaryButtonText: viewResponses,
                               onSecondaryButtonPressed: () async {
-                                // updating state with dummy data
-                                // TODO (byron) Remove mocked dummy data when API is ready
-                                await StoreProvider.dispatch(
-                                  context,
-                                  UpdateSurveyResponseStateAction(
-                                    surveyRespondents: <SurveyRespondent>[
-                                      SurveyRespondent(name: 'Juha'),
-                                      SurveyRespondent(name: 'Jenny'),
-                                      SurveyRespondent(name: 'Johnte'),
-                                    ],
-                                  ),
-                                );
-
                                 Navigator.of(context).pushNamed(
-                                  AppRoutes.surveyResponsesPage,
-                                  arguments: surveyTitle,
+                                  AppRoutes.surveyRespondentsPage,
+                                  arguments: surveys[index],
                                 );
                               },
                               secondaryButtonKey: viewResponsesButtonKey,

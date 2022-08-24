@@ -22,6 +22,7 @@ SurveyState _$SurveyStateFromJson(Map<String, dynamic> json) {
 mixin _$SurveyState {
   @JsonKey(name: 'listSurveys')
   List<Survey?>? get surveys => throw _privateConstructorUsedError;
+  @JsonKey(name: 'listSurveyRespondents')
   SurveyRespondentsState? get surveyRespondentsState =>
       throw _privateConstructorUsedError;
   @JsonKey(name: 'getSurveyResponse')
@@ -41,9 +42,12 @@ abstract class $SurveyStateCopyWith<$Res> {
           SurveyState value, $Res Function(SurveyState) then) =
       _$SurveyStateCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'listSurveys') List<Survey?>? surveys,
-      SurveyRespondentsState? surveyRespondentsState,
-      @JsonKey(name: 'getSurveyResponse') List<SurveyResponse>? surveyResponses,
+      {@JsonKey(name: 'listSurveys')
+          List<Survey?>? surveys,
+      @JsonKey(name: 'listSurveyRespondents')
+          SurveyRespondentsState? surveyRespondentsState,
+      @JsonKey(name: 'getSurveyResponse')
+          List<SurveyResponse>? surveyResponses,
       bool? errorFetchingSurveys});
 
   $SurveyRespondentsStateCopyWith<$Res>? get surveyRespondentsState;
@@ -105,9 +109,12 @@ abstract class _$$_SurveyStateCopyWith<$Res>
       __$$_SurveyStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'listSurveys') List<Survey?>? surveys,
-      SurveyRespondentsState? surveyRespondentsState,
-      @JsonKey(name: 'getSurveyResponse') List<SurveyResponse>? surveyResponses,
+      {@JsonKey(name: 'listSurveys')
+          List<Survey?>? surveys,
+      @JsonKey(name: 'listSurveyRespondents')
+          SurveyRespondentsState? surveyRespondentsState,
+      @JsonKey(name: 'getSurveyResponse')
+          List<SurveyResponse>? surveyResponses,
       bool? errorFetchingSurveys});
 
   @override
@@ -157,7 +164,7 @@ class __$$_SurveyStateCopyWithImpl<$Res> extends _$SurveyStateCopyWithImpl<$Res>
 class _$_SurveyState implements _SurveyState {
   _$_SurveyState(
       {@JsonKey(name: 'listSurveys') this.surveys,
-      this.surveyRespondentsState,
+      @JsonKey(name: 'listSurveyRespondents') this.surveyRespondentsState,
       @JsonKey(name: 'getSurveyResponse') this.surveyResponses,
       this.errorFetchingSurveys});
 
@@ -168,6 +175,7 @@ class _$_SurveyState implements _SurveyState {
   @JsonKey(name: 'listSurveys')
   final List<Survey?>? surveys;
   @override
+  @JsonKey(name: 'listSurveyRespondents')
   final SurveyRespondentsState? surveyRespondentsState;
   @override
   @JsonKey(name: 'getSurveyResponse')
@@ -218,7 +226,8 @@ abstract class _SurveyState implements SurveyState {
   factory _SurveyState(
       {@JsonKey(name: 'listSurveys')
           final List<Survey?>? surveys,
-      final SurveyRespondentsState? surveyRespondentsState,
+      @JsonKey(name: 'listSurveyRespondents')
+          final SurveyRespondentsState? surveyRespondentsState,
       @JsonKey(name: 'getSurveyResponse')
           final List<SurveyResponse>? surveyResponses,
       final bool? errorFetchingSurveys}) = _$_SurveyState;
@@ -230,6 +239,7 @@ abstract class _SurveyState implements SurveyState {
   @JsonKey(name: 'listSurveys')
   List<Survey?>? get surveys => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'listSurveyRespondents')
   SurveyRespondentsState? get surveyRespondentsState =>
       throw _privateConstructorUsedError;
   @override

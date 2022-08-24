@@ -1,40 +1,52 @@
 import 'package:afya_moja_core/afya_moja_core.dart';
+import 'package:app_wrapper/app_wrapper.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
-import 'package:prohealth360_daktari/application/redux/actions/surveys/update_survey_response_state.dart';
+import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
+import 'package:prohealth360_daktari/application/redux/actions/surveys/fetch_survey_respondents_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/surveys/surveys_view_model.dart';
+import 'package:prohealth360_daktari/domain/core/entities/surveys/survey.dart';
 import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_respondent.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
-import 'package:prohealth360_daktari/presentation/surveys/widgets/survey_reponse_item_card.dart';
+import 'package:prohealth360_daktari/presentation/surveys/widgets/survey_respondent_item_card.dart';
 
-class SurveyResponsesPage extends StatelessWidget {
-  const SurveyResponsesPage({Key? key, required this.appBarTitle})
+class SurveyRespondentsPage extends StatefulWidget {
+  const SurveyRespondentsPage({Key? key, required this.selectedSurvey})
       : super(key: key);
 
-  final String appBarTitle;
+  final Survey selectedSurvey;
 
+  @override
+  State<SurveyRespondentsPage> createState() => _SurveyRespondentsPageState();
+}
+
+class _SurveyRespondentsPageState extends State<SurveyRespondentsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: appBarTitle, showNotificationIcon: true),
+      appBar: CustomAppBar(
+        title: widget.selectedSurvey.name,
+        showNotificationIcon: true,
+      ),
       body: StoreConnector<AppState, SurveysViewModel>(
+        converter: (Store<AppState> store) => SurveysViewModel.fromStore(store),
         onInit: (Store<AppState> store) {
           StoreProvider.dispatch(
             context,
-            UpdateSurveyResponseStateAction(
-              errorOccurred: false,
-              timeOutOccurred: false,
+            FetchSurveyRespondentsAction(
+              client: AppWrapperBase.of(context)!.graphQLClient,
+              projectID: widget.selectedSurvey.projectId ?? 0,
+              formID: widget.selectedSurvey.xmlFormId ?? '',
             ),
           );
         },
-        converter: (Store<AppState> store) => SurveysViewModel.fromStore(store),
         builder: (BuildContext context, SurveysViewModel vm) {
           final List<SurveyRespondent?> surveyResponses =
               vm.surveyRespondents ?? <SurveyRespondent>[];
@@ -44,7 +56,7 @@ class SurveyResponsesPage extends StatelessWidget {
             surveyResponses
                 .map(
                   (SurveyRespondent? response) => surveysWidgetList.add(
-                    SurveyResponseItemCard(
+                    SurveyRespondentItemCard(
                       title: response?.name ?? '',
                     ),
                   ),
@@ -57,7 +69,13 @@ class SurveyResponsesPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  if (surveyResponses.isEmpty)
+                  if (vm.wait!.isWaitingFor(fetchSurveyRespondentsFlag))
+                    Container(
+                      height: 300,
+                      padding: const EdgeInsets.all(20),
+                      child: const PlatformLoader(),
+                    )
+                  else if (surveyResponses.isEmpty)
                     GenericErrorWidget(
                       headerIconSvgUrl: contentZeroStateImageUrl,
                       actionKey: helpNoDataWidgetKey,

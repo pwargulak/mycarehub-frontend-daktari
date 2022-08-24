@@ -21,11 +21,10 @@ SurveyRespondentsState _$SurveyRespondentsStateFromJson(
 
 /// @nodoc
 mixin _$SurveyRespondentsState {
-  @JsonKey(name: 'listSurveyResponses')
+  @JsonKey(name: 'surveyRespondents')
   List<SurveyRespondent?>? get surveyRespondents =>
       throw _privateConstructorUsedError;
   bool? get errorOccurred => throw _privateConstructorUsedError;
-  bool? get timeOutOccurred => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,10 +38,9 @@ abstract class $SurveyRespondentsStateCopyWith<$Res> {
           $Res Function(SurveyRespondentsState) then) =
       _$SurveyRespondentsStateCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'listSurveyResponses')
+      {@JsonKey(name: 'surveyRespondents')
           List<SurveyRespondent?>? surveyRespondents,
-      bool? errorOccurred,
-      bool? timeOutOccurred});
+      bool? errorOccurred});
 }
 
 /// @nodoc
@@ -58,7 +56,6 @@ class _$SurveyRespondentsStateCopyWithImpl<$Res>
   $Res call({
     Object? surveyRespondents = freezed,
     Object? errorOccurred = freezed,
-    Object? timeOutOccurred = freezed,
   }) {
     return _then(_value.copyWith(
       surveyRespondents: surveyRespondents == freezed
@@ -68,10 +65,6 @@ class _$SurveyRespondentsStateCopyWithImpl<$Res>
       errorOccurred: errorOccurred == freezed
           ? _value.errorOccurred
           : errorOccurred // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      timeOutOccurred: timeOutOccurred == freezed
-          ? _value.timeOutOccurred
-          : timeOutOccurred // ignore: cast_nullable_to_non_nullable
               as bool?,
     ));
   }
@@ -85,10 +78,9 @@ abstract class _$$_SurveyRespondentsStateCopyWith<$Res>
       __$$_SurveyRespondentsStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'listSurveyResponses')
+      {@JsonKey(name: 'surveyRespondents')
           List<SurveyRespondent?>? surveyRespondents,
-      bool? errorOccurred,
-      bool? timeOutOccurred});
+      bool? errorOccurred});
 }
 
 /// @nodoc
@@ -107,7 +99,6 @@ class __$$_SurveyRespondentsStateCopyWithImpl<$Res>
   $Res call({
     Object? surveyRespondents = freezed,
     Object? errorOccurred = freezed,
-    Object? timeOutOccurred = freezed,
   }) {
     return _then(_$_SurveyRespondentsState(
       surveyRespondents: surveyRespondents == freezed
@@ -118,10 +109,6 @@ class __$$_SurveyRespondentsStateCopyWithImpl<$Res>
           ? _value.errorOccurred
           : errorOccurred // ignore: cast_nullable_to_non_nullable
               as bool?,
-      timeOutOccurred: timeOutOccurred == freezed
-          ? _value.timeOutOccurred
-          : timeOutOccurred // ignore: cast_nullable_to_non_nullable
-              as bool?,
     ));
   }
 }
@@ -130,10 +117,9 @@ class __$$_SurveyRespondentsStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_SurveyRespondentsState implements _SurveyRespondentsState {
   _$_SurveyRespondentsState(
-      {@JsonKey(name: 'listSurveyResponses')
+      {@JsonKey(name: 'surveyRespondents')
           final List<SurveyRespondent?>? surveyRespondents,
-      this.errorOccurred,
-      this.timeOutOccurred})
+      this.errorOccurred})
       : _surveyRespondents = surveyRespondents;
 
   factory _$_SurveyRespondentsState.fromJson(Map<String, dynamic> json) =>
@@ -141,7 +127,7 @@ class _$_SurveyRespondentsState implements _SurveyRespondentsState {
 
   final List<SurveyRespondent?>? _surveyRespondents;
   @override
-  @JsonKey(name: 'listSurveyResponses')
+  @JsonKey(name: 'surveyRespondents')
   List<SurveyRespondent?>? get surveyRespondents {
     final value = _surveyRespondents;
     if (value == null) return null;
@@ -151,12 +137,10 @@ class _$_SurveyRespondentsState implements _SurveyRespondentsState {
 
   @override
   final bool? errorOccurred;
-  @override
-  final bool? timeOutOccurred;
 
   @override
   String toString() {
-    return 'SurveyRespondentsState(surveyRespondents: $surveyRespondents, errorOccurred: $errorOccurred, timeOutOccurred: $timeOutOccurred)';
+    return 'SurveyRespondentsState(surveyRespondents: $surveyRespondents, errorOccurred: $errorOccurred)';
   }
 
   @override
@@ -167,9 +151,7 @@ class _$_SurveyRespondentsState implements _SurveyRespondentsState {
             const DeepCollectionEquality()
                 .equals(other._surveyRespondents, _surveyRespondents) &&
             const DeepCollectionEquality()
-                .equals(other.errorOccurred, errorOccurred) &&
-            const DeepCollectionEquality()
-                .equals(other.timeOutOccurred, timeOutOccurred));
+                .equals(other.errorOccurred, errorOccurred));
   }
 
   @JsonKey(ignore: true)
@@ -177,8 +159,7 @@ class _$_SurveyRespondentsState implements _SurveyRespondentsState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_surveyRespondents),
-      const DeepCollectionEquality().hash(errorOccurred),
-      const DeepCollectionEquality().hash(timeOutOccurred));
+      const DeepCollectionEquality().hash(errorOccurred));
 
   @JsonKey(ignore: true)
   @override
@@ -194,22 +175,19 @@ class _$_SurveyRespondentsState implements _SurveyRespondentsState {
 
 abstract class _SurveyRespondentsState implements SurveyRespondentsState {
   factory _SurveyRespondentsState(
-      {@JsonKey(name: 'listSurveyResponses')
+      {@JsonKey(name: 'surveyRespondents')
           final List<SurveyRespondent?>? surveyRespondents,
-      final bool? errorOccurred,
-      final bool? timeOutOccurred}) = _$_SurveyRespondentsState;
+      final bool? errorOccurred}) = _$_SurveyRespondentsState;
 
   factory _SurveyRespondentsState.fromJson(Map<String, dynamic> json) =
       _$_SurveyRespondentsState.fromJson;
 
   @override
-  @JsonKey(name: 'listSurveyResponses')
+  @JsonKey(name: 'surveyRespondents')
   List<SurveyRespondent?>? get surveyRespondents =>
       throw _privateConstructorUsedError;
   @override
   bool? get errorOccurred => throw _privateConstructorUsedError;
-  @override
-  bool? get timeOutOccurred => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_SurveyRespondentsStateCopyWith<_$_SurveyRespondentsState> get copyWith =>

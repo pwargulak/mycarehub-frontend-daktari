@@ -20,9 +20,16 @@ SurveyRespondent _$SurveyRespondentFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SurveyRespondent {
-// name of the respondent
+  @JsonKey(name: 'id')
+  String? get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
   String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'projectID')
+  int? get projectID => throw _privateConstructorUsedError;
+  @JsonKey(name: 'submitterID')
+  int? get submitterID => throw _privateConstructorUsedError;
+  @JsonKey(name: 'formID')
+  String? get formID => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +42,12 @@ abstract class $SurveyRespondentCopyWith<$Res> {
   factory $SurveyRespondentCopyWith(
           SurveyRespondent value, $Res Function(SurveyRespondent) then) =
       _$SurveyRespondentCopyWithImpl<$Res>;
-  $Res call({@JsonKey(name: 'name') String? name});
+  $Res call(
+      {@JsonKey(name: 'id') String? id,
+      @JsonKey(name: 'name') String? name,
+      @JsonKey(name: 'projectID') int? projectID,
+      @JsonKey(name: 'submitterID') int? submitterID,
+      @JsonKey(name: 'formID') String? formID});
 }
 
 /// @nodoc
@@ -49,12 +61,32 @@ class _$SurveyRespondentCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
+    Object? projectID = freezed,
+    Object? submitterID = freezed,
+    Object? formID = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      projectID: projectID == freezed
+          ? _value.projectID
+          : projectID // ignore: cast_nullable_to_non_nullable
+              as int?,
+      submitterID: submitterID == freezed
+          ? _value.submitterID
+          : submitterID // ignore: cast_nullable_to_non_nullable
+              as int?,
+      formID: formID == freezed
+          ? _value.formID
+          : formID // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -67,7 +99,12 @@ abstract class _$$_SurveyRespondentCopyWith<$Res>
           _$_SurveyRespondent value, $Res Function(_$_SurveyRespondent) then) =
       __$$_SurveyRespondentCopyWithImpl<$Res>;
   @override
-  $Res call({@JsonKey(name: 'name') String? name});
+  $Res call(
+      {@JsonKey(name: 'id') String? id,
+      @JsonKey(name: 'name') String? name,
+      @JsonKey(name: 'projectID') int? projectID,
+      @JsonKey(name: 'submitterID') int? submitterID,
+      @JsonKey(name: 'formID') String? formID});
 }
 
 /// @nodoc
@@ -83,12 +120,32 @@ class __$$_SurveyRespondentCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? name = freezed,
+    Object? projectID = freezed,
+    Object? submitterID = freezed,
+    Object? formID = freezed,
   }) {
     return _then(_$_SurveyRespondent(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      projectID: projectID == freezed
+          ? _value.projectID
+          : projectID // ignore: cast_nullable_to_non_nullable
+              as int?,
+      submitterID: submitterID == freezed
+          ? _value.submitterID
+          : submitterID // ignore: cast_nullable_to_non_nullable
+              as int?,
+      formID: formID == freezed
+          ? _value.formID
+          : formID // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -97,19 +154,35 @@ class __$$_SurveyRespondentCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_SurveyRespondent implements _SurveyRespondent {
-  _$_SurveyRespondent({@JsonKey(name: 'name') this.name});
+  _$_SurveyRespondent(
+      {@JsonKey(name: 'id') this.id,
+      @JsonKey(name: 'name') this.name,
+      @JsonKey(name: 'projectID') this.projectID,
+      @JsonKey(name: 'submitterID') this.submitterID,
+      @JsonKey(name: 'formID') this.formID});
 
   factory _$_SurveyRespondent.fromJson(Map<String, dynamic> json) =>
       _$$_SurveyRespondentFromJson(json);
 
-// name of the respondent
+  @override
+  @JsonKey(name: 'id')
+  final String? id;
   @override
   @JsonKey(name: 'name')
   final String? name;
+  @override
+  @JsonKey(name: 'projectID')
+  final int? projectID;
+  @override
+  @JsonKey(name: 'submitterID')
+  final int? submitterID;
+  @override
+  @JsonKey(name: 'formID')
+  final String? formID;
 
   @override
   String toString() {
-    return 'SurveyRespondent(name: $name)';
+    return 'SurveyRespondent(id: $id, name: $name, projectID: $projectID, submitterID: $submitterID, formID: $formID)';
   }
 
   @override
@@ -117,13 +190,23 @@ class _$_SurveyRespondent implements _SurveyRespondent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SurveyRespondent &&
-            const DeepCollectionEquality().equals(other.name, name));
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.projectID, projectID) &&
+            const DeepCollectionEquality()
+                .equals(other.submitterID, submitterID) &&
+            const DeepCollectionEquality().equals(other.formID, formID));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(name));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(projectID),
+      const DeepCollectionEquality().hash(submitterID),
+      const DeepCollectionEquality().hash(formID));
 
   @JsonKey(ignore: true)
   @override
@@ -137,15 +220,31 @@ class _$_SurveyRespondent implements _SurveyRespondent {
 }
 
 abstract class _SurveyRespondent implements SurveyRespondent {
-  factory _SurveyRespondent({@JsonKey(name: 'name') final String? name}) =
-      _$_SurveyRespondent;
+  factory _SurveyRespondent(
+      {@JsonKey(name: 'id') final String? id,
+      @JsonKey(name: 'name') final String? name,
+      @JsonKey(name: 'projectID') final int? projectID,
+      @JsonKey(name: 'submitterID') final int? submitterID,
+      @JsonKey(name: 'formID') final String? formID}) = _$_SurveyRespondent;
 
   factory _SurveyRespondent.fromJson(Map<String, dynamic> json) =
       _$_SurveyRespondent.fromJson;
 
-  @override // name of the respondent
+  @override
+  @JsonKey(name: 'id')
+  String? get id => throw _privateConstructorUsedError;
+  @override
   @JsonKey(name: 'name')
   String? get name => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'projectID')
+  int? get projectID => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'submitterID')
+  int? get submitterID => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'formID')
+  String? get formID => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_SurveyRespondentCopyWith<_$_SurveyRespondent> get copyWith =>

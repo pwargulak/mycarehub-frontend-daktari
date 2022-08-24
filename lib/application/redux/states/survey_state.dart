@@ -10,7 +10,8 @@ part 'survey_state.g.dart';
 class SurveyState with _$SurveyState {
   factory SurveyState({
     @JsonKey(name: 'listSurveys') List<Survey?>? surveys,
-    SurveyRespondentsState? surveyRespondentsState,
+    @JsonKey(name: 'listSurveyRespondents')
+        SurveyRespondentsState? surveyRespondentsState,
     @JsonKey(name: 'getSurveyResponse') List<SurveyResponse>? surveyResponses,
     bool? errorFetchingSurveys,
   }) = _SurveyState;
