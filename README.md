@@ -2,11 +2,11 @@
 [![Maintained](https://img.shields.io/badge/Maintained-Actively-informational.svg?style=for-the-badge)](https://shields.io/)
 [![Release](https://img.shields.io/badge/Coverage-100-success.svg?style=for-the-badge)](https://shields.io/)
 
-# ProHealth360 Daktari
+# UoNAfyaApp360 Daktari
 
 ### Project prerequisites
 
-1. The **ProHealth360 Daktari** app runs on Flutter version 3.0.4 **stable channel**. To check the flutter version and channel installed in your machine run `flutter --version`.
+1. The **UoNAfyaApp360 Daktari** app runs on Flutter version 3.0.4 **stable channel**. To check the flutter version and channel installed in your machine run `flutter --version`.
 
 2. To switch from another channel of Flutter to the stable channel run `flutter channel stable`.
 
@@ -14,7 +14,7 @@
 
 Looks like we are done with the prerequisites :-)
 
-### How to setup and run ProHealth360 Daktari
+### How to setup and run UoNAfyaApp360 Daktari
 
 1. Clone the project by running `git clone git@github.com:savannahghi/pro_health_360_daktari.git` or download the code
 2. `cd pro_health_360_daktari`

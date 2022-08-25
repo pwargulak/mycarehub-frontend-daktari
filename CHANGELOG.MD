@@ -2,4 +2,4 @@
 
 ## 1.0.0-nullsafety
 
-- feat: initial implementation of ProHealth360 Daktari
+- feat: initial implementation of UoNAfyaApp360 Daktari

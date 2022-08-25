@@ -73,7 +73,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release-demo"
-      customArchiveName = "ProHealth360 Daktari Demo"
+      customArchiveName = "UoNAfyaApp360 Daktari Demo"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

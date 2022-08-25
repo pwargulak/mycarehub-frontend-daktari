@@ -2,7 +2,8 @@ import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 
-const String appName = 'ProHealth360 Daktari';
+const String appName = 'UoNAfyaApp360 Daktari';
+const String consumerAppName = 'UoNAfyaApp360 Daktari';
 const String adminEmail = 'mycarehub@uonbi.ac.ke';
 
 //Create New Pin Page
@@ -93,7 +94,7 @@ const String joinGroup = 'Join Group';
 const String declineInvite = 'Decline Invite';
 
 //Phone Login
-const String phoneLoginPageTitle = 'Welcome to ProHealth360 Daktari';
+const String phoneLoginPageTitle = 'Welcome to $appName';
 const String phoneLoginPageDescription = 'Enter your provided PIN to continue';
 const String pinString = 'PIN';
 const String forgotPinString = 'Forgot Pin';
@@ -252,10 +253,10 @@ const String lastNameLabel = 'Last Name *';
 const String birthDateLabel = 'Birth Date *';
 const String genderLabel = 'Gender *';
 const String phoneNoLabel = 'Phone No. *';
-const String appInviteText = 'Invite to ProHealth360';
-const String appReInviteText = 'Reinvite to ProHealth360';
-const String appAlternateInvite = 'Resend ProHealth360 invite';
-const String proAppInviteText = 'Invite to ProHealth360 Daktari';
+const String appInviteText = 'Invite to $consumerAppName';
+const String appReInviteText = 'Reinvite to $consumerAppName';
+const String appAlternateInvite = 'Resend $consumerAppName invite';
+const String proAppInviteText = 'Invite to $appName';
 const String registerBtnText = 'Register';
 const String addNewPatientTitleText = 'Add new patient';
 const String enrollmentDateLabel = 'Enrollment Date *';
@@ -616,10 +617,10 @@ const String confirmCCCNumberIsCorrectString =
 const String registerClientString = 'Register Client';
 const String actions = 'Actions';
 String tapBelowToInvite(String names) =>
-    'Tap the button below to invite $names to ProHealth360. They will receive and SMS with instructions on how to sign up';
+    'Tap the button below to invite $names to $consumerAppName. They will receive and SMS with instructions on how to sign up';
 
 String tapToResendInvite(String names) =>
-    'If $names did not receive the ProHealth360 invite, tap the button below to resend them another invite using an alternative channel';
+    'If $names did not receive the $consumerAppName invite, tap the button below to resend them another invite using an alternative channel';
 
 const String shareDiaryEntry = 'Shared diary entry';
 const String youDoNotHavePermission =
@@ -743,7 +744,7 @@ String redFlagSMSTemplate({
   required String staffLastName,
   required String facilityName,
 }) {
-  return 'Hi $clientName, my name is $staffFirstName $staffLastName working at $facilityName for ProHealth360.';
+  return 'Hi $clientName, my name is $staffFirstName $staffLastName working at $facilityName for $consumerAppName.';
 }
 
 const String spacedIsFeelingString = ' is feeling ';
