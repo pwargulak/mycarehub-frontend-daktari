@@ -442,7 +442,7 @@ final Map<String, dynamic> mockPendingServiceRequestCount = <String, dynamic>{
             'requestType': 'SCREENING_TOOLS_RED_FLAG',
             'total': 2
           },
-          <String, dynamic>{'requestType': 'SURVEY', 'total': 2},
+          <String, dynamic>{'requestType': 'SURVEY_RED_FLAG', 'total': 2},
         ],
       },
       'staffServiceRequestCount': <String, dynamic>{

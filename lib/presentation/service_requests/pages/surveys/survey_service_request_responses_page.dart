@@ -38,7 +38,7 @@ class SurveyServiceRequestResponsesPage extends StatelessWidget {
                 FetchServiceRequestsAction(
                   client: AppWrapperBase.of(context)!.graphQLClient,
                   serviceRequestStatus: RequestStatus.PENDING,
-                  serviceRequestType: ServiceRequestType.SURVEY,
+                  serviceRequestType: ServiceRequestType.SURVEY_RED_FLAG,
                   flavour: Flavour.consumer,
                 ),
               );
@@ -55,7 +55,7 @@ class SurveyServiceRequestResponsesPage extends StatelessWidget {
                     FetchServiceRequestsAction(
                       client: AppWrapperBase.of(context)!.graphQLClient,
                       serviceRequestStatus: RequestStatus.PENDING,
-                      serviceRequestType: ServiceRequestType.SURVEY,
+                      serviceRequestType: ServiceRequestType.SURVEY_RED_FLAG,
                       flavour: Flavour.consumer,
                     ),
                   );
@@ -161,7 +161,7 @@ class SurveyServiceRequestResponsesPage extends StatelessWidget {
                                 client:
                                     AppWrapperBase.of(context)!.graphQLClient,
                                 serviceRequestStatus: RequestStatus.PENDING,
-                                serviceRequestType: ServiceRequestType.SURVEY,
+                                serviceRequestType: ServiceRequestType.SURVEY_RED_FLAG,
                                 flavour: Flavour.consumer,
                               ),
                             );

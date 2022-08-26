@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 enum ChatStatus { Unknown, Accept, Reject }
 
 enum SetPinStatus { IsChangingPin, IsSettingPin, IsResettingPin }
+
 enum AuthTokenStatus { okay, requiresLogin, requiresPin }
 
 /// The type of contact being used
@@ -31,7 +32,9 @@ enum ServiceRequestType {
   PIN_RESET,
   STAFF_PIN_RESET,
   SCREENING_TOOLS_RED_FLAG,
-  SURVEY,
+  HOME_PAGE_HEALTH_DIARY_ENTRY,
+  SURVEY_RED_FLAG,
+  APPOINTMENTS,
   UNKNOWN
 }
 
@@ -105,8 +108,4 @@ enum AnalyticsEventType {
   ONBOARDING
 }
 
-enum QuestionType {
-  SINGLE_CHOICE,
-  MULTIPLE_CHOICE,
-  UNKNOWN
-}
+enum QuestionType { SINGLE_CHOICE, MULTIPLE_CHOICE, UNKNOWN }

@@ -26,6 +26,9 @@ const _$ServiceRequestTypeEnumMap = {
   ServiceRequestType.PIN_RESET: 'PIN_RESET',
   ServiceRequestType.STAFF_PIN_RESET: 'STAFF_PIN_RESET',
   ServiceRequestType.SCREENING_TOOLS_RED_FLAG: 'SCREENING_TOOLS_RED_FLAG',
-  ServiceRequestType.SURVEY: 'SURVEY',
+  ServiceRequestType.HOME_PAGE_HEALTH_DIARY_ENTRY:
+      'HOME_PAGE_HEALTH_DIARY_ENTRY',
+  ServiceRequestType.SURVEY_RED_FLAG: 'SURVEY_RED_FLAG',
+  ServiceRequestType.APPOINTMENTS: 'APPOINTMENTS',
   ServiceRequestType.UNKNOWN: 'UNKNOWN',
 };

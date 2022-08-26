@@ -102,7 +102,7 @@ class _ServiceRequestsWidgetState extends State<ServiceRequestsWidget> {
 
     final int surveysCount = _getServiceRequestTypeCount(
       clientServiceRequestsCount,
-      ServiceRequestType.SURVEY,
+      ServiceRequestType.SURVEY_RED_FLAG,
     );
 
     final int totalCount =
