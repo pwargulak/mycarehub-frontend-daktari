@@ -4,7 +4,7 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 
 const String appName = 'UoNAfyaApp360 Daktari';
 const String consumerAppName = 'UoNAfyaApp360';
-const String adminEmail = 'mycarehub@uonbi.ac.ke';
+const String adminEmail = 'feedback@prohealth360.org';
 
 //Create New Pin Page
 const String confirmPinString = 'Confirm PIN';
