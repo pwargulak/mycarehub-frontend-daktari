@@ -12,6 +12,7 @@ class SurveyRespondent with _$SurveyRespondent {
     @JsonKey(name: 'projectID') int? projectID,
     @JsonKey(name: 'submitterID') int? submitterID,
     @JsonKey(name: 'formID') String? formID,
+    @JsonKey(name: 'surveyName') String? surveyName,
   }) = _SurveyRespondent;
 
   factory SurveyRespondent.fromJson(Map<String, dynamic> json) =>
@@ -23,5 +24,6 @@ class SurveyRespondent with _$SurveyRespondent {
         id: UNKNOWN,
         projectID: 0,
         submitterID: 0,
+        surveyName: UNKNOWN,
       );
 }

@@ -30,6 +30,8 @@ mixin _$SurveyRespondent {
   int? get submitterID => throw _privateConstructorUsedError;
   @JsonKey(name: 'formID')
   String? get formID => throw _privateConstructorUsedError;
+  @JsonKey(name: 'surveyName')
+  String? get surveyName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,7 +49,8 @@ abstract class $SurveyRespondentCopyWith<$Res> {
       @JsonKey(name: 'name') String? name,
       @JsonKey(name: 'projectID') int? projectID,
       @JsonKey(name: 'submitterID') int? submitterID,
-      @JsonKey(name: 'formID') String? formID});
+      @JsonKey(name: 'formID') String? formID,
+      @JsonKey(name: 'surveyName') String? surveyName});
 }
 
 /// @nodoc
@@ -66,6 +69,7 @@ class _$SurveyRespondentCopyWithImpl<$Res>
     Object? projectID = freezed,
     Object? submitterID = freezed,
     Object? formID = freezed,
+    Object? surveyName = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -88,6 +92,10 @@ class _$SurveyRespondentCopyWithImpl<$Res>
           ? _value.formID
           : formID // ignore: cast_nullable_to_non_nullable
               as String?,
+      surveyName: surveyName == freezed
+          ? _value.surveyName
+          : surveyName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -104,7 +112,8 @@ abstract class _$$_SurveyRespondentCopyWith<$Res>
       @JsonKey(name: 'name') String? name,
       @JsonKey(name: 'projectID') int? projectID,
       @JsonKey(name: 'submitterID') int? submitterID,
-      @JsonKey(name: 'formID') String? formID});
+      @JsonKey(name: 'formID') String? formID,
+      @JsonKey(name: 'surveyName') String? surveyName});
 }
 
 /// @nodoc
@@ -125,6 +134,7 @@ class __$$_SurveyRespondentCopyWithImpl<$Res>
     Object? projectID = freezed,
     Object? submitterID = freezed,
     Object? formID = freezed,
+    Object? surveyName = freezed,
   }) {
     return _then(_$_SurveyRespondent(
       id: id == freezed
@@ -147,6 +157,10 @@ class __$$_SurveyRespondentCopyWithImpl<$Res>
           ? _value.formID
           : formID // ignore: cast_nullable_to_non_nullable
               as String?,
+      surveyName: surveyName == freezed
+          ? _value.surveyName
+          : surveyName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -159,7 +173,8 @@ class _$_SurveyRespondent implements _SurveyRespondent {
       @JsonKey(name: 'name') this.name,
       @JsonKey(name: 'projectID') this.projectID,
       @JsonKey(name: 'submitterID') this.submitterID,
-      @JsonKey(name: 'formID') this.formID});
+      @JsonKey(name: 'formID') this.formID,
+      @JsonKey(name: 'surveyName') this.surveyName});
 
   factory _$_SurveyRespondent.fromJson(Map<String, dynamic> json) =>
       _$$_SurveyRespondentFromJson(json);
@@ -179,10 +194,13 @@ class _$_SurveyRespondent implements _SurveyRespondent {
   @override
   @JsonKey(name: 'formID')
   final String? formID;
+  @override
+  @JsonKey(name: 'surveyName')
+  final String? surveyName;
 
   @override
   String toString() {
-    return 'SurveyRespondent(id: $id, name: $name, projectID: $projectID, submitterID: $submitterID, formID: $formID)';
+    return 'SurveyRespondent(id: $id, name: $name, projectID: $projectID, submitterID: $submitterID, formID: $formID, surveyName: $surveyName)';
   }
 
   @override
@@ -195,7 +213,9 @@ class _$_SurveyRespondent implements _SurveyRespondent {
             const DeepCollectionEquality().equals(other.projectID, projectID) &&
             const DeepCollectionEquality()
                 .equals(other.submitterID, submitterID) &&
-            const DeepCollectionEquality().equals(other.formID, formID));
+            const DeepCollectionEquality().equals(other.formID, formID) &&
+            const DeepCollectionEquality()
+                .equals(other.surveyName, surveyName));
   }
 
   @JsonKey(ignore: true)
@@ -206,7 +226,8 @@ class _$_SurveyRespondent implements _SurveyRespondent {
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(projectID),
       const DeepCollectionEquality().hash(submitterID),
-      const DeepCollectionEquality().hash(formID));
+      const DeepCollectionEquality().hash(formID),
+      const DeepCollectionEquality().hash(surveyName));
 
   @JsonKey(ignore: true)
   @override
@@ -221,11 +242,13 @@ class _$_SurveyRespondent implements _SurveyRespondent {
 
 abstract class _SurveyRespondent implements SurveyRespondent {
   factory _SurveyRespondent(
-      {@JsonKey(name: 'id') final String? id,
-      @JsonKey(name: 'name') final String? name,
-      @JsonKey(name: 'projectID') final int? projectID,
-      @JsonKey(name: 'submitterID') final int? submitterID,
-      @JsonKey(name: 'formID') final String? formID}) = _$_SurveyRespondent;
+          {@JsonKey(name: 'id') final String? id,
+          @JsonKey(name: 'name') final String? name,
+          @JsonKey(name: 'projectID') final int? projectID,
+          @JsonKey(name: 'submitterID') final int? submitterID,
+          @JsonKey(name: 'formID') final String? formID,
+          @JsonKey(name: 'surveyName') final String? surveyName}) =
+      _$_SurveyRespondent;
 
   factory _SurveyRespondent.fromJson(Map<String, dynamic> json) =
       _$_SurveyRespondent.fromJson;
@@ -245,6 +268,9 @@ abstract class _SurveyRespondent implements SurveyRespondent {
   @override
   @JsonKey(name: 'formID')
   String? get formID => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'surveyName')
+  String? get surveyName => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_SurveyRespondentCopyWith<_$_SurveyRespondent> get copyWith =>

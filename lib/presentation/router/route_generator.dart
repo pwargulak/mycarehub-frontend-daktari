@@ -2,6 +2,7 @@
 import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/services/analytics_service.dart';
+import 'package:prohealth360_daktari/application/redux/states/service_requests/survey_service_request_item.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/domain/core/entities/service_requests/service_request.dart';
 import 'package:prohealth360_daktari/domain/core/entities/surveys/survey.dart';
@@ -427,7 +428,7 @@ class RouteGenerator {
       case AppRoutes.surveyServiceRequestActionsPage:
         return MaterialPageRoute<SurveyServiceRequestActionsPage>(
           builder: (_) => SurveyServiceRequestActionsPage(
-            serviceRequest: args as ServiceRequest?,
+            surveyRespondent: args as SurveyRespondent?,
           ),
           settings:
               const RouteSettings(name: 'Survey Service Request Actions Page'),
@@ -502,7 +503,7 @@ class RouteGenerator {
       case AppRoutes.surveyServiceRequestResponsesPage:
         return MaterialPageRoute<SurveyServiceRequestResponsesPage>(
           builder: (_) => SurveyServiceRequestResponsesPage(
-            surveyTitle: args as String,
+            selectedSurvey: args as SurveyServiceRequestItem?,
           ),
           settings: const RouteSettings(
             name: 'Survey Service Request Responses Page',

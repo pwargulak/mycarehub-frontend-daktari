@@ -3,10 +3,10 @@ import 'dart:convert';
 
 import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
+import 'package:prohealth360_daktari/application/redux/states/service_requests/survey_service_request_item.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 
 // Project imports:
@@ -32,42 +32,32 @@ void main() {
         tester: tester,
         store: store,
         graphQlClient: MockTestGraphQlClient(),
-        widget: const SurveyServiceRequestResponsesPage(
-          surveyTitle: 'test',),
+        widget: SurveyServiceRequestResponsesPage(
+          selectedSurvey: SurveyServiceRequestItem.initial(),
+        ),
       );
       await tester.pumpAndSettle();
       final Finder surveyItem = find.byType(SurveyServiceRequestItemWidget);
 
       expect(find.byType(CustomAppBar), findsOneWidget);
-      expect(surveyItem, findsNWidgets(5));
-
-      final Finder searchNameFinder = find.byType(CustomTextField);
-      expect(searchNameFinder, findsOneWidget);
-      await tester.tap(searchNameFinder);
-      await tester.enterText(searchNameFinder, 'test');
-
-      final Finder searchBtn = find.byType(IconButton);
-      await tester.tap(searchBtn);
-      await tester.pumpAndSettle();
-
-      expect(surveyItem, findsNWidgets(5));
+      expect(surveyItem, findsNWidgets(2));
     });
 
-
-    testWidgets('should refresh correctly',
-        (WidgetTester tester) async {
+    testWidgets('should refresh correctly', (WidgetTester tester) async {
       await buildTestWidget(
         tester: tester,
         store: store,
         graphQlClient: MockTestGraphQlClient(),
-        widget: const SurveyServiceRequestResponsesPage(surveyTitle: 'test',),
+        widget: SurveyServiceRequestResponsesPage(
+          selectedSurvey: SurveyServiceRequestItem.initial(),
+        ),
       );
       await tester.pumpAndSettle();
 
       final Finder surveyItem = find.byType(SurveyServiceRequestItemWidget);
 
       expect(find.byType(CustomAppBar), findsOneWidget);
-      expect(surveyItem, findsNWidgets(5));
+      expect(surveyItem, findsNWidgets(2));
 
       await tester.fling(
         find.byType(SurveyServiceRequestItemWidget).first,
@@ -78,7 +68,7 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.byType(CustomAppBar), findsOneWidget);
-      expect(surveyItem, findsNWidgets(5));
+      expect(surveyItem, findsNWidgets(2));
     });
 
     testWidgets('Routes to SurveyServiceRequestActionsPage correctly',
@@ -87,8 +77,8 @@ void main() {
         tester: tester,
         store: store,
         graphQlClient: MockTestGraphQlClient(),
-        widget: const SurveyServiceRequestResponsesPage(
-          surveyTitle: 'test',
+        widget: SurveyServiceRequestResponsesPage(
+          selectedSurvey: SurveyServiceRequestItem.initial(),
         ),
       );
       await tester.pumpAndSettle();
@@ -117,8 +107,8 @@ void main() {
           tester: tester,
           store: store,
           graphQlClient: mockShortGraphQlClient,
-          widget: const SurveyServiceRequestResponsesPage(
-            surveyTitle: 'test',
+          widget: SurveyServiceRequestResponsesPage(
+            selectedSurvey: SurveyServiceRequestItem.initial(),
           ),
         );
 
@@ -137,7 +127,8 @@ void main() {
       },
     );
 
-    testWidgets('should show a loading indicator when fetching survey responses',
+    testWidgets(
+        'should show a loading indicator when fetching survey responses',
         (WidgetTester tester) async {
       final MockShortGraphQlClient mockShortGraphQlClient =
           MockShortGraphQlClient.withResponse(
@@ -155,8 +146,8 @@ void main() {
         tester: tester,
         store: store,
         graphQlClient: mockShortGraphQlClient,
-        widget: const SurveyServiceRequestResponsesPage(
-          surveyTitle: 'test',
+        widget: SurveyServiceRequestResponsesPage(
+          selectedSurvey: SurveyServiceRequestItem.initial(),
         ),
       );
 
@@ -181,8 +172,8 @@ void main() {
         tester: tester,
         graphQlClient: mockShortGraphQlClient,
         store: store,
-        widget: const SurveyServiceRequestResponsesPage(
-          surveyTitle: 'test',
+        widget: SurveyServiceRequestResponsesPage(
+          selectedSurvey: SurveyServiceRequestItem.initial(),
         ),
       );
       await tester.pumpAndSettle();

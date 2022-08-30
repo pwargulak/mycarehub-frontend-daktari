@@ -1139,6 +1139,17 @@ class MockTestGraphQlClient extends IGraphQlClient {
         ),
       );
     }
+  
+    if (queryString.contains(getSurveyWithServiceRequestQuery)) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(<String, dynamic>{
+            'data': surveyServiceRequestsMock,
+          }),
+          200,
+        ),
+      );
+    }
 
     if (queryString.contains(listSurveyRespondentsQuery)) {
       return Future<http.Response>.value(
@@ -1148,6 +1159,15 @@ class MockTestGraphQlClient extends IGraphQlClient {
         ),
       );
     }
+    if (queryString.contains(getSurveyServiceRequestUserQuery)) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(<String, dynamic>{'data': surveyServiceRequestsRespondentsMock}),
+          200,
+        ),
+      );
+    }
+
     if (queryString.contains(getAvailableFacilityScreeningToolsQuery)) {
       return Future<http.Response>.value(
         http.Response(
@@ -1606,6 +1626,13 @@ final Map<String, dynamic> mockSurvey = <String, dynamic>{
   'name': 'project-name',
 };
 
+final Map<String, dynamic> mockServiceRequestSurveySurvey = <String, dynamic>{
+  'projectID': 2,
+  'title': 'project-name',
+  'formID': '2',
+  'linkID': '2',
+};
+
 final Map<String, dynamic> mockSurveyRespondent = <String, dynamic>{
   'id': 'some-id',
   'name': 'John  Doe',
@@ -1626,6 +1653,13 @@ final Map<String, dynamic> surveysMock = <String, dynamic>{
   ],
 };
 
+final Map<String, dynamic> surveyServiceRequestsMock = <String, dynamic>{
+  'getSurveyWithServiceRequest': <dynamic>[
+    mockServiceRequestSurveySurvey,
+    mockServiceRequestSurveySurvey,
+  ],
+};
+
 final Map<String, dynamic> surveyRespondentsMock = <String, dynamic>{
   'listSurveyRespondents': <String, dynamic>{
     'surveyRespondents': <dynamic>[
@@ -1634,6 +1668,16 @@ final Map<String, dynamic> surveyRespondentsMock = <String, dynamic>{
     ],
   }
 };
+
+final Map<String, dynamic> surveyServiceRequestsRespondentsMock = <String, dynamic>{
+  'getSurveyServiceRequestUser': <String, dynamic>{
+    'users': <dynamic>[
+      mockSurveyRespondent,
+      mockSurveyRespondent,
+    ],
+  }
+};
+
 final Map<String, dynamic> clientResponseMock = <String, dynamic>{
   'searchClientUser': <dynamic>[
     <String, dynamic>{

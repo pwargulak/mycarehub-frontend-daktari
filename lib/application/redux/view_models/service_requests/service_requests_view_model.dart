@@ -1,6 +1,7 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/service_requests/screening_tools_state.dart';
+import 'package:prohealth360_daktari/application/redux/states/service_requests/survey_service_request_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/service_requests/pending_service_request_count.dart';
 import 'package:prohealth360_daktari/domain/core/entities/service_requests/service_request.dart';
 
@@ -16,6 +17,8 @@ class ServiceRequestsViewModel extends Vm {
 
   final ScreeningToolsState? screeningToolsState;
 
+  final SurveyServiceRequestState? surveyServiceRequestState;
+
   final bool? errorFetchingServiceRequests;
   ServiceRequestsViewModel({
     required this.wait,
@@ -24,6 +27,7 @@ class ServiceRequestsViewModel extends Vm {
     this.resolvedServiceRequests,
     this.pendingServiceRequestCount,
     this.screeningToolsState,
+    this.surveyServiceRequestState,
     this.errorFetchingServiceRequests,
   }) : super(
           equals: <Object?>[
@@ -33,6 +37,7 @@ class ServiceRequestsViewModel extends Vm {
             resolvedServiceRequests,
             pendingServiceRequestCount,
             screeningToolsState,
+            surveyServiceRequestState,
             errorFetchingServiceRequests,
           ],
         );
@@ -49,6 +54,7 @@ class ServiceRequestsViewModel extends Vm {
       pendingServiceRequestCount:
           store.state.serviceRequestState?.pendingServiceRequestsCount,
       screeningToolsState: store.state.serviceRequestState?.screeningToolsState,
+      surveyServiceRequestState: store.state.serviceRequestState?.surveyServiceRequestState,
       errorFetchingServiceRequests:
           store.state.serviceRequestState?.errorFetchingPendingServiceRequests,
     );

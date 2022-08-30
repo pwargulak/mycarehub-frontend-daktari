@@ -5,13 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
-import 'package:prohealth360_daktari/application/redux/actions/service_requests/fetch_service_requests_action.dart';
-import 'package:prohealth360_daktari/application/redux/actions/surveys/update_survey_state_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/service_requests/fetch_survey_service_requests_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/application/redux/view_models/surveys/surveys_view_model.dart';
-import 'package:prohealth360_daktari/domain/core/entities/surveys/survey.dart';
+import 'package:prohealth360_daktari/application/redux/states/service_requests/survey_service_request_item.dart';
+import 'package:prohealth360_daktari/application/redux/view_models/service_requests/service_requests_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
-import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
@@ -28,24 +26,21 @@ class SurveyServiceRequestsPage extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: StoreConnector<AppState, SurveysViewModel>(
+          child: StoreConnector<AppState, ServiceRequestsViewModel>(
             onInit: (Store<AppState> store) {
               store.dispatch(
-                UpdateSurveyStateAction(
-                  surveys: <Survey>[
-                    Survey(name: phq9String),
-                    Survey(name: mentalHealthSurveyString)
-                  ],
+                FetchSurveyServiceRequestsAction(
+                  client: AppWrapperBase.of(context)!.graphQLClient,
                 ),
               );
             },
             converter: (Store<AppState> store) =>
-                SurveysViewModel.fromStore(store),
-            builder: (BuildContext context, SurveysViewModel vm) {
-              final bool error = vm.errorFetchingSurveys ?? false;
+                ServiceRequestsViewModel.fromStore(store),
+            builder: (BuildContext context, ServiceRequestsViewModel vm) {
+              final bool error = vm.surveyServiceRequestState?.errorFetchingSurveys ?? false;
               final bool isLoading =
-                  vm.wait?.isWaitingFor(fetchSurveysFlag) ?? false;
-              final List<Survey?> surveys = vm.surveys ?? <Survey?>[];
+                  vm.wait.isWaitingFor(fetchSurveysFlag);
+              final List<SurveyServiceRequestItem?> surveys = vm.surveyServiceRequestState?.surveys ?? <SurveyServiceRequestItem?>[];
 
               return SingleChildScrollView(
                 child: Column(
@@ -55,7 +50,7 @@ class SurveyServiceRequestsPage extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      if (!isLoading) ...<Widget>{
+                      if (!isLoading && surveys.isNotEmpty) ...<Widget>{
                         const Text(
                           surveyServiceRequestsLeadingString,
                           style: TextStyle(color: AppColors.grey50),
@@ -95,7 +90,7 @@ class SurveyServiceRequestsPage extends StatelessWidget {
                               onTapCallback: () => Navigator.pushNamed(
                                 context,
                                 AppRoutes.surveyServiceRequestResponsesPage,
-                                arguments: surveyTitle,
+                                arguments: surveys[index],
                               ),
                             );
                           },
@@ -106,19 +101,15 @@ class SurveyServiceRequestsPage extends StatelessWidget {
                         recoverCallback: () {
                           StoreProvider.dispatch(
                             context,
-                            FetchServiceRequestsAction(
+                            FetchSurveyServiceRequestsAction(
                               client: AppWrapperBase.of(context)!.graphQLClient,
-                              serviceRequestStatus: RequestStatus.PENDING,
-                              serviceRequestType: ServiceRequestType.PIN_RESET,
-                              flavour: Flavour.consumer,
                             ),
                           );
                         },
                         messageTitle: '',
                         messageBody: <TextSpan>[
                           TextSpan(
-                            text:
-                                getErrorMessage(fetchingPINResetRequestsString),
+                            text: getErrorMessage(fetchingSurveysString),
                             style: normalSize16Text(
                               AppColors.greyTextColor,
                             ),

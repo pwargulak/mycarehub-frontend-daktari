@@ -203,7 +203,7 @@ const String surveysInvitedToString =
 const String sendOutString = 'Send Out';
 const String fetchingSurveysString = 'fetching surveys';
 const String surveyServiceRequestsLeadingString =
-    'Surveys you have been invited to respond to';
+    'Surveys that have service requests';
 const String surveyServiceRequestsString = 'Survey service requests';
 
 const String noSurveysTitle = 'No Surveys available';
@@ -932,7 +932,6 @@ const String tapToViewTheirResponse = 'Tap to view their response';
 const String responsesForTheSurvey = 'Responses for the survey';
 
 //Survey service requests
-const String phq9String = 'PHQ-9';
 const String responseString = 'response';
 const String mentalHealthSurveyString = 'Mental health survey';
 String getSurveyServiceRequestActionString(String surveyName) {

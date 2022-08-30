@@ -31,6 +31,8 @@ mixin _$ServiceRequestState {
       throw _privateConstructorUsedError; // Screening tools
   ScreeningToolsState? get screeningToolsState =>
       throw _privateConstructorUsedError;
+  SurveyServiceRequestState? get surveyServiceRequestState =>
+      throw _privateConstructorUsedError;
 
   /// Other booleans
   bool? get errorFetchingPendingServiceRequests =>
@@ -53,10 +55,12 @@ abstract class $ServiceRequestStateCopyWith<$Res> {
       List<ServiceRequest>? resolvedServiceRequests,
       PendingServiceRequestCount? pendingServiceRequestsCount,
       ScreeningToolsState? screeningToolsState,
+      SurveyServiceRequestState? surveyServiceRequestState,
       bool? errorFetchingPendingServiceRequests});
 
   $PendingServiceRequestCountCopyWith<$Res>? get pendingServiceRequestsCount;
   $ScreeningToolsStateCopyWith<$Res>? get screeningToolsState;
+  $SurveyServiceRequestStateCopyWith<$Res>? get surveyServiceRequestState;
 }
 
 /// @nodoc
@@ -75,6 +79,7 @@ class _$ServiceRequestStateCopyWithImpl<$Res>
     Object? resolvedServiceRequests = freezed,
     Object? pendingServiceRequestsCount = freezed,
     Object? screeningToolsState = freezed,
+    Object? surveyServiceRequestState = freezed,
     Object? errorFetchingPendingServiceRequests = freezed,
   }) {
     return _then(_value.copyWith(
@@ -98,6 +103,10 @@ class _$ServiceRequestStateCopyWithImpl<$Res>
           ? _value.screeningToolsState
           : screeningToolsState // ignore: cast_nullable_to_non_nullable
               as ScreeningToolsState?,
+      surveyServiceRequestState: surveyServiceRequestState == freezed
+          ? _value.surveyServiceRequestState
+          : surveyServiceRequestState // ignore: cast_nullable_to_non_nullable
+              as SurveyServiceRequestState?,
       errorFetchingPendingServiceRequests: errorFetchingPendingServiceRequests ==
               freezed
           ? _value.errorFetchingPendingServiceRequests
@@ -129,6 +138,18 @@ class _$ServiceRequestStateCopyWithImpl<$Res>
       return _then(_value.copyWith(screeningToolsState: value));
     });
   }
+
+  @override
+  $SurveyServiceRequestStateCopyWith<$Res>? get surveyServiceRequestState {
+    if (_value.surveyServiceRequestState == null) {
+      return null;
+    }
+
+    return $SurveyServiceRequestStateCopyWith<$Res>(
+        _value.surveyServiceRequestState!, (value) {
+      return _then(_value.copyWith(surveyServiceRequestState: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -144,12 +165,15 @@ abstract class _$$_ServiceRequestStateCopyWith<$Res>
       List<ServiceRequest>? resolvedServiceRequests,
       PendingServiceRequestCount? pendingServiceRequestsCount,
       ScreeningToolsState? screeningToolsState,
+      SurveyServiceRequestState? surveyServiceRequestState,
       bool? errorFetchingPendingServiceRequests});
 
   @override
   $PendingServiceRequestCountCopyWith<$Res>? get pendingServiceRequestsCount;
   @override
   $ScreeningToolsStateCopyWith<$Res>? get screeningToolsState;
+  @override
+  $SurveyServiceRequestStateCopyWith<$Res>? get surveyServiceRequestState;
 }
 
 /// @nodoc
@@ -170,6 +194,7 @@ class __$$_ServiceRequestStateCopyWithImpl<$Res>
     Object? resolvedServiceRequests = freezed,
     Object? pendingServiceRequestsCount = freezed,
     Object? screeningToolsState = freezed,
+    Object? surveyServiceRequestState = freezed,
     Object? errorFetchingPendingServiceRequests = freezed,
   }) {
     return _then(_$_ServiceRequestState(
@@ -193,6 +218,10 @@ class __$$_ServiceRequestStateCopyWithImpl<$Res>
           ? _value.screeningToolsState
           : screeningToolsState // ignore: cast_nullable_to_non_nullable
               as ScreeningToolsState?,
+      surveyServiceRequestState: surveyServiceRequestState == freezed
+          ? _value.surveyServiceRequestState
+          : surveyServiceRequestState // ignore: cast_nullable_to_non_nullable
+              as SurveyServiceRequestState?,
       errorFetchingPendingServiceRequests: errorFetchingPendingServiceRequests ==
               freezed
           ? _value.errorFetchingPendingServiceRequests
@@ -211,6 +240,7 @@ class _$_ServiceRequestState implements _ServiceRequestState {
       this.resolvedServiceRequests,
       this.pendingServiceRequestsCount,
       this.screeningToolsState,
+      this.surveyServiceRequestState,
       this.errorFetchingPendingServiceRequests});
 
   factory _$_ServiceRequestState.fromJson(Map<String, dynamic> json) =>
@@ -231,6 +261,8 @@ class _$_ServiceRequestState implements _ServiceRequestState {
 // Screening tools
   @override
   final ScreeningToolsState? screeningToolsState;
+  @override
+  final SurveyServiceRequestState? surveyServiceRequestState;
 
   /// Other booleans
   @override
@@ -238,7 +270,7 @@ class _$_ServiceRequestState implements _ServiceRequestState {
 
   @override
   String toString() {
-    return 'ServiceRequestState(clientServiceRequests: $clientServiceRequests, staffServiceRequests: $staffServiceRequests, resolvedServiceRequests: $resolvedServiceRequests, pendingServiceRequestsCount: $pendingServiceRequestsCount, screeningToolsState: $screeningToolsState, errorFetchingPendingServiceRequests: $errorFetchingPendingServiceRequests)';
+    return 'ServiceRequestState(clientServiceRequests: $clientServiceRequests, staffServiceRequests: $staffServiceRequests, resolvedServiceRequests: $resolvedServiceRequests, pendingServiceRequestsCount: $pendingServiceRequestsCount, screeningToolsState: $screeningToolsState, surveyServiceRequestState: $surveyServiceRequestState, errorFetchingPendingServiceRequests: $errorFetchingPendingServiceRequests)';
   }
 
   @override
@@ -258,6 +290,8 @@ class _$_ServiceRequestState implements _ServiceRequestState {
             const DeepCollectionEquality()
                 .equals(other.screeningToolsState, screeningToolsState) &&
             const DeepCollectionEquality().equals(
+                other.surveyServiceRequestState, surveyServiceRequestState) &&
+            const DeepCollectionEquality().equals(
                 other.errorFetchingPendingServiceRequests,
                 errorFetchingPendingServiceRequests));
   }
@@ -271,6 +305,7 @@ class _$_ServiceRequestState implements _ServiceRequestState {
       const DeepCollectionEquality().hash(resolvedServiceRequests),
       const DeepCollectionEquality().hash(pendingServiceRequestsCount),
       const DeepCollectionEquality().hash(screeningToolsState),
+      const DeepCollectionEquality().hash(surveyServiceRequestState),
       const DeepCollectionEquality().hash(errorFetchingPendingServiceRequests));
 
   @JsonKey(ignore: true)
@@ -292,6 +327,7 @@ abstract class _ServiceRequestState implements ServiceRequestState {
           final List<ServiceRequest>? resolvedServiceRequests,
           final PendingServiceRequestCount? pendingServiceRequestsCount,
           final ScreeningToolsState? screeningToolsState,
+          final SurveyServiceRequestState? surveyServiceRequestState,
           final bool? errorFetchingPendingServiceRequests}) =
       _$_ServiceRequestState;
 
@@ -312,6 +348,9 @@ abstract class _ServiceRequestState implements ServiceRequestState {
       throw _privateConstructorUsedError;
   @override // Screening tools
   ScreeningToolsState? get screeningToolsState =>
+      throw _privateConstructorUsedError;
+  @override
+  SurveyServiceRequestState? get surveyServiceRequestState =>
       throw _privateConstructorUsedError;
   @override
 

@@ -9,18 +9,19 @@ import 'package:prohealth360_daktari/application/redux/actions/service_requests/
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/service_requests/service_requests_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/staff_state.dart';
-import 'package:prohealth360_daktari/domain/core/entities/service_requests/service_request.dart';
+import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_respondent.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
+import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/widgets/reach_out_widget.dart';
 import 'package:prohealth360_daktari/presentation/surveys/widgets/surveys_card.dart';
 
 class SurveyServiceRequestActionsPage extends StatefulWidget {
-  const SurveyServiceRequestActionsPage({Key? key, this.serviceRequest})
+  const SurveyServiceRequestActionsPage({Key? key, this.surveyRespondent})
       : super(key: key);
 
-  final ServiceRequest? serviceRequest;
+  final SurveyRespondent? surveyRespondent;
 
   @override
   State<SurveyServiceRequestActionsPage> createState() =>
@@ -41,13 +42,15 @@ class _SurveyServiceRequestActionsPageState
     final TargetPlatform _platform = Theme.of(context).platform;
     final TextEditingController actionInputController = TextEditingController();
 
-    final String phoneNumber = widget.serviceRequest?.clientPhoneNumber ?? '';
-    final String clientName = widget.serviceRequest?.clientName ?? '';
+    final String phoneNumber = widget.surveyRespondent?.id ?? '';
+    final String clientName = widget.surveyRespondent?.name ?? '';
     final StaffState? staffState =
         StoreProvider.state<AppState>(context)?.staffState;
     final String staffFirstName = staffState?.user?.firstName ?? '';
     final String staffLastName = staffState?.user?.lastName ?? '';
     final String facilityName = staffState?.defaultFacilityName ?? '';
+
+    final String surveyName = widget.surveyRespondent?.surveyName ?? '';
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -63,17 +66,25 @@ class _SurveyServiceRequestActionsPageState
             children: <Widget>[
               smallVerticalSizedBox,
               Text(
-                '$phq9String ${responseString.toLowerCase()} from ${widget.serviceRequest?.clientName}',
+                '$surveyName ${responseString.toLowerCase()} from $clientName',
                 style: veryBoldSize16Text(AppColors.lightBlackTextColor),
               ),
               mediumVerticalSizedBox,
               SurveysCard(
-                title: '$phq9String $responseString',
+                title: '$surveyName $responseString',
                 message: getSurveyActionCardMessageString(
-                  widget.serviceRequest?.clientName ?? '',
+                  clientName,
                 ),
                 primaryButtonKey: mentalHealthSurveyButtonKey,
                 primaryButtonText: previewResponsesString,
+                onPrimaryButtonPressed: () => Navigator.pushNamed(
+                  context,
+                  AppRoutes.surveyResponsesPreviewPage,
+                  arguments: <String, dynamic>{
+                    'surveyRespondent': widget.surveyRespondent,
+                    'surveyName': widget.surveyRespondent?.surveyName ?? '',
+                  },
+                ),
               ),
               largeVerticalSizedBox,
               ReachOutWidget(
@@ -171,7 +182,7 @@ class _SurveyServiceRequestActionsPageState
                                         client: AppWrapperBase.of(context)!
                                             .graphQLClient,
                                         serviceRequestId:
-                                            widget.serviceRequest?.id ?? '',
+                                            widget.surveyRespondent?.id ?? '',
                                         comments: actionInputController.text,
                                         actionsTaken: actionsTaken.contains(
                                           noFurtherActionRequiredString,

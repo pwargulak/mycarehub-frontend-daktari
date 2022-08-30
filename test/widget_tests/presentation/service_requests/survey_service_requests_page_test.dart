@@ -1,10 +1,15 @@
 // Package imports:
+import 'dart:convert';
+
 import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
+import 'package:prohealth360_daktari/application/redux/actions/service_requests/update_survey_service_requests_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/surveys/update_survey_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
+import 'package:prohealth360_daktari/application/redux/states/service_requests/survey_service_request_item.dart';
 import 'package:prohealth360_daktari/domain/core/entities/surveys/survey.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 
@@ -42,10 +47,19 @@ void main() {
     testWidgets(
       'should show an error widget when error occurs',
       (WidgetTester tester) async {
+        final MockShortGraphQlClient mockShortGraphQlClient =
+            MockShortGraphQlClient.withResponse(
+          'idToken',
+          'endpoint',
+          Response(
+            json.encode(<String, dynamic>{'error': 'some error occurred'}),
+            201,
+          ),
+        );
         await buildTestWidget(
           tester: tester,
           store: store,
-          graphQlClient: MockTestGraphQlClient(),
+          graphQlClient: mockShortGraphQlClient,
           widget: const SurveyServiceRequestsPage(),
         );
 
@@ -70,14 +84,13 @@ void main() {
       },
     );
 
-        testWidgets('Routes to SurveyServiceRequestResponsesPage correctly',
+    testWidgets('Routes to SurveyServiceRequestResponsesPage correctly',
         (WidgetTester tester) async {
       await buildTestWidget(
         tester: tester,
         store: store,
         graphQlClient: MockTestGraphQlClient(),
-        widget: const SurveyServiceRequestsPage(
-        ),
+        widget: const SurveyServiceRequestsPage(),
       );
       await tester.pumpAndSettle();
       final Finder surveyItem = find.byType(SurveyServiceRequestItemWidget);
@@ -112,6 +125,12 @@ void main() {
       store.dispatch(
         UpdateSurveyStateAction(
           surveys: <Survey>[],
+        ),
+      );
+      await tester.pumpAndSettle();
+      store.dispatch(
+        UpdateSurveyServiceRequestsStateAction(
+          surveys: <SurveyServiceRequestItem>[],
         ),
       );
       await tester.pumpAndSettle();

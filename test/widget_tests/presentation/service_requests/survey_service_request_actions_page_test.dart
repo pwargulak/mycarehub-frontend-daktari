@@ -9,10 +9,12 @@ import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/redux/actions/service_requests/update_service_requests_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/service_requests/service_request.dart';
+import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_respondent.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/surveys/survey_service_request_actions_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/widgets/reach_out_channel_widget.dart';
+import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_responses_preview_page.dart';
 
 import '../../../mocks/mocks.dart';
 import '../../../mocks/test_helpers.dart';
@@ -32,15 +34,35 @@ void main() {
         tester: tester,
         store: store,
         widget: SurveyServiceRequestActionsPage(
-          serviceRequest: ServiceRequest(
-            clientId: 'test',
-            clientPhoneNumber: '+2547000000000',
+          surveyRespondent: SurveyRespondent(
+            name: 'test',
+            id: 'test',
           ),
         ),
       );
       await tester.pumpAndSettle();
       final Finder reachOutChannelWidget = find.byType(ReachOutChannelWidget);
       expect(reachOutChannelWidget, findsNWidgets(2));
+    });
+    testWidgets('navigates to SurveyResponsesPreviewPage correctly', (WidgetTester tester) async {
+      await buildTestWidget(
+        tester: tester,
+        store: store,
+        widget: SurveyServiceRequestActionsPage(
+          surveyRespondent: SurveyRespondent(
+            name: 'test',
+            id: 'test',
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      final Finder reachOutChannelWidget = find.byType(ReachOutChannelWidget);
+      expect(reachOutChannelWidget, findsNWidgets(2));
+
+      await tester.tap(find.byKey(mentalHealthSurveyButtonKey));
+      await tester.pumpAndSettle();
+
+      expect(find.byType(SurveyResponsesPreviewPage), findsOneWidget);
     });
 
     testWidgets('resolve button works correctly', (WidgetTester tester) async {
@@ -54,10 +76,9 @@ void main() {
         store: store,
         graphQlClient: MockTestGraphQlClient(),
         widget: SurveyServiceRequestActionsPage(
-          serviceRequest: ServiceRequest(
-            clientId: 'test',
-            clientPhoneNumber: '+2547000000000',
-            id: UNKNOWN,
+          surveyRespondent: SurveyRespondent(
+            name: 'test',
+            id: 'test',
           ),
         ),
       );
@@ -120,10 +141,9 @@ void main() {
         store: store,
         graphQlClient: mockShortGraphQlClient,
         widget: SurveyServiceRequestActionsPage(
-          serviceRequest: ServiceRequest(
-            clientId: 'test',
-            clientPhoneNumber: '+2547000000000',
-            id: UNKNOWN,
+          surveyRespondent: SurveyRespondent(
+            name: 'test',
+            id: 'test',
           ),
         ),
       );
@@ -189,10 +209,9 @@ void main() {
         store: store,
         graphQlClient: mockShortGraphQlClient,
         widget: SurveyServiceRequestActionsPage(
-          serviceRequest: ServiceRequest(
-            clientId: 'test',
-            clientPhoneNumber: '+2547000000000',
-            id: UNKNOWN,
+          surveyRespondent: SurveyRespondent(
+            name: 'test',
+            id: 'test',
           ),
         ),
       );

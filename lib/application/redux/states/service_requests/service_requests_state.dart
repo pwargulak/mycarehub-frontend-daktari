@@ -1,6 +1,7 @@
 // Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:prohealth360_daktari/application/redux/states/service_requests/screening_tools_state.dart';
+import 'package:prohealth360_daktari/application/redux/states/service_requests/survey_service_request_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/service_requests/pending_service_request_count.dart';
 import 'package:prohealth360_daktari/domain/core/entities/service_requests/service_request.dart';
 
@@ -24,6 +25,8 @@ class ServiceRequestState with _$ServiceRequestState {
 
     // Screening tools
     ScreeningToolsState? screeningToolsState,
+    
+    SurveyServiceRequestState? surveyServiceRequestState,
 
     /// Other booleans
     bool? errorFetchingPendingServiceRequests,
@@ -31,6 +34,7 @@ class ServiceRequestState with _$ServiceRequestState {
 
   factory ServiceRequestState.fromJson(Map<String, dynamic> json) =>
       _$ServiceRequestStateFromJson(json);
+
   factory ServiceRequestState.initial() => ServiceRequestState(
         clientServiceRequests: <ServiceRequest>[],
         staffServiceRequests: <ServiceRequest>[],
@@ -38,5 +42,6 @@ class ServiceRequestState with _$ServiceRequestState {
         pendingServiceRequestsCount: PendingServiceRequestCount.initial(),
         screeningToolsState: ScreeningToolsState.initial(),
         errorFetchingPendingServiceRequests: false,
+        surveyServiceRequestState: SurveyServiceRequestState.initial(),
       );
 }

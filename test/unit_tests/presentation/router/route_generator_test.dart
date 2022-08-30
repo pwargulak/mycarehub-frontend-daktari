@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:flutter_test/flutter_test.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
+import 'package:prohealth360_daktari/application/redux/states/service_requests/survey_service_request_item.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/domain/core/entities/service_requests/service_request.dart';
 import 'package:prohealth360_daktari/domain/core/entities/surveys/survey.dart';
@@ -415,9 +416,9 @@ void main() {
   });
 
   test('Test router returns Survey Service Request Responses Page', () {
-    const RouteSettings settings = RouteSettings(
+    final RouteSettings settings = RouteSettings(
       name: AppRoutes.surveyServiceRequestResponsesPage,
-      arguments: 'test',
+      arguments: SurveyServiceRequestItem.initial(),
     );
 
     final MaterialPageRoute<SurveyServiceRequestResponsesPage>? route =
@@ -524,7 +525,7 @@ void main() {
   test('Test router returns SurveyServiceRequestActionsPage', () {
     final RouteSettings settings = RouteSettings(
       name: AppRoutes.surveyServiceRequestActionsPage,
-      arguments: ServiceRequest(),
+      arguments: SurveyRespondent(),
     );
 
     final MaterialPageRoute<SurveyServiceRequestActionsPage>? route =
@@ -637,7 +638,7 @@ void main() {
       name: AppRoutes.surveyResponsesPreviewPage,
       arguments: <String, dynamic>{
         'surveyRespondent': SurveyRespondent.initial(),
-        'surveyName':'testName',
+        'surveyName': 'testName',
       },
     );
 

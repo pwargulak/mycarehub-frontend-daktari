@@ -165,7 +165,7 @@ query listPendingInvites($memberID: String!, $input: QueryOption){
 const String searchClientQuery = r'''
 query searchClientUser($searchParameter: String!) {
   searchClientUser(searchParameter: $searchParameter) {
-     ID
+    ID
     CCCNumber
     FacilityID
     Active 
@@ -174,7 +174,7 @@ query searchClientUser($searchParameter: String!) {
       Username
       Name
       Active
-       Contacts{
+      Contacts{
         id
         contactValue
         active
@@ -231,7 +231,7 @@ query listFlaggedMessages($communityCID: String,$memberIDs: [String]){
         name
         username
       }
-       attachments{
+      attachments{
         type
         title
         image_url
@@ -331,6 +331,45 @@ query listSurveys($projectID: Int!){
     projectId
     xmlFormId
     name
+  }
+}
+''';
+
+const String getSurveyWithServiceRequestQuery = r'''
+query getSurveyWithServiceRequest($facilityID: String!) {
+  getSurveyWithServiceRequest(facilityID: $facilityID) {
+    title
+    projectID
+    formID
+    linkID
+  }
+}
+''';
+
+const String getSurveyServiceRequestUserQuery = r'''
+query getSurveyServiceRequestUser(
+    $facilityID: String!
+    $projectID: Int!
+    $formID: String!
+    $paginationInput: PaginationsInput!
+){
+  getSurveyServiceRequestUser(
+    facilityID: $facilityID
+    projectID: $projectID
+    formID: $formID
+    paginationInput: $paginationInput
+  ){
+    users{
+      name
+      formID
+      projectID
+      submitterID
+      surveyName
+    }
+    pagination{
+      Limit
+      CurrentPage
+    }
   }
 }
 ''';
