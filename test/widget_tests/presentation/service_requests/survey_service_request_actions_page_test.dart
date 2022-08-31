@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/redux/actions/service_requests/update_service_requests_state_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/service_requests/update_survey_service_requests_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/service_requests/service_request.dart';
 import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_respondent.dart';
@@ -44,7 +45,8 @@ void main() {
       final Finder reachOutChannelWidget = find.byType(ReachOutChannelWidget);
       expect(reachOutChannelWidget, findsNWidgets(2));
     });
-    testWidgets('navigates to SurveyResponsesPreviewPage correctly', (WidgetTester tester) async {
+    testWidgets('navigates to SurveyResponsesPreviewPage correctly',
+        (WidgetTester tester) async {
       await buildTestWidget(
         tester: tester,
         store: store,
@@ -79,6 +81,7 @@ void main() {
           surveyRespondent: SurveyRespondent(
             name: 'test',
             id: 'test',
+            serviceRequestID: 'testId 1',
           ),
         ),
       );
@@ -117,6 +120,28 @@ void main() {
             .value,
         true,
       );
+
+      store.dispatch(
+        UpdateSurveyServiceRequestsStateAction(
+          surveyServiceRequestRespondentsState: store.state.serviceRequestState
+              ?.surveyServiceRequestState?.surveyServiceRequestRespondentsState
+              ?.copyWith(
+            surveyRespondents: <SurveyRespondent>[
+              SurveyRespondent(
+                name: 'test',
+                id: 'test',
+                serviceRequestID: 'testId 1',
+              ),
+              SurveyRespondent(
+                name: 'test',
+                id: 'test',
+                serviceRequestID: 'testId 2',
+              ),
+            ],
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
 
       await tester.ensureVisible(resolveRequestButton);
       await tester.tap(resolveRequestButton);

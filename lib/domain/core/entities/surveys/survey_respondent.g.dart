@@ -14,6 +14,8 @@ _$_SurveyRespondent _$$_SurveyRespondentFromJson(Map<String, dynamic> json) =>
       submitterID: json['submitterID'] as int?,
       formID: json['formID'] as String?,
       surveyName: json['surveyName'] as String?,
+      serviceRequestID: json['serviceRequestID'] as String?,
+      phoneNumber: json['phoneNumber'] as String?,
     );
 
 Map<String, dynamic> _$$_SurveyRespondentToJson(_$_SurveyRespondent instance) =>
@@ -24,4 +26,6 @@ Map<String, dynamic> _$$_SurveyRespondentToJson(_$_SurveyRespondent instance) =>
       'submitterID': instance.submitterID,
       'formID': instance.formID,
       'surveyName': instance.surveyName,
+      'serviceRequestID': instance.serviceRequestID,
+      'phoneNumber': instance.phoneNumber,
     };
