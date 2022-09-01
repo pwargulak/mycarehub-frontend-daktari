@@ -78,7 +78,7 @@ class _SearchUserItemState extends State<SearchUserItem> {
                     Text(
                       widget.isCCCNumber
                           ? 'CCC#: ${widget.searchUserResponse.clientCCCNumber}'
-                          : widget.searchUserResponse.staffNumber!,
+                          : widget.searchUserResponse.staffNumber ?? '',
                       style: normalSize12Text(AppColors.greyTextColor),
                     ),
                   ],

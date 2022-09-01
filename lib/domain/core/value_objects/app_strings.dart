@@ -960,3 +960,18 @@ const String fetchingSurveyResponsesString = 'fetching survey responses';
 String getSurveyPreviewDescriptionText(String surveyTitle) {
   return 'Some very long description about the $surveyTitle response';
 }
+
+//Phase 2 strings
+const String addFacilityString = 'Add Facility';
+const String facilitiesString = 'Facilities';
+const String clientConsentedString = 'Client consented';
+const String clientNotConsentedString =
+    'Client has not given consent for this caregiver';
+
+String getFacilitiesDescriptionString(String name) {
+  return 'Tap below to add facilities in which $name works at';
+}
+
+String getCaregiverDescriptionString(String name) {
+  return "Here are $name's caregivers";
+}
