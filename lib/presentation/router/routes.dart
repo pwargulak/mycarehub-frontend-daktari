@@ -1,5 +1,5 @@
 class AppRoutes {
-  static const String deepLink = '/pro';
+  static const String deepLink = '/mycarehub-pro';
 
   static const String homePage = '/homePage';
 
