@@ -975,3 +975,10 @@ String getFacilitiesDescriptionString(String name) {
 String getCaregiverDescriptionString(String name) {
   return "Here are $name's caregivers";
 }
+
+String welcomeFacilitySelectionDescription(String username) =>
+    'Welcome back $username! Choose your facility';
+
+String noOfFacilitiesDescription(int numberOfFacilities) =>
+    "We've noticed that you're part of $numberOfFacilities facilities. Choose which facility you would like to log into. Here are the details.";
+const String continueString = 'Continue';

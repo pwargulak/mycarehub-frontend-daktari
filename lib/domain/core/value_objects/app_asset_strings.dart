@@ -156,3 +156,7 @@ const String contentZeroStateImageUrl = 'assets/images/no_content_image.svg';
 const String pencilIconUrl = 'assets/icons/pencil.svg';
 const String noChatImage = 'assets/images/no_chat.svg';
 const String faqsImageUrl = 'assets/images/faqs.svg';
+
+const String workStationChooserImage = 'assets/images/workstation_chooser.svg';
+const String surveysIcon = 'assets/icons/surveys_icon.svg';
+const String serviceRequestIcon = 'assets/icons/service_request_icon.svg';
