@@ -366,6 +366,7 @@ query getSurveyServiceRequestUser(
       submitterID
       serviceRequestID
       phoneNumber
+      surveyName
     }
     pagination{
       Limit
