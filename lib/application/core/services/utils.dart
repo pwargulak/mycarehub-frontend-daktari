@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
@@ -436,4 +437,16 @@ String? encodeQueryParameters(Map<String, String> params) {
             '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}',
       )
       .join('&');
+}
+
+List<String> getGenderList() {
+  final List<String> result = <String>[];
+
+  for (final Gender gender in Gender.values) {
+    if (gender != Gender.unknown) {
+      result.add(capitalizeFirst(describeEnum(gender)));
+    }
+  }
+
+  return result;
 }

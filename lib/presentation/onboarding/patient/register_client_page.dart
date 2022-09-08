@@ -509,18 +509,6 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
     return result;
   }
 
-  List<String> getGenderList() {
-    final List<String> result = <String>[];
-
-    for (final Gender gender in Gender.values) {
-      if (gender != Gender.unknown) {
-        result.add(capitalizeFirst(describeEnum(gender)));
-      }
-    }
-
-    return result;
-  }
-
   void _processAndNavigate(bool hasConnection) {
     if (!hasConnection) {
       ScaffoldMessenger.of(context)

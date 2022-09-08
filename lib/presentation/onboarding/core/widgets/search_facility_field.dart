@@ -13,12 +13,12 @@ import 'package:prohealth360_daktari/presentation/router/routes.dart';
 class SearchFacilityField extends StatefulWidget {
   const SearchFacilityField({
     Key? key,
-    required this.onChanged,
-    required this.onFieldCleared,
+    this.onChanged,
+    this.onFieldCleared,
   }) : super(key: key);
 
-  final void Function(String mflCode) onChanged;
-  final VoidCallback onFieldCleared;
+  final void Function(String mflCode)? onChanged;
+  final VoidCallback? onFieldCleared;
 
   @override
   State<SearchFacilityField> createState() => _SearchFacilityFieldState();
@@ -71,7 +71,7 @@ class _SearchFacilityFieldState extends State<SearchFacilityField> {
                 : '';
 
             if (isFacilityChosen) {
-              widget.onChanged.call(
+              widget.onChanged?.call(
                 facilityCode,
               );
               _controller.text = facilityName;
@@ -108,7 +108,7 @@ class _SearchFacilityFieldState extends State<SearchFacilityField> {
                               selectedFacility: Facility.initial(),
                             ),
                           );
-                          widget.onFieldCleared.call();
+                          widget.onFieldCleared?.call();
                         }
                       : null,
                   icon: Icon(

@@ -982,3 +982,7 @@ String welcomeFacilitySelectionDescription(String username) =>
 String noOfFacilitiesDescription(int numberOfFacilities) =>
     "We've noticed that you're part of $numberOfFacilities facilities. Choose which facility you would like to log into. Here are the details.";
 const String continueString = 'Continue';
+
+const String addCaregiverDescriptionString = 'As a caregiver, this user will be able to view medical information on behalf of another client.\n\nTo set this user as a caregiver, indicate the client that they will be managing';
+
+const String addClientsString = 'Add Clients';
