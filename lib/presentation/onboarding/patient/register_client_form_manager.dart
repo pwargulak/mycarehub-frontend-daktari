@@ -44,7 +44,6 @@ class RegisterClientFormManager with Validator {
   Stream<bool> get inviteClient => _inviteClient.stream;
   Sink<bool> get inInviteClient => _inviteClient.sink;
 
-  // TODO: Wait for API
   Stream<bool> get isFormValid => CombineLatestStream.combine9<
               String,
               Map<ClientType, bool>,
