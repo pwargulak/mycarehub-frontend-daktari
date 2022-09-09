@@ -100,9 +100,9 @@ const String pinString = 'PIN';
 const String forgotPinString = 'Forgot Pin';
 
 //Security Questions
-const String setSecurityQuestionsString = 'Set security questions';
+const String setSecurityQuestionsString = 'Set your security questions';
 const String securityQuestionsDescriptionString =
-    'Please answer the following security questions. Make sure to remember the answer';
+    'Please answer all the security questions below. Please make sure you remember the responses.';
 const String whereWereYouBornString = 'Where were you born?';
 const String whatsTheNameOfYourPetString = 'What is the name of your pet?';
 const String whatsYourFavoriteFoodString = 'What is your favorite food?';
@@ -111,7 +111,7 @@ const String answerHereString = 'Answer here';
 
 const String verifySecurityQuestionsString = 'Verify your security questions';
 const String verifyQuestionsDescriptionString =
-    'Please answer the following security questions about yourself. You provided the answers to these questions when you first signed up.';
+    'Please answer all the following security questions about yourself. You provided the answers to these questions when you first signed up.';
 
 const String informationRequired =
     'Please provide all the required information';
@@ -956,11 +956,6 @@ const String surveyResponsesSearchHintText =
 const String surveyResponseString = 'Survey response';
 const String previewResponsesString = 'Preview Response';
 const String fetchingSurveyResponsesString = 'fetching survey responses';
-
-String getSurveyPreviewDescriptionText(String surveyTitle) {
-  return 'Some very long description about the $surveyTitle response';
-}
-
 //Phase 2 strings
 const String addFacilityString = 'Add Facility';
 const String facilitiesString = 'Facilities';
@@ -983,6 +978,7 @@ String noOfFacilitiesDescription(int numberOfFacilities) =>
     "We've noticed that you're part of $numberOfFacilities facilities. Choose which facility you would like to log into. Here are the details.";
 const String continueString = 'Continue';
 
-const String addCaregiverDescriptionString = 'As a caregiver, this user will be able to view medical information on behalf of another client.\n\nTo set this user as a caregiver, indicate the client that they will be managing';
+const String addCaregiverDescriptionString =
+    'As a caregiver, this user will be able to view medical information on behalf of another client.\n\nTo set this user as a caregiver, indicate the client that they will be managing';
 
 const String addClientsString = 'Add Clients';

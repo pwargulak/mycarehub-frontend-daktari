@@ -1139,7 +1139,7 @@ class MockTestGraphQlClient extends IGraphQlClient {
         ),
       );
     }
-  
+
     if (queryString.contains(getSurveyWithServiceRequestQuery)) {
       return Future<http.Response>.value(
         http.Response(
@@ -1162,7 +1162,9 @@ class MockTestGraphQlClient extends IGraphQlClient {
     if (queryString.contains(getSurveyServiceRequestUserQuery)) {
       return Future<http.Response>.value(
         http.Response(
-          json.encode(<String, dynamic>{'data': surveyServiceRequestsRespondentsMock}),
+          json.encode(
+            <String, dynamic>{'data': surveyServiceRequestsRespondentsMock},
+          ),
           200,
         ),
       );
@@ -1669,7 +1671,8 @@ final Map<String, dynamic> surveyRespondentsMock = <String, dynamic>{
   }
 };
 
-final Map<String, dynamic> surveyServiceRequestsRespondentsMock = <String, dynamic>{
+final Map<String, dynamic> surveyServiceRequestsRespondentsMock =
+    <String, dynamic>{
   'getSurveyServiceRequestUser': <String, dynamic>{
     'users': <dynamic>[
       mockSurveyRespondent,
@@ -1933,10 +1936,10 @@ final List<dynamic> securityQuestionsMock = <dynamic>[
 ];
 
 Map<String, dynamic> mockRecordSecurityQuestionResponseData = <String, dynamic>{
-  'recordSecurityQuestionResponses': recordSecurityQuestionReponseMock
+  'recordSecurityQuestionResponses': recordSecurityQuestionResponseMock
 };
 
-final List<dynamic> recordSecurityQuestionReponseMock = <dynamic>[
+final List<dynamic> recordSecurityQuestionResponseMock = <dynamic>[
   <String, dynamic>{
     'securityQuestionID': 'id1',
     'isCorrect': true,

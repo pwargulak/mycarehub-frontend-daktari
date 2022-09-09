@@ -37,7 +37,7 @@ class _SecurityQuestionWidgetState extends State<SecurityQuestionWidget> {
       child: ExpandableQuestion(
         isDateType: question.responseType == SecurityQuestionResponseType.DATE,
         dateController: dateController,
-        question: question.questionStem ?? UNKNOWN,
+        question: '${question.questionStem ?? UNKNOWN}*',
         hintText: answerHereString,
         validator: securityQuestionValidator,
         initialValue: initialResponse,

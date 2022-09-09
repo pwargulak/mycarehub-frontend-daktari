@@ -58,7 +58,7 @@ class SurveyResponsesPreviewPage extends StatelessWidget {
                       ),
                       mediumVerticalSizedBox,
                       Text(
-                        getSurveyPreviewDescriptionText(surveyName ?? ''),
+                        surveyName ?? '',
                         style: normalSize14Text(darkGreyTextColor),
                       ),
                       if (isLoading)

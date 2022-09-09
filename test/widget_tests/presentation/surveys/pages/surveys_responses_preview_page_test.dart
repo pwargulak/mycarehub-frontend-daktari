@@ -11,7 +11,6 @@ import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.d
 // Project imports:
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_respondent.dart';
-import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_responses_preview_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/widgets/survey_preview_response_item.dart';
@@ -46,8 +45,8 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(
-        find.text(getSurveyPreviewDescriptionText('testName')),
-        findsOneWidget,
+        find.text('testName'),
+        findsNWidgets(2),
       );
       expect(find.byType(SurveyPreviewResponseItem), findsNWidgets(2));
     });
