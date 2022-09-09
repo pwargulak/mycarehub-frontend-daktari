@@ -251,7 +251,9 @@ class _$_Facility implements _Facility {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FacilityToJson(this);
+    return _$$_FacilityToJson(
+      this,
+    );
   }
 }
 
@@ -269,25 +271,25 @@ abstract class _Facility implements Facility {
 
   @override
   @JsonKey(name: 'ID')
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
   @JsonKey(name: 'name')
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
   @JsonKey(name: 'code')
-  int? get code => throw _privateConstructorUsedError;
+  int? get code;
   @override
   @JsonKey(name: 'phone')
-  String? get phone => throw _privateConstructorUsedError;
+  String? get phone;
   @override
   @JsonKey(name: 'active', defaultValue: false)
-  bool? get active => throw _privateConstructorUsedError;
+  bool? get active;
   @override
   @JsonKey(name: 'county')
-  String? get county => throw _privateConstructorUsedError;
+  String? get county;
   @override
   @JsonKey(name: 'description')
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
   @JsonKey(ignore: true)
   _$$_FacilityCopyWith<_$_Facility> get copyWith =>

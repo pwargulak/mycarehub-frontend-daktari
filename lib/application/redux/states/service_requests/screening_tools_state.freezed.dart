@@ -164,7 +164,9 @@ class _$_ScreeningToolsState implements _ScreeningToolsState {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ScreeningToolsStateToJson(this);
+    return _$$_ScreeningToolsStateToJson(
+      this,
+    );
   }
 }
 
@@ -181,11 +183,10 @@ abstract class _ScreeningToolsState implements ScreeningToolsState {
 
   @override
   @JsonKey(name: 'getAvailableFacilityScreeningTools')
-  List<ToolType>? get availableTools => throw _privateConstructorUsedError;
+  List<ToolType>? get availableTools;
   @override
   @JsonKey(name: 'getAssessmentResponsesByToolType')
-  List<ToolAssessmentResponse>? get toolAssessmentResponses =>
-      throw _privateConstructorUsedError;
+  List<ToolAssessmentResponse>? get toolAssessmentResponses;
   @override
   @JsonKey(ignore: true)
   _$$_ScreeningToolsStateCopyWith<_$_ScreeningToolsState> get copyWith =>

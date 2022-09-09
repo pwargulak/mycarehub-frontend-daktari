@@ -143,7 +143,9 @@ class _$_FetchFacilitiesResponse implements _FetchFacilitiesResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FetchFacilitiesResponseToJson(this);
+    return _$$_FetchFacilitiesResponseToJson(
+      this,
+    );
   }
 }
 
@@ -157,7 +159,7 @@ abstract class _FetchFacilitiesResponse implements FetchFacilitiesResponse {
 
   @override
   @JsonKey(name: 'searchFacility')
-  List<Facility>? get facilities => throw _privateConstructorUsedError;
+  List<Facility>? get facilities;
   @override
   @JsonKey(ignore: true)
   _$$_FetchFacilitiesResponseCopyWith<_$_FetchFacilitiesResponse>

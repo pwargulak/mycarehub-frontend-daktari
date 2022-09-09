@@ -8,7 +8,7 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart'
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 
 class SuccessfulSurveySubmission extends StatelessWidget {
-  const SuccessfulSurveySubmission({Key? key}) : super(key: key);
+  const SuccessfulSurveySubmission({super.key});
 
   @override
   Widget build(BuildContext context) {

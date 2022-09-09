@@ -7,11 +7,11 @@ import 'package:prohealth360_daktari/presentation/search/widgets/client_search_w
 
 class InActiveUserActions extends StatelessWidget {
   const InActiveUserActions({
-    Key? key,
+    super.key,
     required this.names,
     required this.isLoading,
     required this.searchUserResponse,
-  }) : super(key: key);
+  });
 
   final bool isLoading;
   final String? names;

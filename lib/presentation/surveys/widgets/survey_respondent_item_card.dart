@@ -5,10 +5,10 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart'
 
 class SurveyRespondentItemCard extends StatelessWidget {
   const SurveyRespondentItemCard({
-    Key? key,
+    super.key,
     required this.title,
     this.onTapCallback,
-  }) : super(key: key);
+  });
 
   final String title;
   final VoidCallback? onTapCallback;

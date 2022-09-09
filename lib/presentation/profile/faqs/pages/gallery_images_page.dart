@@ -4,7 +4,7 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart'
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
 
 class GalleryImagesPage extends StatelessWidget {
-  const GalleryImagesPage({Key? key, required this.images}) : super(key: key);
+  const GalleryImagesPage({super.key, required this.images});
 
   final List<GalleryImage>? images;
 

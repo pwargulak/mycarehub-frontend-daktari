@@ -21,7 +21,7 @@ import 'package:prohealth360_daktari/presentation/router/routes.dart';
 // Package imports:
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();

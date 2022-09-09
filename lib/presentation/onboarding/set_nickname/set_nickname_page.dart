@@ -12,7 +12,7 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart'
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 
 class SetNickNamePage extends StatefulWidget {
-  const SetNickNamePage({Key? key}) : super(key: key);
+  const SetNickNamePage({super.key});
 
   @override
   _SetNickNamePageState createState() => _SetNickNamePageState();
@@ -33,9 +33,7 @@ class _SetNickNamePageState extends State<SetNickNamePage> {
     return Scaffold(
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterFloat,
-      body: SizedBox(
-        width: double.infinity,
-        height: double.infinity,
+      body: SizedBox.expand(
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: SafeArea(

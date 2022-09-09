@@ -149,7 +149,9 @@ class _$_ServiceRequestTypeCount implements _ServiceRequestTypeCount {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ServiceRequestTypeCountToJson(this);
+    return _$$_ServiceRequestTypeCountToJson(
+      this,
+    );
   }
 }
 
@@ -164,8 +166,7 @@ abstract class _ServiceRequestTypeCount implements ServiceRequestTypeCount {
 
   @override
   @JsonKey(name: 'requestsTypeCount')
-  List<ServiceRequestCount>? get requestsTypeCount =>
-      throw _privateConstructorUsedError;
+  List<ServiceRequestCount>? get requestsTypeCount;
   @override
   @JsonKey(ignore: true)
   _$$_ServiceRequestTypeCountCopyWith<_$_ServiceRequestTypeCount>

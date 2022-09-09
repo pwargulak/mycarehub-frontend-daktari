@@ -9,12 +9,12 @@ import 'package:prohealth360_daktari/presentation/search/widgets/client_search_w
 /// Contains a set of actions to perform for an active client
 class ActiveClientActions extends StatelessWidget {
   const ActiveClientActions({
-    Key? key,
+    super.key,
     required this.names,
     required this.isSendLoading,
     required this.isResendLoading,
     required this.searchUserResponse,
-  }) : super(key: key);
+  });
 
   /// Used to indicate a resend
   final bool isResendLoading;

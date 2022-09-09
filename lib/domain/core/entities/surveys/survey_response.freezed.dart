@@ -183,7 +183,9 @@ class _$_SurveyResponse implements _SurveyResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SurveyResponseToJson(this);
+    return _$$_SurveyResponseToJson(
+      this,
+    );
   }
 }
 
@@ -199,13 +201,13 @@ abstract class _SurveyResponse implements SurveyResponse {
 
   @override
   @JsonKey(name: 'question')
-  String? get question => throw _privateConstructorUsedError;
+  String? get question;
   @override
   @JsonKey(name: 'answer')
-  List<String>? get answers => throw _privateConstructorUsedError;
+  List<String>? get answers;
   @override
   @JsonKey(name: 'questionType')
-  QuestionType? get questionType => throw _privateConstructorUsedError;
+  QuestionType? get questionType;
   @override
   @JsonKey(ignore: true)
   _$$_SurveyResponseCopyWith<_$_SurveyResponse> get copyWith =>

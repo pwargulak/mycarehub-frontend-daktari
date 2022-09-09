@@ -4,12 +4,12 @@ import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 
 class ListCardWithCancelButton extends StatelessWidget {
   const ListCardWithCancelButton({
-    Key? key,
+    super.key,
     required this.title,
     required this.description,
     this.body,
     this.onCancelCallback,
-  }) : super(key: key);
+  });
 
   final String title;
   final String description;

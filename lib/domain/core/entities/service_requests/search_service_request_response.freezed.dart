@@ -151,7 +151,9 @@ class _$_SearchServiceRequestResponse implements _SearchServiceRequestResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SearchServiceRequestResponseToJson(this);
+    return _$$_SearchServiceRequestResponseToJson(
+      this,
+    );
   }
 }
 
@@ -167,8 +169,7 @@ abstract class _SearchServiceRequestResponse
 
   @override
   @JsonKey(name: 'searchServiceRequests')
-  List<ServiceRequest>? get serviceRequests =>
-      throw _privateConstructorUsedError;
+  List<ServiceRequest>? get serviceRequests;
   @override
   @JsonKey(ignore: true)
   _$$_SearchServiceRequestResponseCopyWith<_$_SearchServiceRequestResponse>

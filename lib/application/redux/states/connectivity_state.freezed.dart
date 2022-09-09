@@ -130,7 +130,9 @@ class _$_ConnectivityState implements _ConnectivityState {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ConnectivityStateToJson(this);
+    return _$$_ConnectivityStateToJson(
+      this,
+    );
   }
 }
 
@@ -142,7 +144,7 @@ abstract class _ConnectivityState implements ConnectivityState {
       _$_ConnectivityState.fromJson;
 
   @override
-  bool get isConnected => throw _privateConstructorUsedError;
+  bool get isConnected;
   @override
   @JsonKey(ignore: true)
   _$$_ConnectivityStateCopyWith<_$_ConnectivityState> get copyWith =>

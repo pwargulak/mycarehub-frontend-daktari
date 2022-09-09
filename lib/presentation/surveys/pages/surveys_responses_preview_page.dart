@@ -14,13 +14,14 @@ import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.da
 import 'package:prohealth360_daktari/presentation/surveys/widgets/survey_preview_response_item.dart';
 
 class SurveyResponsesPreviewPage extends StatelessWidget {
-  final SurveyRespondent? surveyRespondent;
-  final String? surveyName;
   const SurveyResponsesPreviewPage({
-    Key? key,
+    super.key,
     this.surveyRespondent,
     required this.surveyName,
-  }) : super(key: key);
+  });
+
+  final String? surveyName;
+  final SurveyRespondent? surveyRespondent;
 
   @override
   Widget build(BuildContext context) {

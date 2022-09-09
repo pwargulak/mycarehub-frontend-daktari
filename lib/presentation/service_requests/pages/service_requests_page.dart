@@ -10,7 +10,7 @@ import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.da
 import 'package:prohealth360_daktari/presentation/service_requests/widgets/service_requests_widget.dart';
 
 class ServiceRequestsPage extends StatelessWidget {
-  const ServiceRequestsPage({Key? key}) : super(key: key);
+  const ServiceRequestsPage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -17,7 +17,7 @@ import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.da
 import 'package:prohealth360_daktari/presentation/service_requests/widgets/screening_tools_item_widget.dart';
 
 class ScreeningToolsListPage extends StatefulWidget {
-  const ScreeningToolsListPage({Key? key}) : super(key: key);
+  const ScreeningToolsListPage({super.key});
 
   @override
   State<ScreeningToolsListPage> createState() => _ScreeningToolsListPageState();

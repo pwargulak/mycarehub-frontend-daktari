@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 
 class ContentDetailPage extends StatelessWidget {
-  const ContentDetailPage({Key? key, required this.payload}) : super(key: key);
+  const ContentDetailPage({super.key, required this.payload});
   final ContentDetails payload;
 
   @override

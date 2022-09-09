@@ -192,7 +192,9 @@ class _$_PhoneLoginResponse implements _PhoneLoginResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PhoneLoginResponseToJson(this);
+    return _$$_PhoneLoginResponseToJson(
+      this,
+    );
   }
 }
 
@@ -208,13 +210,13 @@ abstract class _PhoneLoginResponse implements PhoneLoginResponse {
 
   @override
   @JsonKey(name: 'code')
-  int? get code => throw _privateConstructorUsedError;
+  int? get code;
   @override
   @JsonKey(name: 'message')
-  String? get message => throw _privateConstructorUsedError;
+  String? get message;
   @override
   @JsonKey(name: 'response')
-  UserResponse? get userResponse => throw _privateConstructorUsedError;
+  UserResponse? get userResponse;
   @override
   @JsonKey(ignore: true)
   _$$_PhoneLoginResponseCopyWith<_$_PhoneLoginResponse> get copyWith =>

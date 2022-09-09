@@ -22,9 +22,9 @@ import 'package:prohealth360_daktari/presentation/service_requests/widgets/surve
 class SurveyServiceRequestResponsesPage extends StatelessWidget {
   final SurveyServiceRequestItem? selectedSurvey;
   const SurveyServiceRequestResponsesPage({
-    Key? key,
+    super.key,
     this.selectedSurvey,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

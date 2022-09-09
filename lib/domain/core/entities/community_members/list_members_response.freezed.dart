@@ -139,7 +139,9 @@ class _$_ListMembersResponse implements _ListMembersResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ListMembersResponseToJson(this);
+    return _$$_ListMembersResponseToJson(
+      this,
+    );
   }
 }
 
@@ -153,7 +155,7 @@ abstract class _ListMembersResponse implements ListMembersResponse {
 
   @override
   @JsonKey(name: 'listMembers')
-  List<Member>? get members => throw _privateConstructorUsedError;
+  List<Member>? get members;
   @override
   @JsonKey(ignore: true)
   _$$_ListMembersResponseCopyWith<_$_ListMembersResponse> get copyWith =>

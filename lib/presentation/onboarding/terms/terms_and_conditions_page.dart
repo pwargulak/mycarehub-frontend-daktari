@@ -18,7 +18,7 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.d
 import 'package:unicons/unicons.dart';
 
 class TermsAndConditionsPage extends StatefulWidget {
-  const TermsAndConditionsPage({Key? key}) : super(key: key);
+  const TermsAndConditionsPage({super.key});
 
   @override
   _TermsAndConditionsPageState createState() => _TermsAndConditionsPageState();
@@ -111,7 +111,7 @@ class _TermsAndConditionsPageState extends State<TermsAndConditionsPage> {
                           borderRadius: BorderRadius.circular(12.0),
                           child: SingleChildScrollView(
                             physics: const AlwaysScrollableScrollPhysics(),
-                            child: Container(
+                            child: DecoratedBox(
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(12),

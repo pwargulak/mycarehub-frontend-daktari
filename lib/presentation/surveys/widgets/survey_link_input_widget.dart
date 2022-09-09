@@ -11,7 +11,7 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings
 
 class SurveyLinkInputWidget extends StatelessWidget {
   const SurveyLinkInputWidget({
-    Key? key,
+    super.key,
     this.color,
     this.enabled,
     this.controller,
@@ -44,7 +44,7 @@ class SurveyLinkInputWidget extends StatelessWidget {
     this.textFieldBackgroundColor,
     this.decoration,
     this.fieldKey,
-  }) : super(key: key);
+  });
 
   final bool? autoFocus;
   final bool? autoValidate;

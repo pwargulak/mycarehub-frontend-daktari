@@ -4,12 +4,12 @@ import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 
 class GeneralWorkstationWidget extends StatelessWidget {
   const GeneralWorkstationWidget({
-    Key? key,
+    super.key,
     required this.title,
     required this.bodyWidget,
     this.onButtonCallback,
     required this.buttonText,
-  }) : super(key: key);
+  });
 
   final String title;
   final String buttonText;

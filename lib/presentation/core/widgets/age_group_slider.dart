@@ -3,13 +3,13 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.d
 
 class AgeGroupSlider extends StatelessWidget {
   const AgeGroupSlider({
-    Key? key,
+    super.key,
     this.data,
     this.onChanged,
     this.divisions = 11,
     this.minimumAge = 14,
     this.maximumAge = 25,
-  }) : super(key: key);
+  });
 
   final RangeValues? data;
   final int divisions;

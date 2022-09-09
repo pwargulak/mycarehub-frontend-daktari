@@ -37,9 +37,9 @@ class MyCareHubProfessionalDatabaseMobile<T extends DatabaseExecutor>
 
   @override
   Future<int> countTableRecords(Tables table) async {
-    final T _db = await this.database;
+    final T db = await this.database;
     final int? count = Sqflite.firstIntValue(
-      await _db.rawQuery('SELECT COUNT(*) FROM ${table.name}'),
+      await db.rawQuery('SELECT COUNT(*) FROM ${table.name}'),
     );
     return Future<int>.value(count);
   }
@@ -65,9 +65,9 @@ class MyCareHubProfessionalDatabaseMobile<T extends DatabaseExecutor>
   /// [retrieveState] get the current states.
   @override
   Future<Map<String, dynamic>> retrieveState(Tables table) async {
-    final Map<String, dynamic> _state = await retrieveWorker(table);
+    final Map<String, dynamic> localState = await retrieveWorker(table);
 
-    final dynamic state = json.decode(_state[table.name] as String);
+    final dynamic state = json.decode(localState[table.name] as String);
 
     return state as Map<String, dynamic>;
   }
@@ -80,23 +80,23 @@ class MyCareHubProfessionalDatabaseMobile<T extends DatabaseExecutor>
     required Map<String, dynamic> data,
     required Tables table,
   }) async {
-    final String _tableName = table.name;
+    final String tableName = table.name;
 
-    final T _db = await this.database;
+    final T db = await this.database;
     final String dataAsString = jsonEncode(data);
-    await _db.rawInsert(
-      'INSERT INTO $_tableName($_tableName) VALUES(?)',
+    await db.rawInsert(
+      'INSERT INTO $tableName($tableName) VALUES(?)',
       <dynamic>[dataAsString],
     );
     return;
   }
 
   Future<Map<String, dynamic>> retrieveWorker(Tables table) async {
-    final T _db = await this.database;
-    final List<Map<dynamic, dynamic>> states = await _db
+    final T db = await this.database;
+    final List<Map<dynamic, dynamic>> states = await db
         .rawQuery('SELECT * FROM ${table.name} ORDER BY id DESC LIMIT 1');
-    final Map<String, dynamic> _state = Map<String, dynamic>.from(states.first);
+    final Map<String, dynamic> state = Map<String, dynamic>.from(states.first);
 
-    return _state;
+    return state;
   }
 }

@@ -29,9 +29,9 @@ Map<String, dynamic> _$$_CreateGroupPayloadToJson(
       'name': instance.name,
       'description': instance.description,
       'ageRange': instance.ageRange?.toJson(),
-      'gender': instance.gender?.map((e) => _$GenderEnumMap[e]).toList(),
+      'gender': instance.gender?.map((e) => _$GenderEnumMap[e]!).toList(),
       'clientType':
-          instance.clientType?.map((e) => _$ClientTypeEnumMap[e]).toList(),
+          instance.clientType?.map((e) => _$ClientTypeEnumMap[e]!).toList(),
       'inviteOnly': instance.inviteOnly,
     };
 

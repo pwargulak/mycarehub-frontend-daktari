@@ -3,9 +3,9 @@ import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class ThreadPage extends StatelessWidget {
   const ThreadPage({
-    Key? key,
+    super.key,
     this.parent,
-  }) : super(key: key);
+  });
 
   final Message? parent;
 

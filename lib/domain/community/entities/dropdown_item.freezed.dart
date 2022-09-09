@@ -140,9 +140,9 @@ abstract class _DropdownItem implements DropdownItem {
       required final String value}) = _$_DropdownItem;
 
   @override
-  String get description => throw _privateConstructorUsedError;
+  String get description;
   @override
-  String get value => throw _privateConstructorUsedError;
+  String get value;
   @override
   @JsonKey(ignore: true)
   _$$_DropdownItemCopyWith<_$_DropdownItem> get copyWith =>

@@ -18,12 +18,12 @@ import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class MyCareHubProApp extends StatelessWidget {
   const MyCareHubProApp({
-    Key? key,
+    super.key,
     required this.store,
     required this.appSetupData,
     required this.streamClient,
     required this.analyticsObserver,
-  }) : super(key: key);
+  });
 
   final AppSetupData appSetupData;
   final Store<AppState> store;

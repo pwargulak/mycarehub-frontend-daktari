@@ -20,9 +20,9 @@ import 'package:prohealth360_daktari/presentation/service_requests/widgets/reach
 
 class AssessmentCardAnswersPage extends StatefulWidget {
   const AssessmentCardAnswersPage({
-    Key? key,
+    super.key,
     required this.payload,
-  }) : super(key: key);
+  });
 
   final Map<String, dynamic> payload;
 
@@ -64,7 +64,7 @@ class _AssessmentCardAnswersPageState extends State<AssessmentCardAnswersPage> {
 
   @override
   Widget build(BuildContext context) {
-    final TargetPlatform _platform = Theme.of(context).platform;
+    final TargetPlatform platform = Theme.of(context).platform;
     final TextEditingController notesInputController = TextEditingController();
     final ToolAssessmentResponse assessmentResponse =
         widget.payload['assessmentResponse'] as ToolAssessmentResponse;
@@ -145,7 +145,7 @@ class _AssessmentCardAnswersPageState extends State<AssessmentCardAnswersPage> {
                   ),
                   mediumVerticalSizedBox,
                   ReachOutWidget(
-                    platform: _platform,
+                    platform: platform,
                     phoneNumber: toolResponse
                             ?.toolAssessmentRequestResponse?.phoneNumber ??
                         '',
@@ -296,8 +296,8 @@ class _AssessmentCardAnswersPageState extends State<AssessmentCardAnswersPage> {
               if (key == noFurtherActionRequiredString) {
                 if (actionsList[key] ?? false) {
                   actionsTaken = <String>[noFurtherActionRequiredString];
-                  actionsList.forEach((String _key, bool value) {
-                    if (_key != key) actionsList[_key] = false;
+                  actionsList.forEach((String key, bool value) {
+                    if (key != key) actionsList[key] = false;
                   });
                 } else {
                   actionsTaken = <String>[];

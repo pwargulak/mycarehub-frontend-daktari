@@ -20,8 +20,8 @@ class ServiceRequestsWidget extends StatefulWidget {
     this.pendingServiceRequestCount,
     this.errorFetchingServiceRequests,
     required this.isLoading,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final bool? errorFetchingServiceRequests;
   final bool isLoading;
@@ -191,7 +191,7 @@ class _ServiceRequestsWidgetState extends State<ServiceRequestsWidget> {
                               AppRoutes.surveyServiceRequestsPage,
                             ),
                           ),
-                      
+
                         // CLIENT PIN RESET REQUESTS
                         if (pinResetCount > 0)
                           ActionCard(

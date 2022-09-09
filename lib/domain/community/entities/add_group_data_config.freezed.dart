@@ -208,13 +208,13 @@ abstract class _AddGroupDataConfig implements AddGroupDataConfig {
       required final List<DropdownItem> clinic}) = _$_AddGroupDataConfig;
 
   @override
-  List<DropdownItem> get band => throw _privateConstructorUsedError;
+  List<DropdownItem> get band;
   @override
-  List<DropdownItem> get age => throw _privateConstructorUsedError;
+  List<DropdownItem> get age;
   @override
-  List<DropdownItem> get location => throw _privateConstructorUsedError;
+  List<DropdownItem> get location;
   @override
-  List<DropdownItem> get clinic => throw _privateConstructorUsedError;
+  List<DropdownItem> get clinic;
   @override
   @JsonKey(ignore: true)
   _$$_AddGroupDataConfigCopyWith<_$_AddGroupDataConfig> get copyWith =>

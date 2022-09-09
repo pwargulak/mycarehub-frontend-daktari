@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 class AnimatedCount extends ImplicitlyAnimatedWidget {
   const AnimatedCount({
     required this.count,
-    required Duration duration,
-    Curve curve = Curves.linear,
-  }) : super(duration: duration, curve: curve);
+    required super.duration,
+    super.curve,
+  });
 
   final int count;
 

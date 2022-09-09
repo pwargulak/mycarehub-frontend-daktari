@@ -59,7 +59,7 @@ class RecordSecurityQuestionResponsesAction extends ReduxAction<AppState> {
       vars.add(response.toJson());
     }
 
-    final Map<String, dynamic> _variables = <String, dynamic>{
+    final Map<String, dynamic> variables = <String, dynamic>{
       'input': vars,
       'flavour': Flavour.pro.name,
     };
@@ -68,7 +68,7 @@ class RecordSecurityQuestionResponsesAction extends ReduxAction<AppState> {
 
     final http.Response result = await client.query(
       recordSecurityQuestionResponsesMutation,
-      _variables,
+      variables,
     );
 
     final Map<String, dynamic> body = client.toMap(result);

@@ -4,11 +4,11 @@ import 'package:flutter_svg/svg.dart';
 
 class ReachOutChannelWidget extends StatelessWidget {
   const ReachOutChannelWidget({
-    Key? key,
+    super.key,
     required this.description,
     required this.iconSvgUrl,
     this.onTapCallback,
-  }) : super(key: key);
+  });
 
   final String description;
   final String iconSvgUrl;

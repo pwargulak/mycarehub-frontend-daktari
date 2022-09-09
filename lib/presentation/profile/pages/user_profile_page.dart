@@ -34,7 +34,7 @@ class UserProfilePage extends StatelessWidget {
             converter: (Store<AppState> store) =>
                 AppStateViewModel.fromStore(store),
             builder: (BuildContext context, AppStateViewModel vm) {
-              final TargetPlatform _platform = Theme.of(context).platform;
+              final TargetPlatform platform = Theme.of(context).platform;
               final StaffState? staffState = vm.state.staffState;
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -127,7 +127,7 @@ class UserProfilePage extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                       smallVerticalSizedBox,
-                      if (_platform != TargetPlatform.iOS)
+                      if (platform != TargetPlatform.iOS)
                         Center(
                           child: Text(
                             '$appVersionString $APPVERSION',

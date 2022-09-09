@@ -132,7 +132,9 @@ class _$_BottomNavigationState implements _BottomNavigationState {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BottomNavigationStateToJson(this);
+    return _$$_BottomNavigationStateToJson(
+      this,
+    );
   }
 }
 
@@ -144,7 +146,7 @@ abstract class _BottomNavigationState implements BottomNavigationState {
       _$_BottomNavigationState.fromJson;
 
   @override
-  int? get currentBottomNavIndex => throw _privateConstructorUsedError;
+  int? get currentBottomNavIndex;
   @override
   @JsonKey(ignore: true)
   _$$_BottomNavigationStateCopyWith<_$_BottomNavigationState> get copyWith =>

@@ -133,7 +133,9 @@ class _$_RolesList implements _RolesList {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RolesListToJson(this);
+    return _$$_RolesListToJson(
+      this,
+    );
   }
 }
 
@@ -146,7 +148,7 @@ abstract class _RolesList implements RolesList {
 
   @override
   @JsonKey(name: 'getUserRoles')
-  List<Role>? get roles => throw _privateConstructorUsedError;
+  List<Role>? get roles;
   @override
   @JsonKey(ignore: true)
   _$$_RolesListCopyWith<_$_RolesList> get copyWith =>

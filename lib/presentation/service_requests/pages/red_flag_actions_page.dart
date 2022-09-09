@@ -17,7 +17,7 @@ import 'package:prohealth360_daktari/presentation/service_requests/widgets/reach
 import 'package:prohealth360_daktari/presentation/service_requests/widgets/red_flag_list_item.dart';
 
 class RedFlagActionsPage extends StatefulWidget {
-  const RedFlagActionsPage({Key? key, this.serviceRequest}) : super(key: key);
+  const RedFlagActionsPage({super.key, this.serviceRequest});
 
   final ServiceRequest? serviceRequest;
 
@@ -35,7 +35,7 @@ class _RedFlagActionsPageState extends State<RedFlagActionsPage> {
   List<String> actionsTaken = <String>[];
   @override
   Widget build(BuildContext context) {
-    final TargetPlatform _platform = Theme.of(context).platform;
+    final TargetPlatform platform = Theme.of(context).platform;
     final TextEditingController actionInputController = TextEditingController();
 
     final String phoneNumber = widget.serviceRequest?.clientPhoneNumber ?? '';
@@ -80,7 +80,7 @@ class _RedFlagActionsPageState extends State<RedFlagActionsPage> {
               RedFlagListItem(serviceRequest: widget.serviceRequest),
               largeVerticalSizedBox,
               ReachOutWidget(
-                platform: _platform,
+                platform: platform,
                 phoneNumber: phoneNumber,
                 clientName: clientName,
                 staffFirstName: staffFirstName,
@@ -231,8 +231,8 @@ class _RedFlagActionsPageState extends State<RedFlagActionsPage> {
               if (key == noFurtherActionRequiredString) {
                 if (actionsList[key] ?? false) {
                   actionsTaken = <String>[noFurtherActionRequiredString];
-                  actionsList.forEach((String _key, bool value) {
-                    if (_key != key) actionsList[_key] = false;
+                  actionsList.forEach((String key, bool value) {
+                    if (key != key) actionsList[key] = false;
                   });
                 } else {
                   actionsTaken = <String>[];

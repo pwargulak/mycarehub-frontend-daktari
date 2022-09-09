@@ -155,7 +155,9 @@ class _$_TermsAndConditionsResponse implements _TermsAndConditionsResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TermsAndConditionsResponseToJson(this);
+    return _$$_TermsAndConditionsResponseToJson(
+      this,
+    );
   }
 }
 
@@ -171,8 +173,7 @@ abstract class _TermsAndConditionsResponse
 
   @override
   @JsonKey(name: 'getCurrentTerms')
-  TermsAndConditions get termsAndConditions =>
-      throw _privateConstructorUsedError;
+  TermsAndConditions get termsAndConditions;
   @override
   @JsonKey(ignore: true)
   _$$_TermsAndConditionsResponseCopyWith<_$_TermsAndConditionsResponse>

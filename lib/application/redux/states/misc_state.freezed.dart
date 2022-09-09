@@ -350,7 +350,9 @@ class _$_MiscState implements _MiscState {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MiscStateToJson(this);
+    return _$$_MiscStateToJson(
+      this,
+    );
   }
 }
 
@@ -370,25 +372,23 @@ abstract class _MiscState implements MiscState {
       _$_MiscState.fromJson;
 
   @override
-  String? get initialRoute => throw _privateConstructorUsedError;
+  String? get initialRoute;
   @override
-  String? get error => throw _privateConstructorUsedError;
+  String? get error;
   @override
-  FAQsContentState? get profileFAQsContentState =>
-      throw _privateConstructorUsedError;
+  FAQsContentState? get profileFAQsContentState;
   @override
-  List<Member>? get communityMembers => throw _privateConstructorUsedError;
+  List<Member>? get communityMembers;
   @override
-  Facility? get selectedFacility => throw _privateConstructorUsedError;
+  Facility? get selectedFacility;
   @override
-  GroupState? get groupState => throw _privateConstructorUsedError;
+  GroupState? get groupState;
   @override
-  SearchUserResponseState? get searchUserResponseState =>
-      throw _privateConstructorUsedError;
+  SearchUserResponseState? get searchUserResponseState;
   @override
-  String? get inactiveTime => throw _privateConstructorUsedError;
+  String? get inactiveTime;
   @override
-  bool? get resumeWithPin => throw _privateConstructorUsedError;
+  bool? get resumeWithPin;
   @override
   @JsonKey(ignore: true)
   _$$_MiscStateCopyWith<_$_MiscState> get copyWith =>

@@ -68,7 +68,7 @@ class PinResetRequestWidget extends StatelessWidget {
                   )
                 ],
               ),
-              Container(
+              DecoratedBox(
                 decoration: BoxDecoration(
                   color: AppColors.primaryColor.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(12),
@@ -153,9 +153,9 @@ class PinResetRequestWidget extends StatelessWidget {
 
 class CccNumberVerifiedWidget extends StatelessWidget {
   const CccNumberVerifiedWidget({
-    Key? key,
+    super.key,
     required this.cccNumberVerified,
-  }) : super(key: key);
+  });
 
   final bool cccNumberVerified;
 

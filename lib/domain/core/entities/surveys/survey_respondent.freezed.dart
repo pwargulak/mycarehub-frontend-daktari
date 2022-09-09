@@ -278,7 +278,9 @@ class _$_SurveyRespondent implements _SurveyRespondent {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SurveyRespondentToJson(this);
+    return _$$_SurveyRespondentToJson(
+      this,
+    );
   }
 }
 
@@ -299,28 +301,28 @@ abstract class _SurveyRespondent implements SurveyRespondent {
 
   @override
   @JsonKey(name: 'id')
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
   @JsonKey(name: 'name')
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
   @JsonKey(name: 'projectID')
-  int? get projectID => throw _privateConstructorUsedError;
+  int? get projectID;
   @override
   @JsonKey(name: 'submitterID')
-  int? get submitterID => throw _privateConstructorUsedError;
+  int? get submitterID;
   @override
   @JsonKey(name: 'formID')
-  String? get formID => throw _privateConstructorUsedError;
+  String? get formID;
   @override
   @JsonKey(name: 'surveyName')
-  String? get surveyName => throw _privateConstructorUsedError;
+  String? get surveyName;
   @override
   @JsonKey(name: 'serviceRequestID')
-  String? get serviceRequestID => throw _privateConstructorUsedError;
+  String? get serviceRequestID;
   @override
   @JsonKey(name: 'phoneNumber')
-  String? get phoneNumber => throw _privateConstructorUsedError;
+  String? get phoneNumber;
   @override
   @JsonKey(ignore: true)
   _$$_SurveyRespondentCopyWith<_$_SurveyRespondent> get copyWith =>

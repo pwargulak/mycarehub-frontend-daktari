@@ -8,6 +8,7 @@ import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.d
 import 'package:prohealth360_daktari/application/redux/actions/service_requests/fetch_survey_service_requests_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/service_requests/survey_service_request_item.dart';
+import 'package:prohealth360_daktari/application/redux/states/service_requests/survey_service_request_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/service_requests/service_requests_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
@@ -17,7 +18,7 @@ import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/widgets/survey_service_request_item_widget.dart';
 
 class SurveyServiceRequestsPage extends StatelessWidget {
-  const SurveyServiceRequestsPage({Key? key}) : super(key: key);
+  const SurveyServiceRequestsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +38,12 @@ class SurveyServiceRequestsPage extends StatelessWidget {
             converter: (Store<AppState> store) =>
                 ServiceRequestsViewModel.fromStore(store),
             builder: (BuildContext context, ServiceRequestsViewModel vm) {
-              final bool error = vm.surveyServiceRequestState?.errorFetchingSurveys ?? false;
-              final bool isLoading =
-                  vm.wait.isWaitingFor(fetchSurveysFlag);
-              final List<SurveyServiceRequestItem?> surveys = vm.surveyServiceRequestState?.surveys ?? <SurveyServiceRequestItem?>[];
+              final SurveyServiceRequestState? surveyState =
+                  vm.surveyServiceRequestState;
+              final bool error = surveyState?.errorFetchingSurveys ?? false;
+              final bool isLoading = vm.wait.isWaitingFor(fetchSurveysFlag);
+              final List<SurveyServiceRequestItem?> surveys =
+                  surveyState?.surveys ?? <SurveyServiceRequestItem?>[];
 
               return SingleChildScrollView(
                 child: Column(

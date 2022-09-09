@@ -232,7 +232,9 @@ class _$_ToolAssessmentResponse implements _ToolAssessmentResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ToolAssessmentResponseToJson(this);
+    return _$$_ToolAssessmentResponseToJson(
+      this,
+    );
   }
 }
 
@@ -253,17 +255,16 @@ abstract class _ToolAssessmentResponse implements ToolAssessmentResponse {
 
   @override
   @JsonKey(name: 'clientName')
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
   @JsonKey(name: 'dateAnswered')
-  String? get date => throw _privateConstructorUsedError;
+  String? get date;
   @override
   @JsonKey(name: 'clientID')
-  String? get clientID => throw _privateConstructorUsedError;
+  String? get clientID;
   @override
   @JsonKey(name: 'getScreeningToolServiceRequestResponses')
-  ToolAssessmentRequestResponse? get toolAssessmentRequestResponse =>
-      throw _privateConstructorUsedError;
+  ToolAssessmentRequestResponse? get toolAssessmentRequestResponse;
   @override
   @JsonKey(ignore: true)
   _$$_ToolAssessmentResponseCopyWith<_$_ToolAssessmentResponse> get copyWith =>

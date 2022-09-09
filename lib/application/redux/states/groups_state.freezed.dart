@@ -205,7 +205,9 @@ class _$_GroupState implements _GroupState {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_GroupStateToJson(this);
+    return _$$_GroupStateToJson(
+      this,
+    );
   }
 }
 
@@ -222,13 +224,13 @@ abstract class _GroupState implements GroupState {
 
   @override
   @JsonKey(name: 'listCommunityMembers')
-  List<GroupMember?>? get groupMembers => throw _privateConstructorUsedError;
+  List<GroupMember?>? get groupMembers;
   @override
-  bool? get isModerator => throw _privateConstructorUsedError;
+  bool? get isModerator;
   @override
-  bool? get isOwner => throw _privateConstructorUsedError;
+  bool? get isOwner;
   @override
-  List<Community?>? get communities => throw _privateConstructorUsedError;
+  List<Community?>? get communities;
   @override
   @JsonKey(ignore: true)
   _$$_GroupStateCopyWith<_$_GroupState> get copyWith =>

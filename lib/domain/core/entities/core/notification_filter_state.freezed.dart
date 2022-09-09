@@ -181,7 +181,9 @@ class _$_NotificationFilterState implements _NotificationFilterState {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_NotificationFilterStateToJson(this);
+    return _$$_NotificationFilterStateToJson(
+      this,
+    );
   }
 }
 
@@ -194,10 +196,9 @@ abstract class _NotificationFilterState implements NotificationFilterState {
       _$_NotificationFilterState.fromJson;
 
   @override
-  List<NotificationFilter?>? get notificationFilters =>
-      throw _privateConstructorUsedError;
+  List<NotificationFilter?>? get notificationFilters;
   @override
-  NotificationFilter? get selectedFilter => throw _privateConstructorUsedError;
+  NotificationFilter? get selectedFilter;
   @override
   @JsonKey(ignore: true)
   _$$_NotificationFilterStateCopyWith<_$_NotificationFilterState>

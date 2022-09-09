@@ -20,7 +20,7 @@ import 'package:shared_themes/constants.dart';
 /// The [CustomTextField] for confirm PIN validates if it matches the
 /// PIN entered in the above [CustomTextField]
 class CreateNewPINPage extends StatefulWidget {
-  const CreateNewPINPage({Key? key}) : super(key: key);
+  const CreateNewPINPage({super.key});
 
   @override
   _CreateNewPINPageState createState() => _CreateNewPINPageState();

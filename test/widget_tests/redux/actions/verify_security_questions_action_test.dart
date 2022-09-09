@@ -115,8 +115,7 @@ void main() {
         ),
       );
 
-      final MockShortGraphQlClient _client =
-          MockShortGraphQlClient.withResponse(
+      final MockShortGraphQlClient client = MockShortGraphQlClient.withResponse(
         'idToken',
         'endpoint',
         Response(
@@ -138,7 +137,7 @@ void main() {
                 await storeTester.dispatch(
                   VerifySecurityQuestionAction(
                     verifySecurityQuestionsEndpoint: '',
-                    client: _client,
+                    client: client,
                   ),
                 );
               },

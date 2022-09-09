@@ -176,7 +176,9 @@ class _$_ServiceRequestMeta implements _ServiceRequestMeta {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ServiceRequestMetaToJson(this);
+    return _$$_ServiceRequestMetaToJson(
+      this,
+    );
   }
 }
 
@@ -191,13 +193,13 @@ abstract class _ServiceRequestMeta implements ServiceRequestMeta {
 
   @override
   @JsonKey(name: 'ccc_number')
-  String? get cccNumber => throw _privateConstructorUsedError;
+  String? get cccNumber;
   @override
   @JsonKey(name: 'is_ccc_number_valid')
-  bool? get isCccNumberValid => throw _privateConstructorUsedError;
+  bool? get isCccNumberValid;
   @override
   @JsonKey(name: 'note')
-  String? get note => throw _privateConstructorUsedError;
+  String? get note;
   @override
   @JsonKey(ignore: true)
   _$$_ServiceRequestMetaCopyWith<_$_ServiceRequestMeta> get copyWith =>

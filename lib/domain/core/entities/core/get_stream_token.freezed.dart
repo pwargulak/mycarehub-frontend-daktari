@@ -131,7 +131,9 @@ class _$_GetStreamToken implements _GetStreamToken {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_GetStreamTokenToJson(this);
+    return _$$_GetStreamTokenToJson(
+      this,
+    );
   }
 }
 
@@ -145,7 +147,7 @@ abstract class _GetStreamToken implements GetStreamToken {
 
   @override
   @JsonKey(name: 'getStreamToken')
-  String? get getStreamToken => throw _privateConstructorUsedError;
+  String? get getStreamToken;
   @override
   @JsonKey(ignore: true)
   _$$_GetStreamTokenCopyWith<_$_GetStreamToken> get copyWith =>

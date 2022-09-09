@@ -12,12 +12,12 @@ import 'package:prohealth360_daktari/presentation/router/routes.dart';
 /// Contains a set of actions to perform for an active staff member
 class ActiveStaffActions extends StatelessWidget {
   const ActiveStaffActions({
-    Key? key,
+    super.key,
     required this.names,
     required this.isSendLoading,
     required this.isResendLoading,
     required this.searchUserResponse,
-  }) : super(key: key);
+  });
 
   /// Used to indicate a resend
   final bool isResendLoading;
@@ -113,7 +113,7 @@ class ActiveStaffActions extends StatelessWidget {
 void staffSearchAction({
   required BuildContext context,
   required SearchUserResponse searchUserResponse,
-  final bool reinvite = false,
+  bool reinvite = false,
 }) {
   StoreProvider.dispatch(
     context,

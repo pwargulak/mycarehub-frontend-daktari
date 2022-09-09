@@ -145,7 +145,9 @@ class _$_InvitedCommunities implements _InvitedCommunities {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_InvitedCommunitiesToJson(this);
+    return _$$_InvitedCommunitiesToJson(
+      this,
+    );
   }
 }
 
@@ -159,7 +161,7 @@ abstract class _InvitedCommunities implements InvitedCommunities {
 
   @override
   @JsonKey(name: 'invitedCommunities')
-  List<Community>? get invitedCommunities => throw _privateConstructorUsedError;
+  List<Community>? get invitedCommunities;
   @override
   @JsonKey(ignore: true)
   _$$_InvitedCommunitiesCopyWith<_$_InvitedCommunities> get copyWith =>

@@ -32,7 +32,7 @@ Map<String, dynamic> _$$_RegisterClientPayloadToJson(
     <String, dynamic>{
       'facility': instance.facility,
       'clientTypes':
-          instance.clientTypes?.map((e) => _$ClientTypeEnumMap[e]).toList(),
+          instance.clientTypes?.map((e) => _$ClientTypeEnumMap[e]!).toList(),
       'clientName': instance.clientName,
       'gender': _$GenderEnumMap[instance.gender],
       'dateOfBirth': dobToJson(instance.dateOfBirth),

@@ -18,11 +18,11 @@ import 'package:sms_autofill/sms_autofill.dart';
 
 class VerifyOTPWidget extends StatefulWidget {
   const VerifyOTPWidget({
-    Key? key,
+    super.key,
     required this.phoneNumber,
     required this.loader,
     required this.verifyPhoneViewModel,
-  }) : super(key: key);
+  });
 
   final String phoneNumber;
   final Widget loader;

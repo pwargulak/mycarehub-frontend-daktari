@@ -212,7 +212,9 @@ class _$_ClientConfigurationPayload implements _ClientConfigurationPayload {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ClientConfigurationPayloadToJson(this);
+    return _$$_ClientConfigurationPayloadToJson(
+      this,
+    );
   }
 }
 
@@ -229,13 +231,13 @@ abstract class _ClientConfigurationPayload
 
   @override
   @JsonKey(name: 'clientTypes')
-  List<ClientType>? get clientTypes => throw _privateConstructorUsedError;
+  List<ClientType>? get clientTypes;
   @override
   @JsonKey(name: 'ageRange')
-  AgeRange? get ageRange => throw _privateConstructorUsedError;
+  AgeRange? get ageRange;
   @override
   @JsonKey(name: 'gender')
-  List<Gender>? get gender => throw _privateConstructorUsedError;
+  List<Gender>? get gender;
   @override
   @JsonKey(ignore: true)
   _$$_ClientConfigurationPayloadCopyWith<_$_ClientConfigurationPayload>

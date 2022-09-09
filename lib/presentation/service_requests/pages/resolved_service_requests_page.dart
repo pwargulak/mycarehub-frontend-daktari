@@ -10,7 +10,7 @@ import 'package:prohealth360_daktari/presentation/engagement/home/widgets/action
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 
 class ResolvedServiceRequestsPage extends StatelessWidget {
-  const ResolvedServiceRequestsPage({Key? key}) : super(key: key);
+  const ResolvedServiceRequestsPage({super.key});
 
   @override
   Widget build(BuildContext context) {

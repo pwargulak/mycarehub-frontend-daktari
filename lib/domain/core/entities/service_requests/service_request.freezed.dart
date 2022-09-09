@@ -439,7 +439,9 @@ class _$_ServiceRequest implements _ServiceRequest {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ServiceRequestToJson(this);
+    return _$$_ServiceRequestToJson(
+      this,
+    );
   }
 }
 
@@ -481,50 +483,49 @@ abstract class _ServiceRequest implements ServiceRequest {
 
   @override
   @JsonKey(name: 'ID')
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
   @JsonKey(name: 'Request')
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
   @JsonKey(name: 'RequestType')
-  ServiceRequestType? get serviceRequestType =>
-      throw _privateConstructorUsedError;
+  ServiceRequestType? get serviceRequestType;
   @override
   @JsonKey(name: 'ClientID')
-  String? get clientId => throw _privateConstructorUsedError;
+  String? get clientId;
   @override
   @JsonKey(name: 'ClientName')
-  String? get clientName => throw _privateConstructorUsedError;
+  String? get clientName;
   @override
   @JsonKey(name: 'ClientContact')
-  String? get clientPhoneNumber => throw _privateConstructorUsedError;
+  String? get clientPhoneNumber;
   @override
   @JsonKey(name: 'Status')
-  RequestStatus? get status => throw _privateConstructorUsedError;
+  RequestStatus? get status;
   @override
   @JsonKey(name: 'ResolvedAt')
-  String? get resolvedTime => throw _privateConstructorUsedError;
+  String? get resolvedTime;
   @override
   @JsonKey(name: 'ResolvedBy')
-  String? get resolvedBy => throw _privateConstructorUsedError;
+  String? get resolvedBy;
   @override
   @JsonKey(name: 'ResolvedByName')
-  String? get resolvedByName => throw _privateConstructorUsedError;
+  String? get resolvedByName;
   @override
   @JsonKey(name: 'CreatedAt')
-  String? get createdAt => throw _privateConstructorUsedError;
+  String? get createdAt;
   @override
   @JsonKey(name: 'Meta')
-  ServiceRequestMeta? get meta => throw _privateConstructorUsedError;
+  ServiceRequestMeta? get meta;
   @override
   @JsonKey(name: 'StaffID')
-  String? get staffId => throw _privateConstructorUsedError;
+  String? get staffId;
   @override
   @JsonKey(name: 'StaffName')
-  String? get staffName => throw _privateConstructorUsedError;
+  String? get staffName;
   @override
   @JsonKey(name: 'StaffContact')
-  String? get staffPhoneNumber => throw _privateConstructorUsedError;
+  String? get staffPhoneNumber;
   @override
   @JsonKey(ignore: true)
   _$$_ServiceRequestCopyWith<_$_ServiceRequest> get copyWith =>

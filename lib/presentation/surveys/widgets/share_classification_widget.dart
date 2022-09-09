@@ -7,7 +7,7 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart'
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 
 class ShareClassificationWidget extends StatelessWidget {
-  const ShareClassificationWidget({Key? key}) : super(key: key);
+  const ShareClassificationWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

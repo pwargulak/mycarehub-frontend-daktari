@@ -178,7 +178,9 @@ class _$_SurveyServiceRequestItem implements _SurveyServiceRequestItem {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SurveyServiceRequestItemToJson(this);
+    return _$$_SurveyServiceRequestItemToJson(
+      this,
+    );
   }
 }
 
@@ -194,13 +196,13 @@ abstract class _SurveyServiceRequestItem implements SurveyServiceRequestItem {
 
   @override
   @JsonKey(name: 'projectID')
-  int? get projectId => throw _privateConstructorUsedError;
+  int? get projectId;
   @override
   @JsonKey(name: 'formID')
-  String? get xmlFormId => throw _privateConstructorUsedError;
+  String? get xmlFormId;
   @override
   @JsonKey(name: 'title')
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
   @JsonKey(ignore: true)
   _$$_SurveyServiceRequestItemCopyWith<_$_SurveyServiceRequestItem>

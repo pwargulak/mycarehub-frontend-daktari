@@ -201,7 +201,9 @@ class _$_PendingServiceRequestCount implements _PendingServiceRequestCount {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PendingServiceRequestCountToJson(this);
+    return _$$_PendingServiceRequestCountToJson(
+      this,
+    );
   }
 }
 
@@ -219,12 +221,10 @@ abstract class _PendingServiceRequestCount
 
   @override
   @JsonKey(name: 'clientsServiceRequestCount')
-  ServiceRequestTypeCount? get clientsServiceRequestCount =>
-      throw _privateConstructorUsedError;
+  ServiceRequestTypeCount? get clientsServiceRequestCount;
   @override
   @JsonKey(name: 'staffServiceRequestCount')
-  ServiceRequestTypeCount? get staffServiceRequestCount =>
-      throw _privateConstructorUsedError;
+  ServiceRequestTypeCount? get staffServiceRequestCount;
   @override
   @JsonKey(ignore: true)
   _$$_PendingServiceRequestCountCopyWith<_$_PendingServiceRequestCount>

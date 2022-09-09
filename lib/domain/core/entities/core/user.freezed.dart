@@ -699,7 +699,9 @@ class _$_User implements _User {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserToJson(this);
+    return _$$_UserToJson(
+      this,
+    );
   }
 }
 
@@ -757,79 +759,79 @@ abstract class _User implements User {
 
   @override
   @JsonKey(name: 'userID')
-  String? get userId => throw _privateConstructorUsedError;
+  String? get userId;
   @override
   @JsonKey(name: 'userName')
-  String? get username => throw _privateConstructorUsedError;
+  String? get username;
   @override // This is the nickname
   @JsonKey(name: 'name')
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
   @JsonKey(name: 'firstName')
-  String? get firstName => throw _privateConstructorUsedError;
+  String? get firstName;
   @override
   @JsonKey(name: 'lastName')
-  String? get lastName => throw _privateConstructorUsedError;
+  String? get lastName;
   @override
   @JsonKey(name: 'userType')
-  String? get userType => throw _privateConstructorUsedError;
+  String? get userType;
   @override
   @JsonKey(name: 'gender', fromJson: genderFromJson, toJson: genderToJson)
-  Gender? get gender => throw _privateConstructorUsedError;
+  Gender? get gender;
   @override
   @JsonKey(name: 'active', defaultValue: false)
-  bool? get active => throw _privateConstructorUsedError;
+  bool? get active;
   @override
   @JsonKey(name: 'primaryContact')
-  Contact? get primaryContact => throw _privateConstructorUsedError;
+  Contact? get primaryContact;
   @override
   @JsonKey(name: 'lastSuccessfulLogin')
-  String? get lastSuccessfulLogin => throw _privateConstructorUsedError;
+  String? get lastSuccessfulLogin;
   @override
   @JsonKey(name: 'lastFailedLogin')
-  String? get lastFailedLogin => throw _privateConstructorUsedError;
+  String? get lastFailedLogin;
   @override
   @JsonKey(name: 'failedLoginCount')
-  int? get failedLoginCount => throw _privateConstructorUsedError;
+  int? get failedLoginCount;
   @override
   @JsonKey(name: 'nextAllowedLogin')
-  String? get nextAllowedLogin => throw _privateConstructorUsedError;
+  String? get nextAllowedLogin;
   @override
   @JsonKey(name: 'pinChangeRequired')
-  bool? get pinChangeRequired => throw _privateConstructorUsedError;
+  bool? get pinChangeRequired;
   @override
   @JsonKey(name: 'hasSetPin')
-  bool? get hasSetPin => throw _privateConstructorUsedError;
+  bool? get hasSetPin;
   @override
   @JsonKey(name: 'isPhoneVerified')
-  bool? get isPhoneVerified => throw _privateConstructorUsedError;
+  bool? get isPhoneVerified;
   @override
   @JsonKey(name: 'hasSetSecurityQuestions')
-  bool? get hasSetSecurityQuestions => throw _privateConstructorUsedError;
+  bool? get hasSetSecurityQuestions;
   @override
   @JsonKey(name: 'termsAccepted')
-  bool? get termsAccepted => throw _privateConstructorUsedError;
+  bool? get termsAccepted;
   @override
   @JsonKey(name: 'acceptedTermsID')
-  int? get acceptedTermsID => throw _privateConstructorUsedError;
+  int? get acceptedTermsID;
   @override
   @JsonKey(name: 'suspended')
-  bool? get suspended => throw _privateConstructorUsedError;
+  bool? get suspended;
   @override
   @JsonKey(name: 'avatar')
-  String? get avatar => throw _privateConstructorUsedError;
+  String? get avatar;
   @override
   @JsonKey(name: 'roles')
-  List<Role>? get roles => throw _privateConstructorUsedError;
+  List<Role>? get roles;
   @override
 
   /// Used to indicate that the user's PIN has been reset by someone else
   ///
   /// This is used to trigger the change PIN workflow
   @JsonKey(name: 'pinUpdateRequired', defaultValue: false)
-  bool? get pinUpdateRequired => throw _privateConstructorUsedError;
+  bool? get pinUpdateRequired;
   @override
-  String? get chatRoomToken => throw _privateConstructorUsedError;
+  String? get chatRoomToken;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

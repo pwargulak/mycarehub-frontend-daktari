@@ -179,7 +179,9 @@ class _$_AssessmentQuestionResponse implements _AssessmentQuestionResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AssessmentQuestionResponseToJson(this);
+    return _$$_AssessmentQuestionResponseToJson(
+      this,
+    );
   }
 }
 
@@ -196,13 +198,13 @@ abstract class _AssessmentQuestionResponse
 
   @override
   @JsonKey(name: 'toolIndex')
-  int? get index => throw _privateConstructorUsedError;
+  int? get index;
   @override
   @JsonKey(name: 'tool')
-  String? get tool => throw _privateConstructorUsedError;
+  String? get tool;
   @override
   @JsonKey(name: 'response')
-  String? get response => throw _privateConstructorUsedError;
+  String? get response;
   @override
   @JsonKey(ignore: true)
   _$$_AssessmentQuestionResponseCopyWith<_$_AssessmentQuestionResponse>

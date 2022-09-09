@@ -175,7 +175,9 @@ class _$_FlaggedMessageUser implements _FlaggedMessageUser {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FlaggedMessageUserToJson(this);
+    return _$$_FlaggedMessageUserToJson(
+      this,
+    );
   }
 }
 
@@ -191,13 +193,13 @@ abstract class _FlaggedMessageUser implements FlaggedMessageUser {
 
   @override
   @JsonKey(name: 'userID')
-  String? get userID => throw _privateConstructorUsedError;
+  String? get userID;
   @override
   @JsonKey(name: 'name')
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
   @JsonKey(name: 'username')
-  String? get username => throw _privateConstructorUsedError;
+  String? get username;
   @override
   @JsonKey(ignore: true)
   _$$_FlaggedMessageUserCopyWith<_$_FlaggedMessageUser> get copyWith =>

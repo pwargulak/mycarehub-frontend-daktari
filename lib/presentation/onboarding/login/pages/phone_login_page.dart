@@ -39,7 +39,7 @@ class _PhoneLoginPageState extends State<PhoneLoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    final TargetPlatform _platform = Theme.of(context).platform;
+    final TargetPlatform platform = Theme.of(context).platform;
     final double sizedBoxHeight = MediaQuery.of(context).size.width / 8;
     // A small indicator to help us identify whether the app is running in
     // staging or testing
@@ -192,7 +192,7 @@ class _PhoneLoginPageState extends State<PhoneLoginPage> {
                       ),
                     ),
                     smallVerticalSizedBox,
-                    if (_platform != TargetPlatform.iOS)
+                    if (platform != TargetPlatform.iOS)
                       Padding(
                         padding: const EdgeInsets.only(bottom: 8.0),
                         child: Center(

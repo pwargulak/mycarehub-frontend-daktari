@@ -18,8 +18,7 @@ import 'package:prohealth360_daktari/presentation/service_requests/widgets/reach
 import 'package:prohealth360_daktari/presentation/surveys/widgets/surveys_card.dart';
 
 class SurveyServiceRequestActionsPage extends StatefulWidget {
-  const SurveyServiceRequestActionsPage({Key? key, this.surveyRespondent})
-      : super(key: key);
+  const SurveyServiceRequestActionsPage({super.key, this.surveyRespondent});
 
   final SurveyRespondent? surveyRespondent;
 
@@ -39,7 +38,7 @@ class _SurveyServiceRequestActionsPageState
   List<String> actionsTaken = <String>[];
   @override
   Widget build(BuildContext context) {
-    final TargetPlatform _platform = Theme.of(context).platform;
+    final TargetPlatform platform = Theme.of(context).platform;
     final TextEditingController actionInputController = TextEditingController();
 
     final String phoneNumber = widget.surveyRespondent?.phoneNumber ?? '';
@@ -88,7 +87,7 @@ class _SurveyServiceRequestActionsPageState
               ),
               largeVerticalSizedBox,
               ReachOutWidget(
-                platform: _platform,
+                platform: platform,
                 phoneNumber: phoneNumber,
                 clientName: clientName,
                 staffFirstName: staffFirstName,
@@ -241,8 +240,8 @@ class _SurveyServiceRequestActionsPageState
               if (key == noFurtherActionRequiredString) {
                 if (actionsList[key] ?? false) {
                   actionsTaken = <String>[noFurtherActionRequiredString];
-                  actionsList.forEach((String _key, bool value) {
-                    if (_key != key) actionsList[_key] = false;
+                  actionsList.forEach((String key, bool value) {
+                    if (key != key) actionsList[key] = false;
                   });
                 } else {
                   actionsTaken = <String>[];

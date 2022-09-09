@@ -141,7 +141,9 @@ class _$_SearchedClients implements _SearchedClients {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SearchedClientsToJson(this);
+    return _$$_SearchedClientsToJson(
+      this,
+    );
   }
 }
 
@@ -155,7 +157,7 @@ abstract class _SearchedClients implements SearchedClients {
 
   @override
   @JsonKey(name: 'searchClientUser')
-  List<SearchUserResponse>? get clients => throw _privateConstructorUsedError;
+  List<SearchUserResponse>? get clients;
   @override
   @JsonKey(ignore: true)
   _$$_SearchedClientsCopyWith<_$_SearchedClients> get copyWith =>

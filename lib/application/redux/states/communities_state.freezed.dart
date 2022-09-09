@@ -171,7 +171,9 @@ class _$_CommunitiesState implements _CommunitiesState {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CommunitiesStateToJson(this);
+    return _$$_CommunitiesStateToJson(
+      this,
+    );
   }
 }
 
@@ -184,10 +186,9 @@ abstract class _CommunitiesState implements CommunitiesState {
       _$_CommunitiesState.fromJson;
 
   @override // invited communities
-  List<Community?>? get invitedCommunities =>
-      throw _privateConstructorUsedError;
+  List<Community?>? get invitedCommunities;
   @override // flagged messages
-  List<Message?>? get flaggedMessages => throw _privateConstructorUsedError;
+  List<Message?>? get flaggedMessages;
   @override
   @JsonKey(ignore: true)
   _$$_CommunitiesStateCopyWith<_$_CommunitiesState> get copyWith =>

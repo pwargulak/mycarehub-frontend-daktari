@@ -299,7 +299,9 @@ class _$_RegisterStaffPayload implements _RegisterStaffPayload {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RegisterStaffPayloadToJson(this);
+    return _$$_RegisterStaffPayloadToJson(
+      this,
+    );
   }
 }
 
@@ -329,31 +331,31 @@ abstract class _RegisterStaffPayload implements RegisterStaffPayload {
 
   @override
   @JsonKey(name: 'facility')
-  String? get facility => throw _privateConstructorUsedError;
+  String? get facility;
   @override
   @JsonKey(name: 'staffName')
-  String? get staffName => throw _privateConstructorUsedError;
+  String? get staffName;
   @override
   @JsonKey(name: 'gender', fromJson: genderFromJson)
-  Gender? get gender => throw _privateConstructorUsedError;
+  Gender? get gender;
   @override
   @JsonKey(name: 'phoneNumber')
-  String? get phoneNumber => throw _privateConstructorUsedError;
+  String? get phoneNumber;
   @override
   @JsonKey(name: 'idNumber')
-  String? get idNumber => throw _privateConstructorUsedError;
+  String? get idNumber;
   @override
   @JsonKey(name: 'staffNumber')
-  String? get staffNumber => throw _privateConstructorUsedError;
+  String? get staffNumber;
   @override
   @JsonKey(name: 'staffRoles', fromJson: roleValueFromJson)
-  RoleValue? get role => throw _privateConstructorUsedError;
+  RoleValue? get role;
   @override
   @JsonKey(name: 'inviteStaff')
-  bool? get inviteStaff => throw _privateConstructorUsedError;
+  bool? get inviteStaff;
   @override
   @JsonKey(name: 'dateOfBirth', toJson: dobToJson)
-  DateTime? get dateOfBirth => throw _privateConstructorUsedError;
+  DateTime? get dateOfBirth;
   @override
   @JsonKey(ignore: true)
   _$$_RegisterStaffPayloadCopyWith<_$_RegisterStaffPayload> get copyWith =>

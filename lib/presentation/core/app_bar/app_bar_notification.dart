@@ -10,7 +10,7 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.d
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 
 class AppBarNotification extends StatelessWidget {
-  const AppBarNotification({Key? key}) : super(key: key);
+  const AppBarNotification({super.key});
 
   @override
   Widget build(BuildContext context) {

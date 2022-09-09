@@ -12,7 +12,7 @@ import 'package:prohealth360_daktari/presentation/onboarding/login/widgets/error
 import 'package:prohealth360_daktari/presentation/onboarding/verify_phone/widgets/verify_otp_widget.dart';
 
 class VerifyPhonePage extends StatelessWidget {
-  const VerifyPhonePage({Key? key}) : super(key: key);
+  const VerifyPhonePage({super.key});
 
   @override
   Widget build(BuildContext context) {

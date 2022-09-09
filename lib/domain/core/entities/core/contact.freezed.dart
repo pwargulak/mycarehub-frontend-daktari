@@ -209,7 +209,9 @@ class _$_Contact implements _Contact {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ContactToJson(this);
+    return _$$_ContactToJson(
+      this,
+    );
   }
 }
 
@@ -226,19 +228,19 @@ abstract class _Contact implements Contact {
 
   @override
   @JsonKey(name: 'id')
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
   @JsonKey(name: 'contactType')
-  ContactType? get contactType => throw _privateConstructorUsedError;
+  ContactType? get contactType;
   @override
   @JsonKey(name: 'contactValue')
-  String? get value => throw _privateConstructorUsedError;
+  String? get value;
   @override
   @JsonKey(name: 'active', defaultValue: false)
-  bool? get active => throw _privateConstructorUsedError;
+  bool? get active;
   @override
   @JsonKey(name: 'optedIn', defaultValue: false)
-  bool? get optedIn => throw _privateConstructorUsedError;
+  bool? get optedIn;
   @override
   @JsonKey(ignore: true)
   _$$_ContactCopyWith<_$_Contact> get copyWith =>

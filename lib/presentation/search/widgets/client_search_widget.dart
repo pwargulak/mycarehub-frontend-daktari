@@ -142,7 +142,7 @@ class ClientSearchWidget extends StatelessWidget {
 void clientSearchAction({
   required BuildContext context,
   required SearchUserResponse selectedSearchUserResponse,
-  final bool reinvite = false,
+  bool reinvite = false,
 }) {
   final bool isActive = selectedSearchUserResponse.isActive ?? true;
   final String name = selectedSearchUserResponse.user?.name ?? 'the client';

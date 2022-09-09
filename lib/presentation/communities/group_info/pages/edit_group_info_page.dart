@@ -18,8 +18,8 @@ import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class EditGroupInfoPage extends StatefulWidget {
   const EditGroupInfoPage({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<EditGroupInfoPage> createState() => _EditGroupInfoPageState();

@@ -430,7 +430,9 @@ class _$_State implements _State {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_StateToJson(this);
+    return _$$_StateToJson(
+      this,
+    );
   }
 }
 
@@ -450,29 +452,26 @@ abstract class _State implements AppState {
   factory _State.fromJson(Map<String, dynamic> json) = _$_State.fromJson;
 
   @override
-  AuthCredentials? get credentials => throw _privateConstructorUsedError;
+  AuthCredentials? get credentials;
   @override
-  HomeState? get homeState => throw _privateConstructorUsedError;
+  HomeState? get homeState;
   @override
-  OnboardingState? get onboardingState => throw _privateConstructorUsedError;
+  OnboardingState? get onboardingState;
   @override
-  BottomNavigationState? get bottomNavigationState =>
-      throw _privateConstructorUsedError;
+  BottomNavigationState? get bottomNavigationState;
   @override
-  MiscState? get miscState => throw _privateConstructorUsedError;
+  MiscState? get miscState;
   @override
-  StaffState? get staffState => throw _privateConstructorUsedError;
+  StaffState? get staffState;
   @override
-  SurveyState? get surveyState => throw _privateConstructorUsedError;
+  SurveyState? get surveyState;
   @override
-  ServiceRequestState? get serviceRequestState =>
-      throw _privateConstructorUsedError;
+  ServiceRequestState? get serviceRequestState;
   @override
-  ConnectivityState? get connectivityState =>
-      throw _privateConstructorUsedError;
+  ConnectivityState? get connectivityState;
   @override
   @JsonKey(ignore: true)
-  Wait? get wait => throw _privateConstructorUsedError;
+  Wait? get wait;
   @override
   @JsonKey(ignore: true)
   _$$_StateCopyWith<_$_State> get copyWith =>

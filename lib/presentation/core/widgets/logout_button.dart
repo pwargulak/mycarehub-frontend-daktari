@@ -13,7 +13,7 @@ import 'package:shared_themes/colors.dart';
 // Project imports:
 
 class LogoutButton extends StatelessWidget {
-  const LogoutButton({Key? key, this.addBorder = false}) : super(key: key);
+  const LogoutButton({super.key, this.addBorder = false});
 
   final bool addBorder;
 

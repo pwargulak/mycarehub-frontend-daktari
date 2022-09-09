@@ -21,7 +21,7 @@ import 'package:prohealth360_daktari/presentation/service_requests/widgets/ident
 import 'package:prohealth360_daktari/presentation/service_requests/widgets/pin_reset_request_widget.dart';
 
 class PinResetRequestsPage extends StatefulWidget {
-  const PinResetRequestsPage({Key? key}) : super(key: key);
+  const PinResetRequestsPage({super.key});
 
   @override
   State<PinResetRequestsPage> createState() => _PinResetRequestsPageState();

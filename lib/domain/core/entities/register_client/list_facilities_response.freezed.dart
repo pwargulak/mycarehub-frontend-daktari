@@ -142,7 +142,9 @@ class _$_ListFacilitiesResponse implements _ListFacilitiesResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ListFacilitiesResponseToJson(this);
+    return _$$_ListFacilitiesResponseToJson(
+      this,
+    );
   }
 }
 
@@ -156,7 +158,7 @@ abstract class _ListFacilitiesResponse implements ListFacilitiesResponse {
 
   @override
   @JsonKey(name: 'Facilities')
-  List<Facility>? get facilities => throw _privateConstructorUsedError;
+  List<Facility>? get facilities;
   @override
   @JsonKey(ignore: true)
   _$$_ListFacilitiesResponseCopyWith<_$_ListFacilitiesResponse> get copyWith =>

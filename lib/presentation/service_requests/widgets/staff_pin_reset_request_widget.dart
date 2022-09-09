@@ -58,7 +58,7 @@ class StaffPinResetRequestWidget extends StatelessWidget {
                   )
                 ],
               ),
-              Container(
+              DecoratedBox(
                 decoration: BoxDecoration(
                   color: AppColors.primaryColor.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(12),

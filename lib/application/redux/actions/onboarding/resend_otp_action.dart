@@ -49,11 +49,11 @@ class ResendOTPAction extends ReduxAction<AppState> {
 
       //Incase of send/resend otp error it is cleared
       dispatch(UpdateOnboardingStateAction(failedToSendOTP: false));
-      final IGraphQlClient _client = AppWrapperBase.of(context)!.graphQLClient;
+      final IGraphQlClient client = AppWrapperBase.of(context)!.graphQLClient;
       final String sendOTPEndpoint =
           AppWrapperBase.of(context)!.customContext!.retryResendOtpEndpoint;
 
-      final Response httpResponse = await _client.callRESTAPI(
+      final Response httpResponse = await client.callRESTAPI(
         endpoint: sendOTPEndpoint,
         method: httpPOST,
         variables: variables,

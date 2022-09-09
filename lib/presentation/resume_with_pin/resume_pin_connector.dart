@@ -9,7 +9,7 @@ import 'package:prohealth360_daktari/presentation/resume_with_pin/resume_pin_vie
 import 'package:prohealth360_daktari/presentation/resume_with_pin/resume_with_pin_page.dart';
 
 class ResumePinConnector extends StatelessWidget {
-  const ResumePinConnector({Key? key}) : super(key: key);
+  const ResumePinConnector({super.key});
 
   @override
   Widget build(BuildContext context) {

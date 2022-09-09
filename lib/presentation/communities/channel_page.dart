@@ -6,7 +6,7 @@ import 'package:prohealth360_daktari/presentation/communities/group_info/pages/g
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class ChannelPage extends StatelessWidget {
-  const ChannelPage({Key? key}) : super(key: key);
+  const ChannelPage({super.key});
 
   @override
   Widget build(BuildContext context) {

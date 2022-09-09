@@ -11,9 +11,9 @@ import 'package:prohealth360_daktari/presentation/notifications/widgets/custom_c
 
 class NotificationsFilterWidget extends StatelessWidget {
   const NotificationsFilterWidget({
-    Key? key,
+    super.key,
     required this.vm,
-  }) : super(key: key);
+  });
 
   final NotificationsViewModel vm;
 

@@ -143,7 +143,9 @@ class _$_HealthDiaryEdge implements _HealthDiaryEdge {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_HealthDiaryEdgeToJson(this);
+    return _$$_HealthDiaryEdgeToJson(
+      this,
+    );
   }
 }
 
@@ -158,8 +160,7 @@ abstract class _HealthDiaryEdge implements HealthDiaryEdge {
 
   @override
   @JsonKey(name: 'getSharedHealthDiaryEntries')
-  List<HealthDiaryEntry> get healthDiaryEntry =>
-      throw _privateConstructorUsedError;
+  List<HealthDiaryEntry> get healthDiaryEntry;
   @override
   @JsonKey(ignore: true)
   _$$_HealthDiaryEdgeCopyWith<_$_HealthDiaryEdge> get copyWith =>
@@ -366,7 +367,9 @@ class _$_HealthDiaryEntry implements _HealthDiaryEntry {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_HealthDiaryEntryToJson(this);
+    return _$$_HealthDiaryEntryToJson(
+      this,
+    );
   }
 }
 
@@ -384,19 +387,19 @@ abstract class _HealthDiaryEntry implements HealthDiaryEntry {
 
   @override
   @JsonKey(name: 'id')
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
   @JsonKey(name: 'mood')
-  String? get mood => throw _privateConstructorUsedError;
+  String? get mood;
   @override
   @JsonKey(name: 'note')
-  String? get note => throw _privateConstructorUsedError;
+  String? get note;
   @override
   @JsonKey(name: 'sharedAt')
-  String? get sharedAt => throw _privateConstructorUsedError;
+  String? get sharedAt;
   @override
   @JsonKey(name: 'active', defaultValue: false)
-  bool? get active => throw _privateConstructorUsedError;
+  bool? get active;
   @override
   @JsonKey(ignore: true)
   _$$_HealthDiaryEntryCopyWith<_$_HealthDiaryEntry> get copyWith =>

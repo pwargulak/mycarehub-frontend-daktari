@@ -5,9 +5,9 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart'
 
 class ConsentStatusWidget extends StatelessWidget {
   const ConsentStatusWidget({
-    Key? key,
+    super.key,
     this.isConsented = true,
-  }) : super(key: key);
+  });
 
   final bool isConsented;
 
@@ -20,9 +20,8 @@ class ConsentStatusWidget extends StatelessWidget {
           height: 24,
           padding: const EdgeInsets.all(2.0),
           decoration: BoxDecoration(
-            color: isConsented
-                ? AppColors.malachiteColor
-                : AppColors.warningColor,
+            color:
+                isConsented ? AppColors.malachiteColor : AppColors.warningColor,
             shape: BoxShape.circle,
           ),
           child: isConsented

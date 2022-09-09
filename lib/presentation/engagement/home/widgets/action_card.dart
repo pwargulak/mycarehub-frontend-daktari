@@ -16,13 +16,13 @@ class ActionCard extends StatelessWidget {
   final Color backgroundColor;
 
   const ActionCard({
-    Key? key,
+    super.key,
     this.count = 0,
     required this.iconUrl,
     required this.title,
     required this.onTap,
     this.backgroundColor = Colors.white,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

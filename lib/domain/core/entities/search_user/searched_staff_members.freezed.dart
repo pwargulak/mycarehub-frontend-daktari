@@ -146,7 +146,9 @@ class _$_SearchedStaffMembers implements _SearchedStaffMembers {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SearchedStaffMembersToJson(this);
+    return _$$_SearchedStaffMembersToJson(
+      this,
+    );
   }
 }
 
@@ -161,8 +163,7 @@ abstract class _SearchedStaffMembers implements SearchedStaffMembers {
 
   @override
   @JsonKey(name: 'searchStaffUser')
-  List<SearchUserResponse>? get staffMembers =>
-      throw _privateConstructorUsedError;
+  List<SearchUserResponse>? get staffMembers;
   @override
   @JsonKey(ignore: true)
   _$$_SearchedStaffMembersCopyWith<_$_SearchedStaffMembers> get copyWith =>

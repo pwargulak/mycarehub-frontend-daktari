@@ -133,7 +133,9 @@ class _$_AcceptTermsResponse implements _AcceptTermsResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AcceptTermsResponseToJson(this);
+    return _$$_AcceptTermsResponseToJson(
+      this,
+    );
   }
 }
 
@@ -147,7 +149,7 @@ abstract class _AcceptTermsResponse implements AcceptTermsResponse {
 
   @override
   @JsonKey(name: 'acceptTerms')
-  bool get acceptTerms => throw _privateConstructorUsedError;
+  bool get acceptTerms;
   @override
   @JsonKey(ignore: true)
   _$$_AcceptTermsResponseCopyWith<_$_AcceptTermsResponse> get copyWith =>

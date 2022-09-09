@@ -13,12 +13,12 @@ import 'package:prohealth360_daktari/presentation/communities/view_models/flagge
 
 class ModerationActionsDialog extends StatelessWidget {
   const ModerationActionsDialog({
-    Key? key,
+    super.key,
     required this.messageId,
     required this.memberId,
     required this.communityId,
     required this.communityName,
-  }) : super(key: key);
+  });
 
   final String messageId;
   final String memberId;

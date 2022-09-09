@@ -22,7 +22,7 @@ import 'package:prohealth360_daktari/presentation/onboarding/patient/register_cl
 import 'package:prohealth360_daktari/presentation/onboarding/patient/widgets/patient_details_text_form_field.dart';
 
 class RegisterClientPage extends StatefulWidget {
-  const RegisterClientPage({Key? key}) : super(key: key);
+  const RegisterClientPage({super.key});
 
   @override
   State<RegisterClientPage> createState() => _RegisterClientPageState();

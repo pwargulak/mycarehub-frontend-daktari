@@ -18,7 +18,7 @@ import 'package:prohealth360_daktari/presentation/core/bottom_nav/bottom_nav_ite
 import 'package:stream_chat_flutter/stream_chat_flutter.dart' as stream;
 
 class CommunityListPage extends StatefulWidget {
-  const CommunityListPage({Key? key}) : super(key: key);
+  const CommunityListPage({super.key});
 
   @override
   State<CommunityListPage> createState() => _CommunityListPageState();

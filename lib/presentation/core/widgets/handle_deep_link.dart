@@ -9,7 +9,7 @@ import 'package:prohealth360_daktari/application/redux/actions/deep_link_action.
 // Project imports:
 
 class HandleDeepLink extends StatefulWidget {
-  const HandleDeepLink({Key? key}) : super(key: key);
+  const HandleDeepLink({super.key});
 
   @override
   State<HandleDeepLink> createState() => _HandleDeepLinkState();

@@ -20,7 +20,7 @@ import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.da
 import 'package:prohealth360_daktari/presentation/service_requests/widgets/staff_pin_reset_request_widget.dart';
 
 class StaffPinResetRequestsPage extends StatefulWidget {
-  const StaffPinResetRequestsPage({Key? key}) : super(key: key);
+  const StaffPinResetRequestsPage({super.key});
 
   @override
   State<StaffPinResetRequestsPage> createState() =>

@@ -21,7 +21,7 @@ import 'package:prohealth360_daktari/presentation/onboarding/patient/register_st
 import 'package:prohealth360_daktari/presentation/onboarding/patient/widgets/patient_details_text_form_field.dart';
 
 class AddNewStaffPage extends StatefulWidget {
-  const AddNewStaffPage({Key? key}) : super(key: key);
+  const AddNewStaffPage({super.key});
 
   @override
   State<AddNewStaffPage> createState() => _AddNewStaffPageState();

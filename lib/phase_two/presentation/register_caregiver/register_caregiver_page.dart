@@ -13,7 +13,7 @@ import 'package:prohealth360_daktari/presentation/onboarding/core/widgets/search
 import 'package:prohealth360_daktari/presentation/onboarding/patient/widgets/patient_details_text_form_field.dart';
 
 class RegisterCaregiverPage extends StatefulWidget {
-  const RegisterCaregiverPage({Key? key}) : super(key: key);
+  const RegisterCaregiverPage({super.key});
 
   @override
   State<RegisterCaregiverPage> createState() => _RegisterCaregiverPageState();

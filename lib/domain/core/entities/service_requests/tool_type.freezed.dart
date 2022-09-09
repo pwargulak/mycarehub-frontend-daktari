@@ -126,7 +126,9 @@ class _$_ToolType implements _ToolType {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ToolTypeToJson(this);
+    return _$$_ToolTypeToJson(
+      this,
+    );
   }
 }
 
@@ -139,7 +141,7 @@ abstract class _ToolType implements ToolType {
 
   @override
   @JsonKey(name: 'toolType')
-  ScreeningToolsType? get toolType => throw _privateConstructorUsedError;
+  ScreeningToolsType? get toolType;
   @override
   @JsonKey(ignore: true)
   _$$_ToolTypeCopyWith<_$_ToolType> get copyWith =>

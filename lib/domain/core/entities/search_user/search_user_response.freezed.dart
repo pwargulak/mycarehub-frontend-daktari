@@ -294,7 +294,9 @@ class _$_SearchUserResponse implements _SearchUserResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SearchUserResponseToJson(this);
+    return _$$_SearchUserResponseToJson(
+      this,
+    );
   }
 }
 
@@ -314,25 +316,25 @@ abstract class _SearchUserResponse implements SearchUserResponse {
 
   @override
   @JsonKey(name: 'ID')
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
   @JsonKey(name: 'CCCNumber')
-  String? get clientCCCNumber => throw _privateConstructorUsedError;
+  String? get clientCCCNumber;
   @override // This is the CCCNumber if the person being searched is a client
   @JsonKey(name: 'Active')
-  bool? get isActive => throw _privateConstructorUsedError;
+  bool? get isActive;
   @override // This is a boolean for checking if the user was deactivated from the platform
   @JsonKey(name: 'StaffNumber')
-  String? get staffNumber => throw _privateConstructorUsedError;
+  String? get staffNumber;
   @override // this is the staff number if the person being searched is a staff member
   @JsonKey(name: 'User')
-  UserData? get user => throw _privateConstructorUsedError;
+  UserData? get user;
   @override
   @JsonKey(name: 'FacilityID')
-  String? get facilityID => throw _privateConstructorUsedError;
+  String? get facilityID;
   @override
   @JsonKey(name: 'rolesList')
-  RolesList? get rolesList => throw _privateConstructorUsedError;
+  RolesList? get rolesList;
   @override
   @JsonKey(ignore: true)
   _$$_SearchUserResponseCopyWith<_$_SearchUserResponse> get copyWith =>

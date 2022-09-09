@@ -8,10 +8,10 @@ import 'package:prohealth360_daktari/presentation/router/routes.dart';
 
 class AssessmentRequestItemWidget extends StatelessWidget {
   const AssessmentRequestItemWidget({
-    Key? key,
+    super.key,
     required this.screeningQuestionsList,
     required this.toolsType,
-  }) : super(key: key);
+  });
 
   final ToolAssessmentResponse screeningQuestionsList;
   final ScreeningToolsType toolsType;

@@ -126,7 +126,9 @@ class _$_BanStatus implements _BanStatus {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BanStatusToJson(this);
+    return _$$_BanStatusToJson(
+      this,
+    );
   }
 }
 
@@ -139,7 +141,7 @@ abstract class _BanStatus implements BanStatus {
 
   @override
   @JsonKey(name: 'bannedInCommunity')
-  bool? get value => throw _privateConstructorUsedError;
+  bool? get value;
   @override
   @JsonKey(ignore: true)
   _$$_BanStatusCopyWith<_$_BanStatus> get copyWith =>

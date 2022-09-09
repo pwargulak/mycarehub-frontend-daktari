@@ -16,8 +16,7 @@ import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.da
 import 'package:prohealth360_daktari/presentation/service_requests/widgets/resolved_service_request_list_item.dart';
 
 class ResolvedServiceRequestsListPage extends StatefulWidget {
-  const ResolvedServiceRequestsListPage({Key? key, required this.flavour})
-      : super(key: key);
+  const ResolvedServiceRequestsListPage({super.key, required this.flavour});
   final Flavour flavour;
 
   @override

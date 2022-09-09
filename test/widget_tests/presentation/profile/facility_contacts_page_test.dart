@@ -58,7 +58,7 @@ void main() {
     });
     testWidgets('does not show update contact button for other staff',
         (WidgetTester tester) async {
-      final Store<AppState> _store = Store<AppState>(
+      final Store<AppState> store = Store<AppState>(
         initialState: AppState.initial().copyWith(
           staffState: StaffState(
             defaultFacility: 'test',
@@ -80,7 +80,7 @@ void main() {
       );
       await buildTestWidget(
         tester: tester,
-        store: _store,
+        store: store,
         widget: Builder(
           builder: (BuildContext context) {
             return FacilityContactsPage();
@@ -95,11 +95,11 @@ void main() {
 
     testWidgets('shows zero state when there is no contacts',
         (WidgetTester tester) async {
-      final Store<AppState> _store =
+      final Store<AppState> store =
           Store<AppState>(initialState: AppState.initial());
       await buildTestWidget(
         tester: tester,
-        store: _store,
+        store: store,
         widget: Builder(
           builder: (BuildContext context) {
             return FacilityContactsPage();

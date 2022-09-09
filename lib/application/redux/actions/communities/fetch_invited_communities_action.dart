@@ -39,15 +39,15 @@ class FetchInvitedCommunitiesAction extends ReduxAction<AppState> {
       'input': <String, dynamic>{'limit': 20},
     };
 
-    final IGraphQlClient _client = AppWrapperBase.of(context)!.graphQLClient;
+    final IGraphQlClient client = AppWrapperBase.of(context)!.graphQLClient;
 
     /// fetch the data from the api
-    final Response response = await _client.query(
+    final Response response = await client.query(
       listUserInvitedCommunitiesQuery,
       variables,
     );
 
-    final Map<String, dynamic> responseMap = _client.toMap(response);
+    final Map<String, dynamic> responseMap = client.toMap(response);
     final String? errors = parseError(responseMap);
 
     if (errors != null) {

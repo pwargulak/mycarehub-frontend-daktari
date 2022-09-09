@@ -7,13 +7,13 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart'
 
 class ResumeWithPinPage extends StatefulWidget {
   const ResumeWithPinPage({
-    Key? key,
+    super.key,
     required this.username,
     required this.onSubmit,
     required this.isLoading,
     required this.logoutCallback,
     this.errorMessage,
-  }) : super(key: key);
+  });
 
   final String? errorMessage;
   final bool isLoading;

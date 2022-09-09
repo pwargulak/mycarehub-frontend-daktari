@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 
 class UnrecoverableErrorWidget extends StatelessWidget {
-  const UnrecoverableErrorWidget({Key? key}) : super(key: key);
+  const UnrecoverableErrorWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

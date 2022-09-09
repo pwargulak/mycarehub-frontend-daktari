@@ -259,7 +259,9 @@ class _$_CreateGroupPayload implements _CreateGroupPayload {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CreateGroupPayloadToJson(this);
+    return _$$_CreateGroupPayloadToJson(
+      this,
+    );
   }
 }
 
@@ -276,17 +278,17 @@ abstract class _CreateGroupPayload implements CreateGroupPayload {
       _$_CreateGroupPayload.fromJson;
 
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
-  AgeRange? get ageRange => throw _privateConstructorUsedError;
+  AgeRange? get ageRange;
   @override
-  List<Gender>? get gender => throw _privateConstructorUsedError;
+  List<Gender>? get gender;
   @override
-  List<ClientType>? get clientType => throw _privateConstructorUsedError;
+  List<ClientType>? get clientType;
   @override
-  bool? get inviteOnly => throw _privateConstructorUsedError;
+  bool? get inviteOnly;
   @override
   @JsonKey(ignore: true)
   _$$_CreateGroupPayloadCopyWith<_$_CreateGroupPayload> get copyWith =>

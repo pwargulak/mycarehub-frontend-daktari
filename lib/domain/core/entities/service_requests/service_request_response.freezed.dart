@@ -212,7 +212,9 @@ class _$_ServiceRequestResponse implements _ServiceRequestResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ServiceRequestResponseToJson(this);
+    return _$$_ServiceRequestResponseToJson(
+      this,
+    );
   }
 }
 
@@ -229,14 +231,12 @@ abstract class _ServiceRequestResponse implements ServiceRequestResponse {
 
   @override
   @JsonKey(name: 'getServiceRequests')
-  List<ServiceRequest>? get serviceRequests =>
-      throw _privateConstructorUsedError;
+  List<ServiceRequest>? get serviceRequests;
   @override
   @JsonKey(name: 'getPendingServiceRequestsCount')
-  PendingServiceRequestCount? get pendingServiceRequests =>
-      throw _privateConstructorUsedError;
+  PendingServiceRequestCount? get pendingServiceRequests;
   @override
-  bool? get errorFetchingServiceRequests => throw _privateConstructorUsedError;
+  bool? get errorFetchingServiceRequests;
   @override
   @JsonKey(ignore: true)
   _$$_ServiceRequestResponseCopyWith<_$_ServiceRequestResponse> get copyWith =>

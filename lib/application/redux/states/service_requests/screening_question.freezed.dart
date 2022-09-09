@@ -146,7 +146,9 @@ class _$_ScreeningQuestion implements _ScreeningQuestion {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ScreeningQuestionToJson(this);
+    return _$$_ScreeningQuestionToJson(
+      this,
+    );
   }
 }
 
@@ -159,9 +161,9 @@ abstract class _ScreeningQuestion implements ScreeningQuestion {
       _$_ScreeningQuestion.fromJson;
 
   @override
-  String? get questionText => throw _privateConstructorUsedError;
+  String? get questionText;
   @override
-  String? get answer => throw _privateConstructorUsedError;
+  String? get answer;
   @override
   @JsonKey(ignore: true)
   _$$_ScreeningQuestionCopyWith<_$_ScreeningQuestion> get copyWith =>

@@ -206,7 +206,9 @@ class _$_UserResponse implements _UserResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserResponseToJson(this);
+    return _$$_UserResponseToJson(
+      this,
+    );
   }
 }
 
@@ -222,13 +224,13 @@ abstract class _UserResponse implements UserResponse {
 
   @override
   @JsonKey(name: 'credentials')
-  AuthCredentials? get credentials => throw _privateConstructorUsedError;
+  AuthCredentials? get credentials;
   @override
   @JsonKey(name: 'staffProfile')
-  StaffState? get staffState => throw _privateConstructorUsedError;
+  StaffState? get staffState;
   @override
   @JsonKey(name: 'getStreamToken')
-  String? get streamToken => throw _privateConstructorUsedError;
+  String? get streamToken;
   @override
   @JsonKey(ignore: true)
   _$$_UserResponseCopyWith<_$_UserResponse> get copyWith =>

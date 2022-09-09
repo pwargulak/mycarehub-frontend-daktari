@@ -3,12 +3,12 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart'
 
 class ErrorDialog extends StatelessWidget {
   const ErrorDialog({
-    Key? key,
+    super.key,
     this.title = defaultUserFriendlyMessage,
     this.buttonText = actionTextGenericNoData,
     required this.buttonAction,
     this.subTitle,
-  }) : super(key: key);
+  });
 
   final String title;
   final String buttonText;

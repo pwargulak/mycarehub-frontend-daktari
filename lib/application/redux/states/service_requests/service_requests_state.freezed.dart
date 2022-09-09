@@ -316,7 +316,9 @@ class _$_ServiceRequestState implements _ServiceRequestState {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ServiceRequestStateToJson(this);
+    return _$$_ServiceRequestStateToJson(
+      this,
+    );
   }
 }
 
@@ -335,28 +337,21 @@ abstract class _ServiceRequestState implements ServiceRequestState {
       _$_ServiceRequestState.fromJson;
 
   @override // Client service requests
-  List<ServiceRequest>? get clientServiceRequests =>
-      throw _privateConstructorUsedError;
+  List<ServiceRequest>? get clientServiceRequests;
   @override // Staff service requests
-  List<ServiceRequest>? get staffServiceRequests =>
-      throw _privateConstructorUsedError;
+  List<ServiceRequest>? get staffServiceRequests;
   @override // Resolved service requests
-  List<ServiceRequest>? get resolvedServiceRequests =>
-      throw _privateConstructorUsedError;
+  List<ServiceRequest>? get resolvedServiceRequests;
   @override // Service requests count
-  PendingServiceRequestCount? get pendingServiceRequestsCount =>
-      throw _privateConstructorUsedError;
+  PendingServiceRequestCount? get pendingServiceRequestsCount;
   @override // Screening tools
-  ScreeningToolsState? get screeningToolsState =>
-      throw _privateConstructorUsedError;
+  ScreeningToolsState? get screeningToolsState;
   @override
-  SurveyServiceRequestState? get surveyServiceRequestState =>
-      throw _privateConstructorUsedError;
+  SurveyServiceRequestState? get surveyServiceRequestState;
   @override
 
   /// Other booleans
-  bool? get errorFetchingPendingServiceRequests =>
-      throw _privateConstructorUsedError;
+  bool? get errorFetchingPendingServiceRequests;
   @override
   @JsonKey(ignore: true)
   _$$_ServiceRequestStateCopyWith<_$_ServiceRequestState> get copyWith =>

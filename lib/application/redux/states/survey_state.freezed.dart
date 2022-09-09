@@ -218,7 +218,9 @@ class _$_SurveyState implements _SurveyState {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SurveyStateToJson(this);
+    return _$$_SurveyStateToJson(
+      this,
+    );
   }
 }
 
@@ -237,17 +239,15 @@ abstract class _SurveyState implements SurveyState {
 
   @override
   @JsonKey(name: 'listSurveys')
-  List<Survey?>? get surveys => throw _privateConstructorUsedError;
+  List<Survey?>? get surveys;
   @override
   @JsonKey(name: 'listSurveyRespondents')
-  SurveyRespondentsState? get surveyRespondentsState =>
-      throw _privateConstructorUsedError;
+  SurveyRespondentsState? get surveyRespondentsState;
   @override
   @JsonKey(name: 'getSurveyResponse')
-  List<SurveyResponse>? get surveyResponses =>
-      throw _privateConstructorUsedError;
+  List<SurveyResponse>? get surveyResponses;
   @override
-  bool? get errorFetchingSurveys => throw _privateConstructorUsedError;
+  bool? get errorFetchingSurveys;
   @override
   @JsonKey(ignore: true)
   _$$_SurveyStateCopyWith<_$_SurveyState> get copyWith =>

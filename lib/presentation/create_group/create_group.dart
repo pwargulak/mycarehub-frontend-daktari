@@ -20,7 +20,7 @@ import 'package:prohealth360_daktari/presentation/create_group/create_group_form
 import 'package:prohealth360_daktari/presentation/onboarding/patient/widgets/patient_details_text_form_field.dart';
 
 class CreateGroupPage extends StatefulWidget {
-  const CreateGroupPage({Key? key}) : super(key: key);
+  const CreateGroupPage({super.key});
 
   @override
   State<CreateGroupPage> createState() => _CreateGroupPageState();

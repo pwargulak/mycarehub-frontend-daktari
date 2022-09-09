@@ -155,7 +155,9 @@ class _$_TermsAndConditions implements _TermsAndConditions {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TermsAndConditionsToJson(this);
+    return _$$_TermsAndConditionsToJson(
+      this,
+    );
   }
 }
 
@@ -170,10 +172,10 @@ abstract class _TermsAndConditions implements TermsAndConditions {
 
   @override
   @JsonKey(name: 'termsID')
-  int get termsId => throw _privateConstructorUsedError;
+  int get termsId;
   @override
   @JsonKey(name: 'text')
-  String get text => throw _privateConstructorUsedError;
+  String get text;
   @override
   @JsonKey(ignore: true)
   _$$_TermsAndConditionsCopyWith<_$_TermsAndConditions> get copyWith =>

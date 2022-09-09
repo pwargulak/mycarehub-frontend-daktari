@@ -152,7 +152,9 @@ class _$_AgeRange implements _AgeRange {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AgeRangeToJson(this);
+    return _$$_AgeRangeToJson(
+      this,
+    );
   }
 }
 
@@ -165,10 +167,10 @@ abstract class _AgeRange implements AgeRange {
 
   @override
   @JsonKey(name: 'lowerBound')
-  int? get lowerBound => throw _privateConstructorUsedError;
+  int? get lowerBound;
   @override
   @JsonKey(name: 'upperBound')
-  int? get upperBound => throw _privateConstructorUsedError;
+  int? get upperBound;
   @override
   @JsonKey(ignore: true)
   _$$_AgeRangeCopyWith<_$_AgeRange> get copyWith =>

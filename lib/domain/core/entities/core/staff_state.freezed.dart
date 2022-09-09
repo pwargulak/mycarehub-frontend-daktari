@@ -430,7 +430,9 @@ class _$_StaffState implements _StaffState {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_StaffStateToJson(this);
+    return _$$_StaffStateToJson(
+      this,
+    );
   }
 }
 
@@ -454,39 +456,36 @@ abstract class _StaffState implements StaffState {
 
   @override
   @JsonKey(name: 'id')
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
   @JsonKey(name: 'user_id')
-  String? get userId => throw _privateConstructorUsedError;
+  String? get userId;
   @override
   @JsonKey(name: 'active', defaultValue: false)
-  bool? get active => throw _privateConstructorUsedError;
+  bool? get active;
   @override
   @JsonKey(name: 'staff_number')
-  String? get staffNumber => throw _privateConstructorUsedError;
+  String? get staffNumber;
   @override
   @JsonKey(name: 'facilities')
-  List<Facility>? get facilities => throw _privateConstructorUsedError;
+  List<Facility>? get facilities;
   @override
   @JsonKey(name: 'default_facility')
-  String? get defaultFacility => throw _privateConstructorUsedError;
+  String? get defaultFacility;
   @override
   @JsonKey(name: 'defaultFacilityName')
-  String? get defaultFacilityName => throw _privateConstructorUsedError;
+  String? get defaultFacilityName;
   @override
   @JsonKey(name: 'user')
-  User? get user => throw _privateConstructorUsedError;
+  User? get user;
   @override // invited communities
-  CommunitiesState? get communitiesState => throw _privateConstructorUsedError;
+  CommunitiesState? get communitiesState;
   @override // recently shared health diary entries
-  List<HealthDiaryEntry?>? get clientSharedDiaryEntries =>
-      throw _privateConstructorUsedError;
+  List<HealthDiaryEntry?>? get clientSharedDiaryEntries;
   @override // staff notifications
-  List<NotificationDetails?>? get notifications =>
-      throw _privateConstructorUsedError;
+  List<NotificationDetails?>? get notifications;
   @override
-  NotificationFilterState? get notificationFilterState =>
-      throw _privateConstructorUsedError;
+  NotificationFilterState? get notificationFilterState;
   @override
   @JsonKey(ignore: true)
   _$$_StaffStateCopyWith<_$_StaffState> get copyWith =>

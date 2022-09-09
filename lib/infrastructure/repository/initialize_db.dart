@@ -5,7 +5,9 @@ import 'package:sqflite/sqflite.dart';
 import 'package:prohealth360_daktari/infrastructure/repository/sqlite.dart';
 
 class InitializeDB<T extends DatabaseExecutor> extends InitializeDBHelper<T> {
-  InitializeDB({required String dbName}) : super(dbName: dbName);
+  InitializeDB({
+    required super.dbName,
+  });
 }
 
 abstract class InitializeDBHelper<T extends DatabaseExecutor> {

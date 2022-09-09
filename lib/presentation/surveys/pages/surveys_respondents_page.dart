@@ -18,8 +18,7 @@ import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:prohealth360_daktari/presentation/surveys/widgets/survey_respondent_item_card.dart';
 
 class SurveyRespondentsPage extends StatefulWidget {
-  const SurveyRespondentsPage({Key? key, required this.selectedSurvey})
-      : super(key: key);
+  const SurveyRespondentsPage({super.key, required this.selectedSurvey});
 
   final Survey selectedSurvey;
 

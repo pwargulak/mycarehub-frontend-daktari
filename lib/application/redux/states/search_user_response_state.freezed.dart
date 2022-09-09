@@ -241,7 +241,9 @@ class _$_SearchUserResponseState implements _SearchUserResponseState {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SearchUserResponseStateToJson(this);
+    return _$$_SearchUserResponseStateToJson(
+      this,
+    );
   }
 }
 
@@ -257,17 +259,15 @@ abstract class _SearchUserResponseState implements SearchUserResponseState {
       _$_SearchUserResponseState.fromJson;
 
   @override
-  List<SearchUserResponse?>? get searchUserResponses =>
-      throw _privateConstructorUsedError;
+  List<SearchUserResponse?>? get searchUserResponses;
   @override
-  SearchUserResponse? get selectedSearchUserResponse =>
-      throw _privateConstructorUsedError;
+  SearchUserResponse? get selectedSearchUserResponse;
   @override // when the user selects a specific user from the list
-  bool? get errorSearchingUser => throw _privateConstructorUsedError;
+  bool? get errorSearchingUser;
   @override
-  bool? get timeoutSearchingUser => throw _privateConstructorUsedError;
+  bool? get timeoutSearchingUser;
   @override
-  bool? get noUserFound => throw _privateConstructorUsedError;
+  bool? get noUserFound;
   @override
   @JsonKey(ignore: true)
   _$$_SearchUserResponseStateCopyWith<_$_SearchUserResponseState>

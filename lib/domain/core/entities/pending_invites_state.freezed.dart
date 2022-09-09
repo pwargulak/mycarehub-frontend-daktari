@@ -143,7 +143,9 @@ class _$_PendingInvitesState implements _PendingInvitesState {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PendingInvitesStateToJson(this);
+    return _$$_PendingInvitesStateToJson(
+      this,
+    );
   }
 }
 
@@ -157,7 +159,7 @@ abstract class _PendingInvitesState implements PendingInvitesState {
 
   @override
   @JsonKey(name: 'listPendingInvites')
-  List<Community>? get communitiesList => throw _privateConstructorUsedError;
+  List<Community>? get communitiesList;
   @override
   @JsonKey(ignore: true)
   _$$_PendingInvitesStateCopyWith<_$_PendingInvitesState> get copyWith =>

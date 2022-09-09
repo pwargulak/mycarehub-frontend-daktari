@@ -248,7 +248,9 @@ class _$_UserData implements _UserData {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserDataToJson(this);
+    return _$$_UserDataToJson(
+      this,
+    );
   }
 }
 
@@ -271,22 +273,22 @@ abstract class _UserData implements UserData {
 
   @override
   @JsonKey(name: 'ID')
-  String? get id => throw _privateConstructorUsedError;
+  String? get id;
   @override
   @JsonKey(name: 'Username')
-  String? get userName => throw _privateConstructorUsedError;
+  String? get userName;
   @override
   @JsonKey(name: 'TermsAccepted', defaultValue: false)
-  bool? get termsAccepted => throw _privateConstructorUsedError;
+  bool? get termsAccepted;
   @override
   @JsonKey(name: 'Active', defaultValue: false)
-  bool? get active => throw _privateConstructorUsedError;
+  bool? get active;
   @override
   @JsonKey(name: 'Contacts')
-  Contact? get primaryContact => throw _privateConstructorUsedError;
+  Contact? get primaryContact;
   @override
   @JsonKey(name: 'Name')
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
   @JsonKey(ignore: true)
   _$$_UserDataCopyWith<_$_UserData> get copyWith =>

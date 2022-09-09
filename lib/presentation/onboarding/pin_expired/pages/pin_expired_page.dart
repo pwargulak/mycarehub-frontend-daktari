@@ -11,7 +11,7 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart'
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 
 class PinExpiredPage extends StatelessWidget {
-  const PinExpiredPage({Key? key}) : super(key: key);
+  const PinExpiredPage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -145,7 +145,9 @@ class _$_FlaggedMessagesResponse implements _FlaggedMessagesResponse {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FlaggedMessagesResponseToJson(this);
+    return _$$_FlaggedMessagesResponseToJson(
+      this,
+    );
   }
 }
 
@@ -159,7 +161,7 @@ abstract class _FlaggedMessagesResponse implements FlaggedMessagesResponse {
 
   @override
   @JsonKey(name: 'listFlaggedMessages')
-  List<MessageObject?>? get messages => throw _privateConstructorUsedError;
+  List<MessageObject?>? get messages;
   @override
   @JsonKey(ignore: true)
   _$$_FlaggedMessagesResponseCopyWith<_$_FlaggedMessagesResponse>

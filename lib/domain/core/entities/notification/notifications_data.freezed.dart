@@ -144,7 +144,9 @@ class _$_NotificationsData implements _NotificationsData {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_NotificationsDataToJson(this);
+    return _$$_NotificationsDataToJson(
+      this,
+    );
   }
 }
 
@@ -159,8 +161,7 @@ abstract class _NotificationsData implements NotificationsData {
 
   @override
   @JsonKey(name: 'notifications')
-  List<NotificationDetails> get notifications =>
-      throw _privateConstructorUsedError;
+  List<NotificationDetails> get notifications;
   @override
   @JsonKey(ignore: true)
   _$$_NotificationsDataCopyWith<_$_NotificationsData> get copyWith =>

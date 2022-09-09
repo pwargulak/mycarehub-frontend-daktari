@@ -9,7 +9,7 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 
 class AppBarMoreButton extends StatelessWidget {
-  const AppBarMoreButton({Key? key}) : super(key: key);
+  const AppBarMoreButton({super.key});
   @override
   Widget build(BuildContext context) {
     return Material(

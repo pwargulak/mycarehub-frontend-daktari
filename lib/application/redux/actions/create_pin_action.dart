@@ -75,7 +75,7 @@ class CreatePINAction extends ReduxAction<AppState> {
     // check if the new PIN matches the confirmed PIN entered by the user
     if ((newPIN != UNKNOWN && confirmPIN != UNKNOWN) && newPIN == confirmPIN) {
       // initializing of the updateUserPin mutation
-      final Map<String, String?> _updateUserPinVariables = <String, String?>{
+      final Map<String, String?> updateUserPinVariables = <String, String?>{
         'userID': userID,
         'pin': newPIN,
         'confirmPIN': confirmPIN,
@@ -83,7 +83,7 @@ class CreatePINAction extends ReduxAction<AppState> {
       };
 
       // initializing of the reset_pin mutation
-      final Map<String, String?> _resetPinVariables = <String, String?>{
+      final Map<String, String?> resetPinVariables = <String, String?>{
         'phonenumber': phone,
         'flavour': Flavour.pro.name,
         'pin': newPIN,
@@ -96,11 +96,11 @@ class CreatePINAction extends ReduxAction<AppState> {
           ? await client.callRESTAPI(
               endpoint: resetPinEndpoint,
               method: httpPOST,
-              variables: _resetPinVariables,
+              variables: resetPinVariables,
             )
           : await client.query(
               setUserPINMutation,
-              setUserPINMutationVariables(_updateUserPinVariables),
+              setUserPINMutationVariables(updateUserPinVariables),
             );
 
       final Map<String, dynamic> body = client.toMap(result);

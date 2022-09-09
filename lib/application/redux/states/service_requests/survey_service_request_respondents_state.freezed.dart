@@ -166,7 +166,9 @@ class _$_SurveyServiceRequestRespondentsState
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SurveyServiceRequestRespondentsStateToJson(this);
+    return _$$_SurveyServiceRequestRespondentsStateToJson(
+      this,
+    );
   }
 }
 
@@ -183,10 +185,9 @@ abstract class _SurveyServiceRequestRespondentsState
 
   @override
   @JsonKey(name: 'users')
-  List<SurveyRespondent?>? get surveyRespondents =>
-      throw _privateConstructorUsedError;
+  List<SurveyRespondent?>? get surveyRespondents;
   @override
-  bool? get errorFetchingSurveys => throw _privateConstructorUsedError;
+  bool? get errorFetchingSurveys;
   @override
   @JsonKey(ignore: true)
   _$$_SurveyServiceRequestRespondentsStateCopyWith<

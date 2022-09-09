@@ -19,9 +19,9 @@ import 'package:prohealth360_daktari/presentation/service_requests/widgets/asses
 
 class AssessmentToolResponsesPage extends StatefulWidget {
   const AssessmentToolResponsesPage({
-    Key? key,
+    super.key,
     required this.screeningToolsType,
-  }) : super(key: key);
+  });
   final ScreeningToolsType screeningToolsType;
   @override
   State<AssessmentToolResponsesPage> createState() =>
