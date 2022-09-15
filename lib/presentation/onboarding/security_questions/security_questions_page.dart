@@ -75,6 +75,15 @@ class _SecurityQuestionsPageState extends State<SecurityQuestionsPage> {
           final SecurityQuestion? question = securityQuestions.elementAt(index);
 
           return SecurityQuestionWidget(
+            suffixIcon: GestureDetector(
+              onTap: () {
+                FocusScope.of(context).unfocus();
+              },
+              child: Text(
+                doneString,
+                style: boldSize14Text(Theme.of(context).primaryColor),
+              ),
+            ),
             securityQuestion: question!,
             response: (securityQuestionsResponses.elementAt(index).response ==
                     UNKNOWN)

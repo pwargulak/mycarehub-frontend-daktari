@@ -12,10 +12,12 @@ class SecurityQuestionWidget extends StatefulWidget {
     required this.securityQuestion,
     required this.response,
     required this.onChanged,
+    this.suffixIcon,
   });
 
   final SecurityQuestion securityQuestion;
   final String? response;
+  final Widget? suffixIcon;
   final ValueChanged<String?> onChanged;
 
   @override
@@ -53,6 +55,7 @@ class _SecurityQuestionWidgetState extends State<SecurityQuestionWidget> {
         onChanged: (String? value) {
           widget.onChanged(value);
         },
+        suffixIcon: widget.suffixIcon,
       ),
     );
   }

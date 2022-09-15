@@ -982,3 +982,4 @@ const String addCaregiverDescriptionString =
     'As a caregiver, this user will be able to view medical information on behalf of another client.\n\nTo set this user as a caregiver, indicate the client that they will be managing';
 
 const String addClientsString = 'Add Clients';
+const String doneString = 'Done';
