@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
@@ -61,8 +62,10 @@ class SearchClientAction extends ReduxAction<AppState> {
         throw UserException(getErrorMessage('fetching clients'));
       }
 
-      final SearchedClients clientResponse =
-          SearchedClients.fromJson(body['data'] as Map<String, dynamic>);
+      final SearchedClients clientResponse = SearchedClients.fromJson(
+        (json.decode(utf8.decode(response.bodyBytes))
+            as Map<String, dynamic>)['data'] as Map<String, dynamic>,
+      );
 
       if (clientResponse.clients == null) {
         dispatch(UpdateSearchUserResponseStateAction(noUserFound: true));

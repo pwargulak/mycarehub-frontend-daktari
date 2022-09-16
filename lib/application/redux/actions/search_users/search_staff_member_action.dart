@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
@@ -67,7 +68,10 @@ class SearchStaffMemberAction extends ReduxAction<AppState> {
       }
 
       final SearchedStaffMembers staffMembersResponse =
-          SearchedStaffMembers.fromJson(body['data'] as Map<String, dynamic>);
+          SearchedStaffMembers.fromJson(
+        (json.decode(utf8.decode(response.bodyBytes))
+            as Map<String, dynamic>)['data'] as Map<String, dynamic>,
+      );
 
       if (staffMembersResponse.staffMembers == null) {
         dispatch(UpdateSearchUserResponseStateAction(noUserFound: true));
