@@ -36,144 +36,169 @@ class _AddFacilityContactPageState extends State<AddFacilityContactPage> {
       appBar: const CustomAppBar(
         title: addFacilityContactString,
       ),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        padding: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 10,
-        ),
-        child: Column(
-          children: <Widget>[
-            SvgPicture.asset(
-              facilityContactZeroStateSvgPath,
-            ),
-            mediumVerticalSizedBox,
-            Text(
-              addFacilityContactDescriptionString,
-              style: normalSize14Text(darkGreyTextColor),
-              textAlign: TextAlign.center,
-            ),
-            mediumVerticalSizedBox,
-            Align(
-              alignment: Alignment.topLeft,
-              child: Text(
-                facilityPhoneNumberString,
-                style: normalSize14Text(darkGreyTextColor),
-                textAlign: TextAlign.center,
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          return SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 10,
               ),
-            ),
-            smallVerticalSizedBox,
-            Form(
-              key: _formKey,
-              child: TextFormField(
-                initialValue: widget.phoneNumber.isNotEmpty &&
-                        widget.phoneNumber != UNKNOWN
-                    ? widget.phoneNumber
-                    : null,
-                inputFormatters: <TextInputFormatter>[
-                  FilteringTextInputFormatter.digitsOnly,
-                  LengthLimitingTextInputFormatter(12),
-                ],
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  hintText: enterPhoneNumberString,
-                  hintStyle: const TextStyle(color: AppColors.hintTextColor),
-                  filled: true,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                    borderSide: BorderSide.none,
+              child: SingleChildScrollView(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: constraints.maxHeight -
+                        const CustomAppBar().preferredSize.height,
                   ),
-                  contentPadding: const EdgeInsets.all(8.0),
-                ),
-                onChanged: (String value) => setState(() {
-                  newPhoneNumber = value;
-                }),
-                validator: (String? value) {
-                  if ((value?.length ?? 0) < 10) {
-                    return invalidPhoneNumber;
-                  }
-                  return null;
-                },
-              ),
-            ),
-            const Spacer(),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: SizedBox(
-                width: double.infinity,
-                child: StoreConnector<AppState, AppStateViewModel>(
-                  converter: (Store<AppState> store) =>
-                      AppStateViewModel.fromStore(store),
-                  builder: (BuildContext context, AppStateViewModel vm) {
-                    return vm.state.wait
-                                ?.isWaitingFor(addFacilityContactFlag) ??
-                            false
-                        ? const PlatformLoader()
-                        : ElevatedButton(
-                            onPressed: newPhoneNumber.isNotEmpty &&
-                                    newPhoneNumber != widget.phoneNumber
-                                ? () {
-                                    final bool? isFormValid =
-                                        _formKey.currentState?.validate();
-                                    if (isFormValid ?? false) {
-                                      StoreProvider.dispatch<AppState>(
-                                        context,
-                                        SetFacilityContactAction(
-                                          client: AppWrapperBase.of(context)!
-                                              .graphQLClient,
-                                          onSuccess: () {
-                                            ScaffoldMessenger.of(context)
-                                              ..hideCurrentSnackBar()
-                                              ..showSnackBar(
-                                                const SnackBar(
-                                                  content: Text(
-                                                    contactUpdateSuccessfulString,
-                                                  ),
-                                                  duration: Duration(
-                                                    seconds:
-                                                        kShortSnackBarDuration,
-                                                  ),
-                                                ),
-                                              );
-                                            StoreProvider.dispatch<AppState>(
-                                              context,
-                                              RetrieveFacilityAction(
-                                                client:
-                                                    AppWrapperBase.of(context)!
-                                                        .graphQLClient,
-                                              ),
-                                            );
-                                            Navigator.pop(context);
-                                          },
-                                          onError: (String message) {
-                                            ScaffoldMessenger.of(context)
-                                              ..hideCurrentSnackBar()
-                                              ..showSnackBar(
-                                                SnackBar(
-                                                  content: Text(message),
-                                                  duration: const Duration(
-                                                    seconds:
-                                                        kShortSnackBarDuration,
-                                                  ),
-                                                ),
-                                              );
-                                          },
-                                          phone: newPhoneNumber,
-                                        ),
-                                      );
-                                    }
-                                  }
+                  child: IntrinsicHeight(
+                    child: Column(
+                      children: <Widget>[
+                        Center(
+                          child: SvgPicture.asset(
+                            facilityContactZeroStateSvgPath,
+                          ),
+                        ),
+                        mediumVerticalSizedBox,
+                        Text(
+                          addFacilityContactDescriptionString,
+                          style: normalSize14Text(darkGreyTextColor),
+                          textAlign: TextAlign.center,
+                        ),
+                        mediumVerticalSizedBox,
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            facilityPhoneNumberString,
+                            style: normalSize14Text(darkGreyTextColor),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        smallVerticalSizedBox,
+                        Form(
+                          key: _formKey,
+                          child: TextFormField(
+                            initialValue: widget.phoneNumber.isNotEmpty &&
+                                    widget.phoneNumber != UNKNOWN
+                                ? widget.phoneNumber
                                 : null,
-                            child: const Text(saveContactString),
-                          );
-                  },
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.digitsOnly,
+                              LengthLimitingTextInputFormatter(12),
+                            ],
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                              hintText: enterPhoneNumberString,
+                              hintStyle: const TextStyle(
+                                color: AppColors.hintTextColor,
+                              ),
+                              filled: true,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                                borderSide: BorderSide.none,
+                              ),
+                              contentPadding: const EdgeInsets.all(8.0),
+                            ),
+                            onChanged: (String value) => setState(() {
+                              newPhoneNumber = value;
+                            }),
+                            validator: (String? value) {
+                              if ((value?.length ?? 0) < 10) {
+                                return invalidPhoneNumber;
+                              }
+                              return null;
+                            },
+                          ),
+                        ),
+                        mediumVerticalSizedBox,
+                        const Spacer(),
+                        SizedBox(
+                          width: double.infinity,
+                          child: StoreConnector<AppState, AppStateViewModel>(
+                            converter: (Store<AppState> store) =>
+                                AppStateViewModel.fromStore(store),
+                            builder:
+                                (BuildContext context, AppStateViewModel vm) {
+                              return vm.state.wait?.isWaitingFor(
+                                        addFacilityContactFlag,
+                                      ) ??
+                                      false
+                                  ? const PlatformLoader()
+                                  : ElevatedButton(
+                                      onPressed: newPhoneNumber.isNotEmpty &&
+                                              newPhoneNumber !=
+                                                  widget.phoneNumber
+                                          ? () {
+                                              final bool? isFormValid = _formKey
+                                                  .currentState
+                                                  ?.validate();
+                                              if (isFormValid ?? false) {
+                                                StoreProvider.dispatch<
+                                                    AppState>(
+                                                  context,
+                                                  SetFacilityContactAction(
+                                                    client: AppWrapperBase.of(context)!
+                                                        .graphQLClient,
+                                                    onSuccess: () {
+                                                      ScaffoldMessenger.of(context)
+                                                        ..hideCurrentSnackBar()
+                                                        ..showSnackBar(
+                                                          const SnackBar(
+                                                            content: Text(
+                                                              contactUpdateSuccessfulString,
+                                                            ),
+                                                            duration: Duration(
+                                                              seconds:
+                                                                  kShortSnackBarDuration,
+                                                            ),
+                                                          ),
+                                                        );
+                                                      StoreProvider.dispatch<
+                                                          AppState>(
+                                                        context,
+                                                        RetrieveFacilityAction(
+                                                          client: AppWrapperBase
+                                                                  .of(
+                                                            context,
+                                                          )!
+                                                              .graphQLClient,
+                                                        ),
+                                                      );
+                                                      Navigator.pop(context);
+                                                    },
+                                                    onError: (String message) {
+                                                      ScaffoldMessenger.of(context)
+                                                        ..hideCurrentSnackBar()
+                                                        ..showSnackBar(
+                                                          SnackBar(
+                                                            content:
+                                                                Text(message),
+                                                            duration:
+                                                                const Duration(
+                                                              seconds:
+                                                                  kShortSnackBarDuration,
+                                                            ),
+                                                          ),
+                                                        );
+                                                    },
+                                                    phone: newPhoneNumber,
+                                                  ),
+                                                );
+                                              }
+                                            }
+                                          : null,
+                                      child: const Text(saveContactString),
+                                    );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ),
             ),
-            mediumVerticalSizedBox,
-          ],
-        ),
+          );
+        },
       ),
     );
   }
