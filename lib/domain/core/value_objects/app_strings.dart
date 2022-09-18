@@ -266,10 +266,12 @@ const String cccExists =
     'a client with this identifier type and value already exists';
 const String clientCccExists = 'A client with that CCC number already exists';
 const String clientPhoneExists =
-    'A client with that phone number already exists';
+    'Sorry, a client with that phone number already exists';
 const String contactExists =
     'a contact with this value and flavour already exists';
 const String searchFacilitiesString = 'Search facilities';
+String userWithPhoneString(String phoneNumber) =>
+    'a user registered with this phone number $phoneNumber already exists';
 
 // add new staff page
 const String registerStaffSuccess = 'Successfully registered staff';

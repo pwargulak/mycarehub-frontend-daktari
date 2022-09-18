@@ -7,6 +7,7 @@ import 'package:prohealth360_daktari/application/redux/actions/register_client/r
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/register_client/register_client_payload.dart';
 import 'package:http/http.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 
 import '../../../../../mocks/mocks.dart';
 
@@ -128,6 +129,33 @@ void main() {
         (info.error! as UserException).msg,
         'A client with that ccc number already exists',
       );
+    });
+
+    test('should throw error if client with a phone number exists', () async {
+      storeTester.dispatch(
+        RegisterClientAction(
+          registerClientPayload: RegisterClientPayload().copyWith.call(
+                phoneNumber: '+2547123456789',
+              ),
+          client: MockShortGraphQlClient.withResponse(
+            '',
+            '',
+            Response(
+              jsonEncode(<String, String>{
+                'error': userWithPhoneString('+2547123456789')
+              }),
+              200,
+            ),
+          ),
+          onSuccess: () {},
+        ),
+      );
+
+      final TestInfo<AppState> info =
+          await storeTester.waitUntil(RegisterClientAction);
+
+      expect(info.state, AppState.initial());
+      expect((info.error! as UserException).msg, clientPhoneExists);
     });
   });
 }

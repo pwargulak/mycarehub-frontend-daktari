@@ -57,8 +57,12 @@ class RegisterClientAction extends ReduxAction<AppState> {
       final String? errors = client.parseError(body);
 
       if (errors != null) {
+        final String phoneNumber = registerClientPayload.phoneNumber ?? UNKNOWN;
         if (errors == cccExists) {
           throw UserException(capitalizeFirst(clientCccExists));
+        } else if (phoneNumber != UNKNOWN &&
+            errors.contains(userWithPhoneString(phoneNumber))) {
+          throw const UserException(clientPhoneExists);
         } else if (errors.contains(contactExists)) {
           throw const UserException(clientPhoneExists);
         }
