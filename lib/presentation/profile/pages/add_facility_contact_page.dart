@@ -2,7 +2,6 @@ import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:app_wrapper/app_wrapper.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
@@ -16,10 +15,10 @@ import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.da
 import 'package:shared_themes/constants.dart';
 
 class AddFacilityContactPage extends StatefulWidget {
-  final String phoneNumber;
+  final String? phoneNumber;
 
   const AddFacilityContactPage({
-    required this.phoneNumber,
+    this.phoneNumber,
   });
 
   @override
@@ -74,41 +73,43 @@ class _AddFacilityContactPageState extends State<AddFacilityContactPage> {
                           ),
                         ),
                         smallVerticalSizedBox,
+
+                        ///phone number input
                         Form(
                           key: _formKey,
-                          child: TextFormField(
-                            initialValue: widget.phoneNumber.isNotEmpty &&
-                                    widget.phoneNumber != UNKNOWN
-                                ? widget.phoneNumber
-                                : null,
-                            inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.digitsOnly,
-                              LengthLimitingTextInputFormatter(12),
-                            ],
-                            keyboardType: TextInputType.number,
+                          child: MyAfyaHubPhoneInput(
                             decoration: InputDecoration(
-                              hintText: enterPhoneNumberString,
-                              hintStyle: const TextStyle(
-                                color: AppColors.hintTextColor,
-                              ),
+                              floatingLabelBehavior:
+                                  FloatingLabelBehavior.never,
+                              border: InputBorder.none,
                               filled: true,
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                                borderSide: BorderSide.none,
+                              fillColor: AppColors.lightGreyBackgroundColor,
+                              enabledBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.grey[200]!),
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(5),
+                                ),
                               ),
-                              contentPadding: const EdgeInsets.all(8.0),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color:
+                                      Theme.of(context).colorScheme.secondary,
+                                ),
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(5),
+                                ),
+                              ),
                             ),
-                            onChanged: (String value) => setState(() {
-                              newPhoneNumber = value;
-                            }),
-                            validator: (String? value) {
-                              if ((value?.length ?? 0) < 10) {
-                                return invalidPhoneNumber;
-                              }
-                              return null;
+                            phoneNumberFormatter: formatPhoneNumber,
+                            onChanged: (String? value) {
+                              setState(() {
+                                newPhoneNumber = value!;
+                              });
                             },
                           ),
                         ),
+
                         mediumVerticalSizedBox,
                         const Spacer(),
                         SizedBox(
@@ -136,10 +137,14 @@ class _AddFacilityContactPageState extends State<AddFacilityContactPage> {
                                                     AppState>(
                                                   context,
                                                   SetFacilityContactAction(
-                                                    client: AppWrapperBase.of(context)!
+                                                    client: AppWrapperBase.of(
+                                                      context,
+                                                    )!
                                                         .graphQLClient,
                                                     onSuccess: () {
-                                                      ScaffoldMessenger.of(context)
+                                                      ScaffoldMessenger.of(
+                                                        context,
+                                                      )
                                                         ..hideCurrentSnackBar()
                                                         ..showSnackBar(
                                                           const SnackBar(
@@ -166,7 +171,9 @@ class _AddFacilityContactPageState extends State<AddFacilityContactPage> {
                                                       Navigator.pop(context);
                                                     },
                                                     onError: (String message) {
-                                                      ScaffoldMessenger.of(context)
+                                                      ScaffoldMessenger.of(
+                                                        context,
+                                                      )
                                                         ..hideCurrentSnackBar()
                                                         ..showSnackBar(
                                                           SnackBar(

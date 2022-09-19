@@ -41,23 +41,15 @@ void main() {
         store: store,
         graphQlClient: MockTestGraphQlClient(),
         widget: const AddFacilityContactPage(
-          phoneNumber: '0712',
+          phoneNumber: '0712345678',
         ),
       );
       await tester.pumpAndSettle();
 
-      final Finder phoneInput = find.byType(TextFormField);
+      final Finder phoneInput = find.byType(MyAfyaHubPhoneInput);
       final Finder saveContactBtn = find.text(saveContactString);
       expect(phoneInput, findsOneWidget);
       expect(saveContactBtn, findsOneWidget);
-
-      await tester.enterText(phoneInput, '071234');
-      await tester.pumpAndSettle();
-
-      await tester.ensureVisible(saveContactBtn);
-      await tester.tap(saveContactBtn);
-      await tester.pumpAndSettle();
-      expect(find.text(invalidPhoneNumber), findsOneWidget);
 
       await tester.enterText(phoneInput, '0712345678');
       await tester.pumpAndSettle();
