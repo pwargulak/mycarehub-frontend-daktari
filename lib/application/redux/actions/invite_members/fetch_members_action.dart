@@ -78,10 +78,16 @@ class FetchMembersAction extends ReduxAction<AppState> {
       final ListMembersResponse membersData = ListMembersResponse.fromJson(
         body['data'] as Map<String, dynamic>,
       );
+      if (membersData.members?.isNotEmpty ?? false) {
+        final String staffId = store.state.staffState?.user?.userId ?? '';
+        final List<Member> membersList = membersData.members!
+            .where((Member member) => member.userID != staffId)
+            .toList();
 
-      dispatch(
-        BatchUpdateMiscStateAction(communityMembers: membersData.members),
-      );
+        dispatch(
+          BatchUpdateMiscStateAction(communityMembers: membersList),
+        );
+      }
     } else {
       throw UserException(processedResponse.message);
     }
