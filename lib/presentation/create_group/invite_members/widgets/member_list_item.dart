@@ -43,46 +43,47 @@ class _MemberListItemState extends State<MemberListItem> {
       child: Padding(
         padding: const EdgeInsets.all(8),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Row(
-              children: <Widget>[
-                Container(
-                  height: 38,
-                  width: 38,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColors.galleryColor,
-                  ),
-                  child: Center(
-                    child: Text(
-                      widget.username.trim()[0].toUpperCase(),
-                      style: boldSize14Text(AppColors.primaryColor),
-                    ),
-                  ),
+            Container(
+              height: 38,
+              width: 38,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: AppColors.galleryColor,
+              ),
+              child: Center(
+                child: Text(
+                  widget.username.trim()[0].toUpperCase(),
+                  style: boldSize14Text(AppColors.primaryColor),
                 ),
-                smallHorizontalSizedBox,
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
+              ),
+            ),
+            smallHorizontalSizedBox,
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    widget.username,
+                    style: boldSize14Text().copyWith(),
+                    overflow: TextOverflow.clip,
+                  ),
+                  if (widget.userType == 'STAFF')
                     Text(
-                      widget.username,
-                      style: boldSize14Text().copyWith(),
-                    ),
-                    if (widget.userType == 'STAFF')
-                      Text(
-                        staffMemberText,
-                        style: boldSize12Text().copyWith(
-                          color: greyTextColor.withOpacity(0.6),
-                          fontSize: 10,
-                        ),
+                      staffMemberText,
+                      style: boldSize12Text().copyWith(
+                        color: greyTextColor.withOpacity(0.6),
+                        fontSize: 10,
                       ),
-                  ],
-                ),
-              ],
+                    ),
+                ],
+              ),
             ),
             if (isSelected)
-              SvgPicture.asset(doneIconSvgPath)
+              Align(
+                alignment: Alignment.centerRight,
+                child: SvgPicture.asset(doneIconSvgPath),
+              )
             else
               const SizedBox()
           ],
