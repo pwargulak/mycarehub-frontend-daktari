@@ -188,6 +188,3 @@ const Key searchIconButtonKey = Key('search_icon_button_key');
 const Key notificationFiltersKey = Key('notification_filters_key');
 const Key notificationsListViewKey = Key('notifications_list_view_key');
 const Key viewResponsesButtonKey = Key('view_responses_btn_key');
-
-const Key registerCaregiverButtonKey = Key('register_caregiver_button_key');
-const Key addClientsButtonKey = Key('add_clients_button_key');

@@ -958,30 +958,5 @@ const String surveyResponsesSearchHintText =
 const String surveyResponseString = 'Survey response';
 const String previewResponsesString = 'Preview Response';
 const String fetchingSurveyResponsesString = 'fetching survey responses';
-//Phase 2 strings
-const String addFacilityString = 'Add Facility';
-const String facilitiesString = 'Facilities';
-const String clientConsentedString = 'Client consented';
-const String clientNotConsentedString =
-    'Client has not given consent for this caregiver';
 
-String getFacilitiesDescriptionString(String name) {
-  return 'Tap below to add facilities in which $name works at';
-}
-
-String getCaregiverDescriptionString(String name) {
-  return "Here are $name's caregivers";
-}
-
-String welcomeFacilitySelectionDescription(String username) =>
-    'Welcome back $username! Choose your facility';
-
-String noOfFacilitiesDescription(int numberOfFacilities) =>
-    "We've noticed that you're part of $numberOfFacilities facilities. Choose which facility you would like to log into. Here are the details.";
-const String continueString = 'Continue';
-
-const String addCaregiverDescriptionString =
-    'As a caregiver, this user will be able to view medical information on behalf of another client.\n\nTo set this user as a caregiver, indicate the client that they will be managing';
-
-const String addClientsString = 'Add Clients';
 const String doneString = 'Done';
