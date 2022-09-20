@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
@@ -76,7 +77,8 @@ class FetchMembersAction extends ReduxAction<AppState> {
       }
 
       final ListMembersResponse membersData = ListMembersResponse.fromJson(
-        body['data'] as Map<String, dynamic>,
+        (json.decode(utf8.decode(response.bodyBytes))
+            as Map<String, dynamic>)['data'] as Map<String, dynamic>,
       );
 
       dispatch(
