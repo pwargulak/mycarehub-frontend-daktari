@@ -1118,8 +1118,9 @@ class MockTestGraphQlClient extends IGraphQlClient {
             'data': <String, dynamic>{
               'getUserRoles': <dynamic>[
                 <String, dynamic>{
-                  'roleID': 'some_id',
-                  'name': 'CONTENT_MANAGEMENT'
+                  'authorityRoleID': 'some_id',
+                  'name': 'CONTENT_MANAGEMENT',
+                  'active': true
                 },
               ]
             }

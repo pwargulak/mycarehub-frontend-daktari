@@ -11,8 +11,8 @@ import 'package:prohealth360_daktari/phase_two/presentation/search/widgets/clien
 import 'package:prohealth360_daktari/phase_two/presentation/search/widgets/staff_search_widget.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
 
-class SearchDetailsViewPage extends StatefulWidget {
-  const SearchDetailsViewPage({
+class SearchPageDetailView extends StatefulWidget {
+  const SearchPageDetailView({
     this.searchUserResponse,
     this.isClient = true,
   });
@@ -21,28 +21,10 @@ class SearchDetailsViewPage extends StatefulWidget {
   final bool isClient;
 
   @override
-  State<SearchDetailsViewPage> createState() => _SearchDetailsViewPageState();
+  State<SearchPageDetailView> createState() => _SearchPageDetailViewState();
 }
 
-class _SearchDetailsViewPageState extends State<SearchDetailsViewPage> {
-  @override
-  void initState() {
-    // fetch roles if the user being searched is a staff member
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!widget.isClient) {
-        StoreProvider.dispatch(
-          context,
-          FetchStaffRolesAction(
-            userID: widget.searchUserResponse?.user?.id ?? '',
-            client: AppWrapperBase.of(context)!.graphQLClient,
-            onFailure: () {},
-          ),
-        );
-      }
-    });
-    super.initState();
-  }
-
+class _SearchPageDetailViewState extends State<SearchPageDetailView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,6 +37,19 @@ class _SearchDetailsViewPageState extends State<SearchDetailsViewPage> {
             : StoreConnector<AppState, SearchViewModel>(
                 converter: (Store<AppState> store) =>
                     SearchViewModel.fromStore(store),
+                onInit: (Store<AppState> store) async {
+                  // fetch roles if the user being searched is a staff member
+                  if (!widget.isClient) {
+                    await StoreProvider.dispatch(
+                      context,
+                      FetchStaffRolesAction(
+                        userID: widget.searchUserResponse?.user?.id ?? '',
+                        client: AppWrapperBase.of(context)!.graphQLClient,
+                        onFailure: () {},
+                      ),
+                    );
+                  }
+                },
                 builder: (BuildContext context, SearchViewModel vm) {
                   if (vm.wait.isWaitingFor(getUserRolesFlag)) {
                     return Container(

@@ -6,13 +6,13 @@ class ListCardWithCancelButton extends StatelessWidget {
   const ListCardWithCancelButton({
     super.key,
     required this.title,
-    required this.description,
+    this.description,
     this.body,
     this.onCancelCallback,
   });
 
   final String title;
-  final String description;
+  final String? description;
   final Widget? body;
   final VoidCallback? onCancelCallback;
 
@@ -44,12 +44,13 @@ class ListCardWithCancelButton extends StatelessWidget {
                       ),
                     ),
                     smallVerticalSizedBox,
-                    Text(
-                      description,
-                      style: normalSize14Text(
-                        AppColors.greyTextColor,
+                    if (description != null)
+                      Text(
+                        description!,
+                        style: normalSize14Text(
+                          AppColors.greyTextColor,
+                        ),
                       ),
-                    ),
                   ],
                 ),
               ),

@@ -9,6 +9,7 @@ import 'package:prohealth360_daktari/domain/core/entities/surveys/survey.dart';
 import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_respondent.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_events.dart';
+import 'package:prohealth360_daktari/phase_two/presentation/search/search_details_view_page.dart';
 // Project imports:
 import 'package:prohealth360_daktari/presentation/client_details/pages/search_client_page.dart';
 import 'package:prohealth360_daktari/presentation/client_details/pages/search_staff_member_page.dart';
@@ -50,7 +51,6 @@ import 'package:prohealth360_daktari/presentation/profile/widgets/edit_informati
 import 'package:prohealth360_daktari/presentation/resume_with_pin/resume_pin_connector.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:prohealth360_daktari/presentation/search/pages/search_page.dart';
-import 'package:prohealth360_daktari/presentation/search/pages/search_page_detail_view.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/assessment_card_answers_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/assessment_tools_responses_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/pin_reset_requests_page.dart';

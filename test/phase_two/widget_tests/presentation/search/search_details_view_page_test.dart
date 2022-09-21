@@ -38,7 +38,7 @@ void main() {
         await buildTestWidget(
           tester: tester,
           graphQlClient: MockTestGraphQlClient(),
-          widget: SearchDetailsViewPage(
+          widget: SearchPageDetailView(
             searchUserResponse: SearchUserResponse.initial(),
           ),
         );
@@ -54,7 +54,7 @@ void main() {
           tester: tester,
           graphQlClient: MockTestGraphQlClient(),
           store: store,
-          widget: SearchDetailsViewPage(
+          widget: SearchPageDetailView(
             searchUserResponse: SearchUserResponse.initial(),
             isClient: false,
           ),
@@ -76,7 +76,7 @@ void main() {
           tester: tester,
           graphQlClient: MockTestGraphQlClient(),
           store: store,
-          widget: SearchDetailsViewPage(
+          widget: SearchPageDetailView(
             searchUserResponse: SearchUserResponse.initial(),
             isClient: false,
           ),
@@ -96,7 +96,7 @@ void main() {
           tester: tester,
           store: store,
           graphQlClient: MockTestGraphQlClient(),
-          widget: SearchDetailsViewPage(
+          widget: SearchPageDetailView(
             searchUserResponse: SearchUserResponse.initial(),
             isClient: false,
           ),
@@ -128,7 +128,7 @@ void main() {
         await buildTestWidget(
           tester: tester,
           graphQlClient: MockTestGraphQlClient(),
-          widget: SearchDetailsViewPage(
+          widget: SearchPageDetailView(
             searchUserResponse: SearchUserResponse.initial(),
           ),
         );
@@ -150,7 +150,7 @@ void main() {
         await buildTestWidget(
           tester: tester,
           graphQlClient: MockTestGraphQlClient(),
-          widget: SearchDetailsViewPage(
+          widget: SearchPageDetailView(
             searchUserResponse: SearchUserResponse.initial(),
           ),
         );
@@ -212,7 +212,7 @@ void main() {
         await buildTestWidget(
           tester: tester,
           graphQlClient: mockShortGraphQlClient,
-          widget: SearchDetailsViewPage(
+          widget: SearchPageDetailView(
             searchUserResponse: SearchUserResponse.initial(),
           ),
         );
@@ -243,7 +243,7 @@ void main() {
         await buildTestWidget(
           tester: tester,
           graphQlClient: mockShortGraphQlClient,
-          widget: SearchDetailsViewPage(
+          widget: SearchPageDetailView(
             searchUserResponse: SearchUserResponse.initial(),
           ),
         );
@@ -272,7 +272,7 @@ void main() {
         await buildTestWidget(
           tester: tester,
           graphQlClient: mockShortGraphQlClient,
-          widget: SearchDetailsViewPage(
+          widget: SearchPageDetailView(
             searchUserResponse: SearchUserResponse.initial(),
             isClient: false,
           ),
@@ -304,7 +304,7 @@ void main() {
         await buildTestWidget(
           tester: tester,
           graphQlClient: mockShortGraphQlClient,
-          widget: SearchDetailsViewPage(
+          widget: SearchPageDetailView(
             searchUserResponse: SearchUserResponse.initial(),
             isClient: false,
           ),
@@ -326,7 +326,7 @@ void main() {
         await buildTestWidget(
           tester: tester,
           graphQlClient: MockTestGraphQlClient(),
-          widget: SearchDetailsViewPage(
+          widget: SearchPageDetailView(
             searchUserResponse: SearchUserResponse.initial(),
             isClient: false,
           ),
@@ -349,7 +349,7 @@ void main() {
         await buildTestWidget(
           tester: tester,
           graphQlClient: MockTestGraphQlClient(),
-          widget: SearchDetailsViewPage(
+          widget: SearchPageDetailView(
             searchUserResponse: SearchUserResponse.initial(),
             isClient: false,
           ),
@@ -372,7 +372,7 @@ void main() {
         await buildTestWidget(
           tester: tester,
           graphQlClient: MockTestGraphQlClient(),
-          widget: SearchDetailsViewPage(
+          widget: SearchPageDetailView(
             searchUserResponse: SearchUserResponse.initial(),
             isClient: false,
           ),
@@ -394,7 +394,7 @@ void main() {
         await buildTestWidget(
           tester: tester,
           graphQlClient: MockTestGraphQlClient(),
-          widget: SearchDetailsViewPage(
+          widget: SearchPageDetailView(
             searchUserResponse: SearchUserResponse.initial(),
             isClient: false,
           ),
@@ -454,7 +454,7 @@ void main() {
         await buildTestWidget(
           tester: tester,
           graphQlClient: mockShortSILGraphQlClient,
-          widget: SearchDetailsViewPage(
+          widget: SearchPageDetailView(
             searchUserResponse: SearchUserResponse.initial(),
             isClient: false,
           ),
@@ -512,7 +512,7 @@ void main() {
           store: store,
           tester: tester,
           graphQlClient: MockTestGraphQlClient(),
-          widget: SearchDetailsViewPage(
+          widget: SearchPageDetailView(
             searchUserResponse:
                 SearchUserResponse.initial().copyWith(isActive: false),
           ),
@@ -554,7 +554,7 @@ void main() {
           store: store,
           tester: tester,
           graphQlClient: mockShortGraphQlClient,
-          widget: SearchDetailsViewPage(
+          widget: SearchPageDetailView(
             searchUserResponse:
                 SearchUserResponse.initial().copyWith(isActive: false),
           ),
@@ -564,7 +564,7 @@ void main() {
         expect(find.byType(ClientSearchWidget), findsOneWidget);
         expect(find.byType(SearchDetailsInformationWidget), findsOneWidget);
 
-        await tester.tap(find.byType(MyAfyaHubPrimaryButton));
+        await tester.tap(find.byType(MyAfyaHubPrimaryButton).first);
         await tester.pumpAndSettle();
         expect(
           find.text('$errorWhileReactivatingString $UNKNOWN'),
@@ -601,7 +601,7 @@ void main() {
           tester: tester,
           graphQlClient: mockShortGraphQlClient,
           store: store,
-          widget: SearchDetailsViewPage(
+          widget: SearchPageDetailView(
             searchUserResponse:
                 SearchUserResponse.initial().copyWith(isActive: false),
           ),

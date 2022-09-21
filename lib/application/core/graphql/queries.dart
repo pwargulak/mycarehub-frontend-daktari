@@ -214,6 +214,7 @@ query getUserRoles($userID: String!){
   getUserRoles(userID: $userID){
     authorityRoleID
     name
+    active
   }
 }
 ''';

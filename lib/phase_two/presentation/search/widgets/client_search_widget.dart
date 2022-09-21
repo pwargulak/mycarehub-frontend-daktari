@@ -2,8 +2,11 @@ import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:app_wrapper/app_wrapper.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_graphql_client/graph_client.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
+import 'package:prohealth360_daktari/application/redux/actions/search_users/invite_client_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/search_users/reactivate_client_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/search_users/shared_health_diary_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/search/search_view_model.dart';
@@ -16,6 +19,7 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart'
 import 'package:prohealth360_daktari/phase_two/presentation/widgets/consent_status_widget.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/widgets/list_card_with_cancel_button.dart';
 import 'package:prohealth360_daktari/presentation/client_details/widgets/health_diary_entry_widget.dart';
+import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:prohealth360_daktari/presentation/search/widgets/active_client_actions.dart';
 import 'package:prohealth360_daktari/presentation/search/widgets/inactive_user_actions.dart';
 import 'package:prohealth360_daktari/presentation/search/widgets/search_details_information_widget.dart';
@@ -73,8 +77,6 @@ class ClientSearchWidget extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 10.0),
                       child: ListCardWithCancelButton(
                         title: facility?.name ?? '',
-                        description:
-                            'Staff number: ${selectedSearchUserResponse.staffNumber} ',
                       ),
                     ),
                   ),
@@ -133,7 +135,6 @@ class ClientSearchWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     // Only send an invite when a user is active
-
                     if (isActive)
                       ActiveClientActions(
                         names: names,
@@ -183,53 +184,113 @@ class ClientSearchWidget extends StatelessWidget {
                               }
                             },
                           ),
-                          Text(
-                            facilitiesString,
-                            style: boldSize18Text(AppColors.greyTextColor),
-                          ),
-                          smallVerticalSizedBox,
-                          Text(
-                            getFacilitiesDescriptionString(
-                              selectedSearchUserResponse.user?.name ?? '',
-                            ),
-                            style: normalSize15Text(AppColors.greyTextColor),
-                          ),
-                          ...facilitiesWidgetList,
-                          smallVerticalSizedBox,
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width,
-                            child: const MyAfyaHubPrimaryButton(
-                              text: addFacilityString,
-                            ),
-                          ),
-                          largeVerticalSizedBox,
-                          Text(
-                            'Caregivers',
-                            style: boldSize18Text(AppColors.greyTextColor),
-                          ),
-                          smallVerticalSizedBox,
-                          Text(
-                            getCaregiverDescriptionString(
-                              selectedSearchUserResponse.user?.name ?? '',
-                            ),
-                            style: normalSize15Text(AppColors.greyTextColor),
-                          ),
-                          ...caregiversWidgetList,
-                          smallVerticalSizedBox,
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width,
-                            child: const MyAfyaHubPrimaryButton(
-                              text: 'Add Caregiver',
-                            ),
-                          ),
                         ],
                       ),
+                    Text(
+                      facilitiesString,
+                      style: boldSize18Text(AppColors.greyTextColor),
+                    ),
+                    smallVerticalSizedBox,
+                    Text(
+                      getFacilitiesDescriptionString(
+                        selectedSearchUserResponse.user?.name ?? '',
+                      ),
+                      style: normalSize15Text(AppColors.greyTextColor),
+                    ),
+                    ...facilitiesWidgetList,
+                    smallVerticalSizedBox,
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      child: const MyAfyaHubPrimaryButton(
+                        text: addFacilityString,
+                      ),
+                    ),
+                    largeVerticalSizedBox,
+                    Text(
+                      'Caregivers',
+                      style: boldSize18Text(AppColors.greyTextColor),
+                    ),
+                    smallVerticalSizedBox,
+                    Text(
+                      getCaregiverDescriptionString(
+                        selectedSearchUserResponse.user?.name ?? '',
+                      ),
+                      style: normalSize15Text(AppColors.greyTextColor),
+                    ),
+                    ...caregiversWidgetList,
+                    smallVerticalSizedBox,
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      child: const MyAfyaHubPrimaryButton(
+                        text: 'Add Caregiver',
+                      ),
+                    ),
                   ],
                 ),
               ),
             ],
           );
         },
+      ),
+    );
+  }
+}
+
+/// Performs an invite to a client or reinvite based on the value of [reinvite]
+///
+/// It sends an invite if [reinvite] is true and a reinvite if false
+void clientSearchAction({
+  required BuildContext context,
+  required SearchUserResponse selectedSearchUserResponse,
+  bool reinvite = false,
+}) {
+  final bool isActive = selectedSearchUserResponse.isActive ?? true;
+  final String name = selectedSearchUserResponse.user?.name ?? 'the client';
+  final IGraphQlClient? client = AppWrapperBase.of(context)?.graphQLClient;
+
+  if (isActive) {
+    StoreProvider.dispatch(
+      context,
+      InviteClientAction(
+        clientResponse: selectedSearchUserResponse,
+        client: client!,
+        reinvite: reinvite,
+        onSuccess: () {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('$inviteSent $name')),
+          );
+          Navigator.of(context).pushNamedAndRemoveUntil(
+            AppRoutes.homePage,
+            (Route<dynamic> route) => false,
+          );
+        },
+        onFailure: () {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text(unableToSendInvite)),
+          );
+          Navigator.of(context).pushNamedAndRemoveUntil(
+            AppRoutes.homePage,
+            (Route<dynamic> route) => false,
+          );
+        },
+      ),
+    );
+  } else {
+    final String? endpoint =
+        AppWrapperBase.of(context)?.customContext?.optInClientEndpoint;
+
+    StoreProvider.dispatch(
+      context,
+      ReactivateClientAction(
+        client: client!,
+        optInEndpoint: endpoint ?? '',
+        searchUserResponse: selectedSearchUserResponse,
+        onSuccess: () => ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('$name $reactivatedSuccessfullyString')),
+        ),
+        onError: () => ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('$errorWhileReactivatingString $name')),
+        ),
       ),
     );
   }
