@@ -10,6 +10,7 @@ import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_respond
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_events.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/search/search_details_view_page.dart';
+import 'package:prohealth360_daktari/presentation/onboarding/caregiver/register_caregiver_page.dart';
 // Project imports:
 import 'package:prohealth360_daktari/presentation/client_details/pages/search_client_page.dart';
 import 'package:prohealth360_daktari/presentation/client_details/pages/search_staff_member_page.dart';
@@ -549,6 +550,11 @@ class RouteGenerator {
             selectedSurvey: args as Survey,
           ),
           settings: const RouteSettings(name: 'Survey responses page'),
+        );
+      case AppRoutes.registerCaregiverPage:
+        return MaterialPageRoute<RegisterCaregiverPage>(
+          builder: (_) => const RegisterCaregiverPage(),
+          settings: const RouteSettings(name: 'Register caregiver page'),
         );
     }
 

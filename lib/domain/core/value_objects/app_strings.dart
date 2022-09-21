@@ -148,6 +148,7 @@ const String noResultsFoundText = 'Oops!... no results found';
 const String addNewPatientText = 'Add new patient';
 const String createGroupText = 'Create Group';
 const String addNewStaffText = 'Add New Staff';
+const String addCaregiverText = 'Add Caregiver';
 
 //Service Requests
 const String serviceRequestString = 'Service requests';
@@ -262,6 +263,7 @@ const String addNewPatientTitleText = 'Add new patient';
 const String enrollmentDateLabel = 'Enrollment Date *';
 const String clientTypeLabel = 'Client Type *';
 const String registerClientSuccess = 'Successfully registered client';
+const String registerCaregiverSuccess = 'Successfully registered caregiver';
 const String cccExists =
     'a client with this identifier type and value already exists';
 const String clientCccExists = 'A client with that CCC number already exists';

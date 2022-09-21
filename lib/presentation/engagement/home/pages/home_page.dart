@@ -119,6 +119,14 @@ class _HomePageState extends State<HomePage> {
                         },
                       ),
                       ActionCard(
+                        title: addCaregiverText,
+                        iconUrl: addNewUserIconSvg,
+                        onTap: () {
+                          Navigator.of(context)
+                              .pushNamed(AppRoutes.registerCaregiverPage);
+                        },
+                      ),
+                      ActionCard(
                         iconUrl: serviceRequestsIconSvg,
                         title: serviceRequestsText,
                         onTap: () => Navigator.of(context).pushNamed(

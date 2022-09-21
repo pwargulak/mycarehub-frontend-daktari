@@ -30,6 +30,7 @@ import 'package:prohealth360_daktari/presentation/onboarding/login/pages/forgot_
 import 'package:prohealth360_daktari/presentation/onboarding/login/pages/login_counter_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/login/pages/pending_pin_request_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/login/pages/pin_request_sent_page.dart';
+import 'package:prohealth360_daktari/presentation/onboarding/caregiver/register_caregiver_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/patient/register_client_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/pin_expired/pages/pin_expired_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/security_questions/security_questions_page.dart';
@@ -648,5 +649,17 @@ void main() {
 
     expect(route, isA<MaterialPageRoute<SurveyResponsesPreviewPage>>());
     expect(route?.builder(context), isA<SurveyResponsesPreviewPage>());
+  });
+
+  test('Test router returns successful Register Caregiver Page', () {
+    const RouteSettings settings = RouteSettings(
+      name: AppRoutes.registerCaregiverPage,
+    );
+
+    final MaterialPageRoute<RegisterCaregiverPage>? route =
+        routeGenerator(settings) as MaterialPageRoute<RegisterCaregiverPage>?;
+
+    expect(route, isA<MaterialPageRoute<RegisterCaregiverPage>>());
+    expect(route?.builder(context), isA<RegisterCaregiverPage>());
   });
 }

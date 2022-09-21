@@ -224,3 +224,16 @@ mutation addFacilityContact($facilityID: ID!, $contact: String!) {
   addFacilityContact(facilityID: $facilityID, contact: $contact)
 }
 ''';
+
+const String registerCaregiverMutation = r'''
+mutation registerCaregiver($input: CaregiverInput!) {
+  registerCaregiver(input: $input) {
+    id
+    caregiverNumber
+    user {
+      ID
+      Name
+    }
+  }
+}
+''';

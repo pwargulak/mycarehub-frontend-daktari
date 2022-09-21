@@ -344,6 +344,16 @@ Map<String, dynamic> mockRegisterPayload = <String, dynamic>{
   'counselled': true
 };
 
+Map<String, dynamic> mockRegisterCaregiverPayload = <String, dynamic>{
+  'facility': 'Kanairo',
+  'name': 'Joker',
+  'gender': 'male',
+  'dateOfBirth': '1998-01-01',
+  'phoneNumber': '+254704002748',
+  'enrollmentDate': '2021-02-07',
+  'sendInvite': true
+};
+
 Map<String, dynamic> mockClientConfigurationPayload = <String, dynamic>{
   'clientType': 'PMTCT',
   'ageGroup': '14 - 16 yrs',
@@ -819,6 +829,19 @@ class MockTestGraphQlClient extends IGraphQlClient {
                   'caregiver': ''
                 }
               }
+            },
+          ),
+          201,
+        ),
+      );
+    }
+
+    if (queryString.contains(registerCaregiverMutation)) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(
+            <String, dynamic>{
+              'data': <String, dynamic>{'registerCaregiver': true}
             },
           ),
           201,

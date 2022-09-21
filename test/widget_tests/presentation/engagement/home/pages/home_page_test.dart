@@ -12,6 +12,7 @@ import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/user.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
+import 'package:prohealth360_daktari/presentation/onboarding/caregiver/register_caregiver_page.dart';
 import 'package:prohealth360_daktari/presentation/create_group/create_group.dart';
 import 'package:prohealth360_daktari/presentation/engagement/home/pages/home_page.dart';
 import 'package:prohealth360_daktari/presentation/engagement/home/widgets/action_card.dart';
@@ -172,6 +173,22 @@ void main() {
       await tester.tap(addStaffWidget);
       await tester.pumpAndSettle();
       expect(find.byType(AddNewStaffPage), findsWidgets);
+    });
+
+    testWidgets('navigates to add new caregiver page',
+        (WidgetTester tester) async {
+      await buildTestWidget(
+        tester: tester,
+        store: store,
+        widget: const HomePage(),
+      );
+
+      final Finder addCaregiverWidget = find.text(addCaregiverText);
+      await tester.ensureVisible(addCaregiverWidget);
+      await tester.pumpAndSettle();
+      await tester.tap(addCaregiverWidget);
+      await tester.pumpAndSettle();
+      expect(find.byType(RegisterCaregiverPage), findsWidgets);
     });
 
     testWidgets('navigates to search page', (WidgetTester tester) async {
