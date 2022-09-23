@@ -1,4 +1,4 @@
-package com.mycarehub.prohealth360daktari
+package com.mycarehub.mycarehubpro
 
 import io.flutter.embedding.android.FlutterActivity
 
