@@ -2,6 +2,7 @@ import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:prohealth360_daktari/application/redux/states/groups_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/search_user_response_state.dart';
+import 'package:prohealth360_daktari/domain/core/entities/caregiver/search_caregiver_response_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 
@@ -20,6 +21,7 @@ class MiscState with _$MiscState {
     SearchUserResponseState? searchUserResponseState,
     String? inactiveTime,
     bool? resumeWithPin,
+    SearchCaregiverResponseState? searchCaregiverResponseState,
   }) = _MiscState;
 
   factory MiscState.fromJson(Map<String, dynamic> json) =>
@@ -34,5 +36,6 @@ class MiscState with _$MiscState {
         searchUserResponseState: SearchUserResponseState.initial(),
         inactiveTime: UNKNOWN,
         resumeWithPin: false,
+        searchCaregiverResponseState: SearchCaregiverResponseState.initial(),
       );
 }

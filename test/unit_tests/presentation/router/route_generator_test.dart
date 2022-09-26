@@ -13,6 +13,7 @@ import 'package:prohealth360_daktari/domain/core/entities/surveys/survey.dart';
 import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_respondent.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/search/search_details_view_page.dart';
+import 'package:prohealth360_daktari/presentation/caregiver/search_caregiver_page.dart';
 // Project imports:
 import 'package:prohealth360_daktari/presentation/client_details/pages/search_client_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/group_info/pages/edit_group_info_page.dart';
@@ -661,5 +662,17 @@ void main() {
 
     expect(route, isA<MaterialPageRoute<RegisterCaregiverPage>>());
     expect(route?.builder(context), isA<RegisterCaregiverPage>());
+  });
+
+  test('Test router returns successful Search Caregiver Page', () {
+    const RouteSettings settings = RouteSettings(
+      name: AppRoutes.searchCaregiverPage,
+    );
+
+    final MaterialPageRoute<SearchCaregiverPage>? route =
+        routeGenerator(settings) as MaterialPageRoute<SearchCaregiverPage>?;
+
+    expect(route, isA<MaterialPageRoute<SearchCaregiverPage>>());
+    expect(route?.builder(context), isA<SearchCaregiverPage>());
   });
 }

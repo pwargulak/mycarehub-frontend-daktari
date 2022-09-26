@@ -994,6 +994,15 @@ class MockTestGraphQlClient extends IGraphQlClient {
       );
     }
 
+    if (queryString.contains(searchCaregiverUserQuery)) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(<String, dynamic>{'data': caregiverResponseMock}),
+          201,
+        ),
+      );
+    }
+
     if (queryString.contains(recentlySharedHealthDiaryQuery)) {
       return Future<http.Response>.value(
         http.Response(
@@ -1722,6 +1731,24 @@ final Map<String, dynamic> clientResponseMock = <String, dynamic>{
           'ContactValue': '07000000',
           'Active': false,
           'OptedIn': false,
+        }
+      }
+    }
+  ]
+};
+
+final Map<String, dynamic> caregiverResponseMock = <String, dynamic>{
+  'searchCaregiverUser': <dynamic>[
+    <String, dynamic>{
+      'id': 'some-id',
+      'caregiverNumber': '1234',
+      'user': <String, dynamic>{
+        'ID': 'some-id',
+        'Username': 'Username',
+        'Name': 'User Name',
+        'Contacts': <String, dynamic>{
+          'ContactType': 'PHONE',
+          'contactValue': '07000000',
         }
       }
     }

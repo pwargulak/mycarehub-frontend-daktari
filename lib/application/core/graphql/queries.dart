@@ -510,3 +510,21 @@ query surveyResponse($input: SurveyResponseInput!) {
   }
 }
 ''';
+
+const String searchCaregiverUserQuery = r'''
+query searchCaregiverUser($searchParameter: String!){
+  searchCaregiverUser(searchParameter: $searchParameter){
+    id
+    user{
+      ID
+      Username
+      Name
+      Contacts{
+        contactType
+        contactValue
+      }
+    }
+    caregiverNumber
+  }
+}
+''';

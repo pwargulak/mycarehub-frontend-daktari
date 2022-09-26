@@ -985,7 +985,13 @@ const String addCaregiverDescriptionString =
 
 const String addClientsString = 'Add Clients';
 
+// search caregiver
 const String searchCaregiversString = 'Search caregivers';
 const String searchCaregiverDescriptionString =
-    'Search caregivers using their caregiver number, phone number or username';
+    'Search caregivers using their phone number or username';
 const String searchCaregiverString = 'Search caregivers';
+const String noCaregiverFoundString = 'No caregiver found';
+const String couldNotFindCaregiverString =
+    'We could not find a caregiver with the keyword ';
+const String confirmSearchTermIsCorrectString =
+    '. Confirm that the search term is correct and try again';

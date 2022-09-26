@@ -122,8 +122,9 @@ class AppRoutes {
       '/surveyServiceRequestActionsPage';
   static const String surveyResponsesPreviewPage =
       '/surveyResponsesPreviewPage';
-  
+
   //Caregiver
-  static const String registerCaregiverPage =
-      '/registerCaregiverPage';
+  static const String registerCaregiverPage = '/registerCaregiverPage';
+
+  static const String searchCaregiverPage = '/searchCaregiverPage';
 }
