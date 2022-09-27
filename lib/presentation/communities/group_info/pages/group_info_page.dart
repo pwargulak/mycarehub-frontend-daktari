@@ -118,7 +118,9 @@ class _GroupInfoPageState extends State<GroupInfoPage> {
                       converter: (Store<AppState> store) =>
                           GroupsViewModel.fromStore(store),
                       builder: (BuildContext context, GroupsViewModel vm) {
-                        if (vm.communities?.isEmpty ?? true) return const SizedBox();
+                        if (vm.communities?.isEmpty ?? true) {
+                          return const SizedBox();
+                        }
                         final Community? community = vm.communities?.first;
 
                         if (community == null) return const SizedBox();

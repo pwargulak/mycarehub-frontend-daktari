@@ -570,7 +570,7 @@ const String defaultStreamUserID = 'myCareHub';
 const String kindlyLogOutText = 'Kindly log out and back in to continue';
 
 String getGroupMembersNumber(int numberOfMembers) {
-  return '$numberOfMembers members';
+  return '$numberOfMembers ${numberOfMembers == 1 ? 'member' : 'members'}';
 }
 
 const String actionsText = 'Actions';
