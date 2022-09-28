@@ -9,6 +9,7 @@ class SearchViewModel extends Vm {
   final bool? timeoutFetchingSearchUserResponse;
   final bool? noUserFound;
   final List<SearchUserResponse?>? searchUserResponses;
+  final List<SearchUserResponse?>? selectedUsers;
   final SearchUserResponse? selectedSearchUserResponse;
   final List<HealthDiaryEntry?>? sharedDiaryEntries;
 
@@ -20,6 +21,7 @@ class SearchViewModel extends Vm {
     this.noUserFound,
     this.selectedSearchUserResponse,
     this.sharedDiaryEntries,
+    this.selectedUsers,
   }) : super(
           equals: <Object?>[
             wait,
@@ -28,7 +30,8 @@ class SearchViewModel extends Vm {
             searchUserResponses,
             selectedSearchUserResponse,
             noUserFound,
-            sharedDiaryEntries
+            sharedDiaryEntries,
+            selectedUsers
           ],
         );
 
@@ -45,6 +48,8 @@ class SearchViewModel extends Vm {
       selectedSearchUserResponse: store
           .state.miscState?.searchUserResponseState?.selectedSearchUserResponse,
       sharedDiaryEntries: store.state.staffState?.clientSharedDiaryEntries,
+      selectedUsers:
+          store.state.miscState?.searchUserResponseState?.selectedUsers,
     );
   }
 }

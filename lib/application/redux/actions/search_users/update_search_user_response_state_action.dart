@@ -10,12 +10,14 @@ class UpdateSearchUserResponseStateAction extends ReduxAction<AppState> {
     this.timeoutSearchingUser,
     this.noUserFound,
     this.selectedSearchUserResponse,
+    this.selectedUsers,
   });
 
   final bool? errorSearchingUser;
   final bool? timeoutSearchingUser;
   final bool? noUserFound;
   final List<SearchUserResponse?>? searchUserResponses;
+  final List<SearchUserResponse?>? selectedUsers;
   final SearchUserResponse? selectedSearchUserResponse;
 
   @override
@@ -32,6 +34,8 @@ class UpdateSearchUserResponseStateAction extends ReduxAction<AppState> {
           noUserFound ?? state.miscState?.searchUserResponseState?.noUserFound,
       selectedSearchUserResponse: selectedSearchUserResponse ??
           state.miscState?.searchUserResponseState?.selectedSearchUserResponse,
+      selectedUsers: selectedUsers ??
+          state.miscState?.searchUserResponseState?.selectedUsers,
     );
     final AppState newState = state.copyWith(
       miscState: state.miscState

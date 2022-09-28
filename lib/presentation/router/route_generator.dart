@@ -356,7 +356,9 @@ class RouteGenerator {
 
       case AppRoutes.searchClientPage:
         return MaterialPageRoute<SearchClientPage>(
-          builder: (_) => const SearchClientPage(),
+          builder: (_) => SearchClientPage(
+            selectMultiple: args as bool?,
+          ),
           settings: const RouteSettings(name: 'Search client page'),
         );
 

@@ -157,7 +157,7 @@ void main() {
       expect(find.byType(ExpandableQuestion), findsWidgets);
       expect(find.byType(MyAfyaHubPrimaryButton), findsOneWidget);
 
-       await tester.tap(find.byKey(const Key('${secondQuestion}_key')));
+      await tester.tap(find.byKey(const Key('${secondQuestion}_key')));
       await tester.pumpAndSettle();
 
       final Finder datePickerField = find.byType(TextField);

@@ -1,12 +1,17 @@
 import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:prohealth360_daktari/application/redux/actions/search_users/update_search_user_response_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/update_connectivity_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/connectivity_state.dart';
+import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
+import 'package:prohealth360_daktari/phase_two/presentation/widgets/list_card_with_cancel_button.dart';
+import 'package:prohealth360_daktari/presentation/client_details/widgets/search_client_item.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/caregiver/register_caregiver_page.dart';
 import '../../../../mocks/mocks.dart';
 import '../../../../mocks/test_helpers.dart';
@@ -23,13 +28,43 @@ void main() {
       setupFirebaseAnalyticsMocks();
       await Firebase.initializeApp();
     });
+
     testWidgets('renders correctly', (WidgetTester tester) async {
+      TestWidgetsFlutterBinding.ensureInitialized();
       await buildTestWidget(
         store: store,
         tester: tester,
         graphQlClient: MockTestGraphQlClient(),
         widget: const RegisterCaregiverPage(),
       );
+
+      final Finder fNameFieldFinder = find.byKey(firstNameKey);
+      expect(fNameFieldFinder, findsOneWidget);
+      await tester.ensureVisible(fNameFieldFinder);
+      await tester.tap(fNameFieldFinder);
+      await tester.enterText(fNameFieldFinder, 'John');
+      await tester.pumpAndSettle();
+
+      //Gender field
+      final Finder genderFieldFinder = find.byKey(genderOptionFieldKey);
+      expect(genderFieldFinder, findsOneWidget);
+      await tester.tap(genderFieldFinder);
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Male').last);
+      await tester.pumpAndSettle();
+      expect(find.text('Male'), findsWidgets);
+      final Finder phoneNumberFieldFinder = find.byKey(patientNumberField);
+      expect(phoneNumberFieldFinder, findsOneWidget);
+      await tester.ensureVisible(phoneNumberFieldFinder);
+      await tester.tap(phoneNumberFieldFinder);
+      await tester.enterText(phoneNumberFieldFinder, '+254798363893');
+
+      final Finder lNameFieldFinder = find.byKey(lastNameKey);
+      expect(lNameFieldFinder, findsOneWidget);
+      await tester.ensureVisible(lNameFieldFinder);
+      await tester.tap(lNameFieldFinder);
+      await tester.enterText(lNameFieldFinder, 'Doe');
+      await tester.pumpAndSettle();
 
       final Finder dobField = find.byKey(dobKey);
       expect(dobField, findsOneWidget);
@@ -50,34 +85,38 @@ void main() {
       await tester.tap(find.byKey(addClientsButtonKey));
       await tester.pumpAndSettle();
 
-      final Finder fNameFieldFinder = find.byKey(firstNameKey);
-      expect(fNameFieldFinder, findsOneWidget);
-      await tester.ensureVisible(fNameFieldFinder);
-      await tester.tap(fNameFieldFinder);
-      await tester.enterText(fNameFieldFinder, 'John');
+      final Finder searchNameFinder = find.byType(CustomTextField);
+      expect(searchNameFinder, findsOneWidget);
+      await tester.tap(searchNameFinder);
+      await tester.enterText(searchNameFinder, '1234');
+
+      await tester.tap(find.byType(IconButton));
       await tester.pumpAndSettle();
 
-      final Finder lNameFieldFinder = find.byKey(lastNameKey);
-      expect(lNameFieldFinder, findsOneWidget);
-      await tester.ensureVisible(fNameFieldFinder);
-      await tester.tap(lNameFieldFinder);
-      await tester.enterText(lNameFieldFinder, 'Doe');
+      final Finder clientItem = find.byType(SearchClientItem);
+      expect(clientItem, findsWidgets);
+      await tester.tap(clientItem.first);
       await tester.pumpAndSettle();
 
-      final Finder phoneNumberFieldFinder = find.byKey(patientNumberField);
-      expect(phoneNumberFieldFinder, findsOneWidget);
-      await tester.ensureVisible(phoneNumberFieldFinder);
-      await tester.tap(phoneNumberFieldFinder);
-      await tester.enterText(phoneNumberFieldFinder, '+254798363893');
+      await tester.tap(clientItem.last);
+      await tester.pumpAndSettle();
 
-      //Gender field
-      final Finder genderFieldFinder = find.byKey(genderOptionFieldKey);
-      expect(genderFieldFinder, findsOneWidget);
-      await tester.tap(genderFieldFinder);
+      await tester.tap(find.byKey(appBarBackButtonKey));
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Male').last);
+
+      store.dispatch(
+        UpdateSearchUserResponseStateAction(
+          selectedUsers: <SearchUserResponse>[SearchUserResponse.initial()],
+        ),
+      );
       await tester.pumpAndSettle();
-      expect(find.text('Male'), findsWidgets);
+
+      final Finder listCard = find.byType(ListCardWithCancelButton);
+      expect(listCard, findsOneWidget);
+
+      await tester.tap(find.byKey(cancelButtonKey));
+      await tester.pumpAndSettle();
+      expect(listCard, findsNothing);
 
       final Finder registerBtnFinder = find.byKey(registerCaregiverButtonKey);
       await tester.ensureVisible(registerBtnFinder);
@@ -96,11 +135,9 @@ void main() {
         widget: const RegisterCaregiverPage(),
       );
 
+      // Dob field
       final Finder dobField = find.byKey(dobKey);
       expect(dobField, findsOneWidget);
-      expect(find.byKey(patientNumberField), findsOneWidget);
-      expect(find.byKey(registerCaregiverButtonKey), findsOneWidget);
-      // Dob field
       await tester.ensureVisible(dobField);
       await tester.tap(dobField);
       await tester.ensureVisible(dobField);
@@ -112,7 +149,11 @@ void main() {
       await tester.tap(find.text(currentDay.toString()));
       await tester.tap(find.text('OK'));
       await tester.pumpAndSettle();
-      await tester.tap(find.byKey(addClientsButtonKey));
+      final Finder lNameFieldFinder = find.byKey(lastNameKey);
+      expect(lNameFieldFinder, findsOneWidget);
+      await tester.ensureVisible(lNameFieldFinder);
+      await tester.tap(lNameFieldFinder);
+      await tester.enterText(lNameFieldFinder, 'Doe');
       await tester.pumpAndSettle();
 
       final Finder fNameFieldFinder = find.byKey(firstNameKey);
@@ -120,13 +161,6 @@ void main() {
       await tester.ensureVisible(fNameFieldFinder);
       await tester.tap(fNameFieldFinder);
       await tester.enterText(fNameFieldFinder, 'John');
-      await tester.pumpAndSettle();
-
-      final Finder lNameFieldFinder = find.byKey(lastNameKey);
-      expect(lNameFieldFinder, findsOneWidget);
-      await tester.ensureVisible(fNameFieldFinder);
-      await tester.tap(lNameFieldFinder);
-      await tester.enterText(lNameFieldFinder, 'Doe');
       await tester.pumpAndSettle();
 
       final Finder phoneNumberFieldFinder = find.byKey(patientNumberField);

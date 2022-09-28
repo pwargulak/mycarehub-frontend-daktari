@@ -14,6 +14,11 @@ _$_SearchUserResponseState _$$_SearchUserResponseStateFromJson(
               ? null
               : SearchUserResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
+      selectedUsers: (json['selectedUsers'] as List<dynamic>?)
+          ?.map((e) => e == null
+              ? null
+              : SearchUserResponse.fromJson(e as Map<String, dynamic>))
+          .toList(),
       selectedSearchUserResponse: json['selectedSearchUserResponse'] == null
           ? null
           : SearchUserResponse.fromJson(
@@ -27,6 +32,7 @@ Map<String, dynamic> _$$_SearchUserResponseStateToJson(
         _$_SearchUserResponseState instance) =>
     <String, dynamic>{
       'searchUserResponses': instance.searchUserResponses,
+      'selectedUsers': instance.selectedUsers,
       'selectedSearchUserResponse': instance.selectedSearchUserResponse,
       'errorSearchingUser': instance.errorSearchingUser,
       'timeoutSearchingUser': instance.timeoutSearchingUser,

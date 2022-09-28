@@ -11,12 +11,14 @@ import 'package:prohealth360_daktari/application/redux/view_models/search/search
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
+import 'package:prohealth360_daktari/presentation/client_details/widgets/search_client_item.dart';
 import 'package:prohealth360_daktari/presentation/client_details/widgets/search_user_item.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 
 class SearchClientPage extends StatefulWidget {
-  const SearchClientPage();
+  const SearchClientPage({this.selectMultiple});
+  final bool? selectMultiple;
 
   @override
   State<SearchClientPage> createState() => _SearchClientPageState();
@@ -36,7 +38,6 @@ class _SearchClientPageState extends State<SearchClientPage> {
       StoreProvider.dispatch(
         context,
         UpdateSearchUserResponseStateAction(
-          searchUserResponses: <SearchUserResponse>[],
           noUserFound: false,
           errorSearchingUser: false,
           timeoutSearchingUser: false,
@@ -141,10 +142,51 @@ class _SearchClientPageState extends State<SearchClientPage> {
                             itemBuilder: (_, int index) {
                               final SearchUserResponse searchUserResponse =
                                   vm.searchUserResponses![index]!;
-                              return SearchUserItem(
-                                searchUserResponse: searchUserResponse,
-                                isCCCNumber: true,
-                              );
+                              return (widget.selectMultiple ?? false)
+                                  ? SearchClientItem(
+                                      searchUserResponse: searchUserResponse,
+                                      onTap: () {
+                                        final List<SearchUserResponse?>?
+                                            selectedUsers = vm.selectedUsers;
+                                        List<SearchUserResponse?>
+                                            updatedSelectedUsers =
+                                            <SearchUserResponse>[];
+
+                                        if (selectedUsers != null) {
+                                          if (selectedUsers
+                                              .contains(searchUserResponse)) {
+                                            updatedSelectedUsers = selectedUsers
+                                                .where(
+                                                  (
+                                                    SearchUserResponse? element,
+                                                  ) =>
+                                                      element
+                                                          ?.clientCCCNumber !=
+                                                      searchUserResponse
+                                                          .clientCCCNumber,
+                                                )
+                                                .toList();
+                                          } else {
+                                            updatedSelectedUsers =
+                                                <SearchUserResponse?>[
+                                              ...selectedUsers,
+                                              searchUserResponse
+                                            ];
+                                          }
+                                        }
+
+                                        StoreProvider.dispatch(
+                                          context,
+                                          UpdateSearchUserResponseStateAction(
+                                            selectedUsers: updatedSelectedUsers,
+                                          ),
+                                        );
+                                      },
+                                    )
+                                  : SearchUserItem(
+                                      searchUserResponse: searchUserResponse,
+                                      isCCCNumber: true,
+                                    );
                             },
                           ),
                         if ((vm.errorFetchingSearchUserResponse ?? false) ||

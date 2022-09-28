@@ -9,8 +9,11 @@ import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/actions/caregiver/register_caregiver_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
+import 'package:prohealth360_daktari/application/redux/actions/search_users/update_search_user_response_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/register_client/register_client_view_model.dart';
+import 'package:prohealth360_daktari/application/redux/view_models/search/search_view_model.dart';
+import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
@@ -19,6 +22,7 @@ import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.da
 import 'package:prohealth360_daktari/presentation/onboarding/core/widgets/search_facility_field.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/caregiver/register_caregiver_form_manager.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/patient/widgets/patient_details_text_form_field.dart';
+import 'package:prohealth360_daktari/presentation/router/routes.dart';
 
 class RegisterCaregiverPage extends StatefulWidget {
   const RegisterCaregiverPage({super.key});
@@ -161,7 +165,6 @@ class _RegisterCaregiverPageState extends State<RegisterCaregiverPage> {
                     const SizedBox(width: 10),
 
                     // Gender dropdown
-
                     Flexible(
                       child: Column(
                         children: <Widget>[
@@ -264,10 +267,61 @@ class _RegisterCaregiverPageState extends State<RegisterCaregiverPage> {
                           ),
                         ),
                       ),
-                      smallVerticalSizedBox,
-                      const ListCardWithCancelButton(
-                        title: 'Jane Doe',
-                        description: 'Caregiver number: 1234',
+                      StoreConnector<AppState, SearchViewModel>(
+                        onInit: (Store<AppState> store) {
+                          StoreProvider.dispatch(
+                            context,
+                            UpdateSearchUserResponseStateAction(
+                              selectedUsers: <SearchUserResponse>[],
+                            ),
+                          );
+                        },
+                        converter: (Store<AppState> store) =>
+                            SearchViewModel.fromStore(store),
+                        builder: (BuildContext context, SearchViewModel vm) {
+                          final List<Widget> clientWidgets = <Widget>[];
+                          if (vm.selectedUsers?.isNotEmpty ?? false) {
+                            for (final SearchUserResponse? clientItem
+                                in vm.selectedUsers!) {
+                              clientWidgets.add(
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 8.0),
+                                  child: ListCardWithCancelButton(
+                                    title: clientItem?.user?.name ?? '',
+                                    description:
+                                        '$cccNoShortText ${clientItem?.clientCCCNumber}',
+                                    onCancelCallback: () {
+                                      final List<SearchUserResponse?>
+                                          updatedSelectedUsers =
+                                          vm.selectedUsers!
+                                              .where(
+                                                (
+                                                  SearchUserResponse? element,
+                                                ) =>
+                                                    element?.clientCCCNumber !=
+                                                    clientItem?.clientCCCNumber,
+                                              )
+                                              .toList();
+
+                                      StoreProvider.dispatch(
+                                        context,
+                                        UpdateSearchUserResponseStateAction(
+                                          selectedUsers: updatedSelectedUsers,
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              );
+                            }
+                          }
+                          return Column(
+                            children: <Widget>[
+                              smallVerticalSizedBox,
+                              ...clientWidgets
+                            ],
+                          );
+                        },
                       ),
                       smallVerticalSizedBox,
                       Container(
@@ -276,7 +330,10 @@ class _RegisterCaregiverPageState extends State<RegisterCaregiverPage> {
                         width: double.infinity,
                         child: ElevatedButton(
                           key: addClientsButtonKey,
-                          onPressed: () {},
+                          onPressed: () => Navigator.of(context).pushNamed(
+                            AppRoutes.searchClientPage,
+                            arguments: true,
+                          ),
                           child: const Text(addClientsString),
                         ),
                       ),

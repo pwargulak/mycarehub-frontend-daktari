@@ -9,6 +9,7 @@ part 'search_user_response_state.g.dart';
 class SearchUserResponseState with _$SearchUserResponseState {
   factory SearchUserResponseState({
     List<SearchUserResponse?>? searchUserResponses,
+    List<SearchUserResponse?>? selectedUsers,
     SearchUserResponse?
         selectedSearchUserResponse, // when the user selects a specific user from the list
     bool? errorSearchingUser,
@@ -21,6 +22,7 @@ class SearchUserResponseState with _$SearchUserResponseState {
 
   factory SearchUserResponseState.initial() => SearchUserResponseState(
         searchUserResponses: <SearchUserResponse>[],
+        selectedUsers: <SearchUserResponse>[],
         errorSearchingUser: false,
         timeoutSearchingUser: false,
         selectedSearchUserResponse: SearchUserResponse.initial(),

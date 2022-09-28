@@ -23,6 +23,8 @@ SearchUserResponseState _$SearchUserResponseStateFromJson(
 mixin _$SearchUserResponseState {
   List<SearchUserResponse?>? get searchUserResponses =>
       throw _privateConstructorUsedError;
+  List<SearchUserResponse?>? get selectedUsers =>
+      throw _privateConstructorUsedError;
   SearchUserResponse? get selectedSearchUserResponse =>
       throw _privateConstructorUsedError; // when the user selects a specific user from the list
   bool? get errorSearchingUser => throw _privateConstructorUsedError;
@@ -42,6 +44,7 @@ abstract class $SearchUserResponseStateCopyWith<$Res> {
       _$SearchUserResponseStateCopyWithImpl<$Res>;
   $Res call(
       {List<SearchUserResponse?>? searchUserResponses,
+      List<SearchUserResponse?>? selectedUsers,
       SearchUserResponse? selectedSearchUserResponse,
       bool? errorSearchingUser,
       bool? timeoutSearchingUser,
@@ -62,6 +65,7 @@ class _$SearchUserResponseStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? searchUserResponses = freezed,
+    Object? selectedUsers = freezed,
     Object? selectedSearchUserResponse = freezed,
     Object? errorSearchingUser = freezed,
     Object? timeoutSearchingUser = freezed,
@@ -71,6 +75,10 @@ class _$SearchUserResponseStateCopyWithImpl<$Res>
       searchUserResponses: searchUserResponses == freezed
           ? _value.searchUserResponses
           : searchUserResponses // ignore: cast_nullable_to_non_nullable
+              as List<SearchUserResponse?>?,
+      selectedUsers: selectedUsers == freezed
+          ? _value.selectedUsers
+          : selectedUsers // ignore: cast_nullable_to_non_nullable
               as List<SearchUserResponse?>?,
       selectedSearchUserResponse: selectedSearchUserResponse == freezed
           ? _value.selectedSearchUserResponse
@@ -113,6 +121,7 @@ abstract class _$$_SearchUserResponseStateCopyWith<$Res>
   @override
   $Res call(
       {List<SearchUserResponse?>? searchUserResponses,
+      List<SearchUserResponse?>? selectedUsers,
       SearchUserResponse? selectedSearchUserResponse,
       bool? errorSearchingUser,
       bool? timeoutSearchingUser,
@@ -137,6 +146,7 @@ class __$$_SearchUserResponseStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? searchUserResponses = freezed,
+    Object? selectedUsers = freezed,
     Object? selectedSearchUserResponse = freezed,
     Object? errorSearchingUser = freezed,
     Object? timeoutSearchingUser = freezed,
@@ -146,6 +156,10 @@ class __$$_SearchUserResponseStateCopyWithImpl<$Res>
       searchUserResponses: searchUserResponses == freezed
           ? _value._searchUserResponses
           : searchUserResponses // ignore: cast_nullable_to_non_nullable
+              as List<SearchUserResponse?>?,
+      selectedUsers: selectedUsers == freezed
+          ? _value._selectedUsers
+          : selectedUsers // ignore: cast_nullable_to_non_nullable
               as List<SearchUserResponse?>?,
       selectedSearchUserResponse: selectedSearchUserResponse == freezed
           ? _value.selectedSearchUserResponse
@@ -172,11 +186,13 @@ class __$$_SearchUserResponseStateCopyWithImpl<$Res>
 class _$_SearchUserResponseState implements _SearchUserResponseState {
   _$_SearchUserResponseState(
       {final List<SearchUserResponse?>? searchUserResponses,
+      final List<SearchUserResponse?>? selectedUsers,
       this.selectedSearchUserResponse,
       this.errorSearchingUser,
       this.timeoutSearchingUser,
       this.noUserFound})
-      : _searchUserResponses = searchUserResponses;
+      : _searchUserResponses = searchUserResponses,
+        _selectedUsers = selectedUsers;
 
   factory _$_SearchUserResponseState.fromJson(Map<String, dynamic> json) =>
       _$$_SearchUserResponseStateFromJson(json);
@@ -185,6 +201,15 @@ class _$_SearchUserResponseState implements _SearchUserResponseState {
   @override
   List<SearchUserResponse?>? get searchUserResponses {
     final value = _searchUserResponses;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<SearchUserResponse?>? _selectedUsers;
+  @override
+  List<SearchUserResponse?>? get selectedUsers {
+    final value = _selectedUsers;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
@@ -202,7 +227,7 @@ class _$_SearchUserResponseState implements _SearchUserResponseState {
 
   @override
   String toString() {
-    return 'SearchUserResponseState(searchUserResponses: $searchUserResponses, selectedSearchUserResponse: $selectedSearchUserResponse, errorSearchingUser: $errorSearchingUser, timeoutSearchingUser: $timeoutSearchingUser, noUserFound: $noUserFound)';
+    return 'SearchUserResponseState(searchUserResponses: $searchUserResponses, selectedUsers: $selectedUsers, selectedSearchUserResponse: $selectedSearchUserResponse, errorSearchingUser: $errorSearchingUser, timeoutSearchingUser: $timeoutSearchingUser, noUserFound: $noUserFound)';
   }
 
   @override
@@ -212,6 +237,8 @@ class _$_SearchUserResponseState implements _SearchUserResponseState {
             other is _$_SearchUserResponseState &&
             const DeepCollectionEquality()
                 .equals(other._searchUserResponses, _searchUserResponses) &&
+            const DeepCollectionEquality()
+                .equals(other._selectedUsers, _selectedUsers) &&
             const DeepCollectionEquality().equals(
                 other.selectedSearchUserResponse, selectedSearchUserResponse) &&
             const DeepCollectionEquality()
@@ -227,6 +254,7 @@ class _$_SearchUserResponseState implements _SearchUserResponseState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_searchUserResponses),
+      const DeepCollectionEquality().hash(_selectedUsers),
       const DeepCollectionEquality().hash(selectedSearchUserResponse),
       const DeepCollectionEquality().hash(errorSearchingUser),
       const DeepCollectionEquality().hash(timeoutSearchingUser),
@@ -250,6 +278,7 @@ class _$_SearchUserResponseState implements _SearchUserResponseState {
 abstract class _SearchUserResponseState implements SearchUserResponseState {
   factory _SearchUserResponseState(
       {final List<SearchUserResponse?>? searchUserResponses,
+      final List<SearchUserResponse?>? selectedUsers,
       final SearchUserResponse? selectedSearchUserResponse,
       final bool? errorSearchingUser,
       final bool? timeoutSearchingUser,
@@ -260,6 +289,8 @@ abstract class _SearchUserResponseState implements SearchUserResponseState {
 
   @override
   List<SearchUserResponse?>? get searchUserResponses;
+  @override
+  List<SearchUserResponse?>? get selectedUsers;
   @override
   SearchUserResponse? get selectedSearchUserResponse;
   @override // when the user selects a specific user from the list
