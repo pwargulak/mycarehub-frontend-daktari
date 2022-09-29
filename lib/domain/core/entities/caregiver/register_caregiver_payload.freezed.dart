@@ -33,6 +33,9 @@ mixin _$RegisterCaregiverPayload {
   String? get caregiverNumber => throw _privateConstructorUsedError;
   @JsonKey(name: 'sendInvite')
   bool? get sendInvite => throw _privateConstructorUsedError;
+  @JsonKey(name: 'assignedClients')
+  List<AssignedClient>? get assignedClients =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,7 +54,8 @@ abstract class $RegisterCaregiverPayloadCopyWith<$Res> {
       @JsonKey(name: 'dateOfBirth', toJson: dobToJson) DateTime? dateOfBirth,
       @JsonKey(name: 'phoneNumber') String? phoneNumber,
       @JsonKey(name: 'caregiverNumber') String? caregiverNumber,
-      @JsonKey(name: 'sendInvite') bool? sendInvite});
+      @JsonKey(name: 'sendInvite') bool? sendInvite,
+      @JsonKey(name: 'assignedClients') List<AssignedClient>? assignedClients});
 }
 
 /// @nodoc
@@ -71,6 +75,7 @@ class _$RegisterCaregiverPayloadCopyWithImpl<$Res>
     Object? phoneNumber = freezed,
     Object? caregiverNumber = freezed,
     Object? sendInvite = freezed,
+    Object? assignedClients = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
@@ -97,6 +102,10 @@ class _$RegisterCaregiverPayloadCopyWithImpl<$Res>
           ? _value.sendInvite
           : sendInvite // ignore: cast_nullable_to_non_nullable
               as bool?,
+      assignedClients: assignedClients == freezed
+          ? _value.assignedClients
+          : assignedClients // ignore: cast_nullable_to_non_nullable
+              as List<AssignedClient>?,
     ));
   }
 }
@@ -115,7 +124,8 @@ abstract class _$$_RegisterCaregiverPayloadCopyWith<$Res>
       @JsonKey(name: 'dateOfBirth', toJson: dobToJson) DateTime? dateOfBirth,
       @JsonKey(name: 'phoneNumber') String? phoneNumber,
       @JsonKey(name: 'caregiverNumber') String? caregiverNumber,
-      @JsonKey(name: 'sendInvite') bool? sendInvite});
+      @JsonKey(name: 'sendInvite') bool? sendInvite,
+      @JsonKey(name: 'assignedClients') List<AssignedClient>? assignedClients});
 }
 
 /// @nodoc
@@ -138,6 +148,7 @@ class __$$_RegisterCaregiverPayloadCopyWithImpl<$Res>
     Object? phoneNumber = freezed,
     Object? caregiverNumber = freezed,
     Object? sendInvite = freezed,
+    Object? assignedClients = freezed,
   }) {
     return _then(_$_RegisterCaregiverPayload(
       name: name == freezed
@@ -164,20 +175,34 @@ class __$$_RegisterCaregiverPayloadCopyWithImpl<$Res>
           ? _value.sendInvite
           : sendInvite // ignore: cast_nullable_to_non_nullable
               as bool?,
+      assignedClients: assignedClients == freezed
+          ? _value._assignedClients
+          : assignedClients // ignore: cast_nullable_to_non_nullable
+              as List<AssignedClient>?,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$_RegisterCaregiverPayload implements _RegisterCaregiverPayload {
   _$_RegisterCaregiverPayload(
-      {@JsonKey(name: 'name') this.name,
-      @JsonKey(name: 'gender', fromJson: genderFromJson) this.gender,
-      @JsonKey(name: 'dateOfBirth', toJson: dobToJson) this.dateOfBirth,
-      @JsonKey(name: 'phoneNumber') this.phoneNumber,
-      @JsonKey(name: 'caregiverNumber') this.caregiverNumber,
-      @JsonKey(name: 'sendInvite') this.sendInvite});
+      {@JsonKey(name: 'name')
+          this.name,
+      @JsonKey(name: 'gender', fromJson: genderFromJson)
+          this.gender,
+      @JsonKey(name: 'dateOfBirth', toJson: dobToJson)
+          this.dateOfBirth,
+      @JsonKey(name: 'phoneNumber')
+          this.phoneNumber,
+      @JsonKey(name: 'caregiverNumber')
+          this.caregiverNumber,
+      @JsonKey(name: 'sendInvite')
+          this.sendInvite,
+      @JsonKey(name: 'assignedClients')
+          final List<AssignedClient>? assignedClients})
+      : _assignedClients = assignedClients;
 
   factory _$_RegisterCaregiverPayload.fromJson(Map<String, dynamic> json) =>
       _$$_RegisterCaregiverPayloadFromJson(json);
@@ -200,10 +225,19 @@ class _$_RegisterCaregiverPayload implements _RegisterCaregiverPayload {
   @override
   @JsonKey(name: 'sendInvite')
   final bool? sendInvite;
+  final List<AssignedClient>? _assignedClients;
+  @override
+  @JsonKey(name: 'assignedClients')
+  List<AssignedClient>? get assignedClients {
+    final value = _assignedClients;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'RegisterCaregiverPayload(name: $name, gender: $gender, dateOfBirth: $dateOfBirth, phoneNumber: $phoneNumber, caregiverNumber: $caregiverNumber, sendInvite: $sendInvite)';
+    return 'RegisterCaregiverPayload(name: $name, gender: $gender, dateOfBirth: $dateOfBirth, phoneNumber: $phoneNumber, caregiverNumber: $caregiverNumber, sendInvite: $sendInvite, assignedClients: $assignedClients)';
   }
 
   @override
@@ -220,7 +254,9 @@ class _$_RegisterCaregiverPayload implements _RegisterCaregiverPayload {
             const DeepCollectionEquality()
                 .equals(other.caregiverNumber, caregiverNumber) &&
             const DeepCollectionEquality()
-                .equals(other.sendInvite, sendInvite));
+                .equals(other.sendInvite, sendInvite) &&
+            const DeepCollectionEquality()
+                .equals(other._assignedClients, _assignedClients));
   }
 
   @JsonKey(ignore: true)
@@ -232,7 +268,8 @@ class _$_RegisterCaregiverPayload implements _RegisterCaregiverPayload {
       const DeepCollectionEquality().hash(dateOfBirth),
       const DeepCollectionEquality().hash(phoneNumber),
       const DeepCollectionEquality().hash(caregiverNumber),
-      const DeepCollectionEquality().hash(sendInvite));
+      const DeepCollectionEquality().hash(sendInvite),
+      const DeepCollectionEquality().hash(_assignedClients));
 
   @JsonKey(ignore: true)
   @override
@@ -250,18 +287,21 @@ class _$_RegisterCaregiverPayload implements _RegisterCaregiverPayload {
 
 abstract class _RegisterCaregiverPayload implements RegisterCaregiverPayload {
   factory _RegisterCaregiverPayload(
-      {@JsonKey(name: 'name')
-          final String? name,
-      @JsonKey(name: 'gender', fromJson: genderFromJson)
-          final Gender? gender,
-      @JsonKey(name: 'dateOfBirth', toJson: dobToJson)
-          final DateTime? dateOfBirth,
-      @JsonKey(name: 'phoneNumber')
-          final String? phoneNumber,
-      @JsonKey(name: 'caregiverNumber')
-          final String? caregiverNumber,
-      @JsonKey(name: 'sendInvite')
-          final bool? sendInvite}) = _$_RegisterCaregiverPayload;
+          {@JsonKey(name: 'name')
+              final String? name,
+          @JsonKey(name: 'gender', fromJson: genderFromJson)
+              final Gender? gender,
+          @JsonKey(name: 'dateOfBirth', toJson: dobToJson)
+              final DateTime? dateOfBirth,
+          @JsonKey(name: 'phoneNumber')
+              final String? phoneNumber,
+          @JsonKey(name: 'caregiverNumber')
+              final String? caregiverNumber,
+          @JsonKey(name: 'sendInvite')
+              final bool? sendInvite,
+          @JsonKey(name: 'assignedClients')
+              final List<AssignedClient>? assignedClients}) =
+      _$_RegisterCaregiverPayload;
 
   factory _RegisterCaregiverPayload.fromJson(Map<String, dynamic> json) =
       _$_RegisterCaregiverPayload.fromJson;
@@ -284,6 +324,9 @@ abstract class _RegisterCaregiverPayload implements RegisterCaregiverPayload {
   @override
   @JsonKey(name: 'sendInvite')
   bool? get sendInvite;
+  @override
+  @JsonKey(name: 'assignedClients')
+  List<AssignedClient>? get assignedClients;
   @override
   @JsonKey(ignore: true)
   _$$_RegisterCaregiverPayloadCopyWith<_$_RegisterCaregiverPayload>

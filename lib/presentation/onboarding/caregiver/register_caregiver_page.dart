@@ -410,7 +410,7 @@ class _RegisterCaregiverPageState extends State<RegisterCaregiverPage> {
     StoreProvider.dispatch(
       context,
       RegisterCaregiverAction(
-        registerCaregiverPayload: _formManager.submit(),
+        registerCaregiverPayload: _formManager.submit(context),
         client: AppWrapperBase.of(context)!.graphQLClient,
         onSuccess: () {
           ScaffoldMessenger.of(context).showSnackBar(

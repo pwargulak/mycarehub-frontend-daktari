@@ -351,7 +351,13 @@ Map<String, dynamic> mockRegisterCaregiverPayload = <String, dynamic>{
   'dateOfBirth': '1998-01-01',
   'phoneNumber': '+254704002748',
   'enrollmentDate': '2021-02-07',
-  'sendInvite': true
+  'sendInvite': true,
+  'assignedClients': <dynamic>[
+    <String, dynamic>{
+      'clientID': 'test',
+      'caregiverType': 'FATHER',
+    }
+  ]
 };
 
 Map<String, dynamic> mockClientConfigurationPayload = <String, dynamic>{

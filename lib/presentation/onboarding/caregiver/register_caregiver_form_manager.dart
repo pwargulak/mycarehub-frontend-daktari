@@ -1,5 +1,10 @@
 import 'package:afya_moja_core/afya_moja_core.dart';
+import 'package:async_redux/async_redux.dart';
+import 'package:flutter/material.dart';
+import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
+import 'package:prohealth360_daktari/domain/core/entities/caregiver/assigned_client.dart';
 import 'package:prohealth360_daktari/domain/core/entities/caregiver/register_caregiver_payload.dart';
+import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/patient/validator_mixin.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -44,9 +49,28 @@ class RegisterCaregiverFormManager with Validator {
             Validator.isValidPhone(phoneNumber);
       });
 
-  RegisterCaregiverPayload submit() {
+  RegisterCaregiverPayload submit(BuildContext context) {
     final String? firstNameValue = _firstName.valueOrNull;
     final String? lastNameValue = _lastName.valueOrNull;
+
+    final List<SearchUserResponse?>? clients =
+        StoreProvider.state<AppState>(context)
+            ?.miscState
+            ?.searchUserResponseState
+            ?.selectedUsers;
+
+    final List<AssignedClient> assignedClients = <AssignedClient>[];
+
+    if (clients?.isNotEmpty ?? false) {
+      for (final SearchUserResponse? clientItem in clients!) {
+        assignedClients.add(
+          AssignedClient(
+            clientID: clientItem?.user?.id,
+            caregiverType: 'FATHER',
+          ),
+        );
+      }
+    }
 
     return RegisterCaregiverPayload(
       name: '$firstNameValue $lastNameValue',
@@ -54,6 +78,8 @@ class RegisterCaregiverFormManager with Validator {
       dateOfBirth: _dateOfBirth.valueOrNull,
       phoneNumber: _phoneNumber.valueOrNull,
       sendInvite: true,
+      caregiverNumber: '',
+      assignedClients: assignedClients,
     );
   }
 }

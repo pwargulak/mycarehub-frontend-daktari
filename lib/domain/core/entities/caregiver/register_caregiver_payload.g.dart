@@ -17,6 +17,9 @@ _$_RegisterCaregiverPayload _$$_RegisterCaregiverPayloadFromJson(
       phoneNumber: json['phoneNumber'] as String?,
       caregiverNumber: json['caregiverNumber'] as String?,
       sendInvite: json['sendInvite'] as bool?,
+      assignedClients: (json['assignedClients'] as List<dynamic>?)
+          ?.map((e) => AssignedClient.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$_RegisterCaregiverPayloadToJson(
@@ -28,6 +31,8 @@ Map<String, dynamic> _$$_RegisterCaregiverPayloadToJson(
       'phoneNumber': instance.phoneNumber,
       'caregiverNumber': instance.caregiverNumber,
       'sendInvite': instance.sendInvite,
+      'assignedClients':
+          instance.assignedClients?.map((e) => e.toJson()).toList(),
     };
 
 const _$GenderEnumMap = {

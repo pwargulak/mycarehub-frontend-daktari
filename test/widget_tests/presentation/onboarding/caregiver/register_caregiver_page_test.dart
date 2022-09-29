@@ -8,6 +8,7 @@ import 'package:prohealth360_daktari/application/redux/actions/update_connectivi
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/connectivity_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
+import 'package:prohealth360_daktari/domain/core/entities/search_user/user_data.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/widgets/list_card_with_cancel_button.dart';
@@ -106,17 +107,20 @@ void main() {
 
       store.dispatch(
         UpdateSearchUserResponseStateAction(
-          selectedUsers: <SearchUserResponse>[SearchUserResponse.initial()],
+          selectedUsers: <SearchUserResponse>[
+            SearchUserResponse.initial(),
+            SearchUserResponse(user: UserData(name: 'Test'))
+          ],
         ),
       );
       await tester.pumpAndSettle();
 
       final Finder listCard = find.byType(ListCardWithCancelButton);
-      expect(listCard, findsOneWidget);
+      expect(listCard, findsNWidgets(2));
 
-      await tester.tap(find.byKey(cancelButtonKey));
+      await tester.tap(find.byKey(cancelButtonKey).first);
       await tester.pumpAndSettle();
-      expect(listCard, findsNothing);
+      expect(listCard, findsOneWidget);
 
       final Finder registerBtnFinder = find.byKey(registerCaregiverButtonKey);
       await tester.ensureVisible(registerBtnFinder);
