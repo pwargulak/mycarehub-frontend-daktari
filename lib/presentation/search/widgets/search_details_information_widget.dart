@@ -15,16 +15,18 @@ class SearchDetailsInformationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String names = isClient
-        ? searchUserResponse?.user?.name ?? 'No name'
-        : searchUserResponse?.user?.userName ?? 'No name';
+    final String names = searchUserResponse?.user?.name ?? 'No name';
 
     final String phoneNumber =
         searchUserResponse?.user?.primaryContact?.value ?? noNumberAvailable;
 
     final String number = isClient
-        ? 'CCC# ${searchUserResponse?.clientCCCNumber}'
-        : 'Staff Number ${searchUserResponse?.staffNumber}';
+        ? '${searchUserResponse?.clientCCCNumber}'
+        : '${searchUserResponse?.staffNumber}';
+
+    final String userName = searchUserResponse?.user?.userName ?? '';
+
+    final String defaultFacilityName = searchUserResponse?.facilityName ?? '';
 
     return Column(
       children: <Widget>[
@@ -48,14 +50,54 @@ class SearchDetailsInformationWidget extends StatelessWidget {
           style: veryBoldSize20Text(AppColors.blackColor),
         ),
         smallVerticalSizedBox,
-        Text(
-          number,
-          style: normalSize15Text(AppColors.greyTextColor),
+        RichText(
+          text: TextSpan(
+            children: <TextSpan>[
+              TextSpan(
+                text: isClient ? 'CCC# ' : 'Staff number: ',
+                style: normalSize15Text(AppColors.greyTextColor),
+              ),
+              TextSpan(
+                text: number,
+                style: veryBoldSize16Text(AppColors.greyTextColor),
+              ),
+            ],
+          ),
         ),
         size15VerticalSizedBox,
         Text(
           phoneNumber,
           style: normalSize15Text(AppColors.greyTextColor),
+        ),
+        size15VerticalSizedBox,
+        RichText(
+          text: TextSpan(
+            children: <TextSpan>[
+              TextSpan(
+                text: 'Username: ',
+                style: normalSize15Text(AppColors.greyTextColor),
+              ),
+              TextSpan(
+                text: userName,
+                style: veryBoldSize16Text(AppColors.greyTextColor),
+              ),
+            ],
+          ),
+        ),
+        size15VerticalSizedBox,
+        RichText(
+          text: TextSpan(
+            children: <TextSpan>[
+              TextSpan(
+                text: 'Facility: ',
+                style: normalSize15Text(AppColors.greyTextColor),
+              ),
+              TextSpan(
+                text: defaultFacilityName,
+                style: veryBoldSize16Text(AppColors.greyTextColor),
+              ),
+            ],
+          ),
         ),
       ],
     );

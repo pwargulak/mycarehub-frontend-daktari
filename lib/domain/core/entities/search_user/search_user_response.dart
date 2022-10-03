@@ -22,7 +22,8 @@ class SearchUserResponse with _$SearchUserResponse {
         String?
             staffNumber, // this is the staff number if the person being searched is a staff member
     @JsonKey(name: 'User') UserData? user,
-    @JsonKey(name: 'FacilityID') String? facilityID,
+    @JsonKey(name: 'DefaultFacilityID') String? facilityID,
+    @JsonKey(name: 'DefaultFacilityName') String? facilityName,
     @JsonKey(name: 'rolesList')
         RolesList?
             rolesList, // this is the list the user has if they are a staff member //
@@ -37,6 +38,7 @@ class SearchUserResponse with _$SearchUserResponse {
         isActive: true,
         staffNumber: UNKNOWN,
         facilityID: UNKNOWN,
+        facilityName: UNKNOWN,
         user: UserData.initial(),
         rolesList: RolesList.initial(),
       );
