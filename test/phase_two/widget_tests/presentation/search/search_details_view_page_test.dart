@@ -170,6 +170,8 @@ void main() {
         expect(find.byType(SearchDetailsInformationWidget), findsOneWidget);
         expect(find.byType(ActiveClientActions), findsOneWidget);
 
+        await tester.ensureVisible(find.byKey(resendClientInviteButtonKey));
+
         await tester.tap(find.byKey(resendClientInviteButtonKey));
         await tester.pumpAndSettle();
 
@@ -231,6 +233,8 @@ void main() {
         expect(find.byType(ClientSearchWidget), findsOneWidget);
         expect(find.byType(SearchDetailsInformationWidget), findsOneWidget);
         expect(find.byType(ActiveClientActions), findsOneWidget);
+
+        await tester.ensureVisible(find.byKey(resendClientInviteButtonKey));
 
         await tester.tap(find.byKey(resendClientInviteButtonKey));
         await tester.pumpAndSettle();
@@ -369,6 +373,8 @@ void main() {
         expect(find.byKey(reinviteStaffButtonKey), findsOneWidget);
         expect(find.byType(SearchDetailsInformationWidget), findsOneWidget);
         expect(find.byType(ActiveStaffActions), findsOneWidget);
+
+        await tester.ensureVisible(find.byKey(reinviteStaffButtonKey));
 
         await tester.tap(find.byKey(reinviteStaffButtonKey));
         await tester.pumpAndSettle();

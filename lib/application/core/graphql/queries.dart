@@ -167,11 +167,9 @@ query searchClientUser($searchParameter: String!) {
   searchClientUser(searchParameter: $searchParameter){
     ID
     CCCNumber
-    Active
-    DefaultFacility{
-      ID
-      name
-    }
+    DefaultFacilityID
+    DefaultFacilityName
+    Active 
     User{
       ID
       Username
@@ -193,6 +191,8 @@ const String searchStaffMemberQuery = r'''
 query searchStaffUser($searchParameter: String!) {
   searchStaffUser(searchParameter: $searchParameter) {
     ID
+    DefaultFacilityID
+    DefaultFacilityName
     StaffNumber
     User{
       ID

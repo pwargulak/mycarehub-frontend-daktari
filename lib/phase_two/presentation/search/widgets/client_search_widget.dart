@@ -33,7 +33,7 @@ class ClientSearchWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: StoreConnector<AppState, SearchViewModel>(
-        onInit: (Store<AppState> store) {
+        onInit: (Store<AppState> store) async {
           final String clientID = store.state.miscState?.searchUserResponseState
                   ?.selectedSearchUserResponse?.id ??
               '';
@@ -45,7 +45,7 @@ class ClientSearchWidget extends StatelessWidget {
                   ?.facilityID ??
               '';
 
-          store.dispatch(
+          await store.dispatch(
             SharedHealthDiaryAction(
               client: AppWrapperBase.of(context)!.graphQLClient,
               clientID: clientID,
