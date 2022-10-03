@@ -12,6 +12,7 @@ class ChannelPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final Channel channel = StreamChannel.of(context).channel;
     String channelName = 'No title';
+    String channelDescription = '';
     String channelImage = '';
 
     if (channel.extraData.containsKey('Name')) {
@@ -21,12 +22,20 @@ class ChannelPage extends StatelessWidget {
     if (channel.extraData.containsKey('image')) {
       channelImage = channel.extraData['image']! as String;
     }
+    if (channel.extraData.containsKey('Description')) {
+      channelDescription = channel.extraData['Description']! as String;
+    }
 
     return Scaffold(
       appBar: StreamChannelHeader(
         title: GestureDetector(
           onTap: () {
-            _navigateToGroupInfoPage(context, channel, channelName);
+            _navigateToGroupInfoPage(
+              context,
+              channel,
+              channelName,
+              channelDescription,
+            );
           },
           child: Text(
             channelName,
@@ -37,7 +46,12 @@ class ChannelPage extends StatelessWidget {
         actions: <Widget>[
           GestureDetector(
             onTap: () {
-              _navigateToGroupInfoPage(context, channel, channelName);
+              _navigateToGroupInfoPage(
+                context,
+                channel,
+                channelName,
+                channelDescription,
+              );
             },
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -73,13 +87,17 @@ class ChannelPage extends StatelessWidget {
     BuildContext context,
     Channel channel,
     String channelName,
+    String channelDescription,
   ) {
     return Navigator.of(context).push(
       MaterialPageRoute<dynamic>(
         builder: (_) {
           return StreamChannel(
             channel: channel,
-            child: GroupInfoPage(channelName: channelName),
+            child: GroupInfoPage(
+              channelName: channelName,
+              channelDesc: channelDescription,
+            ),
           );
         },
       ),
