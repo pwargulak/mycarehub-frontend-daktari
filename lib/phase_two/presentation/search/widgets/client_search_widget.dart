@@ -4,6 +4,7 @@ import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_graphql_client/graph_client.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
+import 'package:prohealth360_daktari/application/redux/actions/core/batch_update_misc_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/actions/search_users/invite_client_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/search_users/reactivate_client_action.dart';
@@ -16,6 +17,7 @@ import 'package:prohealth360_daktari/domain/core/entities/core/user.dart';
 import 'package:prohealth360_daktari/domain/core/entities/health_diary/health_diary_entry.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/widgets/consent_status_widget.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/widgets/list_card_with_cancel_button.dart';
 import 'package:prohealth360_daktari/presentation/client_details/widgets/health_diary_entry_widget.dart';
@@ -201,7 +203,23 @@ class ClientSearchWidget extends StatelessWidget {
                     smallVerticalSizedBox,
                     SizedBox(
                       width: MediaQuery.of(context).size.width,
-                      child: const MyAfyaHubPrimaryButton(
+                      child: MyAfyaHubPrimaryButton(
+                        buttonKey: addFacilityButtonKey,
+                        onPressed: () {
+                          StoreProvider.dispatch<AppState>(
+                            context,
+                            BatchUpdateMiscStateAction(
+                              updateFacility: true,
+                            ),
+                          );
+                          Navigator.of(context).pushNamed(
+                            AppRoutes.searchFacilitiesPage,
+                            arguments: <String, dynamic>{
+                              'userID': vm.selectedSearchUserResponse?.id,
+                              'isClient': true,
+                            },
+                          );
+                        },
                         text: addFacilityString,
                       ),
                     ),

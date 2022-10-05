@@ -18,6 +18,7 @@ import 'package:prohealth360_daktari/phase_two/presentation/search/search_detail
 import 'package:prohealth360_daktari/phase_two/presentation/search/widgets/client_search_widget.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/search/widgets/staff_search_widget.dart';
 import 'package:prohealth360_daktari/presentation/engagement/home/pages/home_page.dart';
+import 'package:prohealth360_daktari/presentation/onboarding/core/search_facilities_page.dart';
 import 'package:prohealth360_daktari/presentation/search/widgets/active_client_actions.dart';
 import 'package:prohealth360_daktari/presentation/search/widgets/active_staff_actions.dart';
 import 'package:prohealth360_daktari/presentation/search/widgets/search_details_information_widget.dart';
@@ -46,6 +47,15 @@ void main() {
         await tester.pumpAndSettle();
         expect(find.byType(ClientSearchWidget), findsOneWidget);
         expect(find.byType(SearchDetailsInformationWidget), findsOneWidget);
+
+        final Finder addFacilityButton = find.byKey(addFacilityButtonKey);
+        expect(addFacilityButton, findsOneWidget);
+
+        await tester.ensureVisible(addFacilityButton);
+        await tester.pumpAndSettle();
+        await tester.tap(addFacilityButton);
+        await tester.pumpAndSettle();
+        expect(find.byType(SearchFacilitiesPage), findsOneWidget);
       });
 
       testWidgets('renders loading indicator correctly',

@@ -543,7 +543,10 @@ class RouteGenerator {
 
       case AppRoutes.searchFacilitiesPage:
         return MaterialPageRoute<SearchFacilitiesPage>(
-          builder: (_) => SearchFacilitiesPage(),
+          builder: (_) => SearchFacilitiesPage(
+            userID: (args as Map<String, dynamic>?)?['userID'] as String?,
+            isClient: args?['isClient'] as bool?,
+          ),
           settings: const RouteSettings(name: 'Search facilities page'),
         );
 

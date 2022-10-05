@@ -4,8 +4,9 @@ import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/actions/core/batch_update_misc_state_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/facilities/add_facility_to_client_profile_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
-import 'package:prohealth360_daktari/application/redux/actions/register_client/search_facilities_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/facilities/search_facilities_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/register_client/fetch_facilities_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
@@ -14,8 +15,13 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart'
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/core/widgets/facility_list_item.dart';
+import 'package:shared_themes/constants.dart';
 
 class SearchFacilitiesPage extends StatefulWidget {
+  final String? userID;
+  final bool? isClient;
+
+  const SearchFacilitiesPage({super.key, this.userID, this.isClient});
   @override
   State<SearchFacilitiesPage> createState() => _SearchFacilitiesPageState();
 }
@@ -298,23 +304,73 @@ class _SearchFacilitiesPageState extends State<SearchFacilitiesPage> {
                     child: SizedBox(
                       width: double.infinity,
                       height: 48,
-                      child: ElevatedButton(
-                        key: saveFacilityBtnKey,
-                        onPressed: isSelectionValid
-                            ? () {
-                                StoreProvider.dispatch<AppState>(
-                                  context,
-                                  BatchUpdateMiscStateAction(
-                                    selectedFacility: selectedFacility,
-                                  ),
-                                );
-                                if (Navigator.canPop(context)) {
-                                  Navigator.pop(context);
-                                }
-                              }
-                            : null,
-                        child: const Text(saveString),
-                      ),
+                      child: vm.wait.isWaitingFor(addFacilityFlag)
+                          ? const PlatformLoader()
+                          : ElevatedButton(
+                              key: saveFacilityBtnKey,
+                              onPressed: !isSelectionValid
+                                  ? null
+                                  : (vm.updateFacility ?? false)
+                                      ? () {
+                                          StoreProvider.dispatch<AppState>(
+                                            context,
+                                            AddFacilityToClientProfileAction(
+                                              client:
+                                                  AppWrapperBase.of(context)!
+                                                      .graphQLClient,
+                                              onFailure: (String message) {
+                                                ScaffoldMessenger.of(context)
+                                                  ..hideCurrentSnackBar()
+                                                  ..showSnackBar(
+                                                    SnackBar(
+                                                      content: Text(
+                                                        message,
+                                                      ),
+                                                      duration: const Duration(
+                                                        seconds: 5,
+                                                      ),
+                                                      action: dismissSnackBar(
+                                                        closeString,
+                                                        Colors.white,
+                                                        context,
+                                                      ),
+                                                    ),
+                                                  );
+                                              },
+                                              onSuccess: () {
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  const SnackBar(
+                                                    content:
+                                                        Text(addFacilitySuccessString),
+                                                    duration: Duration(
+                                                      seconds:
+                                                          kShortSnackBarDuration,
+                                                    ),
+                                                  ),
+                                                );
+                                                Navigator.pop(context);
+                                              },
+                                              clientId: widget.userID ?? '',
+                                              facilityId:
+                                                  selectedFacility.id ?? '',
+                                            ),
+                                          );
+                                        }
+                                      : () {
+                                          StoreProvider.dispatch<AppState>(
+                                            context,
+                                            BatchUpdateMiscStateAction(
+                                              selectedFacility:
+                                                  selectedFacility,
+                                            ),
+                                          );
+                                          if (Navigator.canPop(context)) {
+                                            Navigator.pop(context);
+                                          }
+                                        },
+                              child: const Text(saveString),
+                            ),
                     ),
                   ),
                 ),

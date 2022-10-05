@@ -31,6 +31,7 @@ mixin _$MiscState {
       throw _privateConstructorUsedError;
   String? get inactiveTime => throw _privateConstructorUsedError;
   bool? get resumeWithPin => throw _privateConstructorUsedError;
+  bool? get updateFacility => throw _privateConstructorUsedError;
   SearchCaregiverResponseState? get searchCaregiverResponseState =>
       throw _privateConstructorUsedError;
 
@@ -54,6 +55,7 @@ abstract class $MiscStateCopyWith<$Res> {
       SearchUserResponseState? searchUserResponseState,
       String? inactiveTime,
       bool? resumeWithPin,
+      bool? updateFacility,
       SearchCaregiverResponseState? searchCaregiverResponseState});
 
   $FAQsContentStateCopyWith<$Res>? get profileFAQsContentState;
@@ -82,6 +84,7 @@ class _$MiscStateCopyWithImpl<$Res> implements $MiscStateCopyWith<$Res> {
     Object? searchUserResponseState = freezed,
     Object? inactiveTime = freezed,
     Object? resumeWithPin = freezed,
+    Object? updateFacility = freezed,
     Object? searchCaregiverResponseState = freezed,
   }) {
     return _then(_value.copyWith(
@@ -120,6 +123,10 @@ class _$MiscStateCopyWithImpl<$Res> implements $MiscStateCopyWith<$Res> {
       resumeWithPin: resumeWithPin == freezed
           ? _value.resumeWithPin
           : resumeWithPin // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      updateFacility: updateFacility == freezed
+          ? _value.updateFacility
+          : updateFacility // ignore: cast_nullable_to_non_nullable
               as bool?,
       searchCaregiverResponseState: searchCaregiverResponseState == freezed
           ? _value.searchCaregiverResponseState
@@ -204,6 +211,7 @@ abstract class _$$_MiscStateCopyWith<$Res> implements $MiscStateCopyWith<$Res> {
       SearchUserResponseState? searchUserResponseState,
       String? inactiveTime,
       bool? resumeWithPin,
+      bool? updateFacility,
       SearchCaregiverResponseState? searchCaregiverResponseState});
 
   @override
@@ -239,6 +247,7 @@ class __$$_MiscStateCopyWithImpl<$Res> extends _$MiscStateCopyWithImpl<$Res>
     Object? searchUserResponseState = freezed,
     Object? inactiveTime = freezed,
     Object? resumeWithPin = freezed,
+    Object? updateFacility = freezed,
     Object? searchCaregiverResponseState = freezed,
   }) {
     return _then(_$_MiscState(
@@ -278,6 +287,10 @@ class __$$_MiscStateCopyWithImpl<$Res> extends _$MiscStateCopyWithImpl<$Res>
           ? _value.resumeWithPin
           : resumeWithPin // ignore: cast_nullable_to_non_nullable
               as bool?,
+      updateFacility: updateFacility == freezed
+          ? _value.updateFacility
+          : updateFacility // ignore: cast_nullable_to_non_nullable
+              as bool?,
       searchCaregiverResponseState: searchCaregiverResponseState == freezed
           ? _value.searchCaregiverResponseState
           : searchCaregiverResponseState // ignore: cast_nullable_to_non_nullable
@@ -299,6 +312,7 @@ class _$_MiscState implements _MiscState {
       this.searchUserResponseState,
       this.inactiveTime,
       this.resumeWithPin,
+      this.updateFacility,
       this.searchCaregiverResponseState})
       : _communityMembers = communityMembers;
 
@@ -331,11 +345,13 @@ class _$_MiscState implements _MiscState {
   @override
   final bool? resumeWithPin;
   @override
+  final bool? updateFacility;
+  @override
   final SearchCaregiverResponseState? searchCaregiverResponseState;
 
   @override
   String toString() {
-    return 'MiscState(initialRoute: $initialRoute, error: $error, profileFAQsContentState: $profileFAQsContentState, communityMembers: $communityMembers, selectedFacility: $selectedFacility, groupState: $groupState, searchUserResponseState: $searchUserResponseState, inactiveTime: $inactiveTime, resumeWithPin: $resumeWithPin, searchCaregiverResponseState: $searchCaregiverResponseState)';
+    return 'MiscState(initialRoute: $initialRoute, error: $error, profileFAQsContentState: $profileFAQsContentState, communityMembers: $communityMembers, selectedFacility: $selectedFacility, groupState: $groupState, searchUserResponseState: $searchUserResponseState, inactiveTime: $inactiveTime, resumeWithPin: $resumeWithPin, updateFacility: $updateFacility, searchCaregiverResponseState: $searchCaregiverResponseState)';
   }
 
   @override
@@ -360,6 +376,8 @@ class _$_MiscState implements _MiscState {
                 .equals(other.inactiveTime, inactiveTime) &&
             const DeepCollectionEquality()
                 .equals(other.resumeWithPin, resumeWithPin) &&
+            const DeepCollectionEquality()
+                .equals(other.updateFacility, updateFacility) &&
             const DeepCollectionEquality().equals(
                 other.searchCaregiverResponseState,
                 searchCaregiverResponseState));
@@ -378,6 +396,7 @@ class _$_MiscState implements _MiscState {
       const DeepCollectionEquality().hash(searchUserResponseState),
       const DeepCollectionEquality().hash(inactiveTime),
       const DeepCollectionEquality().hash(resumeWithPin),
+      const DeepCollectionEquality().hash(updateFacility),
       const DeepCollectionEquality().hash(searchCaregiverResponseState));
 
   @JsonKey(ignore: true)
@@ -404,6 +423,7 @@ abstract class _MiscState implements MiscState {
           final SearchUserResponseState? searchUserResponseState,
           final String? inactiveTime,
           final bool? resumeWithPin,
+          final bool? updateFacility,
           final SearchCaregiverResponseState? searchCaregiverResponseState}) =
       _$_MiscState;
 
@@ -428,6 +448,8 @@ abstract class _MiscState implements MiscState {
   String? get inactiveTime;
   @override
   bool? get resumeWithPin;
+  @override
+  bool? get updateFacility;
   @override
   SearchCaregiverResponseState? get searchCaregiverResponseState;
   @override

@@ -237,3 +237,15 @@ mutation registerCaregiver($input: CaregiverInput!) {
   }
 }
 ''';
+
+const String addFacilitiesToClientProfileMutation = r'''
+mutation addFacilitiesToClientProfile(
+  $clientID: ID! ,
+  $facilities: [ID!]!
+) {
+  addFacilitiesToClientProfile(
+    clientID: $clientID,
+    facilities: $facilities
+  )
+}
+''';

@@ -18,6 +18,7 @@ class BatchUpdateMiscStateAction extends ReduxAction<AppState> {
   final String? inactiveTime;
   final bool? resumeWithPin;
   final Facility? selectedFacility;
+  final bool? updateFacility;
 
   BatchUpdateMiscStateAction({
     this.initialRoute,
@@ -26,6 +27,7 @@ class BatchUpdateMiscStateAction extends ReduxAction<AppState> {
     this.inactiveTime,
     this.resumeWithPin,
     this.selectedFacility,
+    this.updateFacility,
   });
 
   @override
@@ -38,6 +40,7 @@ class BatchUpdateMiscStateAction extends ReduxAction<AppState> {
         inactiveTime: inactiveTime ?? state.miscState?.inactiveTime,
         resumeWithPin: resumeWithPin ?? state.miscState?.resumeWithPin,
         selectedFacility: selectedFacility ?? state.miscState?.selectedFacility,
+        updateFacility: updateFacility ?? state.miscState?.updateFacility,
       ),
     );
 

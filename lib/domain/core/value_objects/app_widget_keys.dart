@@ -191,3 +191,5 @@ const Key viewResponsesButtonKey = Key('view_responses_btn_key');
 
 const Key registerCaregiverButtonKey = Key('register_caregiver_button_key');
 const Key addClientsButtonKey = Key('add_clients_button_key');
+
+const Key addFacilityButtonKey = Key('add_facility_button_key');

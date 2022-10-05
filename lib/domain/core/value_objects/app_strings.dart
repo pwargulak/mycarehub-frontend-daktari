@@ -995,3 +995,6 @@ const String couldNotFindCaregiverString =
     'We could not find a caregiver with the keyword ';
 const String confirmSearchTermIsCorrectString =
     '. Confirm that the search term is correct and try again';
+
+
+const String addFacilitySuccessString = 'Facility added successfully';

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:prohealth360_daktari/application/redux/actions/register_client/search_facilities_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/facilities/search_facilities_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/connectivity_state.dart';
 import 'package:http/http.dart';
