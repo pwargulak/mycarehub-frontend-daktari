@@ -164,11 +164,14 @@ query listPendingInvites($memberID: String!, $input: QueryOption){
 
 const String searchClientQuery = r'''
 query searchClientUser($searchParameter: String!) {
-  searchClientUser(searchParameter: $searchParameter) {
+  searchClientUser(searchParameter: $searchParameter){
     ID
     CCCNumber
-    FacilityID
-    Active 
+    Active
+    DefaultFacility{
+      ID
+      name
+    }
     User{
       ID
       Username
@@ -525,6 +528,18 @@ query searchCaregiverUser($searchParameter: String!){
       }
     }
     caregiverNumber
+  }
+}
+''';
+
+const String getUserLinkedFacilitiesQuery = r'''
+query getUserLinkedFacilities($userID: ID!, $paginationInput: PaginationsInput!){
+  getUserLinkedFacilities(userID: $userID, paginationInput: $paginationInput){
+    Facilities{
+      ID
+      name
+      code
+    }
   }
 }
 ''';

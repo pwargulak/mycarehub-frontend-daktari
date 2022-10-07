@@ -12,7 +12,6 @@ import 'package:prohealth360_daktari/application/redux/actions/search_users/shar
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/search/search_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/contact.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/user.dart';
 import 'package:prohealth360_daktari/domain/core/entities/health_diary/health_diary_entry.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
@@ -20,6 +19,7 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart'
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/widgets/consent_status_widget.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/widgets/list_card_with_cancel_button.dart';
+import 'package:prohealth360_daktari/presentation/client_details/widgets/facilities_list_widget.dart';
 import 'package:prohealth360_daktari/presentation/client_details/widgets/health_diary_entry_widget.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:prohealth360_daktari/presentation/search/widgets/active_client_actions.dart';
@@ -63,28 +63,6 @@ class ClientSearchWidget extends StatelessWidget {
 
           final bool isActive = selectedSearchUserResponse.isActive ?? true;
           final String names = selectedSearchUserResponse.user?.name ?? '';
-
-          final List<Facility> facilities = <Facility>[
-            Facility(
-              name: 'Agha Khan',
-            )
-          ];
-
-          final List<Widget> facilitiesWidgetList = <Widget>[];
-          if (facilities.isNotEmpty) {
-            facilities
-                .map(
-                  (Facility? facility) => facilitiesWidgetList.add(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
-                      child: ListCardWithCancelButton(
-                        title: facility?.name ?? '',
-                      ),
-                    ),
-                  ),
-                )
-                .toList();
-          }
 
           final List<User> caregivers = <User>[
             User(
@@ -199,7 +177,9 @@ class ClientSearchWidget extends StatelessWidget {
                       ),
                       style: normalSize15Text(AppColors.greyTextColor),
                     ),
-                    ...facilitiesWidgetList,
+                    FacilitiesListWidget(
+                      userID: selectedSearchUserResponse.user?.id ?? '',
+                    ),
                     smallVerticalSizedBox,
                     SizedBox(
                       width: MediaQuery.of(context).size.width,

@@ -547,7 +547,7 @@ void main() {
         store.dispatch(
           UpdateSearchUserResponseStateAction(
             selectedSearchUserResponse:
-                SearchUserResponse.initial().copyWith(isActive: false),
+                SearchUserResponse.initial().copyWith(isActive: true),
           ),
         );
         final MockShortGraphQlClient mockShortGraphQlClient =
@@ -559,22 +559,35 @@ void main() {
             400,
           ),
         );
-
         await buildTestWidget(
           store: store,
           tester: tester,
           graphQlClient: mockShortGraphQlClient,
-          widget: SearchPageDetailView(
-            searchUserResponse:
-                SearchUserResponse.initial().copyWith(isActive: false),
+          widget: Builder(
+            builder: (BuildContext context) {
+              return ElevatedButton(
+                onPressed: () => clientSearchAction(
+                  context: context,
+                  selectedSearchUserResponse:
+                      SearchUserResponse.initial().copyWith(isActive: false),
+                ),
+                child: const Text('test'),
+              );
+            },
           ),
         );
 
         await tester.pumpAndSettle();
-        expect(find.byType(ClientSearchWidget), findsOneWidget);
-        expect(find.byType(SearchDetailsInformationWidget), findsOneWidget);
 
-        await tester.tap(find.byType(MyAfyaHubPrimaryButton).first);
+        final Finder sendClientInviteButton = find.byType(ElevatedButton);
+
+        expect(sendClientInviteButton, findsOneWidget);
+
+        await tester.ensureVisible(sendClientInviteButton);
+
+        await tester.pumpAndSettle();
+
+        await tester.tap(sendClientInviteButton);
         await tester.pumpAndSettle();
         expect(
           find.text('$errorWhileReactivatingString $UNKNOWN'),
