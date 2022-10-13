@@ -919,6 +919,20 @@ class MockTestGraphQlClient extends IGraphQlClient {
         ),
       );
     }
+    if (queryString.contains(getUserLinkedFacilitiesQuery)) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(<String, dynamic>{
+            'data': <String, dynamic>{
+              'getUserLinkedFacilities': <String, dynamic>{
+                'Facilities': mockFacilities
+              }
+            }
+          }),
+          201,
+        ),
+      );
+    }
 
     if (queryString.contains(listMembersQuery)) {
       return Future<http.Response>.value(

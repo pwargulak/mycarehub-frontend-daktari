@@ -528,3 +528,15 @@ query searchCaregiverUser($searchParameter: String!){
   }
 }
 ''';
+
+const String getUserLinkedFacilitiesQuery = r'''
+query getUserLinkedFacilities($userID: ID! $paginationInput: PaginationsInput!){
+  getUserLinkedFacilities(userID: $userID, paginationInput: $paginationInput){
+    Facilities{
+      ID
+      name
+      code
+    }
+  }
+}
+''';

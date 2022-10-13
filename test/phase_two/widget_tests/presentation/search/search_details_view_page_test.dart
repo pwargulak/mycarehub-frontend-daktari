@@ -532,7 +532,10 @@ void main() {
         expect(find.byType(ClientSearchWidget), findsOneWidget);
         expect(find.byType(SearchDetailsInformationWidget), findsOneWidget);
 
-        await tester.tap(find.byType(MyAfyaHubPrimaryButton).first);
+        final Finder reactivateUserButton = find.byKey(reactivateUserButtonKey);
+        expect(reactivateUserButton, findsOneWidget);
+
+        await tester.tap(reactivateUserButton);
         await tester.pumpAndSettle();
 
         expect(
@@ -574,7 +577,10 @@ void main() {
         expect(find.byType(ClientSearchWidget), findsOneWidget);
         expect(find.byType(SearchDetailsInformationWidget), findsOneWidget);
 
-        await tester.tap(find.byType(MyAfyaHubPrimaryButton).first);
+        final Finder reactivateUserButton = find.byKey(reactivateUserButtonKey);
+        expect(reactivateUserButton, findsOneWidget);
+
+        await tester.tap(reactivateUserButton);
         await tester.pumpAndSettle();
         expect(
           find.text('$errorWhileReactivatingString $UNKNOWN'),
@@ -582,7 +588,6 @@ void main() {
         );
         expect(find.byType(SnackBar), findsOneWidget);
       });
-
       testWidgets('renders loading indicator correctly',
           (WidgetTester tester) async {
         final MockShortGraphQlClient mockShortGraphQlClient =
@@ -617,7 +622,7 @@ void main() {
           ),
         );
 
-        expect(find.byType(PlatformLoader), findsNWidgets(2));
+        expect(find.byType(PlatformLoader), findsNWidgets(3));
       });
     });
   });
