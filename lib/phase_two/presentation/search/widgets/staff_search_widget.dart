@@ -9,12 +9,11 @@ import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.d
 import 'package:prohealth360_daktari/application/redux/actions/search_users/assign_roles_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/search/search_view_model.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/roles_list.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
-import 'package:prohealth360_daktari/phase_two/presentation/widgets/list_card_with_cancel_button.dart';
+import 'package:prohealth360_daktari/phase_two/presentation/search/widgets/linked_facilities_widget.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:prohealth360_daktari/presentation/search/widgets/active_staff_actions.dart';
 import 'package:prohealth360_daktari/presentation/search/widgets/search_details_information_widget.dart';
@@ -60,32 +59,6 @@ class _StaffSearchWidgetState extends State<StaffSearchWidget> {
           final String name =
               selectedSearchUserResponse.user?.name ?? 'the staff member';
 
-          final List<Facility> facilities = <Facility>[
-            Facility(
-              name: 'Nanyuki District Hospital',
-            ),
-            Facility(
-              name: 'Agha Khan',
-            )
-          ];
-
-          final List<Widget> facilitiesWidgetList = <Widget>[];
-          if (facilities.isNotEmpty) {
-            facilities
-                .map(
-                  (Facility? facility) => facilitiesWidgetList.add(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
-                      child: ListCardWithCancelButton(
-                        title: facility?.name ?? '',
-                        description:
-                            'Staff number: ${selectedSearchUserResponse.staffNumber} ',
-                      ),
-                    ),
-                  ),
-                )
-                .toList();
-          }
           return (vm.wait.isWaitingFor(searchStaffMemberFlag))
               ? Container(
                   height: 300,
@@ -221,18 +194,11 @@ class _StaffSearchWidgetState extends State<StaffSearchWidget> {
                             ),
                           ),
                           largeVerticalSizedBox,
-                          Text(
-                            facilitiesString,
-                            style: boldSize18Text(AppColors.greyTextColor),
+                          LinkedFacilitiesWidget(
+                            selectedSearchUserResponse:
+                                selectedSearchUserResponse,
+                            isClient: false,
                           ),
-                          smallVerticalSizedBox,
-                          Text(
-                            getFacilitiesDescriptionString(
-                              selectedSearchUserResponse.user?.name ?? '',
-                            ),
-                            style: normalSize15Text(AppColors.greyTextColor),
-                          ),
-                          ...facilitiesWidgetList,
                           smallVerticalSizedBox,
                           SizedBox(
                             width: MediaQuery.of(context).size.width,

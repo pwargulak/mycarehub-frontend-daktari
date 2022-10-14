@@ -4,7 +4,6 @@ import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_graphql_client/graph_client.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
-import 'package:prohealth360_daktari/application/redux/actions/core/batch_update_misc_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/actions/search_users/invite_client_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/search_users/reactivate_client_action.dart';
@@ -16,10 +15,9 @@ import 'package:prohealth360_daktari/domain/core/entities/core/user.dart';
 import 'package:prohealth360_daktari/domain/core/entities/health_diary/health_diary_entry.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
-import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
+import 'package:prohealth360_daktari/phase_two/presentation/search/widgets/linked_facilities_widget.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/widgets/consent_status_widget.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/widgets/list_card_with_cancel_button.dart';
-import 'package:prohealth360_daktari/presentation/client_details/widgets/facilities_list_widget.dart';
 import 'package:prohealth360_daktari/presentation/client_details/widgets/health_diary_entry_widget.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:prohealth360_daktari/presentation/search/widgets/active_client_actions.dart';
@@ -166,42 +164,8 @@ class ClientSearchWidget extends StatelessWidget {
                           ),
                         ],
                       ),
-                    Text(
-                      facilitiesString,
-                      style: boldSize18Text(AppColors.greyTextColor),
-                    ),
-                    smallVerticalSizedBox,
-                    Text(
-                      getFacilitiesDescriptionString(
-                        selectedSearchUserResponse.user?.name ?? '',
-                      ),
-                      style: normalSize15Text(AppColors.greyTextColor),
-                    ),
-                    FacilitiesListWidget(
-                      userID: selectedSearchUserResponse.user?.id ?? '',
-                    ),
-                    smallVerticalSizedBox,
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      child: MyAfyaHubPrimaryButton(
-                        buttonKey: addFacilityButtonKey,
-                        onPressed: () {
-                          StoreProvider.dispatch<AppState>(
-                            context,
-                            BatchUpdateMiscStateAction(
-                              updateFacility: true,
-                            ),
-                          );
-                          Navigator.of(context).pushNamed(
-                            AppRoutes.searchFacilitiesPage,
-                            arguments: <String, dynamic>{
-                              'userID': vm.selectedSearchUserResponse?.id,
-                              'isClient': true,
-                            },
-                          );
-                        },
-                        text: addFacilityString,
-                      ),
+                    LinkedFacilitiesWidget(
+                      selectedSearchUserResponse: selectedSearchUserResponse,
                     ),
                     largeVerticalSizedBox,
                     Text(

@@ -125,3 +125,4 @@ const String fetchSurveyResponsesFlag = 'fetch_survey_responses_flag';
 const String fetchSurveyRespondentsFlag = 'fetch_survey_respondents_flag';
 
 const String addFacilityFlag = 'add_facility_flag';
+const String removeFacilityFlag = 'remove_facility_flag';

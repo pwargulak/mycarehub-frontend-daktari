@@ -6,12 +6,14 @@ class ListFacilitiesViewModel extends Vm {
   ListFacilitiesViewModel({
     required this.wait,
     this.facilities,
+    this.linkedFacilities,
     this.updateFacility,
     required this.selectedFacility,
   }) : super(
           equals: <Object?>[
             wait,
             facilities,
+            linkedFacilities,
             selectedFacility,
             updateFacility,
           ],
@@ -19,6 +21,7 @@ class ListFacilitiesViewModel extends Vm {
 
   final Wait wait;
   final List<Facility>? facilities;
+  final List<Facility>? linkedFacilities;
   final Facility selectedFacility;
   final bool? updateFacility;
 
@@ -26,6 +29,7 @@ class ListFacilitiesViewModel extends Vm {
     return ListFacilitiesViewModel(
       wait: store.state.wait!,
       facilities: store.state.staffState?.facilities,
+      linkedFacilities: store.state.staffState?.linkedFacilities,
       updateFacility: store.state.miscState?.updateFacility,
       selectedFacility:
           store.state.miscState?.selectedFacility ?? Facility.initial(),

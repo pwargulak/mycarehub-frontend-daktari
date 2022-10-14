@@ -1000,3 +1000,4 @@ const String confirmSearchTermIsCorrectString =
 
 
 const String addFacilitySuccessString = 'Facility added successfully';
+const String removedFacilitySuccessString = 'Facility removed successfully';

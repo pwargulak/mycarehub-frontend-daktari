@@ -27,7 +27,7 @@ class FetchUserLinkedFacilitiesAction extends ReduxAction<AppState> {
   void before() {
     super.before();
 
-    dispatch(UpdateStaffProfileAction(facilities: <Facility>[]));
+    dispatch(UpdateStaffProfileAction(linkedFacilities: <Facility>[]));
     dispatch(WaitAction<AppState>.add(retrieveFacilityFlag));
   }
 
@@ -74,8 +74,9 @@ class FetchUserLinkedFacilitiesAction extends ReduxAction<AppState> {
 
       dispatch(
         UpdateStaffProfileAction(
-          facilities: getFacilitiesResponse.linkedFacilities?.facilities ??
-              <Facility>[],
+          linkedFacilities:
+              getFacilitiesResponse.linkedFacilities?.facilities ??
+                  <Facility>[],
         ),
       );
     } else {

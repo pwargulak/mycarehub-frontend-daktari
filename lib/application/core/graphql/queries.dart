@@ -167,8 +167,6 @@ query searchClientUser($searchParameter: String!) {
   searchClientUser(searchParameter: $searchParameter){
     ID
     CCCNumber
-    DefaultFacilityID
-    DefaultFacilityName
     Active 
     User{
       ID

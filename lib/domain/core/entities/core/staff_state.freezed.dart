@@ -30,6 +30,7 @@ mixin _$StaffState {
   String? get staffNumber => throw _privateConstructorUsedError;
   @JsonKey(name: 'facilities')
   List<Facility>? get facilities => throw _privateConstructorUsedError;
+  List<Facility>? get linkedFacilities => throw _privateConstructorUsedError;
   @JsonKey(name: 'default_facility')
   String? get defaultFacility => throw _privateConstructorUsedError;
   @JsonKey(name: 'defaultFacilityName')
@@ -62,6 +63,7 @@ abstract class $StaffStateCopyWith<$Res> {
       @JsonKey(name: 'active', defaultValue: false) bool? active,
       @JsonKey(name: 'staff_number') String? staffNumber,
       @JsonKey(name: 'facilities') List<Facility>? facilities,
+      List<Facility>? linkedFacilities,
       @JsonKey(name: 'default_facility') String? defaultFacility,
       @JsonKey(name: 'defaultFacilityName') String? defaultFacilityName,
       @JsonKey(name: 'user') User? user,
@@ -90,6 +92,7 @@ class _$StaffStateCopyWithImpl<$Res> implements $StaffStateCopyWith<$Res> {
     Object? active = freezed,
     Object? staffNumber = freezed,
     Object? facilities = freezed,
+    Object? linkedFacilities = freezed,
     Object? defaultFacility = freezed,
     Object? defaultFacilityName = freezed,
     Object? user = freezed,
@@ -118,6 +121,10 @@ class _$StaffStateCopyWithImpl<$Res> implements $StaffStateCopyWith<$Res> {
       facilities: facilities == freezed
           ? _value.facilities
           : facilities // ignore: cast_nullable_to_non_nullable
+              as List<Facility>?,
+      linkedFacilities: linkedFacilities == freezed
+          ? _value.linkedFacilities
+          : linkedFacilities // ignore: cast_nullable_to_non_nullable
               as List<Facility>?,
       defaultFacility: defaultFacility == freezed
           ? _value.defaultFacility
@@ -198,6 +205,7 @@ abstract class _$$_StaffStateCopyWith<$Res>
       @JsonKey(name: 'active', defaultValue: false) bool? active,
       @JsonKey(name: 'staff_number') String? staffNumber,
       @JsonKey(name: 'facilities') List<Facility>? facilities,
+      List<Facility>? linkedFacilities,
       @JsonKey(name: 'default_facility') String? defaultFacility,
       @JsonKey(name: 'defaultFacilityName') String? defaultFacilityName,
       @JsonKey(name: 'user') User? user,
@@ -231,6 +239,7 @@ class __$$_StaffStateCopyWithImpl<$Res> extends _$StaffStateCopyWithImpl<$Res>
     Object? active = freezed,
     Object? staffNumber = freezed,
     Object? facilities = freezed,
+    Object? linkedFacilities = freezed,
     Object? defaultFacility = freezed,
     Object? defaultFacilityName = freezed,
     Object? user = freezed,
@@ -259,6 +268,10 @@ class __$$_StaffStateCopyWithImpl<$Res> extends _$StaffStateCopyWithImpl<$Res>
       facilities: facilities == freezed
           ? _value._facilities
           : facilities // ignore: cast_nullable_to_non_nullable
+              as List<Facility>?,
+      linkedFacilities: linkedFacilities == freezed
+          ? _value._linkedFacilities
+          : linkedFacilities // ignore: cast_nullable_to_non_nullable
               as List<Facility>?,
       defaultFacility: defaultFacility == freezed
           ? _value.defaultFacility
@@ -301,6 +314,7 @@ class _$_StaffState implements _StaffState {
       @JsonKey(name: 'active', defaultValue: false) this.active,
       @JsonKey(name: 'staff_number') this.staffNumber,
       @JsonKey(name: 'facilities') final List<Facility>? facilities,
+      final List<Facility>? linkedFacilities,
       @JsonKey(name: 'default_facility') this.defaultFacility,
       @JsonKey(name: 'defaultFacilityName') this.defaultFacilityName,
       @JsonKey(name: 'user') this.user,
@@ -309,6 +323,7 @@ class _$_StaffState implements _StaffState {
       final List<NotificationDetails?>? notifications,
       this.notificationFilterState})
       : _facilities = facilities,
+        _linkedFacilities = linkedFacilities,
         _clientSharedDiaryEntries = clientSharedDiaryEntries,
         _notifications = notifications;
 
@@ -332,6 +347,15 @@ class _$_StaffState implements _StaffState {
   @JsonKey(name: 'facilities')
   List<Facility>? get facilities {
     final value = _facilities;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<Facility>? _linkedFacilities;
+  @override
+  List<Facility>? get linkedFacilities {
+    final value = _linkedFacilities;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
@@ -376,7 +400,7 @@ class _$_StaffState implements _StaffState {
 
   @override
   String toString() {
-    return 'StaffState(id: $id, userId: $userId, active: $active, staffNumber: $staffNumber, facilities: $facilities, defaultFacility: $defaultFacility, defaultFacilityName: $defaultFacilityName, user: $user, communitiesState: $communitiesState, clientSharedDiaryEntries: $clientSharedDiaryEntries, notifications: $notifications, notificationFilterState: $notificationFilterState)';
+    return 'StaffState(id: $id, userId: $userId, active: $active, staffNumber: $staffNumber, facilities: $facilities, linkedFacilities: $linkedFacilities, defaultFacility: $defaultFacility, defaultFacilityName: $defaultFacilityName, user: $user, communitiesState: $communitiesState, clientSharedDiaryEntries: $clientSharedDiaryEntries, notifications: $notifications, notificationFilterState: $notificationFilterState)';
   }
 
   @override
@@ -391,6 +415,8 @@ class _$_StaffState implements _StaffState {
                 .equals(other.staffNumber, staffNumber) &&
             const DeepCollectionEquality()
                 .equals(other._facilities, _facilities) &&
+            const DeepCollectionEquality()
+                .equals(other._linkedFacilities, _linkedFacilities) &&
             const DeepCollectionEquality()
                 .equals(other.defaultFacility, defaultFacility) &&
             const DeepCollectionEquality()
@@ -415,6 +441,7 @@ class _$_StaffState implements _StaffState {
       const DeepCollectionEquality().hash(active),
       const DeepCollectionEquality().hash(staffNumber),
       const DeepCollectionEquality().hash(_facilities),
+      const DeepCollectionEquality().hash(_linkedFacilities),
       const DeepCollectionEquality().hash(defaultFacility),
       const DeepCollectionEquality().hash(defaultFacilityName),
       const DeepCollectionEquality().hash(user),
@@ -443,6 +470,7 @@ abstract class _StaffState implements StaffState {
       @JsonKey(name: 'active', defaultValue: false) final bool? active,
       @JsonKey(name: 'staff_number') final String? staffNumber,
       @JsonKey(name: 'facilities') final List<Facility>? facilities,
+      final List<Facility>? linkedFacilities,
       @JsonKey(name: 'default_facility') final String? defaultFacility,
       @JsonKey(name: 'defaultFacilityName') final String? defaultFacilityName,
       @JsonKey(name: 'user') final User? user,
@@ -469,6 +497,8 @@ abstract class _StaffState implements StaffState {
   @override
   @JsonKey(name: 'facilities')
   List<Facility>? get facilities;
+  @override
+  List<Facility>? get linkedFacilities;
   @override
   @JsonKey(name: 'default_facility')
   String? get defaultFacility;

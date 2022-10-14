@@ -249,3 +249,27 @@ mutation addFacilitiesToClientProfile(
   )
 }
 ''';
+
+const String removeFacilitiesFromClientProfileMutation = r'''
+mutation removeFacilitiesFromClientProfile(
+  $clientID: ID! ,
+  $facilities: [ID!]!
+) {
+  removeFacilitiesFromClientProfile(
+    clientID: $clientID,
+    facilities: $facilities
+  )
+}
+''';
+
+const String removeFacilitiesFromStaffProfileMutation = r'''
+mutation removeFacilitiesFromStaffProfile(
+  $staffID: ID! ,
+  $facilities: [ID!]!
+) {
+  removeFacilitiesFromStaffProfile(
+    staffID: $staffID,
+    facilities: $facilities
+  )
+}
+''';

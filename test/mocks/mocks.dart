@@ -867,6 +867,30 @@ class MockTestGraphQlClient extends IGraphQlClient {
         ),
       );
     }
+    if (queryString.contains(removeFacilitiesFromStaffProfileMutation)) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(
+            <String, dynamic>{
+              'data': <String, dynamic>{'removeFacilitiesFromStaffProfile': true}
+            },
+          ),
+          201,
+        ),
+      );
+    }
+    if (queryString.contains(removeFacilitiesFromClientProfileMutation)) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(
+            <String, dynamic>{
+              'data': <String, dynamic>{'removeFacilitiesFromClientProfile': true}
+            },
+          ),
+          201,
+        ),
+      );
+    }
 
     if (queryString.contains(getServiceRequestsQuery)) {
       return Future<http.Response>.value(

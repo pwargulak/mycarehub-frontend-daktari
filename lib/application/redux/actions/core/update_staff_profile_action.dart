@@ -14,6 +14,7 @@ class UpdateStaffProfileAction extends ReduxAction<AppState> {
     this.staffNumber,
     this.defaultFacility,
     this.facilities,
+    this.linkedFacilities,
     this.healthDiaryEntries,
     this.defaultFacilityName,
     this.notifications,
@@ -23,6 +24,7 @@ class UpdateStaffProfileAction extends ReduxAction<AppState> {
   final String? defaultFacility;
   final String? defaultFacilityName;
   final List<Facility>? facilities;
+  final List<Facility>? linkedFacilities;
   final List<HealthDiaryEntry?>? healthDiaryEntries;
   final String? id;
   final List<NotificationDetails?>? notifications;
@@ -40,6 +42,7 @@ class UpdateStaffProfileAction extends ReduxAction<AppState> {
         defaultFacility:
             this.defaultFacility ?? state.staffState?.defaultFacility,
         facilities: this.facilities ?? state.staffState?.facilities,
+        linkedFacilities: this.linkedFacilities ?? state.staffState?.linkedFacilities,
         clientSharedDiaryEntries: this.healthDiaryEntries ??
             state.staffState?.clientSharedDiaryEntries,
         notifications: this.notifications ?? state.staffState?.notifications,
