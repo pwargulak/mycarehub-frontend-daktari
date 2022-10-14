@@ -11,6 +11,7 @@ import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/onboarding/set_nickname_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/constants.dart';
 
 class SetNickNamePage extends StatefulWidget {
   const SetNickNamePage({super.key});
@@ -87,9 +88,11 @@ class _SetNickNamePageState extends State<SetNickNamePage> {
                                 validator: (String? value) {
                                   if (value!.isEmpty) {
                                     return nameInputValidateString;
+                                  } else if (!userNameRegex.hasMatch(value)) {
+                                    return errorNicknameInputString;
+                                  } else {
+                                    return null;
                                   }
-
-                                  return null;
                                 },
                                 onChanged: (String val) {
                                   setState(() {
