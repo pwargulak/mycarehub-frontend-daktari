@@ -406,6 +406,8 @@ const String setNicknameDescription =
     'Please create a nickname (Visible to conversation members)';
 const String nickNameString = 'Nickname';
 const String nameInputValidateString = 'Kindly input a nickname';
+const String errorNicknameInputString =
+    'Please enter letters, numbers or underscores only';
 const String nicknameSuccessString = 'Nickname created successfully';
 const String logoutButtonText = 'Logout';
 const String usernameTakenText = 'Username has already been taken.';
