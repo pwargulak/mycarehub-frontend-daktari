@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
@@ -68,7 +69,8 @@ class FetchSurveyServiceRequestsAction extends ReduxAction<AppState> {
 
     final SurveyServiceRequestState surveyServiceRequestState =
         SurveyServiceRequestState.fromJson(
-      payLoad['data'] as Map<String, dynamic>,
+      (json.decode(utf8.decode(response.bodyBytes))
+          as Map<String, dynamic>)['data'] as Map<String, dynamic>,
     );
     final List<SurveyServiceRequestItem?>? surveys =
         surveyServiceRequestState.surveys;
