@@ -3,12 +3,12 @@ import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter_graphql_client/graph_client.dart';
 import 'package:prohealth360_daktari/application/core/graphql/queries.dart';
+import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/core/update_staff_profile_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:http/http.dart' as http;
 import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 /// [RetrieveFacilityAction] is a Redux Action whose job is to retrieve a staff's
 /// default facility's details.
@@ -53,8 +53,12 @@ class RetrieveFacilityAction extends ReduxAction<AppState> {
       final String? errors = client.parseError(responseMap);
 
       if (errors != null) {
-        Sentry.captureException(
-          UserException(errors),
+        reportErrorToSentry(
+          hint: getErrorMessage('getting updated facility information'),
+          query: retrieveFacilityQuery,
+          response: result,
+          state: state,
+          variables: variables,
         );
 
         throw UserException(
@@ -74,8 +78,11 @@ class RetrieveFacilityAction extends ReduxAction<AppState> {
         final List<Facility> removed = facilities
             .where((Facility element) => element.name != facilityName)
             .toList();
-        dispatch(UpdateStaffProfileAction(
-            facilities: <Facility>[facility, ...removed],),);
+        dispatch(
+          UpdateStaffProfileAction(
+            facilities: <Facility>[facility, ...removed],
+          ),
+        );
       }
     } else {
       throw UserException(processedResponse.message);

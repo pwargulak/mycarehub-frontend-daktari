@@ -5,6 +5,7 @@ import 'package:async_redux/async_redux.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:http/http.dart';
 import 'package:intl/intl.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/actions/user_state_actions/logout_action.dart';
@@ -17,6 +18,7 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart'
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/profile/widgets/edit_information_item.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 ClientType clientTypeFromJson(String? clientString) {
   if (clientString == null || clientString.isEmpty || clientString == UNKNOWN) {
@@ -448,4 +450,55 @@ List<String> getGenderList() {
   }
 
   return result;
+}
+
+/// Reports an error to [Sentry]
+dynamic reportErrorToSentry({
+  /// A human readable description of the error
+  required String hint,
+
+  /// The [AppState] used to add contact info
+  AppState? state,
+
+  /// Used in cases of HTTP request errors
+  Response? response,
+
+  // Should be a derivative of the [AppRoutes class] i.e AppRoutes.loginPage
+  String? route,
+
+  /// Any exception object for example from a try {...} catch {...} operation
+  Object? exception,
+
+  /// The GraphQL query
+  String? query,
+
+  /// Variables
+  Map<String, dynamic>? variables,
+}) {
+  final Map<String, dynamic> stackTrace = <String, dynamic>{};
+  final String contact =
+      state?.staffState?.user?.primaryContact?.value ?? UNKNOWN;
+  final bool isSignedIn = state?.credentials?.isSignedIn ?? false;
+
+  if (response != null) {
+    stackTrace.addAll(
+      <String, dynamic>{
+        'request': response.request.toString(),
+        'body': response.body,
+        'statusCode': response.statusCode,
+      },
+    );
+  }
+
+  if (isSignedIn) {
+    stackTrace.addAll(<String, dynamic>{'phoneNumber': contact});
+  }
+
+  stackTrace.addAll(<String, dynamic>{
+    'exception': exception ?? UNKNOWN,
+    'query': query ?? UNKNOWN,
+    'variables': variables ?? UNKNOWN,
+  });
+
+  Sentry.captureException(stackTrace, stackTrace: stackTrace, hint: hint);
 }

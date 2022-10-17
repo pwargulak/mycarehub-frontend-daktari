@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_graphql_client/graph_client.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/core/graphql/mutations.dart';
+import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/core/update_user_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
@@ -51,7 +52,7 @@ class AssignRolesAction extends ReduxAction<AppState> {
       'roles': newRolesStrings
     };
     final Response response =
-        await client.query(assignOrRevokeRoles, variables);
+        await client.query(assignOrRevokeRolesMutation, variables);
 
     final ProcessedResponse processedResponse = processHttpResponse(response);
 
@@ -67,6 +68,14 @@ class AssignRolesAction extends ReduxAction<AppState> {
         }
         Sentry.captureException(
           UserException(errors),
+        );
+
+        reportErrorToSentry(
+          hint: getErrorMessage('assigning roles'),
+          query: assignOrRevokeRolesMutation,
+          response: response,
+          state: state,
+          variables: variables,
         );
 
         throw UserException(getErrorMessage('assigning roles'));

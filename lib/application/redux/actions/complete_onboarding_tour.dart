@@ -6,10 +6,10 @@ import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter_graphql_client/graph_client.dart';
 import 'package:prohealth360_daktari/application/core/graphql/mutations.dart';
+import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:http/http.dart' as http;
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 /// [CompleteOnboardingTourAction] is a Redux Action whose job is to update a
 /// users onboarding tour completion status. Otherwise delightfully notify the
@@ -52,8 +52,12 @@ class CompleteOnboardingTourAction extends ReduxAction<AppState> {
 
     final String? errors = client.parseError(body);
     if (errors != null) {
-      Sentry.captureException(
-        UserException(errors),
+      reportErrorToSentry(
+        hint: getErrorMessage('completing the onboarding tour'),
+        query: completeOnboardingTourMutation,
+        response: result,
+        state: state,
+        variables: variables,
       );
 
       throw UserException(getErrorMessage('completing the onboarding tour'));

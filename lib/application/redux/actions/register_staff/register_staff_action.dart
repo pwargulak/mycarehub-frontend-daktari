@@ -7,14 +7,13 @@ import 'package:flutter_graphql_client/graph_client.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/core/graphql/mutations.dart';
 import 'package:prohealth360_daktari/application/core/services/analytics_service.dart';
-import 'package:prohealth360_daktari/application/core/services/helpers.dart';
+import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/register_staff/register_staff_payload.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_events.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 class RegisterStaffAction extends ReduxAction<AppState> {
   final RegisterStaffPayload registerStaffPayload;
@@ -65,7 +64,14 @@ class RegisterStaffAction extends ReduxAction<AppState> {
           throw const UserException(staffCccExists);
         }
 
-        Sentry.captureException(UserException(errors));
+        reportErrorToSentry(
+          hint: getErrorMessage('fetching staff'),
+          query: registerStaffMutation,
+          response: response,
+          state: state,
+          variables: payload,
+          exception: errors,
+        );
 
         throw const UserException(somethingWentWrongText);
       }
@@ -80,10 +86,12 @@ class RegisterStaffAction extends ReduxAction<AppState> {
         },
       );
     } else {
-      await captureException(
-        errorPhoneLogin,
-        error: processedResponse.message,
-        response: processedResponse.response.body,
+      reportErrorToSentry(
+        hint: getErrorMessage('fetching staff'),
+        query: registerStaffMutation,
+        response: response,
+        state: state,
+        variables: payload,
       );
       throw UserException(processedResponse.message);
     }

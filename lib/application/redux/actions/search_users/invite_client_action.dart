@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_graphql_client/graph_client.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/core/graphql/mutations.dart';
+import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 class InviteClientAction extends ReduxAction<AppState> {
   InviteClientAction({
@@ -69,8 +69,12 @@ class InviteClientAction extends ReduxAction<AppState> {
       final String? errors = client.parseError(body);
 
       if (errors != null) {
-        Sentry.captureException(
-          UserException(errors),
+        reportErrorToSentry(
+          hint: getErrorMessage('inviting client'),
+          query: inviteUserMutation,
+          response: response,
+          state: state,
+          variables: variables,
         );
 
         throw UserException(getErrorMessage('inviting client'));

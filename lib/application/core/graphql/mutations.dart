@@ -85,7 +85,7 @@ mutation inviteUser($userID: String!, $phoneNumber: String!, $flavour: Flavour!)
 }
  ''';
 
-const String createCommunity = r'''
+const String createCommunityMutation = r'''
 mutation createCommunity($input: CommunityInput!) {
   createCommunity(input: $input){
     name
@@ -145,7 +145,7 @@ mutation inviteUser($userID: String!, $phoneNumber: String!, $flavour: Flavour!,
 }
 ''';
 
-const String assignOrRevokeRoles = r'''
+const String assignOrRevokeRolesMutation = r'''
 mutation assignOrRevokeRoles($userID: String!, $roles: [UserRoleType!]!){
   assignOrRevokeRoles(userID: $userID, roles: $roles)
 }

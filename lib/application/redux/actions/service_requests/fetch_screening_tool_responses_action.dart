@@ -5,12 +5,12 @@ import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_graphql_client/graph_client.dart';
 import 'package:prohealth360_daktari/application/core/graphql/queries.dart';
+import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/redux/states/service_requests/tool_assessment_response.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 class FetchScreeningToolResponsesAction extends ReduxAction<AppState> {
   final IGraphQlClient client;
@@ -54,7 +54,13 @@ class FetchScreeningToolResponsesAction extends ReduxAction<AppState> {
     final String? error = parseError(payLoad);
 
     if (error != null) {
-      Sentry.captureException(UserException(error));
+      reportErrorToSentry(
+        hint: getErrorMessage('fetching screening tools response'),
+        query: getScreeningToolServiceRequestResponsesQuery,
+        response: response,
+        state: state,
+        variables: variables,
+      );
 
       onFailure?.call();
 

@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_graphql_client/graph_client.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/core/graphql/mutations.dart';
+import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
@@ -65,14 +66,12 @@ class PromoteToModeratorAction extends ReduxAction<AppState> {
         throw const UserException(errorPromotingAdminText);
       }
     } else {
-      Sentry.captureException(
-        const UserException(somethingWentWrongText),
-        hint: <String, dynamic>{
-          'memberIds': memberIds,
-          'communityId': communityId,
-          'mutation': promoteToModeratorMutation,
-          'response': response,
-        },
+      reportErrorToSentry(
+        hint: getErrorMessage('promoting to moderator'),
+        query: promoteToModeratorMutation,
+        response: response,
+        state: state,
+        variables: variables,
       );
 
       throw const UserException(somethingWentWrongText);

@@ -5,12 +5,12 @@ import 'package:async_redux/async_redux.dart';
 import 'package:flutter_graphql_client/graph_client.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/core/graphql/queries.dart';
+import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/actions/search_users/update_search_user_response_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/roles_list.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 class FetchStaffRolesAction extends ReduxAction<AppState> {
   FetchStaffRolesAction({
@@ -52,8 +52,12 @@ class FetchStaffRolesAction extends ReduxAction<AppState> {
       final String? errors = client.parseError(body);
 
       if (errors != null) {
-        Sentry.captureException(
-          UserException(errors),
+        reportErrorToSentry(
+          hint: getErrorMessage('getting roles'),
+          query: getUserRolesQuery,
+          response: response,
+          state: state,
+          variables: variables,
         );
 
         throw UserException(getErrorMessage('getting user roles'));

@@ -7,10 +7,10 @@ import 'package:async_redux/async_redux.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_graphql_client/graph_client.dart';
 import 'package:prohealth360_daktari/application/core/graphql/queries.dart';
+import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:http/http.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 /// [InviteMembersAction] is a Redux Action whose job is to invite members to a
 /// specific community group. Otherwise delightfully notify user of any Error
@@ -60,8 +60,13 @@ class InviteMembersAction extends ReduxAction<AppState> {
       final String? errors = client.parseError(body);
 
       if (errors != null) {
-        Sentry.captureException(UserException(errors));
-
+        reportErrorToSentry(
+          hint: getErrorMessage('inviting members'),
+          query: inviteMembersToCommunityQuery,
+          response: response,
+          state: state,
+          variables: variables,
+        );
         throw UserException(getErrorMessage('inviting members'));
       }
 
