@@ -6,10 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_graphql_client/graph_client.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/core/graphql/mutations.dart';
-import 'package:prohealth360_daktari/application/core/graphql/queries.dart';
+import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 class SendSurveysAction extends ReduxAction<AppState> {
   final IGraphQlClient client;
@@ -50,14 +49,15 @@ class SendSurveysAction extends ReduxAction<AppState> {
 
     if (error != null) {
       onError?.call(error);
-      Sentry.captureException(
-        error,
-        hint: <String, dynamic>{
-          'variables': variables,
-          'query': listSurveysQuery,
-          'response': response.body,
-        },
+
+      reportErrorToSentry(
+        hint: getErrorMessage('sending surveys'),
+        query: sendClientSurveyLinksMutation,
+        response: response,
+        state: state,
+        variables: variables,
       );
+
       return null;
     }
 

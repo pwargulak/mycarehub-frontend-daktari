@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_graphql_client/graph_client.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/core/graphql/mutations.dart';
+import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -57,6 +58,14 @@ class RemoveFromGroupAction extends ReduxAction<AppState> {
       final String? errors = client.parseError(body);
 
       if (errors != null) {
+        reportErrorToSentry(
+          hint: getErrorMessage('removing user from group'),
+          query: removeFromGroupMutation,
+          response: response,
+          state: state,
+          variables: variables,
+        );
+
         Sentry.captureException(
           UserException(errors),
         );

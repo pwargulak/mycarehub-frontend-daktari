@@ -74,9 +74,12 @@ class ResumeWithPinAction extends ReduxAction<AppState> {
           wrongPinCallback?.call();
           throw const UserException(wrongPINText);
         } else {
-          Sentry.captureException(
-            error,
+          reportErrorToSentry(
             hint: 'Error while verifying user PIN',
+            query: listMembersQuery,
+            response: result,
+            state: state,
+            variables: variables,
           );
           throw UserException(getErrorMessage());
         }

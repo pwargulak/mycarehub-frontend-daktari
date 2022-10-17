@@ -14,7 +14,6 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_events.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:http/http.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 class RegisterClientAction extends ReduxAction<AppState> {
   final RegisterClientPayload registerClientPayload;
@@ -63,7 +62,13 @@ class RegisterClientAction extends ReduxAction<AppState> {
           throw const UserException(clientPhoneExists);
         }
 
-        Sentry.captureException(UserException(errors));
+        reportErrorToSentry(
+          hint: getErrorMessage('registering client'),
+          query: registerClientMutation,
+          response: response,
+          state: state,
+          variables: payload,
+        );
 
         throw const UserException(somethingWentWrongText);
       }

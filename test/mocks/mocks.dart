@@ -986,7 +986,7 @@ class MockTestGraphQlClient extends IGraphQlClient {
       );
     }
 
-    if (queryString.contains(createCommunity)) {
+    if (queryString.contains(createCommunityMutation)) {
       return Future<http.Response>.value(
         http.Response(
           json.encode(<String, dynamic>{
@@ -1126,7 +1126,7 @@ class MockTestGraphQlClient extends IGraphQlClient {
       );
     }
 
-    if (queryString.contains(assignOrRevokeRoles)) {
+    if (queryString.contains(assignOrRevokeRolesMutation)) {
       return Future<http.Response>.value(
         http.Response(
           json.encode(

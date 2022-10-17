@@ -4,13 +4,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_graphql_client/graph_client.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/core/graphql/mutations.dart';
+import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/actions/service_requests/fetch_assessment_responses_by_tool_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/service_requests/fetch_available_facility_screening_tools_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/service_requests/fetch_service_request_count_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 class ResolveScreeningToolServiceRequestAction extends ReduxAction<AppState> {
   final IGraphQlClient client;
@@ -74,9 +74,12 @@ class ResolveScreeningToolServiceRequestAction extends ReduxAction<AppState> {
 
     if (error != null) {
       onFailure?.call();
-      Sentry.captureException(
-        error,
-        hint: 'Error while resolving service request',
+      reportErrorToSentry(
+        hint: getErrorMessage('resolving pin requests'),
+        query: verifyClientPinResetServiceRequestQuery,
+        response: result,
+        state: state,
+        variables: variables,
       );
 
       return null;

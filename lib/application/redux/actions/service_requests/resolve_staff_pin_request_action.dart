@@ -5,6 +5,7 @@ import 'package:flutter_graphql_client/graph_client.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/core/graphql/mutations.dart';
 import 'package:prohealth360_daktari/application/core/services/analytics_service.dart';
+import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/actions/service_requests/fetch_service_request_count_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/service_requests/update_service_requests_state_action.dart';
@@ -74,9 +75,12 @@ class ResolveStaffPinRequestAction extends ReduxAction<AppState> {
       final String? error = httpClient.parseError(body);
 
       if (error != null) {
-        Sentry.captureException(
-          error,
+        reportErrorToSentry(
           hint: 'Error while accepting pin request',
+          query: verifyStaffPinResetServiceRequestQuery,
+          response: result,
+          state: state,
+          variables: variables,
         );
         throw UserException(getErrorMessage());
       }
@@ -96,7 +100,7 @@ class ResolveStaffPinRequestAction extends ReduxAction<AppState> {
                 (ServiceRequest request) => request.id != serviceRequestId,
               )
               .toList();
-              
+
           dispatch(
             UpdateServiceRequestsStateAction(
               staffServiceRequests: remainingServiceRequests,
@@ -116,10 +120,14 @@ class ResolveStaffPinRequestAction extends ReduxAction<AppState> {
         );
       }
     } else {
-      Sentry.captureException(
-        processedResponse.message,
+      reportErrorToSentry(
         hint: 'Error while accepting pin request',
+        query: verifyStaffPinResetServiceRequestQuery,
+        response: result,
+        state: state,
+        variables: variables,
       );
+
       throw UserException(getErrorMessage());
     }
 

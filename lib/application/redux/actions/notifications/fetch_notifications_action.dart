@@ -5,12 +5,12 @@ import 'package:async_redux/async_redux.dart';
 import 'package:flutter_graphql_client/graph_client.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/core/graphql/queries.dart';
+import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/core/update_staff_profile_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/actions/notifications/read_notifications_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/notification/notifications_response.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 class FetchNotificationsAction extends ReduxAction<AppState> {
   FetchNotificationsAction({
@@ -64,10 +64,13 @@ class FetchNotificationsAction extends ReduxAction<AppState> {
       final String? errors = client.parseError(body);
 
       if (errors != null) {
-        Sentry.captureException(
-          UserException(errors),
+        reportErrorToSentry(
+          hint: getErrorMessage('fetching notifications'),
+          query: listNotificationsQuery,
+          response: response,
+          state: state,
+          variables: variables,
         );
-
         throw UserException(getErrorMessage('fetching notifications'));
       }
 

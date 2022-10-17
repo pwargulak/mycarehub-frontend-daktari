@@ -5,9 +5,9 @@ import 'package:async_redux/async_redux.dart';
 import 'package:flutter_graphql_client/graph_client.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/core/graphql/mutations.dart';
+import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 class DeclineCommunitiesInviteAction extends ReduxAction<AppState> {
   final String communityID;
@@ -38,7 +38,13 @@ class DeclineCommunitiesInviteAction extends ReduxAction<AppState> {
     final String? errors = parseError(responseMap);
 
     if (errors != null) {
-      Sentry.captureException(UserException(errors));
+      reportErrorToSentry(
+        hint: getErrorMessage('declining communities invite'),
+        query: rejectInvitationMutation,
+        response: response,
+        state: state,
+        variables: variables,
+      );
 
       onFailure?.call();
 

@@ -5,6 +5,7 @@ import 'package:async_redux/async_redux.dart';
 import 'package:flutter_graphql_client/graph_client.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/core/graphql/queries.dart';
+import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/actions/surveys/update_survey_response_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
@@ -57,14 +58,14 @@ class FetchSurveyRespondentsAction extends ReduxAction<AppState> {
     final String? error = parseError(payLoad);
 
     if (error != null) {
-      Sentry.captureException(
-        error,
-        hint: <String, dynamic>{
-          'variables': variables,
-          'query': listSurveyRespondentsQuery,
-          'response': response.body,
-        },
+      reportErrorToSentry(
+        hint: getErrorMessage('listing survey respondents'),
+        query: listSurveyRespondentsQuery,
+        response: response,
+        state: state,
+        variables: variables,
       );
+
       dispatch(UpdateSurveyRespondentsStateAction(errorOccurred: true));
       return state;
     }

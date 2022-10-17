@@ -5,11 +5,11 @@ import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_graphql_client/graph_client.dart';
 import 'package:http/http.dart';
+import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 class CreateStaffPINResetRequestAction extends ReduxAction<AppState> {
   CreateStaffPINResetRequestAction({
@@ -65,17 +65,26 @@ class CreateStaffPINResetRequestAction extends ReduxAction<AppState> {
         return state;
       } else {
         onError?.call();
-        Sentry.captureException('PIN service request failed');
+        reportErrorToSentry(
+          hint: 'PIN service request failed',
+          query: pinResetServiceRequestEndpoint,
+          response: response,
+          state: state,
+          variables: variables,
+        );
 
         return null;
       }
     }
 
-    final String? error = parseError(payLoad);
-
     onError?.call();
-    Sentry.captureException(error, hint: 'PIN service request failed');
-
+    reportErrorToSentry(
+      hint: 'PIN service request failed',
+      query: pinResetServiceRequestEndpoint,
+      response: response,
+      state: state,
+      variables: variables,
+    );
     return null;
   }
 }

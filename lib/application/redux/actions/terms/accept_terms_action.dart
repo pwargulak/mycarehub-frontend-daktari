@@ -22,7 +22,6 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_events.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:http/http.dart' as http;
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 class AcceptTermAction extends ReduxAction<AppState> {
   AcceptTermAction({required this.client});
@@ -48,22 +47,28 @@ class AcceptTermAction extends ReduxAction<AppState> {
         state.onboardingState?.termsAndConditions?.termsId;
     final String? userID = state.staffState?.user?.userId;
 
-    final http.Response result = await client.query(
+    final http.Response response = await client.query(
       acceptTermsAndConditionsMutation,
       getTermsVariables(termsId: acceptedTermsID, userId: userID),
     );
 
-    final Map<String, dynamic> body = client.toMap(result);
+    final Map<String, dynamic> body = client.toMap(response);
     client.close();
 
     final Map<String, dynamic> responseMap =
-        json.decode(result.body) as Map<String, dynamic>;
+        json.decode(response.body) as Map<String, dynamic>;
 
     final String? error = client.parseError(body);
     if (error != null || responseMap.isEmpty) {
       dispatch(BatchUpdateMiscStateAction(error: somethingWentWrongText));
 
-      Sentry.captureException(UserException(error));
+      reportErrorToSentry(
+        hint: getErrorMessage('accepting terms'),
+        query: acceptTermsAndConditionsMutation,
+        response: response,
+        state: state,
+        variables: getTermsVariables(termsId: acceptedTermsID, userId: userID),
+      );
 
       return null;
     }

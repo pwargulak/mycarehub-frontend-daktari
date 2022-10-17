@@ -18,7 +18,6 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_events.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 /// [VerifySecurityQuestionAction] is a Redux Action whose job is to verify responses for recorded
 ///  security questions responses if pin reset is true.
@@ -131,7 +130,12 @@ class VerifySecurityQuestionAction extends ReduxAction<AppState> {
           UpdateOnboardingStateAction(hasVerifiedSecurityQuestions: false),
         );
 
-        Sentry.captureException(UserException(errors));
+        reportErrorToSentry(
+          hint: getErrorMessage('verifying security questions'),
+          query: verifySecurityQuestionsEndpoint,
+          response: result,
+          state: state,
+        );
         throw const UserException(responseNotMatchingText);
       }
     }

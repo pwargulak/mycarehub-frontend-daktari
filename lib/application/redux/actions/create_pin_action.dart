@@ -17,7 +17,6 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_events.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:http/http.dart' as http;
 import 'package:prohealth360_daktari/domain/core/value_objects/error_tags.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 /// [CreatePINAction] is a Redux Action whose job is to update a users PIN from an old one,
 ///  to the new provided one
@@ -114,7 +113,16 @@ class CreatePINAction extends ReduxAction<AppState> {
 
       if (error != null) {
         dispatch(BatchUpdateMiscStateAction(error: somethingWentWrongText));
-        Sentry.captureException(UserException(error));
+
+        reportErrorToSentry(
+          hint: getErrorMessage('creating PIN'),
+          query: completeOnboardingTourMutation,
+          response: result,
+          state: state,
+          variables: isResetOrChangePIN
+              ? resetPinVariables
+              : setUserPINMutationVariables(updateUserPinVariables),
+        );
         throw MyAfyaException(
           cause:
               isResetOrChangePIN ? updateOrResetPinErrorTag : createPinErrorTag,

@@ -4,13 +4,13 @@ import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter_graphql_client/graph_client.dart';
 import 'package:prohealth360_daktari/application/core/graphql/queries.dart';
+import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/core/update_staff_profile_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
 import 'package:prohealth360_daktari/domain/core/entities/register_client/fetch_facilities_response.dart';
 import 'package:http/http.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 class SearchFacilitiesAction extends ReduxAction<AppState> {
   final IGraphQlClient client;
@@ -60,8 +60,13 @@ class SearchFacilitiesAction extends ReduxAction<AppState> {
       final String? errors = client.parseError(body);
 
       if (errors != null) {
-        Sentry.captureException(
-          UserException(errors),
+        reportErrorToSentry(
+          hint: getErrorMessage('fetching facilities'),
+          query: searchFacilityQuery,
+          response: response,
+          state: state,
+          variables: variables,
+          exception: errors,
         );
 
         throw UserException(getErrorMessage('fetching facilities'));
