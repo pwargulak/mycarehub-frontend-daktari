@@ -3,7 +3,6 @@ import 'dart:async';
 import 'dart:convert';
 
 // Package imports:
-import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/foundation.dart';
 // Flutter imports:
@@ -21,6 +20,7 @@ import 'package:prohealth360_daktari/domain/core/entities/core/onboarding_path_i
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_events.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 
 /// [SetNicknameAction] is a Redux Action whose job is to update a users
@@ -79,7 +79,7 @@ class SetNicknameAction extends ReduxAction<AppState> {
       onError?.call();
 
       reportErrorToSentry(
-        hint: getErrorMessage('setting nickname'),
+        hint: setNicknameErrorString,
         query: setNickNameMutation,
         response: result,
         state: state,

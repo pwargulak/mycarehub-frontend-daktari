@@ -11,6 +11,7 @@ import 'package:prohealth360_daktari/application/redux/actions/surveys/update_su
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/survey_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_response.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class FetchSurveyResponsesAction extends ReduxAction<AppState> {
   final IGraphQlClient client;
@@ -61,7 +62,7 @@ class FetchSurveyResponsesAction extends ReduxAction<AppState> {
 
     if (error != null) {
       reportErrorToSentry(
-        hint: getErrorMessage('fetching survey responses'),
+        hint: fetchSurveyResponsesErrorString,
         query: surveyResponseQuery,
         response: response,
         state: state,

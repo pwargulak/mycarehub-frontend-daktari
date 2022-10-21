@@ -10,6 +10,7 @@ import 'package:prohealth360_daktari/application/redux/actions/communities/updat
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/community/entities/list_group_info_response.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 class FetchGroupMembersAction extends ReduxAction<AppState> {
@@ -61,7 +62,7 @@ class FetchGroupMembersAction extends ReduxAction<AppState> {
       onError?.call(error);
 
       reportErrorToSentry(
-        hint: getErrorMessage('fetching group members'),
+        hint: fetchGroupMembersErrorString,
         query: listCommunityMembersQuery,
         response: response,
         state: state,

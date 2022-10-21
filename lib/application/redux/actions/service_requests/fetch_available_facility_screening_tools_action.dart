@@ -12,6 +12,7 @@ import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/redux/states/service_requests/screening_tools_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/service_requests/tool_type.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class FetchAvailableFacilityScreeningToolsAction extends ReduxAction<AppState> {
   final IGraphQlClient client;
@@ -56,7 +57,7 @@ class FetchAvailableFacilityScreeningToolsAction extends ReduxAction<AppState> {
 
     if (error != null) {
       reportErrorToSentry(
-        hint: getErrorMessage('fetching available screening tools'),
+        hint: fetchAvailableScreeningToolsErrorString,
         query: getAvailableFacilityScreeningToolsQuery,
         response: response,
         state: state,

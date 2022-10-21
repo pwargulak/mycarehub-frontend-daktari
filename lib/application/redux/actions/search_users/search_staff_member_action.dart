@@ -12,6 +12,7 @@ import 'package:prohealth360_daktari/application/redux/actions/search_users/upda
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/searched_staff_members.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class SearchStaffMemberAction extends ReduxAction<AppState> {
   SearchStaffMemberAction({
@@ -61,7 +62,7 @@ class SearchStaffMemberAction extends ReduxAction<AppState> {
 
       if (errors != null) {
         reportErrorToSentry(
-          hint: getErrorMessage('fetching staff members'),
+          hint: fetchStaffErrorString,
           query: searchStaffMemberQuery,
           response: response,
           state: state,

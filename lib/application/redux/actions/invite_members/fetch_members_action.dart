@@ -12,6 +12,7 @@ import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/community_members/list_members_response.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class FetchMembersAction extends ReduxAction<AppState> {
   final IGraphQlClient client;
@@ -70,7 +71,7 @@ class FetchMembersAction extends ReduxAction<AppState> {
 
       if (errors != null) {
         reportErrorToSentry(
-          hint: getErrorMessage('fetching members'),
+          hint: fetchMembersErrorString,
           query: listMembersQuery,
           response: response,
           state: state,

@@ -8,6 +8,7 @@ import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 class DemoteModeratorAction extends ReduxAction<AppState> {
@@ -67,7 +68,7 @@ class DemoteModeratorAction extends ReduxAction<AppState> {
       }
     } else {
       reportErrorToSentry(
-        hint: getErrorMessage('declining communities invite'),
+        hint: demoteModeratorErrorString,
         query: demoteModeratorMutation,
         response: response,
         state: state,

@@ -13,6 +13,7 @@ import 'package:prohealth360_daktari/domain/core/entities/core/onboarding_path_i
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_events.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -75,7 +76,7 @@ class ResumeWithPinAction extends ReduxAction<AppState> {
           throw const UserException(wrongPINText);
         } else {
           reportErrorToSentry(
-            hint: 'Error while verifying user PIN',
+            hint: pinVerificationErrorString,
             query: listMembersQuery,
             response: result,
             state: state,

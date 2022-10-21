@@ -9,6 +9,7 @@ import 'package:prohealth360_daktari/application/core/graphql/mutations.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class SendSurveysAction extends ReduxAction<AppState> {
   final IGraphQlClient client;
@@ -51,7 +52,7 @@ class SendSurveysAction extends ReduxAction<AppState> {
       onError?.call(error);
 
       reportErrorToSentry(
-        hint: getErrorMessage('sending surveys'),
+        hint: sendSurveysErrorString,
         query: sendClientSurveyLinksMutation,
         response: response,
         state: state,

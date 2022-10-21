@@ -13,6 +13,7 @@ import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.d
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/community_members/community.dart';
 import 'package:prohealth360_daktari/domain/core/entities/pending_invites_state.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class FetchInvitedCommunitiesAction extends ReduxAction<AppState> {
   final BuildContext context;
@@ -52,7 +53,7 @@ class FetchInvitedCommunitiesAction extends ReduxAction<AppState> {
 
     if (errors != null) {
       reportErrorToSentry(
-        hint: getErrorMessage('fetching invited communities'),
+        hint: fetchInvitedCommunitiesErrorString,
         query: listCommunityMembersQuery,
         response: response,
         state: state,

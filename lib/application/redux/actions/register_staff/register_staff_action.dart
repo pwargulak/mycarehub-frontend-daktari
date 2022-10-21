@@ -14,6 +14,7 @@ import 'package:prohealth360_daktari/domain/core/entities/register_staff/registe
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_events.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class RegisterStaffAction extends ReduxAction<AppState> {
   final RegisterStaffPayload registerStaffPayload;
@@ -65,7 +66,7 @@ class RegisterStaffAction extends ReduxAction<AppState> {
         }
 
         reportErrorToSentry(
-          hint: getErrorMessage('fetching staff'),
+          hint: fetchStaffErrorString,
           query: registerStaffMutation,
           response: response,
           state: state,
@@ -87,7 +88,7 @@ class RegisterStaffAction extends ReduxAction<AppState> {
       );
     } else {
       reportErrorToSentry(
-        hint: getErrorMessage('fetching staff'),
+        hint: fetchStaffErrorString,
         query: registerStaffMutation,
         response: response,
         state: state,

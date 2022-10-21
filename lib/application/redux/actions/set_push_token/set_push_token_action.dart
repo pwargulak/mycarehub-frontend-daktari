@@ -7,6 +7,7 @@ import 'package:prohealth360_daktari/application/core/graphql/mutations.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/core/update_credentials_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 class SetPushToken extends ReduxAction<AppState> {
@@ -36,7 +37,7 @@ class SetPushToken extends ReduxAction<AppState> {
 
         if (errors != null) {
           reportErrorToSentry(
-            hint: 'Error setting push token',
+            hint: pushTokenSettingErrorString,
             query: setPushTokenMutation,
             response: response,
             state: state,
@@ -50,7 +51,7 @@ class SetPushToken extends ReduxAction<AppState> {
         return null;
       } else {
         reportErrorToSentry(
-          hint: 'Error setting push token',
+          hint: pushTokenSettingErrorString,
           query: setPushTokenMutation,
           response: response,
           state: state,

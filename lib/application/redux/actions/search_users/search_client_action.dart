@@ -12,6 +12,7 @@ import 'package:prohealth360_daktari/application/redux/actions/search_users/upda
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/searched_clients.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 class SearchClientAction extends ReduxAction<AppState> {
@@ -58,7 +59,7 @@ class SearchClientAction extends ReduxAction<AppState> {
 
       if (errors != null) {
         reportErrorToSentry(
-          hint: getErrorMessage('fetching clients'),
+          hint: fetchClientsErrorString,
           query: searchClientQuery,
           response: response,
           state: state,
@@ -85,7 +86,7 @@ class SearchClientAction extends ReduxAction<AppState> {
       );
     } else {
       reportErrorToSentry(
-        hint: getErrorMessage('fetching clients'),
+        hint: fetchClientsErrorString,
         query: searchClientQuery,
         response: response,
         state: state,

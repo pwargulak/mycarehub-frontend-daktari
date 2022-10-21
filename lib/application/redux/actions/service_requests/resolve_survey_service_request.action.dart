@@ -12,6 +12,7 @@ import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_respondent.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_events.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class ResolveSurveyServiceRequestAction extends ReduxAction<AppState> {
   final IGraphQlClient client;
@@ -74,7 +75,7 @@ class ResolveSurveyServiceRequestAction extends ReduxAction<AppState> {
     if (error != null) {
       onFailure?.call();
       reportErrorToSentry(
-        hint: 'Error while resolving service request',
+        hint: serviceRequestResolvingErrorString,
         query: resolveServiceRequestMutation,
         response: result,
         state: state,

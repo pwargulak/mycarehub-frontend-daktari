@@ -6,6 +6,7 @@ import 'package:prohealth360_daktari/application/core/graphql/mutations.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class ReadNotificationsAction extends ReduxAction<AppState> {
   ReadNotificationsAction({
@@ -47,7 +48,7 @@ class ReadNotificationsAction extends ReduxAction<AppState> {
 
       if (errors != null) {
         reportErrorToSentry(
-          hint: getErrorMessage('fetching notifications'),
+          hint: fetchNotificationsErrorString,
           query: readNotificationsMutation,
           response: result,
           state: state,
@@ -64,7 +65,7 @@ class ReadNotificationsAction extends ReduxAction<AppState> {
 
       if (readNotifications == null || !readNotifications) {
         reportErrorToSentry(
-          hint: getErrorMessage('fetching notifications'),
+          hint: fetchNotificationsErrorString,
           query: readNotificationsMutation,
           response: result,
           state: state,

@@ -10,6 +10,7 @@ import 'package:prohealth360_daktari/application/redux/actions/service_requests/
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/domain/core/entities/service_requests/service_request_response.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class FetchServiceRequestsCountAction extends ReduxAction<AppState> {
   final IGraphQlClient client;
@@ -50,7 +51,7 @@ class FetchServiceRequestsCountAction extends ReduxAction<AppState> {
 
     if (error != null) {
       reportErrorToSentry(
-        hint: getErrorMessage('fetching service request count'),
+        hint: fetchServiceRequestCountErrorString,
         query: getPendingServiceRequestsCountQuery,
         response: response,
         state: state,

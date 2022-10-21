@@ -11,6 +11,7 @@ import 'package:prohealth360_daktari/application/redux/actions/search_users/upda
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/roles_list.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class FetchStaffRolesAction extends ReduxAction<AppState> {
   FetchStaffRolesAction({
@@ -53,7 +54,7 @@ class FetchStaffRolesAction extends ReduxAction<AppState> {
 
       if (errors != null) {
         reportErrorToSentry(
-          hint: getErrorMessage('getting roles'),
+          hint: getRolesErrorString,
           query: getUserRolesQuery,
           response: response,
           state: state,
