@@ -5,4 +5,4 @@
 
 PRODUCT_BUNDLE_IDENTIFIER=com.mycarehub.mycarehubpro
 FLUTTER_TARGET=lib/main.dart
-APP_NAME=myCareHub Professional Test
+APP_NAME=myCareHub Pro v2 Test
