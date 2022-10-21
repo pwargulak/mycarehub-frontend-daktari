@@ -14,6 +14,7 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_events.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/entities/create_group/create_group_payload.dart';
 import 'package:http/http.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class CreateGroupAction extends ReduxAction<AppState> {
   final CreateGroupPayload createGroupPayload;
@@ -57,7 +58,7 @@ class CreateGroupAction extends ReduxAction<AppState> {
 
       if (errors != null) {
         reportErrorToSentry(
-          hint: getErrorMessage('creating group'),
+          hint: createGroupErrorString,
           query: createCommunityMutation,
           response: response,
           state: state,

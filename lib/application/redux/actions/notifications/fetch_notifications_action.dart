@@ -11,6 +11,7 @@ import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.d
 import 'package:prohealth360_daktari/application/redux/actions/notifications/read_notifications_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/notification/notifications_response.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class FetchNotificationsAction extends ReduxAction<AppState> {
   FetchNotificationsAction({
@@ -65,7 +66,7 @@ class FetchNotificationsAction extends ReduxAction<AppState> {
 
       if (errors != null) {
         reportErrorToSentry(
-          hint: getErrorMessage('fetching notifications'),
+          hint: fetchNotificationsErrorString,
           query: listNotificationsQuery,
           response: response,
           state: state,

@@ -13,6 +13,7 @@ import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/service_requests/service_request.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_events.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 class ResolveStaffPinRequestAction extends ReduxAction<AppState> {
@@ -76,7 +77,7 @@ class ResolveStaffPinRequestAction extends ReduxAction<AppState> {
 
       if (error != null) {
         reportErrorToSentry(
-          hint: 'Error while accepting pin request',
+          hint: acceptPINRequestErrorString,
           query: verifyStaffPinResetServiceRequestQuery,
           response: result,
           state: state,
@@ -121,7 +122,7 @@ class ResolveStaffPinRequestAction extends ReduxAction<AppState> {
       }
     } else {
       reportErrorToSentry(
-        hint: 'Error while accepting pin request',
+        hint: acceptPINRequestErrorString,
         query: verifyStaffPinResetServiceRequestQuery,
         response: result,
         state: state,

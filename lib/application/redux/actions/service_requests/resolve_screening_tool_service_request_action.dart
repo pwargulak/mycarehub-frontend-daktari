@@ -11,6 +11,7 @@ import 'package:prohealth360_daktari/application/redux/actions/service_requests/
 import 'package:prohealth360_daktari/application/redux/actions/service_requests/fetch_service_request_count_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class ResolveScreeningToolServiceRequestAction extends ReduxAction<AppState> {
   final IGraphQlClient client;
@@ -75,7 +76,7 @@ class ResolveScreeningToolServiceRequestAction extends ReduxAction<AppState> {
     if (error != null) {
       onFailure?.call();
       reportErrorToSentry(
-        hint: getErrorMessage('resolving pin requests'),
+        hint: resolvePINrequestsErorString,
         query: verifyClientPinResetServiceRequestQuery,
         response: result,
         state: state,

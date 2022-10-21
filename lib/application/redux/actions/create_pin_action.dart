@@ -16,6 +16,7 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_events.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:http/http.dart' as http;
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/error_tags.dart';
 
 /// [CreatePINAction] is a Redux Action whose job is to update a users PIN from an old one,
@@ -115,7 +116,7 @@ class CreatePINAction extends ReduxAction<AppState> {
         dispatch(BatchUpdateMiscStateAction(error: somethingWentWrongText));
 
         reportErrorToSentry(
-          hint: getErrorMessage('creating PIN'),
+          hint: createPINErrorString,
           query: completeOnboardingTourMutation,
           response: result,
           state: state,

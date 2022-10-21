@@ -9,6 +9,7 @@ import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 
 class CreateStaffPINResetRequestAction extends ReduxAction<AppState> {
@@ -66,7 +67,7 @@ class CreateStaffPINResetRequestAction extends ReduxAction<AppState> {
       } else {
         onError?.call();
         reportErrorToSentry(
-          hint: 'PIN service request failed',
+          hint: pinServiceRequestFailedErrorString,
           query: pinResetServiceRequestEndpoint,
           response: response,
           state: state,
@@ -79,7 +80,7 @@ class CreateStaffPINResetRequestAction extends ReduxAction<AppState> {
 
     onError?.call();
     reportErrorToSentry(
-      hint: 'PIN service request failed',
+      hint: pinServiceRequestFailedErrorString,
       query: pinResetServiceRequestEndpoint,
       response: response,
       state: state,

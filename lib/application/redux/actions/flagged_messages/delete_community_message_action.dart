@@ -11,7 +11,7 @@ import 'package:prohealth360_daktari/application/redux/actions/communities/updat
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class DeleteCommunityMessageAction extends ReduxAction<AppState> {
@@ -66,10 +66,8 @@ class DeleteCommunityMessageAction extends ReduxAction<AppState> {
     final String? errors = parseError(responseMap);
 
     if (errors != null) {
-      Sentry.captureException(UserException(errors));
-
       reportErrorToSentry(
-        hint: getErrorMessage('creating group'),
+        hint: createGroupErrorString,
         query: removeFromGroupMutation,
         response: response,
         state: state,

@@ -11,6 +11,7 @@ import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
 import 'package:prohealth360_daktari/domain/core/entities/register_client/fetch_facilities_response.dart';
 import 'package:http/http.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class SearchFacilitiesAction extends ReduxAction<AppState> {
   final IGraphQlClient client;
@@ -61,7 +62,7 @@ class SearchFacilitiesAction extends ReduxAction<AppState> {
 
       if (errors != null) {
         reportErrorToSentry(
-          hint: getErrorMessage('fetching facilities'),
+          hint: fetchFacilitiesErrorString,
           query: searchFacilityQuery,
           response: response,
           state: state,

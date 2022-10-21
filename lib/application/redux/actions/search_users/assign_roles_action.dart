@@ -11,7 +11,7 @@ import 'package:prohealth360_daktari/application/redux/actions/core/update_user_
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/user.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class AssignRolesAction extends ReduxAction<AppState> {
   AssignRolesAction({
@@ -66,12 +66,8 @@ class AssignRolesAction extends ReduxAction<AppState> {
           noPermissionsCallBack?.call();
           return null;
         }
-        Sentry.captureException(
-          UserException(errors),
-        );
-
         reportErrorToSentry(
-          hint: getErrorMessage('assigning roles'),
+          hint: assignRolesErrorString,
           query: assignOrRevokeRolesMutation,
           response: response,
           state: state,

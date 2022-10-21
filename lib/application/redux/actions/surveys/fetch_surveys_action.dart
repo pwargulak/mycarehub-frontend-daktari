@@ -11,6 +11,7 @@ import 'package:prohealth360_daktari/application/redux/actions/surveys/update_su
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/survey_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/surveys/survey.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 class FetchSurveysAction extends ReduxAction<AppState> {
@@ -49,7 +50,7 @@ class FetchSurveysAction extends ReduxAction<AppState> {
 
     if (error != null) {
       reportErrorToSentry(
-        hint: getErrorMessage('fetching surveys'),
+        hint: fetchSurveysErrorString,
         query: listSurveysQuery,
         response: response,
         state: state,

@@ -15,6 +15,7 @@ import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/terms/terms_and_conditions_response.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:http/http.dart' as http;
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class GetTermsAction extends ReduxAction<AppState> {
   GetTermsAction({required this.client});
@@ -51,7 +52,7 @@ class GetTermsAction extends ReduxAction<AppState> {
       dispatch(BatchUpdateMiscStateAction(error: somethingWentWrongText));
 
       reportErrorToSentry(
-        hint: getErrorMessage('accepting terms'),
+        hint: getTermsErrorString,
         query: getTermsQuery,
         response: response,
         state: state,

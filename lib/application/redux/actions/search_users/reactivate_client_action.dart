@@ -11,6 +11,7 @@ import 'package:prohealth360_daktari/application/redux/actions/search_users/upda
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class ReactivateClientAction extends ReduxAction<AppState> {
   ReactivateClientAction({
@@ -73,7 +74,7 @@ class ReactivateClientAction extends ReduxAction<AppState> {
     onError?.call();
 
     reportErrorToSentry(
-      hint: 'Reactivating client failed',
+      hint: reactivateClientFailedErrorString,
       query: optInEndpoint,
       response: response,
       state: state,

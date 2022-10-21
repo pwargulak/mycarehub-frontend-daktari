@@ -10,6 +10,7 @@ import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class InviteClientAction extends ReduxAction<AppState> {
   InviteClientAction({
@@ -70,7 +71,7 @@ class InviteClientAction extends ReduxAction<AppState> {
 
       if (errors != null) {
         reportErrorToSentry(
-          hint: getErrorMessage('inviting client'),
+          hint: inviteClientErrorString,
           query: inviteUserMutation,
           response: response,
           state: state,

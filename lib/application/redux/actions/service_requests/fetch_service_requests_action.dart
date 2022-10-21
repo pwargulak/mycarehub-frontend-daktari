@@ -12,6 +12,7 @@ import 'package:http/http.dart';
 import 'package:prohealth360_daktari/domain/core/entities/service_requests/service_request.dart';
 import 'package:prohealth360_daktari/domain/core/entities/service_requests/service_request_response.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class FetchServiceRequestsAction extends ReduxAction<AppState> {
   final IGraphQlClient client;
@@ -66,7 +67,7 @@ class FetchServiceRequestsAction extends ReduxAction<AppState> {
 
     if (error != null) {
       reportErrorToSentry(
-        hint: getErrorMessage('fetching service requests'),
+        hint: fetchServiceRequestsErrorString,
         query: getServiceRequestsQuery,
         response: response,
         state: state,

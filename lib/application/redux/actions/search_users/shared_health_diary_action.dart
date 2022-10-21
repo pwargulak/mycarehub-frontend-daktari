@@ -10,6 +10,7 @@ import 'package:prohealth360_daktari/application/redux/actions/core/update_staff
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/health_diary/health_diary_entry.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class SharedHealthDiaryAction extends ReduxAction<AppState> {
   final IGraphQlClient client;
@@ -59,9 +60,7 @@ class SharedHealthDiaryAction extends ReduxAction<AppState> {
 
       if (errors != null) {
         reportErrorToSentry(
-          hint: getErrorMessage(
-            'fetching recently shared health diary entries',
-          ),
+          hint: fetchSharedHealthDiaryEntriesErrorString,
           query: recentlySharedHealthDiaryQuery,
           response: response,
           state: state,

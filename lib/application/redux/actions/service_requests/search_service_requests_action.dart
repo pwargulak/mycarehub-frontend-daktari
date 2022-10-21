@@ -12,7 +12,7 @@ import 'package:http/http.dart';
 import 'package:prohealth360_daktari/domain/core/entities/service_requests/search_service_request_response.dart';
 import 'package:prohealth360_daktari/domain/core/entities/service_requests/service_request.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class SearchServiceRequestsAction extends ReduxAction<AppState> {
   final IGraphQlClient client;
@@ -66,9 +66,8 @@ class SearchServiceRequestsAction extends ReduxAction<AppState> {
     final String? error = parseError(payLoad);
 
     if (error != null) {
-      Sentry.captureException(UserException(error));
       reportErrorToSentry(
-        hint: getErrorMessage('searching service requests'),
+        hint: searchServiceRequestErrorString,
         query: searchServiceRequestsQuery,
         response: response,
         state: state,

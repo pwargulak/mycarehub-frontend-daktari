@@ -12,6 +12,7 @@ import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/flagged_messages/flagged_messages_response.dart';
 import 'package:prohealth360_daktari/domain/core/entities/flagged_messages/message_object.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class FetchFlaggedMessagesAction extends ReduxAction<AppState> {
@@ -63,7 +64,7 @@ class FetchFlaggedMessagesAction extends ReduxAction<AppState> {
 
     if (errors != null) {
       reportErrorToSentry(
-        hint: getErrorMessage('fetching flagged messages'),
+        hint: fetchFlaggedMessagesErrorString,
         query: listFlaggedMessagesQuery,
         response: response,
         state: state,

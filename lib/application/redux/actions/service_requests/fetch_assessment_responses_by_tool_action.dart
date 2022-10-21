@@ -13,6 +13,7 @@ import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/redux/states/service_requests/screening_tools_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/service_requests/tool_assessment_response.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class FetchAssessmentResponsesByToolAction extends ReduxAction<AppState> {
   final IGraphQlClient client;
@@ -60,7 +61,7 @@ class FetchAssessmentResponsesByToolAction extends ReduxAction<AppState> {
 
     if (error != null) {
       reportErrorToSentry(
-        hint: getErrorMessage('fetching assessment responses'),
+        hint: fetchAssessmentResponsesErrorString,
         query: getAssessmentResponsesByToolTypeQuery,
         response: response,
         state: state,

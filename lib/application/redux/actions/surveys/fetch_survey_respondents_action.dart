@@ -11,6 +11,7 @@ import 'package:prohealth360_daktari/application/redux/actions/surveys/update_su
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/survey_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_respondent.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 class FetchSurveyRespondentsAction extends ReduxAction<AppState> {
@@ -59,7 +60,7 @@ class FetchSurveyRespondentsAction extends ReduxAction<AppState> {
 
     if (error != null) {
       reportErrorToSentry(
-        hint: getErrorMessage('listing survey respondents'),
+        hint: listSurveyRespondentsErrorString,
         query: listSurveyRespondentsQuery,
         response: response,
         state: state,
