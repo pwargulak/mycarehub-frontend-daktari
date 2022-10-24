@@ -129,7 +129,7 @@ class LinkedFacilitiesWidget extends StatelessWidget {
                                       ),
                                     ),
                                     clientId:
-                                        selectedSearchUserResponse?.user?.id ??
+                                        selectedSearchUserResponse?.id ??
                                             '',
                                     facilityId: facility?.id ?? '',
                                   ),
@@ -171,7 +171,7 @@ class LinkedFacilitiesWidget extends StatelessWidget {
                                       ),
                                     ),
                                     staffId:
-                                        selectedSearchUserResponse?.user?.id ??
+                                        selectedSearchUserResponse?.id ??
                                             '',
                                     facilityId: facility?.id ?? '',
                                   ),

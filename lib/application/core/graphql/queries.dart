@@ -181,6 +181,15 @@ query searchClientUser($searchParameter: String!) {
       }
       TermsAccepted
     }
+      DefaultFacility{
+      ID
+      name
+      code
+      phone
+      active
+      county
+      description
+    }
   }
 }
 ''';
@@ -189,8 +198,6 @@ const String searchStaffMemberQuery = r'''
 query searchStaffUser($searchParameter: String!) {
   searchStaffUser(searchParameter: $searchParameter) {
     ID
-    DefaultFacilityID
-    DefaultFacilityName
     StaffNumber
     User{
       ID
@@ -205,6 +212,15 @@ query searchStaffUser($searchParameter: String!) {
         optedIn
       }
       TermsAccepted
+    }
+    DefaultFacility{
+      ID
+      name
+      code
+      phone
+      active
+      county
+      description
     }
   }
 }

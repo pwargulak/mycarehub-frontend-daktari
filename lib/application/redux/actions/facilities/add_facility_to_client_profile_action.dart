@@ -5,6 +5,7 @@ import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_graphql_client/graph_client.dart';
 import 'package:prohealth360_daktari/application/core/graphql/mutations.dart';
+import 'package:prohealth360_daktari/application/redux/actions/facilities/fetch_user_linked_facilities_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:http/http.dart';
@@ -73,6 +74,9 @@ class AddFacilityToClientProfileAction extends ReduxAction<AppState> {
 
       final Map<String, dynamic> data = body['data'] as Map<String, dynamic>;
       if ((data['addFacilitiesToClientProfile'] as bool?) ?? false) {
+        dispatch(
+          FetchUserLinkedFacilitiesAction(client: client, userId: clientId),
+        );
         onSuccess?.call();
       }
     } else {

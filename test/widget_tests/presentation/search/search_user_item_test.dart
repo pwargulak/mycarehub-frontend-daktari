@@ -1,5 +1,6 @@
 import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/roles_list.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/user_data.dart';
@@ -15,7 +16,7 @@ void main() {
         tester: tester,
         widget: SearchUserItem(
           searchUserResponse: SearchUserResponse(
-            facilityID: UNKNOWN,
+            defaultFacility: Facility.initial(),
             id: UNKNOWN,
             isActive: true,
             rolesList: RolesList.initial(),

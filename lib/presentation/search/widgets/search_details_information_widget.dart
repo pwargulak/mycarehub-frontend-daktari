@@ -26,7 +26,7 @@ class SearchDetailsInformationWidget extends StatelessWidget {
 
     final String userName = searchUserResponse?.user?.userName ?? '';
 
-    final String defaultFacilityName = searchUserResponse?.facilityName ?? '';
+    final String defaultFacilityName = searchUserResponse?.defaultFacility?.name ?? '';
 
     return Column(
       children: <Widget>[

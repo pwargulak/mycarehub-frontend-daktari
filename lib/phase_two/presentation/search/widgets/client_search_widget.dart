@@ -40,7 +40,7 @@ class ClientSearchWidget extends StatelessWidget {
                   .miscState
                   ?.searchUserResponseState
                   ?.selectedSearchUserResponse
-                  ?.facilityID ??
+                  ?.defaultFacility?.id ??
               '';
 
           await store.dispatch(

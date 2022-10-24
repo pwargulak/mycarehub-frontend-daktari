@@ -66,3 +66,7 @@ const String fetchSurveysErrorString = 'Error fetching surveys';
 const String sendSurveysErrorString = 'Error sending surveys';
 const String getTermsErrorString = 'Error accepting terms';
 const String acceptingTermsErrorString = 'Error accepting terms';
+
+// Remove facility
+const String removeStaffFacilityErrorString = 'Error while removing facility from staff';
+const String removeClientFacilityErrorString = 'Error while removing facility from client';

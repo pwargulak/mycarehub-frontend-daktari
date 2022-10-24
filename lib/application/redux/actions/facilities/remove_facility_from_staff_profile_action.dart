@@ -11,6 +11,7 @@ import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.d
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class RemoveFacilityFromStaffProfileAction extends ReduxAction<AppState> {
   final IGraphQlClient client;
@@ -61,7 +62,7 @@ class RemoveFacilityFromStaffProfileAction extends ReduxAction<AppState> {
 
       if (errors != null) {
         reportErrorToSentry(
-          hint: 'Error while removing facility from staff',
+          hint: removeStaffFacilityErrorString,
           query: removeFacilitiesFromStaffProfileMutation,
           response: response,
           state: state,
@@ -86,7 +87,7 @@ class RemoveFacilityFromStaffProfileAction extends ReduxAction<AppState> {
         return state;
       } else {
         reportErrorToSentry(
-          hint: 'Error while removing facility from staff',
+          hint: removeStaffFacilityErrorString,
           query: removeFacilitiesFromStaffProfileMutation,
           response: response,
           state: state,
@@ -100,7 +101,7 @@ class RemoveFacilityFromStaffProfileAction extends ReduxAction<AppState> {
     } else {
       onFailure?.call(getErrorMessage('removing the facility.'));
       reportErrorToSentry(
-        hint: 'Error while removing facility from staff',
+        hint: removeStaffFacilityErrorString,
         query: removeFacilitiesFromStaffProfileMutation,
         response: response,
         state: state,

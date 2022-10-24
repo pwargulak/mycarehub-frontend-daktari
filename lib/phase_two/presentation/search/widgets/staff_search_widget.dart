@@ -199,13 +199,6 @@ class _StaffSearchWidgetState extends State<StaffSearchWidget> {
                                 selectedSearchUserResponse,
                             isClient: false,
                           ),
-                          smallVerticalSizedBox,
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width,
-                            child: const MyAfyaHubPrimaryButton(
-                              text: addFacilityString,
-                            ),
-                          ),
                           mediumVerticalSizedBox,
                         ],
                       ),
