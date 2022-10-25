@@ -43,6 +43,7 @@ mixin _$StaffState {
       throw _privateConstructorUsedError; // staff notifications
   List<NotificationDetails?>? get notifications =>
       throw _privateConstructorUsedError;
+  List<ManagedClient>? get managedClients => throw _privateConstructorUsedError;
   NotificationFilterState? get notificationFilterState =>
       throw _privateConstructorUsedError;
 
@@ -70,6 +71,7 @@ abstract class $StaffStateCopyWith<$Res> {
       CommunitiesState? communitiesState,
       List<HealthDiaryEntry?>? clientSharedDiaryEntries,
       List<NotificationDetails?>? notifications,
+      List<ManagedClient>? managedClients,
       NotificationFilterState? notificationFilterState});
 
   $UserCopyWith<$Res>? get user;
@@ -99,6 +101,7 @@ class _$StaffStateCopyWithImpl<$Res> implements $StaffStateCopyWith<$Res> {
     Object? communitiesState = freezed,
     Object? clientSharedDiaryEntries = freezed,
     Object? notifications = freezed,
+    Object? managedClients = freezed,
     Object? notificationFilterState = freezed,
   }) {
     return _then(_value.copyWith(
@@ -150,6 +153,10 @@ class _$StaffStateCopyWithImpl<$Res> implements $StaffStateCopyWith<$Res> {
           ? _value.notifications
           : notifications // ignore: cast_nullable_to_non_nullable
               as List<NotificationDetails?>?,
+      managedClients: managedClients == freezed
+          ? _value.managedClients
+          : managedClients // ignore: cast_nullable_to_non_nullable
+              as List<ManagedClient>?,
       notificationFilterState: notificationFilterState == freezed
           ? _value.notificationFilterState
           : notificationFilterState // ignore: cast_nullable_to_non_nullable
@@ -212,6 +219,7 @@ abstract class _$$_StaffStateCopyWith<$Res>
       CommunitiesState? communitiesState,
       List<HealthDiaryEntry?>? clientSharedDiaryEntries,
       List<NotificationDetails?>? notifications,
+      List<ManagedClient>? managedClients,
       NotificationFilterState? notificationFilterState});
 
   @override
@@ -246,6 +254,7 @@ class __$$_StaffStateCopyWithImpl<$Res> extends _$StaffStateCopyWithImpl<$Res>
     Object? communitiesState = freezed,
     Object? clientSharedDiaryEntries = freezed,
     Object? notifications = freezed,
+    Object? managedClients = freezed,
     Object? notificationFilterState = freezed,
   }) {
     return _then(_$_StaffState(
@@ -297,6 +306,10 @@ class __$$_StaffStateCopyWithImpl<$Res> extends _$StaffStateCopyWithImpl<$Res>
           ? _value._notifications
           : notifications // ignore: cast_nullable_to_non_nullable
               as List<NotificationDetails?>?,
+      managedClients: managedClients == freezed
+          ? _value._managedClients
+          : managedClients // ignore: cast_nullable_to_non_nullable
+              as List<ManagedClient>?,
       notificationFilterState: notificationFilterState == freezed
           ? _value.notificationFilterState
           : notificationFilterState // ignore: cast_nullable_to_non_nullable
@@ -321,11 +334,13 @@ class _$_StaffState implements _StaffState {
       this.communitiesState,
       final List<HealthDiaryEntry?>? clientSharedDiaryEntries,
       final List<NotificationDetails?>? notifications,
+      final List<ManagedClient>? managedClients,
       this.notificationFilterState})
       : _facilities = facilities,
         _linkedFacilities = linkedFacilities,
         _clientSharedDiaryEntries = clientSharedDiaryEntries,
-        _notifications = notifications;
+        _notifications = notifications,
+        _managedClients = managedClients;
 
   factory _$_StaffState.fromJson(Map<String, dynamic> json) =>
       _$$_StaffStateFromJson(json);
@@ -395,12 +410,21 @@ class _$_StaffState implements _StaffState {
     return EqualUnmodifiableListView(value);
   }
 
+  final List<ManagedClient>? _managedClients;
+  @override
+  List<ManagedClient>? get managedClients {
+    final value = _managedClients;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final NotificationFilterState? notificationFilterState;
 
   @override
   String toString() {
-    return 'StaffState(id: $id, userId: $userId, active: $active, staffNumber: $staffNumber, facilities: $facilities, linkedFacilities: $linkedFacilities, defaultFacility: $defaultFacility, defaultFacilityName: $defaultFacilityName, user: $user, communitiesState: $communitiesState, clientSharedDiaryEntries: $clientSharedDiaryEntries, notifications: $notifications, notificationFilterState: $notificationFilterState)';
+    return 'StaffState(id: $id, userId: $userId, active: $active, staffNumber: $staffNumber, facilities: $facilities, linkedFacilities: $linkedFacilities, defaultFacility: $defaultFacility, defaultFacilityName: $defaultFacilityName, user: $user, communitiesState: $communitiesState, clientSharedDiaryEntries: $clientSharedDiaryEntries, notifications: $notifications, managedClients: $managedClients, notificationFilterState: $notificationFilterState)';
   }
 
   @override
@@ -428,6 +452,8 @@ class _$_StaffState implements _StaffState {
                 other._clientSharedDiaryEntries, _clientSharedDiaryEntries) &&
             const DeepCollectionEquality()
                 .equals(other._notifications, _notifications) &&
+            const DeepCollectionEquality()
+                .equals(other._managedClients, _managedClients) &&
             const DeepCollectionEquality().equals(
                 other.notificationFilterState, notificationFilterState));
   }
@@ -448,6 +474,7 @@ class _$_StaffState implements _StaffState {
       const DeepCollectionEquality().hash(communitiesState),
       const DeepCollectionEquality().hash(_clientSharedDiaryEntries),
       const DeepCollectionEquality().hash(_notifications),
+      const DeepCollectionEquality().hash(_managedClients),
       const DeepCollectionEquality().hash(notificationFilterState));
 
   @JsonKey(ignore: true)
@@ -477,6 +504,7 @@ abstract class _StaffState implements StaffState {
       final CommunitiesState? communitiesState,
       final List<HealthDiaryEntry?>? clientSharedDiaryEntries,
       final List<NotificationDetails?>? notifications,
+      final List<ManagedClient>? managedClients,
       final NotificationFilterState? notificationFilterState}) = _$_StaffState;
 
   factory _StaffState.fromJson(Map<String, dynamic> json) =
@@ -514,6 +542,8 @@ abstract class _StaffState implements StaffState {
   List<HealthDiaryEntry?>? get clientSharedDiaryEntries;
   @override // staff notifications
   List<NotificationDetails?>? get notifications;
+  @override
+  List<ManagedClient>? get managedClients;
   @override
   NotificationFilterState? get notificationFilterState;
   @override

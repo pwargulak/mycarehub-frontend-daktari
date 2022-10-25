@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/states/service_requests/survey_service_request_item.dart';
+import 'package:prohealth360_daktari/domain/core/entities/caregiver/caregiver.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/domain/core/entities/service_requests/service_request.dart';
 import 'package:prohealth360_daktari/domain/core/entities/surveys/survey.dart';
@@ -14,6 +15,7 @@ import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_respond
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/facility_selection_page.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/search/search_details_view_page.dart';
+import 'package:prohealth360_daktari/presentation/caregiver/search_caregiver_details_page.dart';
 import 'package:prohealth360_daktari/presentation/caregiver/search_caregiver_page.dart';
 // Project imports:
 import 'package:prohealth360_daktari/presentation/client_details/pages/search_client_page.dart';
@@ -651,6 +653,19 @@ void main() {
 
     expect(route, isA<MaterialPageRoute<SurveyResponsesPreviewPage>>());
     expect(route?.builder(context), isA<SurveyResponsesPreviewPage>());
+  });
+  test('Test router returns successful Search Caregiver Details Page', () {
+    final RouteSettings settings = RouteSettings(
+      name: AppRoutes.searchCaregiverDetailsPage,
+      arguments: Caregiver.initial(),
+    );
+
+    final MaterialPageRoute<SearchCaregiverDetailsPage>? route =
+        routeGenerator(settings)
+            as MaterialPageRoute<SearchCaregiverDetailsPage>?;
+
+    expect(route, isA<MaterialPageRoute<SearchCaregiverDetailsPage>>());
+    expect(route?.builder(context), isA<SearchCaregiverDetailsPage>());
   });
 
   test('Test router returns successful Register Caregiver Page', () {

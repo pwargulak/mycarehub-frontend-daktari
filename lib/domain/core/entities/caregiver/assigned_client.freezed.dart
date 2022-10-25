@@ -22,8 +22,6 @@ AssignedClient _$AssignedClientFromJson(Map<String, dynamic> json) {
 mixin _$AssignedClient {
   @JsonKey(name: 'clientID')
   String? get clientID => throw _privateConstructorUsedError;
-  @JsonKey(name: 'caregiverType')
-  String? get caregiverType => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,9 +34,7 @@ abstract class $AssignedClientCopyWith<$Res> {
   factory $AssignedClientCopyWith(
           AssignedClient value, $Res Function(AssignedClient) then) =
       _$AssignedClientCopyWithImpl<$Res>;
-  $Res call(
-      {@JsonKey(name: 'clientID') String? clientID,
-      @JsonKey(name: 'caregiverType') String? caregiverType});
+  $Res call({@JsonKey(name: 'clientID') String? clientID});
 }
 
 /// @nodoc
@@ -53,16 +49,11 @@ class _$AssignedClientCopyWithImpl<$Res>
   @override
   $Res call({
     Object? clientID = freezed,
-    Object? caregiverType = freezed,
   }) {
     return _then(_value.copyWith(
       clientID: clientID == freezed
           ? _value.clientID
           : clientID // ignore: cast_nullable_to_non_nullable
-              as String?,
-      caregiverType: caregiverType == freezed
-          ? _value.caregiverType
-          : caregiverType // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -75,9 +66,7 @@ abstract class _$$_AssignedClientCopyWith<$Res>
           _$_AssignedClient value, $Res Function(_$_AssignedClient) then) =
       __$$_AssignedClientCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {@JsonKey(name: 'clientID') String? clientID,
-      @JsonKey(name: 'caregiverType') String? caregiverType});
+  $Res call({@JsonKey(name: 'clientID') String? clientID});
 }
 
 /// @nodoc
@@ -94,16 +83,11 @@ class __$$_AssignedClientCopyWithImpl<$Res>
   @override
   $Res call({
     Object? clientID = freezed,
-    Object? caregiverType = freezed,
   }) {
     return _then(_$_AssignedClient(
       clientID: clientID == freezed
           ? _value.clientID
           : clientID // ignore: cast_nullable_to_non_nullable
-              as String?,
-      caregiverType: caregiverType == freezed
-          ? _value.caregiverType
-          : caregiverType // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -112,9 +96,7 @@ class __$$_AssignedClientCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_AssignedClient implements _AssignedClient {
-  _$_AssignedClient(
-      {@JsonKey(name: 'clientID') this.clientID,
-      @JsonKey(name: 'caregiverType') this.caregiverType});
+  _$_AssignedClient({@JsonKey(name: 'clientID') this.clientID});
 
   factory _$_AssignedClient.fromJson(Map<String, dynamic> json) =>
       _$$_AssignedClientFromJson(json);
@@ -122,13 +104,10 @@ class _$_AssignedClient implements _AssignedClient {
   @override
   @JsonKey(name: 'clientID')
   final String? clientID;
-  @override
-  @JsonKey(name: 'caregiverType')
-  final String? caregiverType;
 
   @override
   String toString() {
-    return 'AssignedClient(clientID: $clientID, caregiverType: $caregiverType)';
+    return 'AssignedClient(clientID: $clientID)';
   }
 
   @override
@@ -136,17 +115,13 @@ class _$_AssignedClient implements _AssignedClient {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AssignedClient &&
-            const DeepCollectionEquality().equals(other.clientID, clientID) &&
-            const DeepCollectionEquality()
-                .equals(other.caregiverType, caregiverType));
+            const DeepCollectionEquality().equals(other.clientID, clientID));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(clientID),
-      const DeepCollectionEquality().hash(caregiverType));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(clientID));
 
   @JsonKey(ignore: true)
   @override
@@ -162,9 +137,7 @@ class _$_AssignedClient implements _AssignedClient {
 }
 
 abstract class _AssignedClient implements AssignedClient {
-  factory _AssignedClient(
-          {@JsonKey(name: 'clientID') final String? clientID,
-          @JsonKey(name: 'caregiverType') final String? caregiverType}) =
+  factory _AssignedClient({@JsonKey(name: 'clientID') final String? clientID}) =
       _$_AssignedClient;
 
   factory _AssignedClient.fromJson(Map<String, dynamic> json) =
@@ -173,9 +146,6 @@ abstract class _AssignedClient implements AssignedClient {
   @override
   @JsonKey(name: 'clientID')
   String? get clientID;
-  @override
-  @JsonKey(name: 'caregiverType')
-  String? get caregiverType;
   @override
   @JsonKey(ignore: true)
   _$$_AssignedClientCopyWith<_$_AssignedClient> get copyWith =>

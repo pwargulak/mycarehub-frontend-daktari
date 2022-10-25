@@ -66,7 +66,6 @@ class RegisterCaregiverFormManager with Validator {
         assignedClients.add(
           AssignedClient(
             clientID: clientItem?.user?.id,
-            caregiverType: 'FATHER',
           ),
         );
       }

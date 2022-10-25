@@ -18,6 +18,7 @@ class UpdateStaffProfileAction extends ReduxAction<AppState> {
     this.healthDiaryEntries,
     this.defaultFacilityName,
     this.notifications,
+    this.managedClients,
   });
 
   final bool? active;
@@ -25,6 +26,7 @@ class UpdateStaffProfileAction extends ReduxAction<AppState> {
   final String? defaultFacilityName;
   final List<Facility>? facilities;
   final List<Facility>? linkedFacilities;
+  final List<ManagedClient>? managedClients;
   final List<HealthDiaryEntry?>? healthDiaryEntries;
   final String? id;
   final List<NotificationDetails?>? notifications;
@@ -48,6 +50,8 @@ class UpdateStaffProfileAction extends ReduxAction<AppState> {
         notifications: this.notifications ?? state.staffState?.notifications,
         defaultFacilityName:
             this.defaultFacilityName ?? state.staffState?.defaultFacilityName,
+        managedClients:
+            this.managedClients ?? state.staffState?.managedClients,
       ),
     );
 

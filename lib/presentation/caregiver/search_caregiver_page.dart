@@ -13,6 +13,7 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/presentation/caregiver/widgets/search_caregiver_item.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
+import 'package:prohealth360_daktari/presentation/router/routes.dart';
 
 class SearchCaregiverPage extends StatefulWidget {
   const SearchCaregiverPage({super.key});
@@ -64,6 +65,10 @@ class _SearchCaregiverPageState extends State<SearchCaregiverPage> {
                   name: caregiver?.caregiverUser?.userName ?? '',
                   phoneNumber:
                       caregiver?.caregiverUser?.primaryContact?.value ?? '',
+                  onTapCallback: () => Navigator.of(context).pushNamed(
+                    AppRoutes.searchCaregiverDetailsPage,
+                    arguments: caregiver,
+                  ),
                 ),
               );
             }

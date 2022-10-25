@@ -128,4 +128,5 @@ class AppRoutes {
 
   static const String searchCaregiverPage = '/searchCaregiverPage';
   static const String facilitySelectionPage = '/facilitySelectionPage';
+  static const String searchCaregiverDetailsPage = '/searchCaregiverDetailsPage';
 }

@@ -6,7 +6,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/search/widgets/linked_facilities_widget.dart';
@@ -25,8 +24,9 @@ void main() {
         tester: tester,
         store: store,
         graphQlClient: MockTestGraphQlClient(),
-        widget: LinkedFacilitiesWidget(
-          selectedSearchUserResponse: SearchUserResponse(id: 'testID'),
+        widget: const LinkedFacilitiesWidget(
+          userId: 'testID',
+          userName: 'testUserName',
         ),
       );
 
@@ -51,8 +51,9 @@ void main() {
           tester: tester,
           store: store,
           graphQlClient: mockShortGraphQlClient,
-          widget: LinkedFacilitiesWidget(
-            selectedSearchUserResponse: SearchUserResponse(id: 'testID'),
+          widget: const LinkedFacilitiesWidget(
+            userId: 'testID',
+            userName: 'testUserName',
           ),
         );
 
@@ -80,8 +81,9 @@ void main() {
           tester: tester,
           store: store,
           graphQlClient: mockShortGraphQlClient,
-          widget: LinkedFacilitiesWidget(
-            selectedSearchUserResponse: SearchUserResponse(id: 'testID'),
+          widget: const LinkedFacilitiesWidget(
+            userId: 'testID',
+            userName: 'testUserName',
           ),
         );
         await tester.pumpAndSettle();
@@ -112,8 +114,9 @@ void main() {
         tester: tester,
         store: store,
         graphQlClient: mockShortGraphQlClient,
-        widget: LinkedFacilitiesWidget(
-          selectedSearchUserResponse: SearchUserResponse(id: 'testID'),
+        widget: const LinkedFacilitiesWidget(
+          userId: 'testID',
+          userName: 'testUserName',
         ),
       );
 
@@ -125,8 +128,9 @@ void main() {
           tester: tester,
           store: store,
           graphQlClient: MockTestGraphQlClient(),
-          widget: LinkedFacilitiesWidget(
-            selectedSearchUserResponse: SearchUserResponse(id: 'testID'),
+          widget: const LinkedFacilitiesWidget(
+            userId: 'testID',
+            userName: 'testUserName',
           ),
         );
 
@@ -143,8 +147,9 @@ void main() {
           tester: tester,
           store: store,
           graphQlClient: MockTestGraphQlClient(),
-          widget: LinkedFacilitiesWidget(
-            selectedSearchUserResponse: SearchUserResponse(id: 'testID'),
+          widget: const LinkedFacilitiesWidget(
+            userId: 'testID',
+            userName: 'testUserName',
             isClient: false,
           ),
         );
@@ -179,8 +184,9 @@ void main() {
         await buildTestWidget(
           tester: tester,
           graphQlClient: mockShortGraphQlClient,
-          widget: LinkedFacilitiesWidget(
-            selectedSearchUserResponse: SearchUserResponse(id: 'testID'),
+          widget: const LinkedFacilitiesWidget(
+            userId: 'testID',
+            userName: 'testUserName',
             isClient: false,
           ),
         );
@@ -219,8 +225,9 @@ void main() {
         await buildTestWidget(
           tester: tester,
           graphQlClient: mockShortGraphQlClient,
-          widget: LinkedFacilitiesWidget(
-            selectedSearchUserResponse: SearchUserResponse(id: 'testID'),
+          widget: const LinkedFacilitiesWidget(
+            userId: 'testID',
+            userName: 'testUserName',
           ),
         );
 
@@ -247,8 +254,9 @@ void main() {
           tester: tester,
           store: store,
           graphQlClient: MockTestGraphQlClient(),
-          widget: LinkedFacilitiesWidget(
-            selectedSearchUserResponse: SearchUserResponse(id: 'testID'),
+          widget: const LinkedFacilitiesWidget(
+            userId: 'testID',
+            userName: 'testUserName',
           ),
         );
 

@@ -150,6 +150,7 @@ const String createGroupText = 'Create Group';
 const String addNewStaffText = 'Add New Staff';
 const String addCaregiverText = 'Add Caregiver';
 const String caregiversString = 'Caregivers';
+const String addCaregiverString = 'Add Caregiver';
 
 //Service Requests
 const String serviceRequestString = 'Service requests';
@@ -976,6 +977,10 @@ String getCaregiverDescriptionString(String name) {
   return "Here are $name's caregivers";
 }
 
+String getLinkedClientsDescriptionString(String name) {
+  return "Here are the clients that $name's is managing";
+}
+
 String welcomeFacilitySelectionDescription(String username) =>
     'Welcome back $username! Choose your facility';
 
@@ -1002,3 +1007,5 @@ const String confirmSearchTermIsCorrectString =
 
 const String addFacilitySuccessString = 'Facility added successfully';
 const String removedFacilitySuccessString = 'Facility removed successfully';
+const String caregiverNumberString = 'Caregiver number: ';
+const String userNameString = 'Username: ';

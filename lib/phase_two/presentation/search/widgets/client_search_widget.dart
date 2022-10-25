@@ -10,7 +10,6 @@ import 'package:prohealth360_daktari/application/redux/actions/search_users/reac
 import 'package:prohealth360_daktari/application/redux/actions/search_users/shared_health_diary_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/search/search_view_model.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/contact.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/user.dart';
 import 'package:prohealth360_daktari/domain/core/entities/health_diary/health_diary_entry.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
@@ -40,7 +39,8 @@ class ClientSearchWidget extends StatelessWidget {
                   .miscState
                   ?.searchUserResponseState
                   ?.selectedSearchUserResponse
-                  ?.defaultFacility?.id ??
+                  ?.defaultFacility
+                  ?.id ??
               '';
 
           await store.dispatch(
@@ -165,11 +165,12 @@ class ClientSearchWidget extends StatelessWidget {
                         ],
                       ),
                     LinkedFacilitiesWidget(
-                      selectedSearchUserResponse: selectedSearchUserResponse,
+                      userId: selectedSearchUserResponse.id ?? '',
+                      userName: selectedSearchUserResponse.user?.name ?? '',
                     ),
                     largeVerticalSizedBox,
                     Text(
-                      'Caregivers',
+                      caregiversString,
                       style: boldSize18Text(AppColors.greyTextColor),
                     ),
                     smallVerticalSizedBox,
@@ -184,7 +185,7 @@ class ClientSearchWidget extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width,
                       child: const MyAfyaHubPrimaryButton(
-                        text: 'Add Caregiver',
+                        text: addCaregiverString,
                       ),
                     ),
                   ],

@@ -22,8 +22,6 @@ import 'package:prohealth360_daktari/application/redux/view_models/register_clie
 
 import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
 
-import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
-
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
@@ -36,12 +34,14 @@ import 'package:shared_themes/constants.dart';
 class LinkedFacilitiesWidget extends StatelessWidget {
   const LinkedFacilitiesWidget({
     super.key,
-    required this.selectedSearchUserResponse,
     this.isClient = true,
+    required this.userId,
+    required this.userName,
   });
 
-  final SearchUserResponse? selectedSearchUserResponse;
   final bool isClient;
+  final String userId;
+  final String userName;
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +70,7 @@ class LinkedFacilitiesWidget extends StatelessWidget {
                 ),
               );
           },
-          userId: selectedSearchUserResponse?.user?.id ?? '',
+          userId: userId,
         ),
       ),
       builder: (BuildContext context, ListFacilitiesViewModel vm) {
@@ -128,9 +128,7 @@ class LinkedFacilitiesWidget extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    clientId:
-                                        selectedSearchUserResponse?.id ??
-                                            '',
+                                    clientId: userId,
                                     facilityId: facility?.id ?? '',
                                   ),
                                 );
@@ -170,9 +168,7 @@ class LinkedFacilitiesWidget extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    staffId:
-                                        selectedSearchUserResponse?.id ??
-                                            '',
+                                    staffId: userId,
                                     facilityId: facility?.id ?? '',
                                   ),
                                 );
@@ -198,7 +194,7 @@ class LinkedFacilitiesWidget extends StatelessWidget {
             else ...<Widget>{
               Text(
                 getFacilitiesDescriptionString(
-                  selectedSearchUserResponse?.user?.name ?? '',
+                  userName,
                 ),
                 style: normalSize15Text(AppColors.greyTextColor),
               ),
@@ -219,7 +215,7 @@ class LinkedFacilitiesWidget extends StatelessWidget {
                     Navigator.of(context).pushNamed(
                       AppRoutes.searchFacilitiesPage,
                       arguments: <String, dynamic>{
-                        'userID': selectedSearchUserResponse?.id,
+                        'userID': userId,
                         'isClient': isClient,
                       },
                     );

@@ -76,7 +76,7 @@ class ResolveScreeningToolServiceRequestAction extends ReduxAction<AppState> {
     if (error != null) {
       onFailure?.call();
       reportErrorToSentry(
-        hint: resolvePINrequestsErorString,
+        hint: resolvePINrequestsErrorString,
         query: verifyClientPinResetServiceRequestQuery,
         response: result,
         state: state,

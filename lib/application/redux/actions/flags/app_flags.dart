@@ -126,3 +126,4 @@ const String fetchSurveyRespondentsFlag = 'fetch_survey_respondents_flag';
 
 const String addFacilityFlag = 'add_facility_flag';
 const String removeFacilityFlag = 'remove_facility_flag';
+const String fetchManagedClientsFlag = 'fetch_managed_clients_flag';

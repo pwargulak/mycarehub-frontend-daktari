@@ -3,7 +3,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/roles_list.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
-import 'package:prohealth360_daktari/domain/core/entities/search_user/user_data.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/search/widgets/staff_search_widget.dart';
 import 'package:prohealth360_daktari/presentation/client_details/widgets/search_user_item.dart';
 

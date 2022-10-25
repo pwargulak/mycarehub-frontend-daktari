@@ -8,7 +8,6 @@ import 'package:prohealth360_daktari/application/redux/actions/update_connectivi
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/connectivity_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
-import 'package:prohealth360_daktari/domain/core/entities/search_user/user_data.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/widgets/list_card_with_cancel_button.dart';

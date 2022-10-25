@@ -7,7 +7,6 @@ part 'assigned_client.g.dart';
 class AssignedClient with _$AssignedClient {
   factory AssignedClient({
     @JsonKey(name: 'clientID') String? clientID,
-    @JsonKey(name: 'caregiverType') String? caregiverType,
   }) = _AssignedClient;
 
   factory AssignedClient.fromJson(Map<String, dynamic> json) =>

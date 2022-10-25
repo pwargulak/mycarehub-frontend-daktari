@@ -6,9 +6,6 @@ enum SetPinStatus { IsChangingPin, IsSettingPin, IsResettingPin }
 
 enum AuthTokenStatus { okay, requiresLogin, requiresPin }
 
-/// The type of contact being used
-enum ContactType { PHONE, EMAIL, UNKNOWN }
-
 enum ClientType {
   PMTCT,
   OVC,

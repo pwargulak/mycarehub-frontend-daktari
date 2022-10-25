@@ -1,5 +1,7 @@
 const String completeOnboardingTourErrorString =
     'Error completing the onboarding tour';
+const String fetchManagedErrorString =
+    'Error fetching clients managed by caregiver';
 const String createPINErrorString = 'Error creating PIN';
 const String updateFacilityInfoErrorString =
     'Error getting updated facility information';
@@ -51,7 +53,7 @@ const String fetchServiceRequestCountErrorString =
     'Error fetching service request count';
 const String fetchServiceRequestsErrorString =
     'Error fetching service requests';
-const String resolvePINrequestsErorString = 'Error resolving pin requests';
+const String resolvePINrequestsErrorString = 'Error resolving pin requests';
 const String serviceRequestResolvingErrorString =
     'Error while resolving service request';
 const String acceptPINRequestErrorString = 'Error while accepting pin request';

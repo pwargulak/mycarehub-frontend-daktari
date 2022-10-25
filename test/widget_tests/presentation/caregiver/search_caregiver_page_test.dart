@@ -11,6 +11,7 @@ import 'package:prohealth360_daktari/application/redux/actions/update_connectivi
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/caregiver/caregiver.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
+import 'package:prohealth360_daktari/presentation/caregiver/search_caregiver_details_page.dart';
 import 'package:prohealth360_daktari/presentation/caregiver/search_caregiver_page.dart';
 import 'package:prohealth360_daktari/presentation/caregiver/widgets/search_caregiver_item.dart';
 
@@ -65,7 +66,13 @@ void main() {
       await tester.tap(find.byType(IconButton));
       await tester.pumpAndSettle();
 
-      expect(find.byType(SearchCaregiverItem), findsOneWidget);
+      final Finder searchCaregiverItem = find.byType(SearchCaregiverItem);
+
+      expect(searchCaregiverItem, findsOneWidget);
+      await tester.tap(searchCaregiverItem);
+      
+      await tester.pumpAndSettle();
+      expect(find.byType(SearchCaregiverDetailsPage), findsOneWidget);
     });
 
     testWidgets('renders correctly with the CustomTextField onSubmit function',

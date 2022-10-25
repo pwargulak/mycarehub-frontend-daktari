@@ -31,6 +31,7 @@ class StaffState with _$StaffState {
 
     // staff notifications
     List<NotificationDetails?>? notifications,
+    List<ManagedClient>? managedClients,
     NotificationFilterState? notificationFilterState,
   }) = _StaffState;
 
@@ -44,6 +45,7 @@ class StaffState with _$StaffState {
         staffNumber: UNKNOWN,
         facilities: <Facility>[],
         linkedFacilities: <Facility>[],
+        managedClients: <ManagedClient>[],
         defaultFacility: UNKNOWN,
         user: User.initial(),
         communitiesState: CommunitiesState.initial(),

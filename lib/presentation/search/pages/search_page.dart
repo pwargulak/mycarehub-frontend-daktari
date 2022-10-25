@@ -8,7 +8,6 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.d
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
 import 'package:prohealth360_daktari/presentation/engagement/home/widgets/action_card.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
-
 class SearchPage extends StatefulWidget {
   const SearchPage();
 

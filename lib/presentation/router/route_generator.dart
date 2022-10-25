@@ -3,6 +3,7 @@ import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/services/analytics_service.dart';
 import 'package:prohealth360_daktari/application/redux/states/service_requests/survey_service_request_item.dart';
+import 'package:prohealth360_daktari/domain/core/entities/caregiver/caregiver.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/domain/core/entities/service_requests/service_request.dart';
 import 'package:prohealth360_daktari/domain/core/entities/surveys/survey.dart';
@@ -11,6 +12,7 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_events.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/facility_selection_page.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/search/search_details_view_page.dart';
+import 'package:prohealth360_daktari/presentation/caregiver/search_caregiver_details_page.dart';
 import 'package:prohealth360_daktari/presentation/caregiver/search_caregiver_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/caregiver/register_caregiver_page.dart';
 // Project imports:
@@ -370,6 +372,13 @@ class RouteGenerator {
                 (args as Map<String, dynamic>)['searchUserResponse']
                     as SearchUserResponse,
             isClient: args['isClient'] as bool,
+          ),
+          settings: const RouteSettings(name: 'Search page detail view'),
+        );
+      case AppRoutes.searchCaregiverDetailsPage:
+        return MaterialPageRoute<SearchCaregiverDetailsPage>(
+          builder: (_) => SearchCaregiverDetailsPage(
+            caregiver: args as Caregiver,
           ),
           settings: const RouteSettings(name: 'Search page detail view'),
         );
