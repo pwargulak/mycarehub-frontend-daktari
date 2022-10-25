@@ -149,6 +149,7 @@ const String addNewPatientText = 'Add new patient';
 const String createGroupText = 'Create Group';
 const String addNewStaffText = 'Add New Staff';
 const String addCaregiverText = 'Add Caregiver';
+const String caregiversString = 'Caregivers';
 
 //Service Requests
 const String serviceRequestString = 'Service requests';

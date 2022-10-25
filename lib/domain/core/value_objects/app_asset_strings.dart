@@ -116,6 +116,7 @@ const String notificationIconSvgPath = 'assets/icons/notification_icon.svg';
 // search
 const String searchSvgPath = 'assets/images/search.svg';
 const String clientSearchSvgPath = 'assets/images/client_search.svg';
+const String caregiverSearchSvgPath = 'assets/images/caregiver_search.svg';
 const String staffSearchSvgPath = 'assets/images/staff_search.svg';
 
 // surveys

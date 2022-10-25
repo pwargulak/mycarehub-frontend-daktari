@@ -62,8 +62,19 @@ class _SearchPageState extends State<SearchPage> {
                           .pushNamed(AppRoutes.searchStaffMemberPage);
                     },
                   ),
+                  ActionCard(
+                    key: caregiverSearchActionCardKey,
+                    iconUrl: caregiverSearchSvgPath,
+                    title: caregiversString,
+                    backgroundColor: AppColors.primaryColor.withOpacity(0.14),
+                    onTap: () {
+                      Navigator.of(context)
+                          .pushNamed(AppRoutes.searchCaregiverPage);
+                    },
+                  ),
                 ],
-              )
+              ),
+              mediumVerticalSizedBox,
             ],
           ),
         ),

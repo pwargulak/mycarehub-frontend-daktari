@@ -134,6 +134,7 @@ const Key bottomNavKey = Key('bottom_nav_key');
 // search
 const Key searchActionCardKey = Key('search_action_card_key');
 const Key clientSearchActionCardKey = Key('clients_search_action_card_key');
+const Key caregiverSearchActionCardKey = Key('caregiver_search_action_card_key');
 const Key staffSearchActionCardKey = Key('staff_search_action_card_key');
 const Key inviteStaffButtonKey = Key('invite_staff_button_key');
 const Key reinviteStaffButtonKey = Key('reinvite_staff_button_key');
