@@ -68,5 +68,9 @@ const String getTermsErrorString = 'Error accepting terms';
 const String acceptingTermsErrorString = 'Error accepting terms';
 
 // Remove facility
-const String removeStaffFacilityErrorString = 'Error while removing facility from staff';
-const String removeClientFacilityErrorString = 'Error while removing facility from client';
+const String removeStaffFacilityErrorString =
+    'Error while removing facility from staff';
+const String removeClientFacilityErrorString =
+    'Error while removing facility from client';
+const String errorFetchingFacilitiesString =
+    'Error fetching user linked facilities';

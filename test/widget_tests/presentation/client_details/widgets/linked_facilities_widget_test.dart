@@ -137,7 +137,6 @@ void main() {
         await tester.tap(cancelButton.first);
         await tester.pumpAndSettle();
         expect(find.text(removedFacilitySuccessString), findsOneWidget);
-        expect(cancelButton, findsOneWidget);
       });
       testWidgets('works correctly for staff', (WidgetTester tester) async {
         await buildTestWidget(
@@ -157,7 +156,6 @@ void main() {
         await tester.tap(cancelButton.first);
         await tester.pumpAndSettle();
         expect(find.text(removedFacilitySuccessString), findsOneWidget);
-        expect(cancelButton, findsOneWidget);
       });
       testWidgets(' from staff shows snackbar when there is an error',
           (WidgetTester tester) async {
@@ -186,7 +184,7 @@ void main() {
             isClient: false,
           ),
         );
-      
+
         await tester.pumpAndSettle();
         final Finder cancelButton = find.byKey(cancelButtonKey);
         expect(cancelButton, findsNWidgets(2));
@@ -225,7 +223,7 @@ void main() {
             selectedSearchUserResponse: SearchUserResponse(id: 'testID'),
           ),
         );
-      
+
         await tester.pumpAndSettle();
         final Finder cancelButton = find.byKey(cancelButtonKey);
         expect(cancelButton, findsNWidgets(2));
@@ -238,9 +236,13 @@ void main() {
           findsOneWidget,
         );
       });
-        testWidgets('should show a loading indicator',
+      testWidgets('should show a loading indicator',
           (WidgetTester tester) async {
-        store.dispatch(WaitAction<AppState>.add('bb046fb1-48f3-410f-813c-33a49324e636_$removeFacilityFlag'));
+        store.dispatch(
+          WaitAction<AppState>.add(
+            'bb046fb1-48f3-410f-813c-33a49324e636_$removeFacilityFlag',
+          ),
+        );
         await buildTestWidget(
           tester: tester,
           store: store,

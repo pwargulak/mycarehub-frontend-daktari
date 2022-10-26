@@ -9,6 +9,7 @@ import 'package:prohealth360_daktari/domain/core/entities/surveys/survey.dart';
 import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_respondent.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_events.dart';
+import 'package:prohealth360_daktari/phase_two/presentation/facility_selection_page.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/search/search_details_view_page.dart';
 import 'package:prohealth360_daktari/presentation/caregiver/search_caregiver_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/caregiver/register_caregiver_page.dart';
@@ -567,6 +568,12 @@ class RouteGenerator {
         return MaterialPageRoute<SearchCaregiverPage>(
           builder: (_) => const SearchCaregiverPage(),
           settings: const RouteSettings(name: 'Search caregiver page'),
+        );
+
+      case AppRoutes.facilitySelectionPage:
+        return MaterialPageRoute<FacilitySelectionPage>(
+          builder: (_) => FacilitySelectionPage(),
+          settings: const RouteSettings(name: 'Facility selection page'),
         );
     }
 

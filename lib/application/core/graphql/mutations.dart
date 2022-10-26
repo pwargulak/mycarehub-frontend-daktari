@@ -273,3 +273,15 @@ mutation removeFacilitiesFromStaffProfile(
   )
 }
 ''';
+
+const String setStaffDefaultFacilityMutation = r'''
+mutation setStaffDefaultFacility(
+  $userID: ID!
+  $facilityID: ID!
+){
+  setStaffDefaultFacility(
+    userID: $userID
+    facilityID: $facilityID
+  )
+}
+''';

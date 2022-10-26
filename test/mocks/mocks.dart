@@ -872,7 +872,9 @@ class MockTestGraphQlClient extends IGraphQlClient {
         http.Response(
           json.encode(
             <String, dynamic>{
-              'data': <String, dynamic>{'removeFacilitiesFromStaffProfile': true}
+              'data': <String, dynamic>{
+                'removeFacilitiesFromStaffProfile': true
+              }
             },
           ),
           201,
@@ -884,7 +886,9 @@ class MockTestGraphQlClient extends IGraphQlClient {
         http.Response(
           json.encode(
             <String, dynamic>{
-              'data': <String, dynamic>{'removeFacilitiesFromClientProfile': true}
+              'data': <String, dynamic>{
+                'removeFacilitiesFromClientProfile': true
+              }
             },
           ),
           201,
@@ -1412,17 +1416,35 @@ class MockTestGraphQlClient extends IGraphQlClient {
 
 final List<Map<String, dynamic>> mockFacilities = <Map<String, dynamic>>[
   <String, dynamic>{
-    'ID': 'bb046fb1-48f3-410f-813c-33a49324e636',
+    'ID': 'some-id',
     'name': 'Test Facility',
     'code': 1234,
-    'description': ''
+    'description': '',
+    'phone': '',
+    'active': true,
+    'county': 'Test',
+    'fhirOrganisationID': '',
+    'workStationDetails': <String, dynamic>{
+      'Notifications': 1,
+      'Messages': 1,
+      'ServiceRequests': 1
+    }
   },
   <String, dynamic>{
-    'ID': 'c2f92466-c82f-4e25-80ec-91dbeb8f722c',
+    'ID': 'some-id',
     'name': 'Kanairo',
     'code': 5678,
-    'description': 'Kanairo Hospital'
-  }
+    'description': 'Kanairo Hospital',
+    'phone': '',
+    'active': true,
+    'county': 'Kanairo',
+    'fhirOrganisationID': '',
+    'workStationDetails': <String, dynamic>{
+      'Notifications': 1,
+      'Messages': 1,
+      'ServiceRequests': 1
+    }
+  },
 ];
 
 Map<String, dynamic> mockSecurityQuestion = <String, dynamic>{
