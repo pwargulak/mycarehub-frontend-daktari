@@ -547,7 +547,7 @@ query searchCaregiverUser($searchParameter: String!){
 ''';
 
 const String getUserLinkedFacilitiesQuery = r'''
-query getUserLinkedFacilities($userID: ID!, $paginationInput: PaginationsInput!){
+query getUserLinkedFacilities($userID: ID! $paginationInput: PaginationsInput!){
   getUserLinkedFacilities(userID: $userID, paginationInput: $paginationInput){
     Pagination{
       Limit
@@ -568,13 +568,13 @@ query getUserLinkedFacilities($userID: ID!, $paginationInput: PaginationsInput!)
       fhirOrganisationID
       workStationDetails{
         Notifications
+        Surveys
+        Articles
         Messages
-        ServiceRequests
       }
     }
   }
 }
-
 ''';
 
 const String getCaregiverManagedClientsQuery = r'''

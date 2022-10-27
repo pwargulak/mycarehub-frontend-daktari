@@ -92,7 +92,6 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
-
                 // Add new user section
                 Padding(
                   padding: const EdgeInsets.only(

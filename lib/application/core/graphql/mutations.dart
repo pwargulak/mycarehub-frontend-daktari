@@ -276,11 +276,11 @@ mutation removeFacilitiesFromStaffProfile(
 
 const String setStaffDefaultFacilityMutation = r'''
 mutation setStaffDefaultFacility(
-  $userID: ID!
+  $userID: ID!,
   $facilityID: ID!
 ){
   setStaffDefaultFacility(
-    userID: $userID
+    userID: $userID,
     facilityID: $facilityID
   )
 }

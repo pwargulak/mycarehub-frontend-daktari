@@ -962,6 +962,20 @@ class MockTestGraphQlClient extends IGraphQlClient {
       );
     }
 
+    if (queryString.contains(setStaffDefaultFacilityMutation)) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(
+            <String, dynamic>{
+              'data': <String, dynamic>{
+                'setStaffDefaultFacility': true,
+              }
+            },
+          ),
+          201,
+        ),
+      );
+    }
     if (queryString.contains(getCaregiverManagedClientsQuery)) {
       return Future<http.Response>.value(
         http.Response(

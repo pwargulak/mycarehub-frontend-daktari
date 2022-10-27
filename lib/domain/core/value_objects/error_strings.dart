@@ -76,3 +76,4 @@ const String removeClientFacilityErrorString =
     'Error while removing facility from client';
 const String errorFetchingFacilitiesString =
     'Error fetching user linked facilities';
+const String errorSelectingDefaultFacility = 'Error selecting default facility';

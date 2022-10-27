@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/actions/facilities/fetch_user_linked_facilities_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/facilities/set_staff_default_facility_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/register_client/fetch_facilities_view_model.dart';
@@ -117,6 +118,16 @@ class FacilitySelectionPage extends StatelessWidget {
                             children: badgesList,
                           ),
                           buttonText: continueString,
+                          onButtonCallback: () {
+                            StoreProvider.dispatch(
+                              context,
+                              SetStaffDefaultFacilityAction(
+                                client:
+                                    AppWrapperBase.of(context)!.graphQLClient,
+                                facilityId: facility.id ?? '',
+                              ),
+                            );
+                          },
                         ),
                       ),
                     );
@@ -124,7 +135,8 @@ class FacilitySelectionPage extends StatelessWidget {
                 }
                 return Column(
                   children: <Widget>[
-                    if (vm.wait.isWaitingFor(retrieveFacilityFlag))
+                    if (vm.wait.isWaitingFor(retrieveFacilityFlag) ||
+                        vm.wait.isWaitingFor(setDefaultFacilityFlag))
                       Container(
                         height: 300,
                         padding: const EdgeInsets.all(20),
