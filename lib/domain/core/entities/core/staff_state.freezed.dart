@@ -46,6 +46,7 @@ mixin _$StaffState {
   List<ManagedClient>? get managedClients => throw _privateConstructorUsedError;
   NotificationFilterState? get notificationFilterState =>
       throw _privateConstructorUsedError;
+  Facility? get currentFacility => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -72,11 +73,13 @@ abstract class $StaffStateCopyWith<$Res> {
       List<HealthDiaryEntry?>? clientSharedDiaryEntries,
       List<NotificationDetails?>? notifications,
       List<ManagedClient>? managedClients,
-      NotificationFilterState? notificationFilterState});
+      NotificationFilterState? notificationFilterState,
+      Facility? currentFacility});
 
   $UserCopyWith<$Res>? get user;
   $CommunitiesStateCopyWith<$Res>? get communitiesState;
   $NotificationFilterStateCopyWith<$Res>? get notificationFilterState;
+  $FacilityCopyWith<$Res>? get currentFacility;
 }
 
 /// @nodoc
@@ -103,6 +106,7 @@ class _$StaffStateCopyWithImpl<$Res> implements $StaffStateCopyWith<$Res> {
     Object? notifications = freezed,
     Object? managedClients = freezed,
     Object? notificationFilterState = freezed,
+    Object? currentFacility = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -161,6 +165,10 @@ class _$StaffStateCopyWithImpl<$Res> implements $StaffStateCopyWith<$Res> {
           ? _value.notificationFilterState
           : notificationFilterState // ignore: cast_nullable_to_non_nullable
               as NotificationFilterState?,
+      currentFacility: currentFacility == freezed
+          ? _value.currentFacility
+          : currentFacility // ignore: cast_nullable_to_non_nullable
+              as Facility?,
     ));
   }
 
@@ -197,6 +205,17 @@ class _$StaffStateCopyWithImpl<$Res> implements $StaffStateCopyWith<$Res> {
       return _then(_value.copyWith(notificationFilterState: value));
     });
   }
+
+  @override
+  $FacilityCopyWith<$Res>? get currentFacility {
+    if (_value.currentFacility == null) {
+      return null;
+    }
+
+    return $FacilityCopyWith<$Res>(_value.currentFacility!, (value) {
+      return _then(_value.copyWith(currentFacility: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -220,7 +239,8 @@ abstract class _$$_StaffStateCopyWith<$Res>
       List<HealthDiaryEntry?>? clientSharedDiaryEntries,
       List<NotificationDetails?>? notifications,
       List<ManagedClient>? managedClients,
-      NotificationFilterState? notificationFilterState});
+      NotificationFilterState? notificationFilterState,
+      Facility? currentFacility});
 
   @override
   $UserCopyWith<$Res>? get user;
@@ -228,6 +248,8 @@ abstract class _$$_StaffStateCopyWith<$Res>
   $CommunitiesStateCopyWith<$Res>? get communitiesState;
   @override
   $NotificationFilterStateCopyWith<$Res>? get notificationFilterState;
+  @override
+  $FacilityCopyWith<$Res>? get currentFacility;
 }
 
 /// @nodoc
@@ -256,6 +278,7 @@ class __$$_StaffStateCopyWithImpl<$Res> extends _$StaffStateCopyWithImpl<$Res>
     Object? notifications = freezed,
     Object? managedClients = freezed,
     Object? notificationFilterState = freezed,
+    Object? currentFacility = freezed,
   }) {
     return _then(_$_StaffState(
       id: id == freezed
@@ -314,6 +337,10 @@ class __$$_StaffStateCopyWithImpl<$Res> extends _$StaffStateCopyWithImpl<$Res>
           ? _value.notificationFilterState
           : notificationFilterState // ignore: cast_nullable_to_non_nullable
               as NotificationFilterState?,
+      currentFacility: currentFacility == freezed
+          ? _value.currentFacility
+          : currentFacility // ignore: cast_nullable_to_non_nullable
+              as Facility?,
     ));
   }
 }
@@ -335,7 +362,8 @@ class _$_StaffState implements _StaffState {
       final List<HealthDiaryEntry?>? clientSharedDiaryEntries,
       final List<NotificationDetails?>? notifications,
       final List<ManagedClient>? managedClients,
-      this.notificationFilterState})
+      this.notificationFilterState,
+      this.currentFacility})
       : _facilities = facilities,
         _linkedFacilities = linkedFacilities,
         _clientSharedDiaryEntries = clientSharedDiaryEntries,
@@ -421,10 +449,12 @@ class _$_StaffState implements _StaffState {
 
   @override
   final NotificationFilterState? notificationFilterState;
+  @override
+  final Facility? currentFacility;
 
   @override
   String toString() {
-    return 'StaffState(id: $id, userId: $userId, active: $active, staffNumber: $staffNumber, facilities: $facilities, linkedFacilities: $linkedFacilities, defaultFacility: $defaultFacility, defaultFacilityName: $defaultFacilityName, user: $user, communitiesState: $communitiesState, clientSharedDiaryEntries: $clientSharedDiaryEntries, notifications: $notifications, managedClients: $managedClients, notificationFilterState: $notificationFilterState)';
+    return 'StaffState(id: $id, userId: $userId, active: $active, staffNumber: $staffNumber, facilities: $facilities, linkedFacilities: $linkedFacilities, defaultFacility: $defaultFacility, defaultFacilityName: $defaultFacilityName, user: $user, communitiesState: $communitiesState, clientSharedDiaryEntries: $clientSharedDiaryEntries, notifications: $notifications, managedClients: $managedClients, notificationFilterState: $notificationFilterState, currentFacility: $currentFacility)';
   }
 
   @override
@@ -455,7 +485,9 @@ class _$_StaffState implements _StaffState {
             const DeepCollectionEquality()
                 .equals(other._managedClients, _managedClients) &&
             const DeepCollectionEquality().equals(
-                other.notificationFilterState, notificationFilterState));
+                other.notificationFilterState, notificationFilterState) &&
+            const DeepCollectionEquality()
+                .equals(other.currentFacility, currentFacility));
   }
 
   @JsonKey(ignore: true)
@@ -475,7 +507,8 @@ class _$_StaffState implements _StaffState {
       const DeepCollectionEquality().hash(_clientSharedDiaryEntries),
       const DeepCollectionEquality().hash(_notifications),
       const DeepCollectionEquality().hash(_managedClients),
-      const DeepCollectionEquality().hash(notificationFilterState));
+      const DeepCollectionEquality().hash(notificationFilterState),
+      const DeepCollectionEquality().hash(currentFacility));
 
   @JsonKey(ignore: true)
   @override
@@ -505,7 +538,8 @@ abstract class _StaffState implements StaffState {
       final List<HealthDiaryEntry?>? clientSharedDiaryEntries,
       final List<NotificationDetails?>? notifications,
       final List<ManagedClient>? managedClients,
-      final NotificationFilterState? notificationFilterState}) = _$_StaffState;
+      final NotificationFilterState? notificationFilterState,
+      final Facility? currentFacility}) = _$_StaffState;
 
   factory _StaffState.fromJson(Map<String, dynamic> json) =
       _$_StaffState.fromJson;
@@ -546,6 +580,8 @@ abstract class _StaffState implements StaffState {
   List<ManagedClient>? get managedClients;
   @override
   NotificationFilterState? get notificationFilterState;
+  @override
+  Facility? get currentFacility;
   @override
   @JsonKey(ignore: true)
   _$$_StaffStateCopyWith<_$_StaffState> get copyWith =>

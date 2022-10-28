@@ -12,12 +12,14 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/actions/core/update_credentials_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/core/update_staff_profile_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/onboarding/update_onboarding_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/terms/update_terms_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/misc_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/onboarding/onboarding_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/auth_credentials.dart';
+import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/onboarding_path_info.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/staff_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/user.dart';
@@ -108,6 +110,8 @@ void main() {
 
     test('should return home page', () async {
       store.dispatch(UpdateCredentialsAction(isSignedIn: true));
+      store.dispatch(UpdateStaffProfileAction(
+          currentFacility: Facility(id: 'TestId', name: 'TestName'),),);
       store.dispatch(
         UpdateOnboardingStateAction(
           isPhoneVerified: true,
@@ -120,6 +124,21 @@ void main() {
 
       final OnboardingPathInfo path = getOnboardingPath(state: store.state);
       expect(path.nextRoute, AppRoutes.homePage);
+    });
+    test('should return select facility page', () async {
+      store.dispatch(UpdateCredentialsAction(isSignedIn: true));
+      store.dispatch(
+        UpdateOnboardingStateAction(
+          isPhoneVerified: true,
+          hasSetSecurityQuestions: true,
+          hasSetPin: true,
+          hasSetNickName: true,
+        ),
+      );
+      store.dispatch(UpdateTermsAndConditionsAction(isAccepted: true));
+
+      final OnboardingPathInfo path = getOnboardingPath(state: store.state);
+      expect(path.nextRoute, AppRoutes.facilitySelectionPage);
     });
   });
 
@@ -475,7 +494,6 @@ void main() {
       ),
       true,
     );
-    expect(resumeWithPIN(AppState.initial()), false);
     expect(resumeWithPIN(AppState.initial()), false);
   });
   test('getNotificationInfo  return the correct value', () {

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_graphql_client/graph_client.dart';
 import 'package:prohealth360_daktari/application/core/graphql/mutations.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
@@ -74,7 +75,10 @@ class SetStaffDefaultFacilityAction extends ReduxAction<AppState> {
           ),
         );
         dispatch(
-          NavigateAction<AppState>.pushReplacementNamed(AppRoutes.homePage),
+          NavigateAction<AppState>.pushNamedAndRemoveUntil(
+            AppRoutes.homePage,
+            (Route<dynamic> route) => false,
+          ),
         );
       }
     } else {

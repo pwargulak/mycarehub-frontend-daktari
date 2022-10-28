@@ -33,6 +33,7 @@ class StaffState with _$StaffState {
     List<NotificationDetails?>? notifications,
     List<ManagedClient>? managedClients,
     NotificationFilterState? notificationFilterState,
+    Facility? currentFacility,
   }) = _StaffState;
 
   factory StaffState.fromJson(Map<String, dynamic> json) =>
@@ -51,5 +52,6 @@ class StaffState with _$StaffState {
         communitiesState: CommunitiesState.initial(),
         clientSharedDiaryEntries: <HealthDiaryEntry>[],
         notifications: <NotificationDetails>[],
+        currentFacility: Facility.initial(),
       );
 }

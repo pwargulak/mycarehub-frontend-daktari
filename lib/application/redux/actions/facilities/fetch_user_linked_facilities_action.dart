@@ -1,16 +1,19 @@
 import 'dart:async';
 import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_graphql_client/graph_client.dart';
 import 'package:prohealth360_daktari/application/core/graphql/queries.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/core/update_staff_profile_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/facilities/set_staff_default_facility_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
 import 'package:prohealth360_daktari/domain/core/entities/facilities/get_facilities_response.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
+import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 class FetchUserLinkedFacilitiesAction extends ReduxAction<AppState> {
@@ -18,11 +21,13 @@ class FetchUserLinkedFacilitiesAction extends ReduxAction<AppState> {
     required this.client,
     this.onFailure,
     required this.userId,
+    this.shouldNavigate = false,
   });
 
   final void Function(String message)? onFailure;
   final IGraphQlClient client;
   final String userId;
+  final bool shouldNavigate;
 
   @override
   void after() {
@@ -77,14 +82,31 @@ class FetchUserLinkedFacilitiesAction extends ReduxAction<AppState> {
           GetFacilitiesResponse.fromJson(
         body['data'] as Map<String, dynamic>,
       );
+      final List<Facility> linkedFacilities =
+          getFacilitiesResponse.linkedFacilities?.facilities ?? <Facility>[];
 
       dispatch(
         UpdateStaffProfileAction(
-          linkedFacilities:
-              getFacilitiesResponse.linkedFacilities?.facilities ??
-                  <Facility>[],
+          linkedFacilities: linkedFacilities,
         ),
       );
+      if (linkedFacilities.length < 2 && shouldNavigate) {
+        if (linkedFacilities.isNotEmpty) {
+          dispatch(
+            SetStaffDefaultFacilityAction(
+              client: client,
+              facilityId: linkedFacilities.first.id ?? '',
+            ),
+          );
+        } else {
+          dispatch(
+            NavigateAction<AppState>.pushNamedAndRemoveUntil(
+              AppRoutes.homePage,
+              (Route<dynamic> route) => false,
+            ),
+          );
+        }
+      }
     } else {
       onFailure?.call(getErrorMessage('facilities linked to this user'));
       Sentry.captureException(

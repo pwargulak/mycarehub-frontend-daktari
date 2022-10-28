@@ -62,5 +62,57 @@ void main() {
 
       expect(find.byType(SnackBar), findsOneWidget);
     });
+
+    testWidgets(' navigates to home page correctly when there is no facility',
+        (WidgetTester tester) async {
+      await buildTestWidget(
+        tester: tester,
+        store: store,
+        graphQlClient: MockShortGraphQlClient.withResponse(
+          '',
+          '',
+          Response(
+            json.encode(<String, dynamic>{
+              'data': <String, dynamic>{
+                'getUserLinkedFacilities': <String, dynamic>{
+                  'Facilities': <dynamic>[]
+                }
+              }
+            }),
+            201,
+          ),
+        ),
+        widget: FacilitySelectionPage(),
+      );
+
+      await tester.pumpAndSettle();
+      expect(find.byType(HomePage), findsOneWidget);
+    });
+    testWidgets(' navigates to home page correctly when there is one facility',
+        (WidgetTester tester) async {
+      await buildTestWidget(
+        tester: tester,
+        store: store,
+        graphQlClient: MockShortGraphQlClient.withResponse(
+          '',
+          '',
+          Response(
+            json.encode(<String, dynamic>{
+              'data': <String, dynamic>{
+                'getUserLinkedFacilities': <String, dynamic>{
+                  'Facilities': <dynamic>[mockFacilities.first]
+                },
+                'setStaffDefaultFacility': true,
+              }
+            }),
+            201,
+          ),
+        ),
+        widget: FacilitySelectionPage(),
+      );
+
+      await tester.pumpAndSettle();
+      expect(find.byType(HomePage), findsOneWidget);
+    });
   });
 }

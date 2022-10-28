@@ -4,6 +4,7 @@ import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
+import 'package:prohealth360_daktari/application/redux/actions/core/update_staff_profile_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/facilities/fetch_user_linked_facilities_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/facilities/set_staff_default_facility_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
@@ -33,6 +34,11 @@ class FacilitySelectionPage extends StatelessWidget {
                         ?.userId ??
                     '';
                 store.dispatch(
+                  UpdateStaffProfileAction(
+                    currentFacility: Facility.initial(),
+                  ),
+                );
+                store.dispatch(
                   FetchUserLinkedFacilitiesAction(
                     client: AppWrapperBase.of(context)!.graphQLClient,
                     onFailure: (String message) {
@@ -55,6 +61,7 @@ class FacilitySelectionPage extends StatelessWidget {
                         );
                     },
                     userId: userId,
+                    shouldNavigate: true,
                   ),
                 );
               },

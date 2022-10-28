@@ -134,6 +134,12 @@ class _PreLoadAppState extends State<PreLoadApp> with WidgetsBindingObserver {
           initialRoute = bottomNavItems[vm.currentIndex ?? 0].onTapRoute;
         }
 
+        if (initialRoute == AppRoutes.homePage &&
+            (vm.currentFacility?.id == null ||
+                vm.currentFacility?.id == afya_moja_core.UNKNOWN)) {
+          initialRoute = AppRoutes.facilitySelectionPage;
+        }
+
         return OverlaySupport(
           child: MaterialApp(
             builder: (BuildContext context, Widget? childWidget) {

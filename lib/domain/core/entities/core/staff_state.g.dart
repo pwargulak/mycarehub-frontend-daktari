@@ -45,6 +45,9 @@ _$_StaffState _$$_StaffStateFromJson(Map<String, dynamic> json) =>
           ? null
           : NotificationFilterState.fromJson(
               json['notificationFilterState'] as Map<String, dynamic>),
+      currentFacility: json['currentFacility'] == null
+          ? null
+          : Facility.fromJson(json['currentFacility'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_StaffStateToJson(_$_StaffState instance) =>
@@ -63,4 +66,5 @@ Map<String, dynamic> _$$_StaffStateToJson(_$_StaffState instance) =>
       'notifications': instance.notifications,
       'managedClients': instance.managedClients,
       'notificationFilterState': instance.notificationFilterState,
+      'currentFacility': instance.currentFacility,
     };
