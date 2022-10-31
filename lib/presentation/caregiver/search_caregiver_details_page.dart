@@ -151,10 +151,11 @@ class SearchCaregiverDetailsPage extends StatelessWidget {
                   ),
                   largeVerticalSizedBox,
                   ManagedClientsWidget(id: id, userName: userName),
-                  LinkedFacilitiesWidget(
-                    userId: id,
-                    userName: userName,
-                  ),
+                  if (caregiver.isClient ?? false)
+                    LinkedFacilitiesWidget(
+                      userId: id,
+                      userName: userName,
+                    ),
                   largeVerticalSizedBox,
                 ],
               )

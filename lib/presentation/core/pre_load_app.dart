@@ -25,7 +25,6 @@ import 'package:prohealth360_daktari/application/redux/view_models/initial_route
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/global_keys.dart';
 import 'package:prohealth360_daktari/infrastructure/connectivity/connectivity_interface.dart';
-import 'package:prohealth360_daktari/presentation/core/bottom_nav/bottom_nav_items.dart';
 import 'package:prohealth360_daktari/presentation/core/widgets/error_dialog.dart';
 import 'package:prohealth360_daktari/presentation/router/route_generator.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
@@ -131,7 +130,7 @@ class _PreLoadAppState extends State<PreLoadApp> with WidgetsBindingObserver {
             initialRoute.compareTo(AppRoutes.resumeWithPin) == 0;
 
         if (!isPhoneLogin && !isResumeWithPin) {
-          initialRoute = bottomNavItems[vm.currentIndex ?? 0].onTapRoute;
+          initialRoute =  AppRoutes.facilitySelectionPage;
         }
 
         if (initialRoute == AppRoutes.homePage &&

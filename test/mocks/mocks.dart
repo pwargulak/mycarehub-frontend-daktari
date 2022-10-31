@@ -1901,7 +1901,8 @@ final Map<String, dynamic> caregiverResponseMock = <String, dynamic>{
           'ContactType': 'PHONE',
           'contactValue': '07000000',
         }
-      }
+      },
+      'isClient': true
     }
   ]
 };
