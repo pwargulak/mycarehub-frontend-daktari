@@ -1,4 +1,4 @@
-# Welcome to ProHealth360
+# Communities
 
 In this section have code related to the communities section.
 
