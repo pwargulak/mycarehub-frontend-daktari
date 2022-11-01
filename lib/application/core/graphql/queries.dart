@@ -542,6 +542,7 @@ query searchCaregiverUser($searchParameter: String!){
       }
     }
     caregiverNumber
+    isClient
   }
 }
 ''';
