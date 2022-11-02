@@ -165,7 +165,7 @@ class ClientSearchWidget extends StatelessWidget {
                         ],
                       ),
                     LinkedFacilitiesWidget(
-                      userId: selectedSearchUserResponse.id ?? '',
+                      userId: selectedSearchUserResponse.user?.id ?? '',
                       userName: selectedSearchUserResponse.user?.name ?? '',
                     ),
                     largeVerticalSizedBox,

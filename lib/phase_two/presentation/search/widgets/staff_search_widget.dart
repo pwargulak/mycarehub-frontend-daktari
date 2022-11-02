@@ -195,7 +195,7 @@ class _StaffSearchWidgetState extends State<StaffSearchWidget> {
                           ),
                           largeVerticalSizedBox,
                           LinkedFacilitiesWidget(
-                            userId: selectedSearchUserResponse.id ?? '',
+                            userId: selectedSearchUserResponse.user?.id ?? '',
                             userName:
                                 selectedSearchUserResponse.user?.name ?? '',
                             isClient: false,
