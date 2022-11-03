@@ -26,8 +26,8 @@ class FetchUserLinkedFacilitiesAction extends ReduxAction<AppState> {
 
   final void Function(String message)? onFailure;
   final IGraphQlClient client;
-  final String userId;
   final bool shouldNavigate;
+  final String userId;
 
   @override
   void after() {

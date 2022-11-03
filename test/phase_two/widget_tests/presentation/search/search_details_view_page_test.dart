@@ -645,7 +645,7 @@ void main() {
           ),
         );
 
-        expect(find.byType(PlatformLoader), findsNWidgets(2));
+        expect(find.byType(PlatformLoader), findsNWidgets(3));
       });
     });
   });

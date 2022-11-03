@@ -2,6 +2,8 @@ const String completeOnboardingTourErrorString =
     'Error completing the onboarding tour';
 const String fetchManagedErrorString =
     'Error fetching clients managed by caregiver';
+const String fetchClientCaregiversErrorString =
+    "Error fetching client's caregivers";
 const String createPINErrorString = 'Error creating PIN';
 const String updateFacilityInfoErrorString =
     'Error getting updated facility information';

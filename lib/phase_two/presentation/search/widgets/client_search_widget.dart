@@ -10,13 +10,11 @@ import 'package:prohealth360_daktari/application/redux/actions/search_users/reac
 import 'package:prohealth360_daktari/application/redux/actions/search_users/shared_health_diary_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/search/search_view_model.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/user.dart';
 import 'package:prohealth360_daktari/domain/core/entities/health_diary/health_diary_entry.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/search/widgets/linked_facilities_widget.dart';
-import 'package:prohealth360_daktari/phase_two/presentation/widgets/consent_status_widget.dart';
-import 'package:prohealth360_daktari/phase_two/presentation/widgets/list_card_with_cancel_button.dart';
+import 'package:prohealth360_daktari/presentation/caregiver/widgets/client_caregivers_widget.dart';
 import 'package:prohealth360_daktari/presentation/client_details/widgets/health_diary_entry_widget.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:prohealth360_daktari/presentation/search/widgets/active_client_actions.dart';
@@ -62,42 +60,6 @@ class ClientSearchWidget extends StatelessWidget {
           final bool isActive = selectedSearchUserResponse.isActive ?? true;
           final String names = selectedSearchUserResponse.user?.name ?? '';
 
-          final List<User> caregivers = <User>[
-            User(
-              username: 'John Doe',
-              primaryContact: Contact(value: '0712345678'),
-              active: true,
-            ),
-            User(
-              username: 'Jane Doe',
-              primaryContact: Contact(value: '0712345686'),
-              active: false,
-            ),
-          ];
-
-          final List<Widget> caregiversWidgetList = <Widget>[];
-          if (caregivers.isNotEmpty) {
-            caregivers
-                .map(
-                  (User? caregiver) => caregiversWidgetList.add(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
-                      child: ListCardWithCancelButton(
-                        title: caregiver?.username ?? '',
-                        description: caregiver?.primaryContact?.value ?? '',
-                        body: Padding(
-                          padding: const EdgeInsets.only(top: 16.0),
-                          child: ConsentStatusWidget(
-                            isConsented: caregiver?.active ?? false,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                )
-                .toList();
-          }
-
           return Column(
             children: <Widget>[
               SearchDetailsInformationWidget(
@@ -129,7 +91,7 @@ class ClientSearchWidget extends StatelessWidget {
                       ),
 
                     /// Shared health diary entries section
-                    if (vm.wait.isWaitingFor(sharedHealthDiaryFlag))
+                    if (vm.wait.isWaitingFor(sharedHealthDiaryFlag)) 
                       Container(
                         height: 300,
                         padding: const EdgeInsets.all(20),
@@ -168,26 +130,11 @@ class ClientSearchWidget extends StatelessWidget {
                       userId: selectedSearchUserResponse.user?.id ?? '',
                       userName: selectedSearchUserResponse.user?.name ?? '',
                     ),
-                    largeVerticalSizedBox,
-                    Text(
-                      caregiversString,
-                      style: boldSize18Text(AppColors.greyTextColor),
+                    ClientCaregiversWidget(
+                      id: selectedSearchUserResponse.user?.id ?? '',
+                      userName: selectedSearchUserResponse.user?.name ?? '',
                     ),
                     smallVerticalSizedBox,
-                    Text(
-                      getCaregiverDescriptionString(
-                        selectedSearchUserResponse.user?.name ?? '',
-                      ),
-                      style: normalSize15Text(AppColors.greyTextColor),
-                    ),
-                    ...caregiversWidgetList,
-                    smallVerticalSizedBox,
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      child: const MyAfyaHubPrimaryButton(
-                        text: addCaregiverString,
-                      ),
-                    ),
                   ],
                 ),
               ),

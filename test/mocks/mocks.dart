@@ -1033,6 +1033,45 @@ class MockTestGraphQlClient extends IGraphQlClient {
         ),
       );
     }
+    if (queryString.contains(listClientsCaregiversQuery)) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(
+            <String, dynamic>{
+              'data': <String, dynamic>{
+                'listClientsCaregivers': <String, dynamic>{
+                  'Pagination': <String, dynamic>{
+                    'Limit': 20,
+                    'CurrentPage': 1,
+                    'Count': 2,
+                    'TotalPages': 1,
+                    'NextPage': null,
+                    'PreviousPage': null
+                  },
+                  'caregivers': <dynamic>[
+                    <String, dynamic>{
+                      'id': 'testId',
+                      'consented': true,
+                      'user': mockUser,
+                      'caregiverNumber': '1234',
+                      'isClient': false,
+                    },
+                    <String, dynamic>{
+                      'id': 'testId2',
+                      'consented': false,
+                      'user': mockUser,
+                      'caregiverNumber': '12345',
+                      'isClient': true,
+                    },
+                  ],
+                }
+              }
+            },
+          ),
+          201,
+        ),
+      );
+    }
 
     if (queryString.contains(listMembersQuery)) {
       return Future<http.Response>.value(

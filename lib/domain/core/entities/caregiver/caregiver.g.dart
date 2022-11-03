@@ -13,6 +13,7 @@ _$_Caregiver _$$_CaregiverFromJson(Map<String, dynamic> json) => _$_Caregiver(
           : UserData.fromJson(json['user'] as Map<String, dynamic>),
       caregiverNumber: json['caregiverNumber'] as String?,
       isClient: json['isClient'] as bool?,
+      isConsented: json['consented'] as bool?,
     );
 
 Map<String, dynamic> _$$_CaregiverToJson(_$_Caregiver instance) =>
@@ -21,4 +22,5 @@ Map<String, dynamic> _$$_CaregiverToJson(_$_Caregiver instance) =>
       'user': instance.caregiverUser,
       'caregiverNumber': instance.caregiverNumber,
       'isClient': instance.isClient,
+      'consented': instance.isConsented,
     };

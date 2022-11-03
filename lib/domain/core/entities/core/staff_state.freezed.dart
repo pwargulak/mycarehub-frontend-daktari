@@ -43,6 +43,7 @@ mixin _$StaffState {
       throw _privateConstructorUsedError; // staff notifications
   List<NotificationDetails?>? get notifications =>
       throw _privateConstructorUsedError;
+  List<Caregiver?>? get clientCaregivers => throw _privateConstructorUsedError;
   List<ManagedClient>? get managedClients => throw _privateConstructorUsedError;
   NotificationFilterState? get notificationFilterState =>
       throw _privateConstructorUsedError;
@@ -72,6 +73,7 @@ abstract class $StaffStateCopyWith<$Res> {
       CommunitiesState? communitiesState,
       List<HealthDiaryEntry?>? clientSharedDiaryEntries,
       List<NotificationDetails?>? notifications,
+      List<Caregiver?>? clientCaregivers,
       List<ManagedClient>? managedClients,
       NotificationFilterState? notificationFilterState,
       Facility? currentFacility});
@@ -104,6 +106,7 @@ class _$StaffStateCopyWithImpl<$Res> implements $StaffStateCopyWith<$Res> {
     Object? communitiesState = freezed,
     Object? clientSharedDiaryEntries = freezed,
     Object? notifications = freezed,
+    Object? clientCaregivers = freezed,
     Object? managedClients = freezed,
     Object? notificationFilterState = freezed,
     Object? currentFacility = freezed,
@@ -157,6 +160,10 @@ class _$StaffStateCopyWithImpl<$Res> implements $StaffStateCopyWith<$Res> {
           ? _value.notifications
           : notifications // ignore: cast_nullable_to_non_nullable
               as List<NotificationDetails?>?,
+      clientCaregivers: clientCaregivers == freezed
+          ? _value.clientCaregivers
+          : clientCaregivers // ignore: cast_nullable_to_non_nullable
+              as List<Caregiver?>?,
       managedClients: managedClients == freezed
           ? _value.managedClients
           : managedClients // ignore: cast_nullable_to_non_nullable
@@ -238,6 +245,7 @@ abstract class _$$_StaffStateCopyWith<$Res>
       CommunitiesState? communitiesState,
       List<HealthDiaryEntry?>? clientSharedDiaryEntries,
       List<NotificationDetails?>? notifications,
+      List<Caregiver?>? clientCaregivers,
       List<ManagedClient>? managedClients,
       NotificationFilterState? notificationFilterState,
       Facility? currentFacility});
@@ -276,6 +284,7 @@ class __$$_StaffStateCopyWithImpl<$Res> extends _$StaffStateCopyWithImpl<$Res>
     Object? communitiesState = freezed,
     Object? clientSharedDiaryEntries = freezed,
     Object? notifications = freezed,
+    Object? clientCaregivers = freezed,
     Object? managedClients = freezed,
     Object? notificationFilterState = freezed,
     Object? currentFacility = freezed,
@@ -329,6 +338,10 @@ class __$$_StaffStateCopyWithImpl<$Res> extends _$StaffStateCopyWithImpl<$Res>
           ? _value._notifications
           : notifications // ignore: cast_nullable_to_non_nullable
               as List<NotificationDetails?>?,
+      clientCaregivers: clientCaregivers == freezed
+          ? _value._clientCaregivers
+          : clientCaregivers // ignore: cast_nullable_to_non_nullable
+              as List<Caregiver?>?,
       managedClients: managedClients == freezed
           ? _value._managedClients
           : managedClients // ignore: cast_nullable_to_non_nullable
@@ -361,6 +374,7 @@ class _$_StaffState implements _StaffState {
       this.communitiesState,
       final List<HealthDiaryEntry?>? clientSharedDiaryEntries,
       final List<NotificationDetails?>? notifications,
+      final List<Caregiver?>? clientCaregivers,
       final List<ManagedClient>? managedClients,
       this.notificationFilterState,
       this.currentFacility})
@@ -368,6 +382,7 @@ class _$_StaffState implements _StaffState {
         _linkedFacilities = linkedFacilities,
         _clientSharedDiaryEntries = clientSharedDiaryEntries,
         _notifications = notifications,
+        _clientCaregivers = clientCaregivers,
         _managedClients = managedClients;
 
   factory _$_StaffState.fromJson(Map<String, dynamic> json) =>
@@ -438,6 +453,15 @@ class _$_StaffState implements _StaffState {
     return EqualUnmodifiableListView(value);
   }
 
+  final List<Caregiver?>? _clientCaregivers;
+  @override
+  List<Caregiver?>? get clientCaregivers {
+    final value = _clientCaregivers;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   final List<ManagedClient>? _managedClients;
   @override
   List<ManagedClient>? get managedClients {
@@ -454,7 +478,7 @@ class _$_StaffState implements _StaffState {
 
   @override
   String toString() {
-    return 'StaffState(id: $id, userId: $userId, active: $active, staffNumber: $staffNumber, facilities: $facilities, linkedFacilities: $linkedFacilities, defaultFacility: $defaultFacility, defaultFacilityName: $defaultFacilityName, user: $user, communitiesState: $communitiesState, clientSharedDiaryEntries: $clientSharedDiaryEntries, notifications: $notifications, managedClients: $managedClients, notificationFilterState: $notificationFilterState, currentFacility: $currentFacility)';
+    return 'StaffState(id: $id, userId: $userId, active: $active, staffNumber: $staffNumber, facilities: $facilities, linkedFacilities: $linkedFacilities, defaultFacility: $defaultFacility, defaultFacilityName: $defaultFacilityName, user: $user, communitiesState: $communitiesState, clientSharedDiaryEntries: $clientSharedDiaryEntries, notifications: $notifications, clientCaregivers: $clientCaregivers, managedClients: $managedClients, notificationFilterState: $notificationFilterState, currentFacility: $currentFacility)';
   }
 
   @override
@@ -483,6 +507,8 @@ class _$_StaffState implements _StaffState {
             const DeepCollectionEquality()
                 .equals(other._notifications, _notifications) &&
             const DeepCollectionEquality()
+                .equals(other._clientCaregivers, _clientCaregivers) &&
+            const DeepCollectionEquality()
                 .equals(other._managedClients, _managedClients) &&
             const DeepCollectionEquality().equals(
                 other.notificationFilterState, notificationFilterState) &&
@@ -506,6 +532,7 @@ class _$_StaffState implements _StaffState {
       const DeepCollectionEquality().hash(communitiesState),
       const DeepCollectionEquality().hash(_clientSharedDiaryEntries),
       const DeepCollectionEquality().hash(_notifications),
+      const DeepCollectionEquality().hash(_clientCaregivers),
       const DeepCollectionEquality().hash(_managedClients),
       const DeepCollectionEquality().hash(notificationFilterState),
       const DeepCollectionEquality().hash(currentFacility));
@@ -537,6 +564,7 @@ abstract class _StaffState implements StaffState {
       final CommunitiesState? communitiesState,
       final List<HealthDiaryEntry?>? clientSharedDiaryEntries,
       final List<NotificationDetails?>? notifications,
+      final List<Caregiver?>? clientCaregivers,
       final List<ManagedClient>? managedClients,
       final NotificationFilterState? notificationFilterState,
       final Facility? currentFacility}) = _$_StaffState;
@@ -576,6 +604,8 @@ abstract class _StaffState implements StaffState {
   List<HealthDiaryEntry?>? get clientSharedDiaryEntries;
   @override // staff notifications
   List<NotificationDetails?>? get notifications;
+  @override
+  List<Caregiver?>? get clientCaregivers;
   @override
   List<ManagedClient>? get managedClients;
   @override

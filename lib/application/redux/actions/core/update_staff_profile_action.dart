@@ -3,6 +3,7 @@ import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 // Project imports:
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
+import 'package:prohealth360_daktari/domain/core/entities/caregiver/caregiver.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
 import 'package:prohealth360_daktari/domain/core/entities/health_diary/health_diary_entry.dart';
 
@@ -20,6 +21,7 @@ class UpdateStaffProfileAction extends ReduxAction<AppState> {
     this.notifications,
     this.managedClients,
     this.currentFacility,
+    this.clientCaregivers,
   });
 
   final bool? active;
@@ -31,6 +33,7 @@ class UpdateStaffProfileAction extends ReduxAction<AppState> {
   final List<HealthDiaryEntry?>? healthDiaryEntries;
   final String? id;
   final List<NotificationDetails?>? notifications;
+  final List<Caregiver?>? clientCaregivers;
   final String? staffNumber;
   final String? userId;
   final Facility? currentFacility;
@@ -56,6 +59,9 @@ class UpdateStaffProfileAction extends ReduxAction<AppState> {
         managedClients: this.managedClients ?? state.staffState?.managedClients,
         currentFacility:
             this.currentFacility ?? state.staffState?.currentFacility,
+        clientCaregivers:
+            this.clientCaregivers ?? state.staffState?.clientCaregivers,
+            
       ),
     );
 

@@ -12,6 +12,7 @@ class Caregiver with _$Caregiver {
     @JsonKey(name: 'user') UserData? caregiverUser,
     @JsonKey(name: 'caregiverNumber') String? caregiverNumber,
     @JsonKey(name: 'isClient') bool? isClient,
+    @JsonKey(name: 'consented') bool? isConsented,
   }) = _Caregiver;
 
   factory Caregiver.fromJson(Map<String, dynamic> json) =>
@@ -22,5 +23,6 @@ class Caregiver with _$Caregiver {
         caregiverUser: UserData.initial(),
         caregiverNumber: UNKNOWN,
         isClient: false,
+        isConsented: false,
       );
 }

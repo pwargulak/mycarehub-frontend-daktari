@@ -28,6 +28,8 @@ mixin _$Caregiver {
   String? get caregiverNumber => throw _privateConstructorUsedError;
   @JsonKey(name: 'isClient')
   bool? get isClient => throw _privateConstructorUsedError;
+  @JsonKey(name: 'consented')
+  bool? get isConsented => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,7 +45,8 @@ abstract class $CaregiverCopyWith<$Res> {
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'user') UserData? caregiverUser,
       @JsonKey(name: 'caregiverNumber') String? caregiverNumber,
-      @JsonKey(name: 'isClient') bool? isClient});
+      @JsonKey(name: 'isClient') bool? isClient,
+      @JsonKey(name: 'consented') bool? isConsented});
 
   $UserDataCopyWith<$Res>? get caregiverUser;
 }
@@ -62,6 +65,7 @@ class _$CaregiverCopyWithImpl<$Res> implements $CaregiverCopyWith<$Res> {
     Object? caregiverUser = freezed,
     Object? caregiverNumber = freezed,
     Object? isClient = freezed,
+    Object? isConsented = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -79,6 +83,10 @@ class _$CaregiverCopyWithImpl<$Res> implements $CaregiverCopyWith<$Res> {
       isClient: isClient == freezed
           ? _value.isClient
           : isClient // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isConsented: isConsented == freezed
+          ? _value.isConsented
+          : isConsented // ignore: cast_nullable_to_non_nullable
               as bool?,
     ));
   }
@@ -105,7 +113,8 @@ abstract class _$$_CaregiverCopyWith<$Res> implements $CaregiverCopyWith<$Res> {
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'user') UserData? caregiverUser,
       @JsonKey(name: 'caregiverNumber') String? caregiverNumber,
-      @JsonKey(name: 'isClient') bool? isClient});
+      @JsonKey(name: 'isClient') bool? isClient,
+      @JsonKey(name: 'consented') bool? isConsented});
 
   @override
   $UserDataCopyWith<$Res>? get caregiverUser;
@@ -127,6 +136,7 @@ class __$$_CaregiverCopyWithImpl<$Res> extends _$CaregiverCopyWithImpl<$Res>
     Object? caregiverUser = freezed,
     Object? caregiverNumber = freezed,
     Object? isClient = freezed,
+    Object? isConsented = freezed,
   }) {
     return _then(_$_Caregiver(
       id: id == freezed
@@ -145,6 +155,10 @@ class __$$_CaregiverCopyWithImpl<$Res> extends _$CaregiverCopyWithImpl<$Res>
           ? _value.isClient
           : isClient // ignore: cast_nullable_to_non_nullable
               as bool?,
+      isConsented: isConsented == freezed
+          ? _value.isConsented
+          : isConsented // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -156,7 +170,8 @@ class _$_Caregiver implements _Caregiver {
       {@JsonKey(name: 'id') this.id,
       @JsonKey(name: 'user') this.caregiverUser,
       @JsonKey(name: 'caregiverNumber') this.caregiverNumber,
-      @JsonKey(name: 'isClient') this.isClient});
+      @JsonKey(name: 'isClient') this.isClient,
+      @JsonKey(name: 'consented') this.isConsented});
 
   factory _$_Caregiver.fromJson(Map<String, dynamic> json) =>
       _$$_CaregiverFromJson(json);
@@ -173,10 +188,13 @@ class _$_Caregiver implements _Caregiver {
   @override
   @JsonKey(name: 'isClient')
   final bool? isClient;
+  @override
+  @JsonKey(name: 'consented')
+  final bool? isConsented;
 
   @override
   String toString() {
-    return 'Caregiver(id: $id, caregiverUser: $caregiverUser, caregiverNumber: $caregiverNumber, isClient: $isClient)';
+    return 'Caregiver(id: $id, caregiverUser: $caregiverUser, caregiverNumber: $caregiverNumber, isClient: $isClient, isConsented: $isConsented)';
   }
 
   @override
@@ -189,7 +207,9 @@ class _$_Caregiver implements _Caregiver {
                 .equals(other.caregiverUser, caregiverUser) &&
             const DeepCollectionEquality()
                 .equals(other.caregiverNumber, caregiverNumber) &&
-            const DeepCollectionEquality().equals(other.isClient, isClient));
+            const DeepCollectionEquality().equals(other.isClient, isClient) &&
+            const DeepCollectionEquality()
+                .equals(other.isConsented, isConsented));
   }
 
   @JsonKey(ignore: true)
@@ -199,7 +219,8 @@ class _$_Caregiver implements _Caregiver {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(caregiverUser),
       const DeepCollectionEquality().hash(caregiverNumber),
-      const DeepCollectionEquality().hash(isClient));
+      const DeepCollectionEquality().hash(isClient),
+      const DeepCollectionEquality().hash(isConsented));
 
   @JsonKey(ignore: true)
   @override
@@ -219,7 +240,8 @@ abstract class _Caregiver implements Caregiver {
       {@JsonKey(name: 'id') final String? id,
       @JsonKey(name: 'user') final UserData? caregiverUser,
       @JsonKey(name: 'caregiverNumber') final String? caregiverNumber,
-      @JsonKey(name: 'isClient') final bool? isClient}) = _$_Caregiver;
+      @JsonKey(name: 'isClient') final bool? isClient,
+      @JsonKey(name: 'consented') final bool? isConsented}) = _$_Caregiver;
 
   factory _Caregiver.fromJson(Map<String, dynamic> json) =
       _$_Caregiver.fromJson;
@@ -236,6 +258,9 @@ abstract class _Caregiver implements Caregiver {
   @override
   @JsonKey(name: 'isClient')
   bool? get isClient;
+  @override
+  @JsonKey(name: 'consented')
+  bool? get isConsented;
   @override
   @JsonKey(ignore: true)
   _$$_CaregiverCopyWith<_$_Caregiver> get copyWith =>
