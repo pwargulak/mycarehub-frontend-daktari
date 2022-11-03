@@ -6,6 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
+import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/facility_selection_page.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/widgets/general_workstation_widget.dart';
@@ -40,6 +41,20 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.byType(HomePage), findsOneWidget);
+    });
+
+    testWidgets('renders loader correctly', (WidgetTester tester) async {
+      tester.binding.window.physicalSizeTestValue = const Size(1280, 800);
+      tester.binding.window.devicePixelRatioTestValue = 1;
+      store.dispatch(WaitAction<AppState>.add(setDefaultFacilityFlag));
+      await buildTestWidget(
+        tester: tester,
+        store: store,
+        widget: FacilitySelectionPage(),
+      );
+      await tester.pump();
+
+      expect(find.byType(PlatformLoader), findsOneWidget);
     });
 
     testWidgets('displays snackbar incase of an error',

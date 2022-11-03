@@ -1,8 +1,8 @@
-import 'package:afya_moja_core/afya_moja_core.dart';
-import 'package:app_wrapper/app_wrapper.dart';
-import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:app_wrapper/app_wrapper.dart';
+import 'package:async_redux/async_redux.dart';
+import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/actions/core/update_staff_profile_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/facilities/fetch_user_linked_facilities_action.dart';
@@ -125,8 +125,8 @@ class FacilitySelectionPage extends StatelessWidget {
                             children: badgesList,
                           ),
                           buttonText: continueString,
-                          onButtonCallback: () {
-                            StoreProvider.dispatch(
+                          onButtonCallback: () async {
+                            await StoreProvider.dispatch(
                               context,
                               SetStaffDefaultFacilityAction(
                                 client:
@@ -140,45 +140,71 @@ class FacilitySelectionPage extends StatelessWidget {
                     );
                   }
                 }
-                return Column(
-                  children: <Widget>[
-                    if (vm.wait.isWaitingFor(retrieveFacilityFlag) ||
-                        vm.wait.isWaitingFor(setDefaultFacilityFlag))
-                      Container(
-                        height: 300,
-                        padding: const EdgeInsets.all(20),
-                        child: const PlatformLoader(),
-                      )
-                    else
+                if (vm.wait.isWaitingFor(retrieveFacilityFlag)) {
+                  return Container(
+                    height: 300,
+                    padding: const EdgeInsets.all(20),
+                    child: const PlatformLoader(),
+                  );
+                } else {
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Center(
+                        key: const Key('workStationChooserImage'),
+                        child: SvgPicture.asset(workStationChooserImage),
+                      ),
+                      smallVerticalSizedBox,
                       Column(
+                        mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          Center(
-                            child: SvgPicture.asset(workStationChooserImage),
-                          ),
-                          smallVerticalSizedBox,
-                          Text(
-                            welcomeFacilitySelectionDescription(
-                              staffFirstName,
+                          if (vm.wait.isWaitingFor(setDefaultFacilityFlag))
+                            Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                Text(
+                                  switchingYourFacility,
+                                  style: boldSize18Text(),
+                                  textAlign: TextAlign.center,
+                                ),
+                                smallVerticalSizedBox,
+                                const SizedBox(
+                                  height: 300,
+                                  child: Center(
+                                    child: PlatformLoader(),
+                                  ),
+                                )
+                              ],
+                            )
+                          else
+                            Column(
+                              children: <Widget>[
+                                Text(
+                                  welcomeFacilitySelectionDescription(
+                                    staffFirstName,
+                                  ),
+                                  style: boldSize20Text(
+                                    AppColors.primaryColor,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                                smallVerticalSizedBox,
+                                Text(
+                                  noOfFacilitiesDescription,
+                                  style: normalSize14Text(
+                                    AppColors.unSelectedReactionIconColor,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                                smallVerticalSizedBox,
+                                ...facilitiesWidgetList,
+                              ],
                             ),
-                            style: boldSize20Text(AppColors.primaryColor),
-                            textAlign: TextAlign.center,
-                          ),
-                          smallVerticalSizedBox,
-                          Text(
-                            noOfFacilitiesDescription(
-                              vm.linkedFacilities?.length ?? 0,
-                            ),
-                            style: normalSize14Text(
-                              AppColors.unSelectedReactionIconColor,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                          smallVerticalSizedBox,
-                          ...facilitiesWidgetList,
                         ],
                       ),
-                  ],
-                );
+                    ],
+                  );
+                }
               },
             ),
           ),

@@ -32,8 +32,8 @@ class SetStaffDefaultFacilityAction extends ReduxAction<AppState> {
 
   @override
   void before() {
-    super.before();
     dispatch(WaitAction<AppState>.add(setDefaultFacilityFlag));
+    super.before();
   }
 
   @override

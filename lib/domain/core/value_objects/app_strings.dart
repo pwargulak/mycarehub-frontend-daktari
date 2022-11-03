@@ -984,8 +984,8 @@ String getLinkedClientsDescriptionString(String name) {
 String welcomeFacilitySelectionDescription(String username) =>
     'Welcome back $username! Choose your facility';
 
-String noOfFacilitiesDescription(int numberOfFacilities) =>
-    "We've noticed that you're part of $numberOfFacilities facilities. Choose which facility you would like to log into. Here are the details.";
+const String noOfFacilitiesDescription =
+    "We've noticed that you're part of multiple facilities. Choose which facility you would like to log into. Here are the details.";
 const String continueString = 'Continue';
 
 const String addCaregiverDescriptionString =
@@ -1004,8 +1004,8 @@ const String couldNotFindCaregiverString =
 const String confirmSearchTermIsCorrectString =
     '. Confirm that the search term is correct and try again';
 
-
 const String addFacilitySuccessString = 'Facility added successfully';
 const String removedFacilitySuccessString = 'Facility removed successfully';
 const String caregiverNumberString = 'Caregiver number: ';
 const String userNameString = 'Username: ';
+const String switchingYourFacility = 'Switching your facility';
