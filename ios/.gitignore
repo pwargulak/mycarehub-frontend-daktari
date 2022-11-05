@@ -46,3 +46,6 @@ fastlane/test_output
 !Flutter/prod.xcconfig
 
 vendor
+*.dSYM.zip
+*.ipa
+Runner/GoogleService-Info.plist
