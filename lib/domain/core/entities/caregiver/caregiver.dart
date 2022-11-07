@@ -1,6 +1,7 @@
 // Package imports:
 import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:prohealth360_daktari/domain/core/entities/caregiver/consent.dart';
 
 part 'caregiver.freezed.dart';
 part 'caregiver.g.dart';
@@ -12,7 +13,7 @@ class Caregiver with _$Caregiver {
     @JsonKey(name: 'user') UserData? caregiverUser,
     @JsonKey(name: 'caregiverNumber') String? caregiverNumber,
     @JsonKey(name: 'isClient') bool? isClient,
-    @JsonKey(name: 'consented') bool? isConsented,
+    @JsonKey(name: 'consent') Consent? consent,
   }) = _Caregiver;
 
   factory Caregiver.fromJson(Map<String, dynamic> json) =>
@@ -23,6 +24,6 @@ class Caregiver with _$Caregiver {
         caregiverUser: UserData.initial(),
         caregiverNumber: UNKNOWN,
         isClient: false,
-        isConsented: false,
+        consent: Consent.initial(),
       );
 }

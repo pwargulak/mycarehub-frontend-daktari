@@ -1,15 +1,13 @@
 import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 
 class ConsentStatusWidget extends StatelessWidget {
-  const ConsentStatusWidget({
-    super.key,
-    this.isConsented = true,
-  });
+  const ConsentStatusWidget({super.key, required this.consentStatus});
 
-  final bool isConsented;
+  final ConsentStatus consentStatus;
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +18,12 @@ class ConsentStatusWidget extends StatelessWidget {
           height: 24,
           padding: const EdgeInsets.all(2.0),
           decoration: BoxDecoration(
-            color:
-                isConsented ? AppColors.malachiteColor : AppColors.warningColor,
+            color: consentStatus == ConsentStatus.ACCEPTED
+                ? AppColors.malachiteColor
+                : AppColors.warningColor,
             shape: BoxShape.circle,
           ),
-          child: isConsented
+          child: consentStatus == ConsentStatus.ACCEPTED
               ? const Icon(
                   Icons.done,
                   color: Colors.white,
@@ -37,7 +36,7 @@ class ConsentStatusWidget extends StatelessWidget {
                 ),
         ),
         verySmallHorizontalSizedBox,
-        if (isConsented)
+        if (consentStatus == ConsentStatus.ACCEPTED)
           Text(
             clientConsentedString,
             style: normalSize14Text(

@@ -8,6 +8,7 @@ import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.d
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/staff_state_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/entities/caregiver/caregiver.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/widgets/consent_status_widget.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/widgets/list_card_with_cancel_button.dart';
@@ -56,6 +57,8 @@ class ClientCaregiversWidget extends StatelessWidget {
         final List<Widget> caregiversWidgetList = <Widget>[];
         if (clientCaregivers?.isNotEmpty ?? false) {
           for (final Caregiver? caregiver in clientCaregivers!) {
+            final ConsentStatus consentStatus =
+                caregiver?.consent?.consentStatus ?? ConsentStatus.UNKNOWN;
             caregiversWidgetList.add(
               Padding(
                 padding: const EdgeInsets.only(top: 10.0),
@@ -63,12 +66,15 @@ class ClientCaregiversWidget extends StatelessWidget {
                   title: caregiver?.caregiverUser?.userName ?? '',
                   description:
                       caregiver?.caregiverUser?.primaryContact?.value ?? '',
-                  body: Padding(
-                    padding: const EdgeInsets.only(top: 16.0),
-                    child: ConsentStatusWidget(
-                      isConsented: caregiver?.isConsented ?? false,
-                    ),
-                  ),
+                  body: consentStatus == ConsentStatus.UNKNOWN ||
+                          consentStatus == ConsentStatus.PENDING
+                      ? null
+                      : Padding(
+                          padding: const EdgeInsets.only(top: 16.0),
+                          child: ConsentStatusWidget( 
+                            consentStatus: consentStatus,
+                          ),
+                        ),
                 ),
               ),
             );

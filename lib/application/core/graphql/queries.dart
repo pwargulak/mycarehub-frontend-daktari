@@ -612,20 +612,22 @@ query getCaregiverManagedClients(
   }
 }
 ''';
+
 const String listClientsCaregiversQuery = r'''
-query listClientsCaregivers($clientID: String!, $paginationInput: PaginationsInput){
-  listClientsCaregivers(clientID: $clientID, paginationInput: $paginationInput){
-    clientCaregivers{
-      caregivers{
-        id
-        user{
-          ID
-          Username
-          Name
-          Contacts{
-            contactValue
-          }
+query listClientsCaregivers($clientID: String!, $paginationInput: PaginationsInput) {
+  listClientsCaregivers(clientID: $clientID, paginationInput: $paginationInput) {
+    caregivers {
+      id
+      user {
+        ID
+        Username
+        Name
+        Contacts {
+          contactValue
         }
+      }
+      consent{
+        consentStatus
       }
     }
   }

@@ -60,6 +60,7 @@ class FetchClientCaregiversAction extends ReduxAction<AppState> {
 
     if (processedResponse.ok) {
       final Map<String, dynamic> payLoad = client.toMap(response);
+
       final String? error = parseError(payLoad);
 
       if (error != null) {

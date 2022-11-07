@@ -1051,16 +1051,23 @@ class MockTestGraphQlClient extends IGraphQlClient {
                   'caregivers': <dynamic>[
                     <String, dynamic>{
                       'id': 'testId',
-                      'consented': true,
-                      'user': mockUser,
+                      'consent': <String, dynamic>{'consentStatus': 'ACCEPTED'},
+                      'user': mockUserData,
                       'caregiverNumber': '1234',
                       'isClient': false,
                     },
                     <String, dynamic>{
                       'id': 'testId2',
-                      'consented': false,
-                      'user': mockUser,
-                      'caregiverNumber': '12345',
+                      'consent': <String, dynamic>{'consentStatus': 'PENDING'},
+                      'user': mockUserData,
+                      'caregiverNumber': '123457',
+                      'isClient': true,
+                    },
+                    <String, dynamic>{
+                      'id': 'testId3',
+                      'consent': <String, dynamic>{'consentStatus': 'REJECTED'},
+                      'user': mockUserData,
+                      'caregiverNumber': '123495',
                       'isClient': true,
                     },
                   ],
@@ -1634,6 +1641,12 @@ final Map<String, dynamic> mockUser = <String, dynamic>{
   'acceptedTermsID': 0,
   'suspended': false,
   'avatar': 'UNKNOWN'
+};
+final Map<String, dynamic> mockUserData = <String, dynamic>{
+  'ID': 'testID',
+  'Username': 'test user',
+  'Name': 'test user',
+  'Contacts': <String, dynamic>{'contactValue': '1779185060'}
 };
 
 final Map<String, dynamic> mockLoginUser = <String, dynamic>{

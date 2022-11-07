@@ -106,3 +106,5 @@ enum AnalyticsEventType {
 }
 
 enum QuestionType { SINGLE_CHOICE, MULTIPLE_CHOICE, UNKNOWN }
+
+enum ConsentStatus { ACCEPTED, REJECTED, PENDING, UNKNOWN }

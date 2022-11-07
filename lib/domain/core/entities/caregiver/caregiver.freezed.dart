@@ -28,8 +28,8 @@ mixin _$Caregiver {
   String? get caregiverNumber => throw _privateConstructorUsedError;
   @JsonKey(name: 'isClient')
   bool? get isClient => throw _privateConstructorUsedError;
-  @JsonKey(name: 'consented')
-  bool? get isConsented => throw _privateConstructorUsedError;
+  @JsonKey(name: 'consent')
+  Consent? get consent => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,9 +46,10 @@ abstract class $CaregiverCopyWith<$Res> {
       @JsonKey(name: 'user') UserData? caregiverUser,
       @JsonKey(name: 'caregiverNumber') String? caregiverNumber,
       @JsonKey(name: 'isClient') bool? isClient,
-      @JsonKey(name: 'consented') bool? isConsented});
+      @JsonKey(name: 'consent') Consent? consent});
 
   $UserDataCopyWith<$Res>? get caregiverUser;
+  $ConsentCopyWith<$Res>? get consent;
 }
 
 /// @nodoc
@@ -65,7 +66,7 @@ class _$CaregiverCopyWithImpl<$Res> implements $CaregiverCopyWith<$Res> {
     Object? caregiverUser = freezed,
     Object? caregiverNumber = freezed,
     Object? isClient = freezed,
-    Object? isConsented = freezed,
+    Object? consent = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -84,10 +85,10 @@ class _$CaregiverCopyWithImpl<$Res> implements $CaregiverCopyWith<$Res> {
           ? _value.isClient
           : isClient // ignore: cast_nullable_to_non_nullable
               as bool?,
-      isConsented: isConsented == freezed
-          ? _value.isConsented
-          : isConsented // ignore: cast_nullable_to_non_nullable
-              as bool?,
+      consent: consent == freezed
+          ? _value.consent
+          : consent // ignore: cast_nullable_to_non_nullable
+              as Consent?,
     ));
   }
 
@@ -99,6 +100,17 @@ class _$CaregiverCopyWithImpl<$Res> implements $CaregiverCopyWith<$Res> {
 
     return $UserDataCopyWith<$Res>(_value.caregiverUser!, (value) {
       return _then(_value.copyWith(caregiverUser: value));
+    });
+  }
+
+  @override
+  $ConsentCopyWith<$Res>? get consent {
+    if (_value.consent == null) {
+      return null;
+    }
+
+    return $ConsentCopyWith<$Res>(_value.consent!, (value) {
+      return _then(_value.copyWith(consent: value));
     });
   }
 }
@@ -114,10 +126,12 @@ abstract class _$$_CaregiverCopyWith<$Res> implements $CaregiverCopyWith<$Res> {
       @JsonKey(name: 'user') UserData? caregiverUser,
       @JsonKey(name: 'caregiverNumber') String? caregiverNumber,
       @JsonKey(name: 'isClient') bool? isClient,
-      @JsonKey(name: 'consented') bool? isConsented});
+      @JsonKey(name: 'consent') Consent? consent});
 
   @override
   $UserDataCopyWith<$Res>? get caregiverUser;
+  @override
+  $ConsentCopyWith<$Res>? get consent;
 }
 
 /// @nodoc
@@ -136,7 +150,7 @@ class __$$_CaregiverCopyWithImpl<$Res> extends _$CaregiverCopyWithImpl<$Res>
     Object? caregiverUser = freezed,
     Object? caregiverNumber = freezed,
     Object? isClient = freezed,
-    Object? isConsented = freezed,
+    Object? consent = freezed,
   }) {
     return _then(_$_Caregiver(
       id: id == freezed
@@ -155,10 +169,10 @@ class __$$_CaregiverCopyWithImpl<$Res> extends _$CaregiverCopyWithImpl<$Res>
           ? _value.isClient
           : isClient // ignore: cast_nullable_to_non_nullable
               as bool?,
-      isConsented: isConsented == freezed
-          ? _value.isConsented
-          : isConsented // ignore: cast_nullable_to_non_nullable
-              as bool?,
+      consent: consent == freezed
+          ? _value.consent
+          : consent // ignore: cast_nullable_to_non_nullable
+              as Consent?,
     ));
   }
 }
@@ -171,7 +185,7 @@ class _$_Caregiver implements _Caregiver {
       @JsonKey(name: 'user') this.caregiverUser,
       @JsonKey(name: 'caregiverNumber') this.caregiverNumber,
       @JsonKey(name: 'isClient') this.isClient,
-      @JsonKey(name: 'consented') this.isConsented});
+      @JsonKey(name: 'consent') this.consent});
 
   factory _$_Caregiver.fromJson(Map<String, dynamic> json) =>
       _$$_CaregiverFromJson(json);
@@ -189,12 +203,12 @@ class _$_Caregiver implements _Caregiver {
   @JsonKey(name: 'isClient')
   final bool? isClient;
   @override
-  @JsonKey(name: 'consented')
-  final bool? isConsented;
+  @JsonKey(name: 'consent')
+  final Consent? consent;
 
   @override
   String toString() {
-    return 'Caregiver(id: $id, caregiverUser: $caregiverUser, caregiverNumber: $caregiverNumber, isClient: $isClient, isConsented: $isConsented)';
+    return 'Caregiver(id: $id, caregiverUser: $caregiverUser, caregiverNumber: $caregiverNumber, isClient: $isClient, consent: $consent)';
   }
 
   @override
@@ -208,8 +222,7 @@ class _$_Caregiver implements _Caregiver {
             const DeepCollectionEquality()
                 .equals(other.caregiverNumber, caregiverNumber) &&
             const DeepCollectionEquality().equals(other.isClient, isClient) &&
-            const DeepCollectionEquality()
-                .equals(other.isConsented, isConsented));
+            const DeepCollectionEquality().equals(other.consent, consent));
   }
 
   @JsonKey(ignore: true)
@@ -220,7 +233,7 @@ class _$_Caregiver implements _Caregiver {
       const DeepCollectionEquality().hash(caregiverUser),
       const DeepCollectionEquality().hash(caregiverNumber),
       const DeepCollectionEquality().hash(isClient),
-      const DeepCollectionEquality().hash(isConsented));
+      const DeepCollectionEquality().hash(consent));
 
   @JsonKey(ignore: true)
   @override
@@ -241,7 +254,7 @@ abstract class _Caregiver implements Caregiver {
       @JsonKey(name: 'user') final UserData? caregiverUser,
       @JsonKey(name: 'caregiverNumber') final String? caregiverNumber,
       @JsonKey(name: 'isClient') final bool? isClient,
-      @JsonKey(name: 'consented') final bool? isConsented}) = _$_Caregiver;
+      @JsonKey(name: 'consent') final Consent? consent}) = _$_Caregiver;
 
   factory _Caregiver.fromJson(Map<String, dynamic> json) =
       _$_Caregiver.fromJson;
@@ -259,8 +272,8 @@ abstract class _Caregiver implements Caregiver {
   @JsonKey(name: 'isClient')
   bool? get isClient;
   @override
-  @JsonKey(name: 'consented')
-  bool? get isConsented;
+  @JsonKey(name: 'consent')
+  Consent? get consent;
   @override
   @JsonKey(ignore: true)
   _$$_CaregiverCopyWith<_$_Caregiver> get copyWith =>

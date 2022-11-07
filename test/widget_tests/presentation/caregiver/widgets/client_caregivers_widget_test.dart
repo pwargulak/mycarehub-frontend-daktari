@@ -29,7 +29,7 @@ void main() {
       );
 
       await tester.pumpAndSettle();
-      expect(find.byType(ListCardWithCancelButton), findsNWidgets(2));
+      expect(find.byType(ListCardWithCancelButton), findsNWidgets(3));
     });
 
     testWidgets(
