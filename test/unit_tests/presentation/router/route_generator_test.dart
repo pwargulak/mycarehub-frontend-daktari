@@ -42,6 +42,7 @@ import 'package:prohealth360_daktari/presentation/onboarding/set_nickname/set_ni
 import 'package:prohealth360_daktari/presentation/onboarding/staff/add_new_staff_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/terms/terms_and_conditions_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/verify_phone/pages/verify_phone_page.dart';
+import 'package:prohealth360_daktari/presentation/organization_selection/organization_selection_page.dart';
 import 'package:prohealth360_daktari/presentation/profile/faqs/pages/document_content_widget.dart';
 import 'package:prohealth360_daktari/presentation/profile/pages/edit_information_page.dart';
 import 'package:prohealth360_daktari/presentation/profile/pages/facility_contacts_page.dart';
@@ -702,5 +703,16 @@ void main() {
 
     expect(route, isA<MaterialPageRoute<FacilitySelectionPage>>());
     expect(route?.builder(context), isA<FacilitySelectionPage>());
+  });
+  test('Test router returns successful Organization Selection Page', () {
+    const RouteSettings settings = RouteSettings(
+      name: AppRoutes.organizationSelectionPage,
+    );
+
+    final MaterialPageRoute<OrganizationSelectionPage>? route =
+        routeGenerator(settings) as MaterialPageRoute<OrganizationSelectionPage>?;
+
+    expect(route, isA<MaterialPageRoute<OrganizationSelectionPage>>());
+    expect(route?.builder(context), isA<OrganizationSelectionPage>());
   });
 }

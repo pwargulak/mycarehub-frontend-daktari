@@ -43,6 +43,7 @@ import 'package:prohealth360_daktari/presentation/onboarding/set_nickname/set_ni
 import 'package:prohealth360_daktari/presentation/onboarding/staff/add_new_staff_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/terms/terms_and_conditions_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/verify_phone/pages/verify_phone_page.dart';
+import 'package:prohealth360_daktari/presentation/organization_selection/organization_selection_page.dart';
 import 'package:prohealth360_daktari/presentation/profile/faqs/pages/content_details_page.dart';
 import 'package:prohealth360_daktari/presentation/profile/faqs/pages/document_content_widget.dart';
 import 'package:prohealth360_daktari/presentation/profile/faqs/pages/gallery_images_page.dart';
@@ -583,6 +584,11 @@ class RouteGenerator {
         return MaterialPageRoute<FacilitySelectionPage>(
           builder: (_) => FacilitySelectionPage(),
           settings: const RouteSettings(name: 'Facility selection page'),
+        );
+      case AppRoutes.organizationSelectionPage:
+        return MaterialPageRoute<OrganizationSelectionPage>(
+          builder: (_) => const OrganizationSelectionPage(),
+          settings: const RouteSettings(name: 'Organization Selection Page'),
         );
     }
 

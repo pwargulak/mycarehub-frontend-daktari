@@ -161,3 +161,5 @@ const String faqsImageUrl = 'assets/images/faqs.svg';
 const String workStationChooserImage = 'assets/images/workstation_chooser.svg';
 const String surveysIcon = 'assets/icons/surveys_icon.svg';
 const String serviceRequestIcon = 'assets/icons/service_request_icon.svg';
+
+const String chooseOrganizationSvgPath = 'assets/images/choose_organization.svg';

@@ -1009,3 +1009,16 @@ const String removedFacilitySuccessString = 'Facility removed successfully';
 const String caregiverNumberString = 'Caregiver number: ';
 const String userNameString = 'Username: ';
 const String switchingYourFacility = 'Switching your facility';
+
+// Organization selection
+String getOrganizationDescriptionString(String userName) {
+  return 'Hi $userName! Please select your organization';
+}
+
+// TODO (Eugene)
+///------------PLACEHOLDER STRINGS-----------
+/// The are temporary strings used on the UI and are to be removed once the
+/// APIs have been hooked up.
+const String universityOfNairobiString = 'University of Nairobi';
+const String worldClassHealthString = 'The world class healthcare facility';
+const String myCareHubProgramString = 'The myCareHub program';
