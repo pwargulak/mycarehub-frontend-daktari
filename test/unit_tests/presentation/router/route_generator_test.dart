@@ -49,6 +49,7 @@ import 'package:prohealth360_daktari/presentation/profile/pages/facility_contact
 import 'package:prohealth360_daktari/presentation/profile/pages/settings_page.dart';
 import 'package:prohealth360_daktari/presentation/profile/pages/user_profile_page.dart';
 import 'package:prohealth360_daktari/presentation/resume_with_pin/resume_pin_connector.dart';
+import 'package:prohealth360_daktari/presentation/roles/manage_roles_page.dart';
 import 'package:prohealth360_daktari/presentation/router/route_generator.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:prohealth360_daktari/presentation/search/pages/search_page.dart';
@@ -710,9 +711,21 @@ void main() {
     );
 
     final MaterialPageRoute<OrganizationSelectionPage>? route =
-        routeGenerator(settings) as MaterialPageRoute<OrganizationSelectionPage>?;
+        routeGenerator(settings)
+            as MaterialPageRoute<OrganizationSelectionPage>?;
 
     expect(route, isA<MaterialPageRoute<OrganizationSelectionPage>>());
     expect(route?.builder(context), isA<OrganizationSelectionPage>());
+  });
+  test('Test router returns successful Manage Roles Page', () {
+    const RouteSettings settings = RouteSettings(
+      name: AppRoutes.manageRolesPage,
+    );
+
+    final MaterialPageRoute<ManageRolesPage>? route =
+        routeGenerator(settings) as MaterialPageRoute<ManageRolesPage>?;
+
+    expect(route, isA<MaterialPageRoute<ManageRolesPage>>());
+    expect(route?.builder(context), isA<ManageRolesPage>());
   });
 }

@@ -1015,6 +1015,14 @@ String getOrganizationDescriptionString(String userName) {
   return 'Hi $userName! Please select your organization';
 }
 
+// Roles
+const String manageRolesString = 'Manage roles';
+const String searchRoleString = 'Search for a role using its name';
+const String searchRoleHintString = 'Enter role name...';
+const String mostUsedRolesString = 'Most used roles';
+const String createRoleString = 'Create Role';
+const String tapToViewMoreInfoString = 'Tap to view more info and assign';
+
 // TODO (Eugene)
 ///------------PLACEHOLDER STRINGS-----------
 /// The are temporary strings used on the UI and are to be removed once the
@@ -1022,3 +1030,11 @@ String getOrganizationDescriptionString(String userName) {
 const String universityOfNairobiString = 'University of Nairobi';
 const String worldClassHealthString = 'The world class healthcare facility';
 const String myCareHubProgramString = 'The myCareHub program';
+const String manageClientsString = 'Manage clients';
+const String clientManagementString = 'Client management';
+const String systemAdministratorString = 'System administrator';
+const String everythingAvailableString = 'Everything on the platform is available';
+const String staffManagementString = 'Staff management';
+const String viewAndManageMembersString = 'View and manage staff members';
+const String superAdminString = 'Survey admin';
+const String manageAndSendOutSurveysString = 'Manage and send out surveys on the platform';

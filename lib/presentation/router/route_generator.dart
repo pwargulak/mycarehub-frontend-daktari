@@ -55,6 +55,7 @@ import 'package:prohealth360_daktari/presentation/profile/pages/settings_page.da
 import 'package:prohealth360_daktari/presentation/profile/pages/user_profile_page.dart';
 import 'package:prohealth360_daktari/presentation/profile/widgets/edit_information_item.dart';
 import 'package:prohealth360_daktari/presentation/resume_with_pin/resume_pin_connector.dart';
+import 'package:prohealth360_daktari/presentation/roles/manage_roles_page.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:prohealth360_daktari/presentation/search/pages/search_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/assessment_card_answers_page.dart';
@@ -589,6 +590,11 @@ class RouteGenerator {
         return MaterialPageRoute<OrganizationSelectionPage>(
           builder: (_) => const OrganizationSelectionPage(),
           settings: const RouteSettings(name: 'Organization Selection Page'),
+        );
+      case AppRoutes.manageRolesPage:
+        return MaterialPageRoute<ManageRolesPage>(
+          builder: (_) => const ManageRolesPage(),
+          settings: const RouteSettings(name: 'Manage Roles Page'),
         );
     }
 
