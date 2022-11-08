@@ -20,12 +20,12 @@ class ActionCard extends StatelessWidget {
     this.count = 0,
     required this.iconUrl,
     required this.title,
-    required this.onTap,
+    this.onTap,
     this.backgroundColor = Colors.white,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     final double width = (MediaQuery.of(context).size.width / 2) - 60;
     return GestureDetector(
       onTap: onTap,

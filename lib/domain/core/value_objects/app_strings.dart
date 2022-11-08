@@ -5,6 +5,7 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 const String appName = 'myCareHub Professional';
 const String consumerAppName = 'myCareHub';
 const String adminEmail = 'feedback@prohealth360.org';
+const String adminString = 'Admin';
 
 //Create New Pin Page
 const String confirmPinString = 'Confirm PIN';
@@ -1028,12 +1029,12 @@ const String listOfThingsString =
     'Here is a list for the things someone with the ';
 const String reviewAndAddString =
     ' role can perform. Please review and add or remove permissions as you wish';
-const String saveChangesString =
-    'Save Changes';
-const String deleteRoleString =
-    'Delete role';
+const String saveChangesString = 'Save Changes';
+const String deleteRoleString = 'Delete role';
 const String deleteRoleDescriptionString =
     'This will revoke all permission sets for all users with this role';
+const String manageTenantString = 'Manage Tenants';
+const String manageProgramsString = 'Manage Program';
 
 // TODO (Eugene)
 ///------------PLACEHOLDER STRINGS-----------

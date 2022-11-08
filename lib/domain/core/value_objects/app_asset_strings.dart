@@ -85,8 +85,10 @@ const String closeIconUrl = 'assets/icons/close.png';
 const String closeIconSvg = 'assets/icons/close_icon.svg';
 const String errorIconUrl = 'assets/icons/error.svg';
 const String errorImageSvg = 'assets/images/error_image.svg';
-const String facilityContactWalkieIconSvgPath = 'assets/images/facility_contact_walkie_icon.svg';
-const String facilityContactZeroStateSvgPath = 'assets/images/facility_contact_zero_state.svg';
+const String facilityContactWalkieIconSvgPath =
+    'assets/images/facility_contact_walkie_icon.svg';
+const String facilityContactZeroStateSvgPath =
+    'assets/images/facility_contact_zero_state.svg';
 
 const String callAssistantSvgPath = 'assets/images/call_assistant.svg';
 const String errorPageImageSvgPath = 'assets/images/error_page_image.svg';
@@ -162,4 +164,7 @@ const String workStationChooserImage = 'assets/images/workstation_chooser.svg';
 const String surveysIcon = 'assets/icons/surveys_icon.svg';
 const String serviceRequestIcon = 'assets/icons/service_request_icon.svg';
 
-const String chooseOrganizationSvgPath = 'assets/images/choose_organization.svg';
+const String chooseOrganizationSvgPath =
+    'assets/images/choose_organization.svg';
+const String adminSvgPath = 'assets/images/admin.svg';
+const String manageRolesImage = 'assets/images/manage_roles.svg';
