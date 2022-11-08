@@ -1022,6 +1022,18 @@ const String searchRoleHintString = 'Enter role name...';
 const String mostUsedRolesString = 'Most used roles';
 const String createRoleString = 'Create Role';
 const String tapToViewMoreInfoString = 'Tap to view more info and assign';
+const String permissionsString = 'Permissions';
+const String updateRoleString = 'Update role';
+const String listOfThingsString =
+    'Here is a list for the things someone with the ';
+const String reviewAndAddString =
+    ' role can perform. Please review and add or remove permissions as you wish';
+const String saveChangesString =
+    'Save Changes';
+const String deleteRoleString =
+    'Delete role';
+const String deleteRoleDescriptionString =
+    'This will revoke all permission sets for all users with this role';
 
 // TODO (Eugene)
 ///------------PLACEHOLDER STRINGS-----------
@@ -1033,8 +1045,32 @@ const String myCareHubProgramString = 'The myCareHub program';
 const String manageClientsString = 'Manage clients';
 const String clientManagementString = 'Client management';
 const String systemAdministratorString = 'System administrator';
-const String everythingAvailableString = 'Everything on the platform is available';
+const String everythingAvailableString =
+    'Everything on the platform is available';
 const String staffManagementString = 'Staff management';
 const String viewAndManageMembersString = 'View and manage staff members';
 const String superAdminString = 'Survey admin';
-const String manageAndSendOutSurveysString = 'Manage and send out surveys on the platform';
+const String manageAndSendOutSurveysString =
+    'Manage and send out surveys on the platform';
+final List<Map<String, String>> permissions = <Map<String, String>>[
+  <String, String>{
+    'title': 'Client search',
+    'description':
+        'Search for all clients on the platform using their phone number, nickname or CCC number',
+  },
+  <String, String>{
+    'title': 'Invite to myCareHub',
+    'description':
+        'Invite clients onto the platform. This includes being able to resend client invites ',
+  },
+  <String, String>{
+    'title': 'Deactivate clients',
+    'description':
+        'Deactivate clients so that they are not able to access the platform. The deactivated users will not be able to sign in to the platform',
+  },
+  <String, String>{
+    'title': 'Ban clients',
+    'description':
+        'This allows the user to ban clients on the platform for moderation purposes. A banned user will not be allowed to access the platform',
+  },
+];

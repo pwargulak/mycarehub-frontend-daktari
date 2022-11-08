@@ -131,4 +131,5 @@ class AppRoutes {
   static const String searchCaregiverDetailsPage = '/searchCaregiverDetailsPage';
   static const String organizationSelectionPage = '/organizationSelectionPage';
   static const String manageRolesPage = '/manageRolesPage';
+  static const String updateRolePage = '/updateRolePage';
 }

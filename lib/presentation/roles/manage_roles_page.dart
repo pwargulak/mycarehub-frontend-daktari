@@ -13,6 +13,7 @@ class ManageRolesPage extends StatelessWidget {
     return Scaffold(
       appBar: const CustomAppBar(
         title: manageRolesString,
+        showNotificationIcon: true,
       ),
       body: SingleChildScrollView(
         child: Padding(
