@@ -2,7 +2,9 @@ import 'package:afya_moja_core/afya_moja_core.dart';
 import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
+import 'package:prohealth360_daktari/presentation/roles/widgets/delete_role_dialog.dart';
 import 'package:prohealth360_daktari/presentation/roles/widgets/permission_item_widget.dart';
 
 class UpdateRolePage extends StatelessWidget {
@@ -87,11 +89,18 @@ class UpdateRolePage extends StatelessWidget {
                       style: normalSize16Text(AppColors.greyTextColor),
                     ),
                     size15VerticalSizedBox,
-                    const SizedBox(
+                    SizedBox(
                       width: double.infinity,
                       child: MyAfyaHubPrimaryButton(
+                        buttonKey: deleteButtonKey,
                         buttonColor: AppColors.warningColor,
                         text: deleteRoleString,
+                        onPressed: () => showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return const DeleteRoleDialog();
+                          },
+                        ),
                       ),
                     ),
                   ],
