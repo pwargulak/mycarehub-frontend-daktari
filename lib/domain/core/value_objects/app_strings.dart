@@ -1075,3 +1075,6 @@ final List<Map<String, String>> permissions = <Map<String, String>>[
         'This allows the user to ban clients on the platform for moderation purposes. A banned user will not be allowed to access the platform',
   },
 ];
+
+const String searchRoles = 'Search roles';
+const String manageRolesDescription = 'Search for a role using its name';
