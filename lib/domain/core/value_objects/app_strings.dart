@@ -1036,15 +1036,15 @@ const String deleteRoleDescriptionString =
 const String manageTenantString = 'Manage Tenants';
 const String manageProgramsString = 'Manage Program';
 const String areYouReallySureTitle = 'Are you really sure?';
-const String confirmDeletionSting = 'Please confirm that you want to delete the ';
+const String confirmDeletionSting =
+    'Please confirm that you want to delete the ';
 const String pleaseTypeWordSting = ' Please type the word';
 const String deleteSting = 'DELETE';
 const String belowSting = 'below';
 const String searchRoles = 'Search roles';
 const String cancelString = 'Cancel';
 const String manageRolesDescription = 'Search for a role using its name';
-
-
+const String assignRole = 'Assign role';
 
 // TODO (Eugene)
 ///------------PLACEHOLDER STRINGS-----------

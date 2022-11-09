@@ -134,7 +134,8 @@ const Key bottomNavKey = Key('bottom_nav_key');
 // search
 const Key searchActionCardKey = Key('search_action_card_key');
 const Key clientSearchActionCardKey = Key('clients_search_action_card_key');
-const Key caregiverSearchActionCardKey = Key('caregiver_search_action_card_key');
+const Key caregiverSearchActionCardKey =
+    Key('caregiver_search_action_card_key');
 const Key staffSearchActionCardKey = Key('staff_search_action_card_key');
 const Key inviteStaffButtonKey = Key('invite_staff_button_key');
 const Key reinviteStaffButtonKey = Key('reinvite_staff_button_key');
@@ -162,7 +163,8 @@ const Key resolvedStaffRequestsActionCardKey =
     Key('resolved_staff_requests_action_card_key');
 const Key screeningToolsActionCardKey = Key('screening_tools_action_card_key');
 const Key clientPINResetActionCardKey = Key('client_pin_reset_action_card_key');
-const Key surveysServiceRequestsActionCardKey = Key('surveys_service_requests_action_card_key');
+const Key surveysServiceRequestsActionCardKey =
+    Key('surveys_service_requests_action_card_key');
 const Key staffPINResetActionCardKey = Key('staff_pin_reset_action_card_key');
 const Key lowerBoundKey = Key('lower_bound_key');
 const Key higherBoundKey = Key('higher_bound_key');
@@ -199,3 +201,4 @@ const Key addFacilityButtonKey = Key('add_facility_button_key');
 const Key permissionSwitchKey = Key('permission_switch_key');
 const Key deleteRoleButtonKey = Key('delete_role_button_key');
 const Key deleteButtonKey = Key('delete_button_key');
+const Key assignRoleButtonKey = Key('assign_role_button_key');

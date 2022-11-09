@@ -14,37 +14,40 @@ class RoleListItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(
-        horizontal: 16,
-        vertical: 20,
-      ),
-      decoration: BoxDecoration(
-        color: AppColors.primaryColor.withOpacity(0.15),
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(
-          color: AppColors.primaryColor.withOpacity(0.3),
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 20,
         ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            title,
-            style: veryBoldSize17Text(AppColors.primaryColor),
+        decoration: BoxDecoration(
+          color: AppColors.primaryColor.withOpacity(0.15),
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(
+            color: AppColors.primaryColor.withOpacity(0.3),
           ),
-          size15VerticalSizedBox,
-          Text(
-            description,
-            style: normalSize16Text(AppColors.greyTextColor),
-          ),
-          size15VerticalSizedBox,
-          Text(
-            tapToViewMoreInfoString,
-            style: normalSize16Text(AppColors.greyTextColor.withOpacity(0.5)),
-          ),
-        ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              title,
+              style: veryBoldSize17Text(AppColors.primaryColor),
+            ),
+            size15VerticalSizedBox,
+            Text(
+              description,
+              style: normalSize16Text(AppColors.greyTextColor),
+            ),
+            size15VerticalSizedBox,
+            Text(
+              tapToViewMoreInfoString,
+              style: normalSize16Text(AppColors.greyTextColor.withOpacity(0.5)),
+            ),
+          ],
+        ),
       ),
     );
   }
