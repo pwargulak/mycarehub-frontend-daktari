@@ -201,5 +201,6 @@ const Key addFacilityButtonKey = Key('add_facility_button_key');
 const Key permissionSwitchKey = Key('permission_switch_key');
 const Key deleteRoleButtonKey = Key('delete_role_button_key');
 const Key deleteButtonKey = Key('delete_button_key');
+const Key revokeRoleButtonKey = Key('revoke_role_button_key');
 const Key assignRoleButtonKey = Key('assign_role_button_key');
 const Key createRoleButtonKey = Key('create_role_button_key');

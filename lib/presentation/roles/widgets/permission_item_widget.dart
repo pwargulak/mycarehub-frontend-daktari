@@ -10,11 +10,13 @@ class PermissionItemWidget extends StatefulWidget {
     required this.index,
     required this.description,
     required this.isAssigned,
+    this.updateRole = true,
   });
   final String question;
   final int index;
   final String description;
   final bool isAssigned;
+  final bool updateRole;
 
   @override
   State<PermissionItemWidget> createState() => _PermissionItemWidgetState();
@@ -43,50 +45,51 @@ class _PermissionItemWidgetState extends State<PermissionItemWidget> {
               '${widget.index + 1}. ${widget.question}',
               style: veryBoldSize15Text(AppColors.greyTextColor),
             ),
-            Stack(
-              children: <Widget>[
-                Container(
-                  height: 28,
-                  width: 50,
-                  padding: const EdgeInsets.all(6.0),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context)
-                        .primaryColor
-                        .withOpacity(switchValue ? 1 : 0.1),
-                    border: Border.all(
-                      color: Theme.of(context).primaryColor.withOpacity(
-                            switchValue ? 1 : 0.5,
-                          ),
+            if (widget.updateRole)
+              Stack(
+                children: <Widget>[
+                  Container(
+                    height: 28,
+                    width: 50,
+                    padding: const EdgeInsets.all(6.0),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context)
+                          .primaryColor
+                          .withOpacity(switchValue ? 1 : 0.1),
+                      border: Border.all(
+                        color: Theme.of(context).primaryColor.withOpacity(
+                              switchValue ? 1 : 0.5,
+                            ),
+                      ),
+                      borderRadius: BorderRadius.circular(20),
                     ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Switch(
-                    key: permissionSwitchKey,
-                    value: switchValue,
-                    onChanged: (bool? val) {
-                      if (val != null) {
-                        setState(() {
-                          switchValue = val;
-                        });
-                      }
-                    },
-                    activeTrackColor: Colors.transparent,
-                    inactiveTrackColor: Colors.transparent,
-                    activeColor: AppColors.whiteColor,
-                  ),
-                ),
-                if (switchValue)
-                  const Positioned(
-                    top: 5,
-                    left: 4,
-                    child: Icon(
-                      Icons.check,
-                      size: 18,
-                      color: AppColors.whiteColor,
+                    child: Switch(
+                      key: permissionSwitchKey,
+                      value: switchValue,
+                      onChanged: (bool? val) {
+                        if (val != null) {
+                          setState(() {
+                            switchValue = val;
+                          });
+                        }
+                      },
+                      activeTrackColor: Colors.transparent,
+                      inactiveTrackColor: Colors.transparent,
+                      activeColor: AppColors.whiteColor,
                     ),
                   ),
-              ],
-            ),
+                  if (switchValue)
+                    const Positioned(
+                      top: 5,
+                      left: 4,
+                      child: Icon(
+                        Icons.check,
+                        size: 18,
+                        color: AppColors.whiteColor,
+                      ),
+                    ),
+                ],
+              ),
           ],
         ),
         size15VerticalSizedBox,
