@@ -1038,8 +1038,7 @@ const String manageProgramsString = 'Manage Program';
 const String areYouReallySureTitle = 'Are you really sure?';
 const String confirmDeletionSting =
     'Please confirm that you want to delete the ';
-const String confirmRevokeSting =
-    'Please confirm that you want to revoke the';
+const String confirmRevokeSting = 'Please confirm that you want to revoke the';
 const String pleaseTypeWordSting = ' Please type the word';
 const String deleteSting = 'DELETE';
 const String revokeSting = 'REVOKE';
@@ -1049,9 +1048,15 @@ const String cancelString = 'Cancel';
 const String manageRolesDescription = 'Search for a role using its name';
 const String assignRole = 'Assign role';
 const String revokeRole = 'Revoke role';
-const String revokeRoleDescriptionString = 'This will remove all permission sets for this user and unassign them this role. They will not be able to manage clients after you perform this action';
+const String revokeRoleDescriptionString =
+    'This will remove all permission sets for this user and unassign them this role. They will not be able to manage clients after you perform this action';
 const String userAssignedString = 'This user has been assigned the';
-const String whatUserCanPerformString = 'role. Here is what they can perform on the platform';
+const String whatUserCanPerformString =
+    'role. Here is what they can perform on the platform';
+const String createANewRole = 'Create a new role';
+const String createRoleDescription = 'Add details about your new role';
+const String titleString = 'Title';
+const String description = 'Description';
 
 // TODO (Eugene)
 ///------------PLACEHOLDER STRINGS-----------
