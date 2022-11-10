@@ -78,7 +78,7 @@ void main() {
           ),
         ),
       );
-      final Finder updateButtonFinder = find.byKey(updateRolesButtonKey);
+      final Finder updateButtonFinder = find.byKey(addRoleButtonKey);
       await tester.pumpAndSettle();
       expect(find.byType(SearchDetailsInformationWidget), findsWidgets);
       expect(updateButtonFinder, findsOneWidget);

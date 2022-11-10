@@ -140,7 +140,7 @@ const Key staffSearchActionCardKey = Key('staff_search_action_card_key');
 const Key inviteStaffButtonKey = Key('invite_staff_button_key');
 const Key reinviteStaffButtonKey = Key('reinvite_staff_button_key');
 
-const Key updateRolesButtonKey = Key('update_roles_button_key');
+const Key addRoleButtonKey = Key('add_role_button_key');
 
 //pin request
 const Key signInWithAnotherNumberButtonKey =

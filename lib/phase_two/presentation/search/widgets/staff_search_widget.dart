@@ -14,6 +14,7 @@ import 'package:prohealth360_daktari/domain/core/entities/search_user/search_use
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/search/widgets/linked_facilities_widget.dart';
+import 'package:prohealth360_daktari/presentation/roles/widgets/role_list_item_widget.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:prohealth360_daktari/presentation/search/widgets/active_staff_actions.dart';
 import 'package:prohealth360_daktari/presentation/search/widgets/search_details_information_widget.dart';
@@ -97,39 +98,36 @@ class _StaffSearchWidgetState extends State<StaffSearchWidget> {
                             userRoles,
                             style: boldSize18Text(AppColors.greyTextColor),
                           ),
+                          smallVerticalSizedBox,
                           Wrap(
                             children: roleFields.entries
+                                .where(
+                              (MapEntry<RoleValue, bool> element) =>
+                                  element.key !=
+                                      RoleValue.COMMUNITY_MANAGEMENT &&
+                                  element.key != RoleValue.CONTENT_MANAGEMENT,
+                            )
                                 .map<Widget>((MapEntry<RoleValue, bool> entry) {
-                              return CheckboxListTile(
-                                key: Key(entry.key.name),
-                                activeColor: AppColors.primaryColor,
-                                selectedTileColor: AppColors.primaryColor,
-                                title: Text(
-                                  capitalizeFirst(entry.key.name),
-                                  style:
-                                      normalSize15Text(AppColors.greyTextColor),
+                              return Padding(
+                                padding: const EdgeInsets.only(top: 12.0),
+                                child: RoleListItemWidget(
+                                  title: capitalizeFirst(entry.key.name),
+                                  description:
+                                      permissions[0]['description'] ?? '',
                                 ),
-                                value: entry.value,
-                                onChanged: (bool? value) {
-                                  setState(() {
-                                    roleFields[entry.key] = value ?? false;
-                                  });
-                                },
                               );
                             }).toList(),
                           ),
                           mediumVerticalSizedBox,
-                          Container(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 14.0),
+                          SizedBox(
                             width: double.infinity,
                             child: MyAfyaHubPrimaryButton(
-                              buttonKey: updateRolesButtonKey,
+                              buttonKey: addRoleButtonKey,
                               customChild:
                                   (vm.wait.isWaitingFor(assignRolesFlag))
                                       ? const PlatformLoader()
                                       : Text(
-                                          updateRoles,
+                                          addRoleString,
                                           style: veryBoldSize15Text(
                                             AppColors.whiteColor,
                                           ),

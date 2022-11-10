@@ -650,7 +650,7 @@ const String clientManagement = 'Client management';
 const String contentManagement = 'Content management';
 const String systemAdminstration = 'System administration';
 const String communityManagement = 'Community management';
-const String updateRoles = 'Update roles';
+const String addRoleString = 'Add role';
 
 const String authenticationErrorText = 'Authentication error';
 

@@ -404,63 +404,15 @@ void main() {
         );
 
         await tester.pumpAndSettle();
-        await tester.ensureVisible(find.byKey(updateRolesButtonKey));
+        await tester.ensureVisible(find.byKey(addRoleButtonKey));
 
-        expect(find.byKey(updateRolesButtonKey), findsOneWidget);
+        expect(find.byKey(addRoleButtonKey), findsOneWidget);
         expect(find.byType(SearchDetailsInformationWidget), findsOneWidget);
 
-        await tester.tap(find.byKey(updateRolesButtonKey));
+        await tester.tap(find.byKey(addRoleButtonKey));
         await tester.pumpAndSettle();
 
         expect(find.byType(SnackBar), findsOneWidget);
-      });
-
-      testWidgets('checkboxes work correctly', (WidgetTester tester) async {
-        await buildTestWidget(
-          tester: tester,
-          graphQlClient: MockTestGraphQlClient(),
-          widget: SearchPageDetailView(
-            searchUserResponse: SearchUserResponse.initial(),
-            isClient: false,
-          ),
-        );
-
-        await tester.pumpAndSettle();
-        await tester.ensureVisible(find.byKey(updateRolesButtonKey));
-
-        final Finder clientManagementFinder =
-            find.byKey(Key(RoleValue.CLIENT_MANAGEMENT.name));
-        final Finder contentManagementFinder =
-            find.byKey(Key(RoleValue.CONTENT_MANAGEMENT.name));
-        final Finder systemAdministrationFinder =
-            find.byKey(Key(RoleValue.SYSTEM_ADMINISTRATOR.name));
-        final Finder communityManagementFinder =
-            find.byKey(Key(RoleValue.COMMUNITY_MANAGEMENT.name));
-
-        expect(find.byKey(updateRolesButtonKey), findsOneWidget);
-        expect(clientManagementFinder, findsOneWidget);
-        expect(contentManagementFinder, findsOneWidget);
-        expect(systemAdministrationFinder, findsOneWidget);
-        expect(communityManagementFinder, findsOneWidget);
-
-        await tester.tap(clientManagementFinder);
-        await tester.pumpAndSettle();
-
-        await tester.tap(contentManagementFinder);
-        await tester.pumpAndSettle();
-
-        await tester.tap(systemAdministrationFinder);
-        await tester.pumpAndSettle();
-
-        await tester.tap(communityManagementFinder);
-        await tester.pumpAndSettle();
-
-        expect(find.text(updateRoles), findsOneWidget);
-        await tester.tap(find.text(updateRoles));
-
-        await tester.pumpAndSettle();
-        expect(find.byType(SnackBar), findsOneWidget);
-        expect(find.byType(HomePage), findsOneWidget);
       });
 
       testWidgets('assigning roles fails when api returns an error',
@@ -486,37 +438,10 @@ void main() {
         );
 
         await tester.pumpAndSettle();
-        await tester.ensureVisible(find.byKey(updateRolesButtonKey));
+        await tester.ensureVisible(find.byKey(addRoleButtonKey));
 
-        final Finder clientManagementFinder =
-            find.byKey(Key(RoleValue.CLIENT_MANAGEMENT.name));
-        final Finder contentManagementFinder =
-            find.byKey(Key(RoleValue.CONTENT_MANAGEMENT.name));
-        final Finder systemAdministrationFinder =
-            find.byKey(Key(RoleValue.SYSTEM_ADMINISTRATOR.name));
-        final Finder communityManagementFinder =
-            find.byKey(Key(RoleValue.COMMUNITY_MANAGEMENT.name));
-
-        expect(find.byKey(updateRolesButtonKey), findsOneWidget);
-        expect(clientManagementFinder, findsOneWidget);
-        expect(contentManagementFinder, findsOneWidget);
-        expect(systemAdministrationFinder, findsOneWidget);
-        expect(communityManagementFinder, findsOneWidget);
-
-        await tester.tap(clientManagementFinder);
-        await tester.pumpAndSettle();
-
-        await tester.tap(contentManagementFinder);
-        await tester.pumpAndSettle();
-
-        await tester.tap(systemAdministrationFinder);
-        await tester.pumpAndSettle();
-
-        await tester.tap(communityManagementFinder);
-        await tester.pumpAndSettle();
-
-        expect(find.text(updateRoles), findsOneWidget);
-        await tester.tap(find.text(updateRoles));
+        expect(find.text(addRoleString), findsOneWidget);
+        await tester.tap(find.text(addRoleString));
 
         await tester.pumpAndSettle();
         expect(find.byType(SnackBar), findsOneWidget);
