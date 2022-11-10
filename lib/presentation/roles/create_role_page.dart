@@ -6,6 +6,7 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
+import 'package:prohealth360_daktari/presentation/router/routes.dart';
 
 class CreateRolePage extends StatelessWidget {
   const CreateRolePage({super.key});
@@ -57,8 +58,8 @@ class CreateRolePage extends StatelessWidget {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: SizedBox(
           width: double.infinity,
           height: 48,
@@ -66,6 +67,9 @@ class CreateRolePage extends StatelessWidget {
             buttonKey: createRoleButtonKey,
             borderColor: Colors.transparent,
             text: createRoleString,
+            onPressed: () {
+              Navigator.of(context).pushNamed(AppRoutes.roleCreateSuccessPage);
+            },
           ),
         ),
       ),

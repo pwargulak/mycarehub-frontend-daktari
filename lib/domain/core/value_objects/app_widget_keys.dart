@@ -204,3 +204,4 @@ const Key deleteButtonKey = Key('delete_button_key');
 const Key revokeRoleButtonKey = Key('revoke_role_button_key');
 const Key assignRoleButtonKey = Key('assign_role_button_key');
 const Key createRoleButtonKey = Key('create_role_button_key');
+const Key assignPermissionsButtonKey = Key('assign_permissions_button_key');

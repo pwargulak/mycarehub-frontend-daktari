@@ -1078,6 +1078,10 @@ const String manageAndSendOutSurveysString =
 const String noRoleFound = 'No role found';
 const String noRoleFoundDescription =
     'We could not find a role with that name. Please confirm that the search criteria you entered is correct or tap the button below to create a role';
+const String roleCreatedTitle = 'Role created successfully';
+const String roleCreatedDescription =
+    'The role was created successfully. Tap the button below to assign permissions to your role';
+const String assignPermissions = 'Assign permissions';
 final List<Map<String, String>> permissions = <Map<String, String>>[
   <String, String>{
     'title': 'Client search',

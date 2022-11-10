@@ -15,6 +15,7 @@ import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_respond
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/facility_selection_page.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/search/search_details_view_page.dart';
+import 'package:prohealth360_daktari/presentation/roles/role_created_success_page.dart';
 import 'package:prohealth360_daktari/presentation/roles/role_details_page.dart';
 import 'package:prohealth360_daktari/presentation/roles/create_role_page.dart';
 import 'package:prohealth360_daktari/presentation/roles/search_role_page.dart';
@@ -788,5 +789,15 @@ void main() {
         routeGenerator(settings) as MaterialPageRoute<CreateRolePage>?;
     expect(route, isA<MaterialPageRoute<CreateRolePage>>());
     expect(route?.builder(context), isA<CreateRolePage>());
+  });
+
+  test('Test router returns successful Role Create Success Page', () {
+    const RouteSettings settings = RouteSettings(
+      name: AppRoutes.roleCreateSuccessPage,
+    );
+    final MaterialPageRoute<RoleCreatedSuccessPage>? route =
+        routeGenerator(settings) as MaterialPageRoute<RoleCreatedSuccessPage>?;
+    expect(route, isA<MaterialPageRoute<RoleCreatedSuccessPage>>());
+    expect(route?.builder(context), isA<RoleCreatedSuccessPage>());
   });
 }
