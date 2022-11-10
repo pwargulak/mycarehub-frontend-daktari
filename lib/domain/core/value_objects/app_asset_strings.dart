@@ -168,3 +168,4 @@ const String chooseOrganizationSvgPath =
     'assets/images/choose_organization.svg';
 const String adminSvgPath = 'assets/images/admin.svg';
 const String manageRolesImage = 'assets/images/manage_roles.svg';
+const String roleNotFoundImage = 'assets/images/role_not_found.svg';

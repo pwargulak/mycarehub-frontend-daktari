@@ -1063,6 +1063,9 @@ const String viewAndManageMembersString = 'View and manage staff members';
 const String superAdminString = 'Survey admin';
 const String manageAndSendOutSurveysString =
     'Manage and send out surveys on the platform';
+const String noRoleFound = 'No role found';
+const String noRoleFoundDescription =
+    'We could not find a role with that name. Please confirm that the search criteria you entered is correct or tap the button below to create a role';
 final List<Map<String, String>> permissions = <Map<String, String>>[
   <String, String>{
     'title': 'Client search',

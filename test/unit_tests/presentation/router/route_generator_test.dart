@@ -15,7 +15,7 @@ import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_respond
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/facility_selection_page.dart';
 import 'package:prohealth360_daktari/phase_two/presentation/search/search_details_view_page.dart';
-import 'package:prohealth360_daktari/presentation/admin/search_role_page.dart';
+import 'package:prohealth360_daktari/presentation/roles/search_role_page.dart';
 import 'package:prohealth360_daktari/presentation/caregiver/search_caregiver_details_page.dart';
 import 'package:prohealth360_daktari/presentation/caregiver/search_caregiver_page.dart';
 // Project imports:

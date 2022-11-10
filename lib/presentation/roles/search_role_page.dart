@@ -30,9 +30,7 @@ class SearchRolePage extends StatelessWidget {
               CustomTextField(
                 hintText: searchRoleHintString,
                 prefixIcon: const Padding(
-                  padding: EdgeInsets.only(
-                    right: 4.0,
-                  ),
+                  padding: EdgeInsets.only(right: 4.0),
                   child: IconButton(
                     onPressed: null,
                     icon: Icon(Icons.search),

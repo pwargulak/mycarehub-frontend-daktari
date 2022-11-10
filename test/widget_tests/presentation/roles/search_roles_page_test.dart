@@ -1,7 +1,7 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/presentation/admin/search_role_page.dart';
+import 'package:prohealth360_daktari/presentation/roles/search_role_page.dart';
 import 'package:prohealth360_daktari/presentation/roles/widgets/role_list_item_widget.dart';
 
 import '../../../mocks/mocks.dart';
