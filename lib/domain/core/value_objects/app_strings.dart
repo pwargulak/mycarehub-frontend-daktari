@@ -982,11 +982,11 @@ String getLinkedClientsDescriptionString(String name) {
   return "Here are the clients that $name's is managing";
 }
 
-String welcomeFacilitySelectionDescription(String username) =>
-    'Welcome back $username! Choose your facility';
+String welcomeFacilitySelectionDescription(int count) =>
+    "We've noticed that you're part of $count facilities. Choose which facility you would like to log into. Here are the details";
 
-const String noOfFacilitiesDescription =
-    "We've noticed that you're part of multiple facilities. Choose which facility you would like to log into. Here are the details.";
+const String selectFacilityString = 'Please select your facility';
+
 const String continueString = 'Continue';
 
 const String addCaregiverDescriptionString =

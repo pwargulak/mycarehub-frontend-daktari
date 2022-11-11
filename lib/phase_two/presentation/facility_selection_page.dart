@@ -66,12 +66,6 @@ class FacilitySelectionPage extends StatelessWidget {
                 );
               },
               builder: (BuildContext context, ListFacilitiesViewModel vm) {
-                final String staffFirstName =
-                    StoreProvider.state<AppState>(context)
-                            ?.staffState
-                            ?.user
-                            ?.firstName ??
-                        '';
                 final List<Facility>? facilities = vm.linkedFacilities;
                 final List<Widget> facilitiesWidgetList = <Widget>[];
 
@@ -180,9 +174,7 @@ class FacilitySelectionPage extends StatelessWidget {
                             Column(
                               children: <Widget>[
                                 Text(
-                                  welcomeFacilitySelectionDescription(
-                                    staffFirstName,
-                                  ),
+                                  selectFacilityString,
                                   style: boldSize20Text(
                                     AppColors.primaryColor,
                                   ),
@@ -190,7 +182,9 @@ class FacilitySelectionPage extends StatelessWidget {
                                 ),
                                 smallVerticalSizedBox,
                                 Text(
-                                  noOfFacilitiesDescription,
+                                  welcomeFacilitySelectionDescription(
+                                    facilities?.length ?? 0,
+                                  ),
                                   style: normalSize14Text(
                                     AppColors.unSelectedReactionIconColor,
                                   ),

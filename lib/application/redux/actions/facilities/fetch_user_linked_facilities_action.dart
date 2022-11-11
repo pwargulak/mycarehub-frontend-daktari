@@ -38,7 +38,6 @@ class FetchUserLinkedFacilitiesAction extends ReduxAction<AppState> {
   @override
   void before() {
     super.before();
-
     dispatch(UpdateStaffProfileAction(linkedFacilities: <Facility>[]));
     dispatch(WaitAction<AppState>.add(retrieveFacilityFlag));
   }
