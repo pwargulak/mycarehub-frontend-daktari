@@ -42,26 +42,23 @@ class UpdateStaffProfileAction extends ReduxAction<AppState> {
   AppState reduce() {
     final AppState newState = state.copyWith(
       staffState: state.staffState?.copyWith.call(
-        id: this.id ?? state.staffState?.id,
-        userId: this.userId ?? state.staffState?.userId,
-        active: this.active ?? state.staffState?.active,
-        staffNumber: this.staffNumber ?? state.staffState?.staffNumber,
-        defaultFacility:
-            this.defaultFacility ?? state.staffState?.defaultFacility,
-        facilities: this.facilities ?? state.staffState?.facilities,
+        id: id ?? state.staffState?.id,
+        userId: userId ?? state.staffState?.userId,
+        active: active ?? state.staffState?.active,
+        staffNumber: staffNumber ?? state.staffState?.staffNumber,
+        defaultFacility: defaultFacility ?? state.staffState?.defaultFacility,
+        facilities: facilities ?? state.staffState?.facilities,
         linkedFacilities:
-            this.linkedFacilities ?? state.staffState?.linkedFacilities,
-        clientSharedDiaryEntries: this.healthDiaryEntries ??
-            state.staffState?.clientSharedDiaryEntries,
-        notifications: this.notifications ?? state.staffState?.notifications,
+            linkedFacilities ?? state.staffState?.linkedFacilities,
+        clientSharedDiaryEntries:
+            healthDiaryEntries ?? state.staffState?.clientSharedDiaryEntries,
+        notifications: notifications ?? state.staffState?.notifications,
         defaultFacilityName:
-            this.defaultFacilityName ?? state.staffState?.defaultFacilityName,
-        managedClients: this.managedClients ?? state.staffState?.managedClients,
-        currentFacility:
-            this.currentFacility ?? state.staffState?.currentFacility,
+            defaultFacilityName ?? state.staffState?.defaultFacilityName,
+        managedClients: managedClients ?? state.staffState?.managedClients,
+        currentFacility: currentFacility ?? state.staffState?.currentFacility,
         clientCaregivers:
-            this.clientCaregivers ?? state.staffState?.clientCaregivers,
-            
+            clientCaregivers ?? state.staffState?.clientCaregivers,
       ),
     );
 

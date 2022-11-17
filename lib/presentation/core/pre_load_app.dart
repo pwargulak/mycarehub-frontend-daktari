@@ -222,10 +222,10 @@ class _PreLoadAppState extends State<PreLoadApp> with WidgetsBindingObserver {
         AndroidInitializationSettings(
       '@mipmap/ic_launcher',
     ); //for logo
-    const IOSInitializationSettings iosInit = IOSInitializationSettings();
+    const DarwinInitializationSettings darwinInit = DarwinInitializationSettings();
     const InitializationSettings initSetting = InitializationSettings(
       android: androidInit,
-      iOS: iosInit,
+      iOS: darwinInit,
     );
     flutterLocalNotificationsPlugin.initialize(initSetting);
     const AndroidNotificationDetails androidDetails =
@@ -234,11 +234,11 @@ class _PreLoadAppState extends State<PreLoadApp> with WidgetsBindingObserver {
       'channelName',
       channelDescription: 'channel Description',
     );
-    const IOSNotificationDetails iosDetails = IOSNotificationDetails();
+    const DarwinNotificationDetails darwinDetails = DarwinNotificationDetails();
 
     const NotificationDetails generalNotificationDetails = NotificationDetails(
       android: androidDetails,
-      iOS: iosDetails,
+      iOS: darwinDetails,
     );
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {

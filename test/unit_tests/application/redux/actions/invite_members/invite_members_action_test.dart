@@ -10,6 +10,7 @@ import 'package:prohealth360_daktari/application/redux/actions/update_connectivi
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/connectivity_state.dart';
 import 'package:http/http.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 
 import '../../../../../mocks/mocks.dart';
 
@@ -124,7 +125,7 @@ void main() {
       final TestInfo<AppState> info =
           await storeTester.waitUntil(InviteMembersAction);
 
-      expect(failureMessage, 'connection failure');
+      expect(failureMessage, connectionLostText);
 
       expect(
         info.state,

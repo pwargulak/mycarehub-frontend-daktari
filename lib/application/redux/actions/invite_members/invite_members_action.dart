@@ -11,6 +11,7 @@ import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:http/http.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 /// [InviteMembersAction] is a Redux Action whose job is to invite members to a
@@ -45,7 +46,7 @@ class InviteMembersAction extends ReduxAction<AppState> {
   Future<AppState?> reduce() async {
     final bool hasConnection = state.connectivityState?.isConnected ?? false;
     if (!hasConnection) {
-      onFailure?.call('connection failure');
+      onFailure?.call(connectionLostText);
       return null;
     }
 

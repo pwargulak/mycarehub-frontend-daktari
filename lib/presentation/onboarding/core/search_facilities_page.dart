@@ -35,30 +35,32 @@ class _SearchFacilitiesPageState extends State<SearchFacilitiesPage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    StoreProvider.dispatch(
-      context,
-      SearchFacilitiesAction(
-        client: AppWrapperBase.of(context)!.graphQLClient,
-        onFailure: (String message) {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(
-                content: const Text(
-                  connectionLostText,
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      StoreProvider.dispatch(
+        context,
+        SearchFacilitiesAction(
+          client: AppWrapperBase.of(context)!.graphQLClient,
+          onFailure: (String message) {
+            ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(
+                SnackBar(
+                  content: const Text(
+                    connectionLostText,
+                  ),
+                  duration: const Duration(seconds: 5),
+                  action: dismissSnackBar(
+                    closeString,
+                    Colors.white,
+                    context,
+                  ),
                 ),
-                duration: const Duration(seconds: 5),
-                action: dismissSnackBar(
-                  closeString,
-                  Colors.white,
-                  context,
-                ),
-              ),
-            );
-        },
-        mflCode: facilitySearchCode,
-      ),
-    );
+              );
+          },
+          mflCode: facilitySearchCode,
+        ),
+      );
+    });
   }
 
   @override
@@ -341,8 +343,8 @@ class _SearchFacilitiesPageState extends State<SearchFacilitiesPage> {
                                                 ScaffoldMessenger.of(context)
                                                     .showSnackBar(
                                                   const SnackBar(
-                                                    content:
-                                                        Text(addFacilitySuccessString),
+                                                    content: Text(
+                                                        addFacilitySuccessString,),
                                                     duration: Duration(
                                                       seconds:
                                                           kShortSnackBarDuration,

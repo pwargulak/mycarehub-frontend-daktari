@@ -33,20 +33,22 @@ class _InviteMembersPageState extends State<InviteMembersPage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    StoreProvider.dispatch(
-      context,
-      FetchMembersAction(
-        client: AppWrapperBase.of(context)!.graphQLClient,
-        isSearching: isSearching,
-        memberSearchName: memberSearchName,
-        onFailure: (String message) {
-          showTextSnackbar(
-            ScaffoldMessenger.of(context),
-            content: message,
-          );
-        },
-      ),
-    );
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      StoreProvider.dispatch(
+        context,
+        FetchMembersAction(
+          client: AppWrapperBase.of(context)!.graphQLClient,
+          isSearching: isSearching,
+          memberSearchName: memberSearchName,
+          onFailure: (String message) {
+            showTextSnackbar(
+              ScaffoldMessenger.of(context),
+              content: message,
+            );
+          },
+        ),
+      );
+    });
   }
 
   @override

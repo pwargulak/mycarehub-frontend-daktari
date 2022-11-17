@@ -45,7 +45,7 @@ class DeleteGroupBanner extends StatelessWidget {
             child: OutlinedButton(
               style: OutlinedButton.styleFrom(
                 backgroundColor: warningColor,
-                primary: warningColor,
+                foregroundColor: warningColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
