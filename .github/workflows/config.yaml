@@ -24,7 +24,7 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: "stable"
-          flutter-version: "3.0.4"
+          flutter-version: "3.3.8"
 
       - name: Install flutter dependencies
         run: flutter pub get
@@ -75,7 +75,7 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: "stable"
-          flutter-version: "3.0.4"
+          flutter-version: "3.3.8"
 
 
       - name: Install flutter dependencies
