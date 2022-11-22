@@ -6,8 +6,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/phase_two/presentation/widgets/list_card_with_cancel_button.dart';
 import 'package:prohealth360_daktari/presentation/caregiver/widgets/client_caregivers_widget.dart';
+import 'package:prohealth360_daktari/presentation/search/widgets/list_card_with_cancel_button.dart';
 
 import '../../../../mocks/mocks.dart';
 import '../../../../mocks/test_helpers.dart';

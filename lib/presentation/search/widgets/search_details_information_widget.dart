@@ -16,7 +16,7 @@ class SearchDetailsInformationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final String names = searchUserResponse?.user?.name ?? 'No name';
-
+ 
     final String phoneNumber =
         searchUserResponse?.user?.primaryContact?.value ?? noNumberAvailable;
 

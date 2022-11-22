@@ -4,7 +4,7 @@ import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/domain/core/entities/caregiver/caregiver.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
-import 'package:prohealth360_daktari/phase_two/presentation/search/widgets/linked_facilities_widget.dart';
+import 'package:prohealth360_daktari/presentation/search/widgets/linked_facilities_widget.dart';
 import 'package:prohealth360_daktari/presentation/caregiver/widgets/managed_clients_widget.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
 

@@ -7,14 +7,14 @@ import 'package:prohealth360_daktari/application/redux/actions/search_users/fetc
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/search/search_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
-import 'package:prohealth360_daktari/phase_two/presentation/search/widgets/client_search_widget.dart';
-import 'package:prohealth360_daktari/phase_two/presentation/search/widgets/staff_search_widget.dart';
+import 'package:prohealth360_daktari/presentation/search/widgets/client_search_widget.dart';
+import 'package:prohealth360_daktari/presentation/search/widgets/staff_search_widget.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
 
 class SearchPageDetailView extends StatefulWidget {
   const SearchPageDetailView({
     this.searchUserResponse,
-    this.isClient = true,
+    this.isClient = true, 
   });
 
   final SearchUserResponse? searchUserResponse;

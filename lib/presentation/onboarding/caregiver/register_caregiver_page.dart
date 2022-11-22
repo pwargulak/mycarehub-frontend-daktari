@@ -17,12 +17,12 @@ import 'package:prohealth360_daktari/domain/core/entities/search_user/search_use
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
-import 'package:prohealth360_daktari/phase_two/presentation/widgets/list_card_with_cancel_button.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/core/widgets/search_facility_field.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/caregiver/register_caregiver_form_manager.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/patient/widgets/patient_details_text_form_field.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
+import 'package:prohealth360_daktari/presentation/search/widgets/list_card_with_cancel_button.dart';
 
 class RegisterCaregiverPage extends StatefulWidget {
   const RegisterCaregiverPage({super.key});

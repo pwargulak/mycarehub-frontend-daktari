@@ -13,8 +13,8 @@ import 'package:prohealth360_daktari/domain/core/entities/service_requests/servi
 import 'package:prohealth360_daktari/domain/core/entities/surveys/survey.dart';
 import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_respondent.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
-import 'package:prohealth360_daktari/phase_two/presentation/facility_selection_page.dart';
-import 'package:prohealth360_daktari/phase_two/presentation/search/search_details_view_page.dart';
+import 'package:prohealth360_daktari/presentation/onboarding/facility_selection/facility_selection_page.dart';
+import 'package:prohealth360_daktari/presentation/search/pages/search_details_view_page.dart';
 import 'package:prohealth360_daktari/presentation/roles/role_created_success_page.dart';
 import 'package:prohealth360_daktari/presentation/roles/role_details_page.dart';
 import 'package:prohealth360_daktari/presentation/roles/create_role_page.dart';
@@ -46,7 +46,7 @@ import 'package:prohealth360_daktari/presentation/onboarding/set_nickname/set_ni
 import 'package:prohealth360_daktari/presentation/onboarding/staff/add_new_staff_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/terms/terms_and_conditions_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/verify_phone/pages/verify_phone_page.dart';
-import 'package:prohealth360_daktari/presentation/organization_selection/organization_selection_page.dart';
+import 'package:prohealth360_daktari/presentation/organization_selection/pages/organization_selection_page.dart';
 import 'package:prohealth360_daktari/presentation/profile/faqs/pages/document_content_widget.dart';
 import 'package:prohealth360_daktari/presentation/profile/pages/edit_information_page.dart';
 import 'package:prohealth360_daktari/presentation/profile/pages/facility_contacts_page.dart';

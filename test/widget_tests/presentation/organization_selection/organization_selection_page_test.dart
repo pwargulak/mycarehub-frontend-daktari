@@ -1,8 +1,8 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/phase_two/presentation/widgets/general_workstation_widget.dart';
-import 'package:prohealth360_daktari/presentation/organization_selection/organization_selection_page.dart';
+import 'package:prohealth360_daktari/presentation/organization_selection/pages/organization_selection_page.dart';
+import 'package:prohealth360_daktari/presentation/organization_selection/widgets/general_workstation_widget.dart';
 
 import '../../../mocks/mocks.dart';
 import '../../../mocks/test_helpers.dart';

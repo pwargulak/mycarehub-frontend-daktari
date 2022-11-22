@@ -8,7 +8,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/redux/actions/set_nick_name_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/phase_two/presentation/facility_selection_page.dart';
+import 'package:prohealth360_daktari/presentation/onboarding/facility_selection/facility_selection_page.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 
 import '../../../../../mocks/mocks.dart';

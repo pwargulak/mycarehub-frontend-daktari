@@ -8,7 +8,7 @@ import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.d
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/staff_state_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
-import 'package:prohealth360_daktari/phase_two/presentation/widgets/list_card_with_cancel_button.dart';
+import 'package:prohealth360_daktari/presentation/search/widgets/list_card_with_cancel_button.dart';
 
 class ManagedClientsWidget extends StatelessWidget {
   const ManagedClientsWidget({

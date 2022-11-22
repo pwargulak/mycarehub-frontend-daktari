@@ -7,7 +7,7 @@ import 'package:prohealth360_daktari/application/redux/actions/update_connectivi
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
-import 'package:prohealth360_daktari/phase_two/presentation/facility_selection_page.dart';
+import 'package:prohealth360_daktari/presentation/onboarding/facility_selection/facility_selection_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/set_nickname/set_nickname_page.dart';
 
 import '../../../../mocks/mocks.dart';

@@ -10,8 +10,8 @@ import 'package:prohealth360_daktari/application/redux/view_models/staff_state_v
 import 'package:prohealth360_daktari/domain/core/entities/caregiver/caregiver.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
-import 'package:prohealth360_daktari/phase_two/presentation/widgets/consent_status_widget.dart';
-import 'package:prohealth360_daktari/phase_two/presentation/widgets/list_card_with_cancel_button.dart';
+import 'package:prohealth360_daktari/presentation/organization_selection/widgets/consent_status_widget.dart';
+import 'package:prohealth360_daktari/presentation/search/widgets/list_card_with_cancel_button.dart';
 
 class ClientCaregiversWidget extends StatelessWidget {
   const ClientCaregiversWidget({

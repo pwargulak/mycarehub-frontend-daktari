@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
-import 'package:prohealth360_daktari/phase_two/presentation/widgets/general_workstation_widget.dart';
+import 'package:prohealth360_daktari/presentation/organization_selection/widgets/general_workstation_widget.dart';
 
 class OrganizationSelectionPage extends StatelessWidget {
   const OrganizationSelectionPage({super.key});
@@ -12,7 +12,7 @@ class OrganizationSelectionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+      body: SafeArea( 
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),

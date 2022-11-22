@@ -10,9 +10,9 @@ import 'package:prohealth360_daktari/application/redux/states/connectivity_state
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
-import 'package:prohealth360_daktari/phase_two/presentation/widgets/list_card_with_cancel_button.dart';
 import 'package:prohealth360_daktari/presentation/client_details/widgets/search_client_item.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/caregiver/register_caregiver_page.dart';
+import 'package:prohealth360_daktari/presentation/search/widgets/list_card_with_cancel_button.dart';
 import '../../../../mocks/mocks.dart';
 import '../../../../mocks/test_helpers.dart';
 

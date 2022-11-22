@@ -25,8 +25,8 @@ import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
+import 'package:prohealth360_daktari/presentation/search/widgets/list_card_with_cancel_button.dart';
 
-import 'package:prohealth360_daktari/phase_two/presentation/widgets/list_card_with_cancel_button.dart';
 
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:shared_themes/constants.dart';

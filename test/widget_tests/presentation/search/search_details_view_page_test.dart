@@ -15,17 +15,17 @@ import 'package:prohealth360_daktari/domain/core/entities/search_user/roles_list
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
-import 'package:prohealth360_daktari/phase_two/presentation/search/search_details_view_page.dart';
-import 'package:prohealth360_daktari/phase_two/presentation/search/widgets/client_search_widget.dart';
-import 'package:prohealth360_daktari/phase_two/presentation/search/widgets/staff_search_widget.dart';
+import 'package:prohealth360_daktari/presentation/search/pages/search_details_view_page.dart';
+import 'package:prohealth360_daktari/presentation/search/widgets/client_search_widget.dart';
+import 'package:prohealth360_daktari/presentation/search/widgets/staff_search_widget.dart';
 import 'package:prohealth360_daktari/presentation/engagement/home/pages/home_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/core/search_facilities_page.dart';
 import 'package:prohealth360_daktari/presentation/search/widgets/active_client_actions.dart';
 import 'package:prohealth360_daktari/presentation/search/widgets/active_staff_actions.dart';
 import 'package:prohealth360_daktari/presentation/search/widgets/search_details_information_widget.dart';
 
-import '../../../../mocks/mocks.dart';
-import '../../../../mocks/test_helpers.dart';
+import '../../../mocks/mocks.dart';
+import '../../../mocks/test_helpers.dart';
 
 void main() {
   Store<AppState> store = Store<AppState>(initialState: AppState.initial());

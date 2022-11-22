@@ -10,11 +10,11 @@ import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/roles_list.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
-import 'package:prohealth360_daktari/phase_two/presentation/search/widgets/staff_search_widget.dart';
+import 'package:prohealth360_daktari/presentation/search/widgets/staff_search_widget.dart';
 import 'package:prohealth360_daktari/presentation/search/widgets/search_details_information_widget.dart';
 
-import '../../../../../mocks/mocks.dart';
-import '../../../../../mocks/test_helpers.dart';
+import '../../../mocks/mocks.dart';
+import '../../../mocks/test_helpers.dart';
 
 void main() {
   final Store<AppState> store =

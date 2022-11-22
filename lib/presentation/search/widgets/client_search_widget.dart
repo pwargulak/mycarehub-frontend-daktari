@@ -13,7 +13,7 @@ import 'package:prohealth360_daktari/application/redux/view_models/search/search
 import 'package:prohealth360_daktari/domain/core/entities/health_diary/health_diary_entry.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
-import 'package:prohealth360_daktari/phase_two/presentation/search/widgets/linked_facilities_widget.dart';
+import 'package:prohealth360_daktari/presentation/search/widgets/linked_facilities_widget.dart';
 import 'package:prohealth360_daktari/presentation/caregiver/widgets/client_caregivers_widget.dart';
 import 'package:prohealth360_daktari/presentation/client_details/widgets/health_diary_entry_widget.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';

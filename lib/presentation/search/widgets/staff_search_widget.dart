@@ -13,7 +13,7 @@ import 'package:prohealth360_daktari/domain/core/entities/search_user/roles_list
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
-import 'package:prohealth360_daktari/phase_two/presentation/search/widgets/linked_facilities_widget.dart';
+import 'package:prohealth360_daktari/presentation/search/widgets/linked_facilities_widget.dart';
 import 'package:prohealth360_daktari/presentation/roles/widgets/role_list_item_widget.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:prohealth360_daktari/presentation/search/widgets/active_staff_actions.dart';

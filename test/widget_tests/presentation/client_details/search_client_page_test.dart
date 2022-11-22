@@ -10,7 +10,7 @@ import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.d
 import 'package:prohealth360_daktari/application/redux/actions/search_users/update_search_user_response_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/update_connectivity_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/phase_two/presentation/search/search_details_view_page.dart';
+import 'package:prohealth360_daktari/presentation/search/pages/search_details_view_page.dart';
 import 'package:prohealth360_daktari/presentation/client_details/pages/search_client_page.dart';
 import 'package:prohealth360_daktari/presentation/client_details/widgets/search_user_item.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/patient/register_client_page.dart';

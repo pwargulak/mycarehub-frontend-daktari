@@ -12,13 +12,13 @@ import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/register_client/fetch_facilities_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
-import 'package:prohealth360_daktari/phase_two/presentation/widgets/general_workstation_widget.dart';
-import 'package:prohealth360_daktari/phase_two/presentation/widgets/summary_badge_widget.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
+import 'package:prohealth360_daktari/presentation/organization_selection/widgets/general_workstation_widget.dart';
+import 'package:prohealth360_daktari/presentation/onboarding/facility_selection/widgets/summary_badge_widget.dart';
 
 class FacilitySelectionPage extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     return Scaffold(
       body: SafeArea(
         child: Padding(
