@@ -120,8 +120,6 @@ void main() {
         ),
       );
 
-      expect(failureMessage, '');
-
       final TestInfo<AppState> info =
           await storeTester.waitUntil(InviteMembersAction);
 

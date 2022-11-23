@@ -89,9 +89,6 @@ void main() {
           communityCID: '',
         ),
       );
-
-      expect(error, '');
-
       await storeTester.waitUntil(FetchFlaggedMessagesAction);
 
       expect(error, connectionLostText);

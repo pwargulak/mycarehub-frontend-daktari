@@ -98,8 +98,6 @@ void main() {
         ),
       );
 
-      expect(error, '');
-
       await storeTester.waitUntil(DeleteCommunityMessageAction);
 
       expect(error, connectionLostText);
