@@ -36,31 +36,36 @@ abstract class $SearchServiceRequestResponseCopyWith<$Res> {
   factory $SearchServiceRequestResponseCopyWith(
           SearchServiceRequestResponse value,
           $Res Function(SearchServiceRequestResponse) then) =
-      _$SearchServiceRequestResponseCopyWithImpl<$Res>;
+      _$SearchServiceRequestResponseCopyWithImpl<$Res,
+          SearchServiceRequestResponse>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'searchServiceRequests')
           List<ServiceRequest>? serviceRequests});
 }
 
 /// @nodoc
-class _$SearchServiceRequestResponseCopyWithImpl<$Res>
+class _$SearchServiceRequestResponseCopyWithImpl<$Res,
+        $Val extends SearchServiceRequestResponse>
     implements $SearchServiceRequestResponseCopyWith<$Res> {
   _$SearchServiceRequestResponseCopyWithImpl(this._value, this._then);
 
-  final SearchServiceRequestResponse _value;
   // ignore: unused_field
-  final $Res Function(SearchServiceRequestResponse) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? serviceRequests = freezed,
   }) {
     return _then(_value.copyWith(
-      serviceRequests: serviceRequests == freezed
+      serviceRequests: freezed == serviceRequests
           ? _value.serviceRequests
           : serviceRequests // ignore: cast_nullable_to_non_nullable
               as List<ServiceRequest>?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -72,6 +77,7 @@ abstract class _$$_SearchServiceRequestResponseCopyWith<$Res>
           $Res Function(_$_SearchServiceRequestResponse) then) =
       __$$_SearchServiceRequestResponseCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'searchServiceRequests')
           List<ServiceRequest>? serviceRequests});
@@ -79,23 +85,21 @@ abstract class _$$_SearchServiceRequestResponseCopyWith<$Res>
 
 /// @nodoc
 class __$$_SearchServiceRequestResponseCopyWithImpl<$Res>
-    extends _$SearchServiceRequestResponseCopyWithImpl<$Res>
+    extends _$SearchServiceRequestResponseCopyWithImpl<$Res,
+        _$_SearchServiceRequestResponse>
     implements _$$_SearchServiceRequestResponseCopyWith<$Res> {
   __$$_SearchServiceRequestResponseCopyWithImpl(
       _$_SearchServiceRequestResponse _value,
       $Res Function(_$_SearchServiceRequestResponse) _then)
-      : super(_value, (v) => _then(v as _$_SearchServiceRequestResponse));
+      : super(_value, _then);
 
-  @override
-  _$_SearchServiceRequestResponse get _value =>
-      super._value as _$_SearchServiceRequestResponse;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? serviceRequests = freezed,
   }) {
     return _then(_$_SearchServiceRequestResponse(
-      serviceRequests: serviceRequests == freezed
+      serviceRequests: freezed == serviceRequests
           ? _value._serviceRequests
           : serviceRequests // ignore: cast_nullable_to_non_nullable
               as List<ServiceRequest>?,
@@ -145,6 +149,7 @@ class _$_SearchServiceRequestResponse implements _SearchServiceRequestResponse {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SearchServiceRequestResponseCopyWith<_$_SearchServiceRequestResponse>
       get copyWith => __$$_SearchServiceRequestResponseCopyWithImpl<
           _$_SearchServiceRequestResponse>(this, _$identity);

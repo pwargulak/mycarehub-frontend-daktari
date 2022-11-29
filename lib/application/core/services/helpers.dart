@@ -1,4 +1,3 @@
-import 'package:app_wrapper/app_wrapper.dart' show AppContext, BaseContext;
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_config/flutter_config.dart';
@@ -8,6 +7,8 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_contexts.dart
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/infrastructure/endpoints.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:sghi_core/app_wrapper/base_context.dart';
+import 'package:sghi_core/app_wrapper/enums.dart';
 
 /// This show only exposed the AppContext and BaseContext to prevent conflicts
 /// between the endpoint constants in the library, and the local ones

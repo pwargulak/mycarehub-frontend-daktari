@@ -38,36 +38,41 @@ abstract class $SurveyServiceRequestRespondentsStateCopyWith<$Res> {
   factory $SurveyServiceRequestRespondentsStateCopyWith(
           SurveyServiceRequestRespondentsState value,
           $Res Function(SurveyServiceRequestRespondentsState) then) =
-      _$SurveyServiceRequestRespondentsStateCopyWithImpl<$Res>;
+      _$SurveyServiceRequestRespondentsStateCopyWithImpl<$Res,
+          SurveyServiceRequestRespondentsState>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'users') List<SurveyRespondent?>? surveyRespondents,
       bool? errorFetchingSurveys});
 }
 
 /// @nodoc
-class _$SurveyServiceRequestRespondentsStateCopyWithImpl<$Res>
+class _$SurveyServiceRequestRespondentsStateCopyWithImpl<$Res,
+        $Val extends SurveyServiceRequestRespondentsState>
     implements $SurveyServiceRequestRespondentsStateCopyWith<$Res> {
   _$SurveyServiceRequestRespondentsStateCopyWithImpl(this._value, this._then);
 
-  final SurveyServiceRequestRespondentsState _value;
   // ignore: unused_field
-  final $Res Function(SurveyServiceRequestRespondentsState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? surveyRespondents = freezed,
     Object? errorFetchingSurveys = freezed,
   }) {
     return _then(_value.copyWith(
-      surveyRespondents: surveyRespondents == freezed
+      surveyRespondents: freezed == surveyRespondents
           ? _value.surveyRespondents
           : surveyRespondents // ignore: cast_nullable_to_non_nullable
               as List<SurveyRespondent?>?,
-      errorFetchingSurveys: errorFetchingSurveys == freezed
+      errorFetchingSurveys: freezed == errorFetchingSurveys
           ? _value.errorFetchingSurveys
           : errorFetchingSurveys // ignore: cast_nullable_to_non_nullable
               as bool?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -79,6 +84,7 @@ abstract class _$$_SurveyServiceRequestRespondentsStateCopyWith<$Res>
           $Res Function(_$_SurveyServiceRequestRespondentsState) then) =
       __$$_SurveyServiceRequestRespondentsStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'users') List<SurveyRespondent?>? surveyRespondents,
       bool? errorFetchingSurveys});
@@ -86,29 +92,26 @@ abstract class _$$_SurveyServiceRequestRespondentsStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_SurveyServiceRequestRespondentsStateCopyWithImpl<$Res>
-    extends _$SurveyServiceRequestRespondentsStateCopyWithImpl<$Res>
+    extends _$SurveyServiceRequestRespondentsStateCopyWithImpl<$Res,
+        _$_SurveyServiceRequestRespondentsState>
     implements _$$_SurveyServiceRequestRespondentsStateCopyWith<$Res> {
   __$$_SurveyServiceRequestRespondentsStateCopyWithImpl(
       _$_SurveyServiceRequestRespondentsState _value,
       $Res Function(_$_SurveyServiceRequestRespondentsState) _then)
-      : super(
-            _value, (v) => _then(v as _$_SurveyServiceRequestRespondentsState));
+      : super(_value, _then);
 
-  @override
-  _$_SurveyServiceRequestRespondentsState get _value =>
-      super._value as _$_SurveyServiceRequestRespondentsState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? surveyRespondents = freezed,
     Object? errorFetchingSurveys = freezed,
   }) {
     return _then(_$_SurveyServiceRequestRespondentsState(
-      surveyRespondents: surveyRespondents == freezed
+      surveyRespondents: freezed == surveyRespondents
           ? _value.surveyRespondents
           : surveyRespondents // ignore: cast_nullable_to_non_nullable
               as List<SurveyRespondent?>?,
-      errorFetchingSurveys: errorFetchingSurveys == freezed
+      errorFetchingSurveys: freezed == errorFetchingSurveys
           ? _value.errorFetchingSurveys
           : errorFetchingSurveys // ignore: cast_nullable_to_non_nullable
               as bool?,
@@ -146,8 +149,8 @@ class _$_SurveyServiceRequestRespondentsState
             other is _$_SurveyServiceRequestRespondentsState &&
             const DeepCollectionEquality()
                 .equals(other.surveyRespondents, surveyRespondents) &&
-            const DeepCollectionEquality()
-                .equals(other.errorFetchingSurveys, errorFetchingSurveys));
+            (identical(other.errorFetchingSurveys, errorFetchingSurveys) ||
+                other.errorFetchingSurveys == errorFetchingSurveys));
   }
 
   @JsonKey(ignore: true)
@@ -155,10 +158,11 @@ class _$_SurveyServiceRequestRespondentsState
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(surveyRespondents),
-      const DeepCollectionEquality().hash(errorFetchingSurveys));
+      errorFetchingSurveys);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SurveyServiceRequestRespondentsStateCopyWith<
           _$_SurveyServiceRequestRespondentsState>
       get copyWith => __$$_SurveyServiceRequestRespondentsStateCopyWithImpl<

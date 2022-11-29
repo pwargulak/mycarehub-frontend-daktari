@@ -1,6 +1,6 @@
-import 'package:afya_moja_core/afya_moja_core.dart';
+import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 
-import 'package:app_wrapper/app_wrapper.dart';
+import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 
 import 'package:async_redux/async_redux.dart';
 
@@ -27,9 +27,8 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart'
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/search/widgets/list_card_with_cancel_button.dart';
 
-
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
-import 'package:shared_themes/constants.dart';
+import 'package:sghi_core/shared_themes/constants.dart';
 
 class LinkedFacilitiesWidget extends StatelessWidget {
   const LinkedFacilitiesWidget({

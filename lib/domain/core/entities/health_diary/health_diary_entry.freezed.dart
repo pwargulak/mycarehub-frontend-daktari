@@ -34,31 +34,34 @@ mixin _$HealthDiaryEdge {
 abstract class $HealthDiaryEdgeCopyWith<$Res> {
   factory $HealthDiaryEdgeCopyWith(
           HealthDiaryEdge value, $Res Function(HealthDiaryEdge) then) =
-      _$HealthDiaryEdgeCopyWithImpl<$Res>;
+      _$HealthDiaryEdgeCopyWithImpl<$Res, HealthDiaryEdge>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'getSharedHealthDiaryEntries')
           List<HealthDiaryEntry> healthDiaryEntry});
 }
 
 /// @nodoc
-class _$HealthDiaryEdgeCopyWithImpl<$Res>
+class _$HealthDiaryEdgeCopyWithImpl<$Res, $Val extends HealthDiaryEdge>
     implements $HealthDiaryEdgeCopyWith<$Res> {
   _$HealthDiaryEdgeCopyWithImpl(this._value, this._then);
 
-  final HealthDiaryEdge _value;
   // ignore: unused_field
-  final $Res Function(HealthDiaryEdge) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? healthDiaryEntry = freezed,
+    Object? healthDiaryEntry = null,
   }) {
     return _then(_value.copyWith(
-      healthDiaryEntry: healthDiaryEntry == freezed
+      healthDiaryEntry: null == healthDiaryEntry
           ? _value.healthDiaryEntry
           : healthDiaryEntry // ignore: cast_nullable_to_non_nullable
               as List<HealthDiaryEntry>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -69,6 +72,7 @@ abstract class _$$_HealthDiaryEdgeCopyWith<$Res>
           _$_HealthDiaryEdge value, $Res Function(_$_HealthDiaryEdge) then) =
       __$$_HealthDiaryEdgeCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'getSharedHealthDiaryEntries')
           List<HealthDiaryEntry> healthDiaryEntry});
@@ -76,21 +80,19 @@ abstract class _$$_HealthDiaryEdgeCopyWith<$Res>
 
 /// @nodoc
 class __$$_HealthDiaryEdgeCopyWithImpl<$Res>
-    extends _$HealthDiaryEdgeCopyWithImpl<$Res>
+    extends _$HealthDiaryEdgeCopyWithImpl<$Res, _$_HealthDiaryEdge>
     implements _$$_HealthDiaryEdgeCopyWith<$Res> {
   __$$_HealthDiaryEdgeCopyWithImpl(
       _$_HealthDiaryEdge _value, $Res Function(_$_HealthDiaryEdge) _then)
-      : super(_value, (v) => _then(v as _$_HealthDiaryEdge));
+      : super(_value, _then);
 
-  @override
-  _$_HealthDiaryEdge get _value => super._value as _$_HealthDiaryEdge;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? healthDiaryEntry = freezed,
+    Object? healthDiaryEntry = null,
   }) {
     return _then(_$_HealthDiaryEdge(
-      healthDiaryEntry: healthDiaryEntry == freezed
+      healthDiaryEntry: null == healthDiaryEntry
           ? _value._healthDiaryEntry
           : healthDiaryEntry // ignore: cast_nullable_to_non_nullable
               as List<HealthDiaryEntry>,
@@ -138,6 +140,7 @@ class _$_HealthDiaryEdge implements _HealthDiaryEdge {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_HealthDiaryEdgeCopyWith<_$_HealthDiaryEdge> get copyWith =>
       __$$_HealthDiaryEdgeCopyWithImpl<_$_HealthDiaryEdge>(this, _$identity);
 
@@ -194,7 +197,8 @@ mixin _$HealthDiaryEntry {
 abstract class $HealthDiaryEntryCopyWith<$Res> {
   factory $HealthDiaryEntryCopyWith(
           HealthDiaryEntry value, $Res Function(HealthDiaryEntry) then) =
-      _$HealthDiaryEntryCopyWithImpl<$Res>;
+      _$HealthDiaryEntryCopyWithImpl<$Res, HealthDiaryEntry>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'mood') String? mood,
@@ -204,14 +208,16 @@ abstract class $HealthDiaryEntryCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$HealthDiaryEntryCopyWithImpl<$Res>
+class _$HealthDiaryEntryCopyWithImpl<$Res, $Val extends HealthDiaryEntry>
     implements $HealthDiaryEntryCopyWith<$Res> {
   _$HealthDiaryEntryCopyWithImpl(this._value, this._then);
 
-  final HealthDiaryEntry _value;
   // ignore: unused_field
-  final $Res Function(HealthDiaryEntry) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -221,27 +227,27 @@ class _$HealthDiaryEntryCopyWithImpl<$Res>
     Object? active = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      mood: mood == freezed
+      mood: freezed == mood
           ? _value.mood
           : mood // ignore: cast_nullable_to_non_nullable
               as String?,
-      note: note == freezed
+      note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
-      sharedAt: sharedAt == freezed
+      sharedAt: freezed == sharedAt
           ? _value.sharedAt
           : sharedAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      active: active == freezed
+      active: freezed == active
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
               as bool?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -252,6 +258,7 @@ abstract class _$$_HealthDiaryEntryCopyWith<$Res>
           _$_HealthDiaryEntry value, $Res Function(_$_HealthDiaryEntry) then) =
       __$$_HealthDiaryEntryCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'mood') String? mood,
@@ -262,15 +269,13 @@ abstract class _$$_HealthDiaryEntryCopyWith<$Res>
 
 /// @nodoc
 class __$$_HealthDiaryEntryCopyWithImpl<$Res>
-    extends _$HealthDiaryEntryCopyWithImpl<$Res>
+    extends _$HealthDiaryEntryCopyWithImpl<$Res, _$_HealthDiaryEntry>
     implements _$$_HealthDiaryEntryCopyWith<$Res> {
   __$$_HealthDiaryEntryCopyWithImpl(
       _$_HealthDiaryEntry _value, $Res Function(_$_HealthDiaryEntry) _then)
-      : super(_value, (v) => _then(v as _$_HealthDiaryEntry));
+      : super(_value, _then);
 
-  @override
-  _$_HealthDiaryEntry get _value => super._value as _$_HealthDiaryEntry;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -280,23 +285,23 @@ class __$$_HealthDiaryEntryCopyWithImpl<$Res>
     Object? active = freezed,
   }) {
     return _then(_$_HealthDiaryEntry(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      mood: mood == freezed
+      mood: freezed == mood
           ? _value.mood
           : mood // ignore: cast_nullable_to_non_nullable
               as String?,
-      note: note == freezed
+      note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
-      sharedAt: sharedAt == freezed
+      sharedAt: freezed == sharedAt
           ? _value.sharedAt
           : sharedAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      active: active == freezed
+      active: freezed == active
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
               as bool?,
@@ -343,25 +348,22 @@ class _$_HealthDiaryEntry implements _HealthDiaryEntry {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_HealthDiaryEntry &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.mood, mood) &&
-            const DeepCollectionEquality().equals(other.note, note) &&
-            const DeepCollectionEquality().equals(other.sharedAt, sharedAt) &&
-            const DeepCollectionEquality().equals(other.active, active));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.mood, mood) || other.mood == mood) &&
+            (identical(other.note, note) || other.note == note) &&
+            (identical(other.sharedAt, sharedAt) ||
+                other.sharedAt == sharedAt) &&
+            (identical(other.active, active) || other.active == active));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(mood),
-      const DeepCollectionEquality().hash(note),
-      const DeepCollectionEquality().hash(sharedAt),
-      const DeepCollectionEquality().hash(active));
+  int get hashCode =>
+      Object.hash(runtimeType, id, mood, note, sharedAt, active);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_HealthDiaryEntryCopyWith<_$_HealthDiaryEntry> get copyWith =>
       __$$_HealthDiaryEntryCopyWithImpl<_$_HealthDiaryEntry>(this, _$identity);
 

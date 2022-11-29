@@ -28,33 +28,37 @@ mixin _$DropdownItem {
 abstract class $DropdownItemCopyWith<$Res> {
   factory $DropdownItemCopyWith(
           DropdownItem value, $Res Function(DropdownItem) then) =
-      _$DropdownItemCopyWithImpl<$Res>;
+      _$DropdownItemCopyWithImpl<$Res, DropdownItem>;
+  @useResult
   $Res call({String description, String value});
 }
 
 /// @nodoc
-class _$DropdownItemCopyWithImpl<$Res> implements $DropdownItemCopyWith<$Res> {
+class _$DropdownItemCopyWithImpl<$Res, $Val extends DropdownItem>
+    implements $DropdownItemCopyWith<$Res> {
   _$DropdownItemCopyWithImpl(this._value, this._then);
 
-  final DropdownItem _value;
   // ignore: unused_field
-  final $Res Function(DropdownItem) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? description = freezed,
-    Object? value = freezed,
+    Object? description = null,
+    Object? value = null,
   }) {
     return _then(_value.copyWith(
-      description: description == freezed
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      value: value == freezed
+      value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -65,31 +69,30 @@ abstract class _$$_DropdownItemCopyWith<$Res>
           _$_DropdownItem value, $Res Function(_$_DropdownItem) then) =
       __$$_DropdownItemCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String description, String value});
 }
 
 /// @nodoc
 class __$$_DropdownItemCopyWithImpl<$Res>
-    extends _$DropdownItemCopyWithImpl<$Res>
+    extends _$DropdownItemCopyWithImpl<$Res, _$_DropdownItem>
     implements _$$_DropdownItemCopyWith<$Res> {
   __$$_DropdownItemCopyWithImpl(
       _$_DropdownItem _value, $Res Function(_$_DropdownItem) _then)
-      : super(_value, (v) => _then(v as _$_DropdownItem));
+      : super(_value, _then);
 
-  @override
-  _$_DropdownItem get _value => super._value as _$_DropdownItem;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? description = freezed,
-    Object? value = freezed,
+    Object? description = null,
+    Object? value = null,
   }) {
     return _then(_$_DropdownItem(
-      description: description == freezed
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      value: value == freezed
+      value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as String,
@@ -117,19 +120,17 @@ class _$_DropdownItem implements _DropdownItem {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_DropdownItem &&
-            const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.value, value));
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.value, value) || other.value == value));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(value));
+  int get hashCode => Object.hash(runtimeType, description, value);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_DropdownItemCopyWith<_$_DropdownItem> get copyWith =>
       __$$_DropdownItemCopyWithImpl<_$_DropdownItem>(this, _$identity);
 }

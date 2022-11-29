@@ -33,29 +33,32 @@ mixin _$AssignedClient {
 abstract class $AssignedClientCopyWith<$Res> {
   factory $AssignedClientCopyWith(
           AssignedClient value, $Res Function(AssignedClient) then) =
-      _$AssignedClientCopyWithImpl<$Res>;
+      _$AssignedClientCopyWithImpl<$Res, AssignedClient>;
+  @useResult
   $Res call({@JsonKey(name: 'clientID') String? clientID});
 }
 
 /// @nodoc
-class _$AssignedClientCopyWithImpl<$Res>
+class _$AssignedClientCopyWithImpl<$Res, $Val extends AssignedClient>
     implements $AssignedClientCopyWith<$Res> {
   _$AssignedClientCopyWithImpl(this._value, this._then);
 
-  final AssignedClient _value;
   // ignore: unused_field
-  final $Res Function(AssignedClient) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? clientID = freezed,
   }) {
     return _then(_value.copyWith(
-      clientID: clientID == freezed
+      clientID: freezed == clientID
           ? _value.clientID
           : clientID // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -66,26 +69,25 @@ abstract class _$$_AssignedClientCopyWith<$Res>
           _$_AssignedClient value, $Res Function(_$_AssignedClient) then) =
       __$$_AssignedClientCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({@JsonKey(name: 'clientID') String? clientID});
 }
 
 /// @nodoc
 class __$$_AssignedClientCopyWithImpl<$Res>
-    extends _$AssignedClientCopyWithImpl<$Res>
+    extends _$AssignedClientCopyWithImpl<$Res, _$_AssignedClient>
     implements _$$_AssignedClientCopyWith<$Res> {
   __$$_AssignedClientCopyWithImpl(
       _$_AssignedClient _value, $Res Function(_$_AssignedClient) _then)
-      : super(_value, (v) => _then(v as _$_AssignedClient));
+      : super(_value, _then);
 
-  @override
-  _$_AssignedClient get _value => super._value as _$_AssignedClient;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? clientID = freezed,
   }) {
     return _then(_$_AssignedClient(
-      clientID: clientID == freezed
+      clientID: freezed == clientID
           ? _value.clientID
           : clientID // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -115,16 +117,17 @@ class _$_AssignedClient implements _AssignedClient {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AssignedClient &&
-            const DeepCollectionEquality().equals(other.clientID, clientID));
+            (identical(other.clientID, clientID) ||
+                other.clientID == clientID));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(clientID));
+  int get hashCode => Object.hash(runtimeType, clientID);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AssignedClientCopyWith<_$_AssignedClient> get copyWith =>
       __$$_AssignedClientCopyWithImpl<_$_AssignedClient>(this, _$identity);
 

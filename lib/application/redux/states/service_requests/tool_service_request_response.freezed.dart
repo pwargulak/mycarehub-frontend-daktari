@@ -40,7 +40,9 @@ abstract class $ToolAssessmentRequestResponseCopyWith<$Res> {
   factory $ToolAssessmentRequestResponseCopyWith(
           ToolAssessmentRequestResponse value,
           $Res Function(ToolAssessmentRequestResponse) then) =
-      _$ToolAssessmentRequestResponseCopyWithImpl<$Res>;
+      _$ToolAssessmentRequestResponseCopyWithImpl<$Res,
+          ToolAssessmentRequestResponse>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'serviceRequestID')
           String? serviceRequestID,
@@ -51,14 +53,17 @@ abstract class $ToolAssessmentRequestResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ToolAssessmentRequestResponseCopyWithImpl<$Res>
+class _$ToolAssessmentRequestResponseCopyWithImpl<$Res,
+        $Val extends ToolAssessmentRequestResponse>
     implements $ToolAssessmentRequestResponseCopyWith<$Res> {
   _$ToolAssessmentRequestResponseCopyWithImpl(this._value, this._then);
 
-  final ToolAssessmentRequestResponse _value;
   // ignore: unused_field
-  final $Res Function(ToolAssessmentRequestResponse) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? serviceRequestID = freezed,
@@ -66,19 +71,19 @@ class _$ToolAssessmentRequestResponseCopyWithImpl<$Res>
     Object? questionsResponses = freezed,
   }) {
     return _then(_value.copyWith(
-      serviceRequestID: serviceRequestID == freezed
+      serviceRequestID: freezed == serviceRequestID
           ? _value.serviceRequestID
           : serviceRequestID // ignore: cast_nullable_to_non_nullable
               as String?,
-      phoneNumber: phoneNumber == freezed
+      phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      questionsResponses: questionsResponses == freezed
+      questionsResponses: freezed == questionsResponses
           ? _value.questionsResponses
           : questionsResponses // ignore: cast_nullable_to_non_nullable
               as List<AssessmentQuestionResponse>?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -90,6 +95,7 @@ abstract class _$$_ToolAssessmentRequestResponseCopyWith<$Res>
           $Res Function(_$_ToolAssessmentRequestResponse) then) =
       __$$_ToolAssessmentRequestResponseCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'serviceRequestID')
           String? serviceRequestID,
@@ -101,17 +107,15 @@ abstract class _$$_ToolAssessmentRequestResponseCopyWith<$Res>
 
 /// @nodoc
 class __$$_ToolAssessmentRequestResponseCopyWithImpl<$Res>
-    extends _$ToolAssessmentRequestResponseCopyWithImpl<$Res>
+    extends _$ToolAssessmentRequestResponseCopyWithImpl<$Res,
+        _$_ToolAssessmentRequestResponse>
     implements _$$_ToolAssessmentRequestResponseCopyWith<$Res> {
   __$$_ToolAssessmentRequestResponseCopyWithImpl(
       _$_ToolAssessmentRequestResponse _value,
       $Res Function(_$_ToolAssessmentRequestResponse) _then)
-      : super(_value, (v) => _then(v as _$_ToolAssessmentRequestResponse));
+      : super(_value, _then);
 
-  @override
-  _$_ToolAssessmentRequestResponse get _value =>
-      super._value as _$_ToolAssessmentRequestResponse;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? serviceRequestID = freezed,
@@ -119,15 +123,15 @@ class __$$_ToolAssessmentRequestResponseCopyWithImpl<$Res>
     Object? questionsResponses = freezed,
   }) {
     return _then(_$_ToolAssessmentRequestResponse(
-      serviceRequestID: serviceRequestID == freezed
+      serviceRequestID: freezed == serviceRequestID
           ? _value.serviceRequestID
           : serviceRequestID // ignore: cast_nullable_to_non_nullable
               as String?,
-      phoneNumber: phoneNumber == freezed
+      phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      questionsResponses: questionsResponses == freezed
+      questionsResponses: freezed == questionsResponses
           ? _value.questionsResponses
           : questionsResponses // ignore: cast_nullable_to_non_nullable
               as List<AssessmentQuestionResponse>?,
@@ -168,24 +172,22 @@ class _$_ToolAssessmentRequestResponse
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ToolAssessmentRequestResponse &&
-            const DeepCollectionEquality()
-                .equals(other.serviceRequestID, serviceRequestID) &&
-            const DeepCollectionEquality()
-                .equals(other.phoneNumber, phoneNumber) &&
+            (identical(other.serviceRequestID, serviceRequestID) ||
+                other.serviceRequestID == serviceRequestID) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
             const DeepCollectionEquality()
                 .equals(other.questionsResponses, questionsResponses));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(serviceRequestID),
-      const DeepCollectionEquality().hash(phoneNumber),
+  int get hashCode => Object.hash(runtimeType, serviceRequestID, phoneNumber,
       const DeepCollectionEquality().hash(questionsResponses));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ToolAssessmentRequestResponseCopyWith<_$_ToolAssessmentRequestResponse>
       get copyWith => __$$_ToolAssessmentRequestResponseCopyWithImpl<
           _$_ToolAssessmentRequestResponse>(this, _$identity);

@@ -31,28 +31,32 @@ mixin _$Consent {
 /// @nodoc
 abstract class $ConsentCopyWith<$Res> {
   factory $ConsentCopyWith(Consent value, $Res Function(Consent) then) =
-      _$ConsentCopyWithImpl<$Res>;
+      _$ConsentCopyWithImpl<$Res, Consent>;
+  @useResult
   $Res call({@JsonKey(name: 'consentStatus') ConsentStatus? consentStatus});
 }
 
 /// @nodoc
-class _$ConsentCopyWithImpl<$Res> implements $ConsentCopyWith<$Res> {
+class _$ConsentCopyWithImpl<$Res, $Val extends Consent>
+    implements $ConsentCopyWith<$Res> {
   _$ConsentCopyWithImpl(this._value, this._then);
 
-  final Consent _value;
   // ignore: unused_field
-  final $Res Function(Consent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? consentStatus = freezed,
   }) {
     return _then(_value.copyWith(
-      consentStatus: consentStatus == freezed
+      consentStatus: freezed == consentStatus
           ? _value.consentStatus
           : consentStatus // ignore: cast_nullable_to_non_nullable
               as ConsentStatus?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -62,24 +66,24 @@ abstract class _$$_ConsentCopyWith<$Res> implements $ConsentCopyWith<$Res> {
           _$_Consent value, $Res Function(_$_Consent) then) =
       __$$_ConsentCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({@JsonKey(name: 'consentStatus') ConsentStatus? consentStatus});
 }
 
 /// @nodoc
-class __$$_ConsentCopyWithImpl<$Res> extends _$ConsentCopyWithImpl<$Res>
+class __$$_ConsentCopyWithImpl<$Res>
+    extends _$ConsentCopyWithImpl<$Res, _$_Consent>
     implements _$$_ConsentCopyWith<$Res> {
   __$$_ConsentCopyWithImpl(_$_Consent _value, $Res Function(_$_Consent) _then)
-      : super(_value, (v) => _then(v as _$_Consent));
+      : super(_value, _then);
 
-  @override
-  _$_Consent get _value => super._value as _$_Consent;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? consentStatus = freezed,
   }) {
     return _then(_$_Consent(
-      consentStatus: consentStatus == freezed
+      consentStatus: freezed == consentStatus
           ? _value.consentStatus
           : consentStatus // ignore: cast_nullable_to_non_nullable
               as ConsentStatus?,
@@ -109,17 +113,17 @@ class _$_Consent implements _Consent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Consent &&
-            const DeepCollectionEquality()
-                .equals(other.consentStatus, consentStatus));
+            (identical(other.consentStatus, consentStatus) ||
+                other.consentStatus == consentStatus));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(consentStatus));
+  int get hashCode => Object.hash(runtimeType, consentStatus);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ConsentCopyWith<_$_Consent> get copyWith =>
       __$$_ConsentCopyWithImpl<_$_Consent>(this, _$identity);
 

@@ -37,7 +37,8 @@ mixin _$CreateGroupPayload {
 abstract class $CreateGroupPayloadCopyWith<$Res> {
   factory $CreateGroupPayloadCopyWith(
           CreateGroupPayload value, $Res Function(CreateGroupPayload) then) =
-      _$CreateGroupPayloadCopyWithImpl<$Res>;
+      _$CreateGroupPayloadCopyWithImpl<$Res, CreateGroupPayload>;
+  @useResult
   $Res call(
       {String? name,
       String? description,
@@ -50,14 +51,16 @@ abstract class $CreateGroupPayloadCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CreateGroupPayloadCopyWithImpl<$Res>
+class _$CreateGroupPayloadCopyWithImpl<$Res, $Val extends CreateGroupPayload>
     implements $CreateGroupPayloadCopyWith<$Res> {
   _$CreateGroupPayloadCopyWithImpl(this._value, this._then);
 
-  final CreateGroupPayload _value;
   // ignore: unused_field
-  final $Res Function(CreateGroupPayload) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? name = freezed,
@@ -68,41 +71,42 @@ class _$CreateGroupPayloadCopyWithImpl<$Res>
     Object? inviteOnly = freezed,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      ageRange: ageRange == freezed
+      ageRange: freezed == ageRange
           ? _value.ageRange
           : ageRange // ignore: cast_nullable_to_non_nullable
               as AgeRange?,
-      gender: gender == freezed
+      gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as List<Gender>?,
-      clientType: clientType == freezed
+      clientType: freezed == clientType
           ? _value.clientType
           : clientType // ignore: cast_nullable_to_non_nullable
               as List<ClientType>?,
-      inviteOnly: inviteOnly == freezed
+      inviteOnly: freezed == inviteOnly
           ? _value.inviteOnly
           : inviteOnly // ignore: cast_nullable_to_non_nullable
               as bool?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $AgeRangeCopyWith<$Res>? get ageRange {
     if (_value.ageRange == null) {
       return null;
     }
 
     return $AgeRangeCopyWith<$Res>(_value.ageRange!, (value) {
-      return _then(_value.copyWith(ageRange: value));
+      return _then(_value.copyWith(ageRange: value) as $Val);
     });
   }
 }
@@ -114,6 +118,7 @@ abstract class _$$_CreateGroupPayloadCopyWith<$Res>
           $Res Function(_$_CreateGroupPayload) then) =
       __$$_CreateGroupPayloadCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? name,
       String? description,
@@ -128,15 +133,13 @@ abstract class _$$_CreateGroupPayloadCopyWith<$Res>
 
 /// @nodoc
 class __$$_CreateGroupPayloadCopyWithImpl<$Res>
-    extends _$CreateGroupPayloadCopyWithImpl<$Res>
+    extends _$CreateGroupPayloadCopyWithImpl<$Res, _$_CreateGroupPayload>
     implements _$$_CreateGroupPayloadCopyWith<$Res> {
   __$$_CreateGroupPayloadCopyWithImpl(
       _$_CreateGroupPayload _value, $Res Function(_$_CreateGroupPayload) _then)
-      : super(_value, (v) => _then(v as _$_CreateGroupPayload));
+      : super(_value, _then);
 
-  @override
-  _$_CreateGroupPayload get _value => super._value as _$_CreateGroupPayload;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? name = freezed,
@@ -147,27 +150,27 @@ class __$$_CreateGroupPayloadCopyWithImpl<$Res>
     Object? inviteOnly = freezed,
   }) {
     return _then(_$_CreateGroupPayload(
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      ageRange: ageRange == freezed
+      ageRange: freezed == ageRange
           ? _value.ageRange
           : ageRange // ignore: cast_nullable_to_non_nullable
               as AgeRange?,
-      gender: gender == freezed
+      gender: freezed == gender
           ? _value._gender
           : gender // ignore: cast_nullable_to_non_nullable
               as List<Gender>?,
-      clientType: clientType == freezed
+      clientType: freezed == clientType
           ? _value._clientType
           : clientType // ignore: cast_nullable_to_non_nullable
               as List<ClientType>?,
-      inviteOnly: inviteOnly == freezed
+      inviteOnly: freezed == inviteOnly
           ? _value.inviteOnly
           : inviteOnly // ignore: cast_nullable_to_non_nullable
               as bool?,
@@ -229,30 +232,32 @@ class _$_CreateGroupPayload implements _CreateGroupPayload {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CreateGroupPayload &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.ageRange, ageRange) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.ageRange, ageRange) ||
+                other.ageRange == ageRange) &&
             const DeepCollectionEquality().equals(other._gender, _gender) &&
             const DeepCollectionEquality()
                 .equals(other._clientType, _clientType) &&
-            const DeepCollectionEquality()
-                .equals(other.inviteOnly, inviteOnly));
+            (identical(other.inviteOnly, inviteOnly) ||
+                other.inviteOnly == inviteOnly));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(ageRange),
+      name,
+      description,
+      ageRange,
       const DeepCollectionEquality().hash(_gender),
       const DeepCollectionEquality().hash(_clientType),
-      const DeepCollectionEquality().hash(inviteOnly));
+      inviteOnly);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CreateGroupPayloadCopyWith<_$_CreateGroupPayload> get copyWith =>
       __$$_CreateGroupPayloadCopyWithImpl<_$_CreateGroupPayload>(
           this, _$identity);

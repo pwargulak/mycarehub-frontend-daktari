@@ -49,7 +49,8 @@ mixin _$RegisterStaffPayload {
 abstract class $RegisterStaffPayloadCopyWith<$Res> {
   factory $RegisterStaffPayloadCopyWith(RegisterStaffPayload value,
           $Res Function(RegisterStaffPayload) then) =
-      _$RegisterStaffPayloadCopyWithImpl<$Res>;
+      _$RegisterStaffPayloadCopyWithImpl<$Res, RegisterStaffPayload>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'facility') String? facility,
       @JsonKey(name: 'staffName') String? staffName,
@@ -63,14 +64,17 @@ abstract class $RegisterStaffPayloadCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RegisterStaffPayloadCopyWithImpl<$Res>
+class _$RegisterStaffPayloadCopyWithImpl<$Res,
+        $Val extends RegisterStaffPayload>
     implements $RegisterStaffPayloadCopyWith<$Res> {
   _$RegisterStaffPayloadCopyWithImpl(this._value, this._then);
 
-  final RegisterStaffPayload _value;
   // ignore: unused_field
-  final $Res Function(RegisterStaffPayload) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? facility = freezed,
@@ -84,43 +88,43 @@ class _$RegisterStaffPayloadCopyWithImpl<$Res>
     Object? dateOfBirth = freezed,
   }) {
     return _then(_value.copyWith(
-      facility: facility == freezed
+      facility: freezed == facility
           ? _value.facility
           : facility // ignore: cast_nullable_to_non_nullable
               as String?,
-      staffName: staffName == freezed
+      staffName: freezed == staffName
           ? _value.staffName
           : staffName // ignore: cast_nullable_to_non_nullable
               as String?,
-      gender: gender == freezed
+      gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as Gender?,
-      phoneNumber: phoneNumber == freezed
+      phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      idNumber: idNumber == freezed
+      idNumber: freezed == idNumber
           ? _value.idNumber
           : idNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      staffNumber: staffNumber == freezed
+      staffNumber: freezed == staffNumber
           ? _value.staffNumber
           : staffNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      role: role == freezed
+      role: freezed == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
               as RoleValue?,
-      inviteStaff: inviteStaff == freezed
+      inviteStaff: freezed == inviteStaff
           ? _value.inviteStaff
           : inviteStaff // ignore: cast_nullable_to_non_nullable
               as bool?,
-      dateOfBirth: dateOfBirth == freezed
+      dateOfBirth: freezed == dateOfBirth
           ? _value.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -131,6 +135,7 @@ abstract class _$$_RegisterStaffPayloadCopyWith<$Res>
           $Res Function(_$_RegisterStaffPayload) then) =
       __$$_RegisterStaffPayloadCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'facility') String? facility,
       @JsonKey(name: 'staffName') String? staffName,
@@ -145,15 +150,13 @@ abstract class _$$_RegisterStaffPayloadCopyWith<$Res>
 
 /// @nodoc
 class __$$_RegisterStaffPayloadCopyWithImpl<$Res>
-    extends _$RegisterStaffPayloadCopyWithImpl<$Res>
+    extends _$RegisterStaffPayloadCopyWithImpl<$Res, _$_RegisterStaffPayload>
     implements _$$_RegisterStaffPayloadCopyWith<$Res> {
   __$$_RegisterStaffPayloadCopyWithImpl(_$_RegisterStaffPayload _value,
       $Res Function(_$_RegisterStaffPayload) _then)
-      : super(_value, (v) => _then(v as _$_RegisterStaffPayload));
+      : super(_value, _then);
 
-  @override
-  _$_RegisterStaffPayload get _value => super._value as _$_RegisterStaffPayload;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? facility = freezed,
@@ -167,39 +170,39 @@ class __$$_RegisterStaffPayloadCopyWithImpl<$Res>
     Object? dateOfBirth = freezed,
   }) {
     return _then(_$_RegisterStaffPayload(
-      facility: facility == freezed
+      facility: freezed == facility
           ? _value.facility
           : facility // ignore: cast_nullable_to_non_nullable
               as String?,
-      staffName: staffName == freezed
+      staffName: freezed == staffName
           ? _value.staffName
           : staffName // ignore: cast_nullable_to_non_nullable
               as String?,
-      gender: gender == freezed
+      gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as Gender?,
-      phoneNumber: phoneNumber == freezed
+      phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      idNumber: idNumber == freezed
+      idNumber: freezed == idNumber
           ? _value.idNumber
           : idNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      staffNumber: staffNumber == freezed
+      staffNumber: freezed == staffNumber
           ? _value.staffNumber
           : staffNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      role: role == freezed
+      role: freezed == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
               as RoleValue?,
-      inviteStaff: inviteStaff == freezed
+      inviteStaff: freezed == inviteStaff
           ? _value.inviteStaff
           : inviteStaff // ignore: cast_nullable_to_non_nullable
               as bool?,
-      dateOfBirth: dateOfBirth == freezed
+      dateOfBirth: freezed == dateOfBirth
           ? _value.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
               as DateTime?,
@@ -262,37 +265,32 @@ class _$_RegisterStaffPayload implements _RegisterStaffPayload {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_RegisterStaffPayload &&
-            const DeepCollectionEquality().equals(other.facility, facility) &&
-            const DeepCollectionEquality().equals(other.staffName, staffName) &&
-            const DeepCollectionEquality().equals(other.gender, gender) &&
-            const DeepCollectionEquality()
-                .equals(other.phoneNumber, phoneNumber) &&
-            const DeepCollectionEquality().equals(other.idNumber, idNumber) &&
-            const DeepCollectionEquality()
-                .equals(other.staffNumber, staffNumber) &&
-            const DeepCollectionEquality().equals(other.role, role) &&
-            const DeepCollectionEquality()
-                .equals(other.inviteStaff, inviteStaff) &&
-            const DeepCollectionEquality()
-                .equals(other.dateOfBirth, dateOfBirth));
+            (identical(other.facility, facility) ||
+                other.facility == facility) &&
+            (identical(other.staffName, staffName) ||
+                other.staffName == staffName) &&
+            (identical(other.gender, gender) || other.gender == gender) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.idNumber, idNumber) ||
+                other.idNumber == idNumber) &&
+            (identical(other.staffNumber, staffNumber) ||
+                other.staffNumber == staffNumber) &&
+            (identical(other.role, role) || other.role == role) &&
+            (identical(other.inviteStaff, inviteStaff) ||
+                other.inviteStaff == inviteStaff) &&
+            (identical(other.dateOfBirth, dateOfBirth) ||
+                other.dateOfBirth == dateOfBirth));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(facility),
-      const DeepCollectionEquality().hash(staffName),
-      const DeepCollectionEquality().hash(gender),
-      const DeepCollectionEquality().hash(phoneNumber),
-      const DeepCollectionEquality().hash(idNumber),
-      const DeepCollectionEquality().hash(staffNumber),
-      const DeepCollectionEquality().hash(role),
-      const DeepCollectionEquality().hash(inviteStaff),
-      const DeepCollectionEquality().hash(dateOfBirth));
+  int get hashCode => Object.hash(runtimeType, facility, staffName, gender,
+      phoneNumber, idNumber, staffNumber, role, inviteStaff, dateOfBirth);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_RegisterStaffPayloadCopyWith<_$_RegisterStaffPayload> get copyWith =>
       __$$_RegisterStaffPayloadCopyWithImpl<_$_RegisterStaffPayload>(
           this, _$identity);

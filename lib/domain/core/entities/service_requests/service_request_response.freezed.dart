@@ -39,7 +39,8 @@ mixin _$ServiceRequestResponse {
 abstract class $ServiceRequestResponseCopyWith<$Res> {
   factory $ServiceRequestResponseCopyWith(ServiceRequestResponse value,
           $Res Function(ServiceRequestResponse) then) =
-      _$ServiceRequestResponseCopyWithImpl<$Res>;
+      _$ServiceRequestResponseCopyWithImpl<$Res, ServiceRequestResponse>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'getServiceRequests')
           List<ServiceRequest>? serviceRequests,
@@ -51,14 +52,17 @@ abstract class $ServiceRequestResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ServiceRequestResponseCopyWithImpl<$Res>
+class _$ServiceRequestResponseCopyWithImpl<$Res,
+        $Val extends ServiceRequestResponse>
     implements $ServiceRequestResponseCopyWith<$Res> {
   _$ServiceRequestResponseCopyWithImpl(this._value, this._then);
 
-  final ServiceRequestResponse _value;
   // ignore: unused_field
-  final $Res Function(ServiceRequestResponse) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? serviceRequests = freezed,
@@ -66,22 +70,23 @@ class _$ServiceRequestResponseCopyWithImpl<$Res>
     Object? errorFetchingServiceRequests = freezed,
   }) {
     return _then(_value.copyWith(
-      serviceRequests: serviceRequests == freezed
+      serviceRequests: freezed == serviceRequests
           ? _value.serviceRequests
           : serviceRequests // ignore: cast_nullable_to_non_nullable
               as List<ServiceRequest>?,
-      pendingServiceRequests: pendingServiceRequests == freezed
+      pendingServiceRequests: freezed == pendingServiceRequests
           ? _value.pendingServiceRequests
           : pendingServiceRequests // ignore: cast_nullable_to_non_nullable
               as PendingServiceRequestCount?,
-      errorFetchingServiceRequests: errorFetchingServiceRequests == freezed
+      errorFetchingServiceRequests: freezed == errorFetchingServiceRequests
           ? _value.errorFetchingServiceRequests
           : errorFetchingServiceRequests // ignore: cast_nullable_to_non_nullable
               as bool?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PendingServiceRequestCountCopyWith<$Res>? get pendingServiceRequests {
     if (_value.pendingServiceRequests == null) {
       return null;
@@ -89,7 +94,7 @@ class _$ServiceRequestResponseCopyWithImpl<$Res>
 
     return $PendingServiceRequestCountCopyWith<$Res>(
         _value.pendingServiceRequests!, (value) {
-      return _then(_value.copyWith(pendingServiceRequests: value));
+      return _then(_value.copyWith(pendingServiceRequests: value) as $Val);
     });
   }
 }
@@ -101,6 +106,7 @@ abstract class _$$_ServiceRequestResponseCopyWith<$Res>
           $Res Function(_$_ServiceRequestResponse) then) =
       __$$_ServiceRequestResponseCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'getServiceRequests')
           List<ServiceRequest>? serviceRequests,
@@ -114,16 +120,14 @@ abstract class _$$_ServiceRequestResponseCopyWith<$Res>
 
 /// @nodoc
 class __$$_ServiceRequestResponseCopyWithImpl<$Res>
-    extends _$ServiceRequestResponseCopyWithImpl<$Res>
+    extends _$ServiceRequestResponseCopyWithImpl<$Res,
+        _$_ServiceRequestResponse>
     implements _$$_ServiceRequestResponseCopyWith<$Res> {
   __$$_ServiceRequestResponseCopyWithImpl(_$_ServiceRequestResponse _value,
       $Res Function(_$_ServiceRequestResponse) _then)
-      : super(_value, (v) => _then(v as _$_ServiceRequestResponse));
+      : super(_value, _then);
 
-  @override
-  _$_ServiceRequestResponse get _value =>
-      super._value as _$_ServiceRequestResponse;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? serviceRequests = freezed,
@@ -131,15 +135,15 @@ class __$$_ServiceRequestResponseCopyWithImpl<$Res>
     Object? errorFetchingServiceRequests = freezed,
   }) {
     return _then(_$_ServiceRequestResponse(
-      serviceRequests: serviceRequests == freezed
+      serviceRequests: freezed == serviceRequests
           ? _value._serviceRequests
           : serviceRequests // ignore: cast_nullable_to_non_nullable
               as List<ServiceRequest>?,
-      pendingServiceRequests: pendingServiceRequests == freezed
+      pendingServiceRequests: freezed == pendingServiceRequests
           ? _value.pendingServiceRequests
           : pendingServiceRequests // ignore: cast_nullable_to_non_nullable
               as PendingServiceRequestCount?,
-      errorFetchingServiceRequests: errorFetchingServiceRequests == freezed
+      errorFetchingServiceRequests: freezed == errorFetchingServiceRequests
           ? _value.errorFetchingServiceRequests
           : errorFetchingServiceRequests // ignore: cast_nullable_to_non_nullable
               as bool?,
@@ -189,11 +193,12 @@ class _$_ServiceRequestResponse implements _ServiceRequestResponse {
             other is _$_ServiceRequestResponse &&
             const DeepCollectionEquality()
                 .equals(other._serviceRequests, _serviceRequests) &&
-            const DeepCollectionEquality()
-                .equals(other.pendingServiceRequests, pendingServiceRequests) &&
-            const DeepCollectionEquality().equals(
-                other.errorFetchingServiceRequests,
-                errorFetchingServiceRequests));
+            (identical(other.pendingServiceRequests, pendingServiceRequests) ||
+                other.pendingServiceRequests == pendingServiceRequests) &&
+            (identical(other.errorFetchingServiceRequests,
+                    errorFetchingServiceRequests) ||
+                other.errorFetchingServiceRequests ==
+                    errorFetchingServiceRequests));
   }
 
   @JsonKey(ignore: true)
@@ -201,11 +206,12 @@ class _$_ServiceRequestResponse implements _ServiceRequestResponse {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_serviceRequests),
-      const DeepCollectionEquality().hash(pendingServiceRequests),
-      const DeepCollectionEquality().hash(errorFetchingServiceRequests));
+      pendingServiceRequests,
+      errorFetchingServiceRequests);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ServiceRequestResponseCopyWith<_$_ServiceRequestResponse> get copyWith =>
       __$$_ServiceRequestResponseCopyWithImpl<_$_ServiceRequestResponse>(
           this, _$identity);

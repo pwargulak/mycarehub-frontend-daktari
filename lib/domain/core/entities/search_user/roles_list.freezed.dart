@@ -32,28 +32,32 @@ mixin _$RolesList {
 /// @nodoc
 abstract class $RolesListCopyWith<$Res> {
   factory $RolesListCopyWith(RolesList value, $Res Function(RolesList) then) =
-      _$RolesListCopyWithImpl<$Res>;
+      _$RolesListCopyWithImpl<$Res, RolesList>;
+  @useResult
   $Res call({@JsonKey(name: 'getUserRoles') List<Role>? roles});
 }
 
 /// @nodoc
-class _$RolesListCopyWithImpl<$Res> implements $RolesListCopyWith<$Res> {
+class _$RolesListCopyWithImpl<$Res, $Val extends RolesList>
+    implements $RolesListCopyWith<$Res> {
   _$RolesListCopyWithImpl(this._value, this._then);
 
-  final RolesList _value;
   // ignore: unused_field
-  final $Res Function(RolesList) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? roles = freezed,
   }) {
     return _then(_value.copyWith(
-      roles: roles == freezed
+      roles: freezed == roles
           ? _value.roles
           : roles // ignore: cast_nullable_to_non_nullable
               as List<Role>?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -63,25 +67,25 @@ abstract class _$$_RolesListCopyWith<$Res> implements $RolesListCopyWith<$Res> {
           _$_RolesList value, $Res Function(_$_RolesList) then) =
       __$$_RolesListCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({@JsonKey(name: 'getUserRoles') List<Role>? roles});
 }
 
 /// @nodoc
-class __$$_RolesListCopyWithImpl<$Res> extends _$RolesListCopyWithImpl<$Res>
+class __$$_RolesListCopyWithImpl<$Res>
+    extends _$RolesListCopyWithImpl<$Res, _$_RolesList>
     implements _$$_RolesListCopyWith<$Res> {
   __$$_RolesListCopyWithImpl(
       _$_RolesList _value, $Res Function(_$_RolesList) _then)
-      : super(_value, (v) => _then(v as _$_RolesList));
+      : super(_value, _then);
 
-  @override
-  _$_RolesList get _value => super._value as _$_RolesList;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? roles = freezed,
   }) {
     return _then(_$_RolesList(
-      roles: roles == freezed
+      roles: freezed == roles
           ? _value._roles
           : roles // ignore: cast_nullable_to_non_nullable
               as List<Role>?,
@@ -128,6 +132,7 @@ class _$_RolesList implements _RolesList {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_RolesListCopyWith<_$_RolesList> get copyWith =>
       __$$_RolesListCopyWithImpl<_$_RolesList>(this, _$identity);
 

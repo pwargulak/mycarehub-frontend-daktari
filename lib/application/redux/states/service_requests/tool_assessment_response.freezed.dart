@@ -41,7 +41,8 @@ mixin _$ToolAssessmentResponse {
 abstract class $ToolAssessmentResponseCopyWith<$Res> {
   factory $ToolAssessmentResponseCopyWith(ToolAssessmentResponse value,
           $Res Function(ToolAssessmentResponse) then) =
-      _$ToolAssessmentResponseCopyWithImpl<$Res>;
+      _$ToolAssessmentResponseCopyWithImpl<$Res, ToolAssessmentResponse>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'clientName')
           String? name,
@@ -57,14 +58,17 @@ abstract class $ToolAssessmentResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ToolAssessmentResponseCopyWithImpl<$Res>
+class _$ToolAssessmentResponseCopyWithImpl<$Res,
+        $Val extends ToolAssessmentResponse>
     implements $ToolAssessmentResponseCopyWith<$Res> {
   _$ToolAssessmentResponseCopyWithImpl(this._value, this._then);
 
-  final ToolAssessmentResponse _value;
   // ignore: unused_field
-  final $Res Function(ToolAssessmentResponse) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? name = freezed,
@@ -73,26 +77,27 @@ class _$ToolAssessmentResponseCopyWithImpl<$Res>
     Object? toolAssessmentRequestResponse = freezed,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      date: date == freezed
+      date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String?,
-      clientID: clientID == freezed
+      clientID: freezed == clientID
           ? _value.clientID
           : clientID // ignore: cast_nullable_to_non_nullable
               as String?,
-      toolAssessmentRequestResponse: toolAssessmentRequestResponse == freezed
+      toolAssessmentRequestResponse: freezed == toolAssessmentRequestResponse
           ? _value.toolAssessmentRequestResponse
           : toolAssessmentRequestResponse // ignore: cast_nullable_to_non_nullable
               as ToolAssessmentRequestResponse?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ToolAssessmentRequestResponseCopyWith<$Res>?
       get toolAssessmentRequestResponse {
     if (_value.toolAssessmentRequestResponse == null) {
@@ -101,7 +106,8 @@ class _$ToolAssessmentResponseCopyWithImpl<$Res>
 
     return $ToolAssessmentRequestResponseCopyWith<$Res>(
         _value.toolAssessmentRequestResponse!, (value) {
-      return _then(_value.copyWith(toolAssessmentRequestResponse: value));
+      return _then(
+          _value.copyWith(toolAssessmentRequestResponse: value) as $Val);
     });
   }
 }
@@ -113,6 +119,7 @@ abstract class _$$_ToolAssessmentResponseCopyWith<$Res>
           $Res Function(_$_ToolAssessmentResponse) then) =
       __$$_ToolAssessmentResponseCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'clientName')
           String? name,
@@ -130,16 +137,14 @@ abstract class _$$_ToolAssessmentResponseCopyWith<$Res>
 
 /// @nodoc
 class __$$_ToolAssessmentResponseCopyWithImpl<$Res>
-    extends _$ToolAssessmentResponseCopyWithImpl<$Res>
+    extends _$ToolAssessmentResponseCopyWithImpl<$Res,
+        _$_ToolAssessmentResponse>
     implements _$$_ToolAssessmentResponseCopyWith<$Res> {
   __$$_ToolAssessmentResponseCopyWithImpl(_$_ToolAssessmentResponse _value,
       $Res Function(_$_ToolAssessmentResponse) _then)
-      : super(_value, (v) => _then(v as _$_ToolAssessmentResponse));
+      : super(_value, _then);
 
-  @override
-  _$_ToolAssessmentResponse get _value =>
-      super._value as _$_ToolAssessmentResponse;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? name = freezed,
@@ -148,19 +153,19 @@ class __$$_ToolAssessmentResponseCopyWithImpl<$Res>
     Object? toolAssessmentRequestResponse = freezed,
   }) {
     return _then(_$_ToolAssessmentResponse(
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      date: date == freezed
+      date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
               as String?,
-      clientID: clientID == freezed
+      clientID: freezed == clientID
           ? _value.clientID
           : clientID // ignore: cast_nullable_to_non_nullable
               as String?,
-      toolAssessmentRequestResponse: toolAssessmentRequestResponse == freezed
+      toolAssessmentRequestResponse: freezed == toolAssessmentRequestResponse
           ? _value.toolAssessmentRequestResponse
           : toolAssessmentRequestResponse // ignore: cast_nullable_to_non_nullable
               as ToolAssessmentRequestResponse?,
@@ -207,25 +212,24 @@ class _$_ToolAssessmentResponse implements _ToolAssessmentResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ToolAssessmentResponse &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.date, date) &&
-            const DeepCollectionEquality().equals(other.clientID, clientID) &&
-            const DeepCollectionEquality().equals(
-                other.toolAssessmentRequestResponse,
-                toolAssessmentRequestResponse));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.clientID, clientID) ||
+                other.clientID == clientID) &&
+            (identical(other.toolAssessmentRequestResponse,
+                    toolAssessmentRequestResponse) ||
+                other.toolAssessmentRequestResponse ==
+                    toolAssessmentRequestResponse));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(date),
-      const DeepCollectionEquality().hash(clientID),
-      const DeepCollectionEquality().hash(toolAssessmentRequestResponse));
+      runtimeType, name, date, clientID, toolAssessmentRequestResponse);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ToolAssessmentResponseCopyWith<_$_ToolAssessmentResponse> get copyWith =>
       __$$_ToolAssessmentResponseCopyWithImpl<_$_ToolAssessmentResponse>(
           this, _$identity);

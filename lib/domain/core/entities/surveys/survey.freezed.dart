@@ -35,7 +35,8 @@ mixin _$Survey {
 /// @nodoc
 abstract class $SurveyCopyWith<$Res> {
   factory $SurveyCopyWith(Survey value, $Res Function(Survey) then) =
-      _$SurveyCopyWithImpl<$Res>;
+      _$SurveyCopyWithImpl<$Res, Survey>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'projectId') int? projectId,
       @JsonKey(name: 'xmlFormId') String? xmlFormId,
@@ -43,13 +44,16 @@ abstract class $SurveyCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SurveyCopyWithImpl<$Res> implements $SurveyCopyWith<$Res> {
+class _$SurveyCopyWithImpl<$Res, $Val extends Survey>
+    implements $SurveyCopyWith<$Res> {
   _$SurveyCopyWithImpl(this._value, this._then);
 
-  final Survey _value;
   // ignore: unused_field
-  final $Res Function(Survey) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? projectId = freezed,
@@ -57,19 +61,19 @@ class _$SurveyCopyWithImpl<$Res> implements $SurveyCopyWith<$Res> {
     Object? name = freezed,
   }) {
     return _then(_value.copyWith(
-      projectId: projectId == freezed
+      projectId: freezed == projectId
           ? _value.projectId
           : projectId // ignore: cast_nullable_to_non_nullable
               as int?,
-      xmlFormId: xmlFormId == freezed
+      xmlFormId: freezed == xmlFormId
           ? _value.xmlFormId
           : xmlFormId // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -78,6 +82,7 @@ abstract class _$$_SurveyCopyWith<$Res> implements $SurveyCopyWith<$Res> {
   factory _$$_SurveyCopyWith(_$_Survey value, $Res Function(_$_Survey) then) =
       __$$_SurveyCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'projectId') int? projectId,
       @JsonKey(name: 'xmlFormId') String? xmlFormId,
@@ -85,14 +90,13 @@ abstract class _$$_SurveyCopyWith<$Res> implements $SurveyCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SurveyCopyWithImpl<$Res> extends _$SurveyCopyWithImpl<$Res>
+class __$$_SurveyCopyWithImpl<$Res>
+    extends _$SurveyCopyWithImpl<$Res, _$_Survey>
     implements _$$_SurveyCopyWith<$Res> {
   __$$_SurveyCopyWithImpl(_$_Survey _value, $Res Function(_$_Survey) _then)
-      : super(_value, (v) => _then(v as _$_Survey));
+      : super(_value, _then);
 
-  @override
-  _$_Survey get _value => super._value as _$_Survey;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? projectId = freezed,
@@ -100,15 +104,15 @@ class __$$_SurveyCopyWithImpl<$Res> extends _$SurveyCopyWithImpl<$Res>
     Object? name = freezed,
   }) {
     return _then(_$_Survey(
-      projectId: projectId == freezed
+      projectId: freezed == projectId
           ? _value.projectId
           : projectId // ignore: cast_nullable_to_non_nullable
               as int?,
-      xmlFormId: xmlFormId == freezed
+      xmlFormId: freezed == xmlFormId
           ? _value.xmlFormId
           : xmlFormId // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -147,21 +151,20 @@ class _$_Survey implements _Survey {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Survey &&
-            const DeepCollectionEquality().equals(other.projectId, projectId) &&
-            const DeepCollectionEquality().equals(other.xmlFormId, xmlFormId) &&
-            const DeepCollectionEquality().equals(other.name, name));
+            (identical(other.projectId, projectId) ||
+                other.projectId == projectId) &&
+            (identical(other.xmlFormId, xmlFormId) ||
+                other.xmlFormId == xmlFormId) &&
+            (identical(other.name, name) || other.name == name));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(projectId),
-      const DeepCollectionEquality().hash(xmlFormId),
-      const DeepCollectionEquality().hash(name));
+  int get hashCode => Object.hash(runtimeType, projectId, xmlFormId, name);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SurveyCopyWith<_$_Survey> get copyWith =>
       __$$_SurveyCopyWithImpl<_$_Survey>(this, _$identity);
 

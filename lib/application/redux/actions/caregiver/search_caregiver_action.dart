@@ -1,8 +1,7 @@
 import 'dart:async';
 
-import 'package:afya_moja_core/afya_moja_core.dart';
+import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
-import 'package:flutter_graphql_client/graph_client.dart';
 import 'package:prohealth360_daktari/application/core/graphql/queries.dart';
 import 'package:prohealth360_daktari/application/redux/actions/caregiver/update_caregiver_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
@@ -12,6 +11,7 @@ import 'package:prohealth360_daktari/domain/core/entities/caregiver/search_careg
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:sghi_core/flutter_graphql_client/i_flutter_graphql_client.dart';
 
 class SearchCaregiversAction extends ReduxAction<AppState> {
   final IGraphQlClient client;

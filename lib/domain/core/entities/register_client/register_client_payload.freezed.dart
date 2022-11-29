@@ -52,7 +52,8 @@ mixin _$RegisterClientPayload {
 abstract class $RegisterClientPayloadCopyWith<$Res> {
   factory $RegisterClientPayloadCopyWith(RegisterClientPayload value,
           $Res Function(RegisterClientPayload) then) =
-      _$RegisterClientPayloadCopyWithImpl<$Res>;
+      _$RegisterClientPayloadCopyWithImpl<$Res, RegisterClientPayload>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'facility')
           String? facility,
@@ -77,14 +78,17 @@ abstract class $RegisterClientPayloadCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RegisterClientPayloadCopyWithImpl<$Res>
+class _$RegisterClientPayloadCopyWithImpl<$Res,
+        $Val extends RegisterClientPayload>
     implements $RegisterClientPayloadCopyWith<$Res> {
   _$RegisterClientPayloadCopyWithImpl(this._value, this._then);
 
-  final RegisterClientPayload _value;
   // ignore: unused_field
-  final $Res Function(RegisterClientPayload) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? facility = freezed,
@@ -99,47 +103,47 @@ class _$RegisterClientPayloadCopyWithImpl<$Res>
     Object? inviteClient = freezed,
   }) {
     return _then(_value.copyWith(
-      facility: facility == freezed
+      facility: freezed == facility
           ? _value.facility
           : facility // ignore: cast_nullable_to_non_nullable
               as String?,
-      clientTypes: clientTypes == freezed
+      clientTypes: freezed == clientTypes
           ? _value.clientTypes
           : clientTypes // ignore: cast_nullable_to_non_nullable
               as List<ClientType>?,
-      clientName: clientName == freezed
+      clientName: freezed == clientName
           ? _value.clientName
           : clientName // ignore: cast_nullable_to_non_nullable
               as String?,
-      gender: gender == freezed
+      gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as Gender?,
-      dateOfBirth: dateOfBirth == freezed
+      dateOfBirth: freezed == dateOfBirth
           ? _value.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      phoneNumber: phoneNumber == freezed
+      phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      enrollmentDate: enrollmentDate == freezed
+      enrollmentDate: freezed == enrollmentDate
           ? _value.enrollmentDate
           : enrollmentDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      cccNumber: cccNumber == freezed
+      cccNumber: freezed == cccNumber
           ? _value.cccNumber
           : cccNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      counselled: counselled == freezed
+      counselled: freezed == counselled
           ? _value.counselled
           : counselled // ignore: cast_nullable_to_non_nullable
               as bool?,
-      inviteClient: inviteClient == freezed
+      inviteClient: freezed == inviteClient
           ? _value.inviteClient
           : inviteClient // ignore: cast_nullable_to_non_nullable
               as bool?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -150,6 +154,7 @@ abstract class _$$_RegisterClientPayloadCopyWith<$Res>
           $Res Function(_$_RegisterClientPayload) then) =
       __$$_RegisterClientPayloadCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'facility')
           String? facility,
@@ -175,16 +180,13 @@ abstract class _$$_RegisterClientPayloadCopyWith<$Res>
 
 /// @nodoc
 class __$$_RegisterClientPayloadCopyWithImpl<$Res>
-    extends _$RegisterClientPayloadCopyWithImpl<$Res>
+    extends _$RegisterClientPayloadCopyWithImpl<$Res, _$_RegisterClientPayload>
     implements _$$_RegisterClientPayloadCopyWith<$Res> {
   __$$_RegisterClientPayloadCopyWithImpl(_$_RegisterClientPayload _value,
       $Res Function(_$_RegisterClientPayload) _then)
-      : super(_value, (v) => _then(v as _$_RegisterClientPayload));
+      : super(_value, _then);
 
-  @override
-  _$_RegisterClientPayload get _value =>
-      super._value as _$_RegisterClientPayload;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? facility = freezed,
@@ -199,43 +201,43 @@ class __$$_RegisterClientPayloadCopyWithImpl<$Res>
     Object? inviteClient = freezed,
   }) {
     return _then(_$_RegisterClientPayload(
-      facility: facility == freezed
+      facility: freezed == facility
           ? _value.facility
           : facility // ignore: cast_nullable_to_non_nullable
               as String?,
-      clientTypes: clientTypes == freezed
+      clientTypes: freezed == clientTypes
           ? _value._clientTypes
           : clientTypes // ignore: cast_nullable_to_non_nullable
               as List<ClientType>?,
-      clientName: clientName == freezed
+      clientName: freezed == clientName
           ? _value.clientName
           : clientName // ignore: cast_nullable_to_non_nullable
               as String?,
-      gender: gender == freezed
+      gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as Gender?,
-      dateOfBirth: dateOfBirth == freezed
+      dateOfBirth: freezed == dateOfBirth
           ? _value.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      phoneNumber: phoneNumber == freezed
+      phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      enrollmentDate: enrollmentDate == freezed
+      enrollmentDate: freezed == enrollmentDate
           ? _value.enrollmentDate
           : enrollmentDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      cccNumber: cccNumber == freezed
+      cccNumber: freezed == cccNumber
           ? _value.cccNumber
           : cccNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      counselled: counselled == freezed
+      counselled: freezed == counselled
           ? _value.counselled
           : counselled // ignore: cast_nullable_to_non_nullable
               as bool?,
-      inviteClient: inviteClient == freezed
+      inviteClient: freezed == inviteClient
           ? _value.inviteClient
           : inviteClient // ignore: cast_nullable_to_non_nullable
               as bool?,
@@ -310,42 +312,45 @@ class _$_RegisterClientPayload implements _RegisterClientPayload {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_RegisterClientPayload &&
-            const DeepCollectionEquality().equals(other.facility, facility) &&
+            (identical(other.facility, facility) ||
+                other.facility == facility) &&
             const DeepCollectionEquality()
                 .equals(other._clientTypes, _clientTypes) &&
-            const DeepCollectionEquality()
-                .equals(other.clientName, clientName) &&
-            const DeepCollectionEquality().equals(other.gender, gender) &&
-            const DeepCollectionEquality()
-                .equals(other.dateOfBirth, dateOfBirth) &&
-            const DeepCollectionEquality()
-                .equals(other.phoneNumber, phoneNumber) &&
-            const DeepCollectionEquality()
-                .equals(other.enrollmentDate, enrollmentDate) &&
-            const DeepCollectionEquality().equals(other.cccNumber, cccNumber) &&
-            const DeepCollectionEquality()
-                .equals(other.counselled, counselled) &&
-            const DeepCollectionEquality()
-                .equals(other.inviteClient, inviteClient));
+            (identical(other.clientName, clientName) ||
+                other.clientName == clientName) &&
+            (identical(other.gender, gender) || other.gender == gender) &&
+            (identical(other.dateOfBirth, dateOfBirth) ||
+                other.dateOfBirth == dateOfBirth) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.enrollmentDate, enrollmentDate) ||
+                other.enrollmentDate == enrollmentDate) &&
+            (identical(other.cccNumber, cccNumber) ||
+                other.cccNumber == cccNumber) &&
+            (identical(other.counselled, counselled) ||
+                other.counselled == counselled) &&
+            (identical(other.inviteClient, inviteClient) ||
+                other.inviteClient == inviteClient));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(facility),
+      facility,
       const DeepCollectionEquality().hash(_clientTypes),
-      const DeepCollectionEquality().hash(clientName),
-      const DeepCollectionEquality().hash(gender),
-      const DeepCollectionEquality().hash(dateOfBirth),
-      const DeepCollectionEquality().hash(phoneNumber),
-      const DeepCollectionEquality().hash(enrollmentDate),
-      const DeepCollectionEquality().hash(cccNumber),
-      const DeepCollectionEquality().hash(counselled),
-      const DeepCollectionEquality().hash(inviteClient));
+      clientName,
+      gender,
+      dateOfBirth,
+      phoneNumber,
+      enrollmentDate,
+      cccNumber,
+      counselled,
+      inviteClient);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_RegisterClientPayloadCopyWith<_$_RegisterClientPayload> get copyWith =>
       __$$_RegisterClientPayloadCopyWithImpl<_$_RegisterClientPayload>(
           this, _$identity);

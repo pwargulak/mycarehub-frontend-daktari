@@ -1,12 +1,11 @@
 import 'dart:convert';
 
-import 'package:afya_moja_core/afya_moja_core.dart' as core;
+import 'package:sghi_core/afya_moja_core/afya_moja_core.dart' as core;
 import 'package:connectivity_plus_platform_interface/connectivity_plus_platform_interface.dart';
 // Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_graphql_client/graph_client.dart';
-import 'package:flutter_graphql_client/graph_sqlite.dart';
+import 'package:sghi_core/flutter_graphql_client/i_flutter_graphql_client.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/mockito.dart';
@@ -22,6 +21,7 @@ import 'package:firebase_analytics_platform_interface/firebase_analytics_platfor
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_core_platform_interface/firebase_core_platform_interface.dart';
 import 'package:firebase_messaging_platform_interface/firebase_messaging_platform_interface.dart';
+import 'package:sqflite/sqlite_api.dart';
 
 import 'mock_utils.dart';
 

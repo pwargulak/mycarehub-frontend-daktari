@@ -33,30 +33,33 @@ mixin _$PendingInvitesState {
 abstract class $PendingInvitesStateCopyWith<$Res> {
   factory $PendingInvitesStateCopyWith(
           PendingInvitesState value, $Res Function(PendingInvitesState) then) =
-      _$PendingInvitesStateCopyWithImpl<$Res>;
+      _$PendingInvitesStateCopyWithImpl<$Res, PendingInvitesState>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'listPendingInvites') List<Community>? communitiesList});
 }
 
 /// @nodoc
-class _$PendingInvitesStateCopyWithImpl<$Res>
+class _$PendingInvitesStateCopyWithImpl<$Res, $Val extends PendingInvitesState>
     implements $PendingInvitesStateCopyWith<$Res> {
   _$PendingInvitesStateCopyWithImpl(this._value, this._then);
 
-  final PendingInvitesState _value;
   // ignore: unused_field
-  final $Res Function(PendingInvitesState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? communitiesList = freezed,
   }) {
     return _then(_value.copyWith(
-      communitiesList: communitiesList == freezed
+      communitiesList: freezed == communitiesList
           ? _value.communitiesList
           : communitiesList // ignore: cast_nullable_to_non_nullable
               as List<Community>?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -67,27 +70,26 @@ abstract class _$$_PendingInvitesStateCopyWith<$Res>
           $Res Function(_$_PendingInvitesState) then) =
       __$$_PendingInvitesStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'listPendingInvites') List<Community>? communitiesList});
 }
 
 /// @nodoc
 class __$$_PendingInvitesStateCopyWithImpl<$Res>
-    extends _$PendingInvitesStateCopyWithImpl<$Res>
+    extends _$PendingInvitesStateCopyWithImpl<$Res, _$_PendingInvitesState>
     implements _$$_PendingInvitesStateCopyWith<$Res> {
   __$$_PendingInvitesStateCopyWithImpl(_$_PendingInvitesState _value,
       $Res Function(_$_PendingInvitesState) _then)
-      : super(_value, (v) => _then(v as _$_PendingInvitesState));
+      : super(_value, _then);
 
-  @override
-  _$_PendingInvitesState get _value => super._value as _$_PendingInvitesState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? communitiesList = freezed,
   }) {
     return _then(_$_PendingInvitesState(
-      communitiesList: communitiesList == freezed
+      communitiesList: freezed == communitiesList
           ? _value._communitiesList
           : communitiesList // ignore: cast_nullable_to_non_nullable
               as List<Community>?,
@@ -137,6 +139,7 @@ class _$_PendingInvitesState implements _PendingInvitesState {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PendingInvitesStateCopyWith<_$_PendingInvitesState> get copyWith =>
       __$$_PendingInvitesStateCopyWithImpl<_$_PendingInvitesState>(
           this, _$identity);

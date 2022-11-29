@@ -34,31 +34,34 @@ mixin _$NotificationsData {
 abstract class $NotificationsDataCopyWith<$Res> {
   factory $NotificationsDataCopyWith(
           NotificationsData value, $Res Function(NotificationsData) then) =
-      _$NotificationsDataCopyWithImpl<$Res>;
+      _$NotificationsDataCopyWithImpl<$Res, NotificationsData>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'notifications')
           List<NotificationDetails> notifications});
 }
 
 /// @nodoc
-class _$NotificationsDataCopyWithImpl<$Res>
+class _$NotificationsDataCopyWithImpl<$Res, $Val extends NotificationsData>
     implements $NotificationsDataCopyWith<$Res> {
   _$NotificationsDataCopyWithImpl(this._value, this._then);
 
-  final NotificationsData _value;
   // ignore: unused_field
-  final $Res Function(NotificationsData) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? notifications = freezed,
+    Object? notifications = null,
   }) {
     return _then(_value.copyWith(
-      notifications: notifications == freezed
+      notifications: null == notifications
           ? _value.notifications
           : notifications // ignore: cast_nullable_to_non_nullable
               as List<NotificationDetails>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -69,6 +72,7 @@ abstract class _$$_NotificationsDataCopyWith<$Res>
           $Res Function(_$_NotificationsData) then) =
       __$$_NotificationsDataCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'notifications')
           List<NotificationDetails> notifications});
@@ -76,21 +80,19 @@ abstract class _$$_NotificationsDataCopyWith<$Res>
 
 /// @nodoc
 class __$$_NotificationsDataCopyWithImpl<$Res>
-    extends _$NotificationsDataCopyWithImpl<$Res>
+    extends _$NotificationsDataCopyWithImpl<$Res, _$_NotificationsData>
     implements _$$_NotificationsDataCopyWith<$Res> {
   __$$_NotificationsDataCopyWithImpl(
       _$_NotificationsData _value, $Res Function(_$_NotificationsData) _then)
-      : super(_value, (v) => _then(v as _$_NotificationsData));
+      : super(_value, _then);
 
-  @override
-  _$_NotificationsData get _value => super._value as _$_NotificationsData;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? notifications = freezed,
+    Object? notifications = null,
   }) {
     return _then(_$_NotificationsData(
-      notifications: notifications == freezed
+      notifications: null == notifications
           ? _value._notifications
           : notifications // ignore: cast_nullable_to_non_nullable
               as List<NotificationDetails>,
@@ -138,6 +140,7 @@ class _$_NotificationsData implements _NotificationsData {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_NotificationsDataCopyWith<_$_NotificationsData> get copyWith =>
       __$$_NotificationsDataCopyWithImpl<_$_NotificationsData>(
           this, _$identity);

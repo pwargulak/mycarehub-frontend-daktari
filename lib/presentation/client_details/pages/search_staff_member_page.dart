@@ -1,5 +1,4 @@
-import 'package:afya_moja_core/afya_moja_core.dart';
-import 'package:app_wrapper/app_wrapper.dart';
+import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
@@ -14,6 +13,7 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart'
 import 'package:prohealth360_daktari/presentation/client_details/widgets/search_user_item.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
+import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 
 class SearchStaffMemberPage extends StatefulWidget {
   const SearchStaffMemberPage();

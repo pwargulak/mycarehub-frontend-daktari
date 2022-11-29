@@ -1,4 +1,4 @@
-import 'package:afya_moja_core/afya_moja_core.dart';
+import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
@@ -16,7 +16,7 @@ class SearchDetailsInformationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final String names = searchUserResponse?.user?.name ?? 'No name';
- 
+
     final String phoneNumber =
         searchUserResponse?.user?.primaryContact?.value ?? noNumberAvailable;
 
@@ -26,7 +26,8 @@ class SearchDetailsInformationWidget extends StatelessWidget {
 
     final String userName = searchUserResponse?.user?.userName ?? '';
 
-    final String defaultFacilityName = searchUserResponse?.defaultFacility?.name ?? '';
+    final String defaultFacilityName =
+        searchUserResponse?.defaultFacility?.name ?? '';
 
     return Column(
       children: <Widget>[

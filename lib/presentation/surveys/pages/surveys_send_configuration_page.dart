@@ -1,6 +1,6 @@
 // Flutter imports:
-import 'package:afya_moja_core/afya_moja_core.dart';
-import 'package:app_wrapper/app_wrapper.dart';
+import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
+import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -23,7 +23,7 @@ import 'package:prohealth360_daktari/presentation/onboarding/patient/widgets/pat
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:prohealth360_daktari/presentation/surveys/widgets/client_configuration_form_manager.dart';
 import 'package:prohealth360_daktari/presentation/surveys/widgets/surveys_card.dart';
-import 'package:shared_themes/constants.dart';
+import 'package:sghi_core/shared_themes/constants.dart';
 
 class SurveysSendConfigurationsPage extends StatefulWidget {
   const SurveysSendConfigurationsPage({required this.survey});

@@ -1,8 +1,7 @@
 import 'dart:async';
 
-import 'package:afya_moja_core/afya_moja_core.dart';
+import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
-import 'package:flutter_graphql_client/graph_client.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/core/graphql/queries.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
@@ -13,6 +12,7 @@ import 'package:prohealth360_daktari/domain/core/entities/search_user/search_use
 import 'package:prohealth360_daktari/domain/core/entities/search_user/searched_clients.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:sghi_core/flutter_graphql_client/i_flutter_graphql_client.dart';
 
 class SearchClientAction extends ReduxAction<AppState> {
   SearchClientAction({required this.client, required this.searchParameter});

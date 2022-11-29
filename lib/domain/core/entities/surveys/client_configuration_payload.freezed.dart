@@ -38,7 +38,9 @@ mixin _$ClientConfigurationPayload {
 abstract class $ClientConfigurationPayloadCopyWith<$Res> {
   factory $ClientConfigurationPayloadCopyWith(ClientConfigurationPayload value,
           $Res Function(ClientConfigurationPayload) then) =
-      _$ClientConfigurationPayloadCopyWithImpl<$Res>;
+      _$ClientConfigurationPayloadCopyWithImpl<$Res,
+          ClientConfigurationPayload>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'clientTypes') List<ClientType>? clientTypes,
       @JsonKey(name: 'ageRange') AgeRange? ageRange,
@@ -48,14 +50,17 @@ abstract class $ClientConfigurationPayloadCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ClientConfigurationPayloadCopyWithImpl<$Res>
+class _$ClientConfigurationPayloadCopyWithImpl<$Res,
+        $Val extends ClientConfigurationPayload>
     implements $ClientConfigurationPayloadCopyWith<$Res> {
   _$ClientConfigurationPayloadCopyWithImpl(this._value, this._then);
 
-  final ClientConfigurationPayload _value;
   // ignore: unused_field
-  final $Res Function(ClientConfigurationPayload) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? clientTypes = freezed,
@@ -63,29 +68,30 @@ class _$ClientConfigurationPayloadCopyWithImpl<$Res>
     Object? gender = freezed,
   }) {
     return _then(_value.copyWith(
-      clientTypes: clientTypes == freezed
+      clientTypes: freezed == clientTypes
           ? _value.clientTypes
           : clientTypes // ignore: cast_nullable_to_non_nullable
               as List<ClientType>?,
-      ageRange: ageRange == freezed
+      ageRange: freezed == ageRange
           ? _value.ageRange
           : ageRange // ignore: cast_nullable_to_non_nullable
               as AgeRange?,
-      gender: gender == freezed
+      gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as List<Gender>?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $AgeRangeCopyWith<$Res>? get ageRange {
     if (_value.ageRange == null) {
       return null;
     }
 
     return $AgeRangeCopyWith<$Res>(_value.ageRange!, (value) {
-      return _then(_value.copyWith(ageRange: value));
+      return _then(_value.copyWith(ageRange: value) as $Val);
     });
   }
 }
@@ -98,6 +104,7 @@ abstract class _$$_ClientConfigurationPayloadCopyWith<$Res>
           $Res Function(_$_ClientConfigurationPayload) then) =
       __$$_ClientConfigurationPayloadCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'clientTypes') List<ClientType>? clientTypes,
       @JsonKey(name: 'ageRange') AgeRange? ageRange,
@@ -109,17 +116,15 @@ abstract class _$$_ClientConfigurationPayloadCopyWith<$Res>
 
 /// @nodoc
 class __$$_ClientConfigurationPayloadCopyWithImpl<$Res>
-    extends _$ClientConfigurationPayloadCopyWithImpl<$Res>
+    extends _$ClientConfigurationPayloadCopyWithImpl<$Res,
+        _$_ClientConfigurationPayload>
     implements _$$_ClientConfigurationPayloadCopyWith<$Res> {
   __$$_ClientConfigurationPayloadCopyWithImpl(
       _$_ClientConfigurationPayload _value,
       $Res Function(_$_ClientConfigurationPayload) _then)
-      : super(_value, (v) => _then(v as _$_ClientConfigurationPayload));
+      : super(_value, _then);
 
-  @override
-  _$_ClientConfigurationPayload get _value =>
-      super._value as _$_ClientConfigurationPayload;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? clientTypes = freezed,
@@ -127,15 +132,15 @@ class __$$_ClientConfigurationPayloadCopyWithImpl<$Res>
     Object? gender = freezed,
   }) {
     return _then(_$_ClientConfigurationPayload(
-      clientTypes: clientTypes == freezed
+      clientTypes: freezed == clientTypes
           ? _value._clientTypes
           : clientTypes // ignore: cast_nullable_to_non_nullable
               as List<ClientType>?,
-      ageRange: ageRange == freezed
+      ageRange: freezed == ageRange
           ? _value.ageRange
           : ageRange // ignore: cast_nullable_to_non_nullable
               as AgeRange?,
-      gender: gender == freezed
+      gender: freezed == gender
           ? _value._gender
           : gender // ignore: cast_nullable_to_non_nullable
               as List<Gender>?,
@@ -192,7 +197,8 @@ class _$_ClientConfigurationPayload implements _ClientConfigurationPayload {
             other is _$_ClientConfigurationPayload &&
             const DeepCollectionEquality()
                 .equals(other._clientTypes, _clientTypes) &&
-            const DeepCollectionEquality().equals(other.ageRange, ageRange) &&
+            (identical(other.ageRange, ageRange) ||
+                other.ageRange == ageRange) &&
             const DeepCollectionEquality().equals(other._gender, _gender));
   }
 
@@ -201,11 +207,12 @@ class _$_ClientConfigurationPayload implements _ClientConfigurationPayload {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_clientTypes),
-      const DeepCollectionEquality().hash(ageRange),
+      ageRange,
       const DeepCollectionEquality().hash(_gender));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ClientConfigurationPayloadCopyWith<_$_ClientConfigurationPayload>
       get copyWith => __$$_ClientConfigurationPayloadCopyWithImpl<
           _$_ClientConfigurationPayload>(this, _$identity);

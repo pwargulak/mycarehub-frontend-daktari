@@ -37,7 +37,8 @@ mixin _$FlaggedMessageUser {
 abstract class $FlaggedMessageUserCopyWith<$Res> {
   factory $FlaggedMessageUserCopyWith(
           FlaggedMessageUser value, $Res Function(FlaggedMessageUser) then) =
-      _$FlaggedMessageUserCopyWithImpl<$Res>;
+      _$FlaggedMessageUserCopyWithImpl<$Res, FlaggedMessageUser>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'userID') String? userID,
       @JsonKey(name: 'name') String? name,
@@ -45,14 +46,16 @@ abstract class $FlaggedMessageUserCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FlaggedMessageUserCopyWithImpl<$Res>
+class _$FlaggedMessageUserCopyWithImpl<$Res, $Val extends FlaggedMessageUser>
     implements $FlaggedMessageUserCopyWith<$Res> {
   _$FlaggedMessageUserCopyWithImpl(this._value, this._then);
 
-  final FlaggedMessageUser _value;
   // ignore: unused_field
-  final $Res Function(FlaggedMessageUser) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? userID = freezed,
@@ -60,19 +63,19 @@ class _$FlaggedMessageUserCopyWithImpl<$Res>
     Object? username = freezed,
   }) {
     return _then(_value.copyWith(
-      userID: userID == freezed
+      userID: freezed == userID
           ? _value.userID
           : userID // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      username: username == freezed
+      username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -83,6 +86,7 @@ abstract class _$$_FlaggedMessageUserCopyWith<$Res>
           $Res Function(_$_FlaggedMessageUser) then) =
       __$$_FlaggedMessageUserCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'userID') String? userID,
       @JsonKey(name: 'name') String? name,
@@ -91,15 +95,13 @@ abstract class _$$_FlaggedMessageUserCopyWith<$Res>
 
 /// @nodoc
 class __$$_FlaggedMessageUserCopyWithImpl<$Res>
-    extends _$FlaggedMessageUserCopyWithImpl<$Res>
+    extends _$FlaggedMessageUserCopyWithImpl<$Res, _$_FlaggedMessageUser>
     implements _$$_FlaggedMessageUserCopyWith<$Res> {
   __$$_FlaggedMessageUserCopyWithImpl(
       _$_FlaggedMessageUser _value, $Res Function(_$_FlaggedMessageUser) _then)
-      : super(_value, (v) => _then(v as _$_FlaggedMessageUser));
+      : super(_value, _then);
 
-  @override
-  _$_FlaggedMessageUser get _value => super._value as _$_FlaggedMessageUser;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? userID = freezed,
@@ -107,15 +109,15 @@ class __$$_FlaggedMessageUserCopyWithImpl<$Res>
     Object? username = freezed,
   }) {
     return _then(_$_FlaggedMessageUser(
-      userID: userID == freezed
+      userID: freezed == userID
           ? _value.userID
           : userID // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      username: username == freezed
+      username: freezed == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -154,21 +156,19 @@ class _$_FlaggedMessageUser implements _FlaggedMessageUser {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FlaggedMessageUser &&
-            const DeepCollectionEquality().equals(other.userID, userID) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.username, username));
+            (identical(other.userID, userID) || other.userID == userID) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.username, username) ||
+                other.username == username));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(userID),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(username));
+  int get hashCode => Object.hash(runtimeType, userID, name, username);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_FlaggedMessageUserCopyWith<_$_FlaggedMessageUser> get copyWith =>
       __$$_FlaggedMessageUserCopyWithImpl<_$_FlaggedMessageUser>(
           this, _$identity);

@@ -35,31 +35,35 @@ mixin _$ServiceRequestTypeCount {
 abstract class $ServiceRequestTypeCountCopyWith<$Res> {
   factory $ServiceRequestTypeCountCopyWith(ServiceRequestTypeCount value,
           $Res Function(ServiceRequestTypeCount) then) =
-      _$ServiceRequestTypeCountCopyWithImpl<$Res>;
+      _$ServiceRequestTypeCountCopyWithImpl<$Res, ServiceRequestTypeCount>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'requestsTypeCount')
           List<ServiceRequestCount>? requestsTypeCount});
 }
 
 /// @nodoc
-class _$ServiceRequestTypeCountCopyWithImpl<$Res>
+class _$ServiceRequestTypeCountCopyWithImpl<$Res,
+        $Val extends ServiceRequestTypeCount>
     implements $ServiceRequestTypeCountCopyWith<$Res> {
   _$ServiceRequestTypeCountCopyWithImpl(this._value, this._then);
 
-  final ServiceRequestTypeCount _value;
   // ignore: unused_field
-  final $Res Function(ServiceRequestTypeCount) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? requestsTypeCount = freezed,
   }) {
     return _then(_value.copyWith(
-      requestsTypeCount: requestsTypeCount == freezed
+      requestsTypeCount: freezed == requestsTypeCount
           ? _value.requestsTypeCount
           : requestsTypeCount // ignore: cast_nullable_to_non_nullable
               as List<ServiceRequestCount>?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -70,6 +74,7 @@ abstract class _$$_ServiceRequestTypeCountCopyWith<$Res>
           $Res Function(_$_ServiceRequestTypeCount) then) =
       __$$_ServiceRequestTypeCountCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'requestsTypeCount')
           List<ServiceRequestCount>? requestsTypeCount});
@@ -77,22 +82,20 @@ abstract class _$$_ServiceRequestTypeCountCopyWith<$Res>
 
 /// @nodoc
 class __$$_ServiceRequestTypeCountCopyWithImpl<$Res>
-    extends _$ServiceRequestTypeCountCopyWithImpl<$Res>
+    extends _$ServiceRequestTypeCountCopyWithImpl<$Res,
+        _$_ServiceRequestTypeCount>
     implements _$$_ServiceRequestTypeCountCopyWith<$Res> {
   __$$_ServiceRequestTypeCountCopyWithImpl(_$_ServiceRequestTypeCount _value,
       $Res Function(_$_ServiceRequestTypeCount) _then)
-      : super(_value, (v) => _then(v as _$_ServiceRequestTypeCount));
+      : super(_value, _then);
 
-  @override
-  _$_ServiceRequestTypeCount get _value =>
-      super._value as _$_ServiceRequestTypeCount;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? requestsTypeCount = freezed,
   }) {
     return _then(_$_ServiceRequestTypeCount(
-      requestsTypeCount: requestsTypeCount == freezed
+      requestsTypeCount: freezed == requestsTypeCount
           ? _value._requestsTypeCount
           : requestsTypeCount // ignore: cast_nullable_to_non_nullable
               as List<ServiceRequestCount>?,
@@ -142,6 +145,7 @@ class _$_ServiceRequestTypeCount implements _ServiceRequestTypeCount {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ServiceRequestTypeCountCopyWith<_$_ServiceRequestTypeCount>
       get copyWith =>
           __$$_ServiceRequestTypeCountCopyWithImpl<_$_ServiceRequestTypeCount>(

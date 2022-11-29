@@ -1,4 +1,4 @@
-import 'package:afya_moja_core/afya_moja_core.dart';
+import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'survey_service_request_item.freezed.dart';
@@ -12,7 +12,8 @@ class SurveyServiceRequestItem with _$SurveyServiceRequestItem {
     @JsonKey(name: 'title') String? name,
   }) = _SurveyServiceRequestItem;
 
-  factory SurveyServiceRequestItem.fromJson(Map<String, dynamic> json) => _$SurveyServiceRequestItemFromJson(json);
+  factory SurveyServiceRequestItem.fromJson(Map<String, dynamic> json) =>
+      _$SurveyServiceRequestItemFromJson(json);
 
   factory SurveyServiceRequestItem.initial() => SurveyServiceRequestItem(
         projectId: 0,

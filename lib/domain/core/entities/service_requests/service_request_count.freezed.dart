@@ -35,36 +35,39 @@ mixin _$ServiceRequestCount {
 abstract class $ServiceRequestCountCopyWith<$Res> {
   factory $ServiceRequestCountCopyWith(
           ServiceRequestCount value, $Res Function(ServiceRequestCount) then) =
-      _$ServiceRequestCountCopyWithImpl<$Res>;
+      _$ServiceRequestCountCopyWithImpl<$Res, ServiceRequestCount>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'requestType') ServiceRequestType? requestType,
       @JsonKey(name: 'total') int? count});
 }
 
 /// @nodoc
-class _$ServiceRequestCountCopyWithImpl<$Res>
+class _$ServiceRequestCountCopyWithImpl<$Res, $Val extends ServiceRequestCount>
     implements $ServiceRequestCountCopyWith<$Res> {
   _$ServiceRequestCountCopyWithImpl(this._value, this._then);
 
-  final ServiceRequestCount _value;
   // ignore: unused_field
-  final $Res Function(ServiceRequestCount) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? requestType = freezed,
     Object? count = freezed,
   }) {
     return _then(_value.copyWith(
-      requestType: requestType == freezed
+      requestType: freezed == requestType
           ? _value.requestType
           : requestType // ignore: cast_nullable_to_non_nullable
               as ServiceRequestType?,
-      count: count == freezed
+      count: freezed == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -75,6 +78,7 @@ abstract class _$$_ServiceRequestCountCopyWith<$Res>
           $Res Function(_$_ServiceRequestCount) then) =
       __$$_ServiceRequestCountCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'requestType') ServiceRequestType? requestType,
       @JsonKey(name: 'total') int? count});
@@ -82,26 +86,24 @@ abstract class _$$_ServiceRequestCountCopyWith<$Res>
 
 /// @nodoc
 class __$$_ServiceRequestCountCopyWithImpl<$Res>
-    extends _$ServiceRequestCountCopyWithImpl<$Res>
+    extends _$ServiceRequestCountCopyWithImpl<$Res, _$_ServiceRequestCount>
     implements _$$_ServiceRequestCountCopyWith<$Res> {
   __$$_ServiceRequestCountCopyWithImpl(_$_ServiceRequestCount _value,
       $Res Function(_$_ServiceRequestCount) _then)
-      : super(_value, (v) => _then(v as _$_ServiceRequestCount));
+      : super(_value, _then);
 
-  @override
-  _$_ServiceRequestCount get _value => super._value as _$_ServiceRequestCount;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? requestType = freezed,
     Object? count = freezed,
   }) {
     return _then(_$_ServiceRequestCount(
-      requestType: requestType == freezed
+      requestType: freezed == requestType
           ? _value.requestType
           : requestType // ignore: cast_nullable_to_non_nullable
               as ServiceRequestType?,
-      count: count == freezed
+      count: freezed == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int?,
@@ -136,20 +138,18 @@ class _$_ServiceRequestCount implements _ServiceRequestCount {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ServiceRequestCount &&
-            const DeepCollectionEquality()
-                .equals(other.requestType, requestType) &&
-            const DeepCollectionEquality().equals(other.count, count));
+            (identical(other.requestType, requestType) ||
+                other.requestType == requestType) &&
+            (identical(other.count, count) || other.count == count));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(requestType),
-      const DeepCollectionEquality().hash(count));
+  int get hashCode => Object.hash(runtimeType, requestType, count);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ServiceRequestCountCopyWith<_$_ServiceRequestCount> get copyWith =>
       __$$_ServiceRequestCountCopyWithImpl<_$_ServiceRequestCount>(
           this, _$identity);

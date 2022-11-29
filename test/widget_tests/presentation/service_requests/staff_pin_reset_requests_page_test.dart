@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:afya_moja_core/afya_moja_core.dart';
+import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
@@ -202,7 +202,7 @@ void main() {
         expect(find.byType(GenericErrorWidget), findsOneWidget);
       },
     );
-      testWidgets(
+    testWidgets(
       'should show an error widget when fetching staff PIN reset requests',
       (WidgetTester tester) async {
         final MockShortGraphQlClient mockShortGraphQlClient =

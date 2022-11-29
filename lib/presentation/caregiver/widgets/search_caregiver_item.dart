@@ -1,4 +1,4 @@
-import 'package:afya_moja_core/afya_moja_core.dart';
+import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
@@ -11,7 +11,8 @@ class SearchCaregiverItem extends StatelessWidget {
   const SearchCaregiverItem({
     super.key,
     required this.name,
-    required this.phoneNumber, this.onTapCallback,
+    required this.phoneNumber,
+    this.onTapCallback,
   });
 
   @override

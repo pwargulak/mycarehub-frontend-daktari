@@ -32,28 +32,32 @@ mixin _$BanStatus {
 /// @nodoc
 abstract class $BanStatusCopyWith<$Res> {
   factory $BanStatusCopyWith(BanStatus value, $Res Function(BanStatus) then) =
-      _$BanStatusCopyWithImpl<$Res>;
+      _$BanStatusCopyWithImpl<$Res, BanStatus>;
+  @useResult
   $Res call({@JsonKey(name: 'bannedInCommunity') bool? value});
 }
 
 /// @nodoc
-class _$BanStatusCopyWithImpl<$Res> implements $BanStatusCopyWith<$Res> {
+class _$BanStatusCopyWithImpl<$Res, $Val extends BanStatus>
+    implements $BanStatusCopyWith<$Res> {
   _$BanStatusCopyWithImpl(this._value, this._then);
 
-  final BanStatus _value;
   // ignore: unused_field
-  final $Res Function(BanStatus) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? value = freezed,
   }) {
     return _then(_value.copyWith(
-      value: value == freezed
+      value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as bool?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -63,25 +67,25 @@ abstract class _$$_BanStatusCopyWith<$Res> implements $BanStatusCopyWith<$Res> {
           _$_BanStatus value, $Res Function(_$_BanStatus) then) =
       __$$_BanStatusCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({@JsonKey(name: 'bannedInCommunity') bool? value});
 }
 
 /// @nodoc
-class __$$_BanStatusCopyWithImpl<$Res> extends _$BanStatusCopyWithImpl<$Res>
+class __$$_BanStatusCopyWithImpl<$Res>
+    extends _$BanStatusCopyWithImpl<$Res, _$_BanStatus>
     implements _$$_BanStatusCopyWith<$Res> {
   __$$_BanStatusCopyWithImpl(
       _$_BanStatus _value, $Res Function(_$_BanStatus) _then)
-      : super(_value, (v) => _then(v as _$_BanStatus));
+      : super(_value, _then);
 
-  @override
-  _$_BanStatus get _value => super._value as _$_BanStatus;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? value = freezed,
   }) {
     return _then(_$_BanStatus(
-      value: value == freezed
+      value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as bool?,
@@ -111,16 +115,16 @@ class _$_BanStatus implements _BanStatus {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_BanStatus &&
-            const DeepCollectionEquality().equals(other.value, value));
+            (identical(other.value, value) || other.value == value));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+  int get hashCode => Object.hash(runtimeType, value);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_BanStatusCopyWith<_$_BanStatus> get copyWith =>
       __$$_BanStatusCopyWithImpl<_$_BanStatus>(this, _$identity);
 

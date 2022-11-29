@@ -38,7 +38,9 @@ mixin _$AssessmentQuestionResponse {
 abstract class $AssessmentQuestionResponseCopyWith<$Res> {
   factory $AssessmentQuestionResponseCopyWith(AssessmentQuestionResponse value,
           $Res Function(AssessmentQuestionResponse) then) =
-      _$AssessmentQuestionResponseCopyWithImpl<$Res>;
+      _$AssessmentQuestionResponseCopyWithImpl<$Res,
+          AssessmentQuestionResponse>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'toolIndex') int? index,
       @JsonKey(name: 'tool') String? tool,
@@ -46,14 +48,17 @@ abstract class $AssessmentQuestionResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AssessmentQuestionResponseCopyWithImpl<$Res>
+class _$AssessmentQuestionResponseCopyWithImpl<$Res,
+        $Val extends AssessmentQuestionResponse>
     implements $AssessmentQuestionResponseCopyWith<$Res> {
   _$AssessmentQuestionResponseCopyWithImpl(this._value, this._then);
 
-  final AssessmentQuestionResponse _value;
   // ignore: unused_field
-  final $Res Function(AssessmentQuestionResponse) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? index = freezed,
@@ -61,19 +66,19 @@ class _$AssessmentQuestionResponseCopyWithImpl<$Res>
     Object? response = freezed,
   }) {
     return _then(_value.copyWith(
-      index: index == freezed
+      index: freezed == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int?,
-      tool: tool == freezed
+      tool: freezed == tool
           ? _value.tool
           : tool // ignore: cast_nullable_to_non_nullable
               as String?,
-      response: response == freezed
+      response: freezed == response
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -85,6 +90,7 @@ abstract class _$$_AssessmentQuestionResponseCopyWith<$Res>
           $Res Function(_$_AssessmentQuestionResponse) then) =
       __$$_AssessmentQuestionResponseCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'toolIndex') int? index,
       @JsonKey(name: 'tool') String? tool,
@@ -93,17 +99,15 @@ abstract class _$$_AssessmentQuestionResponseCopyWith<$Res>
 
 /// @nodoc
 class __$$_AssessmentQuestionResponseCopyWithImpl<$Res>
-    extends _$AssessmentQuestionResponseCopyWithImpl<$Res>
+    extends _$AssessmentQuestionResponseCopyWithImpl<$Res,
+        _$_AssessmentQuestionResponse>
     implements _$$_AssessmentQuestionResponseCopyWith<$Res> {
   __$$_AssessmentQuestionResponseCopyWithImpl(
       _$_AssessmentQuestionResponse _value,
       $Res Function(_$_AssessmentQuestionResponse) _then)
-      : super(_value, (v) => _then(v as _$_AssessmentQuestionResponse));
+      : super(_value, _then);
 
-  @override
-  _$_AssessmentQuestionResponse get _value =>
-      super._value as _$_AssessmentQuestionResponse;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? index = freezed,
@@ -111,15 +115,15 @@ class __$$_AssessmentQuestionResponseCopyWithImpl<$Res>
     Object? response = freezed,
   }) {
     return _then(_$_AssessmentQuestionResponse(
-      index: index == freezed
+      index: freezed == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int?,
-      tool: tool == freezed
+      tool: freezed == tool
           ? _value.tool
           : tool // ignore: cast_nullable_to_non_nullable
               as String?,
-      response: response == freezed
+      response: freezed == response
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -158,21 +162,19 @@ class _$_AssessmentQuestionResponse implements _AssessmentQuestionResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AssessmentQuestionResponse &&
-            const DeepCollectionEquality().equals(other.index, index) &&
-            const DeepCollectionEquality().equals(other.tool, tool) &&
-            const DeepCollectionEquality().equals(other.response, response));
+            (identical(other.index, index) || other.index == index) &&
+            (identical(other.tool, tool) || other.tool == tool) &&
+            (identical(other.response, response) ||
+                other.response == response));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(index),
-      const DeepCollectionEquality().hash(tool),
-      const DeepCollectionEquality().hash(response));
+  int get hashCode => Object.hash(runtimeType, index, tool, response);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AssessmentQuestionResponseCopyWith<_$_AssessmentQuestionResponse>
       get copyWith => __$$_AssessmentQuestionResponseCopyWithImpl<
           _$_AssessmentQuestionResponse>(this, _$identity);

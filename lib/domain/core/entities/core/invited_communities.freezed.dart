@@ -33,31 +33,34 @@ mixin _$InvitedCommunities {
 abstract class $InvitedCommunitiesCopyWith<$Res> {
   factory $InvitedCommunitiesCopyWith(
           InvitedCommunities value, $Res Function(InvitedCommunities) then) =
-      _$InvitedCommunitiesCopyWithImpl<$Res>;
+      _$InvitedCommunitiesCopyWithImpl<$Res, InvitedCommunities>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'invitedCommunities')
           List<Community>? invitedCommunities});
 }
 
 /// @nodoc
-class _$InvitedCommunitiesCopyWithImpl<$Res>
+class _$InvitedCommunitiesCopyWithImpl<$Res, $Val extends InvitedCommunities>
     implements $InvitedCommunitiesCopyWith<$Res> {
   _$InvitedCommunitiesCopyWithImpl(this._value, this._then);
 
-  final InvitedCommunities _value;
   // ignore: unused_field
-  final $Res Function(InvitedCommunities) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? invitedCommunities = freezed,
   }) {
     return _then(_value.copyWith(
-      invitedCommunities: invitedCommunities == freezed
+      invitedCommunities: freezed == invitedCommunities
           ? _value.invitedCommunities
           : invitedCommunities // ignore: cast_nullable_to_non_nullable
               as List<Community>?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -68,6 +71,7 @@ abstract class _$$_InvitedCommunitiesCopyWith<$Res>
           $Res Function(_$_InvitedCommunities) then) =
       __$$_InvitedCommunitiesCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'invitedCommunities')
           List<Community>? invitedCommunities});
@@ -75,21 +79,19 @@ abstract class _$$_InvitedCommunitiesCopyWith<$Res>
 
 /// @nodoc
 class __$$_InvitedCommunitiesCopyWithImpl<$Res>
-    extends _$InvitedCommunitiesCopyWithImpl<$Res>
+    extends _$InvitedCommunitiesCopyWithImpl<$Res, _$_InvitedCommunities>
     implements _$$_InvitedCommunitiesCopyWith<$Res> {
   __$$_InvitedCommunitiesCopyWithImpl(
       _$_InvitedCommunities _value, $Res Function(_$_InvitedCommunities) _then)
-      : super(_value, (v) => _then(v as _$_InvitedCommunities));
+      : super(_value, _then);
 
-  @override
-  _$_InvitedCommunities get _value => super._value as _$_InvitedCommunities;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? invitedCommunities = freezed,
   }) {
     return _then(_$_InvitedCommunities(
-      invitedCommunities: invitedCommunities == freezed
+      invitedCommunities: freezed == invitedCommunities
           ? _value._invitedCommunities
           : invitedCommunities // ignore: cast_nullable_to_non_nullable
               as List<Community>?,
@@ -139,6 +141,7 @@ class _$_InvitedCommunities implements _InvitedCommunities {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_InvitedCommunitiesCopyWith<_$_InvitedCommunities> get copyWith =>
       __$$_InvitedCommunitiesCopyWithImpl<_$_InvitedCommunities>(
           this, _$identity);

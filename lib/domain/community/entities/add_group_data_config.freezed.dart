@@ -30,7 +30,8 @@ mixin _$AddGroupDataConfig {
 abstract class $AddGroupDataConfigCopyWith<$Res> {
   factory $AddGroupDataConfigCopyWith(
           AddGroupDataConfig value, $Res Function(AddGroupDataConfig) then) =
-      _$AddGroupDataConfigCopyWithImpl<$Res>;
+      _$AddGroupDataConfigCopyWithImpl<$Res, AddGroupDataConfig>;
+  @useResult
   $Res call(
       {List<DropdownItem> band,
       List<DropdownItem> age,
@@ -39,39 +40,41 @@ abstract class $AddGroupDataConfigCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AddGroupDataConfigCopyWithImpl<$Res>
+class _$AddGroupDataConfigCopyWithImpl<$Res, $Val extends AddGroupDataConfig>
     implements $AddGroupDataConfigCopyWith<$Res> {
   _$AddGroupDataConfigCopyWithImpl(this._value, this._then);
 
-  final AddGroupDataConfig _value;
   // ignore: unused_field
-  final $Res Function(AddGroupDataConfig) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? band = freezed,
-    Object? age = freezed,
-    Object? location = freezed,
-    Object? clinic = freezed,
+    Object? band = null,
+    Object? age = null,
+    Object? location = null,
+    Object? clinic = null,
   }) {
     return _then(_value.copyWith(
-      band: band == freezed
+      band: null == band
           ? _value.band
           : band // ignore: cast_nullable_to_non_nullable
               as List<DropdownItem>,
-      age: age == freezed
+      age: null == age
           ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as List<DropdownItem>,
-      location: location == freezed
+      location: null == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as List<DropdownItem>,
-      clinic: clinic == freezed
+      clinic: null == clinic
           ? _value.clinic
           : clinic // ignore: cast_nullable_to_non_nullable
               as List<DropdownItem>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -82,6 +85,7 @@ abstract class _$$_AddGroupDataConfigCopyWith<$Res>
           $Res Function(_$_AddGroupDataConfig) then) =
       __$$_AddGroupDataConfigCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {List<DropdownItem> band,
       List<DropdownItem> age,
@@ -91,36 +95,34 @@ abstract class _$$_AddGroupDataConfigCopyWith<$Res>
 
 /// @nodoc
 class __$$_AddGroupDataConfigCopyWithImpl<$Res>
-    extends _$AddGroupDataConfigCopyWithImpl<$Res>
+    extends _$AddGroupDataConfigCopyWithImpl<$Res, _$_AddGroupDataConfig>
     implements _$$_AddGroupDataConfigCopyWith<$Res> {
   __$$_AddGroupDataConfigCopyWithImpl(
       _$_AddGroupDataConfig _value, $Res Function(_$_AddGroupDataConfig) _then)
-      : super(_value, (v) => _then(v as _$_AddGroupDataConfig));
+      : super(_value, _then);
 
-  @override
-  _$_AddGroupDataConfig get _value => super._value as _$_AddGroupDataConfig;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? band = freezed,
-    Object? age = freezed,
-    Object? location = freezed,
-    Object? clinic = freezed,
+    Object? band = null,
+    Object? age = null,
+    Object? location = null,
+    Object? clinic = null,
   }) {
     return _then(_$_AddGroupDataConfig(
-      band: band == freezed
+      band: null == band
           ? _value._band
           : band // ignore: cast_nullable_to_non_nullable
               as List<DropdownItem>,
-      age: age == freezed
+      age: null == age
           ? _value._age
           : age // ignore: cast_nullable_to_non_nullable
               as List<DropdownItem>,
-      location: location == freezed
+      location: null == location
           ? _value._location
           : location // ignore: cast_nullable_to_non_nullable
               as List<DropdownItem>,
-      clinic: clinic == freezed
+      clinic: null == clinic
           ? _value._clinic
           : clinic // ignore: cast_nullable_to_non_nullable
               as List<DropdownItem>,
@@ -195,6 +197,7 @@ class _$_AddGroupDataConfig implements _AddGroupDataConfig {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AddGroupDataConfigCopyWith<_$_AddGroupDataConfig> get copyWith =>
       __$$_AddGroupDataConfigCopyWithImpl<_$_AddGroupDataConfig>(
           this, _$identity);

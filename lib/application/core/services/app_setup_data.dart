@@ -2,8 +2,9 @@
 import 'package:flutter/foundation.dart';
 
 // Package imports:
-import 'package:app_wrapper/app_wrapper.dart';
 import 'package:quiver/core.dart';
+import 'package:sghi_core/app_wrapper/base_context.dart';
+import 'package:sghi_core/app_wrapper/enums.dart';
 
 /// Contains the initial data required to initialize the app.
 class AppSetupData {

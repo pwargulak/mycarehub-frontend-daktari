@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:afya_moja_core/afya_moja_core.dart';
+import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -414,7 +414,9 @@ bool resumeWithPIN(AppState appState) {
       : now.difference(DateTime.parse(inactiveTime)).inMinutes;
   final OnboardingPathInfo navConfig = getOnboardingPath(state: appState);
   return isSignedIn &&
-      (navConfig.nextRoute.compareTo(AppRoutes.homePage) == 0 || navConfig.nextRoute.compareTo(AppRoutes.facilitySelectionPage) == 0) &&
+      (navConfig.nextRoute.compareTo(AppRoutes.homePage) == 0 ||
+          navConfig.nextRoute.compareTo(AppRoutes.facilitySelectionPage) ==
+              0) &&
       timeDifference > 5;
 }
 

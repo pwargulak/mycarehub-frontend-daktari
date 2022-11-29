@@ -48,7 +48,8 @@ mixin _$SearchUserResponse {
 abstract class $SearchUserResponseCopyWith<$Res> {
   factory $SearchUserResponseCopyWith(
           SearchUserResponse value, $Res Function(SearchUserResponse) then) =
-      _$SearchUserResponseCopyWithImpl<$Res>;
+      _$SearchUserResponseCopyWithImpl<$Res, SearchUserResponse>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'ID') String? id,
       @JsonKey(name: 'CCCNumber') String? clientCCCNumber,
@@ -64,14 +65,16 @@ abstract class $SearchUserResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SearchUserResponseCopyWithImpl<$Res>
+class _$SearchUserResponseCopyWithImpl<$Res, $Val extends SearchUserResponse>
     implements $SearchUserResponseCopyWith<$Res> {
   _$SearchUserResponseCopyWithImpl(this._value, this._then);
 
-  final SearchUserResponse _value;
   // ignore: unused_field
-  final $Res Function(SearchUserResponse) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -83,67 +86,70 @@ class _$SearchUserResponseCopyWithImpl<$Res>
     Object? rolesList = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      clientCCCNumber: clientCCCNumber == freezed
+      clientCCCNumber: freezed == clientCCCNumber
           ? _value.clientCCCNumber
           : clientCCCNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      isActive: isActive == freezed
+      isActive: freezed == isActive
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
               as bool?,
-      staffNumber: staffNumber == freezed
+      staffNumber: freezed == staffNumber
           ? _value.staffNumber
           : staffNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      user: user == freezed
+      user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as UserData?,
-      defaultFacility: defaultFacility == freezed
+      defaultFacility: freezed == defaultFacility
           ? _value.defaultFacility
           : defaultFacility // ignore: cast_nullable_to_non_nullable
               as Facility?,
-      rolesList: rolesList == freezed
+      rolesList: freezed == rolesList
           ? _value.rolesList
           : rolesList // ignore: cast_nullable_to_non_nullable
               as RolesList?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $UserDataCopyWith<$Res>? get user {
     if (_value.user == null) {
       return null;
     }
 
     return $UserDataCopyWith<$Res>(_value.user!, (value) {
-      return _then(_value.copyWith(user: value));
+      return _then(_value.copyWith(user: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $FacilityCopyWith<$Res>? get defaultFacility {
     if (_value.defaultFacility == null) {
       return null;
     }
 
     return $FacilityCopyWith<$Res>(_value.defaultFacility!, (value) {
-      return _then(_value.copyWith(defaultFacility: value));
+      return _then(_value.copyWith(defaultFacility: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $RolesListCopyWith<$Res>? get rolesList {
     if (_value.rolesList == null) {
       return null;
     }
 
     return $RolesListCopyWith<$Res>(_value.rolesList!, (value) {
-      return _then(_value.copyWith(rolesList: value));
+      return _then(_value.copyWith(rolesList: value) as $Val);
     });
   }
 }
@@ -155,6 +161,7 @@ abstract class _$$_SearchUserResponseCopyWith<$Res>
           $Res Function(_$_SearchUserResponse) then) =
       __$$_SearchUserResponseCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'ID') String? id,
       @JsonKey(name: 'CCCNumber') String? clientCCCNumber,
@@ -174,15 +181,13 @@ abstract class _$$_SearchUserResponseCopyWith<$Res>
 
 /// @nodoc
 class __$$_SearchUserResponseCopyWithImpl<$Res>
-    extends _$SearchUserResponseCopyWithImpl<$Res>
+    extends _$SearchUserResponseCopyWithImpl<$Res, _$_SearchUserResponse>
     implements _$$_SearchUserResponseCopyWith<$Res> {
   __$$_SearchUserResponseCopyWithImpl(
       _$_SearchUserResponse _value, $Res Function(_$_SearchUserResponse) _then)
-      : super(_value, (v) => _then(v as _$_SearchUserResponse));
+      : super(_value, _then);
 
-  @override
-  _$_SearchUserResponse get _value => super._value as _$_SearchUserResponse;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -194,31 +199,31 @@ class __$$_SearchUserResponseCopyWithImpl<$Res>
     Object? rolesList = freezed,
   }) {
     return _then(_$_SearchUserResponse(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      clientCCCNumber: clientCCCNumber == freezed
+      clientCCCNumber: freezed == clientCCCNumber
           ? _value.clientCCCNumber
           : clientCCCNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      isActive: isActive == freezed
+      isActive: freezed == isActive
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
               as bool?,
-      staffNumber: staffNumber == freezed
+      staffNumber: freezed == staffNumber
           ? _value.staffNumber
           : staffNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      user: user == freezed
+      user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as UserData?,
-      defaultFacility: defaultFacility == freezed
+      defaultFacility: freezed == defaultFacility
           ? _value.defaultFacility
           : defaultFacility // ignore: cast_nullable_to_non_nullable
               as Facility?,
-      rolesList: rolesList == freezed
+      rolesList: freezed == rolesList
           ? _value.rolesList
           : rolesList // ignore: cast_nullable_to_non_nullable
               as RolesList?,
@@ -276,32 +281,28 @@ class _$_SearchUserResponse implements _SearchUserResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SearchUserResponse &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality()
-                .equals(other.clientCCCNumber, clientCCCNumber) &&
-            const DeepCollectionEquality().equals(other.isActive, isActive) &&
-            const DeepCollectionEquality()
-                .equals(other.staffNumber, staffNumber) &&
-            const DeepCollectionEquality().equals(other.user, user) &&
-            const DeepCollectionEquality()
-                .equals(other.defaultFacility, defaultFacility) &&
-            const DeepCollectionEquality().equals(other.rolesList, rolesList));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.clientCCCNumber, clientCCCNumber) ||
+                other.clientCCCNumber == clientCCCNumber) &&
+            (identical(other.isActive, isActive) ||
+                other.isActive == isActive) &&
+            (identical(other.staffNumber, staffNumber) ||
+                other.staffNumber == staffNumber) &&
+            (identical(other.user, user) || other.user == user) &&
+            (identical(other.defaultFacility, defaultFacility) ||
+                other.defaultFacility == defaultFacility) &&
+            (identical(other.rolesList, rolesList) ||
+                other.rolesList == rolesList));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(clientCCCNumber),
-      const DeepCollectionEquality().hash(isActive),
-      const DeepCollectionEquality().hash(staffNumber),
-      const DeepCollectionEquality().hash(user),
-      const DeepCollectionEquality().hash(defaultFacility),
-      const DeepCollectionEquality().hash(rolesList));
+  int get hashCode => Object.hash(runtimeType, id, clientCCCNumber, isActive,
+      staffNumber, user, defaultFacility, rolesList);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SearchUserResponseCopyWith<_$_SearchUserResponse> get copyWith =>
       __$$_SearchUserResponseCopyWithImpl<_$_SearchUserResponse>(
           this, _$identity);

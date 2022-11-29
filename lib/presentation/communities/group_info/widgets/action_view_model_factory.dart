@@ -1,6 +1,6 @@
-import 'package:afya_moja_core/afya_moja_core.dart';
+import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
-import 'package:flutter_graphql_client/graph_client.dart';
+import 'package:sghi_core/flutter_graphql_client/i_flutter_graphql_client.dart';
 import 'package:prohealth360_daktari/application/redux/actions/communities/ban_user_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/communities/demote_moderator_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/communities/fetch_group_members_action.dart';

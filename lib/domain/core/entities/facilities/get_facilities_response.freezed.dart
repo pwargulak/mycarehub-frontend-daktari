@@ -34,7 +34,8 @@ mixin _$GetFacilitiesResponse {
 abstract class $GetFacilitiesResponseCopyWith<$Res> {
   factory $GetFacilitiesResponseCopyWith(GetFacilitiesResponse value,
           $Res Function(GetFacilitiesResponse) then) =
-      _$GetFacilitiesResponseCopyWithImpl<$Res>;
+      _$GetFacilitiesResponseCopyWithImpl<$Res, GetFacilitiesResponse>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'getUserLinkedFacilities')
           LinkedFacilities? linkedFacilities});
@@ -43,34 +44,38 @@ abstract class $GetFacilitiesResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$GetFacilitiesResponseCopyWithImpl<$Res>
+class _$GetFacilitiesResponseCopyWithImpl<$Res,
+        $Val extends GetFacilitiesResponse>
     implements $GetFacilitiesResponseCopyWith<$Res> {
   _$GetFacilitiesResponseCopyWithImpl(this._value, this._then);
 
-  final GetFacilitiesResponse _value;
   // ignore: unused_field
-  final $Res Function(GetFacilitiesResponse) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? linkedFacilities = freezed,
   }) {
     return _then(_value.copyWith(
-      linkedFacilities: linkedFacilities == freezed
+      linkedFacilities: freezed == linkedFacilities
           ? _value.linkedFacilities
           : linkedFacilities // ignore: cast_nullable_to_non_nullable
               as LinkedFacilities?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $LinkedFacilitiesCopyWith<$Res>? get linkedFacilities {
     if (_value.linkedFacilities == null) {
       return null;
     }
 
     return $LinkedFacilitiesCopyWith<$Res>(_value.linkedFacilities!, (value) {
-      return _then(_value.copyWith(linkedFacilities: value));
+      return _then(_value.copyWith(linkedFacilities: value) as $Val);
     });
   }
 }
@@ -82,6 +87,7 @@ abstract class _$$_GetFacilitiesResponseCopyWith<$Res>
           $Res Function(_$_GetFacilitiesResponse) then) =
       __$$_GetFacilitiesResponseCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'getUserLinkedFacilities')
           LinkedFacilities? linkedFacilities});
@@ -92,22 +98,19 @@ abstract class _$$_GetFacilitiesResponseCopyWith<$Res>
 
 /// @nodoc
 class __$$_GetFacilitiesResponseCopyWithImpl<$Res>
-    extends _$GetFacilitiesResponseCopyWithImpl<$Res>
+    extends _$GetFacilitiesResponseCopyWithImpl<$Res, _$_GetFacilitiesResponse>
     implements _$$_GetFacilitiesResponseCopyWith<$Res> {
   __$$_GetFacilitiesResponseCopyWithImpl(_$_GetFacilitiesResponse _value,
       $Res Function(_$_GetFacilitiesResponse) _then)
-      : super(_value, (v) => _then(v as _$_GetFacilitiesResponse));
+      : super(_value, _then);
 
-  @override
-  _$_GetFacilitiesResponse get _value =>
-      super._value as _$_GetFacilitiesResponse;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? linkedFacilities = freezed,
   }) {
     return _then(_$_GetFacilitiesResponse(
-      linkedFacilities: linkedFacilities == freezed
+      linkedFacilities: freezed == linkedFacilities
           ? _value.linkedFacilities
           : linkedFacilities // ignore: cast_nullable_to_non_nullable
               as LinkedFacilities?,
@@ -138,17 +141,17 @@ class _$_GetFacilitiesResponse implements _GetFacilitiesResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_GetFacilitiesResponse &&
-            const DeepCollectionEquality()
-                .equals(other.linkedFacilities, linkedFacilities));
+            (identical(other.linkedFacilities, linkedFacilities) ||
+                other.linkedFacilities == linkedFacilities));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(linkedFacilities));
+  int get hashCode => Object.hash(runtimeType, linkedFacilities);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_GetFacilitiesResponseCopyWith<_$_GetFacilitiesResponse> get copyWith =>
       __$$_GetFacilitiesResponseCopyWithImpl<_$_GetFacilitiesResponse>(
           this, _$identity);

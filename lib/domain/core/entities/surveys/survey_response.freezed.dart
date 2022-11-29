@@ -37,7 +37,8 @@ mixin _$SurveyResponse {
 abstract class $SurveyResponseCopyWith<$Res> {
   factory $SurveyResponseCopyWith(
           SurveyResponse value, $Res Function(SurveyResponse) then) =
-      _$SurveyResponseCopyWithImpl<$Res>;
+      _$SurveyResponseCopyWithImpl<$Res, SurveyResponse>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'question') String? question,
       @JsonKey(name: 'answer') List<String>? answers,
@@ -45,14 +46,16 @@ abstract class $SurveyResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SurveyResponseCopyWithImpl<$Res>
+class _$SurveyResponseCopyWithImpl<$Res, $Val extends SurveyResponse>
     implements $SurveyResponseCopyWith<$Res> {
   _$SurveyResponseCopyWithImpl(this._value, this._then);
 
-  final SurveyResponse _value;
   // ignore: unused_field
-  final $Res Function(SurveyResponse) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? question = freezed,
@@ -60,19 +63,19 @@ class _$SurveyResponseCopyWithImpl<$Res>
     Object? questionType = freezed,
   }) {
     return _then(_value.copyWith(
-      question: question == freezed
+      question: freezed == question
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
               as String?,
-      answers: answers == freezed
+      answers: freezed == answers
           ? _value.answers
           : answers // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      questionType: questionType == freezed
+      questionType: freezed == questionType
           ? _value.questionType
           : questionType // ignore: cast_nullable_to_non_nullable
               as QuestionType?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -83,6 +86,7 @@ abstract class _$$_SurveyResponseCopyWith<$Res>
           _$_SurveyResponse value, $Res Function(_$_SurveyResponse) then) =
       __$$_SurveyResponseCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'question') String? question,
       @JsonKey(name: 'answer') List<String>? answers,
@@ -91,15 +95,13 @@ abstract class _$$_SurveyResponseCopyWith<$Res>
 
 /// @nodoc
 class __$$_SurveyResponseCopyWithImpl<$Res>
-    extends _$SurveyResponseCopyWithImpl<$Res>
+    extends _$SurveyResponseCopyWithImpl<$Res, _$_SurveyResponse>
     implements _$$_SurveyResponseCopyWith<$Res> {
   __$$_SurveyResponseCopyWithImpl(
       _$_SurveyResponse _value, $Res Function(_$_SurveyResponse) _then)
-      : super(_value, (v) => _then(v as _$_SurveyResponse));
+      : super(_value, _then);
 
-  @override
-  _$_SurveyResponse get _value => super._value as _$_SurveyResponse;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? question = freezed,
@@ -107,15 +109,15 @@ class __$$_SurveyResponseCopyWithImpl<$Res>
     Object? questionType = freezed,
   }) {
     return _then(_$_SurveyResponse(
-      question: question == freezed
+      question: freezed == question
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
               as String?,
-      answers: answers == freezed
+      answers: freezed == answers
           ? _value._answers
           : answers // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      questionType: questionType == freezed
+      questionType: freezed == questionType
           ? _value.questionType
           : questionType // ignore: cast_nullable_to_non_nullable
               as QuestionType?,
@@ -162,22 +164,21 @@ class _$_SurveyResponse implements _SurveyResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SurveyResponse &&
-            const DeepCollectionEquality().equals(other.question, question) &&
+            (identical(other.question, question) ||
+                other.question == question) &&
             const DeepCollectionEquality().equals(other._answers, _answers) &&
-            const DeepCollectionEquality()
-                .equals(other.questionType, questionType));
+            (identical(other.questionType, questionType) ||
+                other.questionType == questionType));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(question),
-      const DeepCollectionEquality().hash(_answers),
-      const DeepCollectionEquality().hash(questionType));
+  int get hashCode => Object.hash(runtimeType, question,
+      const DeepCollectionEquality().hash(_answers), questionType);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SurveyResponseCopyWith<_$_SurveyResponse> get copyWith =>
       __$$_SurveyResponseCopyWithImpl<_$_SurveyResponse>(this, _$identity);
 

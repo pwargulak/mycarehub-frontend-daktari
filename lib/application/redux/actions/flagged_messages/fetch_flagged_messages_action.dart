@@ -1,8 +1,7 @@
 import 'dart:async';
 
-import 'package:afya_moja_core/afya_moja_core.dart';
+import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
-import 'package:flutter_graphql_client/graph_client.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/core/graphql/queries.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
@@ -13,6 +12,7 @@ import 'package:prohealth360_daktari/domain/core/entities/flagged_messages/flagg
 import 'package:prohealth360_daktari/domain/core/entities/flagged_messages/message_object.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
+import 'package:sghi_core/flutter_graphql_client/i_flutter_graphql_client.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class FetchFlaggedMessagesAction extends ReduxAction<AppState> {

@@ -59,7 +59,8 @@ mixin _$StaffState {
 abstract class $StaffStateCopyWith<$Res> {
   factory $StaffStateCopyWith(
           StaffState value, $Res Function(StaffState) then) =
-      _$StaffStateCopyWithImpl<$Res>;
+      _$StaffStateCopyWithImpl<$Res, StaffState>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'user_id') String? userId,
@@ -85,13 +86,16 @@ abstract class $StaffStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$StaffStateCopyWithImpl<$Res> implements $StaffStateCopyWith<$Res> {
+class _$StaffStateCopyWithImpl<$Res, $Val extends StaffState>
+    implements $StaffStateCopyWith<$Res> {
   _$StaffStateCopyWithImpl(this._value, this._then);
 
-  final StaffState _value;
   // ignore: unused_field
-  final $Res Function(StaffState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -112,96 +116,99 @@ class _$StaffStateCopyWithImpl<$Res> implements $StaffStateCopyWith<$Res> {
     Object? currentFacility = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      userId: userId == freezed
+      userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String?,
-      active: active == freezed
+      active: freezed == active
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
               as bool?,
-      staffNumber: staffNumber == freezed
+      staffNumber: freezed == staffNumber
           ? _value.staffNumber
           : staffNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      facilities: facilities == freezed
+      facilities: freezed == facilities
           ? _value.facilities
           : facilities // ignore: cast_nullable_to_non_nullable
               as List<Facility>?,
-      linkedFacilities: linkedFacilities == freezed
+      linkedFacilities: freezed == linkedFacilities
           ? _value.linkedFacilities
           : linkedFacilities // ignore: cast_nullable_to_non_nullable
               as List<Facility>?,
-      defaultFacility: defaultFacility == freezed
+      defaultFacility: freezed == defaultFacility
           ? _value.defaultFacility
           : defaultFacility // ignore: cast_nullable_to_non_nullable
               as String?,
-      defaultFacilityName: defaultFacilityName == freezed
+      defaultFacilityName: freezed == defaultFacilityName
           ? _value.defaultFacilityName
           : defaultFacilityName // ignore: cast_nullable_to_non_nullable
               as String?,
-      user: user == freezed
+      user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User?,
-      communitiesState: communitiesState == freezed
+      communitiesState: freezed == communitiesState
           ? _value.communitiesState
           : communitiesState // ignore: cast_nullable_to_non_nullable
               as CommunitiesState?,
-      clientSharedDiaryEntries: clientSharedDiaryEntries == freezed
+      clientSharedDiaryEntries: freezed == clientSharedDiaryEntries
           ? _value.clientSharedDiaryEntries
           : clientSharedDiaryEntries // ignore: cast_nullable_to_non_nullable
               as List<HealthDiaryEntry?>?,
-      notifications: notifications == freezed
+      notifications: freezed == notifications
           ? _value.notifications
           : notifications // ignore: cast_nullable_to_non_nullable
               as List<NotificationDetails?>?,
-      clientCaregivers: clientCaregivers == freezed
+      clientCaregivers: freezed == clientCaregivers
           ? _value.clientCaregivers
           : clientCaregivers // ignore: cast_nullable_to_non_nullable
               as List<Caregiver?>?,
-      managedClients: managedClients == freezed
+      managedClients: freezed == managedClients
           ? _value.managedClients
           : managedClients // ignore: cast_nullable_to_non_nullable
               as List<ManagedClient>?,
-      notificationFilterState: notificationFilterState == freezed
+      notificationFilterState: freezed == notificationFilterState
           ? _value.notificationFilterState
           : notificationFilterState // ignore: cast_nullable_to_non_nullable
               as NotificationFilterState?,
-      currentFacility: currentFacility == freezed
+      currentFacility: freezed == currentFacility
           ? _value.currentFacility
           : currentFacility // ignore: cast_nullable_to_non_nullable
               as Facility?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $UserCopyWith<$Res>? get user {
     if (_value.user == null) {
       return null;
     }
 
     return $UserCopyWith<$Res>(_value.user!, (value) {
-      return _then(_value.copyWith(user: value));
+      return _then(_value.copyWith(user: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $CommunitiesStateCopyWith<$Res>? get communitiesState {
     if (_value.communitiesState == null) {
       return null;
     }
 
     return $CommunitiesStateCopyWith<$Res>(_value.communitiesState!, (value) {
-      return _then(_value.copyWith(communitiesState: value));
+      return _then(_value.copyWith(communitiesState: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $NotificationFilterStateCopyWith<$Res>? get notificationFilterState {
     if (_value.notificationFilterState == null) {
       return null;
@@ -209,18 +216,19 @@ class _$StaffStateCopyWithImpl<$Res> implements $StaffStateCopyWith<$Res> {
 
     return $NotificationFilterStateCopyWith<$Res>(
         _value.notificationFilterState!, (value) {
-      return _then(_value.copyWith(notificationFilterState: value));
+      return _then(_value.copyWith(notificationFilterState: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $FacilityCopyWith<$Res>? get currentFacility {
     if (_value.currentFacility == null) {
       return null;
     }
 
     return $FacilityCopyWith<$Res>(_value.currentFacility!, (value) {
-      return _then(_value.copyWith(currentFacility: value));
+      return _then(_value.copyWith(currentFacility: value) as $Val);
     });
   }
 }
@@ -232,6 +240,7 @@ abstract class _$$_StaffStateCopyWith<$Res>
           _$_StaffState value, $Res Function(_$_StaffState) then) =
       __$$_StaffStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'user_id') String? userId,
@@ -261,15 +270,14 @@ abstract class _$$_StaffStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_StaffStateCopyWithImpl<$Res> extends _$StaffStateCopyWithImpl<$Res>
+class __$$_StaffStateCopyWithImpl<$Res>
+    extends _$StaffStateCopyWithImpl<$Res, _$_StaffState>
     implements _$$_StaffStateCopyWith<$Res> {
   __$$_StaffStateCopyWithImpl(
       _$_StaffState _value, $Res Function(_$_StaffState) _then)
-      : super(_value, (v) => _then(v as _$_StaffState));
+      : super(_value, _then);
 
-  @override
-  _$_StaffState get _value => super._value as _$_StaffState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -290,67 +298,67 @@ class __$$_StaffStateCopyWithImpl<$Res> extends _$StaffStateCopyWithImpl<$Res>
     Object? currentFacility = freezed,
   }) {
     return _then(_$_StaffState(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      userId: userId == freezed
+      userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String?,
-      active: active == freezed
+      active: freezed == active
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
               as bool?,
-      staffNumber: staffNumber == freezed
+      staffNumber: freezed == staffNumber
           ? _value.staffNumber
           : staffNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      facilities: facilities == freezed
+      facilities: freezed == facilities
           ? _value._facilities
           : facilities // ignore: cast_nullable_to_non_nullable
               as List<Facility>?,
-      linkedFacilities: linkedFacilities == freezed
+      linkedFacilities: freezed == linkedFacilities
           ? _value._linkedFacilities
           : linkedFacilities // ignore: cast_nullable_to_non_nullable
               as List<Facility>?,
-      defaultFacility: defaultFacility == freezed
+      defaultFacility: freezed == defaultFacility
           ? _value.defaultFacility
           : defaultFacility // ignore: cast_nullable_to_non_nullable
               as String?,
-      defaultFacilityName: defaultFacilityName == freezed
+      defaultFacilityName: freezed == defaultFacilityName
           ? _value.defaultFacilityName
           : defaultFacilityName // ignore: cast_nullable_to_non_nullable
               as String?,
-      user: user == freezed
+      user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User?,
-      communitiesState: communitiesState == freezed
+      communitiesState: freezed == communitiesState
           ? _value.communitiesState
           : communitiesState // ignore: cast_nullable_to_non_nullable
               as CommunitiesState?,
-      clientSharedDiaryEntries: clientSharedDiaryEntries == freezed
+      clientSharedDiaryEntries: freezed == clientSharedDiaryEntries
           ? _value._clientSharedDiaryEntries
           : clientSharedDiaryEntries // ignore: cast_nullable_to_non_nullable
               as List<HealthDiaryEntry?>?,
-      notifications: notifications == freezed
+      notifications: freezed == notifications
           ? _value._notifications
           : notifications // ignore: cast_nullable_to_non_nullable
               as List<NotificationDetails?>?,
-      clientCaregivers: clientCaregivers == freezed
+      clientCaregivers: freezed == clientCaregivers
           ? _value._clientCaregivers
           : clientCaregivers // ignore: cast_nullable_to_non_nullable
               as List<Caregiver?>?,
-      managedClients: managedClients == freezed
+      managedClients: freezed == managedClients
           ? _value._managedClients
           : managedClients // ignore: cast_nullable_to_non_nullable
               as List<ManagedClient>?,
-      notificationFilterState: notificationFilterState == freezed
+      notificationFilterState: freezed == notificationFilterState
           ? _value.notificationFilterState
           : notificationFilterState // ignore: cast_nullable_to_non_nullable
               as NotificationFilterState?,
-      currentFacility: currentFacility == freezed
+      currentFacility: freezed == currentFacility
           ? _value.currentFacility
           : currentFacility // ignore: cast_nullable_to_non_nullable
               as Facility?,
@@ -486,22 +494,22 @@ class _$_StaffState implements _StaffState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_StaffState &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.userId, userId) &&
-            const DeepCollectionEquality().equals(other.active, active) &&
-            const DeepCollectionEquality()
-                .equals(other.staffNumber, staffNumber) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.active, active) || other.active == active) &&
+            (identical(other.staffNumber, staffNumber) ||
+                other.staffNumber == staffNumber) &&
             const DeepCollectionEquality()
                 .equals(other._facilities, _facilities) &&
             const DeepCollectionEquality()
                 .equals(other._linkedFacilities, _linkedFacilities) &&
-            const DeepCollectionEquality()
-                .equals(other.defaultFacility, defaultFacility) &&
-            const DeepCollectionEquality()
-                .equals(other.defaultFacilityName, defaultFacilityName) &&
-            const DeepCollectionEquality().equals(other.user, user) &&
-            const DeepCollectionEquality()
-                .equals(other.communitiesState, communitiesState) &&
+            (identical(other.defaultFacility, defaultFacility) ||
+                other.defaultFacility == defaultFacility) &&
+            (identical(other.defaultFacilityName, defaultFacilityName) ||
+                other.defaultFacilityName == defaultFacilityName) &&
+            (identical(other.user, user) || other.user == user) &&
+            (identical(other.communitiesState, communitiesState) ||
+                other.communitiesState == communitiesState) &&
             const DeepCollectionEquality().equals(
                 other._clientSharedDiaryEntries, _clientSharedDiaryEntries) &&
             const DeepCollectionEquality()
@@ -510,35 +518,37 @@ class _$_StaffState implements _StaffState {
                 .equals(other._clientCaregivers, _clientCaregivers) &&
             const DeepCollectionEquality()
                 .equals(other._managedClients, _managedClients) &&
-            const DeepCollectionEquality().equals(
-                other.notificationFilterState, notificationFilterState) &&
-            const DeepCollectionEquality()
-                .equals(other.currentFacility, currentFacility));
+            (identical(
+                    other.notificationFilterState, notificationFilterState) ||
+                other.notificationFilterState == notificationFilterState) &&
+            (identical(other.currentFacility, currentFacility) ||
+                other.currentFacility == currentFacility));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(userId),
-      const DeepCollectionEquality().hash(active),
-      const DeepCollectionEquality().hash(staffNumber),
+      id,
+      userId,
+      active,
+      staffNumber,
       const DeepCollectionEquality().hash(_facilities),
       const DeepCollectionEquality().hash(_linkedFacilities),
-      const DeepCollectionEquality().hash(defaultFacility),
-      const DeepCollectionEquality().hash(defaultFacilityName),
-      const DeepCollectionEquality().hash(user),
-      const DeepCollectionEquality().hash(communitiesState),
+      defaultFacility,
+      defaultFacilityName,
+      user,
+      communitiesState,
       const DeepCollectionEquality().hash(_clientSharedDiaryEntries),
       const DeepCollectionEquality().hash(_notifications),
       const DeepCollectionEquality().hash(_clientCaregivers),
       const DeepCollectionEquality().hash(_managedClients),
-      const DeepCollectionEquality().hash(notificationFilterState),
-      const DeepCollectionEquality().hash(currentFacility));
+      notificationFilterState,
+      currentFacility);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_StaffStateCopyWith<_$_StaffState> get copyWith =>
       __$$_StaffStateCopyWithImpl<_$_StaffState>(this, _$identity);
 

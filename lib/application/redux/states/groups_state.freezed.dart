@@ -36,7 +36,8 @@ mixin _$GroupState {
 abstract class $GroupStateCopyWith<$Res> {
   factory $GroupStateCopyWith(
           GroupState value, $Res Function(GroupState) then) =
-      _$GroupStateCopyWithImpl<$Res>;
+      _$GroupStateCopyWithImpl<$Res, GroupState>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'listCommunityMembers') List<GroupMember?>? groupMembers,
       bool? isModerator,
@@ -45,13 +46,16 @@ abstract class $GroupStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$GroupStateCopyWithImpl<$Res> implements $GroupStateCopyWith<$Res> {
+class _$GroupStateCopyWithImpl<$Res, $Val extends GroupState>
+    implements $GroupStateCopyWith<$Res> {
   _$GroupStateCopyWithImpl(this._value, this._then);
 
-  final GroupState _value;
   // ignore: unused_field
-  final $Res Function(GroupState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? groupMembers = freezed,
@@ -60,23 +64,23 @@ class _$GroupStateCopyWithImpl<$Res> implements $GroupStateCopyWith<$Res> {
     Object? communities = freezed,
   }) {
     return _then(_value.copyWith(
-      groupMembers: groupMembers == freezed
+      groupMembers: freezed == groupMembers
           ? _value.groupMembers
           : groupMembers // ignore: cast_nullable_to_non_nullable
               as List<GroupMember?>?,
-      isModerator: isModerator == freezed
+      isModerator: freezed == isModerator
           ? _value.isModerator
           : isModerator // ignore: cast_nullable_to_non_nullable
               as bool?,
-      isOwner: isOwner == freezed
+      isOwner: freezed == isOwner
           ? _value.isOwner
           : isOwner // ignore: cast_nullable_to_non_nullable
               as bool?,
-      communities: communities == freezed
+      communities: freezed == communities
           ? _value.communities
           : communities // ignore: cast_nullable_to_non_nullable
               as List<Community?>?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -87,6 +91,7 @@ abstract class _$$_GroupStateCopyWith<$Res>
           _$_GroupState value, $Res Function(_$_GroupState) then) =
       __$$_GroupStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'listCommunityMembers') List<GroupMember?>? groupMembers,
       bool? isModerator,
@@ -95,15 +100,14 @@ abstract class _$$_GroupStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_GroupStateCopyWithImpl<$Res> extends _$GroupStateCopyWithImpl<$Res>
+class __$$_GroupStateCopyWithImpl<$Res>
+    extends _$GroupStateCopyWithImpl<$Res, _$_GroupState>
     implements _$$_GroupStateCopyWith<$Res> {
   __$$_GroupStateCopyWithImpl(
       _$_GroupState _value, $Res Function(_$_GroupState) _then)
-      : super(_value, (v) => _then(v as _$_GroupState));
+      : super(_value, _then);
 
-  @override
-  _$_GroupState get _value => super._value as _$_GroupState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? groupMembers = freezed,
@@ -112,19 +116,19 @@ class __$$_GroupStateCopyWithImpl<$Res> extends _$GroupStateCopyWithImpl<$Res>
     Object? communities = freezed,
   }) {
     return _then(_$_GroupState(
-      groupMembers: groupMembers == freezed
+      groupMembers: freezed == groupMembers
           ? _value._groupMembers
           : groupMembers // ignore: cast_nullable_to_non_nullable
               as List<GroupMember?>?,
-      isModerator: isModerator == freezed
+      isModerator: freezed == isModerator
           ? _value.isModerator
           : isModerator // ignore: cast_nullable_to_non_nullable
               as bool?,
-      isOwner: isOwner == freezed
+      isOwner: freezed == isOwner
           ? _value.isOwner
           : isOwner // ignore: cast_nullable_to_non_nullable
               as bool?,
-      communities: communities == freezed
+      communities: freezed == communities
           ? _value._communities
           : communities // ignore: cast_nullable_to_non_nullable
               as List<Community?>?,
@@ -182,9 +186,9 @@ class _$_GroupState implements _GroupState {
             other is _$_GroupState &&
             const DeepCollectionEquality()
                 .equals(other._groupMembers, _groupMembers) &&
-            const DeepCollectionEquality()
-                .equals(other.isModerator, isModerator) &&
-            const DeepCollectionEquality().equals(other.isOwner, isOwner) &&
+            (identical(other.isModerator, isModerator) ||
+                other.isModerator == isModerator) &&
+            (identical(other.isOwner, isOwner) || other.isOwner == isOwner) &&
             const DeepCollectionEquality()
                 .equals(other._communities, _communities));
   }
@@ -194,12 +198,13 @@ class _$_GroupState implements _GroupState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_groupMembers),
-      const DeepCollectionEquality().hash(isModerator),
-      const DeepCollectionEquality().hash(isOwner),
+      isModerator,
+      isOwner,
       const DeepCollectionEquality().hash(_communities));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_GroupStateCopyWith<_$_GroupState> get copyWith =>
       __$$_GroupStateCopyWithImpl<_$_GroupState>(this, _$identity);
 

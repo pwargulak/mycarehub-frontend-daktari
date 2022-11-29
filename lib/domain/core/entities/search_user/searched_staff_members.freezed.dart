@@ -34,31 +34,35 @@ mixin _$SearchedStaffMembers {
 abstract class $SearchedStaffMembersCopyWith<$Res> {
   factory $SearchedStaffMembersCopyWith(SearchedStaffMembers value,
           $Res Function(SearchedStaffMembers) then) =
-      _$SearchedStaffMembersCopyWithImpl<$Res>;
+      _$SearchedStaffMembersCopyWithImpl<$Res, SearchedStaffMembers>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'searchStaffUser')
           List<SearchUserResponse>? staffMembers});
 }
 
 /// @nodoc
-class _$SearchedStaffMembersCopyWithImpl<$Res>
+class _$SearchedStaffMembersCopyWithImpl<$Res,
+        $Val extends SearchedStaffMembers>
     implements $SearchedStaffMembersCopyWith<$Res> {
   _$SearchedStaffMembersCopyWithImpl(this._value, this._then);
 
-  final SearchedStaffMembers _value;
   // ignore: unused_field
-  final $Res Function(SearchedStaffMembers) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? staffMembers = freezed,
   }) {
     return _then(_value.copyWith(
-      staffMembers: staffMembers == freezed
+      staffMembers: freezed == staffMembers
           ? _value.staffMembers
           : staffMembers // ignore: cast_nullable_to_non_nullable
               as List<SearchUserResponse>?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -69,6 +73,7 @@ abstract class _$$_SearchedStaffMembersCopyWith<$Res>
           $Res Function(_$_SearchedStaffMembers) then) =
       __$$_SearchedStaffMembersCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'searchStaffUser')
           List<SearchUserResponse>? staffMembers});
@@ -76,21 +81,19 @@ abstract class _$$_SearchedStaffMembersCopyWith<$Res>
 
 /// @nodoc
 class __$$_SearchedStaffMembersCopyWithImpl<$Res>
-    extends _$SearchedStaffMembersCopyWithImpl<$Res>
+    extends _$SearchedStaffMembersCopyWithImpl<$Res, _$_SearchedStaffMembers>
     implements _$$_SearchedStaffMembersCopyWith<$Res> {
   __$$_SearchedStaffMembersCopyWithImpl(_$_SearchedStaffMembers _value,
       $Res Function(_$_SearchedStaffMembers) _then)
-      : super(_value, (v) => _then(v as _$_SearchedStaffMembers));
+      : super(_value, _then);
 
-  @override
-  _$_SearchedStaffMembers get _value => super._value as _$_SearchedStaffMembers;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? staffMembers = freezed,
   }) {
     return _then(_$_SearchedStaffMembers(
-      staffMembers: staffMembers == freezed
+      staffMembers: freezed == staffMembers
           ? _value._staffMembers
           : staffMembers // ignore: cast_nullable_to_non_nullable
               as List<SearchUserResponse>?,
@@ -140,6 +143,7 @@ class _$_SearchedStaffMembers implements _SearchedStaffMembers {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SearchedStaffMembersCopyWith<_$_SearchedStaffMembers> get copyWith =>
       __$$_SearchedStaffMembersCopyWithImpl<_$_SearchedStaffMembers>(
           this, _$identity);

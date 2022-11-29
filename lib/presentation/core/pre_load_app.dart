@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:afya_moja_core/afya_moja_core.dart' as afya_moja_core;
-import 'package:app_wrapper/app_wrapper.dart';
+import 'package:sghi_core/afya_moja_core/afya_moja_core.dart' as afya_moja_core;
+import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -12,6 +12,7 @@ import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/core/batch_update_misc_state_action.dart';
 import 'package:rxdart/src/streams/merge.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:sghi_core/app_wrapper/enums.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 import 'package:prohealth360_daktari/application/core/services/custom_client.dart';
@@ -130,7 +131,7 @@ class _PreLoadAppState extends State<PreLoadApp> with WidgetsBindingObserver {
             initialRoute.compareTo(AppRoutes.resumeWithPin) == 0;
 
         if (!isPhoneLogin && !isResumeWithPin) {
-          initialRoute =  AppRoutes.facilitySelectionPage;
+          initialRoute = AppRoutes.facilitySelectionPage;
         }
 
         if (initialRoute == AppRoutes.homePage &&
@@ -222,7 +223,8 @@ class _PreLoadAppState extends State<PreLoadApp> with WidgetsBindingObserver {
         AndroidInitializationSettings(
       '@mipmap/ic_launcher',
     ); //for logo
-    const DarwinInitializationSettings darwinInit = DarwinInitializationSettings();
+    const DarwinInitializationSettings darwinInit =
+        DarwinInitializationSettings();
     const InitializationSettings initSetting = InitializationSettings(
       android: androidInit,
       iOS: darwinInit,

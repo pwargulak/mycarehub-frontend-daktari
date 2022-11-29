@@ -1,4 +1,4 @@
-import 'package:afya_moja_core/afya_moja_core.dart';
+import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:prohealth360_daktari/domain/core/entities/register_staff/register_staff_payload.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/patient/validator_mixin.dart';
 import 'package:rxdart/rxdart.dart';

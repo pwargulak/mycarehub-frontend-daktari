@@ -36,7 +36,8 @@ mixin _$ScreeningToolsState {
 abstract class $ScreeningToolsStateCopyWith<$Res> {
   factory $ScreeningToolsStateCopyWith(
           ScreeningToolsState value, $Res Function(ScreeningToolsState) then) =
-      _$ScreeningToolsStateCopyWithImpl<$Res>;
+      _$ScreeningToolsStateCopyWithImpl<$Res, ScreeningToolsState>;
+  @useResult
   $Res call(
       {@JsonKey(name: 'getAvailableFacilityScreeningTools')
           List<ToolType>? availableTools,
@@ -45,29 +46,31 @@ abstract class $ScreeningToolsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ScreeningToolsStateCopyWithImpl<$Res>
+class _$ScreeningToolsStateCopyWithImpl<$Res, $Val extends ScreeningToolsState>
     implements $ScreeningToolsStateCopyWith<$Res> {
   _$ScreeningToolsStateCopyWithImpl(this._value, this._then);
 
-  final ScreeningToolsState _value;
   // ignore: unused_field
-  final $Res Function(ScreeningToolsState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? availableTools = freezed,
     Object? toolAssessmentResponses = freezed,
   }) {
     return _then(_value.copyWith(
-      availableTools: availableTools == freezed
+      availableTools: freezed == availableTools
           ? _value.availableTools
           : availableTools // ignore: cast_nullable_to_non_nullable
               as List<ToolType>?,
-      toolAssessmentResponses: toolAssessmentResponses == freezed
+      toolAssessmentResponses: freezed == toolAssessmentResponses
           ? _value.toolAssessmentResponses
           : toolAssessmentResponses // ignore: cast_nullable_to_non_nullable
               as List<ToolAssessmentResponse>?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -78,6 +81,7 @@ abstract class _$$_ScreeningToolsStateCopyWith<$Res>
           $Res Function(_$_ScreeningToolsState) then) =
       __$$_ScreeningToolsStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(name: 'getAvailableFacilityScreeningTools')
           List<ToolType>? availableTools,
@@ -87,26 +91,24 @@ abstract class _$$_ScreeningToolsStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_ScreeningToolsStateCopyWithImpl<$Res>
-    extends _$ScreeningToolsStateCopyWithImpl<$Res>
+    extends _$ScreeningToolsStateCopyWithImpl<$Res, _$_ScreeningToolsState>
     implements _$$_ScreeningToolsStateCopyWith<$Res> {
   __$$_ScreeningToolsStateCopyWithImpl(_$_ScreeningToolsState _value,
       $Res Function(_$_ScreeningToolsState) _then)
-      : super(_value, (v) => _then(v as _$_ScreeningToolsState));
+      : super(_value, _then);
 
-  @override
-  _$_ScreeningToolsState get _value => super._value as _$_ScreeningToolsState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? availableTools = freezed,
     Object? toolAssessmentResponses = freezed,
   }) {
     return _then(_$_ScreeningToolsState(
-      availableTools: availableTools == freezed
+      availableTools: freezed == availableTools
           ? _value.availableTools
           : availableTools // ignore: cast_nullable_to_non_nullable
               as List<ToolType>?,
-      toolAssessmentResponses: toolAssessmentResponses == freezed
+      toolAssessmentResponses: freezed == toolAssessmentResponses
           ? _value.toolAssessmentResponses
           : toolAssessmentResponses // ignore: cast_nullable_to_non_nullable
               as List<ToolAssessmentResponse>?,
@@ -158,6 +160,7 @@ class _$_ScreeningToolsState implements _ScreeningToolsState {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ScreeningToolsStateCopyWith<_$_ScreeningToolsState> get copyWith =>
       __$$_ScreeningToolsStateCopyWithImpl<_$_ScreeningToolsState>(
           this, _$identity);
