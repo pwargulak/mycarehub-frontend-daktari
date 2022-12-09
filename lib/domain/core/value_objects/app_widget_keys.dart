@@ -1,7 +1,12 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 
+// Sign In
 const Key signinKey = Key('signin_key');
+const Key saveOrganisationBtnKey = Key('save_organisation_btn_key');
+const Key searchOrganisationIconBtnKey =
+    Key('search_organisation_icon_btn_key');
+const Key usernameFieldKey = Key('username_field_field');
 
 const Key errorAlertBoxTextKey = Key('errorAlertBoxTextKey');
 
@@ -57,6 +62,7 @@ const Key myAfyaHubInviteKey = Key('appAccessKey');
 const Key patientRegisterBtnKey = Key('patientRegisterButton');
 const Key saveFacilityBtnKey = Key('save_facility_btn_key');
 const Key facilitySelectOptionFieldKey = Key('facility_select_option_field');
+const Key organisationSelectOptionFieldKey = Key('organisation_select_option_field');
 const Key cccFieldKey = Key('ccc_field');
 const Key firstNameKey = Key('first_name_key');
 const Key lastNameKey = Key('last_name_key');

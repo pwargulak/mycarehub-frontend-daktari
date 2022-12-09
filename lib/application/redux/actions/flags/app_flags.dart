@@ -38,6 +38,7 @@ const String verifyOTPFlag = 'verify_otp_flag';
 const String createPinFlag = 'create_pin_flag';
 
 const String fetchFacilitiesFlag = 'fetch_facilities_flag';
+const String fetchOrganisationsFlag = 'fetch_organisations_flag';
 //Service requests
 const String fetchServiceRequestFlag = 'fetch_service_request_flag';
 const String fetchAvailableScreeningToolsFlag =

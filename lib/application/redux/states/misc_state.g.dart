@@ -19,6 +19,10 @@ _$_MiscState _$$_MiscStateFromJson(Map<String, dynamic> json) => _$_MiscState(
       selectedFacility: json['selectedFacility'] == null
           ? null
           : Facility.fromJson(json['selectedFacility'] as Map<String, dynamic>),
+      selectedOrganisation: json['selectedOrganisation'] == null
+          ? null
+          : Organisation.fromJson(
+              json['selectedOrganisation'] as Map<String, dynamic>),
       groupState: json['groupState'] == null
           ? null
           : GroupState.fromJson(json['groupState'] as Map<String, dynamic>),
@@ -42,6 +46,7 @@ Map<String, dynamic> _$$_MiscStateToJson(_$_MiscState instance) =>
       'profileFAQsContentState': instance.profileFAQsContentState,
       'communityMembers': instance.communityMembers,
       'selectedFacility': instance.selectedFacility,
+      'selectedOrganisation': instance.selectedOrganisation,
       'groupState': instance.groupState,
       'searchUserResponseState': instance.searchUserResponseState,
       'inactiveTime': instance.inactiveTime,

@@ -77,7 +77,7 @@ class SearchCaregiverDetailsPage extends StatelessWidget {
                 text: TextSpan(
                   children: <TextSpan>[
                     TextSpan(
-                      text: userNameString,
+                      text: userNameLabel,
                       style: normalSize15Text(AppColors.greyTextColor),
                     ),
                     TextSpan(

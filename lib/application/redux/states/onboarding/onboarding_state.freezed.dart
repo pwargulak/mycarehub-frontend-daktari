@@ -65,7 +65,10 @@ mixin _$OnboardingState {
       throw _privateConstructorUsedError; // Whether there was a failure while sending an OTP
   bool? get failedToSendOTP =>
       throw _privateConstructorUsedError; //  Whether the user is allowed to resend their PIN
-  bool? get canResendOTP => throw _privateConstructorUsedError;
+  bool? get canResendOTP =>
+      throw _privateConstructorUsedError; //  A list of available organizations
+  @JsonKey(name: 'organisations')
+  List<Organisation>? get organisations => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -98,7 +101,8 @@ abstract class $OnboardingStateCopyWith<$Res> {
       bool? invalidCredentials,
       bool? invalidOTP,
       bool? failedToSendOTP,
-      bool? canResendOTP});
+      bool? canResendOTP,
+      @JsonKey(name: 'organisations') List<Organisation>? organisations});
 
   $TermsAndConditionsCopyWith<$Res>? get termsAndConditions;
 }
@@ -135,6 +139,7 @@ class _$OnboardingStateCopyWithImpl<$Res, $Val extends OnboardingState>
     Object? invalidOTP = freezed,
     Object? failedToSendOTP = freezed,
     Object? canResendOTP = freezed,
+    Object? organisations = freezed,
   }) {
     return _then(_value.copyWith(
       termsAndConditions: freezed == termsAndConditions
@@ -213,6 +218,10 @@ class _$OnboardingStateCopyWithImpl<$Res, $Val extends OnboardingState>
           ? _value.canResendOTP
           : canResendOTP // ignore: cast_nullable_to_non_nullable
               as bool?,
+      organisations: freezed == organisations
+          ? _value.organisations
+          : organisations // ignore: cast_nullable_to_non_nullable
+              as List<Organisation>?,
     ) as $Val);
   }
 
@@ -257,7 +266,8 @@ abstract class _$$_OnboardingStateCopyWith<$Res>
       bool? invalidCredentials,
       bool? invalidOTP,
       bool? failedToSendOTP,
-      bool? canResendOTP});
+      bool? canResendOTP,
+      @JsonKey(name: 'organisations') List<Organisation>? organisations});
 
   @override
   $TermsAndConditionsCopyWith<$Res>? get termsAndConditions;
@@ -293,6 +303,7 @@ class __$$_OnboardingStateCopyWithImpl<$Res>
     Object? invalidOTP = freezed,
     Object? failedToSendOTP = freezed,
     Object? canResendOTP = freezed,
+    Object? organisations = freezed,
   }) {
     return _then(_$_OnboardingState(
       termsAndConditions: freezed == termsAndConditions
@@ -371,6 +382,10 @@ class __$$_OnboardingStateCopyWithImpl<$Res>
           ? _value.canResendOTP
           : canResendOTP // ignore: cast_nullable_to_non_nullable
               as bool?,
+      organisations: freezed == organisations
+          ? _value.organisations
+          : organisations // ignore: cast_nullable_to_non_nullable
+              as List<Organisation>?,
     ));
   }
 }
@@ -397,7 +412,8 @@ class _$_OnboardingState implements _OnboardingState {
       this.invalidCredentials,
       this.invalidOTP,
       this.failedToSendOTP,
-      this.canResendOTP});
+      this.canResendOTP,
+      @JsonKey(name: 'organisations') this.organisations});
 
   factory _$_OnboardingState.fromJson(Map<String, dynamic> json) =>
       _$$_OnboardingStateFromJson(json);
@@ -466,10 +482,14 @@ class _$_OnboardingState implements _OnboardingState {
 //  Whether the user is allowed to resend their PIN
   @override
   final bool? canResendOTP;
+//  A list of available organizations
+  @override
+  @JsonKey(name: 'organisations')
+  final List<Organisation>? organisations;
 
   @override
   String toString() {
-    return 'OnboardingState(termsAndConditions: $termsAndConditions, securityQuestions: $securityQuestions, securityQuestionResponses: $securityQuestionResponses, currentOnboardingStage: $currentOnboardingStage, isPhoneVerified: $isPhoneVerified, hasSetSecurityQuestions: $hasSetSecurityQuestions, hasVerifiedSecurityQuestions: $hasVerifiedSecurityQuestions, hasSetNickName: $hasSetNickName, hasSetPin: $hasSetPin, hasAcceptedTerms: $hasAcceptedTerms, phoneNumber: $phoneNumber, pin: $pin, confirmPIN: $confirmPIN, otp: $otp, failedLoginCount: $failedLoginCount, invalidCredentials: $invalidCredentials, invalidOTP: $invalidOTP, failedToSendOTP: $failedToSendOTP, canResendOTP: $canResendOTP)';
+    return 'OnboardingState(termsAndConditions: $termsAndConditions, securityQuestions: $securityQuestions, securityQuestionResponses: $securityQuestionResponses, currentOnboardingStage: $currentOnboardingStage, isPhoneVerified: $isPhoneVerified, hasSetSecurityQuestions: $hasSetSecurityQuestions, hasVerifiedSecurityQuestions: $hasVerifiedSecurityQuestions, hasSetNickName: $hasSetNickName, hasSetPin: $hasSetPin, hasAcceptedTerms: $hasAcceptedTerms, phoneNumber: $phoneNumber, pin: $pin, confirmPIN: $confirmPIN, otp: $otp, failedLoginCount: $failedLoginCount, invalidCredentials: $invalidCredentials, invalidOTP: $invalidOTP, failedToSendOTP: $failedToSendOTP, canResendOTP: $canResendOTP, organisations: $organisations)';
   }
 
   @override
@@ -515,7 +535,9 @@ class _$_OnboardingState implements _OnboardingState {
             (identical(other.failedToSendOTP, failedToSendOTP) ||
                 other.failedToSendOTP == failedToSendOTP) &&
             (identical(other.canResendOTP, canResendOTP) ||
-                other.canResendOTP == canResendOTP));
+                other.canResendOTP == canResendOTP) &&
+            const DeepCollectionEquality()
+                .equals(other.organisations, organisations));
   }
 
   @JsonKey(ignore: true)
@@ -540,7 +562,8 @@ class _$_OnboardingState implements _OnboardingState {
         invalidCredentials,
         invalidOTP,
         failedToSendOTP,
-        canResendOTP
+        canResendOTP,
+        const DeepCollectionEquality().hash(organisations)
       ]);
 
   @JsonKey(ignore: true)
@@ -577,7 +600,9 @@ abstract class _OnboardingState implements OnboardingState {
       final bool? invalidCredentials,
       final bool? invalidOTP,
       final bool? failedToSendOTP,
-      final bool? canResendOTP}) = _$_OnboardingState;
+      final bool? canResendOTP,
+      @JsonKey(name: 'organisations')
+          final List<Organisation>? organisations}) = _$_OnboardingState;
 
   factory _OnboardingState.fromJson(Map<String, dynamic> json) =
       _$_OnboardingState.fromJson;
@@ -634,6 +659,9 @@ abstract class _OnboardingState implements OnboardingState {
   bool? get failedToSendOTP;
   @override //  Whether the user is allowed to resend their PIN
   bool? get canResendOTP;
+  @override //  A list of available organizations
+  @JsonKey(name: 'organisations')
+  List<Organisation>? get organisations;
   @override
   @JsonKey(ignore: true)
   _$$_OnboardingStateCopyWith<_$_OnboardingState> get copyWith =>

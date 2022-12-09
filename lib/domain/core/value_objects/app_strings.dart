@@ -96,8 +96,13 @@ const String declineInvite = 'Decline Invite';
 
 //Phone Login
 const String phoneLoginPageTitle = 'Welcome to ';
+const String usernameString = 'Username';
 const String phoneLoginPageDescription = 'Enter your provided PIN to continue';
+const String selectOrganisationDescription = 'Please select your organisation to proceed';
+const String loginPageDescription = 'Enter your provided PIN to continue';
 const String pinString = 'PIN';
+
+const String userNameHint = 'Enter your username...';
 const String forgotPinString = 'Forgot Pin';
 
 //Security Questions
@@ -252,6 +257,7 @@ const String noNotificationsDescription =
 const String CCCNumberLabel = 'CCC Number *';
 const String cccNumberHint = 'Enter CCC Number...';
 const String facilityLabel = 'Facility *';
+const String organisationString = 'Organisation';
 const String firstNameLabel = 'First Name *';
 const String lastNameLabel = 'Last Name *';
 const String birthDateLabel = 'Birth Date *';
@@ -275,6 +281,7 @@ const String clientPhoneExists =
 const String contactExists =
     'a contact with this value and flavour already exists';
 const String searchFacilitiesString = 'Search facilities';
+const String searchOrganisationsString = 'Search organisations';
 
 // add new staff page
 const String registerStaffSuccess = 'Successfully registered staff';
@@ -366,6 +373,8 @@ const String resetPin = 'reset your PIN';
 const String phoneLoginCreateAccountText = 'create an account';
 
 const String confirmPinPrompt = 'A 4 digit PIN is required';
+const String enterUsernamePrompt = 'Username is required';
+const String chooseOrganisationPrompt = 'Organisation is required';
 const String confirmPinMatch = 'PINs do not match';
 const String loginPinDigits = 'Only numbers are allowed, 0-9';
 const String loginPinLength = 'Enter a four digit PIN';
@@ -541,17 +550,22 @@ const String noAvailableMemberDescription =
 const String inviteMembersSuccessfulText = 'Members invited successfully';
 const String noMemberFoundText = 'No member found with that name';
 const String noFacilityFoundText = 'No facility found with that code';
+const String noOrganizationFoundText = 'No organisation found with that name';
 const String noRecordFoundText = 'No record found with that keyword';
 const String couldNotFindAMemberText =
     'It seems like we could not find a member by the name ';
 const String couldNotFindFacilityText =
     'It seems like we could not find a facility by the code ';
+const String couldNotFindOrganizationText =
+    'It seems like we could not find an organisation by the name ';
 const String couldNotFindRedFlagsText =
     'It seems like we could not find any red flags by the keyword ';
 const String confirmTheNamesAreCorrectText =
     '. Confirm that the names are correct before searching again, or use different names.';
 const String confirmTheCodeIsCorrectText =
     '. Confirm that the code is correct before searching again.';
+const String confirmTheNameIsCorrectText =
+    '. Confirm that the name is correct before searching again.';
 const String confirmTheKeywordIsCorrectText =
     '. Confirm that the keyword is correct before searching again';
 const String staffMemberText = 'Staff member';
@@ -916,8 +930,11 @@ const String toString = 'To';
 const String ageMustBeWithinRange = 'Age is invalid';
 const String checkInternetText = 'Check your internet connection and try again';
 const String searchFacilityActionString = 'Tap to search for a facility...';
+const String searchOrganisationActionString = 'Tap to search for an organisation...';
 const String searchFacilityPageDescription =
     'Search for a facility using its MFL code or name';
+const String searchOrganisationPageDescription =
+    'Search for an organization using its name';
 const String invalidPhoneNumber = 'Invalid phone number';
 
 // service request actions
@@ -1008,7 +1025,8 @@ const String confirmSearchTermIsCorrectString =
 const String addFacilitySuccessString = 'Facility added successfully';
 const String removedFacilitySuccessString = 'Facility removed successfully';
 const String caregiverNumberString = 'Caregiver number: ';
-const String userNameString = 'Username: ';
+const String userNameLabel = 'Username: ';
+const String userNameString = 'Username';
 const String switchingYourFacility = 'Switching your facility';
 
 // Organization selection

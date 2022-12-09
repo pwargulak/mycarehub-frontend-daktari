@@ -38,6 +38,9 @@ _$_OnboardingState _$$_OnboardingStateFromJson(Map<String, dynamic> json) =>
       invalidOTP: json['invalidOTP'] as bool?,
       failedToSendOTP: json['failedToSendOTP'] as bool?,
       canResendOTP: json['canResendOTP'] as bool?,
+      organisations: (json['organisations'] as List<dynamic>?)
+          ?.map((e) => Organisation.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$_OnboardingStateToJson(_$_OnboardingState instance) =>
@@ -62,6 +65,7 @@ Map<String, dynamic> _$$_OnboardingStateToJson(_$_OnboardingState instance) =>
       'invalidOTP': instance.invalidOTP,
       'failedToSendOTP': instance.failedToSendOTP,
       'canResendOTP': instance.canResendOTP,
+      'organisations': instance.organisations,
     };
 
 const _$CurrentOnboardingStageEnumMap = {

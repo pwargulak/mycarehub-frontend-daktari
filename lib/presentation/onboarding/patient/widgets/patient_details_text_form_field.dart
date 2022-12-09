@@ -18,6 +18,9 @@ class PatientDetailsTextFormField extends StatelessWidget {
     this.inputFormatters,
     this.controller,
     this.initialValue,
+    this.autovalidateMode = AutovalidateMode.onUserInteraction,
+    this.obscureText = false,
+    this.maxLength,
   });
 
   final String label;
@@ -30,6 +33,9 @@ class PatientDetailsTextFormField extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final TextEditingController? controller;
   final String? initialValue;
+  final AutovalidateMode autovalidateMode;
+  final bool obscureText;
+  final int? maxLength;
 
   @override
   Widget build(BuildContext context) {
@@ -64,9 +70,11 @@ class PatientDetailsTextFormField extends StatelessWidget {
           onChanged: onChanged,
           onFieldSubmitted: onFieldSubmitted,
           validator: validator,
-          autovalidateMode: AutovalidateMode.onUserInteraction,
+          autovalidateMode: autovalidateMode,
           keyboardType: keyboardType,
           inputFormatters: inputFormatters,
+          obscureText: obscureText,
+          maxLength: maxLength,
         ),
       ],
     );

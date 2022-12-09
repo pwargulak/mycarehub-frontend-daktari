@@ -1,4 +1,5 @@
 // Package imports:
+import 'package:prohealth360_daktari/domain/core/entities/core/organisation.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
@@ -26,10 +27,12 @@ class UpdateOnboardingStateAction extends ReduxAction<AppState> {
     this.pin,
     this.confirmPIN,
     this.invalidCredentials,
+    this.organisations,
   });
 
   List<SecurityQuestion>? securityQuestions;
   List<SecurityQuestionResponse>? securityQuestionsResponses;
+  List<Organisation>? organisations;
 
   ///------------WORKFLOW RELATED BOOLEANS------------
   final CurrentOnboardingStage? currentOnboardingStage;
@@ -84,6 +87,8 @@ class UpdateOnboardingStateAction extends ReduxAction<AppState> {
       phoneNumber: phoneNumber ?? state.onboardingState?.phoneNumber,
       currentOnboardingStage: currentOnboardingStage ??
           state.onboardingState?.currentOnboardingStage,
+      organisations: organisations ??
+          state.onboardingState?.organisations,
     );
 
     final AppState newState =

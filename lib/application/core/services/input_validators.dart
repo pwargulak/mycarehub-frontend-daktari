@@ -36,4 +36,28 @@ class InputValidators {
     }
     return null;
   }
+
+  /// Validates a username
+  ///
+  /// The [value] is the username entered by the user
+  static String? validateUsername({
+    required String? value,
+  }) {
+    if (value == null || value.isEmpty) {
+      return enterUsernamePrompt;
+    }
+    return null;
+  }
+
+  /// Validates a organisation's name
+  ///
+  /// The [value] is the organisation name selected by the user
+  static String? validateOrganisationName({
+    required String? value,
+  }) {
+    if (value == null || value.isEmpty) {
+      return chooseOrganisationPrompt;
+    }
+    return null;
+  }
 }

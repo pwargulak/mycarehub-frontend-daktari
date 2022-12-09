@@ -1,4 +1,5 @@
 // Package imports:
+import 'package:prohealth360_daktari/domain/core/entities/core/organisation.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:prohealth360_daktari/domain/core/entities/terms/terms_and_conditions.dart';
@@ -67,6 +68,9 @@ class OnboardingState with _$OnboardingState {
 
     //  Whether the user is allowed to resend their PIN
     bool? canResendOTP,
+
+    //  A list of available organizations
+    @JsonKey(name: 'organisations') List<Organisation>? organisations,
   }) = _OnboardingState;
 
   factory OnboardingState.fromJson(Map<String, dynamic> json) =>
@@ -92,5 +96,6 @@ class OnboardingState with _$OnboardingState {
         invalidOTP: false,
         failedToSendOTP: false,
         canResendOTP: false,
+        organisations: <Organisation>[],
       );
 }

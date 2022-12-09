@@ -1,3 +1,4 @@
+import 'package:prohealth360_daktari/domain/core/entities/core/organisation.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:prohealth360_daktari/application/redux/states/groups_state.dart';
@@ -17,6 +18,7 @@ class MiscState with _$MiscState {
     FAQsContentState? profileFAQsContentState,
     List<Member>? communityMembers,
     Facility? selectedFacility,
+    Organisation? selectedOrganisation,
     GroupState? groupState,
     SearchUserResponseState? searchUserResponseState,
     String? inactiveTime,
@@ -33,6 +35,7 @@ class MiscState with _$MiscState {
         profileFAQsContentState: FAQsContentState.initial(),
         communityMembers: <Member>[],
         selectedFacility: Facility.initial(),
+        selectedOrganisation: Organisation.initial(),
         groupState: GroupState.initial(),
         searchUserResponseState: SearchUserResponseState.initial(),
         inactiveTime: UNKNOWN,

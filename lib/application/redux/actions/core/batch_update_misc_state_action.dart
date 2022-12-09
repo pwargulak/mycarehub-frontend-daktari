@@ -1,4 +1,5 @@
 // Package imports:
+import 'package:prohealth360_daktari/domain/core/entities/core/organisation.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 // Project imports:
@@ -18,6 +19,7 @@ class BatchUpdateMiscStateAction extends ReduxAction<AppState> {
   final String? inactiveTime;
   final bool? resumeWithPin;
   final Facility? selectedFacility;
+  final Organisation? selectedOrganisation;
   final bool? updateFacility;
 
   BatchUpdateMiscStateAction({
@@ -27,6 +29,7 @@ class BatchUpdateMiscStateAction extends ReduxAction<AppState> {
     this.inactiveTime,
     this.resumeWithPin,
     this.selectedFacility,
+    this.selectedOrganisation,
     this.updateFacility,
   });
 
@@ -41,6 +44,7 @@ class BatchUpdateMiscStateAction extends ReduxAction<AppState> {
         resumeWithPin: resumeWithPin ?? state.miscState?.resumeWithPin,
         selectedFacility: selectedFacility ?? state.miscState?.selectedFacility,
         updateFacility: updateFacility ?? state.miscState?.updateFacility,
+        selectedOrganisation: selectedOrganisation ?? state.miscState?.selectedOrganisation,
       ),
     );
 
