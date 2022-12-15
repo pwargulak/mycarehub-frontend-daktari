@@ -1,10 +1,9 @@
 // Package imports:
 
-import 'package:afya_moja_core/afya_moja_core.dart';
+// import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/roles_list.dart';
-import 'package:prohealth360_daktari/domain/core/entities/search_user/user_data.dart';
-
+import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 part 'search_user_response.freezed.dart';
 part 'search_user_response.g.dart';
 

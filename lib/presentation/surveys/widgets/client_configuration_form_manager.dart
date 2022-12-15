@@ -1,4 +1,4 @@
-import 'package:afya_moja_core/afya_moja_core.dart';
+import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:prohealth360_daktari/domain/community/entities/age_range.dart';
 import 'package:prohealth360_daktari/domain/core/entities/surveys/client_configuration_payload.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';

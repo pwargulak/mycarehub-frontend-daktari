@@ -1,4 +1,5 @@
-import 'package:app_wrapper/app_wrapper.dart' show AppContext, BaseContext;
+import 'package:sghi_core/app_wrapper/base_context.dart';
+import 'package:sghi_core/app_wrapper/enums.dart' show AppContext;
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_config/flutter_config.dart';
@@ -27,8 +28,6 @@ AppSetupData getAppSetupData(AppContext context) {
       return demoAppSetupData;
     case AppContext.AppProd:
       return prodAppSetupData;
-    case AppContext.AppE2E:
-      return devAppSetupData;
     default:
       return devAppSetupData;
   }
@@ -63,6 +62,7 @@ final AppSetupData devAppSetupData = AppSetupData(
     refreshStreamTokenEndpoint: kTestRefreshStreamTokenEndpoint,
     pinResetServiceRequestEndpoint: kTestPINResetServiceRequestEndpoint,
     optInClientEndpoint: kTestOptInEndpoint,
+    listOrganisationsEndpoint: '',
   ),
 );
 
@@ -94,7 +94,7 @@ final AppSetupData demoAppSetupData = AppSetupData(
     verifySecurityQuestionsEndpoint: kDemoVerifySecurityQuestionsEndpoint,
     refreshStreamTokenEndpoint: kDemoRefreshStreamTokenEndpoint,
     pinResetServiceRequestEndpoint: kDemoPINResetServiceRequestEndpoint,
-    optInClientEndpoint: kDemoOptInEndpoint,
+    optInClientEndpoint: kDemoOptInEndpoint, listOrganisationsEndpoint: '',
   ),
 );
 
@@ -126,7 +126,7 @@ final AppSetupData prodAppSetupData = AppSetupData(
     verifySecurityQuestionsEndpoint: kProdVerifySecurityQuestionsEndpoint,
     refreshStreamTokenEndpoint: kProdRefreshStreamTokenEndpoint,
     pinResetServiceRequestEndpoint: kProdPINResetServiceRequestEndpoint,
-    optInClientEndpoint: kProdOptInEndpoint,
+    optInClientEndpoint: kProdOptInEndpoint, listOrganisationsEndpoint: '',
   ),
 );
 

@@ -8,7 +8,7 @@ import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/core/widgets/no_border_button.dart';
-import 'package:shared_themes/colors.dart';
+import 'package:sghi_core/shared_themes/colors.dart';
 
 // Project imports:
 

@@ -1,5 +1,5 @@
-import 'package:afya_moja_core/afya_moja_core.dart';
-import 'package:app_wrapper/app_wrapper.dart';
+import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
+import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
@@ -34,21 +34,32 @@ class _SearchFacilitiesPageState extends State<SearchFacilitiesPage> {
       SearchFacilitiesAction(
         client: AppWrapperBase.of(context)!.graphQLClient,
         onFailure: (String message) {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(
-                content: const Text(
-                  connectionLostText,
-                ),
-                duration: const Duration(seconds: 5),
-                action: dismissSnackBar(
-                  closeString,
-                  Colors.white,
-                  context,
-                ),
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            StoreProvider.dispatch(
+              context,
+              SearchFacilitiesAction(
+                client: AppWrapperBase.of(context)!.graphQLClient,
+                onFailure: (String message) {
+                  ScaffoldMessenger.of(context)
+                    ..hideCurrentSnackBar()
+                    ..showSnackBar(
+                      SnackBar(
+                        content: const Text(
+                          connectionLostText,
+                        ),
+                        duration: const Duration(seconds: 5),
+                        action: dismissSnackBar(
+                          closeString,
+                          Colors.white,
+                          context,
+                        ),
+                      ),
+                    );
+                },
+                mflCode: facilitySearchCode,
               ),
             );
+          });
         },
         mflCode: facilitySearchCode,
       ),

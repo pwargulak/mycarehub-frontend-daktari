@@ -1,7 +1,7 @@
 // Package imports:
 import 'dart:convert';
 
-import 'package:afya_moja_core/afya_moja_core.dart' as core;
+import 'package:sghi_core/afya_moja_core/afya_moja_core.dart' as core;
 import 'package:async_redux/async_redux.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

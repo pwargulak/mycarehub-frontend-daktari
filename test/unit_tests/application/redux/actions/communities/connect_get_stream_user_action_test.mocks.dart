@@ -64,174 +64,186 @@ class _FakeOwnUser_4 extends _i1.SmartFake implements _i5.OwnUser {
       : super(parent, parentInvocation);
 }
 
-class _FakeQueryUsersResponse_5 extends _i1.SmartFake
+class _FakeCallTokenPayload_5 extends _i1.SmartFake
+    implements _i6.CallTokenPayload {
+  _FakeCallTokenPayload_5(Object parent, Invocation parentInvocation)
+      : super(parent, parentInvocation);
+}
+
+class _FakeCreateCallPayload_6 extends _i1.SmartFake
+    implements _i6.CreateCallPayload {
+  _FakeCreateCallPayload_6(Object parent, Invocation parentInvocation)
+      : super(parent, parentInvocation);
+}
+
+class _FakeQueryUsersResponse_7 extends _i1.SmartFake
     implements _i6.QueryUsersResponse {
-  _FakeQueryUsersResponse_5(Object parent, Invocation parentInvocation)
+  _FakeQueryUsersResponse_7(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeQueryBannedUsersResponse_6 extends _i1.SmartFake
+class _FakeQueryBannedUsersResponse_8 extends _i1.SmartFake
     implements _i6.QueryBannedUsersResponse {
-  _FakeQueryBannedUsersResponse_6(Object parent, Invocation parentInvocation)
+  _FakeQueryBannedUsersResponse_8(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeSearchMessagesResponse_7 extends _i1.SmartFake
+class _FakeSearchMessagesResponse_9 extends _i1.SmartFake
     implements _i6.SearchMessagesResponse {
-  _FakeSearchMessagesResponse_7(Object parent, Invocation parentInvocation)
+  _FakeSearchMessagesResponse_9(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeSendFileResponse_8 extends _i1.SmartFake
+class _FakeSendFileResponse_10 extends _i1.SmartFake
     implements _i6.SendFileResponse {
-  _FakeSendFileResponse_8(Object parent, Invocation parentInvocation)
+  _FakeSendFileResponse_10(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeSendImageResponse_9 extends _i1.SmartFake
-    implements _i6.SendImageResponse {
-  _FakeSendImageResponse_9(Object parent, Invocation parentInvocation)
+class _FakeSendAttachmentResponse_11 extends _i1.SmartFake
+    implements _i6.SendAttachmentResponse {
+  _FakeSendAttachmentResponse_11(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeEmptyResponse_10 extends _i1.SmartFake implements _i6.EmptyResponse {
-  _FakeEmptyResponse_10(Object parent, Invocation parentInvocation)
+class _FakeEmptyResponse_12 extends _i1.SmartFake implements _i6.EmptyResponse {
+  _FakeEmptyResponse_12(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeUpdateChannelResponse_11 extends _i1.SmartFake
+class _FakeUpdateChannelResponse_13 extends _i1.SmartFake
     implements _i6.UpdateChannelResponse {
-  _FakeUpdateChannelResponse_11(Object parent, Invocation parentInvocation)
+  _FakeUpdateChannelResponse_13(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakePartialUpdateChannelResponse_12 extends _i1.SmartFake
+class _FakePartialUpdateChannelResponse_14 extends _i1.SmartFake
     implements _i6.PartialUpdateChannelResponse {
-  _FakePartialUpdateChannelResponse_12(
+  _FakePartialUpdateChannelResponse_14(
       Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeListDevicesResponse_13 extends _i1.SmartFake
+class _FakeListDevicesResponse_15 extends _i1.SmartFake
     implements _i6.ListDevicesResponse {
-  _FakeListDevicesResponse_13(Object parent, Invocation parentInvocation)
+  _FakeListDevicesResponse_15(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeToken_14 extends _i1.SmartFake implements _i7.Token {
-  _FakeToken_14(Object parent, Invocation parentInvocation)
+class _FakeToken_16 extends _i1.SmartFake implements _i7.Token {
+  _FakeToken_16(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeChannel_15 extends _i1.SmartFake implements _i8.Channel {
-  _FakeChannel_15(Object parent, Invocation parentInvocation)
+class _FakeChannel_17 extends _i1.SmartFake implements _i8.Channel {
+  _FakeChannel_17(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeChannelState_16 extends _i1.SmartFake implements _i9.ChannelState {
-  _FakeChannelState_16(Object parent, Invocation parentInvocation)
+class _FakeChannelState_18 extends _i1.SmartFake implements _i9.ChannelState {
+  _FakeChannelState_18(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeQueryMembersResponse_17 extends _i1.SmartFake
+class _FakeQueryMembersResponse_19 extends _i1.SmartFake
     implements _i6.QueryMembersResponse {
-  _FakeQueryMembersResponse_17(Object parent, Invocation parentInvocation)
+  _FakeQueryMembersResponse_19(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeAcceptInviteResponse_18 extends _i1.SmartFake
+class _FakeAcceptInviteResponse_20 extends _i1.SmartFake
     implements _i6.AcceptInviteResponse {
-  _FakeAcceptInviteResponse_18(Object parent, Invocation parentInvocation)
+  _FakeAcceptInviteResponse_20(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeRejectInviteResponse_19 extends _i1.SmartFake
+class _FakeRejectInviteResponse_21 extends _i1.SmartFake
     implements _i6.RejectInviteResponse {
-  _FakeRejectInviteResponse_19(Object parent, Invocation parentInvocation)
+  _FakeRejectInviteResponse_21(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeAddMembersResponse_20 extends _i1.SmartFake
+class _FakeAddMembersResponse_22 extends _i1.SmartFake
     implements _i6.AddMembersResponse {
-  _FakeAddMembersResponse_20(Object parent, Invocation parentInvocation)
+  _FakeAddMembersResponse_22(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeRemoveMembersResponse_21 extends _i1.SmartFake
+class _FakeRemoveMembersResponse_23 extends _i1.SmartFake
     implements _i6.RemoveMembersResponse {
-  _FakeRemoveMembersResponse_21(Object parent, Invocation parentInvocation)
+  _FakeRemoveMembersResponse_23(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeInviteMembersResponse_22 extends _i1.SmartFake
+class _FakeInviteMembersResponse_24 extends _i1.SmartFake
     implements _i6.InviteMembersResponse {
-  _FakeInviteMembersResponse_22(Object parent, Invocation parentInvocation)
+  _FakeInviteMembersResponse_24(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeSendActionResponse_23 extends _i1.SmartFake
+class _FakeSendActionResponse_25 extends _i1.SmartFake
     implements _i6.SendActionResponse {
-  _FakeSendActionResponse_23(Object parent, Invocation parentInvocation)
+  _FakeSendActionResponse_25(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeUpdateUsersResponse_24 extends _i1.SmartFake
+class _FakeUpdateUsersResponse_26 extends _i1.SmartFake
     implements _i6.UpdateUsersResponse {
-  _FakeUpdateUsersResponse_24(Object parent, Invocation parentInvocation)
+  _FakeUpdateUsersResponse_26(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeSendReactionResponse_25 extends _i1.SmartFake
+class _FakeSendReactionResponse_27 extends _i1.SmartFake
     implements _i6.SendReactionResponse {
-  _FakeSendReactionResponse_25(Object parent, Invocation parentInvocation)
+  _FakeSendReactionResponse_27(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeSendMessageResponse_26 extends _i1.SmartFake
+class _FakeSendMessageResponse_28 extends _i1.SmartFake
     implements _i6.SendMessageResponse {
-  _FakeSendMessageResponse_26(Object parent, Invocation parentInvocation)
+  _FakeSendMessageResponse_28(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeQueryRepliesResponse_27 extends _i1.SmartFake
+class _FakeQueryRepliesResponse_29 extends _i1.SmartFake
     implements _i6.QueryRepliesResponse {
-  _FakeQueryRepliesResponse_27(Object parent, Invocation parentInvocation)
+  _FakeQueryRepliesResponse_29(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeQueryReactionsResponse_28 extends _i1.SmartFake
+class _FakeQueryReactionsResponse_30 extends _i1.SmartFake
     implements _i6.QueryReactionsResponse {
-  _FakeQueryReactionsResponse_28(Object parent, Invocation parentInvocation)
+  _FakeQueryReactionsResponse_30(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeUpdateMessageResponse_29 extends _i1.SmartFake
+class _FakeUpdateMessageResponse_31 extends _i1.SmartFake
     implements _i6.UpdateMessageResponse {
-  _FakeUpdateMessageResponse_29(Object parent, Invocation parentInvocation)
+  _FakeUpdateMessageResponse_31(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeGetMessageResponse_30 extends _i1.SmartFake
+class _FakeGetMessageResponse_32 extends _i1.SmartFake
     implements _i6.GetMessageResponse {
-  _FakeGetMessageResponse_30(Object parent, Invocation parentInvocation)
+  _FakeGetMessageResponse_32(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeGetMessagesByIdResponse_31 extends _i1.SmartFake
+class _FakeGetMessagesByIdResponse_33 extends _i1.SmartFake
     implements _i6.GetMessagesByIdResponse {
-  _FakeGetMessagesByIdResponse_31(Object parent, Invocation parentInvocation)
+  _FakeGetMessagesByIdResponse_33(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeTranslateMessageResponse_32 extends _i1.SmartFake
+class _FakeTranslateMessageResponse_34 extends _i1.SmartFake
     implements _i6.TranslateMessageResponse {
-  _FakeTranslateMessageResponse_32(Object parent, Invocation parentInvocation)
+  _FakeTranslateMessageResponse_34(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
-class _FakeOGAttachmentResponse_33 extends _i1.SmartFake
+class _FakeOGAttachmentResponse_35 extends _i1.SmartFake
     implements _i6.OGAttachmentResponse {
-  _FakeOGAttachmentResponse_33(Object parent, Invocation parentInvocation)
+  _FakeOGAttachmentResponse_35(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
@@ -376,6 +388,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
   _i11.Stream<List<_i8.Channel>> queryChannels(
           {_i16.Filter? filter,
           List<_i17.SortOption<_i18.ChannelModel>>? sort,
+          List<_i17.SortOption<_i9.ChannelState>>? channelStateSort,
           bool? state = true,
           bool? watch = true,
           bool? presence = false,
@@ -388,6 +401,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
               Invocation.method(#queryChannels, [], {
                 #filter: filter,
                 #sort: sort,
+                #channelStateSort: channelStateSort,
                 #state: state,
                 #watch: watch,
                 #presence: presence,
@@ -399,9 +413,38 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
               returnValue: _i11.Stream<List<_i8.Channel>>.empty())
           as _i11.Stream<List<_i8.Channel>>);
   @override
+  _i11.Future<_i6.CallTokenPayload> getCallToken(String? callId) =>
+      (super.noSuchMethod(Invocation.method(#getCallToken, [callId]),
+              returnValue: _i11.Future<_i6.CallTokenPayload>.value(
+                  _FakeCallTokenPayload_5(
+                      this, Invocation.method(#getCallToken, [callId]))))
+          as _i11.Future<_i6.CallTokenPayload>);
+  @override
+  _i11.Future<_i6.CreateCallPayload> createCall(
+          {String? callId,
+          String? callType,
+          String? channelType,
+          String? channelId}) =>
+      (super.noSuchMethod(
+          Invocation.method(#createCall, [], {
+            #callId: callId,
+            #callType: callType,
+            #channelType: channelType,
+            #channelId: channelId
+          }),
+          returnValue:
+              _i11.Future<_i6.CreateCallPayload>.value(_FakeCreateCallPayload_6(
+                  this,
+                  Invocation.method(#createCall, [], {
+                    #callId: callId,
+                    #callType: callType,
+                    #channelType: channelType,
+                    #channelId: channelId
+                  })))) as _i11.Future<_i6.CreateCallPayload>);
+  @override
   _i11.Future<List<_i8.Channel>> queryChannelsOnline(
           {_i16.Filter? filter,
-          List<_i17.SortOption<_i18.ChannelModel>>? sort,
+          List<_i17.SortOption<dynamic>>? sort,
           bool? state = true,
           bool? watch = true,
           bool? presence = false,
@@ -429,12 +472,14 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
   _i11.Future<List<_i8.Channel>> queryChannelsOffline(
           {_i16.Filter? filter,
           List<_i17.SortOption<_i18.ChannelModel>>? sort,
+          List<_i17.SortOption<_i9.ChannelState>>? channelStateSort,
           _i17.PaginationParams? paginationParams =
               const _i17.PaginationParams()}) =>
       (super.noSuchMethod(
               Invocation.method(#queryChannelsOffline, [], {
                 #filter: filter,
                 #sort: sort,
+                #channelStateSort: channelStateSort,
                 #paginationParams: paginationParams
               }),
               returnValue:
@@ -448,7 +493,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
           _i17.PaginationParams? pagination}) =>
       (super.noSuchMethod(Invocation.method(#queryUsers, [], {#presence: presence, #filter: filter, #sort: sort, #pagination: pagination}),
           returnValue: _i11.Future<_i6.QueryUsersResponse>.value(
-              _FakeQueryUsersResponse_5(
+              _FakeQueryUsersResponse_7(
                   this,
                   Invocation.method(#queryUsers, [], {
                     #presence: presence,
@@ -463,7 +508,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
           _i17.PaginationParams? pagination}) =>
       (super.noSuchMethod(Invocation.method(#queryBannedUsers, [], {#filter: filter, #sort: sort, #pagination: pagination}),
           returnValue: _i11.Future<_i6.QueryBannedUsersResponse>.value(
-              _FakeQueryBannedUsersResponse_6(
+              _FakeQueryBannedUsersResponse_8(
                   this,
                   Invocation.method(#queryBannedUsers, [], {
                     #filter: filter,
@@ -486,7 +531,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
             #messageFilters: messageFilters
           }),
           returnValue: _i11.Future<_i6.SearchMessagesResponse>.value(
-              _FakeSearchMessagesResponse_7(
+              _FakeSearchMessagesResponse_9(
                   this,
                   Invocation.method(#search, [
                     filter
@@ -513,7 +558,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
             #extraData: extraData
           }),
           returnValue:
-              _i11.Future<_i6.SendFileResponse>.value(_FakeSendFileResponse_8(
+              _i11.Future<_i6.SendFileResponse>.value(_FakeSendFileResponse_10(
                   this,
                   Invocation.method(#sendFile, [
                     file,
@@ -525,7 +570,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
                     #extraData: extraData
                   })))) as _i11.Future<_i6.SendFileResponse>);
   @override
-  _i11.Future<_i6.SendImageResponse> sendImage(
+  _i11.Future<_i6.SendAttachmentResponse> sendImage(
           _i19.AttachmentFile? image, String? channelId, String? channelType,
           {_i20.ProgressCallback? onSendProgress,
           _i20.CancelToken? cancelToken,
@@ -540,8 +585,8 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
             #cancelToken: cancelToken,
             #extraData: extraData
           }),
-          returnValue:
-              _i11.Future<_i6.SendImageResponse>.value(_FakeSendImageResponse_9(
+          returnValue: _i11.Future<_i6.SendAttachmentResponse>.value(
+              _FakeSendAttachmentResponse_11(
                   this,
                   Invocation.method(#sendImage, [
                     image,
@@ -551,12 +596,12 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
                     #onSendProgress: onSendProgress,
                     #cancelToken: cancelToken,
                     #extraData: extraData
-                  })))) as _i11.Future<_i6.SendImageResponse>);
+                  })))) as _i11.Future<_i6.SendAttachmentResponse>);
   @override
   _i11.Future<_i6.EmptyResponse> deleteFile(String? url, String? channelId, String? channelType,
           {_i20.CancelToken? cancelToken, Map<String, Object?>? extraData}) =>
       (super.noSuchMethod(Invocation.method(#deleteFile, [url, channelId, channelType], {#cancelToken: cancelToken, #extraData: extraData}),
-          returnValue: _i11.Future<_i6.EmptyResponse>.value(_FakeEmptyResponse_10(
+          returnValue: _i11.Future<_i6.EmptyResponse>.value(_FakeEmptyResponse_12(
               this,
               Invocation.method(#deleteFile, [
                 url,
@@ -570,7 +615,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
   _i11.Future<_i6.EmptyResponse> deleteImage(String? url, String? channelId, String? channelType,
           {_i20.CancelToken? cancelToken, Map<String, Object?>? extraData}) =>
       (super.noSuchMethod(Invocation.method(#deleteImage, [url, channelId, channelType], {#cancelToken: cancelToken, #extraData: extraData}),
-          returnValue: _i11.Future<_i6.EmptyResponse>.value(_FakeEmptyResponse_10(
+          returnValue: _i11.Future<_i6.EmptyResponse>.value(_FakeEmptyResponse_12(
               this,
               Invocation.method(#deleteImage, [
                 url,
@@ -588,7 +633,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
               Invocation.method(#updateChannel, [channelId, channelType, data],
                   {#message: message}),
               returnValue: _i11.Future<_i6.UpdateChannelResponse>.value(
-                  _FakeUpdateChannelResponse_11(this, Invocation.method(#updateChannel, [channelId, channelType, data], {#message: message}))))
+                  _FakeUpdateChannelResponse_13(this, Invocation.method(#updateChannel, [channelId, channelType, data], {#message: message}))))
           as _i11.Future<_i6.UpdateChannelResponse>);
   @override
   _i11.Future<_i6.PartialUpdateChannelResponse> updateChannelPartial(
@@ -596,7 +641,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
           {Map<String, Object?>? set, List<String>? unset}) =>
       (super.noSuchMethod(Invocation.method(#updateChannelPartial, [channelId, channelType], {#set: set, #unset: unset}),
               returnValue: _i11.Future<_i6.PartialUpdateChannelResponse>.value(
-                  _FakePartialUpdateChannelResponse_12(
+                  _FakePartialUpdateChannelResponse_14(
                       this,
                       Invocation.method(
                           #updateChannelPartial, [channelId, channelType], {#set: set, #unset: unset}))))
@@ -605,7 +650,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
   _i11.Future<_i6.EmptyResponse> addDevice(String? id, _i22.PushProvider? pushProvider,
           {String? pushProviderName}) =>
       (super.noSuchMethod(Invocation.method(#addDevice, [id, pushProvider], {#pushProviderName: pushProviderName}),
-          returnValue: _i11.Future<_i6.EmptyResponse>.value(_FakeEmptyResponse_10(
+          returnValue: _i11.Future<_i6.EmptyResponse>.value(_FakeEmptyResponse_12(
               this,
               Invocation.method(#addDevice, [
                 id,
@@ -617,28 +662,28 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
   _i11.Future<_i6.ListDevicesResponse> getDevices() =>
       (super.noSuchMethod(Invocation.method(#getDevices, []),
               returnValue: _i11.Future<_i6.ListDevicesResponse>.value(
-                  _FakeListDevicesResponse_13(
+                  _FakeListDevicesResponse_15(
                       this, Invocation.method(#getDevices, []))))
           as _i11.Future<_i6.ListDevicesResponse>);
   @override
   _i11.Future<_i6.EmptyResponse> removeDevice(String? id) =>
       (super.noSuchMethod(Invocation.method(#removeDevice, [id]),
               returnValue: _i11.Future<_i6.EmptyResponse>.value(
-                  _FakeEmptyResponse_10(
+                  _FakeEmptyResponse_12(
                       this, Invocation.method(#removeDevice, [id]))))
           as _i11.Future<_i6.EmptyResponse>);
   @override
   _i7.Token devToken(String? userId) =>
       (super.noSuchMethod(Invocation.method(#devToken, [userId]),
               returnValue:
-                  _FakeToken_14(this, Invocation.method(#devToken, [userId])))
+                  _FakeToken_16(this, Invocation.method(#devToken, [userId])))
           as _i7.Token);
   @override
   _i8.Channel channel(String? type,
           {String? id, Map<String, Object?>? extraData}) =>
       (super.noSuchMethod(
           Invocation.method(#channel, [type], {#id: id, #extraData: extraData}),
-          returnValue: _FakeChannel_15(
+          returnValue: _FakeChannel_17(
               this,
               Invocation.method(
                   #channel, [type], {#id: id, #extraData: extraData}))) as _i8
@@ -647,7 +692,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
   _i11.Future<_i9.ChannelState> createChannel(String? channelType,
           {String? channelId, Map<String, Object?>? channelData}) =>
       (super.noSuchMethod(Invocation.method(#createChannel, [channelType], {#channelId: channelId, #channelData: channelData}),
-          returnValue: _i11.Future<_i9.ChannelState>.value(_FakeChannelState_16(
+          returnValue: _i11.Future<_i9.ChannelState>.value(_FakeChannelState_18(
               this,
               Invocation.method(#createChannel, [
                 channelType
@@ -659,7 +704,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
   _i11.Future<_i9.ChannelState> watchChannel(String? channelType,
           {String? channelId, Map<String, Object?>? channelData}) =>
       (super.noSuchMethod(Invocation.method(#watchChannel, [channelType], {#channelId: channelId, #channelData: channelData}),
-          returnValue: _i11.Future<_i9.ChannelState>.value(_FakeChannelState_16(
+          returnValue: _i11.Future<_i9.ChannelState>.value(_FakeChannelState_18(
               this,
               Invocation.method(#watchChannel, [
                 channelType
@@ -690,7 +735,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
             #membersPagination: membersPagination,
             #watchersPagination: watchersPagination
           }),
-          returnValue: _i11.Future<_i9.ChannelState>.value(_FakeChannelState_16(
+          returnValue: _i11.Future<_i9.ChannelState>.value(_FakeChannelState_18(
               this,
               Invocation.method(#queryChannel, [
                 channelType
@@ -722,7 +767,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
             #pagination: pagination
           }),
           returnValue: _i11.Future<_i6.QueryMembersResponse>.value(
-              _FakeQueryMembersResponse_17(
+              _FakeQueryMembersResponse_19(
                   this,
                   Invocation.method(#queryMembers, [
                     channelType
@@ -738,7 +783,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
           String? channelId, String? channelType,
           {bool? clearHistory = false}) =>
       (super.noSuchMethod(Invocation.method(#hideChannel, [channelId, channelType], {#clearHistory: clearHistory}),
-          returnValue: _i11.Future<_i6.EmptyResponse>.value(_FakeEmptyResponse_10(
+          returnValue: _i11.Future<_i6.EmptyResponse>.value(_FakeEmptyResponse_12(
               this,
               Invocation.method(#hideChannel, [
                 channelId,
@@ -752,7 +797,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
       (super.noSuchMethod(
               Invocation.method(#showChannel, [channelId, channelType]),
               returnValue: _i11.Future<_i6.EmptyResponse>.value(
-                  _FakeEmptyResponse_10(
+                  _FakeEmptyResponse_12(
                       this,
                       Invocation.method(
                           #showChannel, [channelId, channelType]))))
@@ -763,7 +808,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
       (super.noSuchMethod(
               Invocation.method(#deleteChannel, [channelId, channelType]),
               returnValue: _i11.Future<_i6.EmptyResponse>.value(
-                  _FakeEmptyResponse_10(
+                  _FakeEmptyResponse_12(
                       this,
                       Invocation.method(
                           #deleteChannel, [channelId, channelType]))))
@@ -772,7 +817,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
   _i11.Future<_i6.EmptyResponse> truncateChannel(String? channelId, String? channelType,
           {_i21.Message? message, bool? skipPush, DateTime? truncatedAt}) =>
       (super.noSuchMethod(Invocation.method(#truncateChannel, [channelId, channelType], {#message: message, #skipPush: skipPush, #truncatedAt: truncatedAt}),
-          returnValue: _i11.Future<_i6.EmptyResponse>.value(_FakeEmptyResponse_10(
+          returnValue: _i11.Future<_i6.EmptyResponse>.value(_FakeEmptyResponse_12(
               this,
               Invocation.method(#truncateChannel, [
                 channelId,
@@ -789,14 +834,14 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
               Invocation.method(
                   #muteChannel, [channelCid], {#expiration: expiration}),
               returnValue: _i11.Future<_i6.EmptyResponse>.value(
-                  _FakeEmptyResponse_10(this,
+                  _FakeEmptyResponse_12(this,
                       Invocation.method(#muteChannel, [channelCid], {#expiration: expiration}))))
           as _i11.Future<_i6.EmptyResponse>);
   @override
   _i11.Future<_i6.EmptyResponse> unmuteChannel(String? channelCid) =>
       (super.noSuchMethod(Invocation.method(#unmuteChannel, [channelCid]),
               returnValue: _i11.Future<_i6.EmptyResponse>.value(
-                  _FakeEmptyResponse_10(
+                  _FakeEmptyResponse_12(
                       this, Invocation.method(#unmuteChannel, [channelCid]))))
           as _i11.Future<_i6.EmptyResponse>);
   @override
@@ -804,7 +849,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
           String? channelId, String? channelType, {_i21.Message? message}) =>
       (super.noSuchMethod(Invocation.method(#acceptChannelInvite, [channelId, channelType], {#message: message}),
           returnValue: _i11.Future<_i6.AcceptInviteResponse>.value(
-              _FakeAcceptInviteResponse_18(
+              _FakeAcceptInviteResponse_20(
                   this,
                   Invocation.method(
                       #acceptChannelInvite,
@@ -815,7 +860,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
           String? channelId, String? channelType, {_i21.Message? message}) =>
       (super.noSuchMethod(Invocation.method(#rejectChannelInvite, [channelId, channelType], {#message: message}),
           returnValue: _i11.Future<_i6.RejectInviteResponse>.value(
-              _FakeRejectInviteResponse_19(
+              _FakeRejectInviteResponse_21(
                   this,
                   Invocation.method(
                       #rejectChannelInvite,
@@ -831,7 +876,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
                   [channelId, channelType, memberIds],
                   {#message: message, #hideHistory: hideHistory}),
               returnValue: _i11.Future<_i6.AddMembersResponse>.value(
-                  _FakeAddMembersResponse_20(this, Invocation.method(#addChannelMembers, [channelId, channelType, memberIds], {#message: message, #hideHistory: hideHistory}))))
+                  _FakeAddMembersResponse_22(this, Invocation.method(#addChannelMembers, [channelId, channelType, memberIds], {#message: message, #hideHistory: hideHistory}))))
           as _i11.Future<_i6.AddMembersResponse>);
   @override
   _i11.Future<_i6.RemoveMembersResponse> removeChannelMembers(
@@ -841,7 +886,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
               Invocation.method(#removeChannelMembers,
                   [channelId, channelType, memberIds], {#message: message}),
               returnValue: _i11.Future<_i6.RemoveMembersResponse>.value(
-                  _FakeRemoveMembersResponse_21(this, Invocation.method(#removeChannelMembers, [channelId, channelType, memberIds], {#message: message}))))
+                  _FakeRemoveMembersResponse_23(this, Invocation.method(#removeChannelMembers, [channelId, channelType, memberIds], {#message: message}))))
           as _i11.Future<_i6.RemoveMembersResponse>);
   @override
   _i11.Future<_i6.InviteMembersResponse> inviteChannelMembers(
@@ -851,7 +896,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
               Invocation.method(#inviteChannelMembers,
                   [channelId, channelType, memberIds], {#message: message}),
               returnValue: _i11.Future<_i6.InviteMembersResponse>.value(
-                  _FakeInviteMembersResponse_22(this, Invocation.method(#inviteChannelMembers, [channelId, channelType, memberIds], {#message: message}))))
+                  _FakeInviteMembersResponse_24(this, Invocation.method(#inviteChannelMembers, [channelId, channelType, memberIds], {#message: message}))))
           as _i11.Future<_i6.InviteMembersResponse>);
   @override
   _i11.Future<_i6.EmptyResponse> stopChannelWatching(
@@ -859,7 +904,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
       (super.noSuchMethod(
               Invocation.method(#stopChannelWatching, [channelId, channelType]),
               returnValue: _i11.Future<_i6.EmptyResponse>.value(
-                  _FakeEmptyResponse_10(
+                  _FakeEmptyResponse_12(
                       this,
                       Invocation.method(
                           #stopChannelWatching, [channelId, channelType]))))
@@ -874,14 +919,14 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
               Invocation.method(
                   #sendAction, [channelId, channelType, messageId, formData]),
               returnValue: _i11.Future<_i6.SendActionResponse>.value(
-                  _FakeSendActionResponse_23(
+                  _FakeSendActionResponse_25(
                       this, Invocation.method(#sendAction, [channelId, channelType, messageId, formData]))))
           as _i11.Future<_i6.SendActionResponse>);
   @override
   _i11.Future<_i6.EmptyResponse> markChannelRead(
           String? channelId, String? channelType, {String? messageId}) =>
       (super.noSuchMethod(Invocation.method(#markChannelRead, [channelId, channelType], {#messageId: messageId}),
-          returnValue: _i11.Future<_i6.EmptyResponse>.value(_FakeEmptyResponse_10(
+          returnValue: _i11.Future<_i6.EmptyResponse>.value(_FakeEmptyResponse_12(
               this,
               Invocation.method(#markChannelRead, [
                 channelId,
@@ -893,14 +938,14 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
   _i11.Future<_i6.UpdateUsersResponse> updateUser(_i14.User? user) =>
       (super.noSuchMethod(Invocation.method(#updateUser, [user]),
               returnValue: _i11.Future<_i6.UpdateUsersResponse>.value(
-                  _FakeUpdateUsersResponse_24(
+                  _FakeUpdateUsersResponse_26(
                       this, Invocation.method(#updateUser, [user]))))
           as _i11.Future<_i6.UpdateUsersResponse>);
   @override
   _i11.Future<_i6.UpdateUsersResponse> updateUsers(List<_i14.User>? users) =>
       (super.noSuchMethod(Invocation.method(#updateUsers, [users]),
               returnValue: _i11.Future<_i6.UpdateUsersResponse>.value(
-                  _FakeUpdateUsersResponse_24(
+                  _FakeUpdateUsersResponse_26(
                       this, Invocation.method(#updateUsers, [users]))))
           as _i11.Future<_i6.UpdateUsersResponse>);
   @override
@@ -908,7 +953,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
           {Map<String, Object?>? set, List<String>? unset}) =>
       (super.noSuchMethod(Invocation.method(#partialUpdateUser, [id], {#set: set, #unset: unset}),
               returnValue: _i11.Future<_i6.UpdateUsersResponse>.value(
-                  _FakeUpdateUsersResponse_24(
+                  _FakeUpdateUsersResponse_26(
                       this,
                       Invocation.method(
                           #partialUpdateUser, [id], {#set: set, #unset: unset}))))
@@ -918,7 +963,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
           List<_i17.PartialUpdateUserRequest>? users) =>
       (super.noSuchMethod(Invocation.method(#partialUpdateUsers, [users]),
               returnValue: _i11.Future<_i6.UpdateUsersResponse>.value(
-                  _FakeUpdateUsersResponse_24(
+                  _FakeUpdateUsersResponse_26(
                       this, Invocation.method(#partialUpdateUsers, [users]))))
           as _i11.Future<_i6.UpdateUsersResponse>);
   @override
@@ -926,7 +971,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
           [Map<String, dynamic>? options = const {}]) =>
       (super.noSuchMethod(Invocation.method(#banUser, [targetUserId, options]),
               returnValue: _i11.Future<_i6.EmptyResponse>.value(
-                  _FakeEmptyResponse_10(this,
+                  _FakeEmptyResponse_12(this,
                       Invocation.method(#banUser, [targetUserId, options]))))
           as _i11.Future<_i6.EmptyResponse>);
   @override
@@ -935,7 +980,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
       (super.noSuchMethod(
               Invocation.method(#unbanUser, [targetUserId, options]),
               returnValue: _i11.Future<_i6.EmptyResponse>.value(
-                  _FakeEmptyResponse_10(this,
+                  _FakeEmptyResponse_12(this,
                       Invocation.method(#unbanUser, [targetUserId, options]))))
           as _i11.Future<_i6.EmptyResponse>);
   @override
@@ -943,7 +988,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
           [Map<String, dynamic>? options = const {}]) =>
       (super.noSuchMethod(Invocation.method(#shadowBan, [targetID, options]),
               returnValue: _i11.Future<_i6.EmptyResponse>.value(
-                  _FakeEmptyResponse_10(this,
+                  _FakeEmptyResponse_12(this,
                       Invocation.method(#shadowBan, [targetID, options]))))
           as _i11.Future<_i6.EmptyResponse>);
   @override
@@ -952,7 +997,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
       (super.noSuchMethod(
               Invocation.method(#removeShadowBan, [targetID, options]),
               returnValue: _i11.Future<_i6.EmptyResponse>.value(
-                  _FakeEmptyResponse_10(
+                  _FakeEmptyResponse_12(
                       this,
                       Invocation.method(
                           #removeShadowBan, [targetID, options]))))
@@ -961,49 +1006,49 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
   _i11.Future<_i6.EmptyResponse> muteUser(String? userId) =>
       (super.noSuchMethod(Invocation.method(#muteUser, [userId]),
               returnValue: _i11.Future<_i6.EmptyResponse>.value(
-                  _FakeEmptyResponse_10(
+                  _FakeEmptyResponse_12(
                       this, Invocation.method(#muteUser, [userId]))))
           as _i11.Future<_i6.EmptyResponse>);
   @override
   _i11.Future<_i6.EmptyResponse> unmuteUser(String? userId) =>
       (super.noSuchMethod(Invocation.method(#unmuteUser, [userId]),
               returnValue: _i11.Future<_i6.EmptyResponse>.value(
-                  _FakeEmptyResponse_10(
+                  _FakeEmptyResponse_12(
                       this, Invocation.method(#unmuteUser, [userId]))))
           as _i11.Future<_i6.EmptyResponse>);
   @override
   _i11.Future<_i6.EmptyResponse> flagMessage(String? messageId) =>
       (super.noSuchMethod(Invocation.method(#flagMessage, [messageId]),
               returnValue: _i11.Future<_i6.EmptyResponse>.value(
-                  _FakeEmptyResponse_10(
+                  _FakeEmptyResponse_12(
                       this, Invocation.method(#flagMessage, [messageId]))))
           as _i11.Future<_i6.EmptyResponse>);
   @override
   _i11.Future<_i6.EmptyResponse> unflagMessage(String? messageId) =>
       (super.noSuchMethod(Invocation.method(#unflagMessage, [messageId]),
               returnValue: _i11.Future<_i6.EmptyResponse>.value(
-                  _FakeEmptyResponse_10(
+                  _FakeEmptyResponse_12(
                       this, Invocation.method(#unflagMessage, [messageId]))))
           as _i11.Future<_i6.EmptyResponse>);
   @override
   _i11.Future<_i6.EmptyResponse> flagUser(String? userId) =>
       (super.noSuchMethod(Invocation.method(#flagUser, [userId]),
               returnValue: _i11.Future<_i6.EmptyResponse>.value(
-                  _FakeEmptyResponse_10(
+                  _FakeEmptyResponse_12(
                       this, Invocation.method(#flagUser, [userId]))))
           as _i11.Future<_i6.EmptyResponse>);
   @override
   _i11.Future<_i6.EmptyResponse> unflagUser(String? userId) =>
       (super.noSuchMethod(Invocation.method(#unflagUser, [userId]),
               returnValue: _i11.Future<_i6.EmptyResponse>.value(
-                  _FakeEmptyResponse_10(
+                  _FakeEmptyResponse_12(
                       this, Invocation.method(#unflagUser, [userId]))))
           as _i11.Future<_i6.EmptyResponse>);
   @override
   _i11.Future<_i6.EmptyResponse> markAllRead() => (super.noSuchMethod(
           Invocation.method(#markAllRead, []),
           returnValue: _i11.Future<_i6.EmptyResponse>.value(
-              _FakeEmptyResponse_10(this, Invocation.method(#markAllRead, []))))
+              _FakeEmptyResponse_12(this, Invocation.method(#markAllRead, []))))
       as _i11.Future<_i6.EmptyResponse>);
   @override
   _i11.Future<_i6.EmptyResponse> sendEvent(
@@ -1011,7 +1056,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
       (super.noSuchMethod(
               Invocation.method(#sendEvent, [channelId, channelType, event]),
               returnValue: _i11.Future<_i6.EmptyResponse>.value(
-                  _FakeEmptyResponse_10(
+                  _FakeEmptyResponse_12(
                       this,
                       Invocation.method(
                           #sendEvent, [channelId, channelType, event]))))
@@ -1032,7 +1077,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
                 #enforceUnique: enforceUnique
               }),
               returnValue: _i11.Future<_i6.SendReactionResponse>.value(
-                  _FakeSendReactionResponse_25(this, Invocation.method(#sendReaction, [messageId, reactionType], {#score: score, #extraData: extraData, #enforceUnique: enforceUnique}))))
+                  _FakeSendReactionResponse_27(this, Invocation.method(#sendReaction, [messageId, reactionType], {#score: score, #extraData: extraData, #enforceUnique: enforceUnique}))))
           as _i11.Future<_i6.SendReactionResponse>);
   @override
   _i11.Future<_i6.EmptyResponse> deleteReaction(
@@ -1040,7 +1085,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
       (super.noSuchMethod(
               Invocation.method(#deleteReaction, [messageId, reactionType]),
               returnValue: _i11.Future<_i6.EmptyResponse>.value(
-                  _FakeEmptyResponse_10(
+                  _FakeEmptyResponse_12(
                       this,
                       Invocation.method(
                           #deleteReaction, [messageId, reactionType]))))
@@ -1053,7 +1098,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
               Invocation.method(#sendMessage, [message, channelId, channelType],
                   {#skipPush: skipPush, #skipEnrichUrl: skipEnrichUrl}),
               returnValue: _i11.Future<_i6.SendMessageResponse>.value(
-                  _FakeSendMessageResponse_26(this, Invocation.method(#sendMessage, [message, channelId, channelType], {#skipPush: skipPush, #skipEnrichUrl: skipEnrichUrl}))))
+                  _FakeSendMessageResponse_28(this, Invocation.method(#sendMessage, [message, channelId, channelType], {#skipPush: skipPush, #skipEnrichUrl: skipEnrichUrl}))))
           as _i11.Future<_i6.SendMessageResponse>);
   @override
   _i11.Future<_i6.QueryRepliesResponse> getReplies(String? parentId,
@@ -1061,7 +1106,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
       (super.noSuchMethod(
               Invocation.method(#getReplies, [parentId], {#options: options}),
               returnValue: _i11.Future<_i6.QueryRepliesResponse>.value(
-                  _FakeQueryRepliesResponse_27(
+                  _FakeQueryRepliesResponse_29(
                       this,
                       Invocation.method(
                           #getReplies, [parentId], {#options: options}))))
@@ -1071,7 +1116,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
           {_i17.PaginationParams? pagination}) =>
       (super.noSuchMethod(Invocation.method(#getReactions, [messageId], {#pagination: pagination}),
           returnValue: _i11.Future<_i6.QueryReactionsResponse>.value(
-              _FakeQueryReactionsResponse_28(
+              _FakeQueryReactionsResponse_30(
                   this,
                   Invocation.method(#getReactions, [
                     messageId
@@ -1083,7 +1128,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
           {bool? skipEnrichUrl = false}) =>
       (super.noSuchMethod(Invocation.method(#updateMessage, [message], {#skipEnrichUrl: skipEnrichUrl}),
           returnValue: _i11.Future<_i6.UpdateMessageResponse>.value(
-              _FakeUpdateMessageResponse_29(
+              _FakeUpdateMessageResponse_31(
                   this,
                   Invocation.method(#updateMessage, [
                     message
@@ -1096,7 +1141,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
           List<String>? unset,
           bool? skipEnrichUrl = false}) =>
       (super.noSuchMethod(Invocation.method(#partialUpdateMessage, [messageId], {#set: set, #unset: unset, #skipEnrichUrl: skipEnrichUrl}),
-          returnValue: _i11.Future<_i6.UpdateMessageResponse>.value(_FakeUpdateMessageResponse_29(
+          returnValue: _i11.Future<_i6.UpdateMessageResponse>.value(_FakeUpdateMessageResponse_31(
               this,
               Invocation.method(#partialUpdateMessage, [
                 messageId
@@ -1111,7 +1156,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
       (super.noSuchMethod(
               Invocation.method(#deleteMessage, [messageId], {#hard: hard}),
               returnValue: _i11.Future<_i6.EmptyResponse>.value(
-                  _FakeEmptyResponse_10(
+                  _FakeEmptyResponse_12(
                       this,
                       Invocation.method(
                           #deleteMessage, [messageId], {#hard: hard}))))
@@ -1120,7 +1165,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
   _i11.Future<_i6.GetMessageResponse> getMessage(String? messageId) =>
       (super.noSuchMethod(Invocation.method(#getMessage, [messageId]),
               returnValue: _i11.Future<_i6.GetMessageResponse>.value(
-                  _FakeGetMessageResponse_30(
+                  _FakeGetMessageResponse_32(
                       this, Invocation.method(#getMessage, [messageId]))))
           as _i11.Future<_i6.GetMessageResponse>);
   @override
@@ -1128,7 +1173,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
           String? channelId, String? channelType, List<String>? messageIDs) =>
       (super.noSuchMethod(Invocation.method(#getMessagesById, [channelId, channelType, messageIDs]),
           returnValue: _i11.Future<_i6.GetMessagesByIdResponse>.value(
-              _FakeGetMessagesByIdResponse_31(
+              _FakeGetMessagesByIdResponse_33(
                   this,
                   Invocation.method(#getMessagesById, [
                     channelId,
@@ -1141,7 +1186,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
       (super.noSuchMethod(
               Invocation.method(#translateMessage, [messageId, language]),
               returnValue: _i11.Future<_i6.TranslateMessageResponse>.value(
-                  _FakeTranslateMessageResponse_32(
+                  _FakeTranslateMessageResponse_34(
                       this,
                       Invocation.method(
                           #translateMessage, [messageId, language]))))
@@ -1151,7 +1196,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
           String? channelId, String? channelType, int? cooldown) =>
       (super.noSuchMethod(Invocation.method(#enableSlowdown, [channelId, channelType, cooldown]),
           returnValue: _i11.Future<_i6.PartialUpdateChannelResponse>.value(
-              _FakePartialUpdateChannelResponse_12(
+              _FakePartialUpdateChannelResponse_14(
                   this,
                   Invocation.method(#enableSlowdown, [
                     channelId,
@@ -1164,7 +1209,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
       (super.noSuchMethod(
               Invocation.method(#disableSlowdown, [channelId, channelType]),
               returnValue: _i11.Future<_i6.PartialUpdateChannelResponse>.value(
-                  _FakePartialUpdateChannelResponse_12(
+                  _FakePartialUpdateChannelResponse_14(
                       this,
                       Invocation.method(
                           #disableSlowdown, [channelId, channelType]))))
@@ -1174,7 +1219,7 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
           {Object? timeoutOrExpirationDate}) =>
       (super.noSuchMethod(Invocation.method(#pinMessage, [messageId], {#timeoutOrExpirationDate: timeoutOrExpirationDate}),
           returnValue: _i11.Future<_i6.UpdateMessageResponse>.value(
-              _FakeUpdateMessageResponse_29(
+              _FakeUpdateMessageResponse_31(
                   this,
                   Invocation.method(#pinMessage, [
                     messageId
@@ -1185,14 +1230,14 @@ class MockStreamChatClient extends _i1.Mock implements _i2.StreamChatClient {
   _i11.Future<_i6.UpdateMessageResponse> unpinMessage(String? messageId) =>
       (super.noSuchMethod(Invocation.method(#unpinMessage, [messageId]),
               returnValue: _i11.Future<_i6.UpdateMessageResponse>.value(
-                  _FakeUpdateMessageResponse_29(
+                  _FakeUpdateMessageResponse_31(
                       this, Invocation.method(#unpinMessage, [messageId]))))
           as _i11.Future<_i6.UpdateMessageResponse>);
   @override
   _i11.Future<_i6.OGAttachmentResponse> enrichUrl(String? url) =>
       (super.noSuchMethod(Invocation.method(#enrichUrl, [url]),
               returnValue: _i11.Future<_i6.OGAttachmentResponse>.value(
-                  _FakeOGAttachmentResponse_33(
+                  _FakeOGAttachmentResponse_35(
                       this, Invocation.method(#enrichUrl, [url]))))
           as _i11.Future<_i6.OGAttachmentResponse>);
   @override

@@ -16,7 +16,7 @@ class UpdateScreeningToolsStateAction extends ReduxAction<AppState> {
   bool? errorFetchingScreeningTools;
 
   @override
-  Future<AppState> reduce() async {
+  AppState reduce()  {
     final ScreeningToolsState? screeningToolsState =
         state.serviceRequestState?.screeningToolsState?.copyWith(
       toolAssessmentResponses: toolAssessmentResponses ??

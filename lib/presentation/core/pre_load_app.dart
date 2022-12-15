@@ -1,7 +1,8 @@
 import 'dart:async';
 
-import 'package:afya_moja_core/afya_moja_core.dart' as afya_moja_core;
-import 'package:app_wrapper/app_wrapper.dart';
+import 'package:prohealth360_daktari/presentation/core/bottom_nav/bottom_nav_items.dart';
+import 'package:sghi_core/afya_moja_core/afya_moja_core.dart' as afya_moja_core;
+import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -12,6 +13,7 @@ import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/core/batch_update_misc_state_action.dart';
 import 'package:rxdart/src/streams/merge.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:sghi_core/app_wrapper/enums.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 import 'package:prohealth360_daktari/application/core/services/custom_client.dart';
@@ -25,7 +27,6 @@ import 'package:prohealth360_daktari/application/redux/view_models/initial_route
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/global_keys.dart';
 import 'package:prohealth360_daktari/infrastructure/connectivity/connectivity_interface.dart';
-import 'package:prohealth360_daktari/presentation/core/bottom_nav/bottom_nav_items.dart';
 import 'package:prohealth360_daktari/presentation/core/widgets/error_dialog.dart';
 import 'package:prohealth360_daktari/presentation/router/route_generator.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
@@ -130,7 +131,7 @@ class _PreLoadAppState extends State<PreLoadApp> with WidgetsBindingObserver {
         final bool isResumeWithPin =
             initialRoute.compareTo(AppRoutes.resumeWithPin) == 0;
 
-        if (!isPhoneLogin && !isResumeWithPin) {
+       if (!isPhoneLogin && !isResumeWithPin) {
           initialRoute = bottomNavItems[vm.currentIndex ?? 0].onTapRoute;
         }
 
@@ -217,10 +218,11 @@ class _PreLoadAppState extends State<PreLoadApp> with WidgetsBindingObserver {
         AndroidInitializationSettings(
       '@mipmap/ic_launcher',
     ); //for logo
-    const IOSInitializationSettings iosInit = IOSInitializationSettings();
+    const DarwinInitializationSettings darwinInit =
+        DarwinInitializationSettings();
     const InitializationSettings initSetting = InitializationSettings(
       android: androidInit,
-      iOS: iosInit,
+      iOS: darwinInit,
     );
     flutterLocalNotificationsPlugin.initialize(initSetting);
     const AndroidNotificationDetails androidDetails =
@@ -229,11 +231,11 @@ class _PreLoadAppState extends State<PreLoadApp> with WidgetsBindingObserver {
       'channelName',
       channelDescription: 'channel Description',
     );
-    const IOSNotificationDetails iosDetails = IOSNotificationDetails();
+    const DarwinNotificationDetails darwinDetails = DarwinNotificationDetails();
 
     const NotificationDetails generalNotificationDetails = NotificationDetails(
       android: androidDetails,
-      iOS: iosDetails,
+      iOS: darwinDetails,
     );
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {

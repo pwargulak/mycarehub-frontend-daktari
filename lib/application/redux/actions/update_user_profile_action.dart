@@ -1,9 +1,10 @@
 // Package imports:
 import 'package:async_redux/async_redux.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/contact.dart';
+
 import 'package:prohealth360_daktari/domain/core/entities/core/staff_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/user.dart';
+import 'package:sghi_core/afya_moja_core/src/domain/core/entities/contact.dart';
 
 class UpdateUserProfileAction extends ReduxAction<AppState> {
   UpdateUserProfileAction({

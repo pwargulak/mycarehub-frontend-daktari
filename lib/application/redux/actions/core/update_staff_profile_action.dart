@@ -1,5 +1,5 @@
 // Package imports:
-import 'package:afya_moja_core/afya_moja_core.dart';
+import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 // Project imports:
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
@@ -33,18 +33,18 @@ class UpdateStaffProfileAction extends ReduxAction<AppState> {
   AppState reduce() {
     final AppState newState = state.copyWith(
       staffState: state.staffState?.copyWith.call(
-        id: this.id ?? state.staffState?.id,
-        userId: this.userId ?? state.staffState?.userId,
-        active: this.active ?? state.staffState?.active,
-        staffNumber: this.staffNumber ?? state.staffState?.staffNumber,
+        id: id ?? state.staffState?.id,
+        userId: userId ?? state.staffState?.userId,
+        active: active ?? state.staffState?.active,
+        staffNumber: staffNumber ?? state.staffState?.staffNumber,
         defaultFacility:
-            this.defaultFacility ?? state.staffState?.defaultFacility,
-        facilities: this.facilities ?? state.staffState?.facilities,
-        clientSharedDiaryEntries: this.healthDiaryEntries ??
+            defaultFacility ?? state.staffState?.defaultFacility,
+        facilities: facilities ?? state.staffState?.facilities,
+        clientSharedDiaryEntries: healthDiaryEntries ??
             state.staffState?.clientSharedDiaryEntries,
-        notifications: this.notifications ?? state.staffState?.notifications,
+        notifications: notifications ?? state.staffState?.notifications,
         defaultFacilityName:
-            this.defaultFacilityName ?? state.staffState?.defaultFacilityName,
+            defaultFacilityName ?? state.staffState?.defaultFacilityName,
       ),
     );
 

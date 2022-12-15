@@ -48,9 +48,9 @@ class _FakeSendFileResponse_4 extends _i1.SmartFake
       : super(parent, parentInvocation);
 }
 
-class _FakeSendImageResponse_5 extends _i1.SmartFake
-    implements _i2.SendImageResponse {
-  _FakeSendImageResponse_5(Object parent, Invocation parentInvocation)
+class _FakeSendAttachmentResponse_5 extends _i1.SmartFake
+    implements _i2.SendAttachmentResponse {
+  _FakeSendAttachmentResponse_5(Object parent, Invocation parentInvocation)
       : super(parent, parentInvocation);
 }
 
@@ -413,7 +413,7 @@ class MockChannel extends _i1.Mock implements _i2.Channel {
                     #extraData: extraData
                   })))) as _i3.Future<_i2.SendFileResponse>);
   @override
-  _i3.Future<_i2.SendImageResponse> sendImage(_i2.AttachmentFile? file,
+  _i3.Future<_i2.SendAttachmentResponse> sendImage(_i2.AttachmentFile? file,
           {_i2.ProgressCallback? onSendProgress,
           _i2.CancelToken? cancelToken,
           Map<String, Object?>? extraData}) =>
@@ -425,8 +425,8 @@ class MockChannel extends _i1.Mock implements _i2.Channel {
             #cancelToken: cancelToken,
             #extraData: extraData
           }),
-          returnValue:
-              _i3.Future<_i2.SendImageResponse>.value(_FakeSendImageResponse_5(
+          returnValue: _i3.Future<_i2.SendAttachmentResponse>.value(
+              _FakeSendAttachmentResponse_5(
                   this,
                   Invocation.method(#sendImage, [
                     file
@@ -434,7 +434,7 @@ class MockChannel extends _i1.Mock implements _i2.Channel {
                     #onSendProgress: onSendProgress,
                     #cancelToken: cancelToken,
                     #extraData: extraData
-                  })))) as _i3.Future<_i2.SendImageResponse>);
+                  })))) as _i3.Future<_i2.SendAttachmentResponse>);
   @override
   _i3.Future<_i2.SearchMessagesResponse> search(
           {String? query,
@@ -527,15 +527,17 @@ class MockChannel extends _i1.Mock implements _i2.Channel {
                       this, Invocation.method(#updateImage, [image]))))
           as _i3.Future<_i2.PartialUpdateChannelResponse>);
   @override
-  _i3.Future<_i2.UpdateChannelResponse> update(
-          Map<String, Object?>? channelData,
-          [_i2.Message? updateMessage]) =>
-      (super.noSuchMethod(
-              Invocation.method(#update, [channelData, updateMessage]),
-              returnValue: _i3.Future<_i2.UpdateChannelResponse>.value(
-                  _FakeUpdateChannelResponse_9(this,
-                      Invocation.method(#update, [channelData, updateMessage]))))
-          as _i3.Future<_i2.UpdateChannelResponse>);
+  _i3.Future<_i2.UpdateChannelResponse> update(Map<String, Object?>? channelData,
+          {_i2.Message? updateMessage}) =>
+      (super.noSuchMethod(Invocation.method(#update, [channelData], {#updateMessage: updateMessage}),
+          returnValue: _i3.Future<_i2.UpdateChannelResponse>.value(
+              _FakeUpdateChannelResponse_9(
+                  this,
+                  Invocation.method(#update, [
+                    channelData
+                  ], {
+                    #updateMessage: updateMessage
+                  })))) as _i3.Future<_i2.UpdateChannelResponse>);
   @override
   _i3.Future<_i2.PartialUpdateChannelResponse> updatePartial(
           {Map<String, Object?>? set, List<String>? unset}) =>
@@ -597,33 +599,39 @@ class MockChannel extends _i1.Mock implements _i2.Channel {
           as _i3.Future<_i2.RejectInviteResponse>);
   @override
   _i3.Future<_i2.AddMembersResponse> addMembers(List<String>? memberIds,
-          [_i2.Message? message, bool? hideHistory = false]) =>
-      (super.noSuchMethod(
-              Invocation.method(#addMembers, [memberIds, message, hideHistory]),
-              returnValue: _i3.Future<_i2.AddMembersResponse>.value(
-                  _FakeAddMembersResponse_12(
-                      this,
-                      Invocation.method(
-                          #addMembers, [memberIds, message, hideHistory]))))
-          as _i3.Future<_i2.AddMembersResponse>);
+          {_i2.Message? message, bool? hideHistory = false}) =>
+      (super.noSuchMethod(Invocation.method(#addMembers, [memberIds], {#message: message, #hideHistory: hideHistory}),
+          returnValue: _i3.Future<_i2.AddMembersResponse>.value(
+              _FakeAddMembersResponse_12(
+                  this,
+                  Invocation.method(#addMembers, [
+                    memberIds
+                  ], {
+                    #message: message,
+                    #hideHistory: hideHistory
+                  })))) as _i3.Future<_i2.AddMembersResponse>);
   @override
   _i3.Future<_i2.InviteMembersResponse> inviteMembers(List<String>? memberIds,
-          [_i2.Message? message]) =>
+          {_i2.Message? message}) =>
       (super.noSuchMethod(
-              Invocation.method(#inviteMembers, [memberIds, message]),
-              returnValue: _i3.Future<_i2.InviteMembersResponse>.value(
-                  _FakeInviteMembersResponse_13(this,
-                      Invocation.method(#inviteMembers, [memberIds, message]))))
-          as _i3.Future<_i2.InviteMembersResponse>);
+          Invocation.method(#inviteMembers, [memberIds], {#message: message}),
+          returnValue: _i3.Future<_i2.InviteMembersResponse>.value(
+              _FakeInviteMembersResponse_13(
+                  this,
+                  Invocation.method(
+                      #inviteMembers, [memberIds], {#message: message})))) as _i3
+          .Future<_i2.InviteMembersResponse>);
   @override
   _i3.Future<_i2.RemoveMembersResponse> removeMembers(List<String>? memberIds,
-          [_i2.Message? message]) =>
+          {_i2.Message? message}) =>
       (super.noSuchMethod(
-              Invocation.method(#removeMembers, [memberIds, message]),
-              returnValue: _i3.Future<_i2.RemoveMembersResponse>.value(
-                  _FakeRemoveMembersResponse_14(this,
-                      Invocation.method(#removeMembers, [memberIds, message]))))
-          as _i3.Future<_i2.RemoveMembersResponse>);
+          Invocation.method(#removeMembers, [memberIds], {#message: message}),
+          returnValue: _i3.Future<_i2.RemoveMembersResponse>.value(
+              _FakeRemoveMembersResponse_14(
+                  this,
+                  Invocation.method(
+                      #removeMembers, [memberIds], {#message: message})))) as _i3
+          .Future<_i2.RemoveMembersResponse>);
   @override
   _i3.Future<_i2.SendActionResponse> sendAction(
           _i2.Message? message, Map<String, dynamic>? formData) =>

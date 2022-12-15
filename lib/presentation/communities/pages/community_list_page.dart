@@ -1,5 +1,5 @@
-import 'package:afya_moja_core/afya_moja_core.dart';
-import 'package:app_wrapper/app_wrapper.dart';
+import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
+import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
@@ -51,8 +51,8 @@ class _CommunityListPageState extends State<CommunityListPage> {
     _listController = stream.StreamChannelListController(
       client: stream.StreamChat.of(context).client,
       filter: channelsFilter,
-      sort: const <stream.SortOption<stream.ChannelModel>>[
-        stream.SortOption<stream.ChannelModel>('last_message_at')
+      channelStateSort: const <stream.SortOption<stream.ChannelState>>[
+        stream.SortOption<stream.ChannelState>('last_message_at')
       ],
       limit: 20,
     );

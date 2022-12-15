@@ -1,5 +1,5 @@
-import 'package:afya_moja_core/afya_moja_core.dart';
-import 'package:app_wrapper/app_wrapper.dart';
+import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
+import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/services/helpers.dart';
@@ -33,20 +33,22 @@ class _InviteMembersPageState extends State<InviteMembersPage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    StoreProvider.dispatch(
-      context,
-      FetchMembersAction(
-        client: AppWrapperBase.of(context)!.graphQLClient,
-        isSearching: isSearching,
-        memberSearchName: memberSearchName,
-        onFailure: (String message) {
-          showTextSnackbar(
-            ScaffoldMessenger.of(context),
-            content: message,
-          );
-        },
-      ),
-    );
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      StoreProvider.dispatch(
+        context,
+        FetchMembersAction(
+          client: AppWrapperBase.of(context)!.graphQLClient,
+          isSearching: isSearching,
+          memberSearchName: memberSearchName,
+          onFailure: (String message) {
+            showTextSnackbar(
+              ScaffoldMessenger.of(context),
+              content: message,
+            );
+          },
+        ),
+      );
+    });
   }
 
   @override

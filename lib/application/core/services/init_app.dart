@@ -7,11 +7,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
-import 'package:app_wrapper/app_wrapper.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_config/flutter_config.dart';
 import 'package:prohealth360_daktari/application/core/services/analytics_service.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 // Project imports:
@@ -23,6 +23,7 @@ import 'package:prohealth360_daktari/infrastructure/repository/database_base.dar
 import 'package:prohealth360_daktari/infrastructure/repository/database_state_persistor.dart';
 import 'package:prohealth360_daktari/presentation/core/mycarehub_pro_app.dart';
 import 'package:prohealth360_daktari/presentation/core/widgets/unrecoverable_error_widget.dart';
+import 'package:sghi_core/app_wrapper/enums.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 /// Responsible for putting together everything that the app needs in order
@@ -109,6 +110,7 @@ Future<void> initApp(List<AppContext> appContexts) async {
         appRunner: () => runApp(
           MyCareHubProApp(
             store: store,
+            appName: appName,
             appSetupData: appSetupData,
             streamClient: streamClient,
             analyticsObserver: AnalyticsService().getAnalyticsObserver(),

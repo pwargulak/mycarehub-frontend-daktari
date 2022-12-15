@@ -1,4 +1,4 @@
-import 'package:afya_moja_core/afya_moja_core.dart';
+import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
@@ -45,7 +45,7 @@ class DeleteGroupBanner extends StatelessWidget {
             child: OutlinedButton(
               style: OutlinedButton.styleFrom(
                 backgroundColor: warningColor,
-                primary: warningColor,
+                foregroundColor: warningColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
