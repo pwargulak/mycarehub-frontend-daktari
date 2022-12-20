@@ -98,7 +98,8 @@ const String declineInvite = 'Decline Invite';
 const String phoneLoginPageTitle = 'Welcome to ';
 const String usernameString = 'Username';
 const String phoneLoginPageDescription = 'Enter your provided PIN to continue';
-const String selectOrganisationDescription = 'Please select your organisation to proceed';
+const String selectOrganisationDescription =
+    'Please select your organisation to proceed';
 const String loginPageDescription = 'Enter your provided PIN to continue';
 const String pinString = 'PIN';
 
@@ -930,7 +931,8 @@ const String toString = 'To';
 const String ageMustBeWithinRange = 'Age is invalid';
 const String checkInternetText = 'Check your internet connection and try again';
 const String searchFacilityActionString = 'Tap to search for a facility...';
-const String searchOrganisationActionString = 'Tap to search for an organisation...';
+const String searchOrganisationActionString =
+    'Tap to search for an organisation...';
 const String searchFacilityPageDescription =
     'Search for a facility using its MFL code or name';
 const String searchOrganisationPageDescription =
@@ -1035,6 +1037,9 @@ String getOrganizationDescriptionString(String userName) {
 }
 
 // Roles
+const String rolesString = 'Roles';
+const String organizations = 'Organizations';
+const String programs = 'Programs';
 const String manageRolesString = 'Manage roles';
 const String searchRoleString = 'Search for a role using its name';
 const String searchRoleHintString = 'Enter role name...';

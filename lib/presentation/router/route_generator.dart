@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:prohealth360_daktari/presentation/admin/admin_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/core/search_organisations_page.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:flutter/material.dart';
@@ -643,6 +644,12 @@ class RouteGenerator {
         return MaterialPageRoute<RoleCreatedSuccessPage>(
           builder: (_) => const RoleCreatedSuccessPage(),
           settings: const RouteSettings(name: 'Role create success Page'),
+        );
+
+      case AppRoutes.adminPage:
+        return MaterialPageRoute<AdminPage>(
+          builder: (_) => AdminPage(),
+          settings: const RouteSettings(name: 'Admin Page'),
         );
     }
 

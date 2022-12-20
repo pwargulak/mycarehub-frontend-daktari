@@ -62,7 +62,8 @@ const Key myAfyaHubInviteKey = Key('appAccessKey');
 const Key patientRegisterBtnKey = Key('patientRegisterButton');
 const Key saveFacilityBtnKey = Key('save_facility_btn_key');
 const Key facilitySelectOptionFieldKey = Key('facility_select_option_field');
-const Key organisationSelectOptionFieldKey = Key('organisation_select_option_field');
+const Key organisationSelectOptionFieldKey =
+    Key('organisation_select_option_field');
 const Key cccFieldKey = Key('ccc_field');
 const Key firstNameKey = Key('first_name_key');
 const Key lastNameKey = Key('last_name_key');
@@ -211,3 +212,9 @@ const Key revokeRoleButtonKey = Key('revoke_role_button_key');
 const Key assignRoleButtonKey = Key('assign_role_button_key');
 const Key createRoleButtonKey = Key('create_role_button_key');
 const Key assignPermissionsButtonKey = Key('assign_permissions_button_key');
+
+// admin
+const Key adminCardKey = Key('admin_card_key');
+const Key rolesCardKey = Key('roles_card_key');
+const Key organizationsCardKey = Key('organizations_card_key');
+const Key programsCardKey = Key('programs_card_key');

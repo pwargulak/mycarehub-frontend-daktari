@@ -78,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
                     largeVerticalSizedBox,
                     SearchOrganisationField(
                       vm: vm,
-                       validator: (String? value) {
+                      validator: (String? value) {
                         return InputValidators.validateOrganisationName(
                           value: value,
                         );

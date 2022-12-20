@@ -1,3 +1,5 @@
+import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
+import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -28,23 +30,25 @@ class AdminPage extends StatelessWidget {
                 child: Wrap(
                   children: <Widget>[
                     ActionCard(
-                      iconUrl: serviceRequestsIconSvg,
-                      title: serviceRequestString,
-                      backgroundColor: AppColors.primaryColor.withOpacity(0.15),
-                    ),
-                    ActionCard(
+                      key: rolesCardKey,
                       iconUrl: manageRolesImage,
-                      title: manageRolesString,
+                      title: rolesString,
+                      onTap: () {
+                        Navigator.of(context)
+                            .pushNamed(AppRoutes.manageRolesPage);
+                      },
                       backgroundColor: AppColors.primaryColor.withOpacity(0.15),
                     ),
                     ActionCard(
-                      iconUrl: serviceRequestsIconSvg,
-                      title: manageTenantString,
+                      key: organizationsCardKey,
+                      iconUrl: organizationImage,
+                      title: organizations,
                       backgroundColor: AppColors.primaryColor.withOpacity(0.15),
                     ),
                     ActionCard(
+                      key: programsCardKey,
                       iconUrl: serviceRequestsIconSvg,
-                      title: manageProgramsString,
+                      title: programs,
                       backgroundColor: AppColors.primaryColor.withOpacity(0.15),
                     )
                   ],

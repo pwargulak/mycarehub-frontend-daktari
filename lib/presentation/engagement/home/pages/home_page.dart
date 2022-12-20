@@ -166,6 +166,14 @@ class _HomePageState extends State<HomePage> {
                               .pushNamed(AppRoutes.profileFaqsPage);
                         },
                       ),
+                      ActionCard(
+                        key: adminCardKey,
+                        title: adminString,
+                        iconUrl: adminSvgPath,
+                        onTap: () {
+                          Navigator.of(context).pushNamed(AppRoutes.adminPage);
+                        },
+                      ),
                     ],
                   ),
                 ),

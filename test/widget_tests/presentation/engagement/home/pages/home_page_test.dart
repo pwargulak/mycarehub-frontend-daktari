@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:prohealth360_daktari/presentation/admin/admin_page.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -238,6 +239,23 @@ void main() {
       await tester.tap(faqCardFinder);
       await tester.pumpAndSettle();
       expect(find.byType(ProfileFaqsPage), findsOneWidget);
+    });
+
+    testWidgets('navigates to admin page', (WidgetTester tester) async {
+      await buildTestWidget(
+        tester: tester,
+        store: store,
+        widget: const HomePage(),
+        graphQlClient: mockShortSILGraphQlClient,
+      );
+
+      final Finder adminCardFinder = find.byKey(adminCardKey);
+
+      await tester.ensureVisible(adminCardFinder);
+      await tester.pumpAndSettle();
+      await tester.tap(adminCardFinder);
+      await tester.pumpAndSettle();
+      expect(find.byType(AdminPage), findsOneWidget);
     });
   });
 }

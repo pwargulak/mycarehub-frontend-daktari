@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:prohealth360_daktari/presentation/admin/admin_page.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:connectivity_plus_platform_interface/connectivity_plus_platform_interface.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -799,5 +800,15 @@ void main() {
         routeGenerator(settings) as MaterialPageRoute<RoleCreatedSuccessPage>?;
     expect(route, isA<MaterialPageRoute<RoleCreatedSuccessPage>>());
     expect(route?.builder(context), isA<RoleCreatedSuccessPage>());
+  });
+
+  test('Test router returns successful Admin Page', () {
+    const RouteSettings settings = RouteSettings(
+      name: AppRoutes.adminPage,
+    );
+    final MaterialPageRoute<AdminPage>? route =
+        routeGenerator(settings) as MaterialPageRoute<AdminPage>?;
+    expect(route, isA<MaterialPageRoute<AdminPage>>());
+    expect(route?.builder(context), isA<AdminPage>());
   });
 }
