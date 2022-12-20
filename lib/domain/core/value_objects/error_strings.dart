@@ -35,6 +35,7 @@ const String inviteStaffErrorString = 'Error inviting staff';
 const String reactivateClientFailedErrorString =
     'Error Reactivating client failed';
 const String fetchClientsErrorString = 'Error fetching clients';
+const String updateUserProfileErrorString = 'Error updating user profile';
 const String fetchSharedHealthDiaryEntriesErrorString =
     'Error fetching recently shared health diary entries';
 const String verifySecurityQuestionsErrorString =

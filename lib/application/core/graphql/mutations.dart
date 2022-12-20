@@ -224,3 +224,14 @@ mutation addFacilityContact($facilityID: ID!, $contact: String!) {
   addFacilityContact(facilityID: $facilityID, contact: $contact)
 }
 ''';
+
+const String updateProfileMutation = r'''
+mutation updateProfile($userID: String!, $cccNumber: String, $phoneNumber: String, $flavour: Flavour!) {
+  updateProfile(
+    userID: $userID,
+    cccNumber: $cccNumber,
+    phoneNumber: $phoneNumber,
+    flavour: $flavour
+  )
+}
+''';

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:prohealth360_daktari/presentation/search/pages/edit_client_profile_page.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -47,6 +48,26 @@ void main() {
         await tester.pumpAndSettle();
         expect(find.byType(ClientSearchWidget), findsOneWidget);
         expect(find.byType(SearchDetailsInformationWidget), findsOneWidget);
+      });
+      testWidgets('navigates to EditClientProfilePage correctly',
+          (WidgetTester tester) async {
+        await buildTestWidget(
+          tester: tester,
+          graphQlClient: MockTestGraphQlClient(),
+          widget: SearchPageDetailView(
+            searchUserResponse: SearchUserResponse.initial(),
+            isClient: true,
+          ),
+        );
+
+        await tester.pumpAndSettle();
+
+        final Finder updateProfileButton = find.byKey(updateProfileButtonKey);
+
+        expect(updateProfileButton, findsOneWidget);
+        await tester.tap(updateProfileButton);
+        await tester.pumpAndSettle();
+        expect(find.byType(EditClientProfilePage), findsOneWidget);
       });
 
       testWidgets('renders loading indicator correctly',
@@ -534,7 +555,7 @@ void main() {
         expect(find.byType(ClientSearchWidget), findsOneWidget);
         expect(find.byType(SearchDetailsInformationWidget), findsOneWidget);
 
-        await tester.tap(find.byType(MyAfyaHubPrimaryButton));
+        await tester.tap(find.byType(MyAfyaHubPrimaryButton).last);
         await tester.pumpAndSettle();
 
         expect(
@@ -577,7 +598,7 @@ void main() {
         expect(find.byType(ClientSearchWidget), findsOneWidget);
         expect(find.byType(SearchDetailsInformationWidget), findsOneWidget);
 
-        await tester.tap(find.byType(MyAfyaHubPrimaryButton));
+        await tester.tap(find.byType(MyAfyaHubPrimaryButton).last);
         await tester.pumpAndSettle();
         expect(
           find.text('$errorWhileReactivatingString $UNKNOWN'),

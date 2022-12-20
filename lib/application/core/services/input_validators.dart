@@ -36,4 +36,19 @@ class InputValidators {
     }
     return null;
   }
+
+  /// Validates client CCC Number
+  ///
+  /// The [value] is the CCC Number entered by the user
+  ///
+  static String? validateCCCNumber({
+    required String value,
+  }) {
+    final int length = value.length;
+    if (value.isNotEmpty && length >= 7 && length <= 15) {
+      return null;
+    } else {
+      return enterAValidCCCNumberText;
+    }
+  }
 }

@@ -1276,6 +1276,20 @@ class MockTestGraphQlClient extends IGraphQlClient {
         ),
       );
     }
+    if (queryString.contains(updateProfileMutation)) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(
+            <String, dynamic>{
+              'data': <String, dynamic>{
+                'updateProfile': true,
+              }
+            },
+          ),
+          201,
+        ),
+      );
+    }
 
     if (queryString.contains(getScreeningToolServiceRequestResponsesQuery)) {
       return Future<http.Response>.value(

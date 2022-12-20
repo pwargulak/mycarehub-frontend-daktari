@@ -122,4 +122,6 @@ class AppRoutes {
       '/surveyServiceRequestActionsPage';
   static const String surveyResponsesPreviewPage =
       '/surveyResponsesPreviewPage';
+  static const String editClientProfilePage =
+      '/editClientProfilePage';
 }

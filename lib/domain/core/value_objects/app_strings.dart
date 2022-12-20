@@ -906,6 +906,9 @@ const String orString = 'or';
 const String contactUpdateSuccessfulString =
     'Facility contact updated successfully';
 
+const String profileUpdateSuccessfulString =
+    'User profile information updated successfully';
+
 const String enterAgeFromString = 'Please enter an age range from';
 const String ageConstraintsString = ' 14 to 25';
 const String fromString = 'From';
@@ -962,3 +965,8 @@ const String previewResponsesString = 'Preview Response';
 const String fetchingSurveyResponsesString = 'fetching survey responses';
 
 const String doneString = 'Done';
+
+// Edit Profile
+const String editProfileString = 'Edit Profile';
+const String updateProfileString = 'Update Profile';
+const String currentPhoneNumberString = 'Current phone number is ';

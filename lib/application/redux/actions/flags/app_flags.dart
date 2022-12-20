@@ -119,3 +119,6 @@ const String fetchSurveysFlag = 'fetch_surveys_flag';
 const String sendSurveysFlag = 'send_surveys_flag';
 const String fetchSurveyResponsesFlag = 'fetch_survey_responses_flag';
 const String fetchSurveyRespondentsFlag = 'fetch_survey_respondents_flag';
+
+// Update user profile
+const String updateUserProfileFlag = 'update_user_profile_flag';

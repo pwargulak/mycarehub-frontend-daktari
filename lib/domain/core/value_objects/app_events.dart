@@ -60,6 +60,8 @@ const String setNicknameEvent = 'set_nickname';
 
 const String addFacilityContactEvent = 'add_facility_contact_nickname';
 
+const String updateUserProfileInformationEvent = 'update_user_profile_information';
+
 const String setUserPINEvent = 'set_PIN';
 
 const String noConnectionEvent = 'no_internet_connection';

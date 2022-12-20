@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:prohealth360_daktari/presentation/search/pages/edit_client_profile_page.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/services/analytics_service.dart';
@@ -549,6 +550,13 @@ class RouteGenerator {
             selectedSurvey: args as Survey,
           ),
           settings: const RouteSettings(name: 'Survey responses page'),
+        );
+      case AppRoutes.editClientProfilePage:
+        return MaterialPageRoute<EditClientProfilePage>(
+          builder: (_) => EditClientProfilePage(
+            searchUserResponse: args as SearchUserResponse?,
+          ),
+          settings: const RouteSettings(name: 'Edit client profile page'),
         );
     }
 

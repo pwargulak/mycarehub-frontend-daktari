@@ -1,3 +1,5 @@
+import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
+import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
@@ -99,6 +101,19 @@ class SearchDetailsInformationWidget extends StatelessWidget {
             ],
           ),
         ),
+        size15VerticalSizedBox,
+        MyAfyaHubPrimaryButton(
+          text: updateProfileString,
+          buttonKey: updateProfileButtonKey,
+          textColor: Theme.of(context).primaryColor,
+          buttonColor: Theme.of(context).primaryColor.withOpacity(0.3),
+          borderColor: Colors.transparent,
+          customPadding: const EdgeInsets.symmetric(horizontal: 24.0),
+          onPressed: () => Navigator.of(context).pushNamed(
+            AppRoutes.editClientProfilePage,
+            arguments: searchUserResponse,
+          ),
+        )
       ],
     );
   }
