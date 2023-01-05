@@ -84,7 +84,7 @@ void main() {
       buildWhenMock('onboardingState', 10);
       buildWhenMock('bottomNavigationState', 10);
       buildWhenMock('miscState', 10);
-      buildWhenMock('staffState', 10);
+      buildWhenMock('userProfileState', 10);
       buildWhenMock('surveyState', 10);
       buildWhenMock('serviceRequestState', 10);
       expect(await db.isDatabaseEmpty(), false);
@@ -96,7 +96,7 @@ void main() {
       buildWhenMock('onboardingState', 0);
       buildWhenMock('bottomNavigationState', 0);
       buildWhenMock('miscState', 0);
-      buildWhenMock('staffState', 0);
+      buildWhenMock('userProfileState', 0);
       buildWhenMock('surveyState', 0);
       buildWhenMock('serviceRequestState', 0);
       expect(await db.isDatabaseEmpty(), true);

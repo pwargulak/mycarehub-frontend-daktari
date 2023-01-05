@@ -7,6 +7,8 @@ import 'package:prohealth360_daktari/application/redux/actions/caregiver/registe
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/domain/core/entities/caregiver/register_caregiver_payload.dart';
+import 'package:sghi_core/afya_moja_core/src/enums.dart';
+import 'package:sghi_core/domain_objects/value_objects/unknown.dart';
 
 import '../../../../../mocks/mocks.dart';
 
@@ -28,7 +30,12 @@ void main() {
 
       storeTester.dispatch(
         RegisterCaregiverAction(
-          registerCaregiverPayload: RegisterCaregiverPayload(),
+          registerCaregiverPayload: RegisterCaregiverPayload(
+            name: UNKNOWN,
+            gender: Gender.male,
+            dateOfBirth: DateTime.now(),
+            phoneNumber: 'test',
+          ),
           client: MockTestGraphQlClient(),
           onSuccess: () => called++,
         ),

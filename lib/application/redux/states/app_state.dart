@@ -11,7 +11,7 @@ import 'package:prohealth360_daktari/application/redux/states/onboarding/onboard
 import 'package:prohealth360_daktari/application/redux/states/service_requests/service_requests_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/survey_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/auth_credentials.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/staff_state.dart';
+import 'package:prohealth360_daktari/domain/core/entities/core/user_profile.dart';
 
 part 'app_state.freezed.dart';
 part 'app_state.g.dart';
@@ -26,7 +26,7 @@ class AppState with _$AppState {
     OnboardingState? onboardingState,
     BottomNavigationState? bottomNavigationState,
     MiscState? miscState,
-    StaffState? staffState,
+    UserProfile? userProfileState,
     SurveyState? surveyState,
     ServiceRequestState? serviceRequestState,
     ConnectivityState? connectivityState,
@@ -42,7 +42,7 @@ class AppState with _$AppState {
         onboardingState: OnboardingState.initial(),
         bottomNavigationState: BottomNavigationState.initial(),
         miscState: MiscState.initial(),
-        staffState: StaffState.initial(),
+        userProfileState: UserProfile.initial(),
         surveyState: SurveyState.initial(),
         serviceRequestState: ServiceRequestState.initial(),
         connectivityState: ConnectivityState.initial(),

@@ -1,14 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'staff_state.dart';
+part of 'user_profile.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_StaffState _$$_StaffStateFromJson(Map<String, dynamic> json) =>
-    _$_StaffState(
+_$_UserProfile _$$_UserProfileFromJson(Map<String, dynamic> json) =>
+    _$_UserProfile(
       id: json['id'] as String?,
+      username: json['username'] as String?,
+      name: json['name'] as String?,
+      pinChangeRequired: json['pinChangeRequired'] as bool?,
+      hasSetPin: json['hasSetPin'] as bool?,
+      isPhoneVerified: json['isPhoneVerified'] as bool?,
+      hasSetSecurityQuestions: json['hasSetSecurityQuestions'] as bool?,
+      hasSetNickname: json['hasSetNickname'] as bool?,
+      pinUpdateRequired: json['pinUpdateRequired'] as bool?,
+      termsAccepted: json['termsAccepted'] as bool?,
+      suspended: json['suspended'] as bool?,
       userId: json['user_id'] as String?,
       active: json['active'] as bool? ?? false,
       staffNumber: json['staff_number'] as String?,
@@ -54,9 +64,19 @@ _$_StaffState _$$_StaffStateFromJson(Map<String, dynamic> json) =>
           : Facility.fromJson(json['currentFacility'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_StaffStateToJson(_$_StaffState instance) =>
+Map<String, dynamic> _$$_UserProfileToJson(_$_UserProfile instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'username': instance.username,
+      'name': instance.name,
+      'pinChangeRequired': instance.pinChangeRequired,
+      'hasSetPin': instance.hasSetPin,
+      'isPhoneVerified': instance.isPhoneVerified,
+      'hasSetSecurityQuestions': instance.hasSetSecurityQuestions,
+      'hasSetNickname': instance.hasSetNickname,
+      'pinUpdateRequired': instance.pinUpdateRequired,
+      'termsAccepted': instance.termsAccepted,
+      'suspended': instance.suspended,
       'user_id': instance.userId,
       'active': instance.active,
       'staff_number': instance.staffNumber,

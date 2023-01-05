@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 // Package imports:
+import 'package:prohealth360_daktari/domain/core/entities/core/user_profile.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 // Flutter imports:
@@ -61,7 +62,7 @@ class PhoneLoginAction extends ReduxAction<AppState> {
     final OnboardingState? onboardingState = state.onboardingState;
 
     final Map<String, String> credentials = <String, String>{
-      'phoneNumber': onboardingState!.phoneNumber!,
+      'username': onboardingState!.username!,
       'pin': onboardingState.pin!,
       'flavour': Flavour.pro.name,
     };
@@ -111,16 +112,28 @@ class PhoneLoginAction extends ReduxAction<AppState> {
         ),
       );
       final String fullName =
-          loginResponse.userResponse?.staffState?.user?.name ?? UNKNOWN;
+          loginResponse.userResponse?.userProfile?.name ?? UNKNOWN;
 
-      User? user = loginResponse.userResponse?.staffState?.user?.copyWith(
+      final UserProfile? userProfileState =
+          loginResponse.userResponse?.userProfile;
+
+      User user = User(
         pinChangeRequired: false,
         chatRoomToken: loginResponse.userResponse?.streamToken,
+        name: userProfileState?.name,
+        username: userProfileState?.username,
+        hasSetPin: userProfileState?.hasSetPin,
+        isPhoneVerified: userProfileState?.isPhoneVerified,
+        hasSetSecurityQuestions: userProfileState?.hasSetSecurityQuestions,
+        pinUpdateRequired: userProfileState?.pinUpdateRequired,
+        termsAccepted: userProfileState?.termsAccepted,
+        suspended: userProfileState?.suspended,
+        active: userProfileState?.active,
       );
 
       if (fullName != UNKNOWN && fullName.isNotEmpty) {
         final List<String> names = fullName.split(' ');
-        user = user?.copyWith(
+        user = user.copyWith(
           firstName: names.first,
           lastName: names.last,
         );
@@ -128,12 +141,12 @@ class PhoneLoginAction extends ReduxAction<AppState> {
 
       dispatch(
         UpdateOnboardingStateAction(
-          hasSetNickName:
-              user?.username != null && user?.username != user!.name,
-          hasAcceptedTerms: user?.termsAccepted,
-          hasSetSecurityQuestions: user?.hasSetSecurityQuestions,
-          hasSetPin: user?.hasSetPin,
-          isPhoneVerified: user?.isPhoneVerified,
+          hasSetNickName: (userProfileState?.username?.isNotEmpty ?? false) &&
+              (userProfileState?.hasSetNickname ?? false),
+          hasAcceptedTerms: userProfileState?.termsAccepted,
+          hasSetSecurityQuestions: userProfileState?.hasSetSecurityQuestions,
+          hasSetPin: userProfileState?.hasSetPin,
+          isPhoneVerified: userProfileState?.isPhoneVerified,
         ),
       );
 
@@ -141,13 +154,13 @@ class PhoneLoginAction extends ReduxAction<AppState> {
 
       dispatch(
         UpdateStaffProfileAction(
-          id: loginResponse.userResponse?.staffState?.id,
-          staffNumber: loginResponse.userResponse?.staffState?.staffNumber,
+          id: loginResponse.userResponse?.userProfile?.id,
+          staffNumber: loginResponse.userResponse?.userProfile?.staffNumber,
           defaultFacility:
-              loginResponse.userResponse?.staffState?.defaultFacility,
-          facilities: loginResponse.userResponse?.staffState?.facilities,
+              loginResponse.userResponse?.userProfile?.defaultFacility,
+          facilities: loginResponse.userResponse?.userProfile?.facilities,
           defaultFacilityName:
-              loginResponse.userResponse?.staffState?.defaultFacilityName,
+              loginResponse.userResponse?.userProfile?.defaultFacilityName,
         ),
       );
 
@@ -156,7 +169,7 @@ class PhoneLoginAction extends ReduxAction<AppState> {
       ///
       /// Note: For this to work, the backend should trigger these properties
       /// in the user profile (isPhoneVerified, hasSetPin, hasSetSecurityQuestions)
-      if (user?.pinUpdateRequired ?? false) {
+      if (user.pinUpdateRequired ?? false) {
         dispatch(
           UpdateOnboardingStateAction(
             currentOnboardingStage: CurrentOnboardingStage.PINUpdate,

@@ -18,8 +18,8 @@ final List<String> migrations = <String>[
   CREATE TABLE IF NOT EXISTS ${Tables.MiscState.name} (id INTEGER PRIMARY KEY, 
           miscState TEXT)''',
   '''
-  CREATE TABLE IF NOT EXISTS ${Tables.StaffState.name} (id INTEGER PRIMARY KEY, 
-          staffState TEXT)''',
+  CREATE TABLE IF NOT EXISTS ${Tables.UserProfile.name} (id INTEGER PRIMARY KEY, 
+          userProfileState TEXT)''',
   '''
   CREATE TABLE IF NOT EXISTS ${Tables.SurveyState.name} (id INTEGER PRIMARY KEY, 
           surveyState TEXT)''',

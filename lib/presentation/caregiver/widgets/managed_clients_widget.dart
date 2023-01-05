@@ -22,9 +22,9 @@ class ManagedClientsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<AppState, StaffStateViewModel>(
+    return StoreConnector<AppState, UserProfileViewModel>(
       converter: (Store<AppState> store) =>
-          StaffStateViewModel.fromStore(store),
+          UserProfileViewModel.fromStore(store),
       onInit: (Store<AppState> store) async {
         await store.dispatch(
           FetchCaregiverManagedClientsAction(
@@ -48,9 +48,9 @@ class ManagedClientsWidget extends StatelessWidget {
           ),
         );
       },
-      builder: (BuildContext context, StaffStateViewModel vm) {
+      builder: (BuildContext context, UserProfileViewModel vm) {
         final List<ManagedClient>? managedClients =
-            vm.staffState?.managedClients;
+            vm.userProfileState?.managedClients;
         final List<Widget> clientsWidgetList = <Widget>[];
         if (managedClients?.isNotEmpty ?? false) {
           for (final ManagedClient client in managedClients!) {

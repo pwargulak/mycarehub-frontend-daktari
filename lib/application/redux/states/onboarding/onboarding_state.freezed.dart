@@ -47,7 +47,9 @@ mixin _$OnboardingState {
 
   ///------------WORKFLOW RELATED VALUES------------
 // The currently active user's phone number
-  String? get phoneNumber => throw _privateConstructorUsedError; // The PIN
+  String? get phoneNumber =>
+      throw _privateConstructorUsedError; // The currently active user's username
+  String? get username => throw _privateConstructorUsedError; // The PIN
   String? get pin => throw _privateConstructorUsedError; // The confirm PIN
   String? get confirmPIN =>
       throw _privateConstructorUsedError; // The OTP used when confirming the phone number
@@ -94,6 +96,7 @@ abstract class $OnboardingStateCopyWith<$Res> {
       bool? hasSetPin,
       bool? hasAcceptedTerms,
       String? phoneNumber,
+      String? username,
       String? pin,
       String? confirmPIN,
       String? otp,
@@ -131,6 +134,7 @@ class _$OnboardingStateCopyWithImpl<$Res, $Val extends OnboardingState>
     Object? hasSetPin = freezed,
     Object? hasAcceptedTerms = freezed,
     Object? phoneNumber = freezed,
+    Object? username = freezed,
     Object? pin = freezed,
     Object? confirmPIN = freezed,
     Object? otp = freezed,
@@ -185,6 +189,10 @@ class _$OnboardingStateCopyWithImpl<$Res, $Val extends OnboardingState>
       phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String?,
       pin: freezed == pin
           ? _value.pin
@@ -259,6 +267,7 @@ abstract class _$$_OnboardingStateCopyWith<$Res>
       bool? hasSetPin,
       bool? hasAcceptedTerms,
       String? phoneNumber,
+      String? username,
       String? pin,
       String? confirmPIN,
       String? otp,
@@ -295,6 +304,7 @@ class __$$_OnboardingStateCopyWithImpl<$Res>
     Object? hasSetPin = freezed,
     Object? hasAcceptedTerms = freezed,
     Object? phoneNumber = freezed,
+    Object? username = freezed,
     Object? pin = freezed,
     Object? confirmPIN = freezed,
     Object? otp = freezed,
@@ -349,6 +359,10 @@ class __$$_OnboardingStateCopyWithImpl<$Res>
       phoneNumber: freezed == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String?,
       pin: freezed == pin
           ? _value.pin
@@ -405,6 +419,7 @@ class _$_OnboardingState implements _OnboardingState {
       this.hasSetPin,
       this.hasAcceptedTerms,
       this.phoneNumber,
+      this.username,
       this.pin,
       this.confirmPIN,
       this.otp,
@@ -454,6 +469,9 @@ class _$_OnboardingState implements _OnboardingState {
 // The currently active user's phone number
   @override
   final String? phoneNumber;
+// The currently active user's username
+  @override
+  final String? username;
 // The PIN
   @override
   final String? pin;
@@ -489,7 +507,7 @@ class _$_OnboardingState implements _OnboardingState {
 
   @override
   String toString() {
-    return 'OnboardingState(termsAndConditions: $termsAndConditions, securityQuestions: $securityQuestions, securityQuestionResponses: $securityQuestionResponses, currentOnboardingStage: $currentOnboardingStage, isPhoneVerified: $isPhoneVerified, hasSetSecurityQuestions: $hasSetSecurityQuestions, hasVerifiedSecurityQuestions: $hasVerifiedSecurityQuestions, hasSetNickName: $hasSetNickName, hasSetPin: $hasSetPin, hasAcceptedTerms: $hasAcceptedTerms, phoneNumber: $phoneNumber, pin: $pin, confirmPIN: $confirmPIN, otp: $otp, failedLoginCount: $failedLoginCount, invalidCredentials: $invalidCredentials, invalidOTP: $invalidOTP, failedToSendOTP: $failedToSendOTP, canResendOTP: $canResendOTP, organisations: $organisations)';
+    return 'OnboardingState(termsAndConditions: $termsAndConditions, securityQuestions: $securityQuestions, securityQuestionResponses: $securityQuestionResponses, currentOnboardingStage: $currentOnboardingStage, isPhoneVerified: $isPhoneVerified, hasSetSecurityQuestions: $hasSetSecurityQuestions, hasVerifiedSecurityQuestions: $hasVerifiedSecurityQuestions, hasSetNickName: $hasSetNickName, hasSetPin: $hasSetPin, hasAcceptedTerms: $hasAcceptedTerms, phoneNumber: $phoneNumber, username: $username, pin: $pin, confirmPIN: $confirmPIN, otp: $otp, failedLoginCount: $failedLoginCount, invalidCredentials: $invalidCredentials, invalidOTP: $invalidOTP, failedToSendOTP: $failedToSendOTP, canResendOTP: $canResendOTP, organisations: $organisations)';
   }
 
   @override
@@ -522,6 +540,8 @@ class _$_OnboardingState implements _OnboardingState {
                 other.hasAcceptedTerms == hasAcceptedTerms) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
             (identical(other.pin, pin) || other.pin == pin) &&
             (identical(other.confirmPIN, confirmPIN) ||
                 other.confirmPIN == confirmPIN) &&
@@ -555,6 +575,7 @@ class _$_OnboardingState implements _OnboardingState {
         hasSetPin,
         hasAcceptedTerms,
         phoneNumber,
+        username,
         pin,
         confirmPIN,
         otp,
@@ -593,6 +614,7 @@ abstract class _OnboardingState implements OnboardingState {
       final bool? hasSetPin,
       final bool? hasAcceptedTerms,
       final String? phoneNumber,
+      final String? username,
       final String? pin,
       final String? confirmPIN,
       final String? otp,
@@ -637,6 +659,8 @@ abstract class _OnboardingState implements OnboardingState {
   ///------------WORKFLOW RELATED VALUES------------
 // The currently active user's phone number
   String? get phoneNumber;
+  @override // The currently active user's username
+  String? get username;
   @override // The PIN
   String? get pin;
   @override // The confirm PIN

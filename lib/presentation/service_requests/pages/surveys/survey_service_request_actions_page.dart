@@ -8,7 +8,7 @@ import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.d
 import 'package:prohealth360_daktari/application/redux/actions/service_requests/resolve_survey_service_request.action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/service_requests/service_requests_view_model.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/staff_state.dart';
+import 'package:prohealth360_daktari/domain/core/entities/core/user_profile.dart';
 import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_respondent.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
@@ -43,11 +43,11 @@ class _SurveyServiceRequestActionsPageState
 
     final String phoneNumber = widget.surveyRespondent?.phoneNumber ?? '';
     final String clientName = widget.surveyRespondent?.name ?? '';
-    final StaffState? staffState =
-        StoreProvider.state<AppState>(context)?.staffState;
-    final String staffFirstName = staffState?.user?.firstName ?? '';
-    final String staffLastName = staffState?.user?.lastName ?? '';
-    final String facilityName = staffState?.defaultFacilityName ?? '';
+    final UserProfile? userProfileState =
+        StoreProvider.state<AppState>(context)?.userProfileState;
+    final String staffFirstName = userProfileState?.user?.firstName ?? '';
+    final String staffLastName = userProfileState?.user?.lastName ?? '';
+    final String facilityName = userProfileState?.defaultFacilityName ?? '';
 
     final String surveyName = widget.surveyRespondent?.surveyName ?? '';
 

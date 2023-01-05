@@ -10,7 +10,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/staff_state.dart';
+import 'package:prohealth360_daktari/domain/core/entities/core/user_profile.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/user.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
@@ -129,7 +129,7 @@ void main() {
         (WidgetTester tester) async {
       final Store<AppState> store = Store<AppState>(
         initialState: AppState.initial().copyWith(
-          staffState: StaffState(
+          userProfileState: UserProfile(
             defaultFacility: 'test',
             defaultFacilityName: 'test',
             facilities: <Facility>[Facility.initial()],

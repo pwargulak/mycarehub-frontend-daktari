@@ -383,53 +383,6 @@ final Map<String, dynamic> termsMock = <String, dynamic>{
   'text': 'Dummy PRO Terms'
 };
 
-final Map<String, dynamic> mockAuthLoginResponse = <String, dynamic>{
-  'profile': <String, dynamic>{
-    'id': 'cf77a543-d5cc-427a-94ed-1b1e12dfb8f4',
-    'userName': '@gifted_leavitt53101254',
-    'verifiedIdentifiers': <Map<String, String>>[
-      <String, String>{
-        'uid': 'rnq23JxDXNMLJK3sSKNwaGWrfzp2',
-        'timeStamp': '2021-04-30T09:50:01.50004Z',
-        'loginProvider': 'PHONE'
-      }
-    ],
-    'verifiedUIDS': <String>['rnq23JxDXNMLJK3sSKNwaGWrfzp2'],
-    'primaryPhone': '+254717356476',
-    'primaryEmailAddress': 'savannahtestacc@gmail.com',
-    'secondaryPhoneNumbers': null,
-    'secondaryEmailAddresses': null,
-    'terms_accepted': true,
-    'suspended': false,
-    'photoUploadID': core.UNKNOWN,
-    'userBioData': <String, String>{
-      'firstName': 'BeWell',
-      'lastName': 'Test',
-      'dateOfBirth': '2003-04-30',
-      'gender': 'male'
-    }
-  },
-  'customerProfile': null,
-  'communicationSettings': <String, dynamic>{
-    'id': '45423625-d794-47d3-9f87-32b5a5f80c84',
-    'profileID': 'cf77a543-d5cc-427a-94ed-1b1e12dfb8f4',
-    'allowWhatsApp': true,
-    'allowTextSMS': true,
-    'allowPush': true,
-    'allowEmail': true
-  },
-  'auth': <String, dynamic>{
-    'customToken': 'custom-token',
-    'id_token': 'id_token',
-    'expires_in': '3600',
-    'refresh_token': 'refresh_token',
-    'uid': 'rnq23JxDXNMLJK3sSKNwaGWrfzp2',
-    'is_admin': false,
-    'is_anonymous': false,
-    'can_experiment': false,
-    'change_pin': false,
-  },
-};
 final Map<String, dynamic> mockAssessmentResponsesByToolType =
     <String, dynamic>{
   'clientName': 'John Doe',
@@ -468,54 +421,6 @@ final Map<String, dynamic> mockPendingServiceRequestCount = <String, dynamic>{
       }
     }
   }
-};
-
-final Map<String, dynamic> mockChangePinAuthLoginResponse = <String, dynamic>{
-  'profile': <String, dynamic>{
-    'id': 'cf77a543-d5cc-427a-94ed-1b1e12dfb8f4',
-    'userName': '@gifted_leavitt53101254',
-    'verifiedIdentifiers': <Map<String, String>>[
-      <String, String>{
-        'uid': 'rnq23JxDXNMLJK3sSKNwaGWrfzp2',
-        'timeStamp': '2021-04-30T09:50:01.50004Z',
-        'loginProvider': 'PHONE'
-      }
-    ],
-    'verifiedUIDS': <String>['rnq23JxDXNMLJK3sSKNwaGWrfzp2'],
-    'primaryPhone': '+254717356476',
-    'primaryEmailAddress': 'savannahtestacc@gmail.com',
-    'secondaryPhoneNumbers': null,
-    'secondaryEmailAddresses': null,
-    'terms_accepted': true,
-    'suspended': false,
-    'photoUploadID': core.UNKNOWN,
-    'userBioData': <String, String>{
-      'firstName': 'BeWell',
-      'lastName': 'Test',
-      'dateOfBirth': '2003-04-30',
-      'gender': 'male'
-    }
-  },
-  'customerProfile': null,
-  'communicationSettings': <String, dynamic>{
-    'id': '45423625-d794-47d3-9f87-32b5a5f80c84',
-    'profileID': 'cf77a543-d5cc-427a-94ed-1b1e12dfb8f4',
-    'allowWhatsApp': true,
-    'allowTextSMS': true,
-    'allowPush': true,
-    'allowEmail': true
-  },
-  'auth': <String, dynamic>{
-    'customToken': 'custom-token',
-    'id_token': 'id_token',
-    'expires_in': '3600',
-    'refresh_token': 'refresh_token',
-    'uid': 'rnq23JxDXNMLJK3sSKNwaGWrfzp2',
-    'is_anonymous': false,
-    'is_admin': false,
-    'can_experiment': false,
-    'change_pin': true,
-  },
 };
 
 /// a short client for providing custom responses
@@ -1678,7 +1583,7 @@ final Map<String, dynamic> mockLoginUser = <String, dynamic>{
   'avatar': 'UNKNOWN'
 };
 
-final Map<String, dynamic> mockStaffState = <String, dynamic>{
+final Map<String, dynamic> mockUserProfile = <String, dynamic>{
   'id': 'UNKNOWN',
   'user_id': 'UNKNOWN',
   'active': false,
@@ -2071,7 +1976,7 @@ final Map<String, dynamic> appStateMock = <String, dynamic>{
   'onboardingState': mockOnboardingState,
   'bottomNavigationState': <String, dynamic>{'currentBottomNavIndex': 0},
   'miscState': mockMiscState,
-  'staffState': mockStaffState,
+  'userProfileState': mockUserProfile,
   'surveyState': <String, dynamic>{},
   'serviceRequestState': <String, dynamic>{
     'ServiceRequest': <String, dynamic>{},
@@ -2104,7 +2009,36 @@ final Map<String, dynamic> mockLoginResponse = <String, dynamic>{
       'facilities': <dynamic>[],
       'default_facility': 'UNKNOWN',
       'user': mockLoginUser,
-    }
+    },
+    'userProfile': <String, dynamic>{
+      'id': 'testID',
+      'name': 'test Username',
+      'userID': 'UNKNOWN',
+      'username': 'UNKNOWN',
+      'firstName': 'firstName',
+      'lastName': 'lastName',
+      'userType': 'UNKNOWN',
+      'gender': core.Gender.unknown.name,
+      'active': false,
+      'primaryContact': <String, dynamic>{
+        'contactType': 'PHONE',
+        'contactValue': 'UNKNOWN',
+        'active': false,
+        'optedIn': false,
+      },
+      'lastSuccessfulLogin': 'UNKNOWN',
+      'lastFailedLogin': 'UNKNOWN',
+      'failedLoginCount': 0,
+      'nextAllowedLogin': 'UNKNOWN',
+      'pinChangeRequired': false,
+      'hasSetPin': false,
+      'isPhoneVerified': false,
+      'hasSetSecurityQuestions': false,
+      'termsAccepted': false,
+      'acceptedTermsID': 0,
+      'suspended': false,
+      'avatar': 'UNKNOWN'
+    },
   }
 };
 
@@ -2120,42 +2054,39 @@ final Map<String, dynamic> pinChangeRequiredMock = <String, dynamic>{
       'isSignedIn': false,
       'signedInTime': 'UNKNOWN',
     },
-    'staffProfile': <String, dynamic>{
+    'userProfile': <String, dynamic>{
       'id': 'UNKNOWN',
       'user_id': 'UNKNOWN',
       'active': false,
       'staff_number': 'UNKNOWN',
       'facilities': <dynamic>[],
       'default_facility': 'UNKNOWN',
-      'user': <String, dynamic>{
-        'userID': 'UNKNOWN',
-        'userName': 'UNKNOWN',
-        'firstName': 'John',
-        'lastName': 'Doe',
-        'name': 'John Doe',
-        'userType': 'UNKNOWN',
-        'gender': core.Gender.unknown.name,
+      'userID': 'UNKNOWN',
+      'userName': 'UNKNOWN',
+      'firstName': 'John',
+      'lastName': 'Doe',
+      'name': 'John Doe',
+      'userType': 'UNKNOWN',
+      'gender': core.Gender.unknown.name,
+      'primaryContact': <String, dynamic>{
+        'contactType': 'PHONE',
+        'contactValue': 'UNKNOWN',
         'active': false,
-        'primaryContact': <String, dynamic>{
-          'contactType': 'PHONE',
-          'contactValue': 'UNKNOWN',
-          'active': false,
-          'optedIn': false,
-        },
-        'lastSuccessfulLogin': 'UNKNOWN',
-        'lastFailedLogin': 'UNKNOWN',
-        'failedLoginCount': 0,
-        'nextAllowedLogin': 'UNKNOWN',
-        'pinChangeRequired': true,
-        'pinUpdateRequired': true,
-        'hasSetPin': false,
-        'isPhoneVerified': false,
-        'hasSetSecurityQuestions': false,
-        'termsAccepted': false,
-        'acceptedTermsID': 0,
-        'suspended': false,
-        'avatar': 'UNKNOWN'
+        'optedIn': false,
       },
+      'lastSuccessfulLogin': 'UNKNOWN',
+      'lastFailedLogin': 'UNKNOWN',
+      'failedLoginCount': 0,
+      'nextAllowedLogin': 'UNKNOWN',
+      'pinChangeRequired': true,
+      'pinUpdateRequired': true,
+      'hasSetPin': false,
+      'isPhoneVerified': false,
+      'hasSetSecurityQuestions': false,
+      'termsAccepted': false,
+      'acceptedTermsID': 0,
+      'suspended': false,
+      'avatar': 'UNKNOWN'
     }
   }
 };

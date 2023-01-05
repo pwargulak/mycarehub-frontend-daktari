@@ -28,8 +28,8 @@ class ListFacilitiesViewModel extends Vm {
   factory ListFacilitiesViewModel.fromStore(Store<AppState> store) {
     return ListFacilitiesViewModel(
       wait: store.state.wait!,
-      facilities: store.state.staffState?.facilities,
-      linkedFacilities: store.state.staffState?.linkedFacilities,
+      facilities: store.state.userProfileState?.facilities,
+      linkedFacilities: store.state.userProfileState?.linkedFacilities,
       updateFacility: store.state.miscState?.updateFacility,
       selectedFacility:
           store.state.miscState?.selectedFacility ?? Facility.initial(),

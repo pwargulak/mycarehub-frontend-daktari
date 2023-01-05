@@ -37,7 +37,7 @@ class ConnectGetStreamUserAction extends ReduxAction<AppState> {
 
   @override
   Future<AppState?> reduce() async {
-    final String staffId = state.staffState?.id ?? UNKNOWN;
+    final String staffId = state.userProfileState?.id ?? UNKNOWN;
 
     if (staffId.isEmpty || staffId == UNKNOWN) {
       throw const UserException(kindlyLogOutText);
@@ -52,9 +52,9 @@ class ConnectGetStreamUserAction extends ReduxAction<AppState> {
       final StreamTokenProvider streamTokenProvider =
           StreamTokenProvider(client: client, endpoint: endpoint);
 
-      final String? name = state.staffState?.user?.name;
-      final String? username = state.staffState?.user?.username;
-      final String? userId = state.staffState?.user?.userId;
+      final String? name = state.userProfileState?.user?.name;
+      final String? username = state.userProfileState?.user?.username;
+      final String? userId = state.userProfileState?.user?.userId;
 
       await streamClient.connectUserWithProvider(
         stream.User(

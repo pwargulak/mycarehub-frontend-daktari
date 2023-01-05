@@ -32,7 +32,7 @@ class GroupsViewModel extends Vm {
     return GroupsViewModel(
       wait: store.state.wait!,
       groupMembers: store.state.miscState?.groupState?.groupMembers,
-      staffRoles: store.state.staffState?.user?.roles,
+      staffRoles: store.state.userProfileState?.user?.roles,
       isModerator: store.state.miscState?.groupState?.isModerator,
       communities: store.state.miscState?.groupState?.communities,
     );

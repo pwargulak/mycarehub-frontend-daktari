@@ -29,9 +29,8 @@ class FacilitySelectionPage extends StatelessWidget {
                   ListFacilitiesViewModel.fromStore(store),
               onInit: (Store<AppState> store) {
                 final String userId = StoreProvider.state<AppState>(context)
-                        ?.staffState
-                        ?.user
-                        ?.userId ??
+                        ?.userProfileState
+                        ?.id ??
                     '';
                 store.dispatch(
                   UpdateStaffProfileAction(

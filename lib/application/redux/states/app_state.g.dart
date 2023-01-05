@@ -25,9 +25,10 @@ _$_State _$$_StateFromJson(Map<String, dynamic> json) => _$_State(
       miscState: json['miscState'] == null
           ? null
           : MiscState.fromJson(json['miscState'] as Map<String, dynamic>),
-      staffState: json['staffState'] == null
+      userProfileState: json['userProfileState'] == null
           ? null
-          : StaffState.fromJson(json['staffState'] as Map<String, dynamic>),
+          : UserProfile.fromJson(
+              json['userProfileState'] as Map<String, dynamic>),
       surveyState: json['surveyState'] == null
           ? null
           : SurveyState.fromJson(json['surveyState'] as Map<String, dynamic>),
@@ -47,7 +48,7 @@ Map<String, dynamic> _$$_StateToJson(_$_State instance) => <String, dynamic>{
       'onboardingState': instance.onboardingState,
       'bottomNavigationState': instance.bottomNavigationState,
       'miscState': instance.miscState,
-      'staffState': instance.staffState,
+      'userProfileState': instance.userProfileState,
       'surveyState': instance.surveyState,
       'serviceRequestState': instance.serviceRequestState,
       'connectivityState': instance.connectivityState,

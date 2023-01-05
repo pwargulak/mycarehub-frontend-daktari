@@ -1,8 +1,8 @@
+import 'package:prohealth360_daktari/presentation/onboarding/login/pages/login_page.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/presentation/onboarding/login/pages/phone_login_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/login/pages/pin_request_sent_page.dart';
 
 import '../../../../mocks/mocks.dart';
@@ -28,7 +28,7 @@ void main() {
       await tester.tap(find.byType(MyAfyaHubPrimaryButton));
       await tester.pumpAndSettle();
 
-      expect(find.byType(PhoneLoginPage), findsOneWidget);
+      expect(find.byType(LoginPage), findsOneWidget);
     });
   });
 }

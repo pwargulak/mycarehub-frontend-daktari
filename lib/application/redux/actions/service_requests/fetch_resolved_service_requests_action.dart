@@ -41,7 +41,7 @@ class FetchResolvedServiceRequestsAction extends ReduxAction<AppState> {
 
   @override
   Future<AppState?> reduce() async {
-    final String facilityID = state.staffState?.defaultFacility ?? '';
+    final String facilityID = state.userProfileState?.defaultFacility ?? '';
 
     final Map<String, dynamic> variables = <String, dynamic>{
       'status': RequestStatus.RESOLVED.name,

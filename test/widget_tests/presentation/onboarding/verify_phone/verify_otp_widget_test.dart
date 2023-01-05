@@ -30,7 +30,7 @@ void main() {
       store = Store<AppState>(
         initialState: AppState.initial()
             .copyWith
-            .staffState!
+            .userProfileState!
             .user!
             .call(
               primaryContact: Contact(value: '+254712345678'),

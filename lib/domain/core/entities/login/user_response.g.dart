@@ -12,15 +12,15 @@ _$_UserResponse _$$_UserResponseFromJson(Map<String, dynamic> json) =>
           ? null
           : AuthCredentials.fromJson(
               json['credentials'] as Map<String, dynamic>),
-      staffState: json['staffProfile'] == null
+      userProfile: json['userProfile'] == null
           ? null
-          : StaffState.fromJson(json['staffProfile'] as Map<String, dynamic>),
+          : UserProfile.fromJson(json['userProfile'] as Map<String, dynamic>),
       streamToken: json['getStreamToken'] as String?,
     );
 
 Map<String, dynamic> _$$_UserResponseToJson(_$_UserResponse instance) =>
     <String, dynamic>{
       'credentials': instance.credentials,
-      'staffProfile': instance.staffState,
+      'userProfile': instance.userProfile,
       'getStreamToken': instance.streamToken,
     };

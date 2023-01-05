@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'staff_state.dart';
+part of 'user_profile.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,14 +14,38 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-StaffState _$StaffStateFromJson(Map<String, dynamic> json) {
-  return _StaffState.fromJson(json);
+UserProfile _$UserProfileFromJson(Map<String, dynamic> json) {
+  return _UserProfile.fromJson(json);
 }
 
 /// @nodoc
-mixin _$StaffState {
+mixin _$UserProfile {
   @JsonKey(name: 'id')
-  String? get id => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError; // This is the nickname
+  @JsonKey(name: 'username')
+  String? get username => throw _privateConstructorUsedError;
+  @JsonKey(name: 'name')
+  String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'pinChangeRequired')
+  bool? get pinChangeRequired => throw _privateConstructorUsedError;
+  @JsonKey(name: 'hasSetPin')
+  bool? get hasSetPin => throw _privateConstructorUsedError;
+  @JsonKey(name: 'isPhoneVerified')
+  bool? get isPhoneVerified => throw _privateConstructorUsedError;
+  @JsonKey(name: 'hasSetSecurityQuestions')
+  bool? get hasSetSecurityQuestions => throw _privateConstructorUsedError;
+  @JsonKey(name: 'hasSetNickname')
+  bool? get hasSetNickname => throw _privateConstructorUsedError;
+
+  /// Used to indicate that the user's PIN has been reset by someone else
+  ///
+  /// This is used to trigger the change PIN workflow
+  @JsonKey(name: 'pinUpdateRequired')
+  bool? get pinUpdateRequired => throw _privateConstructorUsedError;
+  @JsonKey(name: 'termsAccepted')
+  bool? get termsAccepted => throw _privateConstructorUsedError;
+  @JsonKey(name: 'suspended')
+  bool? get suspended => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_id')
   String? get userId => throw _privateConstructorUsedError;
   @JsonKey(name: 'active', defaultValue: false)
@@ -51,18 +75,28 @@ mixin _$StaffState {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $StaffStateCopyWith<StaffState> get copyWith =>
+  $UserProfileCopyWith<UserProfile> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $StaffStateCopyWith<$Res> {
-  factory $StaffStateCopyWith(
-          StaffState value, $Res Function(StaffState) then) =
-      _$StaffStateCopyWithImpl<$Res, StaffState>;
+abstract class $UserProfileCopyWith<$Res> {
+  factory $UserProfileCopyWith(
+          UserProfile value, $Res Function(UserProfile) then) =
+      _$UserProfileCopyWithImpl<$Res, UserProfile>;
   @useResult
   $Res call(
       {@JsonKey(name: 'id') String? id,
+      @JsonKey(name: 'username') String? username,
+      @JsonKey(name: 'name') String? name,
+      @JsonKey(name: 'pinChangeRequired') bool? pinChangeRequired,
+      @JsonKey(name: 'hasSetPin') bool? hasSetPin,
+      @JsonKey(name: 'isPhoneVerified') bool? isPhoneVerified,
+      @JsonKey(name: 'hasSetSecurityQuestions') bool? hasSetSecurityQuestions,
+      @JsonKey(name: 'hasSetNickname') bool? hasSetNickname,
+      @JsonKey(name: 'pinUpdateRequired') bool? pinUpdateRequired,
+      @JsonKey(name: 'termsAccepted') bool? termsAccepted,
+      @JsonKey(name: 'suspended') bool? suspended,
       @JsonKey(name: 'user_id') String? userId,
       @JsonKey(name: 'active', defaultValue: false) bool? active,
       @JsonKey(name: 'staff_number') String? staffNumber,
@@ -86,9 +120,9 @@ abstract class $StaffStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$StaffStateCopyWithImpl<$Res, $Val extends StaffState>
-    implements $StaffStateCopyWith<$Res> {
-  _$StaffStateCopyWithImpl(this._value, this._then);
+class _$UserProfileCopyWithImpl<$Res, $Val extends UserProfile>
+    implements $UserProfileCopyWith<$Res> {
+  _$UserProfileCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -99,6 +133,16 @@ class _$StaffStateCopyWithImpl<$Res, $Val extends StaffState>
   @override
   $Res call({
     Object? id = freezed,
+    Object? username = freezed,
+    Object? name = freezed,
+    Object? pinChangeRequired = freezed,
+    Object? hasSetPin = freezed,
+    Object? isPhoneVerified = freezed,
+    Object? hasSetSecurityQuestions = freezed,
+    Object? hasSetNickname = freezed,
+    Object? pinUpdateRequired = freezed,
+    Object? termsAccepted = freezed,
+    Object? suspended = freezed,
     Object? userId = freezed,
     Object? active = freezed,
     Object? staffNumber = freezed,
@@ -120,6 +164,46 @@ class _$StaffStateCopyWithImpl<$Res, $Val extends StaffState>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pinChangeRequired: freezed == pinChangeRequired
+          ? _value.pinChangeRequired
+          : pinChangeRequired // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      hasSetPin: freezed == hasSetPin
+          ? _value.hasSetPin
+          : hasSetPin // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isPhoneVerified: freezed == isPhoneVerified
+          ? _value.isPhoneVerified
+          : isPhoneVerified // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      hasSetSecurityQuestions: freezed == hasSetSecurityQuestions
+          ? _value.hasSetSecurityQuestions
+          : hasSetSecurityQuestions // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      hasSetNickname: freezed == hasSetNickname
+          ? _value.hasSetNickname
+          : hasSetNickname // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      pinUpdateRequired: freezed == pinUpdateRequired
+          ? _value.pinUpdateRequired
+          : pinUpdateRequired // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      termsAccepted: freezed == termsAccepted
+          ? _value.termsAccepted
+          : termsAccepted // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      suspended: freezed == suspended
+          ? _value.suspended
+          : suspended // ignore: cast_nullable_to_non_nullable
+              as bool?,
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -234,15 +318,25 @@ class _$StaffStateCopyWithImpl<$Res, $Val extends StaffState>
 }
 
 /// @nodoc
-abstract class _$$_StaffStateCopyWith<$Res>
-    implements $StaffStateCopyWith<$Res> {
-  factory _$$_StaffStateCopyWith(
-          _$_StaffState value, $Res Function(_$_StaffState) then) =
-      __$$_StaffStateCopyWithImpl<$Res>;
+abstract class _$$_UserProfileCopyWith<$Res>
+    implements $UserProfileCopyWith<$Res> {
+  factory _$$_UserProfileCopyWith(
+          _$_UserProfile value, $Res Function(_$_UserProfile) then) =
+      __$$_UserProfileCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {@JsonKey(name: 'id') String? id,
+      @JsonKey(name: 'username') String? username,
+      @JsonKey(name: 'name') String? name,
+      @JsonKey(name: 'pinChangeRequired') bool? pinChangeRequired,
+      @JsonKey(name: 'hasSetPin') bool? hasSetPin,
+      @JsonKey(name: 'isPhoneVerified') bool? isPhoneVerified,
+      @JsonKey(name: 'hasSetSecurityQuestions') bool? hasSetSecurityQuestions,
+      @JsonKey(name: 'hasSetNickname') bool? hasSetNickname,
+      @JsonKey(name: 'pinUpdateRequired') bool? pinUpdateRequired,
+      @JsonKey(name: 'termsAccepted') bool? termsAccepted,
+      @JsonKey(name: 'suspended') bool? suspended,
       @JsonKey(name: 'user_id') String? userId,
       @JsonKey(name: 'active', defaultValue: false) bool? active,
       @JsonKey(name: 'staff_number') String? staffNumber,
@@ -270,17 +364,27 @@ abstract class _$$_StaffStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_StaffStateCopyWithImpl<$Res>
-    extends _$StaffStateCopyWithImpl<$Res, _$_StaffState>
-    implements _$$_StaffStateCopyWith<$Res> {
-  __$$_StaffStateCopyWithImpl(
-      _$_StaffState _value, $Res Function(_$_StaffState) _then)
+class __$$_UserProfileCopyWithImpl<$Res>
+    extends _$UserProfileCopyWithImpl<$Res, _$_UserProfile>
+    implements _$$_UserProfileCopyWith<$Res> {
+  __$$_UserProfileCopyWithImpl(
+      _$_UserProfile _value, $Res Function(_$_UserProfile) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
+    Object? username = freezed,
+    Object? name = freezed,
+    Object? pinChangeRequired = freezed,
+    Object? hasSetPin = freezed,
+    Object? isPhoneVerified = freezed,
+    Object? hasSetSecurityQuestions = freezed,
+    Object? hasSetNickname = freezed,
+    Object? pinUpdateRequired = freezed,
+    Object? termsAccepted = freezed,
+    Object? suspended = freezed,
     Object? userId = freezed,
     Object? active = freezed,
     Object? staffNumber = freezed,
@@ -297,11 +401,51 @@ class __$$_StaffStateCopyWithImpl<$Res>
     Object? notificationFilterState = freezed,
     Object? currentFacility = freezed,
   }) {
-    return _then(_$_StaffState(
+    return _then(_$_UserProfile(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pinChangeRequired: freezed == pinChangeRequired
+          ? _value.pinChangeRequired
+          : pinChangeRequired // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      hasSetPin: freezed == hasSetPin
+          ? _value.hasSetPin
+          : hasSetPin // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      isPhoneVerified: freezed == isPhoneVerified
+          ? _value.isPhoneVerified
+          : isPhoneVerified // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      hasSetSecurityQuestions: freezed == hasSetSecurityQuestions
+          ? _value.hasSetSecurityQuestions
+          : hasSetSecurityQuestions // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      hasSetNickname: freezed == hasSetNickname
+          ? _value.hasSetNickname
+          : hasSetNickname // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      pinUpdateRequired: freezed == pinUpdateRequired
+          ? _value.pinUpdateRequired
+          : pinUpdateRequired // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      termsAccepted: freezed == termsAccepted
+          ? _value.termsAccepted
+          : termsAccepted // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      suspended: freezed == suspended
+          ? _value.suspended
+          : suspended // ignore: cast_nullable_to_non_nullable
+              as bool?,
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -368,9 +512,19 @@ class __$$_StaffStateCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_StaffState implements _StaffState {
-  _$_StaffState(
+class _$_UserProfile implements _UserProfile {
+  _$_UserProfile(
       {@JsonKey(name: 'id') this.id,
+      @JsonKey(name: 'username') this.username,
+      @JsonKey(name: 'name') this.name,
+      @JsonKey(name: 'pinChangeRequired') this.pinChangeRequired,
+      @JsonKey(name: 'hasSetPin') this.hasSetPin,
+      @JsonKey(name: 'isPhoneVerified') this.isPhoneVerified,
+      @JsonKey(name: 'hasSetSecurityQuestions') this.hasSetSecurityQuestions,
+      @JsonKey(name: 'hasSetNickname') this.hasSetNickname,
+      @JsonKey(name: 'pinUpdateRequired') this.pinUpdateRequired,
+      @JsonKey(name: 'termsAccepted') this.termsAccepted,
+      @JsonKey(name: 'suspended') this.suspended,
       @JsonKey(name: 'user_id') this.userId,
       @JsonKey(name: 'active', defaultValue: false) this.active,
       @JsonKey(name: 'staff_number') this.staffNumber,
@@ -393,12 +547,47 @@ class _$_StaffState implements _StaffState {
         _clientCaregivers = clientCaregivers,
         _managedClients = managedClients;
 
-  factory _$_StaffState.fromJson(Map<String, dynamic> json) =>
-      _$$_StaffStateFromJson(json);
+  factory _$_UserProfile.fromJson(Map<String, dynamic> json) =>
+      _$$_UserProfileFromJson(json);
 
   @override
   @JsonKey(name: 'id')
   final String? id;
+// This is the nickname
+  @override
+  @JsonKey(name: 'username')
+  final String? username;
+  @override
+  @JsonKey(name: 'name')
+  final String? name;
+  @override
+  @JsonKey(name: 'pinChangeRequired')
+  final bool? pinChangeRequired;
+  @override
+  @JsonKey(name: 'hasSetPin')
+  final bool? hasSetPin;
+  @override
+  @JsonKey(name: 'isPhoneVerified')
+  final bool? isPhoneVerified;
+  @override
+  @JsonKey(name: 'hasSetSecurityQuestions')
+  final bool? hasSetSecurityQuestions;
+  @override
+  @JsonKey(name: 'hasSetNickname')
+  final bool? hasSetNickname;
+
+  /// Used to indicate that the user's PIN has been reset by someone else
+  ///
+  /// This is used to trigger the change PIN workflow
+  @override
+  @JsonKey(name: 'pinUpdateRequired')
+  final bool? pinUpdateRequired;
+  @override
+  @JsonKey(name: 'termsAccepted')
+  final bool? termsAccepted;
+  @override
+  @JsonKey(name: 'suspended')
+  final bool? suspended;
   @override
   @JsonKey(name: 'user_id')
   final String? userId;
@@ -486,15 +675,35 @@ class _$_StaffState implements _StaffState {
 
   @override
   String toString() {
-    return 'StaffState(id: $id, userId: $userId, active: $active, staffNumber: $staffNumber, facilities: $facilities, linkedFacilities: $linkedFacilities, defaultFacility: $defaultFacility, defaultFacilityName: $defaultFacilityName, user: $user, communitiesState: $communitiesState, clientSharedDiaryEntries: $clientSharedDiaryEntries, notifications: $notifications, clientCaregivers: $clientCaregivers, managedClients: $managedClients, notificationFilterState: $notificationFilterState, currentFacility: $currentFacility)';
+    return 'UserProfile(id: $id, username: $username, name: $name, pinChangeRequired: $pinChangeRequired, hasSetPin: $hasSetPin, isPhoneVerified: $isPhoneVerified, hasSetSecurityQuestions: $hasSetSecurityQuestions, hasSetNickname: $hasSetNickname, pinUpdateRequired: $pinUpdateRequired, termsAccepted: $termsAccepted, suspended: $suspended, userId: $userId, active: $active, staffNumber: $staffNumber, facilities: $facilities, linkedFacilities: $linkedFacilities, defaultFacility: $defaultFacility, defaultFacilityName: $defaultFacilityName, user: $user, communitiesState: $communitiesState, clientSharedDiaryEntries: $clientSharedDiaryEntries, notifications: $notifications, clientCaregivers: $clientCaregivers, managedClients: $managedClients, notificationFilterState: $notificationFilterState, currentFacility: $currentFacility)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StaffState &&
+            other is _$_UserProfile &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.pinChangeRequired, pinChangeRequired) ||
+                other.pinChangeRequired == pinChangeRequired) &&
+            (identical(other.hasSetPin, hasSetPin) ||
+                other.hasSetPin == hasSetPin) &&
+            (identical(other.isPhoneVerified, isPhoneVerified) ||
+                other.isPhoneVerified == isPhoneVerified) &&
+            (identical(
+                    other.hasSetSecurityQuestions, hasSetSecurityQuestions) ||
+                other.hasSetSecurityQuestions == hasSetSecurityQuestions) &&
+            (identical(other.hasSetNickname, hasSetNickname) ||
+                other.hasSetNickname == hasSetNickname) &&
+            (identical(other.pinUpdateRequired, pinUpdateRequired) ||
+                other.pinUpdateRequired == pinUpdateRequired) &&
+            (identical(other.termsAccepted, termsAccepted) ||
+                other.termsAccepted == termsAccepted) &&
+            (identical(other.suspended, suspended) ||
+                other.suspended == suspended) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.active, active) || other.active == active) &&
             (identical(other.staffNumber, staffNumber) ||
@@ -527,64 +736,137 @@ class _$_StaffState implements _StaffState {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      userId,
-      active,
-      staffNumber,
-      const DeepCollectionEquality().hash(_facilities),
-      const DeepCollectionEquality().hash(_linkedFacilities),
-      defaultFacility,
-      defaultFacilityName,
-      user,
-      communitiesState,
-      const DeepCollectionEquality().hash(_clientSharedDiaryEntries),
-      const DeepCollectionEquality().hash(_notifications),
-      const DeepCollectionEquality().hash(_clientCaregivers),
-      const DeepCollectionEquality().hash(_managedClients),
-      notificationFilterState,
-      currentFacility);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        id,
+        username,
+        name,
+        pinChangeRequired,
+        hasSetPin,
+        isPhoneVerified,
+        hasSetSecurityQuestions,
+        hasSetNickname,
+        pinUpdateRequired,
+        termsAccepted,
+        suspended,
+        userId,
+        active,
+        staffNumber,
+        const DeepCollectionEquality().hash(_facilities),
+        const DeepCollectionEquality().hash(_linkedFacilities),
+        defaultFacility,
+        defaultFacilityName,
+        user,
+        communitiesState,
+        const DeepCollectionEquality().hash(_clientSharedDiaryEntries),
+        const DeepCollectionEquality().hash(_notifications),
+        const DeepCollectionEquality().hash(_clientCaregivers),
+        const DeepCollectionEquality().hash(_managedClients),
+        notificationFilterState,
+        currentFacility
+      ]);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StaffStateCopyWith<_$_StaffState> get copyWith =>
-      __$$_StaffStateCopyWithImpl<_$_StaffState>(this, _$identity);
+  _$$_UserProfileCopyWith<_$_UserProfile> get copyWith =>
+      __$$_UserProfileCopyWithImpl<_$_UserProfile>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_StaffStateToJson(
+    return _$$_UserProfileToJson(
       this,
     );
   }
 }
 
-abstract class _StaffState implements StaffState {
-  factory _StaffState(
-      {@JsonKey(name: 'id') final String? id,
-      @JsonKey(name: 'user_id') final String? userId,
-      @JsonKey(name: 'active', defaultValue: false) final bool? active,
-      @JsonKey(name: 'staff_number') final String? staffNumber,
-      @JsonKey(name: 'facilities') final List<Facility>? facilities,
+abstract class _UserProfile implements UserProfile {
+  factory _UserProfile(
+      {@JsonKey(name: 'id')
+          final String? id,
+      @JsonKey(name: 'username')
+          final String? username,
+      @JsonKey(name: 'name')
+          final String? name,
+      @JsonKey(name: 'pinChangeRequired')
+          final bool? pinChangeRequired,
+      @JsonKey(name: 'hasSetPin')
+          final bool? hasSetPin,
+      @JsonKey(name: 'isPhoneVerified')
+          final bool? isPhoneVerified,
+      @JsonKey(name: 'hasSetSecurityQuestions')
+          final bool? hasSetSecurityQuestions,
+      @JsonKey(name: 'hasSetNickname')
+          final bool? hasSetNickname,
+      @JsonKey(name: 'pinUpdateRequired')
+          final bool? pinUpdateRequired,
+      @JsonKey(name: 'termsAccepted')
+          final bool? termsAccepted,
+      @JsonKey(name: 'suspended')
+          final bool? suspended,
+      @JsonKey(name: 'user_id')
+          final String? userId,
+      @JsonKey(name: 'active', defaultValue: false)
+          final bool? active,
+      @JsonKey(name: 'staff_number')
+          final String? staffNumber,
+      @JsonKey(name: 'facilities')
+          final List<Facility>? facilities,
       final List<Facility>? linkedFacilities,
-      @JsonKey(name: 'default_facility') final String? defaultFacility,
-      @JsonKey(name: 'defaultFacilityName') final String? defaultFacilityName,
-      @JsonKey(name: 'user') final User? user,
+      @JsonKey(name: 'default_facility')
+          final String? defaultFacility,
+      @JsonKey(name: 'defaultFacilityName')
+          final String? defaultFacilityName,
+      @JsonKey(name: 'user')
+          final User? user,
       final CommunitiesState? communitiesState,
       final List<HealthDiaryEntry?>? clientSharedDiaryEntries,
       final List<NotificationDetails?>? notifications,
       final List<Caregiver?>? clientCaregivers,
       final List<ManagedClient>? managedClients,
       final NotificationFilterState? notificationFilterState,
-      final Facility? currentFacility}) = _$_StaffState;
+      final Facility? currentFacility}) = _$_UserProfile;
 
-  factory _StaffState.fromJson(Map<String, dynamic> json) =
-      _$_StaffState.fromJson;
+  factory _UserProfile.fromJson(Map<String, dynamic> json) =
+      _$_UserProfile.fromJson;
 
   @override
   @JsonKey(name: 'id')
   String? get id;
+  @override // This is the nickname
+  @JsonKey(name: 'username')
+  String? get username;
+  @override
+  @JsonKey(name: 'name')
+  String? get name;
+  @override
+  @JsonKey(name: 'pinChangeRequired')
+  bool? get pinChangeRequired;
+  @override
+  @JsonKey(name: 'hasSetPin')
+  bool? get hasSetPin;
+  @override
+  @JsonKey(name: 'isPhoneVerified')
+  bool? get isPhoneVerified;
+  @override
+  @JsonKey(name: 'hasSetSecurityQuestions')
+  bool? get hasSetSecurityQuestions;
+  @override
+  @JsonKey(name: 'hasSetNickname')
+  bool? get hasSetNickname;
+  @override
+
+  /// Used to indicate that the user's PIN has been reset by someone else
+  ///
+  /// This is used to trigger the change PIN workflow
+  @JsonKey(name: 'pinUpdateRequired')
+  bool? get pinUpdateRequired;
+  @override
+  @JsonKey(name: 'termsAccepted')
+  bool? get termsAccepted;
+  @override
+  @JsonKey(name: 'suspended')
+  bool? get suspended;
   @override
   @JsonKey(name: 'user_id')
   String? get userId;
@@ -624,6 +906,6 @@ abstract class _StaffState implements StaffState {
   Facility? get currentFacility;
   @override
   @JsonKey(ignore: true)
-  _$$_StaffStateCopyWith<_$_StaffState> get copyWith =>
+  _$$_UserProfileCopyWith<_$_UserProfile> get copyWith =>
       throw _privateConstructorUsedError;
 }

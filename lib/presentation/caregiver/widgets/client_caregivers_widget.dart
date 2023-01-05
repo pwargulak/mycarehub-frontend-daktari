@@ -25,9 +25,9 @@ class ClientCaregiversWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<AppState, StaffStateViewModel>(
+    return StoreConnector<AppState, UserProfileViewModel>(
       converter: (Store<AppState> store) =>
-          StaffStateViewModel.fromStore(store),
+          UserProfileViewModel.fromStore(store),
       onInit: (Store<AppState> store) {
         store.dispatch(
           FetchClientCaregiversAction(
@@ -51,9 +51,9 @@ class ClientCaregiversWidget extends StatelessWidget {
           ),
         );
       },
-      builder: (BuildContext context, StaffStateViewModel vm) {
+      builder: (BuildContext context, UserProfileViewModel vm) {
         final List<Caregiver?>? clientCaregivers =
-            vm.staffState?.clientCaregivers;
+            vm.userProfileState?.clientCaregivers;
         final List<Widget> caregiversWidgetList = <Widget>[];
         if (clientCaregivers?.isNotEmpty ?? false) {
           for (final Caregiver? caregiver in clientCaregivers!) {

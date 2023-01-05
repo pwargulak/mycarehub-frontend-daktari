@@ -26,7 +26,7 @@ mixin _$AppState {
   BottomNavigationState? get bottomNavigationState =>
       throw _privateConstructorUsedError;
   MiscState? get miscState => throw _privateConstructorUsedError;
-  StaffState? get staffState => throw _privateConstructorUsedError;
+  UserProfile? get userProfileState => throw _privateConstructorUsedError;
   SurveyState? get surveyState => throw _privateConstructorUsedError;
   ServiceRequestState? get serviceRequestState =>
       throw _privateConstructorUsedError;
@@ -52,7 +52,7 @@ abstract class $AppStateCopyWith<$Res> {
       OnboardingState? onboardingState,
       BottomNavigationState? bottomNavigationState,
       MiscState? miscState,
-      StaffState? staffState,
+      UserProfile? userProfileState,
       SurveyState? surveyState,
       ServiceRequestState? serviceRequestState,
       ConnectivityState? connectivityState,
@@ -63,7 +63,7 @@ abstract class $AppStateCopyWith<$Res> {
   $OnboardingStateCopyWith<$Res>? get onboardingState;
   $BottomNavigationStateCopyWith<$Res>? get bottomNavigationState;
   $MiscStateCopyWith<$Res>? get miscState;
-  $StaffStateCopyWith<$Res>? get staffState;
+  $UserProfileCopyWith<$Res>? get userProfileState;
   $SurveyStateCopyWith<$Res>? get surveyState;
   $ServiceRequestStateCopyWith<$Res>? get serviceRequestState;
   $ConnectivityStateCopyWith<$Res>? get connectivityState;
@@ -87,7 +87,7 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
     Object? onboardingState = freezed,
     Object? bottomNavigationState = freezed,
     Object? miscState = freezed,
-    Object? staffState = freezed,
+    Object? userProfileState = freezed,
     Object? surveyState = freezed,
     Object? serviceRequestState = freezed,
     Object? connectivityState = freezed,
@@ -114,10 +114,10 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
           ? _value.miscState
           : miscState // ignore: cast_nullable_to_non_nullable
               as MiscState?,
-      staffState: freezed == staffState
-          ? _value.staffState
-          : staffState // ignore: cast_nullable_to_non_nullable
-              as StaffState?,
+      userProfileState: freezed == userProfileState
+          ? _value.userProfileState
+          : userProfileState // ignore: cast_nullable_to_non_nullable
+              as UserProfile?,
       surveyState: freezed == surveyState
           ? _value.surveyState
           : surveyState // ignore: cast_nullable_to_non_nullable
@@ -200,13 +200,13 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
 
   @override
   @pragma('vm:prefer-inline')
-  $StaffStateCopyWith<$Res>? get staffState {
-    if (_value.staffState == null) {
+  $UserProfileCopyWith<$Res>? get userProfileState {
+    if (_value.userProfileState == null) {
       return null;
     }
 
-    return $StaffStateCopyWith<$Res>(_value.staffState!, (value) {
-      return _then(_value.copyWith(staffState: value) as $Val);
+    return $UserProfileCopyWith<$Res>(_value.userProfileState!, (value) {
+      return _then(_value.copyWith(userProfileState: value) as $Val);
     });
   }
 
@@ -260,7 +260,7 @@ abstract class _$$_StateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
       OnboardingState? onboardingState,
       BottomNavigationState? bottomNavigationState,
       MiscState? miscState,
-      StaffState? staffState,
+      UserProfile? userProfileState,
       SurveyState? surveyState,
       ServiceRequestState? serviceRequestState,
       ConnectivityState? connectivityState,
@@ -277,7 +277,7 @@ abstract class _$$_StateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
   @override
   $MiscStateCopyWith<$Res>? get miscState;
   @override
-  $StaffStateCopyWith<$Res>? get staffState;
+  $UserProfileCopyWith<$Res>? get userProfileState;
   @override
   $SurveyStateCopyWith<$Res>? get surveyState;
   @override
@@ -301,7 +301,7 @@ class __$$_StateCopyWithImpl<$Res>
     Object? onboardingState = freezed,
     Object? bottomNavigationState = freezed,
     Object? miscState = freezed,
-    Object? staffState = freezed,
+    Object? userProfileState = freezed,
     Object? surveyState = freezed,
     Object? serviceRequestState = freezed,
     Object? connectivityState = freezed,
@@ -328,10 +328,10 @@ class __$$_StateCopyWithImpl<$Res>
           ? _value.miscState
           : miscState // ignore: cast_nullable_to_non_nullable
               as MiscState?,
-      staffState: freezed == staffState
-          ? _value.staffState
-          : staffState // ignore: cast_nullable_to_non_nullable
-              as StaffState?,
+      userProfileState: freezed == userProfileState
+          ? _value.userProfileState
+          : userProfileState // ignore: cast_nullable_to_non_nullable
+              as UserProfile?,
       surveyState: freezed == surveyState
           ? _value.surveyState
           : surveyState // ignore: cast_nullable_to_non_nullable
@@ -361,7 +361,7 @@ class _$_State implements _State {
       this.onboardingState,
       this.bottomNavigationState,
       this.miscState,
-      this.staffState,
+      this.userProfileState,
       this.surveyState,
       this.serviceRequestState,
       this.connectivityState,
@@ -381,7 +381,7 @@ class _$_State implements _State {
   @override
   final MiscState? miscState;
   @override
-  final StaffState? staffState;
+  final UserProfile? userProfileState;
   @override
   final SurveyState? surveyState;
   @override
@@ -394,7 +394,7 @@ class _$_State implements _State {
 
   @override
   String toString() {
-    return 'AppState(credentials: $credentials, homeState: $homeState, onboardingState: $onboardingState, bottomNavigationState: $bottomNavigationState, miscState: $miscState, staffState: $staffState, surveyState: $surveyState, serviceRequestState: $serviceRequestState, connectivityState: $connectivityState, wait: $wait)';
+    return 'AppState(credentials: $credentials, homeState: $homeState, onboardingState: $onboardingState, bottomNavigationState: $bottomNavigationState, miscState: $miscState, userProfileState: $userProfileState, surveyState: $surveyState, serviceRequestState: $serviceRequestState, connectivityState: $connectivityState, wait: $wait)';
   }
 
   @override
@@ -412,8 +412,8 @@ class _$_State implements _State {
                 other.bottomNavigationState == bottomNavigationState) &&
             (identical(other.miscState, miscState) ||
                 other.miscState == miscState) &&
-            (identical(other.staffState, staffState) ||
-                other.staffState == staffState) &&
+            (identical(other.userProfileState, userProfileState) ||
+                other.userProfileState == userProfileState) &&
             (identical(other.surveyState, surveyState) ||
                 other.surveyState == surveyState) &&
             (identical(other.serviceRequestState, serviceRequestState) ||
@@ -432,7 +432,7 @@ class _$_State implements _State {
       onboardingState,
       bottomNavigationState,
       miscState,
-      staffState,
+      userProfileState,
       surveyState,
       serviceRequestState,
       connectivityState,
@@ -459,7 +459,7 @@ abstract class _State implements AppState {
       final OnboardingState? onboardingState,
       final BottomNavigationState? bottomNavigationState,
       final MiscState? miscState,
-      final StaffState? staffState,
+      final UserProfile? userProfileState,
       final SurveyState? surveyState,
       final ServiceRequestState? serviceRequestState,
       final ConnectivityState? connectivityState,
@@ -478,7 +478,7 @@ abstract class _State implements AppState {
   @override
   MiscState? get miscState;
   @override
-  StaffState? get staffState;
+  UserProfile? get userProfileState;
   @override
   SurveyState? get surveyState;
   @override

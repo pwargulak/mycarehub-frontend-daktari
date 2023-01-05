@@ -22,8 +22,8 @@ UserResponse _$UserResponseFromJson(Map<String, dynamic> json) {
 mixin _$UserResponse {
   @JsonKey(name: 'credentials')
   AuthCredentials? get credentials => throw _privateConstructorUsedError;
-  @JsonKey(name: 'staffProfile')
-  StaffState? get staffState => throw _privateConstructorUsedError;
+  @JsonKey(name: 'userProfile')
+  UserProfile? get userProfile => throw _privateConstructorUsedError;
   @JsonKey(name: 'getStreamToken')
   String? get streamToken => throw _privateConstructorUsedError;
 
@@ -41,11 +41,11 @@ abstract class $UserResponseCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'credentials') AuthCredentials? credentials,
-      @JsonKey(name: 'staffProfile') StaffState? staffState,
+      @JsonKey(name: 'userProfile') UserProfile? userProfile,
       @JsonKey(name: 'getStreamToken') String? streamToken});
 
   $AuthCredentialsCopyWith<$Res>? get credentials;
-  $StaffStateCopyWith<$Res>? get staffState;
+  $UserProfileCopyWith<$Res>? get userProfile;
 }
 
 /// @nodoc
@@ -62,7 +62,7 @@ class _$UserResponseCopyWithImpl<$Res, $Val extends UserResponse>
   @override
   $Res call({
     Object? credentials = freezed,
-    Object? staffState = freezed,
+    Object? userProfile = freezed,
     Object? streamToken = freezed,
   }) {
     return _then(_value.copyWith(
@@ -70,10 +70,10 @@ class _$UserResponseCopyWithImpl<$Res, $Val extends UserResponse>
           ? _value.credentials
           : credentials // ignore: cast_nullable_to_non_nullable
               as AuthCredentials?,
-      staffState: freezed == staffState
-          ? _value.staffState
-          : staffState // ignore: cast_nullable_to_non_nullable
-              as StaffState?,
+      userProfile: freezed == userProfile
+          ? _value.userProfile
+          : userProfile // ignore: cast_nullable_to_non_nullable
+              as UserProfile?,
       streamToken: freezed == streamToken
           ? _value.streamToken
           : streamToken // ignore: cast_nullable_to_non_nullable
@@ -95,13 +95,13 @@ class _$UserResponseCopyWithImpl<$Res, $Val extends UserResponse>
 
   @override
   @pragma('vm:prefer-inline')
-  $StaffStateCopyWith<$Res>? get staffState {
-    if (_value.staffState == null) {
+  $UserProfileCopyWith<$Res>? get userProfile {
+    if (_value.userProfile == null) {
       return null;
     }
 
-    return $StaffStateCopyWith<$Res>(_value.staffState!, (value) {
-      return _then(_value.copyWith(staffState: value) as $Val);
+    return $UserProfileCopyWith<$Res>(_value.userProfile!, (value) {
+      return _then(_value.copyWith(userProfile: value) as $Val);
     });
   }
 }
@@ -116,13 +116,13 @@ abstract class _$$_UserResponseCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'credentials') AuthCredentials? credentials,
-      @JsonKey(name: 'staffProfile') StaffState? staffState,
+      @JsonKey(name: 'userProfile') UserProfile? userProfile,
       @JsonKey(name: 'getStreamToken') String? streamToken});
 
   @override
   $AuthCredentialsCopyWith<$Res>? get credentials;
   @override
-  $StaffStateCopyWith<$Res>? get staffState;
+  $UserProfileCopyWith<$Res>? get userProfile;
 }
 
 /// @nodoc
@@ -137,7 +137,7 @@ class __$$_UserResponseCopyWithImpl<$Res>
   @override
   $Res call({
     Object? credentials = freezed,
-    Object? staffState = freezed,
+    Object? userProfile = freezed,
     Object? streamToken = freezed,
   }) {
     return _then(_$_UserResponse(
@@ -145,10 +145,10 @@ class __$$_UserResponseCopyWithImpl<$Res>
           ? _value.credentials
           : credentials // ignore: cast_nullable_to_non_nullable
               as AuthCredentials?,
-      staffState: freezed == staffState
-          ? _value.staffState
-          : staffState // ignore: cast_nullable_to_non_nullable
-              as StaffState?,
+      userProfile: freezed == userProfile
+          ? _value.userProfile
+          : userProfile // ignore: cast_nullable_to_non_nullable
+              as UserProfile?,
       streamToken: freezed == streamToken
           ? _value.streamToken
           : streamToken // ignore: cast_nullable_to_non_nullable
@@ -162,7 +162,7 @@ class __$$_UserResponseCopyWithImpl<$Res>
 class _$_UserResponse implements _UserResponse {
   _$_UserResponse(
       {@JsonKey(name: 'credentials') this.credentials,
-      @JsonKey(name: 'staffProfile') this.staffState,
+      @JsonKey(name: 'userProfile') this.userProfile,
       @JsonKey(name: 'getStreamToken') this.streamToken});
 
   factory _$_UserResponse.fromJson(Map<String, dynamic> json) =>
@@ -172,15 +172,15 @@ class _$_UserResponse implements _UserResponse {
   @JsonKey(name: 'credentials')
   final AuthCredentials? credentials;
   @override
-  @JsonKey(name: 'staffProfile')
-  final StaffState? staffState;
+  @JsonKey(name: 'userProfile')
+  final UserProfile? userProfile;
   @override
   @JsonKey(name: 'getStreamToken')
   final String? streamToken;
 
   @override
   String toString() {
-    return 'UserResponse(credentials: $credentials, staffState: $staffState, streamToken: $streamToken)';
+    return 'UserResponse(credentials: $credentials, userProfile: $userProfile, streamToken: $streamToken)';
   }
 
   @override
@@ -190,8 +190,8 @@ class _$_UserResponse implements _UserResponse {
             other is _$_UserResponse &&
             (identical(other.credentials, credentials) ||
                 other.credentials == credentials) &&
-            (identical(other.staffState, staffState) ||
-                other.staffState == staffState) &&
+            (identical(other.userProfile, userProfile) ||
+                other.userProfile == userProfile) &&
             (identical(other.streamToken, streamToken) ||
                 other.streamToken == streamToken));
   }
@@ -199,7 +199,7 @@ class _$_UserResponse implements _UserResponse {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, credentials, staffState, streamToken);
+      Object.hash(runtimeType, credentials, userProfile, streamToken);
 
   @JsonKey(ignore: true)
   @override
@@ -218,7 +218,7 @@ class _$_UserResponse implements _UserResponse {
 abstract class _UserResponse implements UserResponse {
   factory _UserResponse(
           {@JsonKey(name: 'credentials') final AuthCredentials? credentials,
-          @JsonKey(name: 'staffProfile') final StaffState? staffState,
+          @JsonKey(name: 'userProfile') final UserProfile? userProfile,
           @JsonKey(name: 'getStreamToken') final String? streamToken}) =
       _$_UserResponse;
 
@@ -229,8 +229,8 @@ abstract class _UserResponse implements UserResponse {
   @JsonKey(name: 'credentials')
   AuthCredentials? get credentials;
   @override
-  @JsonKey(name: 'staffProfile')
-  StaffState? get staffState;
+  @JsonKey(name: 'userProfile')
+  UserProfile? get userProfile;
   @override
   @JsonKey(name: 'getStreamToken')
   String? get streamToken;

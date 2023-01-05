@@ -36,7 +36,7 @@ class FetchServiceRequestsCountAction extends ReduxAction<AppState> {
 
   @override
   Future<AppState?> reduce() async {
-    final String facilityID = state.staffState?.defaultFacility ?? '';
+    final String facilityID = state.userProfileState?.defaultFacility ?? '';
 
     final Response response = await client.query(
       getPendingServiceRequestsCountQuery,

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:prohealth360_daktari/presentation/onboarding/login/pages/login_page.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -11,7 +12,6 @@ import 'package:prohealth360_daktari/application/redux/actions/core/update_user_
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
-import 'package:prohealth360_daktari/presentation/onboarding/login/pages/phone_login_page.dart';
 import 'package:prohealth360_daktari/presentation/resume_with_pin/resume_pin_connector.dart';
 
 import '../../../mocks/mocks.dart';
@@ -30,7 +30,7 @@ void main() {
     testWidgets('provides correct username', (WidgetTester tester) async {
       store.dispatch(
         UpdateUserAction(
-          user: store.state.staffState?.user?.copyWith(username: 'John'),
+          user: store.state.userProfileState?.user?.copyWith(username: 'John'),
         ),
       );
 
@@ -84,7 +84,7 @@ void main() {
       await tester.pump();
       await tester.pump();
 
-      expect(find.byType(PhoneLoginPage), findsOneWidget);
+      expect(find.byType(LoginPage), findsOneWidget);
     });
 
     testWidgets('provides correct logout functionality',

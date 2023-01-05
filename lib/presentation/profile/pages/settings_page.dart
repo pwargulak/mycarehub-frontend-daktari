@@ -30,12 +30,12 @@ class SettingsPage extends StatelessWidget {
         showNotificationIcon: true,
       ),
       body: SafeArea(
-        child: StoreConnector<AppState, StaffStateViewModel>(
+        child: StoreConnector<AppState, UserProfileViewModel>(
           converter: (Store<AppState> store) =>
-              StaffStateViewModel.fromStore(store),
-          builder: (BuildContext context, StaffStateViewModel vm) {
+              UserProfileViewModel.fromStore(store),
+          builder: (BuildContext context, UserProfileViewModel vm) {
             final String initialNickName =
-                vm.staffState?.user?.username ?? UNKNOWN;
+                vm.userProfileState?.user?.username ?? UNKNOWN;
             return Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 20,

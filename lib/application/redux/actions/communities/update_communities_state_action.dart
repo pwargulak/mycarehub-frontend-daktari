@@ -16,18 +16,18 @@ class UpdateCommunitiesStateAction extends ReduxAction<AppState> {
   @override
   AppState reduce() {
     final CommunitiesState? communitiesState =
-        state.staffState?.communitiesState;
+        state.userProfileState?.communitiesState;
 
     final CommunitiesState? newCommunitiesState =
-        state.staffState?.communitiesState?.copyWith(
+        state.userProfileState?.communitiesState?.copyWith(
       invitedCommunities:
           communitiesList ?? communitiesState?.invitedCommunities,
       flaggedMessages: flaggedMessages ?? communitiesState?.flaggedMessages,
     );
 
     final AppState newState = state.copyWith(
-      staffState:
-          state.staffState?.copyWith(communitiesState: newCommunitiesState),
+      userProfileState: state.userProfileState
+          ?.copyWith(communitiesState: newCommunitiesState),
     );
     return newState;
   }

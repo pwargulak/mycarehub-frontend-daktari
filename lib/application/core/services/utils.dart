@@ -51,7 +51,7 @@ OnboardingPathInfo getOnboardingPath({required AppState state}) {
 
   final bool isSignedIn = state.credentials?.isSignedIn ?? false;
   final bool isPhoneVerified = state.onboardingState?.isPhoneVerified ?? false;
-  final bool termsAccepted = state.staffState?.user?.termsAccepted ?? false;
+  final bool termsAccepted = state.userProfileState?.user?.termsAccepted ?? false;
   final bool hasSetSecurityQuestions =
       state.onboardingState?.hasSetSecurityQuestions ?? false;
   final bool hasVerifiedSecurityQuestions =
@@ -59,7 +59,7 @@ OnboardingPathInfo getOnboardingPath({required AppState state}) {
   final bool hasSetPin = state.onboardingState?.hasSetPin ?? false;
   final bool hasSetNickName = state.onboardingState?.hasSetNickName ?? false;
   final String currentFacilityId =
-      state.staffState?.currentFacility?.id ?? UNKNOWN;
+      state.userProfileState?.currentFacility?.id ?? UNKNOWN;
 
   if (currentOnboardingStage == CurrentOnboardingStage.Login) {
     if (!isSignedIn) {
@@ -483,7 +483,7 @@ dynamic reportErrorToSentry({
 }) {
   final Map<String, dynamic> stackTrace = <String, dynamic>{};
   final String contact =
-      state?.staffState?.user?.primaryContact?.value ?? UNKNOWN;
+      state?.userProfileState?.user?.primaryContact?.value ?? UNKNOWN;
   final bool isSignedIn = state?.credentials?.isSignedIn ?? false;
 
   if (response != null) {

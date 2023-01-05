@@ -15,7 +15,7 @@ class InvitedGroupsViewModel extends Vm {
     return InvitedGroupsViewModel(
       wait: store.state.wait!,
       invitedCommunities:
-          store.state.staffState?.communitiesState?.invitedCommunities,
+          store.state.userProfileState?.communitiesState?.invitedCommunities,
     );
   }
 }

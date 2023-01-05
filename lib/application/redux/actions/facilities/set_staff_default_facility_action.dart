@@ -40,7 +40,7 @@ class SetStaffDefaultFacilityAction extends ReduxAction<AppState> {
   Future<AppState?> reduce() async {
     final Map<String, dynamic> variables = <String, dynamic>{
       'facilityID': facilityId,
-      'userID': state.staffState?.user?.userId
+      'userID': state.userProfileState?.user?.userId
     };
 
     final Response response = await client.query(

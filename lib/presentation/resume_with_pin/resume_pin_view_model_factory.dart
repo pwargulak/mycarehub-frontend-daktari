@@ -14,7 +14,7 @@ class ResumePinFactory extends VmFactory<AppState, ResumePinConnector> {
 
   @override
   ResumePinViewModel fromStore() {
-    final String username = state.staffState?.user?.username ?? '';
+    final String username = state.userProfileState?.user?.username ?? '';
     final bool isLoading = state.wait?.isWaitingFor(resumeWithPinFlag) ?? false;
 
     return ResumePinViewModel(

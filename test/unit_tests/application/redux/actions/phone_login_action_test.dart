@@ -79,12 +79,29 @@ void main() {
 
       expect((info.error! as UserException).msg, noUserFound);
     });
+    test('should update user workflow when pin is incorrect', () async {
+      storeTester.dispatch(
+        PhoneLoginAction(
+          httpClient: MockShortGraphQlClient.withResponse(
+            'idToken',
+            'endpoint',
+            Response(json.encode(<String, dynamic>{'code': 8}), 400),
+          ),
+          phoneLoginEndpoint: '',
+        ),
+      );
+
+      final TestInfo<AppState> info =
+          await storeTester.waitUntil(PhoneLoginAction);
+
+      expect(info.state.onboardingState?.invalidCredentials, true);
+    });
 
     test('should change to new user workflow when pin update is required',
         () async {
       // ignore: avoid_dynamic_calls
-      pinChangeRequiredMock['response']['staffProfile']['user']
-          ['pinUpdateRequired'] = true;
+      pinChangeRequiredMock['response']['userProfile']['pinUpdateRequired'] =
+          true;
       storeTester.dispatch(
         PhoneLoginAction(
           httpClient: MockShortGraphQlClient.withResponse(
@@ -106,8 +123,7 @@ void main() {
           info.action as NavigateAction<AppState>?;
 
       final NavigatorDetails_PushNamedAndRemoveAll? navDetails =
-          actionDispatched?.details
-              as NavigatorDetails_PushNamedAndRemoveAll?;
+          actionDispatched?.details as NavigatorDetails_PushNamedAndRemoveAll?;
 
       expect(navDetails?.newRouteName, AppRoutes.verifyPhonePage);
       expect(

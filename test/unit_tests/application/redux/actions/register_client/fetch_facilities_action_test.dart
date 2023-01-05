@@ -30,7 +30,10 @@ void main() {
       final TestInfo<AppState> info =
           await storeTester.waitUntil(SearchFacilitiesAction);
 
-      expect(info.state.staffState?.facilities?.first.name, 'Test Facility');
+      expect(
+        info.state.userProfileState?.facilities?.first.name,
+        'Test Facility',
+      );
     });
 
     test('should throw error if api call is not 200', () async {

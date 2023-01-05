@@ -1,6 +1,7 @@
 // Flutter imports:
 import 'package:prohealth360_daktari/presentation/admin/admin_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/core/search_organisations_page.dart';
+import 'package:prohealth360_daktari/presentation/onboarding/login/pages/login_page.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/services/analytics_service.dart';
@@ -40,7 +41,6 @@ import 'package:prohealth360_daktari/presentation/onboarding/create_pin/pages/cr
 import 'package:prohealth360_daktari/presentation/onboarding/login/pages/forgot_pin_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/login/pages/login_counter_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/login/pages/pending_pin_request_page.dart';
-import 'package:prohealth360_daktari/presentation/onboarding/login/pages/phone_login_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/login/pages/pin_request_sent_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/patient/register_client_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/pin_expired/pages/pin_expired_page.dart';
@@ -122,9 +122,9 @@ class RouteGenerator {
           settings: const RouteSettings(name: 'Set nickname page'),
         );
 
-      case AppRoutes.loginPage:
-        return MaterialPageRoute<PhoneLoginPage>(
-          builder: (_) => PhoneLoginPage(),
+        case AppRoutes.loginPage:
+        return MaterialPageRoute<LoginPage>(
+          builder: (_) => LoginPage(),
           settings: const RouteSettings(name: 'Login page'),
         );
 

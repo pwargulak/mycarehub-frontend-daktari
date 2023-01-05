@@ -1,6 +1,9 @@
-import 'package:prohealth360_daktari/presentation/onboarding/core/widgets/search_organisation_field.dart';
+import 'package:prohealth360_daktari/application/core/services/analytics_service.dart';
+import 'package:prohealth360_daktari/application/redux/actions/core/phone_login_action.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/app_events.dart';
+import 'package:prohealth360_daktari/presentation/onboarding/login/widgets/phone_login_error_widget.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/patient/widgets/patient_details_text_form_field.dart';
-import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:async_redux/async_redux.dart';
@@ -51,8 +54,6 @@ class _LoginPageState extends State<LoginPage> {
         final String appNameString =
             AppWrapperBase.of(context)?.appName ?? appName;
 
-        final String organisationID =
-            vm.state.miscState?.selectedOrganisation?.id ?? '';
         return Scaffold(
           backgroundColor: Theme.of(context).backgroundColor,
           body: SafeArea(
@@ -76,16 +77,6 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     smallVerticalSizedBox,
                     largeVerticalSizedBox,
-                    SearchOrganisationField(
-                      vm: vm,
-                      validator: (String? value) {
-                        return InputValidators.validateOrganisationName(
-                          value: value,
-                        );
-                      },
-                    ),
-
-                    mediumVerticalSizedBox,
 
                     /// Username input
                     PatientDetailsTextFormField(
@@ -152,6 +143,17 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
 
+                    /// error alert box for invalid credentials
+                    if (vm.state.onboardingState!
+                        .invalidCredentials!) ...<Widget>[
+                      largeVerticalSizedBox,
+                      PhoneLoginErrorWidget(
+                        formKey: _formKey,
+                        phone: username,
+                      ),
+                    ],
+                    largeVerticalSizedBox,
+
                     smallVerticalSizedBox,
                     if (platform != TargetPlatform.iOS)
                       Padding(
@@ -195,12 +197,11 @@ class _LoginPageState extends State<LoginPage> {
                             pin != null &&
                             username != null &&
                             pin != UNKNOWN &&
-                            username != UNKNOWN &&
-                            organisationID.isNotEmpty &&
-                            organisationID != UNKNOWN) {
-                          Navigator.of(context).pushNamedAndRemoveUntil(
-                            AppRoutes.homePage,
-                            (Route<dynamic> route) => false,
+                            username != UNKNOWN) {
+                          login(
+                            context: context,
+                            username: username,
+                            pin: pin,
                           );
                         }
                       },
@@ -214,6 +215,38 @@ class _LoginPageState extends State<LoginPage> {
                 ),
         );
       },
+    );
+  }
+}
+
+Future<void> login({
+  required BuildContext context,
+  required String? username,
+  required String? pin,
+}) async {
+  StoreProvider.dispatch<AppState>(
+    context,
+    UpdateOnboardingStateAction(username: username, pin: pin),
+  );
+  final bool hasConnection =
+      StoreProvider.state<AppState>(context)?.connectivityState?.isConnected ??
+          false;
+
+  if (hasConnection) {
+    await StoreProvider.dispatch<AppState>(
+      context,
+      PhoneLoginAction(
+        httpClient: AppWrapperBase.of(context)!.graphQLClient,
+        phoneLoginEndpoint:
+            AppWrapperBase.of(context)!.customContext!.loginByPhoneEndpoint,
+      ),
+    );
+  } else {
+    const SnackBar snackbar = SnackBar(content: Text(checkInternetText));
+    ScaffoldMessenger.of(context).showSnackBar(snackbar);
+    AnalyticsService().logEvent(
+      name: noConnectionEvent,
+      eventType: AnalyticsEventType.CONNECTIVITY,
     );
   }
 }

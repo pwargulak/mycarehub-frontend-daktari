@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:prohealth360_daktari/presentation/admin/admin_page.dart';
+import 'package:prohealth360_daktari/presentation/onboarding/core/search_organisations_page.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:connectivity_plus_platform_interface/connectivity_plus_platform_interface.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -810,5 +811,14 @@ void main() {
         routeGenerator(settings) as MaterialPageRoute<AdminPage>?;
     expect(route, isA<MaterialPageRoute<AdminPage>>());
     expect(route?.builder(context), isA<AdminPage>());
+  });
+  test('Test router returns Search Organisations Page', () {
+    const RouteSettings settings = RouteSettings(
+      name: AppRoutes.searchOrganisationsPage,
+    );
+    final MaterialPageRoute<SearchOrganisationsPage>? route =
+        routeGenerator(settings) as MaterialPageRoute<SearchOrganisationsPage>?;
+    expect(route, isA<MaterialPageRoute<SearchOrganisationsPage>>());
+    expect(route?.builder(context), isA<SearchOrganisationsPage>());
   });
 }

@@ -28,7 +28,8 @@ void main() {
 
       storeTester.dispatch(
         RegisterStaffAction(
-          registerStaffPayload: RegisterStaffPayload(),
+          registerStaffPayload:
+              RegisterStaffPayload(staffName: 'test', staffNumber: 'test'),
           client: MockTestGraphQlClient(),
           onSuccess: () => called++,
         ),

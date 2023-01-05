@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:prohealth360_daktari/presentation/onboarding/login/pages/login_page.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,6 @@ import 'package:prohealth360_daktari/application/redux/actions/onboarding/update
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
-import 'package:prohealth360_daktari/presentation/onboarding/login/pages/phone_login_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/login/pages/pin_request_sent_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/verify_security_questions_help_page.dart';
 
@@ -56,7 +56,7 @@ void main() {
 
       await tester.tap(tryAgainButton);
       await tester.pumpAndSettle();
-      expect(find.byType(PhoneLoginPage), findsOneWidget);
+      expect(find.byType(LoginPage), findsOneWidget);
     });
 
     testWidgets('should show snackbar with error message when an error occurs',

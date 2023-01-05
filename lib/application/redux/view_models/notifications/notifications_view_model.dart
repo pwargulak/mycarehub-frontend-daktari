@@ -17,9 +17,9 @@ class NotificationsViewModel extends Vm {
   factory NotificationsViewModel.fromStore(Store<AppState> store) {
     return NotificationsViewModel(
       wait: store.state.wait!,
-      notifications:
-          store.state.staffState?.notifications ?? <NotificationDetails>[],
-      notificationFilterState: store.state.staffState?.notificationFilterState,
+      notifications: store.state.userProfileState?.notifications ?? <NotificationDetails>[],
+      notificationFilterState:
+          store.state.userProfileState?.notificationFilterState,
     );
   }
 }

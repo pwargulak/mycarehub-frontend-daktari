@@ -39,7 +39,7 @@ class VerifyPhoneViewModel extends Vm {
     final AppState state = store.state;
     return VerifyPhoneViewModel(
       wait: state.wait,
-      userID: state.staffState?.userId ?? UNKNOWN,
+      userID: state.userProfileState?.userId ?? UNKNOWN,
       phoneNumber: state.onboardingState?.phoneNumber ?? UNKNOWN,
       otp: state.onboardingState?.otp ?? UNKNOWN,
       invalidOTP: state.onboardingState?.invalidOTP ?? false,

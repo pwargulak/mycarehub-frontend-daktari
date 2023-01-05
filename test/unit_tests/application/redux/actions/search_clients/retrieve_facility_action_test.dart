@@ -7,7 +7,7 @@ import 'package:prohealth360_daktari/application/redux/actions/retrieve_facility
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/connectivity_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/staff_state.dart';
+import 'package:prohealth360_daktari/domain/core/entities/core/user_profile.dart';
 
 import '../../../../../mocks/mocks.dart';
 
@@ -19,7 +19,7 @@ void main() {
       storeTester = StoreTester<AppState>(
         initialState: AppState.initial().copyWith(
           connectivityState: ConnectivityState(isConnected: true),
-          staffState: StaffState(
+          userProfileState: UserProfile(
             facilities: <Facility>[Facility(name: 'test', phone: '071234')],
             defaultFacilityName: 'test',
           ),
@@ -88,7 +88,7 @@ void main() {
         info.state,
         AppState.initial().copyWith(
           connectivityState: ConnectivityState(isConnected: true),
-          staffState: StaffState(
+          userProfileState: UserProfile(
             facilities: <Facility>[Facility(name: 'test', phone: '071234')],
             defaultFacilityName: 'test',
           ),
@@ -128,7 +128,7 @@ void main() {
           await storeTester.waitUntil(RetrieveFacilityAction);
 
       expect(
-        info.state.staffState!.facilities!.first.phone,
+        info.state.userProfileState!.facilities!.first.phone,
         '0712345678',
       );
     });

@@ -1,10 +1,10 @@
+import 'package:prohealth360_daktari/presentation/onboarding/login/pages/login_page.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/login/pages/login_counter_page.dart';
-import 'package:prohealth360_daktari/presentation/onboarding/login/pages/phone_login_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/verify_security_questions_help_page.dart';
 
 import '../../../../mocks/mocks.dart';
@@ -63,6 +63,6 @@ void main() {
     await tester.pump(const Duration(seconds: 18));
     await tester.pumpAndSettle();
 
-    expect(find.byType(PhoneLoginPage), findsOneWidget);
+    expect(find.byType(LoginPage), findsOneWidget);
   });
 }

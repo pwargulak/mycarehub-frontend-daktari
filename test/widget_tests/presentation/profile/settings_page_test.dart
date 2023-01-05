@@ -90,7 +90,7 @@ void main() {
       await tester.tap(find.byType(MyAfyaHubPrimaryButton));
       await tester.pumpAndSettle();
       expect(find.byType(EditInformationPage), findsNothing);
-      expect(store.state.staffState!.user!.username, 'Test nickname');
+      expect(store.state.userProfileState!.user!.username, 'Test nickname');
     });
 
     testWidgets('original nickname is returned to state incase of an error',
@@ -133,7 +133,7 @@ void main() {
       await tester.tap(find.byType(MyAfyaHubPrimaryButton));
       await tester.pumpAndSettle();
       expect(find.byType(EditInformationPage), findsNothing);
-      expect(store.state.staffState!.user!.username, UNKNOWN);
+      expect(store.state.userProfileState!.user!.username, UNKNOWN);
     });
   });
 }

@@ -3,7 +3,6 @@ import 'package:async_redux/async_redux.dart';
 
 // Project imports:
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/staff_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/user.dart';
 
 /// This class replaces the whole user object
@@ -14,10 +13,9 @@ class UpdateUserAction extends ReduxAction<AppState> {
 
   @override
   AppState reduce() {
-    final StaffState? newStaffState = state.staffState?.copyWith(user: user);
-    final AppState newState =
-        state.copyWith(staffState: newStaffState ?? state.staffState);
-
+    final AppState newState = state.copyWith(
+      userProfileState: state.userProfileState?.copyWith(user: user),
+    );
     return newState;
   }
 }

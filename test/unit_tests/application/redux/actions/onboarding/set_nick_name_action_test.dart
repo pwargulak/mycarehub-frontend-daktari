@@ -73,7 +73,7 @@ void main() {
           await storeTester.waitUntil(SetNicknameAction);
 
       expect(info.state.onboardingState?.hasSetNickName, false);
-      expect(info.state.staffState?.user?.username, UNKNOWN);
+      expect(info.state.userProfileState?.user?.username, UNKNOWN);
     });
 
     test('navigates to next page successfully', () async {

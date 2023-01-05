@@ -7,6 +7,8 @@ import 'package:prohealth360_daktari/application/redux/actions/register_client/r
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/register_client/register_client_payload.dart';
 import 'package:http/http.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
+import 'package:sghi_core/domain_objects/value_objects/unknown.dart';
 
 import '../../../../../mocks/mocks.dart';
 
@@ -28,7 +30,11 @@ void main() {
 
       storeTester.dispatch(
         RegisterClientAction(
-          registerClientPayload: RegisterClientPayload(),
+          registerClientPayload: RegisterClientPayload(
+            clientName: UNKNOWN,
+            clientTypes: <ClientType>[ClientType.DREAMS],
+            cccNumber: 'test',
+          ),
           client: MockTestGraphQlClient(),
           onSuccess: () => called++,
         ),

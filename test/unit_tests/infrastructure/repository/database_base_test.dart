@@ -12,7 +12,7 @@ void main() {
       expect(Tables.OnboardingState.name, 'onboardingState');
       expect(Tables.BottomNavigationState.name, 'bottomNavigationState');
       expect(Tables.MiscState.name, 'miscState');
-      expect(Tables.StaffState.name, 'staffState');
+      expect(Tables.UserProfile.name, 'userProfileState');
       expect(Tables.SurveyState.name, 'surveyState');
       expect(Tables.ServiceRequestState.name, 'serviceRequestState');
     });

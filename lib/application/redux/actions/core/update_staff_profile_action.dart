@@ -41,24 +41,27 @@ class UpdateStaffProfileAction extends ReduxAction<AppState> {
   @override
   AppState reduce() {
     final AppState newState = state.copyWith(
-      staffState: state.staffState?.copyWith.call(
-        id: id ?? state.staffState?.id,
-        userId: userId ?? state.staffState?.userId,
-        active: active ?? state.staffState?.active,
-        staffNumber: staffNumber ?? state.staffState?.staffNumber,
-        defaultFacility: defaultFacility ?? state.staffState?.defaultFacility,
-        facilities: facilities ?? state.staffState?.facilities,
+      userProfileState: state.userProfileState?.copyWith.call(
+        id: id ?? state.userProfileState?.id,
+        userId: userId ?? state.userProfileState?.userId,
+        active: active ?? state.userProfileState?.active,
+        staffNumber: staffNumber ?? state.userProfileState?.staffNumber,
+        defaultFacility:
+            defaultFacility ?? state.userProfileState?.defaultFacility,
+        facilities: facilities ?? state.userProfileState?.facilities,
         linkedFacilities:
-            linkedFacilities ?? state.staffState?.linkedFacilities,
-        clientSharedDiaryEntries:
-            healthDiaryEntries ?? state.staffState?.clientSharedDiaryEntries,
-        notifications: notifications ?? state.staffState?.notifications,
+            linkedFacilities ?? state.userProfileState?.linkedFacilities,
+        clientSharedDiaryEntries: healthDiaryEntries ??
+            state.userProfileState?.clientSharedDiaryEntries,
+        notifications: notifications ?? state.userProfileState?.notifications,
         defaultFacilityName:
-            defaultFacilityName ?? state.staffState?.defaultFacilityName,
-        managedClients: managedClients ?? state.staffState?.managedClients,
-        currentFacility: currentFacility ?? state.staffState?.currentFacility,
+            defaultFacilityName ?? state.userProfileState?.defaultFacilityName,
+        managedClients:
+            managedClients ?? state.userProfileState?.managedClients,
+        currentFacility:
+            currentFacility ?? state.userProfileState?.currentFacility,
         clientCaregivers:
-            clientCaregivers ?? state.staffState?.clientCaregivers,
+            clientCaregivers ?? state.userProfileState?.clientCaregivers,
       ),
     );
 

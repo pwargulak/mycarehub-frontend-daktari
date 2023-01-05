@@ -1,17 +1,17 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/staff_state.dart';
+import 'package:prohealth360_daktari/domain/core/entities/core/user_profile.dart';
 
-class StaffStateViewModel extends Vm {
-  final StaffState? staffState;
+class UserProfileViewModel extends Vm {
+  final UserProfile? userProfileState;
   final Wait? wait;
 
-  StaffStateViewModel({required this.staffState, required this.wait})
-      : super(equals: <Object?>[staffState, wait]);
+  UserProfileViewModel({required this.userProfileState, required this.wait})
+      : super(equals: <Object?>[userProfileState, wait]);
 
-  factory StaffStateViewModel.fromStore(Store<AppState> store) {
-    return StaffStateViewModel(
-      staffState: store.state.staffState,
+  factory UserProfileViewModel.fromStore(Store<AppState> store) {
+    return UserProfileViewModel(
+      userProfileState: store.state.userProfileState,
       wait: store.state.wait,
     );
   }

@@ -30,7 +30,7 @@ void main() {
       store = Store<AppState>(
         initialState: AppState.initial()
             .copyWith
-            .staffState!
+            .userProfileState!
             .user!
             .call(
               primaryContact: Contact(value: '+254712345678'),
@@ -58,8 +58,8 @@ void main() {
       );
       store.dispatch(
         UpdateUserAction(
-          user:
-              store.state.staffState!.user!.copyWith.call(termsAccepted: true),
+          user: store.state.userProfileState!.user!.copyWith
+              .call(termsAccepted: true),
         ),
       );
 

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/app_state_view_model.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/staff_state.dart';
+import 'package:prohealth360_daktari/domain/core/entities/core/user_profile.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
@@ -35,22 +35,23 @@ class UserProfilePage extends StatelessWidget {
                 AppStateViewModel.fromStore(store),
             builder: (BuildContext context, AppStateViewModel vm) {
               final TargetPlatform platform = Theme.of(context).platform;
-              final StaffState? staffState = vm.state.staffState;
+              final UserProfile? userProfileState = vm.state.userProfileState;
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   mediumVerticalSizedBox,
                   local.UserDetailsCard(
                     clinicName: UNKNOWN,
-                    gender: staffState?.user?.gender ?? Gender.unknown,
-                    name: staffState?.user?.name ?? UNKNOWN,
-                    licenseNumber: staffState?.staffNumber ?? UNKNOWN,
+                    gender: userProfileState?.user?.gender ?? Gender.unknown,
+                    name: userProfileState?.user?.name ?? UNKNOWN,
+                    licenseNumber: userProfileState?.staffNumber ?? UNKNOWN,
                     phoneNumber:
-                        staffState?.user?.primaryContact?.value ?? UNKNOWN,
+                        userProfileState?.user?.primaryContact?.value ??
+                            UNKNOWN,
                     profession: profession,
                     defaultHospitalName:
-                        staffState?.defaultFacilityName ?? UNKNOWN,
-                    nickName: staffState?.user?.username ?? UNKNOWN,
+                        userProfileState?.defaultFacilityName ?? UNKNOWN,
+                    nickName: userProfileState?.user?.username ?? UNKNOWN,
                   ),
                   mediumVerticalSizedBox,
                   // conversation invites

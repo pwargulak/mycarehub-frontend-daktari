@@ -8,13 +8,30 @@ import 'package:prohealth360_daktari/domain/core/entities/core/notification_filt
 import 'package:prohealth360_daktari/domain/core/entities/core/user.dart';
 import 'package:prohealth360_daktari/domain/core/entities/health_diary/health_diary_entry.dart';
 
-part 'staff_state.freezed.dart';
-part 'staff_state.g.dart';
+part 'user_profile.freezed.dart';
+part 'user_profile.g.dart';
 
 @freezed
-class StaffState with _$StaffState {
-  factory StaffState({
+class UserProfile with _$UserProfile {
+  factory UserProfile({
     @JsonKey(name: 'id') String? id,
+
+    // This is the nickname
+    @JsonKey(name: 'username') String? username,
+    @JsonKey(name: 'name') String? name,
+    @JsonKey(name: 'pinChangeRequired') bool? pinChangeRequired,
+    @JsonKey(name: 'hasSetPin') bool? hasSetPin,
+    @JsonKey(name: 'isPhoneVerified') bool? isPhoneVerified,
+    @JsonKey(name: 'hasSetSecurityQuestions') bool? hasSetSecurityQuestions,
+    @JsonKey(name: 'hasSetNickname') bool? hasSetNickname,
+
+    /// Used to indicate that the user's PIN has been reset by someone else
+    ///
+    /// This is used to trigger the change PIN workflow
+    @JsonKey(name: 'pinUpdateRequired') bool? pinUpdateRequired,
+    @JsonKey(name: 'termsAccepted') bool? termsAccepted,
+    @JsonKey(name: 'suspended') bool? suspended,
+
     @JsonKey(name: 'user_id') String? userId,
     @JsonKey(name: 'active', defaultValue: false) bool? active,
     @JsonKey(name: 'staff_number') String? staffNumber,
@@ -36,13 +53,22 @@ class StaffState with _$StaffState {
     List<ManagedClient>? managedClients,
     NotificationFilterState? notificationFilterState,
     Facility? currentFacility,
-  }) = _StaffState;
+  }) = _UserProfile;
 
-  factory StaffState.fromJson(Map<String, dynamic> json) =>
-      _$StaffStateFromJson(json);
+  factory UserProfile.fromJson(Map<String, dynamic> json) =>
+      _$UserProfileFromJson(json);
 
-  factory StaffState.initial() => StaffState(
+  factory UserProfile.initial() => UserProfile(
         id: UNKNOWN,
+        username: UNKNOWN,
+        name: UNKNOWN,
+        pinChangeRequired: false,
+        hasSetPin: false,
+        isPhoneVerified: false,
+        hasSetSecurityQuestions: false,
+        hasSetNickname: false,
+        pinUpdateRequired: false,
+        termsAccepted: false,
         active: false,
         userId: UNKNOWN,
         staffNumber: UNKNOWN,

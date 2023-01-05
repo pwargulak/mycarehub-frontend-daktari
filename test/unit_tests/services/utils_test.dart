@@ -1,6 +1,7 @@
 // Package imports:
 import 'dart:convert';
 
+import 'package:prohealth360_daktari/presentation/onboarding/login/pages/login_page.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -21,12 +22,11 @@ import 'package:prohealth360_daktari/application/redux/states/onboarding/onboard
 import 'package:prohealth360_daktari/domain/core/entities/core/auth_credentials.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/onboarding_path_info.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/staff_state.dart';
+import 'package:prohealth360_daktari/domain/core/entities/core/user_profile.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/user.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/infrastructure/endpoints.dart';
-import 'package:prohealth360_daktari/presentation/onboarding/login/pages/phone_login_page.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 
 import '../../mocks/mocks.dart';
@@ -357,7 +357,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(store.state, AppState.initial());
-    expect(find.byType(PhoneLoginPage), findsOneWidget);
+    expect(find.byType(LoginPage), findsOneWidget);
   });
   test('formatSecurityQuestionDate should return birth date in en_GB format',
       () {
@@ -491,8 +491,8 @@ void main() {
             inactiveTime:
                 DateTime.now().subtract(const Duration(minutes: 10)).toString(),
           ),
-          staffState:
-              StaffState.initial().copyWith(user: User(termsAccepted: true)),
+          userProfileState:
+              UserProfile.initial().copyWith(user: User(termsAccepted: true)),
         ),
       ),
       true,

@@ -54,8 +54,8 @@ class SetNicknameAction extends ReduxAction<AppState> {
 
   @override
   Future<AppState> reduce() async {
-    final String? userID = state.staffState?.user?.userId;
-    final String? userName = state.staffState?.user?.username;
+    final String? userID = state.userProfileState?.user?.userId;
+    final String? userName = state.userProfileState?.user?.username;
 
     final Map<String, String?> variables = <String, String?>{
       'userID': userID,

@@ -2,7 +2,7 @@
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/staff_state.dart';
+import 'package:prohealth360_daktari/domain/core/entities/core/user_profile.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/user.dart';
 
 class UpdateUserProfileAction extends ReduxAction<AppState> {
@@ -28,9 +28,9 @@ class UpdateUserProfileAction extends ReduxAction<AppState> {
 
   @override
   AppState reduce() {
-    final User? userFromState = state.staffState?.user;
+    final User? userFromState = state.userProfileState?.user;
 
-    final User? newUserProfile = state.staffState?.user?.copyWith(
+    final User? newUserProfile = state.userProfileState?.user?.copyWith(
       active: this.active ?? userFromState?.active,
       name: name ?? userFromState?.name,
       avatar: avatar ?? userFromState?.avatar,
@@ -40,9 +40,9 @@ class UpdateUserProfileAction extends ReduxAction<AppState> {
       isPhoneVerified: isPhoneVerified ?? userFromState?.isPhoneVerified,
     );
 
-    final StaffState? newState =
-        state.staffState?.copyWith(user: newUserProfile);
+    final UserProfile? newState =
+        state.userProfileState?.copyWith(user: newUserProfile);
 
-    return state.copyWith.call(staffState: newState);
+    return state.copyWith.call(userProfileState: newState);
   }
 }

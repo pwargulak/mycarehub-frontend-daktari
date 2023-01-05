@@ -4,6 +4,7 @@ import 'package:prohealth360_daktari/application/redux/actions/onboarding/update
 import 'package:prohealth360_daktari/domain/core/entities/core/organisation.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/core/search_organisations_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/core/widgets/organisation_list_item.dart';
+import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
@@ -29,8 +30,20 @@ void main() {
         tester: tester,
         store: store,
         graphQlClient: MockTestGraphQlClient(),
-        widget: const SearchOrganisationsPage(),
+        widget: Builder(
+          builder: (BuildContext context) {
+            return ElevatedButton(
+              onPressed: () => Navigator.pushNamed(
+                context,
+                AppRoutes.searchOrganisationsPage,
+              ),
+              child: const Text('Press'),
+            );
+          },
+        ),
       );
+
+      await tester.tap(find.byType(ElevatedButton));
       await tester.pumpAndSettle();
 
       expect(find.byType(CustomTextField), findsOneWidget);
@@ -50,6 +63,15 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.byType(OrganisationListItem), findsNWidgets(3));
+
+      await tester.tap(find.text('Organization 2'));
+      await tester.pumpAndSettle();
+
+      final Finder saveOrganisationBtnFinder =
+          find.byKey(saveOrganisationBtnKey);
+      await tester.tap(saveOrganisationBtnFinder);
+      await tester.pumpAndSettle();
+      expect(find.byType(ElevatedButton), findsOneWidget);
     });
 
     testWidgets('renders correctly with the onSubmit function',

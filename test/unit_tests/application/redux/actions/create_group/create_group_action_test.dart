@@ -7,6 +7,7 @@ import 'package:prohealth360_daktari/application/redux/actions/create_group/crea
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/create_group/create_group_payload.dart';
 import 'package:http/http.dart';
+import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 
 import '../../../../../mocks/mocks.dart';
 
@@ -28,7 +29,10 @@ void main() {
 
       storeTester.dispatch(
         CreateGroupAction(
-          createGroupPayload: CreateGroupPayload(),
+          createGroupPayload: CreateGroupPayload(
+            name: UNKNOWN,
+            gender: <Gender>[Gender.male],
+          ),
           client: MockTestGraphQlClient(),
           onSuccess: () => called++,
         ),

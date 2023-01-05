@@ -11,7 +11,7 @@ import 'package:prohealth360_daktari/application/redux/states/onboarding/onboard
 import 'package:prohealth360_daktari/application/redux/states/service_requests/service_requests_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/survey_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/auth_credentials.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/staff_state.dart';
+import 'package:prohealth360_daktari/domain/core/entities/core/user_profile.dart';
 import 'package:prohealth360_daktari/infrastructure/repository/database_base.dart';
 import 'package:prohealth360_daktari/infrastructure/repository/database_mobile.dart';
 import 'package:prohealth360_daktari/infrastructure/repository/initialize_db.dart';
@@ -58,7 +58,7 @@ class MyCareHubProfessionalStateDatabase
         lastPersistedState.homeState != newState.homeState ||
         lastPersistedState.onboardingState != newState.onboardingState ||
         lastPersistedState.miscState != newState.miscState ||
-        lastPersistedState.staffState != newState.staffState ||
+        lastPersistedState.userProfileState != newState.userProfileState ||
         lastPersistedState.surveyState != newState.surveyState ||
         lastPersistedState.serviceRequestState !=
             newState.serviceRequestState) {
@@ -139,8 +139,8 @@ class MyCareHubProfessionalStateDatabase
 
     // save staff state
     await database.saveState(
-      data: newState.staffState!.toJson(),
-      table: Tables.StaffState,
+      data: newState.userProfileState!.toJson(),
+      table: Tables.UserProfile,
     );
 
     // save survey state
@@ -186,8 +186,8 @@ class MyCareHubProfessionalStateDatabase
           MiscState.fromJson(await database.retrieveState(Tables.MiscState)),
 
       // retrieve staff state
-      staffState: StaffState.fromJson(
-        await database.retrieveState(Tables.StaffState),
+      userProfileState: UserProfile.fromJson(
+        await database.retrieveState(Tables.UserProfile),
       ),
 
       // retrieve survey state

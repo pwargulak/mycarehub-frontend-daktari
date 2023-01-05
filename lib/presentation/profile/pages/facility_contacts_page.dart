@@ -24,7 +24,7 @@ class _FacilityContactsPageState extends State<FacilityContactsPage> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final List<Role>? staffRoles =
-          StoreProvider.state<AppState>(context)?.staffState?.user?.roles;
+          StoreProvider.state<AppState>(context)?.userProfileState?.user?.roles;
       if (staffRoles?.isNotEmpty ?? false) {
         for (final Role role in staffRoles!) {
           if (role.name == RoleValue.SYSTEM_ADMINISTRATOR) {
@@ -50,16 +50,18 @@ class _FacilityContactsPageState extends State<FacilityContactsPage> {
           horizontal: 20,
           vertical: 10,
         ),
-        child: StoreConnector<AppState, StaffStateViewModel>(
+        child: StoreConnector<AppState, UserProfileViewModel>(
           converter: (Store<AppState> store) =>
-              StaffStateViewModel.fromStore(store),
-          builder: (BuildContext context, StaffStateViewModel vm) {
-            final String phoneNumber = (vm.staffState?.facilities?.firstWhere(
-                  (Facility facility) =>
-                      facility.name == vm.staffState?.defaultFacilityName,
-                  orElse: () => Facility.initial(),
-                ))?.phone ??
-                '';
+              UserProfileViewModel.fromStore(store),
+          builder: (BuildContext context, UserProfileViewModel vm) {
+            final String phoneNumber =
+                (vm.userProfileState?.facilities?.firstWhere(
+                      (Facility facility) =>
+                          facility.name ==
+                          vm.userProfileState?.defaultFacilityName,
+                      orElse: () => Facility.initial(),
+                    ))?.phone ??
+                    '';
             return vm.wait?.isWaitingFor(retrieveFacilityFlag) ?? false
                 ? const PlatformLoader()
                 : phoneNumber.isNotEmpty && phoneNumber != UNKNOWN

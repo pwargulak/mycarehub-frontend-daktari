@@ -33,7 +33,7 @@ class SecurityQuestionsViewModel extends Vm {
       securityQuestions: state.onboardingState?.securityQuestions,
       securityQuestionResponses:
           state.onboardingState?.securityQuestionResponses,
-      userID: state.staffState?.user?.userId ?? UNKNOWN,
+      userID: state.userProfileState?.user?.userId ?? UNKNOWN,
       currentOnboardingStage: state.onboardingState?.currentOnboardingStage,
     );
   }

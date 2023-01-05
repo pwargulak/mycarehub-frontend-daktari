@@ -24,6 +24,7 @@ class UpdateOnboardingStateAction extends ReduxAction<AppState> {
     this.hasVerifiedSecurityQuestions,
     this.hasSetPin,
     this.phoneNumber,
+    this.username,
     this.pin,
     this.confirmPIN,
     this.invalidCredentials,
@@ -44,6 +45,7 @@ class UpdateOnboardingStateAction extends ReduxAction<AppState> {
 
   ///------------WORKFLOW RELATED VALUES------------
   final String? phoneNumber;
+  final String? username;
   final String? pin;
   final String? confirmPIN;
   final String? otp;
@@ -85,6 +87,7 @@ class UpdateOnboardingStateAction extends ReduxAction<AppState> {
       invalidCredentials:
           invalidCredentials ?? state.onboardingState?.invalidCredentials,
       phoneNumber: phoneNumber ?? state.onboardingState?.phoneNumber,
+      username: username ?? state.onboardingState?.username,
       currentOnboardingStage: currentOnboardingStage ??
           state.onboardingState?.currentOnboardingStage,
       organisations: organisations ??

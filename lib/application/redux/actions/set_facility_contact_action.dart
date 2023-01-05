@@ -41,7 +41,7 @@ class SetFacilityContactAction extends ReduxAction<AppState> {
 
   @override
   Future<AppState> reduce() async {
-    final String? facilityID = state.staffState?.defaultFacility;
+    final String? facilityID = state.userProfileState?.defaultFacility;
 
     final Map<String, String?> variables = <String, String?>{
       'facilityID': facilityID,

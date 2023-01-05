@@ -43,6 +43,9 @@ class OnboardingState with _$OnboardingState {
     // The currently active user's phone number
     String? phoneNumber,
 
+    // The currently active user's username
+    String? username,
+
     // The PIN
     String? pin,
 
@@ -88,6 +91,7 @@ class OnboardingState with _$OnboardingState {
         hasSetPin: false,
         hasAcceptedTerms: false,
         phoneNumber: UNKNOWN,
+        username: UNKNOWN,
         pin: UNKNOWN,
         confirmPIN: UNKNOWN,
         otp: UNKNOWN,

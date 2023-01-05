@@ -10,7 +10,7 @@ import 'package:prohealth360_daktari/application/redux/actions/service_requests/
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/service_requests/tool_assessment_response.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/service_requests/screening_tools_view_model.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/staff_state.dart';
+import 'package:prohealth360_daktari/domain/core/entities/core/user_profile.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
@@ -70,11 +70,11 @@ class _AssessmentCardAnswersPageState extends State<AssessmentCardAnswersPage> {
         widget.payload['assessmentResponse'] as ToolAssessmentResponse;
     final ScreeningToolsType toolsType =
         widget.payload['toolType'] as ScreeningToolsType;
-    final StaffState? staffState =
-        StoreProvider.state<AppState>(context)?.staffState;
-    final String staffFirstName = staffState?.user?.firstName ?? '';
-    final String staffLastName = staffState?.user?.lastName ?? '';
-    final String facilityName = staffState?.defaultFacilityName ?? '';
+    final UserProfile? userProfileState =
+        StoreProvider.state<AppState>(context)?.userProfileState;
+    final String staffFirstName = userProfileState?.user?.firstName ?? '';
+    final String staffLastName = userProfileState?.user?.lastName ?? '';
+    final String facilityName = userProfileState?.defaultFacilityName ?? '';
     return Scaffold(
       appBar: const CustomAppBar(title: assessmentCardTitle),
       body: Padding(

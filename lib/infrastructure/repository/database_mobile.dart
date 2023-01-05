@@ -51,7 +51,7 @@ class MyCareHubProfessionalDatabaseMobile<T extends DatabaseExecutor>
     final int t3 = await countTableRecords(Tables.OnboardingState);
     final int t4 = await countTableRecords(Tables.BottomNavigationState);
     final int t5 = await countTableRecords(Tables.MiscState);
-    final int t6 = await countTableRecords(Tables.StaffState);
+    final int t6 = await countTableRecords(Tables.UserProfile);
     final int t7 = await countTableRecords(Tables.SurveyState);
     final int t8 = await countTableRecords(Tables.ServiceRequestState);
 

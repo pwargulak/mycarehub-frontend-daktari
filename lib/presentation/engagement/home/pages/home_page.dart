@@ -48,11 +48,12 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: AppColors.galleryColor,
       body: SingleChildScrollView(
-        child: StoreConnector<AppState, StaffStateViewModel>(
+        child: StoreConnector<AppState, UserProfileViewModel>(
           converter: (Store<AppState> store) =>
-              StaffStateViewModel.fromStore(store),
-          builder: (BuildContext context, StaffStateViewModel vm) {
-            final String firstName = vm.staffState?.user?.firstName ?? UNKNOWN;
+              UserProfileViewModel.fromStore(store),
+          builder: (BuildContext context, UserProfileViewModel vm) {
+            final String firstName =
+                vm.userProfileState?.user?.firstName ?? UNKNOWN;
 
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
