@@ -102,18 +102,19 @@ class SearchDetailsInformationWidget extends StatelessWidget {
           ),
         ),
         size15VerticalSizedBox,
-        MyAfyaHubPrimaryButton(
-          text: updateProfileString,
-          buttonKey: updateProfileButtonKey,
-          textColor: Theme.of(context).primaryColor,
-          buttonColor: Theme.of(context).primaryColor.withOpacity(0.3),
-          borderColor: Colors.transparent,
-          customPadding: const EdgeInsets.symmetric(horizontal: 24.0),
-          onPressed: () => Navigator.of(context).pushNamed(
-            AppRoutes.editClientProfilePage,
-            arguments: searchUserResponse,
-          ),
-        )
+        if (isClient)
+          MyAfyaHubPrimaryButton(
+            text: updateProfileString,
+            buttonKey: updateProfileButtonKey,
+            textColor: Theme.of(context).primaryColor,
+            buttonColor: Theme.of(context).primaryColor.withOpacity(0.3),
+            borderColor: Colors.transparent,
+            customPadding: const EdgeInsets.symmetric(horizontal: 24.0),
+            onPressed: () => Navigator.of(context).pushNamed(
+              AppRoutes.editClientProfilePage,
+              arguments: searchUserResponse,
+            ),
+          )
       ],
     );
   }
