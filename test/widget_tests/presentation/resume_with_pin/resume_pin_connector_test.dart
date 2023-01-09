@@ -30,7 +30,8 @@ void main() {
     testWidgets('provides correct username', (WidgetTester tester) async {
       store.dispatch(
         UpdateUserAction(
-          user: store.state.userProfileState?.user?.copyWith(username: 'John'),
+          user: store.state.userProfileState?.userProfile?.user
+              ?.copyWith(username: 'John'),
         ),
       );
 

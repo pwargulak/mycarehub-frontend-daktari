@@ -25,7 +25,8 @@ void main() {
         initialState: AppState.initial()
             .copyWith
             .userProfileState!
-            .user!
+            .userProfile
+            !.user!
             .call(
               primaryContact: Contact(value: '+254717356476'),
               userId: 'user-id',

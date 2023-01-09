@@ -5,7 +5,7 @@ import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
 class ListFacilitiesViewModel extends Vm {
   ListFacilitiesViewModel({
     required this.wait,
-    this.facilities,
+  this.facilities,
     this.linkedFacilities,
     this.updateFacility,
     required this.selectedFacility,
@@ -28,8 +28,8 @@ class ListFacilitiesViewModel extends Vm {
   factory ListFacilitiesViewModel.fromStore(Store<AppState> store) {
     return ListFacilitiesViewModel(
       wait: store.state.wait!,
-      facilities: store.state.userProfileState?.facilities,
-      linkedFacilities: store.state.userProfileState?.linkedFacilities,
+      facilities: store.state.userProfileState?.userProfile?.facilities,
+      linkedFacilities: store.state.userProfileState?.userProfile?.linkedFacilities,
       updateFacility: store.state.miscState?.updateFacility,
       selectedFacility:
           store.state.miscState?.selectedFacility ?? Facility.initial(),

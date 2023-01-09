@@ -35,7 +35,7 @@ class SettingsPage extends StatelessWidget {
               UserProfileViewModel.fromStore(store),
           builder: (BuildContext context, UserProfileViewModel vm) {
             final String initialNickName =
-                vm.userProfileState?.user?.username ?? UNKNOWN;
+                vm.userProfile?.user?.username ?? UNKNOWN;
             return Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 20,

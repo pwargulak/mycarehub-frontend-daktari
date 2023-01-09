@@ -54,8 +54,9 @@ class SetNicknameAction extends ReduxAction<AppState> {
 
   @override
   Future<AppState> reduce() async {
-    final String? userID = state.userProfileState?.user?.userId;
-    final String? userName = state.userProfileState?.user?.username;
+    final String? userID = state.userProfileState?.userProfile?.user?.userId;
+    final String? userName =
+        state.userProfileState?.userProfile?.user?.username;
 
     final Map<String, String?> variables = <String, String?>{
       'userID': userID,
@@ -114,7 +115,7 @@ class SetNicknameAction extends ReduxAction<AppState> {
       if (shouldNavigate) {
         dispatch(
           NavigateAction<AppState>.pushNamedAndRemoveUntil(
-            AppRoutes.homePage,
+            AppRoutes.programSelectionPage,
             (Route<dynamic> route) => false,
           ),
         );

@@ -11,7 +11,7 @@ class AppEntryPointViewModelFactory
   AppEntryPointViewModel fromStore() {
     return AppEntryPointViewModel(
       idToken: state.credentials?.idToken,
-      userId: state.userProfileState?.user?.userId,
+      userId: state.userProfileState?.userProfile?.user?.userId,
     );
   }
 }

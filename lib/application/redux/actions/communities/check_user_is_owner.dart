@@ -17,7 +17,7 @@ class CheckUserIsOwnerAction extends ReduxAction<AppState> {
 
   @override
   Future<AppState?> reduce() async {
-    final String staffId = state.userProfileState?.id ?? '';
+    final String staffId = state.userProfileState?.userProfile?.id ?? '';
     final stream.QueryMembersResponse result = await channel.queryMembers();
 
     for (final stream.Member member in result.members) {

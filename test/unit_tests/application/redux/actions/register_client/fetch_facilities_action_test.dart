@@ -31,7 +31,7 @@ void main() {
           await storeTester.waitUntil(SearchFacilitiesAction);
 
       expect(
-        info.state.userProfileState?.facilities?.first.name,
+        info.state.userProfileState?.userProfile?.facilities?.first.name,
         'Test Facility',
       );
     });

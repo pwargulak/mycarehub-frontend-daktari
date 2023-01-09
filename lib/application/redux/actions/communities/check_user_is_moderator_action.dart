@@ -21,7 +21,7 @@ class CheckUserIsModeratorAction extends ReduxAction<AppState> {
       filter: stream.Filter.equal('is_moderator', true),
     );
 
-    final String staffId = state.userProfileState?.id ?? '';
+    final String staffId = state.userProfileState?.userProfile?.id ?? '';
 
     for (final stream.Member member in result.members) {
       if (member.user?.id == staffId) {

@@ -46,7 +46,7 @@ class AcceptTermAction extends ReduxAction<AppState> {
   Future<AppState?> reduce() async {
     final int? acceptedTermsID =
         state.onboardingState?.termsAndConditions?.termsId;
-    final String? userID = state.userProfileState?.user?.userId;
+    final String? userID = state.userProfileState?.userProfile?.user?.userId;
 
     final http.Response response = await client.query(
       acceptTermsAndConditionsMutation,

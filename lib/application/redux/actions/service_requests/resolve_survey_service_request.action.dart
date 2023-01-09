@@ -53,7 +53,7 @@ class ResolveSurveyServiceRequestAction extends ReduxAction<AppState> {
 
   @override
   Future<AppState?> reduce() async {
-    final String staffId = state.userProfileState?.id ?? '';
+    final String staffId = state.userProfileState?.userProfile?.id ?? '';
 
     final Map<String, dynamic> variables = <String, dynamic>{
       'staffID': staffId,

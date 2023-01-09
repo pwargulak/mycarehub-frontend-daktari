@@ -127,6 +127,7 @@ const String addEmail = 'Add Email Address';
 const String thanksText = 'Okay, Thank You';
 const String okay = 'Okay';
 const String continueText = 'Continue';
+const String proceedText = 'Proceed';
 const String doItLater = 'Do it later';
 
 // User Profile
@@ -1005,6 +1006,7 @@ String welcomeFacilitySelectionDescription(int count) =>
     "We've noticed that you're part of $count facilities. Choose which facility you would like to log into. Here are the details";
 
 const String selectFacilityString = 'Please select your facility';
+const String selectProgramString = 'Please choose your program';
 
 const String continueString = 'Continue';
 

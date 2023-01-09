@@ -1,3 +1,4 @@
+import 'package:prohealth360_daktari/application/redux/states/user_profile_state.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
@@ -19,20 +20,22 @@ void main() {
     setUp(() {
       store = Store<AppState>(
         initialState: AppState.initial().copyWith(
-          userProfileState: UserProfile(
-            defaultFacility: 'test',
-            defaultFacilityName: 'test',
-            facilities: <Facility>[
-              Facility(name: 'test', id: 'test', phone: '0712345678')
-            ],
-            user: User(
-              roles: <Role>[
-                Role(
-                  active: true,
-                  name: RoleValue.SYSTEM_ADMINISTRATOR,
-                  roleID: 'test',
-                )
+          userProfileState: UserProfileState(
+            userProfile: UserProfile(
+              defaultFacility: 'test',
+              defaultFacilityName: 'test',
+              facilities: <Facility>[
+                Facility(name: 'test', id: 'test', phone: '0712345678')
               ],
+              user: User(
+                roles: <Role>[
+                  Role(
+                    active: true,
+                    name: RoleValue.SYSTEM_ADMINISTRATOR,
+                    roleID: 'test',
+                  )
+                ],
+              ),
             ),
           ),
         ),
@@ -60,7 +63,8 @@ void main() {
         (WidgetTester tester) async {
       final Store<AppState> store = Store<AppState>(
         initialState: AppState.initial().copyWith(
-          userProfileState: UserProfile(
+            userProfileState: UserProfileState(
+          userProfile: UserProfile(
             defaultFacility: 'test',
             defaultFacilityName: 'test',
             facilities: <Facility>[
@@ -76,7 +80,7 @@ void main() {
               ],
             ),
           ),
-        ),
+        ),),
       );
       await buildTestWidget(
         tester: tester,

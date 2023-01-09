@@ -52,13 +52,17 @@ OnboardingPathInfo getOnboardingPath({required AppState state}) {
   final bool isSignedIn = state.credentials?.isSignedIn ?? false;
   final bool isPhoneVerified = state.onboardingState?.isPhoneVerified ?? false;
   final bool termsAccepted =
-      state.userProfileState?.user?.termsAccepted ?? false;
+      state.userProfileState?.userProfile?.user?.termsAccepted ??
+          false;
   final bool hasSetSecurityQuestions =
       state.onboardingState?.hasSetSecurityQuestions ?? false;
   final bool hasVerifiedSecurityQuestions =
       state.onboardingState?.hasVerifiedSecurityQuestions ?? false;
   final bool hasSetPin = state.onboardingState?.hasSetPin ?? false;
   final bool hasSetNickName = state.onboardingState?.hasSetNickName ?? false;
+  final String selectedProgramId =
+      state.userProfileState?.programsState?.selectedProgram?.id ??
+          UNKNOWN;
 
   if (currentOnboardingStage == CurrentOnboardingStage.Login) {
     if (!isSignedIn) {
@@ -95,7 +99,9 @@ OnboardingPathInfo getOnboardingPath({required AppState state}) {
 
     return OnboardingPathInfo(
       previousRoute: '',
-      nextRoute: AppRoutes.homePage,
+      nextRoute: selectedProgramId == UNKNOWN
+          ? AppRoutes.programSelectionPage
+          : AppRoutes.homePage,
     );
 
     /// The PIN expiry workflow
@@ -411,7 +417,9 @@ bool resumeWithPIN(AppState appState) {
       : now.difference(DateTime.parse(inactiveTime)).inMinutes;
   final OnboardingPathInfo navConfig = getOnboardingPath(state: appState);
   return isSignedIn &&
-      navConfig.nextRoute.compareTo(AppRoutes.homePage) == 0 &&
+      (navConfig.nextRoute.compareTo(AppRoutes.homePage) == 0 ||
+          navConfig.nextRoute.compareTo(AppRoutes.programSelectionPage) ==
+              0) &&
       timeDifference > 5;
 }
 
@@ -477,8 +485,9 @@ dynamic reportErrorToSentry({
   Map<String, dynamic>? variables,
 }) {
   final Map<String, dynamic> stackTrace = <String, dynamic>{};
-  final String contact =
-      state?.userProfileState?.user?.primaryContact?.value ?? UNKNOWN;
+  final String contact = state?.userProfileState?.userProfile?.user
+          ?.primaryContact?.value ??
+      UNKNOWN;
   final bool isSignedIn = state?.credentials?.isSignedIn ?? false;
 
   if (response != null) {

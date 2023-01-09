@@ -27,7 +27,7 @@ _$_State _$$_StateFromJson(Map<String, dynamic> json) => _$_State(
           : MiscState.fromJson(json['miscState'] as Map<String, dynamic>),
       userProfileState: json['userProfileState'] == null
           ? null
-          : UserProfile.fromJson(
+          : UserProfileState.fromJson(
               json['userProfileState'] as Map<String, dynamic>),
       surveyState: json['surveyState'] == null
           ? null

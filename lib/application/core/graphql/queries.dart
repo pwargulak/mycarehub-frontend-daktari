@@ -633,3 +633,21 @@ query listClientsCaregivers($clientID: String!, $paginationInput: PaginationsInp
   }
 }
 ''';
+
+const String listUserProgramsQuery = r'''
+query listUserPrograms($userID: ID!, $flavour: Flavour!) {
+  listUserPrograms(userID: $userID, flavour: $flavour) {
+    count
+    programs{
+      id
+      name
+      active
+      organisation{
+        id
+        description
+        description
+      }
+    }
+  }
+}
+''';

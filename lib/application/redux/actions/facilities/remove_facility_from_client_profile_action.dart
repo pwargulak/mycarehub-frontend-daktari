@@ -77,7 +77,7 @@ class RemoveFacilityFromClientProfileAction extends ReduxAction<AppState> {
       final Map<String, dynamic> data = body['data'] as Map<String, dynamic>;
       if ((data['removeFacilitiesFromClientProfile'] as bool?) ?? false) {
         final List<Facility> linkedFacilities = state
-            .userProfileState!.linkedFacilities!
+            .userProfileState!.userProfile!.linkedFacilities!
             .where((Facility facility) => facility.id != facilityId)
             .toList();
         dispatch(

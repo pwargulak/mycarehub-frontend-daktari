@@ -71,10 +71,13 @@ class _AssessmentCardAnswersPageState extends State<AssessmentCardAnswersPage> {
     final ScreeningToolsType toolsType =
         widget.payload['toolType'] as ScreeningToolsType;
     final UserProfile? userProfileState =
-        StoreProvider.state<AppState>(context)?.userProfileState;
-    final String staffFirstName = userProfileState?.user?.firstName ?? '';
-    final String staffLastName = userProfileState?.user?.lastName ?? '';
-    final String facilityName = userProfileState?.defaultFacilityName ?? '';
+        StoreProvider.state<AppState>(context)?.userProfileState?.userProfile;
+    final String staffFirstName =
+        userProfileState?.user?.firstName ?? '';
+    final String staffLastName =
+        userProfileState?.user?.lastName ?? '';
+    final String facilityName =
+        userProfileState?.defaultFacilityName ?? '';
     return Scaffold(
       appBar: const CustomAppBar(title: assessmentCardTitle),
       body: Padding(

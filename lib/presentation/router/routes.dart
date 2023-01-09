@@ -128,7 +128,11 @@ class AppRoutes {
   static const String registerCaregiverPage = '/registerCaregiverPage';
 
   static const String searchCaregiverPage = '/searchCaregiverPage';
+
+  // Onboarding
   static const String facilitySelectionPage = '/facilitySelectionPage';
+  static const String programSelectionPage = '/programSelectionPage';
+  
   static const String searchCaregiverDetailsPage =
       '/searchCaregiverDetailsPage';
   static const String organizationSelectionPage = '/organizationSelectionPage';

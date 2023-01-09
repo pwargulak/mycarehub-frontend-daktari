@@ -41,10 +41,13 @@ class _RedFlagActionsPageState extends State<RedFlagActionsPage> {
     final String phoneNumber = widget.serviceRequest?.clientPhoneNumber ?? '';
     final String clientName = widget.serviceRequest?.clientName ?? '';
     final UserProfile? userProfileState =
-        StoreProvider.state<AppState>(context)?.userProfileState;
-    final String staffFirstName = userProfileState?.user?.firstName ?? '';
-    final String staffLastName = userProfileState?.user?.lastName ?? '';
-    final String facilityName = userProfileState?.defaultFacilityName ?? '';
+        StoreProvider.state<AppState>(context)?.userProfileState?.userProfile;
+    final String staffFirstName =
+        userProfileState?.user?.firstName ?? '';
+    final String staffLastName =
+        userProfileState?.user?.lastName ?? '';
+    final String facilityName =
+        userProfileState?.defaultFacilityName ?? '';
 
     return Scaffold(
       backgroundColor: Colors.white,

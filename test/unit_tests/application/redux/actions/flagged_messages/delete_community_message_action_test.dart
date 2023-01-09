@@ -50,7 +50,8 @@ void main() {
           await storeTester.waitUntil(DeleteCommunityMessageAction);
 
       expect(
-        info.state.userProfileState?.communitiesState?.flaggedMessages?.length,
+        info.state.userProfileState?.userProfile?.communitiesState
+            ?.flaggedMessages?.length,
         1,
       );
     });

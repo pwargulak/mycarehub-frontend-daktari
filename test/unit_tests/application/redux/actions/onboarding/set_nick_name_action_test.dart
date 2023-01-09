@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:prohealth360_daktari/presentation/engagement/home/pages/home_page.dart';
+import 'package:prohealth360_daktari/presentation/onboarding/program_selection/program_selection_page.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -73,7 +73,7 @@ void main() {
           await storeTester.waitUntil(SetNicknameAction);
 
       expect(info.state.onboardingState?.hasSetNickName, false);
-      expect(info.state.userProfileState?.user?.username, UNKNOWN);
+      expect(info.state.userProfileState?.userProfile?.user?.username, UNKNOWN);
     });
 
     test('navigates to next page successfully', () async {
@@ -89,11 +89,11 @@ void main() {
           actionDispatched?.details
               as NavigatorDetails_PushNamedAndRemoveUntil?;
 
-      expect(navDetails?.newRouteName, AppRoutes.homePage);
+      expect(navDetails?.newRouteName, AppRoutes.programSelectionPage);
       expect(
         navDetails?.predicate.call(
-          MaterialPageRoute<HomePage>(
-            builder: (BuildContext context) => const HomePage(),
+          MaterialPageRoute<ProgramSelectionPage>(
+            builder: (BuildContext context) => ProgramSelectionPage(),
           ),
         ),
         false,

@@ -53,7 +53,7 @@ class ClientCaregiversWidget extends StatelessWidget {
       },
       builder: (BuildContext context, UserProfileViewModel vm) {
         final List<Caregiver?>? clientCaregivers =
-            vm.userProfileState?.clientCaregivers;
+            vm.userProfile?.clientCaregivers;
         final List<Widget> caregiversWidgetList = <Widget>[];
         if (clientCaregivers?.isNotEmpty ?? false) {
           for (final Caregiver? caregiver in clientCaregivers!) {

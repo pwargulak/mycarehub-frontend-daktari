@@ -59,7 +59,7 @@ void main() {
     testWidgets('navigates to add new patient page',
         (WidgetTester tester) async {
       final String firstName =
-          store.state.userProfileState?.user?.name ?? UNKNOWN;
+          store.state.userProfileState?.userProfile?.user?.name ?? UNKNOWN;
       await buildTestWidget(
         tester: tester,
         store: store,

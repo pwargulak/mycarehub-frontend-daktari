@@ -79,3 +79,7 @@ const String removeClientFacilityErrorString =
 const String errorFetchingFacilitiesString =
     'Error fetching user linked facilities';
 const String errorSelectingDefaultFacility = 'Error selecting default facility';
+
+// User Programs
+const String fetchUserProgramsErrorString =
+    'Error while fetching user programs';

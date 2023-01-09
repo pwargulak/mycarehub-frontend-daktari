@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:prohealth360_daktari/application/redux/states/user_profile_state.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -19,9 +20,11 @@ void main() {
       storeTester = StoreTester<AppState>(
         initialState: AppState.initial().copyWith(
           connectivityState: ConnectivityState(isConnected: true),
-          userProfileState: UserProfile(
-            facilities: <Facility>[Facility(name: 'test', phone: '071234')],
-            defaultFacilityName: 'test',
+          userProfileState: UserProfileState(
+            userProfile: UserProfile(
+              facilities: <Facility>[Facility(name: 'test', phone: '071234')],
+              defaultFacilityName: 'test',
+            ),
           ),
         ),
         testInfoPrinter: (TestInfo<dynamic> testInfo) {},
@@ -88,9 +91,11 @@ void main() {
         info.state,
         AppState.initial().copyWith(
           connectivityState: ConnectivityState(isConnected: true),
-          userProfileState: UserProfile(
-            facilities: <Facility>[Facility(name: 'test', phone: '071234')],
-            defaultFacilityName: 'test',
+          userProfileState: UserProfileState(
+            userProfile: UserProfile(
+              facilities: <Facility>[Facility(name: 'test', phone: '071234')],
+              defaultFacilityName: 'test',
+            ),
           ),
         ),
       );
@@ -128,7 +133,7 @@ void main() {
           await storeTester.waitUntil(RetrieveFacilityAction);
 
       expect(
-        info.state.userProfileState!.facilities!.first.phone,
+        info.state.userProfileState!.userProfile!.facilities!.first.phone,
         '0712345678',
       );
     });

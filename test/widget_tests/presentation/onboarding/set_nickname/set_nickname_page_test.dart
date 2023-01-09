@@ -1,13 +1,15 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:async_redux/async_redux.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/redux/actions/update_connectivity_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
-import 'package:prohealth360_daktari/presentation/engagement/home/pages/home_page.dart';
+import 'package:prohealth360_daktari/presentation/onboarding/program_selection/program_selection_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/set_nickname/set_nickname_page.dart';
 
 import '../../../../mocks/mocks.dart';
@@ -31,7 +33,21 @@ void main() {
       await buildTestWidget(
         tester: tester,
         store: store,
-        graphQlClient: MockTestGraphQlClient(),
+        graphQlClient: MockCustomGraphQlClient.withResponse(
+          '',
+          '',
+          Response(
+            jsonEncode(<String, dynamic>{
+              'data': <String, dynamic>{
+                'listUserPrograms': <String, dynamic>{
+                  'programs': <dynamic>[],
+                },
+                'setNickName': true
+              }
+            }),
+            201,
+          ),
+        ),
         widget: const SetNickNamePage(),
       );
 
@@ -45,7 +61,7 @@ void main() {
       await tester.tap(continueBtn);
       await tester.pumpAndSettle();
 
-      expect(find.byType(HomePage), findsOneWidget);
+      expect(find.byType(ProgramSelectionPage), findsOneWidget);
     });
 
     testWidgets('should show internet error', (WidgetTester tester) async {

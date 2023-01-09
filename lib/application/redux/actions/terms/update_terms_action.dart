@@ -15,7 +15,8 @@ class UpdateTermsAndConditionsAction extends ReduxAction<AppState> {
 
   @override
   AppState reduce() {
-    final bool? termsAccepted = state.userProfileState?.user?.termsAccepted;
+    final bool? termsAccepted =
+        state.userProfileState?.userProfile?.user?.termsAccepted;
 
     final TermsAndConditions termsAndConditions =
         state.onboardingState!.termsAndConditions!;
@@ -28,8 +29,10 @@ class UpdateTermsAndConditionsAction extends ReduxAction<AppState> {
         ),
       ),
       userProfileState: state.userProfileState?.copyWith(
-        user: state.userProfileState?.user?.copyWith(
-          termsAccepted: isAccepted ?? termsAccepted,
+        userProfile: state.userProfileState?.userProfile?.copyWith(
+          user: state.userProfileState?.userProfile?.user?.copyWith(
+            termsAccepted: isAccepted ?? termsAccepted,
+          ),
         ),
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:prohealth360_daktari/presentation/core/widgets/summary_badge_widget.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
@@ -14,7 +15,6 @@ import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/presentation/organization_selection/widgets/general_workstation_widget.dart';
-import 'package:prohealth360_daktari/presentation/onboarding/facility_selection/widgets/summary_badge_widget.dart';
 
 class FacilitySelectionPage extends StatelessWidget {
   @override
@@ -30,6 +30,7 @@ class FacilitySelectionPage extends StatelessWidget {
               onInit: (Store<AppState> store) {
                 final String userId = StoreProvider.state<AppState>(context)
                         ?.userProfileState
+                        ?.userProfile
                         ?.id ??
                     '';
                 store.dispatch(

@@ -45,7 +45,7 @@ void main() {
       );
       store.dispatch(
         UpdateUserAction(
-          user: store.state.userProfileState!.user!.copyWith.call(
+          user: store.state.userProfileState!.userProfile!.user!.copyWith.call(
             termsAccepted: true,
             isPhoneVerified: true,
             hasSetSecurityQuestions: true,

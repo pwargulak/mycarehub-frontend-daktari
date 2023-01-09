@@ -42,26 +42,31 @@ class UpdateStaffProfileAction extends ReduxAction<AppState> {
   AppState reduce() {
     final AppState newState = state.copyWith(
       userProfileState: state.userProfileState?.copyWith.call(
-        id: id ?? state.userProfileState?.id,
-        userId: userId ?? state.userProfileState?.userId,
-        active: active ?? state.userProfileState?.active,
-        staffNumber: staffNumber ?? state.userProfileState?.staffNumber,
-        defaultFacility:
-            defaultFacility ?? state.userProfileState?.defaultFacility,
-        facilities: facilities ?? state.userProfileState?.facilities,
-        linkedFacilities:
-            linkedFacilities ?? state.userProfileState?.linkedFacilities,
-        clientSharedDiaryEntries: healthDiaryEntries ??
-            state.userProfileState?.clientSharedDiaryEntries,
-        notifications: notifications ?? state.userProfileState?.notifications,
-        defaultFacilityName:
-            defaultFacilityName ?? state.userProfileState?.defaultFacilityName,
-        managedClients:
-            managedClients ?? state.userProfileState?.managedClients,
-        currentFacility:
-            currentFacility ?? state.userProfileState?.currentFacility,
-        clientCaregivers:
-            clientCaregivers ?? state.userProfileState?.clientCaregivers,
+        userProfile: state.userProfileState?.userProfile?.copyWith.call(
+          id: id ?? state.userProfileState?.userProfile?.id,
+          userId: userId ?? state.userProfileState?.userProfile?.userId,
+          active: active ?? state.userProfileState?.userProfile?.active,
+          staffNumber:
+              staffNumber ?? state.userProfileState?.userProfile?.staffNumber,
+          defaultFacility: defaultFacility ??
+              state.userProfileState?.userProfile?.defaultFacility,
+          facilities:
+              facilities ?? state.userProfileState?.userProfile?.facilities,
+          linkedFacilities: linkedFacilities ??
+              state.userProfileState?.userProfile?.linkedFacilities,
+          clientSharedDiaryEntries: healthDiaryEntries ??
+              state.userProfileState?.userProfile?.clientSharedDiaryEntries,
+          notifications: notifications ??
+              state.userProfileState?.userProfile?.notifications,
+          defaultFacilityName: defaultFacilityName ??
+              state.userProfileState?.userProfile?.defaultFacilityName,
+          managedClients: managedClients ??
+              state.userProfileState?.userProfile?.managedClients,
+          currentFacility: currentFacility ??
+              state.userProfileState?.userProfile?.currentFacility,
+          clientCaregivers: clientCaregivers ??
+              state.userProfileState?.userProfile?.clientCaregivers,
+        ),
       ),
     );
 

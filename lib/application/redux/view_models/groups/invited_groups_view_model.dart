@@ -14,8 +14,8 @@ class InvitedGroupsViewModel extends Vm {
   factory InvitedGroupsViewModel.fromStore(Store<AppState> store) {
     return InvitedGroupsViewModel(
       wait: store.state.wait!,
-      invitedCommunities:
-          store.state.userProfileState?.communitiesState?.invitedCommunities,
+      invitedCommunities: store.state.userProfileState?.userProfile
+          ?.communitiesState?.invitedCommunities,
     );
   }
 }

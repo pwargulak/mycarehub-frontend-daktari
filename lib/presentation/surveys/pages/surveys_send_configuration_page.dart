@@ -106,7 +106,7 @@ class _SurveysSendConfigurationsPageState
                     onPrimaryButtonPressed: () {
                       final String facilityID =
                           StoreProvider.state<AppState>(context)
-                                  ?.userProfileState
+                                  ?.userProfileState?.userProfile
                                   ?.defaultFacility ??
                               '';
                       StoreProvider.dispatch(
@@ -497,6 +497,7 @@ class _SurveysSendConfigurationsPageState
     }
     final String facilityID = StoreProvider.state<AppState>(context)
             ?.userProfileState
+            ?.userProfile
             ?.defaultFacility ??
         '';
     StoreProvider.dispatch(

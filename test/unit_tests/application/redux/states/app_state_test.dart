@@ -1,3 +1,4 @@
+import 'package:prohealth360_daktari/application/redux/states/user_profile_state.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
@@ -13,8 +14,10 @@ void main() {
       expect(state, AppState.initial());
 
       state = state.copyWith(
-        userProfileState: UserProfile.initial().copyWith(
-          user: User.initial().copyWith(active: true),
+        userProfileState: UserProfileState.initial().copyWith(
+          userProfile: UserProfile.initial().copyWith(
+            user: User.initial().copyWith(active: true),
+          ),
         ),
       );
 

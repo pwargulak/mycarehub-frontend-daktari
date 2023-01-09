@@ -28,7 +28,7 @@ class AppbarUser extends StatelessWidget {
           converter: (Store<AppState> store) =>
               AppStateViewModel.fromStore(store),
           builder: (BuildContext context, AppStateViewModel vm) {
-            final User? user = vm.state.userProfileState?.user;
+            final User? user = vm.state.userProfileState?.userProfile?.user;
             final String photoUrl = user?.avatar ?? UNKNOWN;
 
             // a sanity check for the photo url

@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:prohealth360_daktari/presentation/core/bottom_nav/bottom_nav_items.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart' as afya_moja_core;
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:async_redux/async_redux.dart';
@@ -131,7 +130,13 @@ class _PreLoadAppState extends State<PreLoadApp> with WidgetsBindingObserver {
         final bool isResumeWithPin =
             initialRoute.compareTo(AppRoutes.resumeWithPin) == 0;
         if (!isPhoneLogin && !isResumeWithPin) {
-          initialRoute = bottomNavItems[vm.currentIndex ?? 0].onTapRoute;
+          initialRoute = AppRoutes.programSelectionPage;
+        }
+
+        if (initialRoute == AppRoutes.homePage &&
+            (vm.selectedProgram?.id == null ||
+                vm.selectedProgram?.id == afya_moja_core.UNKNOWN)) {
+          initialRoute = AppRoutes.programSelectionPage;
         }
 
         return OverlaySupport(

@@ -23,8 +23,11 @@ class _FacilityContactsPageState extends State<FacilityContactsPage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final List<Role>? staffRoles =
-          StoreProvider.state<AppState>(context)?.userProfileState?.user?.roles;
+      final List<Role>? staffRoles = StoreProvider.state<AppState>(context)
+          ?.userProfileState
+          ?.userProfile
+          ?.user
+          ?.roles;
       if (staffRoles?.isNotEmpty ?? false) {
         for (final Role role in staffRoles!) {
           if (role.name == RoleValue.SYSTEM_ADMINISTRATOR) {
@@ -55,10 +58,10 @@ class _FacilityContactsPageState extends State<FacilityContactsPage> {
               UserProfileViewModel.fromStore(store),
           builder: (BuildContext context, UserProfileViewModel vm) {
             final String phoneNumber =
-                (vm.userProfileState?.facilities?.firstWhere(
+                (vm.userProfile?.facilities?.firstWhere(
                       (Facility facility) =>
                           facility.name ==
-                          vm.userProfileState?.defaultFacilityName,
+                          vm.userProfile?.defaultFacilityName,
                       orElse: () => Facility.initial(),
                     ))?.phone ??
                     '';

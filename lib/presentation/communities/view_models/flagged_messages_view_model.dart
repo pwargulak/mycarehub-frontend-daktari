@@ -14,8 +14,8 @@ class FlaggedMessagesViewModel extends Vm {
   factory FlaggedMessagesViewModel.fromStore(Store<AppState> store) {
     return FlaggedMessagesViewModel(
       wait: store.state.wait!,
-      flaggedMessages:
-          store.state.userProfileState?.communitiesState?.flaggedMessages,
+      flaggedMessages: store.state.userProfileState?.userProfile
+          ?.communitiesState?.flaggedMessages,
     );
   }
 }

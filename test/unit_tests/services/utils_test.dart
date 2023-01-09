@@ -1,6 +1,7 @@
 // Package imports:
 import 'dart:convert';
 
+import 'package:prohealth360_daktari/application/redux/states/user_profile_state.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/login/pages/login_page.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
@@ -126,7 +127,7 @@ void main() {
       store.dispatch(UpdateTermsAndConditionsAction(isAccepted: true));
 
       final OnboardingPathInfo path = getOnboardingPath(state: store.state);
-      expect(path.nextRoute, AppRoutes.homePage);
+      expect(path.nextRoute, AppRoutes.programSelectionPage);
     });
     test('should return select facility page', () async {
       store.dispatch(UpdateCredentialsAction(isSignedIn: true));
@@ -141,7 +142,7 @@ void main() {
       store.dispatch(UpdateTermsAndConditionsAction(isAccepted: true));
 
       final OnboardingPathInfo path = getOnboardingPath(state: store.state);
-      expect(path.nextRoute, AppRoutes.homePage);
+      expect(path.nextRoute, AppRoutes.programSelectionPage);
     });
   });
 
@@ -491,8 +492,10 @@ void main() {
             inactiveTime:
                 DateTime.now().subtract(const Duration(minutes: 10)).toString(),
           ),
-          userProfileState:
-              UserProfile.initial().copyWith(user: User(termsAccepted: true)),
+          userProfileState: UserProfileState.initial().copyWith(
+            userProfile:
+                UserProfile.initial().copyWith(user: User(termsAccepted: true)),
+          ),
         ),
       ),
       true,

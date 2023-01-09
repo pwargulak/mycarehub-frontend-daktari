@@ -50,8 +50,8 @@ class CustomClient extends IGraphQlClient {
         ) ??
         DateTime.now();
 
-    final bool shouldRefreshToken =
-        isSignedIn && hasTokenExpired(expiryDateTime, DateTime.now());
+    final bool shouldRefreshToken = isSignedIn &&
+        (hasTokenExpired(expiryDateTime, DateTime.now()) || idToken == UNKNOWN);
 
     if (request.url ==
         Uri.parse(

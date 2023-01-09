@@ -31,7 +31,8 @@ void main() {
         initialState: AppState.initial()
             .copyWith
             .userProfileState!
-            .user!
+            .userProfile
+            !.user!
             .call(
               primaryContact: Contact(value: '+254712345678'),
               userId: 'user-id',
@@ -58,7 +59,7 @@ void main() {
       );
       store.dispatch(
         UpdateUserAction(
-          user: store.state.userProfileState!.user!.copyWith
+          user: store.state.userProfileState!.userProfile!.user!.copyWith
               .call(termsAccepted: true),
         ),
       );

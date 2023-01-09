@@ -32,7 +32,7 @@ class _CommunityListPageState extends State<CommunityListPage> {
     super.didChangeDependencies();
 
     final AppState state = StoreProvider.state<AppState>(context)!;
-    final String staffID = state.userProfileState?.id ?? '';
+    final String staffID = state.userProfileState?.userProfile?.id ?? '';
 
     final stream.Filter invitedFilter = stream.Filter.and(
       <stream.Filter>[

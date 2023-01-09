@@ -48,7 +48,7 @@ class SearchViewModel extends Vm {
       selectedSearchUserResponse: store
           .state.miscState?.searchUserResponseState?.selectedSearchUserResponse,
       sharedDiaryEntries:
-          store.state.userProfileState?.clientSharedDiaryEntries,
+          store.state.userProfileState?.userProfile?.clientSharedDiaryEntries,
       selectedUsers:
           store.state.miscState?.searchUserResponseState?.selectedUsers,
     );

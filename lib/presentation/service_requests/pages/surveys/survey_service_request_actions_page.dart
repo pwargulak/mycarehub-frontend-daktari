@@ -44,10 +44,13 @@ class _SurveyServiceRequestActionsPageState
     final String phoneNumber = widget.surveyRespondent?.phoneNumber ?? '';
     final String clientName = widget.surveyRespondent?.name ?? '';
     final UserProfile? userProfileState =
-        StoreProvider.state<AppState>(context)?.userProfileState;
-    final String staffFirstName = userProfileState?.user?.firstName ?? '';
-    final String staffLastName = userProfileState?.user?.lastName ?? '';
-    final String facilityName = userProfileState?.defaultFacilityName ?? '';
+        StoreProvider.state<AppState>(context)?.userProfileState?.userProfile;
+    final String staffFirstName =
+        userProfileState?.user?.firstName ?? '';
+    final String staffLastName =
+        userProfileState?.user?.lastName ?? '';
+    final String facilityName =
+        userProfileState?.defaultFacilityName ?? '';
 
     final String surveyName = widget.surveyRespondent?.surveyName ?? '';
 

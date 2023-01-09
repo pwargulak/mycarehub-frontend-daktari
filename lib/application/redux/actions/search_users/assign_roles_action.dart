@@ -82,7 +82,7 @@ class AssignRolesAction extends ReduxAction<AppState> {
           data['assignOrRevokeRoles'] != null &&
           data['assignOrRevokeRoles'] is bool &&
           data['assignOrRevokeRoles'] == true) {
-        final User? user = state.userProfileState?.user;
+        final User? user = state.userProfileState?.userProfile?.user;
 
         final List<Role> newRoles = roles.map((RoleValue roleValue) {
           return Role(name: roleValue, active: true);

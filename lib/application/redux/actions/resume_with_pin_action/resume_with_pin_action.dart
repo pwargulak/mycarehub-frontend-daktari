@@ -44,7 +44,7 @@ class ResumeWithPinAction extends ReduxAction<AppState> {
 
   @override
   Future<AppState?> reduce() async {
-    final String? userID = state.userProfileState?.user?.userId;
+    final String? userID = state.userProfileState?.userProfile?.user?.userId;
 
     final Map<String, dynamic> variables = <String, dynamic>{
       'userID': userID,

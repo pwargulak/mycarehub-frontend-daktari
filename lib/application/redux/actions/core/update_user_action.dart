@@ -14,7 +14,9 @@ class UpdateUserAction extends ReduxAction<AppState> {
   @override
   AppState reduce() {
     final AppState newState = state.copyWith(
-      userProfileState: state.userProfileState?.copyWith(user: user),
+      userProfileState: state.userProfileState?.copyWith(
+        userProfile: state.userProfileState?.userProfile?.copyWith(user: user),
+      ),
     );
     return newState;
   }

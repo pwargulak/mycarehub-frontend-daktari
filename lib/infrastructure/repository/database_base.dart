@@ -32,7 +32,7 @@ enum Tables {
   OnboardingState,
   BottomNavigationState,
   MiscState,
-  UserProfile,
+  UserProfileState,
   SurveyState,
   ServiceRequestState,
 }
@@ -52,7 +52,7 @@ extension TablesEx on Tables {
         return 'bottomNavigationState';
       case Tables.MiscState:
         return 'miscState';
-      case Tables.UserProfile:
+      case Tables.UserProfileState:
         return 'userProfileState';
       case Tables.SurveyState:
         return 'surveyState';

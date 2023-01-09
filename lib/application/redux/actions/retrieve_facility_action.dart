@@ -34,8 +34,10 @@ class RetrieveFacilityAction extends ReduxAction<AppState> {
 
   @override
   Future<AppState> reduce() async {
-    final String? facilityID = state.userProfileState?.defaultFacility;
-    final String? facilityName = state.userProfileState?.defaultFacilityName;
+    final String? facilityID =
+        state.userProfileState?.userProfile?.defaultFacility;
+    final String? facilityName =
+        state.userProfileState?.userProfile?.defaultFacilityName;
 
     final Map<String, dynamic> variables = <String, dynamic>{
       'id': facilityID,
@@ -74,7 +76,7 @@ class RetrieveFacilityAction extends ReduxAction<AppState> {
 
       if (facility.name == facilityName) {
         final List<Facility> facilities =
-            state.userProfileState?.facilities ?? <Facility>[];
+            state.userProfileState?.userProfile?.facilities ?? <Facility>[];
 
         final List<Facility> removed = facilities
             .where((Facility element) => element.name != facilityName)

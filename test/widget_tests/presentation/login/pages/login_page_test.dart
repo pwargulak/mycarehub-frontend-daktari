@@ -77,7 +77,7 @@ void main() {
         await tester.pumpAndSettle();
         expect(find.byType(VerifyPhonePage), findsOneWidget);
         expect(
-          store.state.userProfileState!.id,
+          store.state.userProfileState!.userProfile?.id,
           phoneLoginResponse.userResponse?.userProfile!.id,
         );
       });
@@ -167,7 +167,7 @@ void main() {
         expect(find.byType(VerifyPhonePage), findsOneWidget);
 
         expect(
-          store.state.userProfileState!.id,
+          store.state.userProfileState!.userProfile?.id,
           phoneLoginResponse.userResponse?.userProfile!.id,
         );
         addTearDown(() {

@@ -17,14 +17,18 @@ class UpdateNotificationFilterStateAction extends ReduxAction<AppState> {
     final NotificationFilterState notificationFilterState =
         NotificationFilterState(
       selectedFilter: selectedFilter ??
-          state.userProfileState?.notificationFilterState?.selectedFilter,
+          state.userProfileState?.userProfile?.notificationFilterState
+              ?.selectedFilter,
       notificationFilters: notificationFilters ??
-          state.userProfileState?.notificationFilterState?.notificationFilters,
+          state.userProfileState?.userProfile?.notificationFilterState
+              ?.notificationFilters,
     );
 
     final AppState newState = state.copyWith.call(
-      userProfileState: state.userProfileState?.copyWith
-          .call(notificationFilterState: notificationFilterState),
+      userProfileState: state.userProfileState?.copyWith.call(
+        userProfile: state.userProfileState?.userProfile?.copyWith
+            .call(notificationFilterState: notificationFilterState),
+      ),
     );
 
     return newState;

@@ -114,21 +114,22 @@ class PhoneLoginAction extends ReduxAction<AppState> {
       final String fullName =
           loginResponse.userResponse?.userProfile?.name ?? UNKNOWN;
 
-      final UserProfile? userProfileState =
+      final UserProfile? userProfile =
           loginResponse.userResponse?.userProfile;
 
       User user = User(
         pinChangeRequired: false,
         chatRoomToken: loginResponse.userResponse?.streamToken,
-        name: userProfileState?.name,
-        username: userProfileState?.username,
-        hasSetPin: userProfileState?.hasSetPin,
-        isPhoneVerified: userProfileState?.isPhoneVerified,
-        hasSetSecurityQuestions: userProfileState?.hasSetSecurityQuestions,
-        pinUpdateRequired: userProfileState?.pinUpdateRequired,
-        termsAccepted: userProfileState?.termsAccepted,
-        suspended: userProfileState?.suspended,
-        active: userProfileState?.active,
+        name: userProfile?.name,
+        username: userProfile?.username,
+        hasSetPin: userProfile?.hasSetPin,
+        isPhoneVerified: userProfile?.isPhoneVerified,
+        hasSetSecurityQuestions:
+            userProfile?.hasSetSecurityQuestions,
+        pinUpdateRequired: userProfile?.pinUpdateRequired,
+        termsAccepted: userProfile?.termsAccepted,
+        suspended: userProfile?.suspended,
+        active: userProfile?.active,
       );
 
       if (fullName != UNKNOWN && fullName.isNotEmpty) {
@@ -141,12 +142,14 @@ class PhoneLoginAction extends ReduxAction<AppState> {
 
       dispatch(
         UpdateOnboardingStateAction(
-          hasSetNickName: (userProfileState?.username?.isNotEmpty ?? false) &&
-              (userProfileState?.hasSetNickname ?? false),
-          hasAcceptedTerms: userProfileState?.termsAccepted,
-          hasSetSecurityQuestions: userProfileState?.hasSetSecurityQuestions,
-          hasSetPin: userProfileState?.hasSetPin,
-          isPhoneVerified: userProfileState?.isPhoneVerified,
+          hasSetNickName:
+              (userProfile?.username?.isNotEmpty ?? false) &&
+                  (userProfile?.hasSetNickname ?? false),
+          hasAcceptedTerms: userProfile?.termsAccepted,
+          hasSetSecurityQuestions:
+              userProfile?.hasSetSecurityQuestions,
+          hasSetPin: userProfile?.hasSetPin,
+          isPhoneVerified: userProfile?.isPhoneVerified,
         ),
       );
 

@@ -10,8 +10,8 @@ import 'package:prohealth360_daktari/application/redux/states/misc_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/onboarding/onboarding_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/service_requests/service_requests_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/survey_state.dart';
+import 'package:prohealth360_daktari/application/redux/states/user_profile_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/auth_credentials.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/user_profile.dart';
 import 'package:prohealth360_daktari/infrastructure/repository/database_base.dart';
 import 'package:prohealth360_daktari/infrastructure/repository/database_mobile.dart';
 import 'package:prohealth360_daktari/infrastructure/repository/initialize_db.dart';
@@ -140,7 +140,7 @@ class MyCareHubProfessionalStateDatabase
     // save staff state
     await database.saveState(
       data: newState.userProfileState!.toJson(),
-      table: Tables.UserProfile,
+      table: Tables.UserProfileState,
     );
 
     // save survey state
@@ -186,8 +186,8 @@ class MyCareHubProfessionalStateDatabase
           MiscState.fromJson(await database.retrieveState(Tables.MiscState)),
 
       // retrieve staff state
-      userProfileState: UserProfile.fromJson(
-        await database.retrieveState(Tables.UserProfile),
+      userProfileState: UserProfileState.fromJson(
+        await database.retrieveState(Tables.UserProfileState),
       ),
 
       // retrieve survey state

@@ -50,7 +50,7 @@ class ManagedClientsWidget extends StatelessWidget {
       },
       builder: (BuildContext context, UserProfileViewModel vm) {
         final List<ManagedClient>? managedClients =
-            vm.userProfileState?.managedClients;
+            vm.userProfile?.managedClients;
         final List<Widget> clientsWidgetList = <Widget>[];
         if (managedClients?.isNotEmpty ?? false) {
           for (final ManagedClient client in managedClients!) {

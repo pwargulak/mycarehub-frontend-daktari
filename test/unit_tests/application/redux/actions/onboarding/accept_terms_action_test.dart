@@ -36,7 +36,10 @@ void main() {
       final TestInfo<AppState> info =
           await storeTester.waitUntil(AcceptTermAction);
 
-      expect(info.state.userProfileState?.user?.termsAccepted, true);
+      expect(
+        info.state.userProfileState?.userProfile?.user?.termsAccepted,
+        true,
+      );
     });
 
     test('updates httpError if error occurs', () async {

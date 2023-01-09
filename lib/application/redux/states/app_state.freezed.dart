@@ -26,7 +26,7 @@ mixin _$AppState {
   BottomNavigationState? get bottomNavigationState =>
       throw _privateConstructorUsedError;
   MiscState? get miscState => throw _privateConstructorUsedError;
-  UserProfile? get userProfileState => throw _privateConstructorUsedError;
+  UserProfileState? get userProfileState => throw _privateConstructorUsedError;
   SurveyState? get surveyState => throw _privateConstructorUsedError;
   ServiceRequestState? get serviceRequestState =>
       throw _privateConstructorUsedError;
@@ -52,7 +52,7 @@ abstract class $AppStateCopyWith<$Res> {
       OnboardingState? onboardingState,
       BottomNavigationState? bottomNavigationState,
       MiscState? miscState,
-      UserProfile? userProfileState,
+      UserProfileState? userProfileState,
       SurveyState? surveyState,
       ServiceRequestState? serviceRequestState,
       ConnectivityState? connectivityState,
@@ -63,7 +63,7 @@ abstract class $AppStateCopyWith<$Res> {
   $OnboardingStateCopyWith<$Res>? get onboardingState;
   $BottomNavigationStateCopyWith<$Res>? get bottomNavigationState;
   $MiscStateCopyWith<$Res>? get miscState;
-  $UserProfileCopyWith<$Res>? get userProfileState;
+  $UserProfileStateCopyWith<$Res>? get userProfileState;
   $SurveyStateCopyWith<$Res>? get surveyState;
   $ServiceRequestStateCopyWith<$Res>? get serviceRequestState;
   $ConnectivityStateCopyWith<$Res>? get connectivityState;
@@ -117,7 +117,7 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
       userProfileState: freezed == userProfileState
           ? _value.userProfileState
           : userProfileState // ignore: cast_nullable_to_non_nullable
-              as UserProfile?,
+              as UserProfileState?,
       surveyState: freezed == surveyState
           ? _value.surveyState
           : surveyState // ignore: cast_nullable_to_non_nullable
@@ -200,12 +200,12 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
 
   @override
   @pragma('vm:prefer-inline')
-  $UserProfileCopyWith<$Res>? get userProfileState {
+  $UserProfileStateCopyWith<$Res>? get userProfileState {
     if (_value.userProfileState == null) {
       return null;
     }
 
-    return $UserProfileCopyWith<$Res>(_value.userProfileState!, (value) {
+    return $UserProfileStateCopyWith<$Res>(_value.userProfileState!, (value) {
       return _then(_value.copyWith(userProfileState: value) as $Val);
     });
   }
@@ -260,7 +260,7 @@ abstract class _$$_StateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
       OnboardingState? onboardingState,
       BottomNavigationState? bottomNavigationState,
       MiscState? miscState,
-      UserProfile? userProfileState,
+      UserProfileState? userProfileState,
       SurveyState? surveyState,
       ServiceRequestState? serviceRequestState,
       ConnectivityState? connectivityState,
@@ -277,7 +277,7 @@ abstract class _$$_StateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
   @override
   $MiscStateCopyWith<$Res>? get miscState;
   @override
-  $UserProfileCopyWith<$Res>? get userProfileState;
+  $UserProfileStateCopyWith<$Res>? get userProfileState;
   @override
   $SurveyStateCopyWith<$Res>? get surveyState;
   @override
@@ -331,7 +331,7 @@ class __$$_StateCopyWithImpl<$Res>
       userProfileState: freezed == userProfileState
           ? _value.userProfileState
           : userProfileState // ignore: cast_nullable_to_non_nullable
-              as UserProfile?,
+              as UserProfileState?,
       surveyState: freezed == surveyState
           ? _value.surveyState
           : surveyState // ignore: cast_nullable_to_non_nullable
@@ -381,7 +381,7 @@ class _$_State implements _State {
   @override
   final MiscState? miscState;
   @override
-  final UserProfile? userProfileState;
+  final UserProfileState? userProfileState;
   @override
   final SurveyState? surveyState;
   @override
@@ -459,7 +459,7 @@ abstract class _State implements AppState {
       final OnboardingState? onboardingState,
       final BottomNavigationState? bottomNavigationState,
       final MiscState? miscState,
-      final UserProfile? userProfileState,
+      final UserProfileState? userProfileState,
       final SurveyState? surveyState,
       final ServiceRequestState? serviceRequestState,
       final ConnectivityState? connectivityState,
@@ -478,7 +478,7 @@ abstract class _State implements AppState {
   @override
   MiscState? get miscState;
   @override
-  UserProfile? get userProfileState;
+  UserProfileState? get userProfileState;
   @override
   SurveyState? get surveyState;
   @override

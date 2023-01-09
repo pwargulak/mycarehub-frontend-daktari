@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
               UserProfileViewModel.fromStore(store),
           builder: (BuildContext context, UserProfileViewModel vm) {
             final String firstName =
-                vm.userProfileState?.user?.firstName ?? UNKNOWN;
+                vm.userProfile?.user?.firstName ?? UNKNOWN;
 
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,

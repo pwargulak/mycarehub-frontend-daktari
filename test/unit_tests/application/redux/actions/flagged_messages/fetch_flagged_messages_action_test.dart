@@ -40,7 +40,8 @@ void main() {
           await storeTester.waitUntil(FetchFlaggedMessagesAction);
 
       expect(
-        info.state.userProfileState?.communitiesState?.flaggedMessages?.length,
+        info.state.userProfileState?.userProfile?.communitiesState
+            ?.flaggedMessages?.length,
         3,
       );
     });
@@ -64,7 +65,8 @@ void main() {
           await storeTester.waitUntil(FetchFlaggedMessagesAction);
 
       expect(
-        info.state.userProfileState?.communitiesState?.flaggedMessages,
+        info.state.userProfileState?.userProfile?.communitiesState
+            ?.flaggedMessages,
         <Message>[],
       );
     });

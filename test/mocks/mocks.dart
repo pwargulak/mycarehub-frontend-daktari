@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:prohealth360_daktari/application/core/services/custom_client.dart';
+import 'package:prohealth360_daktari/domain/core/entities/core/auth_credentials.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart' as core;
 import 'package:connectivity_plus_platform_interface/connectivity_plus_platform_interface.dart';
 // Flutter imports:
@@ -455,6 +457,51 @@ class MockShortGraphQlClient extends IGraphQlClient {
   ]) {
     return Future<http.Response>.value(response);
   }
+}
+
+class MockCustomGraphQlClient extends IGraphQlClient implements CustomClient {
+  MockCustomGraphQlClient.withResponse(
+    String idToken,
+    String endpoint,
+    this.response,
+  ) {
+    super.idToken = idToken;
+    super.endpoint = endpoint;
+  }
+
+  final http.Response response;
+
+  @override
+  Future<http.Response> callRESTAPI({
+    required String endpoint,
+    required String method,
+    Map<String, dynamic>? variables,
+  }) {
+    return Future<http.Response>.value(response);
+  }
+
+  @override
+  Future<http.Response> query(
+    String queryString,
+    Map<String, dynamic> variables, [
+    ContentType contentType = ContentType.json,
+  ]) {
+    return Future<http.Response>.value(response);
+  }
+
+  @override
+  Future<AuthCredentials?> refreshToken() {
+    return Future<AuthCredentials>(AuthCredentials.initial);
+  }
+  
+  @override
+  BuildContext get context => throw UnimplementedError();
+  
+  @override
+  String get refreshTokenEndpoint => throw UnimplementedError();
+  
+  @override
+  String get userID => throw UnimplementedError();
 }
 
 class MockTestGraphQlClient extends IGraphQlClient {
@@ -975,6 +1022,33 @@ class MockTestGraphQlClient extends IGraphQlClient {
                       'caregiverNumber': '123495',
                       'isClient': true,
                     },
+                  ],
+                }
+              }
+            },
+          ),
+          201,
+        ),
+      );
+    }
+    if (queryString.contains(listUserProgramsQuery)) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(
+            <String, dynamic>{
+              'data': <String, dynamic>{
+                'listUserPrograms': <String, dynamic>{
+                  'count': 1,
+                  'programs': <dynamic>[
+                    <String, dynamic>{
+                      'id': 'testId',
+                      'name': 'testName',
+                      'active': true,
+                      'organisation': <String, dynamic>{
+                        'id': 'testOrgId',
+                        'description': 'testOrgDescription',
+                      },
+                    }
                   ],
                 }
               }

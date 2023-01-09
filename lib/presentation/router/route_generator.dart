@@ -2,6 +2,7 @@
 import 'package:prohealth360_daktari/presentation/admin/admin_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/core/search_organisations_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/login/pages/login_page.dart';
+import 'package:prohealth360_daktari/presentation/onboarding/program_selection/program_selection_page.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/services/analytics_service.dart';
@@ -122,7 +123,7 @@ class RouteGenerator {
           settings: const RouteSettings(name: 'Set nickname page'),
         );
 
-        case AppRoutes.loginPage:
+      case AppRoutes.loginPage:
         return MaterialPageRoute<LoginPage>(
           builder: (_) => LoginPage(),
           settings: const RouteSettings(name: 'Login page'),
@@ -650,6 +651,12 @@ class RouteGenerator {
         return MaterialPageRoute<AdminPage>(
           builder: (_) => AdminPage(),
           settings: const RouteSettings(name: 'Admin Page'),
+        );
+
+      case AppRoutes.programSelectionPage:
+        return MaterialPageRoute<ProgramSelectionPage>(
+          builder: (_) => ProgramSelectionPage(),
+          settings: const RouteSettings(name: 'Program Selection Page'),
         );
     }
 
