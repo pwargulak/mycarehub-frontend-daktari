@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:prohealth360_daktari/presentation/engagement/home/pages/home_page.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -8,7 +9,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/redux/actions/set_nick_name_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/presentation/onboarding/facility_selection/facility_selection_page.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 
 import '../../../../../mocks/mocks.dart';
@@ -89,11 +89,11 @@ void main() {
           actionDispatched?.details
               as NavigatorDetails_PushNamedAndRemoveUntil?;
 
-      expect(navDetails?.newRouteName, AppRoutes.facilitySelectionPage);
+      expect(navDetails?.newRouteName, AppRoutes.homePage);
       expect(
         navDetails?.predicate.call(
-          MaterialPageRoute<FacilitySelectionPage>(
-            builder: (BuildContext context) => FacilitySelectionPage(),
+          MaterialPageRoute<HomePage>(
+            builder: (BuildContext context) => const HomePage(),
           ),
         ),
         false,

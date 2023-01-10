@@ -51,15 +51,14 @@ OnboardingPathInfo getOnboardingPath({required AppState state}) {
 
   final bool isSignedIn = state.credentials?.isSignedIn ?? false;
   final bool isPhoneVerified = state.onboardingState?.isPhoneVerified ?? false;
-  final bool termsAccepted = state.userProfileState?.user?.termsAccepted ?? false;
+  final bool termsAccepted =
+      state.userProfileState?.user?.termsAccepted ?? false;
   final bool hasSetSecurityQuestions =
       state.onboardingState?.hasSetSecurityQuestions ?? false;
   final bool hasVerifiedSecurityQuestions =
       state.onboardingState?.hasVerifiedSecurityQuestions ?? false;
   final bool hasSetPin = state.onboardingState?.hasSetPin ?? false;
   final bool hasSetNickName = state.onboardingState?.hasSetNickName ?? false;
-  final String currentFacilityId =
-      state.userProfileState?.currentFacility?.id ?? UNKNOWN;
 
   if (currentOnboardingStage == CurrentOnboardingStage.Login) {
     if (!isSignedIn) {
@@ -96,9 +95,7 @@ OnboardingPathInfo getOnboardingPath({required AppState state}) {
 
     return OnboardingPathInfo(
       previousRoute: '',
-      nextRoute: currentFacilityId == UNKNOWN
-          ? AppRoutes.facilitySelectionPage
-          : AppRoutes.homePage,
+      nextRoute: AppRoutes.homePage,
     );
 
     /// The PIN expiry workflow
@@ -414,9 +411,7 @@ bool resumeWithPIN(AppState appState) {
       : now.difference(DateTime.parse(inactiveTime)).inMinutes;
   final OnboardingPathInfo navConfig = getOnboardingPath(state: appState);
   return isSignedIn &&
-      (navConfig.nextRoute.compareTo(AppRoutes.homePage) == 0 ||
-          navConfig.nextRoute.compareTo(AppRoutes.facilitySelectionPage) ==
-              0) &&
+      navConfig.nextRoute.compareTo(AppRoutes.homePage) == 0 &&
       timeDifference > 5;
 }
 

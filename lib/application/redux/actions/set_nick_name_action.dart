@@ -114,7 +114,7 @@ class SetNicknameAction extends ReduxAction<AppState> {
       if (shouldNavigate) {
         dispatch(
           NavigateAction<AppState>.pushNamedAndRemoveUntil(
-            AppRoutes.facilitySelectionPage,
+            AppRoutes.homePage,
             (Route<dynamic> route) => false,
           ),
         );

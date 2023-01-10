@@ -7,7 +7,7 @@ import 'package:prohealth360_daktari/application/redux/actions/update_connectivi
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
-import 'package:prohealth360_daktari/presentation/onboarding/facility_selection/facility_selection_page.dart';
+import 'package:prohealth360_daktari/presentation/engagement/home/pages/home_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/set_nickname/set_nickname_page.dart';
 
 import '../../../../mocks/mocks.dart';
@@ -45,7 +45,7 @@ void main() {
       await tester.tap(continueBtn);
       await tester.pumpAndSettle();
 
-      expect(find.byType(FacilitySelectionPage), findsOneWidget);
+      expect(find.byType(HomePage), findsOneWidget);
     });
 
     testWidgets('should show internet error', (WidgetTester tester) async {

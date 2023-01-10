@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:prohealth360_daktari/presentation/core/bottom_nav/bottom_nav_items.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart' as afya_moja_core;
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:async_redux/async_redux.dart';
@@ -124,20 +125,13 @@ class _PreLoadAppState extends State<PreLoadApp> with WidgetsBindingObserver {
       onDispose: (Store<AppState> store) {},
       builder: (BuildContext context, InitialRouteViewModel vm) {
         String initialRoute = vm.initialRoute ?? AppRoutes.loginPage;
-
+        
         final bool isPhoneLogin =
             initialRoute.compareTo(AppRoutes.loginPage) == 0;
         final bool isResumeWithPin =
             initialRoute.compareTo(AppRoutes.resumeWithPin) == 0;
-
         if (!isPhoneLogin && !isResumeWithPin) {
-          initialRoute = AppRoutes.facilitySelectionPage;
-        }
-
-        if (initialRoute == AppRoutes.homePage &&
-            (vm.currentFacility?.id == null ||
-                vm.currentFacility?.id == afya_moja_core.UNKNOWN)) {
-          initialRoute = AppRoutes.facilitySelectionPage;
+          initialRoute = bottomNavItems[vm.currentIndex ?? 0].onTapRoute;
         }
 
         return OverlaySupport(

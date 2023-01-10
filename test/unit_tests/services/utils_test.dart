@@ -141,7 +141,7 @@ void main() {
       store.dispatch(UpdateTermsAndConditionsAction(isAccepted: true));
 
       final OnboardingPathInfo path = getOnboardingPath(state: store.state);
-      expect(path.nextRoute, AppRoutes.facilitySelectionPage);
+      expect(path.nextRoute, AppRoutes.homePage);
     });
   });
 
