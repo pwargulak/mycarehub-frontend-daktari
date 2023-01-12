@@ -7,7 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/redux/actions/core/batch_update_misc_state_action.dart';
-import 'package:prohealth360_daktari/application/redux/actions/core/update_staff_profile_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/core/update_user_profile_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/actions/update_connectivity_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
@@ -308,7 +308,7 @@ void main() {
             ),
           );
           store.dispatch(
-            UpdateStaffProfileAction(
+            UpdateUserProfileAction(
               facilities: <Facility>[
                 Facility.fromJson(<String, dynamic>{
                   'ID': 'c2f92466-c82f-4e25-80ec-91dbeb8f722c',
@@ -362,7 +362,7 @@ void main() {
             ),
           );
           store.dispatch(
-            UpdateStaffProfileAction(
+            UpdateUserProfileAction(
               facilities: <Facility>[
                 Facility.fromJson(<String, dynamic>{
                   'ID': 'c2f92466-c82f-4e25-80ec-91dbeb8f722c',
@@ -417,7 +417,7 @@ void main() {
             ),
           );
           store.dispatch(
-            UpdateStaffProfileAction(
+            UpdateUserProfileAction(
               facilities: <Facility>[
                 Facility.fromJson(<String, dynamic>{
                   'ID': 'c2f92466-c82f-4e25-80ec-91dbeb8f722c',

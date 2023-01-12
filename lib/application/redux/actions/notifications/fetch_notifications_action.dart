@@ -6,7 +6,7 @@ import 'package:sghi_core/flutter_graphql_client/i_flutter_graphql_client.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/core/graphql/queries.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
-import 'package:prohealth360_daktari/application/redux/actions/core/update_staff_profile_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/core/update_user_profile_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/actions/notifications/read_notifications_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
@@ -36,7 +36,7 @@ class FetchNotificationsAction extends ReduxAction<AppState> {
   @override
   void before() {
     super.before();
-    dispatch(UpdateStaffProfileAction(notifications: <NotificationDetails>[]));
+    dispatch(UpdateUserProfileAction(notifications: <NotificationDetails>[]));
     dispatch(WaitAction<AppState>.add(fetchNotificationsFlag));
   }
 
@@ -86,7 +86,7 @@ class FetchNotificationsAction extends ReduxAction<AppState> {
 
       if (notifications.isNotEmpty) {
         dispatch(
-          UpdateStaffProfileAction(
+          UpdateUserProfileAction(
             notifications: notifications,
           ),
         );

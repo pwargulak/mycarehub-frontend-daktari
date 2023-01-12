@@ -16,11 +16,9 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 class FetchUserProgramsAction extends ReduxAction<AppState> {
   FetchUserProgramsAction({
     required this.client,
-    this.onFailure,
     required this.userId,
   });
 
-  final void Function(String message)? onFailure;
   final IGraphQlClient client;
   final String userId;
 
@@ -33,7 +31,12 @@ class FetchUserProgramsAction extends ReduxAction<AppState> {
   @override
   void before() {
     super.before();
-    dispatch(UpdateProgramsStateAction(userPrograms: <Program>[]));
+    dispatch(
+      UpdateProgramsStateAction(
+        userPrograms: <Program>[],
+        errorGettingPrograms: false,
+      ),
+    );
     dispatch(WaitAction<AppState>.add(fetchUserProgramsFlag));
   }
 
@@ -65,7 +68,7 @@ class FetchUserProgramsAction extends ReduxAction<AppState> {
           exception: errors,
         );
 
-        onFailure?.call(getErrorMessage('fetching your programs'));
+        dispatch(UpdateProgramsStateAction(errorGettingPrograms: true));
         return null;
       }
       final Map<String, dynamic>? data = body['data'] as Map<String, dynamic>?;
@@ -83,7 +86,7 @@ class FetchUserProgramsAction extends ReduxAction<AppState> {
         ),
       );
     } else {
-      onFailure?.call(getErrorMessage('fetching your programs'));
+      dispatch(UpdateProgramsStateAction(errorGettingPrograms: true));
       Sentry.captureException(
         UserException(
           processedResponse.message,

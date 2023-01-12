@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/actions/set_nick_name_action.dart';
-import 'package:prohealth360_daktari/application/redux/actions/update_user_profile_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/update_user_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/staff_state_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
@@ -69,7 +69,7 @@ class SettingsPage extends StatelessWidget {
                                 ///Set username/NickName to the new nickname
                                 StoreProvider.dispatch<AppState>(
                                   context,
-                                  UpdateUserProfileAction(
+                                  UpdateUserStateAction(
                                     nickName: editInformationItem
                                         .editInformationInputItem[0]
                                         .inputController
@@ -96,7 +96,7 @@ class SettingsPage extends StatelessWidget {
                                     onError: () {
                                       StoreProvider.dispatch<AppState>(
                                         context,
-                                        UpdateUserProfileAction(
+                                        UpdateUserStateAction(
                                           nickName: initialNickName,
                                         ),
                                       );

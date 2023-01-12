@@ -11,6 +11,7 @@ class ProgramsState with _$ProgramsState {
   factory ProgramsState({
     List<Program>? userPrograms,
     Program? selectedProgram,
+    bool? errorGettingPrograms,
   }) = _ProgramsState;
 
   factory ProgramsState.fromJson(Map<String, dynamic> json) =>
@@ -19,5 +20,6 @@ class ProgramsState with _$ProgramsState {
   factory ProgramsState.initial() => ProgramsState(
         userPrograms: <Program>[],
         selectedProgram: Program.initial(),
+        errorGettingPrograms: false,
       );
 }

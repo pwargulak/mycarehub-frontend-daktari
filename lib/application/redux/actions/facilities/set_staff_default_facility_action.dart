@@ -1,12 +1,13 @@
 import 'dart:async';
 
+import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:sghi_core/flutter_graphql_client/i_flutter_graphql_client.dart';
 import 'package:prohealth360_daktari/application/core/graphql/mutations.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
-import 'package:prohealth360_daktari/application/redux/actions/core/update_staff_profile_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/core/update_user_profile_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:http/http.dart';
@@ -70,8 +71,8 @@ class SetStaffDefaultFacilityAction extends ReduxAction<AppState> {
       if ((body['data'] as Map<String, dynamic>)['setStaffDefaultFacility'] ==
           true) {
         dispatch(
-          UpdateStaffProfileAction(
-            defaultFacility: facilityId,
+          UpdateUserProfileAction(
+            defaultFacility: Facility(id: facilityId),
           ),
         );
         dispatch(

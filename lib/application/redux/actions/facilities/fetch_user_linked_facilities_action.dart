@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:sghi_core/flutter_graphql_client/i_flutter_graphql_client.dart';
 import 'package:prohealth360_daktari/application/core/graphql/queries.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
-import 'package:prohealth360_daktari/application/redux/actions/core/update_staff_profile_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/core/update_user_profile_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/facilities/set_staff_default_facility_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
@@ -38,7 +38,7 @@ class FetchUserLinkedFacilitiesAction extends ReduxAction<AppState> {
   @override
   void before() {
     super.before();
-    dispatch(UpdateStaffProfileAction(linkedFacilities: <Facility>[]));
+    dispatch(UpdateUserProfileAction(linkedFacilities: <Facility>[]));
     dispatch(WaitAction<AppState>.add(retrieveFacilityFlag));
   }
 
@@ -85,7 +85,7 @@ class FetchUserLinkedFacilitiesAction extends ReduxAction<AppState> {
           getFacilitiesResponse.linkedFacilities?.facilities ?? <Facility>[];
 
       dispatch(
-        UpdateStaffProfileAction(
+        UpdateUserProfileAction(
           linkedFacilities: linkedFacilities,
         ),
       );

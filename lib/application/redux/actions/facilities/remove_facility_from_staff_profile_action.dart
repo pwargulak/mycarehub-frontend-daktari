@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:sghi_core/flutter_graphql_client/i_flutter_graphql_client.dart';
 import 'package:prohealth360_daktari/application/core/graphql/mutations.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
-import 'package:prohealth360_daktari/application/redux/actions/core/update_staff_profile_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/core/update_user_profile_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:http/http.dart';
@@ -81,7 +81,7 @@ class RemoveFacilityFromStaffProfileAction extends ReduxAction<AppState> {
             .where((Facility facility) => facility.id != facilityId)
             .toList();
         dispatch(
-          UpdateStaffProfileAction(linkedFacilities: linkedFacilities),
+          UpdateUserProfileAction(linkedFacilities: linkedFacilities),
         );
         onSuccess?.call();
         return state;

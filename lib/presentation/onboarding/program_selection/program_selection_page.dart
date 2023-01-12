@@ -1,25 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:prohealth360_daktari/application/core/services/custom_client.dart';
+import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/programs/fetch_user_programs_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/user_state_actions/logout_action.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/onboarding/programs_state_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/entities/programs/program.dart';
-import 'package:prohealth360_daktari/presentation/router/routes.dart';
-import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:async_redux/async_redux.dart';
+import 'package:prohealth360_daktari/presentation/onboarding/program_selection/widgets/programs_widget_list.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
-import 'package:prohealth360_daktari/application/redux/actions/core/update_staff_profile_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/core/update_user_profile_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
-import 'package:prohealth360_daktari/presentation/organization_selection/widgets/general_workstation_widget.dart';
+import 'package:sghi_core/flutter_graphql_client/i_flutter_graphql_client.dart';
 
 class ProgramSelectionPage extends StatelessWidget {
+  final IGraphQlClient? graphQlClient;
+
+  const ProgramSelectionPage({this.graphQlClient});
   @override
   Widget build(BuildContext context) {
+    final String userId = StoreProvider.state<AppState>(context)
+            ?.userProfileState
+            ?.userProfile
+            ?.id ??
+        '';
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -29,106 +38,99 @@ class ProgramSelectionPage extends StatelessWidget {
               converter: (Store<AppState> store) =>
                   ProgramsStateViewModel.fromStore(store),
               onInit: (Store<AppState> store) {
-                final String userId = StoreProvider.state<AppState>(context)
-                        ?.userProfileState
-                        ?.userProfile
-                        ?.id ??
-                    '';
                 store.dispatch(
-                  UpdateStaffProfileAction(
+                  UpdateUserProfileAction(
                     currentFacility: Facility.initial(),
                   ),
                 );
                 store.dispatch(
                   FetchUserProgramsAction(
-                    client: AppWrapperBase.of(context)!.graphQLClient
-                        as CustomClient,
-                    onFailure: (String message) {
-                      ScaffoldMessenger.of(context)
-                        ..hideCurrentSnackBar()
-                        ..showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              message,
-                            ),
-                            duration: const Duration(
-                              seconds: 5,
-                            ),
-                            action: dismissSnackBar(
-                              closeString,
-                              Colors.white,
-                              context,
-                            ),
-                          ),
-                        );
-                    },
+                    client: getCustomClient(
+                      context: context,
+                      graphQlClient: graphQlClient,
+                    ),
                     userId: userId,
                   ),
                 );
               },
               builder: (BuildContext context, ProgramsStateViewModel vm) {
                 final List<Program>? programs = vm.userPrograms;
-                final List<Widget> programsWidgetList = <Widget>[];
-
-                if (programs?.isNotEmpty ?? false) {
-                  for (final Program program in programs!) {
-                    programsWidgetList.add(
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20.0),
-                        child: GeneralWorkstationWidget(
-                          title: program.name ?? '',
-                          bodyWidget: Wrap(
-                            runSpacing: 12,
-                            spacing: 8,
-                          ),
-                          buttonText: proceedText,
-                          onButtonCallback: () =>
-                              Navigator.pushNamedAndRemoveUntil(
-                            context,
-                            AppRoutes.homePage,
-                            (Route<dynamic> route) => false,
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Center(
+                      child: SvgPicture.asset(programAmicoImage),
+                    ),
+                    if (vm.errorGettingPrograms ?? false)
+                      GenericErrorWidget(
+                        actionKey: helpNoDataWidgetKey,
+                        type: GenericNoDataTypes.noData,
+                        recoverCallback: () => StoreProvider.dispatch(
+                          context,
+                          FetchUserProgramsAction(
+                            client: getCustomClient(
+                              context: context,
+                              graphQlClient: graphQlClient,
+                            ),
+                            userId: userId,
                           ),
                         ),
-                      ),
-                    );
-                  }
-                }
-                if (vm.wait.isWaitingFor(fetchUserProgramsFlag)) {
-                  return Container(
-                    height: 300,
-                    padding: const EdgeInsets.all(20),
-                    child: const PlatformLoader(),
-                  );
-                } else {
-                  return Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Center(
-                        key: const Key('workStationChooserImage'),
-                        child: SvgPicture.asset(programAmicoImage),
+                        messageTitle: '',
+                        messageBody: <TextSpan>[
+                          TextSpan(text: getErrorMessage(fetchingProgramString))
+                        ],
+                      )
+                    else if (vm.wait.isWaitingFor(fetchUserProgramsFlag))
+                      Container(
+                        height: 300,
+                        padding: const EdgeInsets.all(20),
+                        child: const PlatformLoader(),
+                      )
+                    else if (programs?.isNotEmpty ?? false) ...<Widget>{
+                      Text(
+                        selectProgramString,
+                        style: boldSize20Text(
+                          AppColors.primaryColor,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
                       smallVerticalSizedBox,
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Column(
-                            children: <Widget>[
-                              Text(
-                                selectProgramString,
-                                style: boldSize20Text(
-                                  AppColors.primaryColor,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                              smallVerticalSizedBox,
-                              ...programsWidgetList,
-                            ],
+                      if (vm.wait.isWaitingFor(setUserProgramFlag))
+                        const Padding(
+                          padding: EdgeInsets.only(top: 60.0),
+                          child: PlatformLoader(),
+                        )
+                      else
+                        ProgramsListWidget(
+                          programs: programs!,
+                          graphQlClient: getCustomClient(
+                            context: context,
+                            graphQlClient: graphQlClient,
                           ),
-                        ],
+                        ),
+                    } else ...<Widget>{
+                      largeVerticalSizedBox,
+                      Text(
+                        noProgramsString,
+                        style: boldSize20Text(
+                          AppColors.primaryColor,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                    ],
-                  );
-                }
+                      size40VerticalSizedBox,
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () => StoreProvider.dispatch(
+                            context,
+                            LogoutAction(),
+                          ),
+                          child: const Text(logoutButtonText),
+                        ),
+                      )
+                    }
+                  ],
+                );
               },
             ),
           ),

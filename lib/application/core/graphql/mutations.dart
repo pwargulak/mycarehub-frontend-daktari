@@ -285,3 +285,25 @@ mutation setStaffDefaultFacility(
   )
 }
 ''';
+const String setStaffProgramMutation = r'''
+mutation setStaffProgram($programID: ID!) {
+  setStaffProgram(programID: $programID) {
+    staffProfile {
+      ID
+      User{
+        ID
+        Username
+        Name
+        Gender
+        Active
+      }
+      StaffNumber
+      DefaultFacility{
+        ID
+        name
+      }
+    }
+    communityToken
+  }
+}
+''';

@@ -7,14 +7,14 @@ part of 'user.dart';
 // **************************************************************************
 
 _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
-      userId: json['userID'] as String?,
-      username: json['userName'] as String?,
-      name: json['name'] as String?,
+      userId: json['ID'] as String?,
+      username: json['Username'] as String?,
+      name: json['Name'] as String?,
+      gender: genderFromJson(json['Gender'] as String?),
+      active: json['Active'] as bool? ?? false,
       firstName: json['firstName'] as String?,
       lastName: json['lastName'] as String?,
       userType: json['userType'] as String?,
-      gender: genderFromJson(json['gender'] as String?),
-      active: json['active'] as bool? ?? false,
       primaryContact: json['primaryContact'] == null
           ? null
           : Contact.fromJson(json['primaryContact'] as Map<String, dynamic>),
@@ -38,14 +38,14 @@ _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
     );
 
 Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
-      'userID': instance.userId,
-      'userName': instance.username,
-      'name': instance.name,
+      'ID': instance.userId,
+      'Username': instance.username,
+      'Name': instance.name,
+      'Gender': genderToJson(instance.gender),
+      'Active': instance.active,
       'firstName': instance.firstName,
       'lastName': instance.lastName,
       'userType': instance.userType,
-      'gender': genderToJson(instance.gender),
-      'active': instance.active,
       'primaryContact': instance.primaryContact,
       'lastSuccessfulLogin': instance.lastSuccessfulLogin,
       'lastFailedLogin': instance.lastFailedLogin,

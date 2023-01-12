@@ -5,8 +5,8 @@ import 'package:async_redux/async_redux.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/user.dart';
 
-class UpdateUserProfileAction extends ReduxAction<AppState> {
-  UpdateUserProfileAction({
+class UpdateUserStateAction extends ReduxAction<AppState> {
+  UpdateUserStateAction({
     this.active,
     this.nickName,
     this.phoneNumber,

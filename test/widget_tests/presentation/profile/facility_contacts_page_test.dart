@@ -22,7 +22,7 @@ void main() {
         initialState: AppState.initial().copyWith(
           userProfileState: UserProfileState(
             userProfile: UserProfile(
-              defaultFacility: 'test',
+              defaultFacility: Facility(id: 'test'),
               defaultFacilityName: 'test',
               facilities: <Facility>[
                 Facility(name: 'test', id: 'test', phone: '0712345678')
@@ -65,7 +65,7 @@ void main() {
         initialState: AppState.initial().copyWith(
             userProfileState: UserProfileState(
           userProfile: UserProfile(
-            defaultFacility: 'test',
+            defaultFacility: Facility(id: 'test'),
             defaultFacilityName: 'test',
             facilities: <Facility>[
               Facility(name: 'test', id: 'test', phone: '0712345678')

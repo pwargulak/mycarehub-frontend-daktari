@@ -7,7 +7,7 @@ import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/actions/terms/accept_terms_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/terms/get_terms_action.dart';
-import 'package:prohealth360_daktari/application/redux/actions/update_user_profile_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/update_user_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/terms/terms_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/entities/terms/terms_and_conditions.dart';
@@ -182,7 +182,7 @@ class _TermsAndConditionsPageState extends State<TermsAndConditionsPage> {
                                   : () {
                                       StoreProvider.dispatch(
                                         context,
-                                        UpdateUserProfileAction(
+                                        UpdateUserStateAction(
                                           termsAccepted: true,
                                         ),
                                       );

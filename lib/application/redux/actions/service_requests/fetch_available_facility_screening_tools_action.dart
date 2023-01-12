@@ -41,7 +41,7 @@ class FetchAvailableFacilityScreeningToolsAction extends ReduxAction<AppState> {
   @override
   Future<AppState?> reduce() async {
     final String facilityID =
-        state.userProfileState?.userProfile?.defaultFacility ?? '';
+        state.userProfileState?.userProfile?.defaultFacility?.id ?? '';
 
     final Map<String, dynamic> variables = <String, dynamic>{
       'facilityID': facilityID,

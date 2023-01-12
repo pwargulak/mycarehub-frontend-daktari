@@ -20,23 +20,23 @@ User _$UserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$User {
-  @JsonKey(name: 'userID')
+  @JsonKey(name: 'ID')
   String? get userId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'userName')
+  @JsonKey(name: 'Username')
   String? get username =>
       throw _privateConstructorUsedError; // This is the nickname
-  @JsonKey(name: 'name')
+  @JsonKey(name: 'Name')
   String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'Gender', fromJson: genderFromJson, toJson: genderToJson)
+  Gender? get gender => throw _privateConstructorUsedError;
+  @JsonKey(name: 'Active', defaultValue: false)
+  bool? get active => throw _privateConstructorUsedError;
   @JsonKey(name: 'firstName')
   String? get firstName => throw _privateConstructorUsedError;
   @JsonKey(name: 'lastName')
   String? get lastName => throw _privateConstructorUsedError;
   @JsonKey(name: 'userType')
   String? get userType => throw _privateConstructorUsedError;
-  @JsonKey(name: 'gender', fromJson: genderFromJson, toJson: genderToJson)
-  Gender? get gender => throw _privateConstructorUsedError;
-  @JsonKey(name: 'active', defaultValue: false)
-  bool? get active => throw _privateConstructorUsedError;
   @JsonKey(name: 'primaryContact')
   Contact? get primaryContact => throw _privateConstructorUsedError;
   @JsonKey(name: 'lastSuccessfulLogin')
@@ -84,22 +84,22 @@ abstract class $UserCopyWith<$Res> {
       _$UserCopyWithImpl<$Res, User>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'userID')
+      {@JsonKey(name: 'ID')
           String? userId,
-      @JsonKey(name: 'userName')
+      @JsonKey(name: 'Username')
           String? username,
-      @JsonKey(name: 'name')
+      @JsonKey(name: 'Name')
           String? name,
+      @JsonKey(name: 'Gender', fromJson: genderFromJson, toJson: genderToJson)
+          Gender? gender,
+      @JsonKey(name: 'Active', defaultValue: false)
+          bool? active,
       @JsonKey(name: 'firstName')
           String? firstName,
       @JsonKey(name: 'lastName')
           String? lastName,
       @JsonKey(name: 'userType')
           String? userType,
-      @JsonKey(name: 'gender', fromJson: genderFromJson, toJson: genderToJson)
-          Gender? gender,
-      @JsonKey(name: 'active', defaultValue: false)
-          bool? active,
       @JsonKey(name: 'primaryContact')
           Contact? primaryContact,
       @JsonKey(name: 'lastSuccessfulLogin')
@@ -151,11 +151,11 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? userId = freezed,
     Object? username = freezed,
     Object? name = freezed,
+    Object? gender = freezed,
+    Object? active = freezed,
     Object? firstName = freezed,
     Object? lastName = freezed,
     Object? userType = freezed,
-    Object? gender = freezed,
-    Object? active = freezed,
     Object? primaryContact = freezed,
     Object? lastSuccessfulLogin = freezed,
     Object? lastFailedLogin = freezed,
@@ -186,6 +186,14 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
+      gender: freezed == gender
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as Gender?,
+      active: freezed == active
+          ? _value.active
+          : active // ignore: cast_nullable_to_non_nullable
+              as bool?,
       firstName: freezed == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -198,14 +206,6 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.userType
           : userType // ignore: cast_nullable_to_non_nullable
               as String?,
-      gender: freezed == gender
-          ? _value.gender
-          : gender // ignore: cast_nullable_to_non_nullable
-              as Gender?,
-      active: freezed == active
-          ? _value.active
-          : active // ignore: cast_nullable_to_non_nullable
-              as bool?,
       primaryContact: freezed == primaryContact
           ? _value.primaryContact
           : primaryContact // ignore: cast_nullable_to_non_nullable
@@ -293,22 +293,22 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'userID')
+      {@JsonKey(name: 'ID')
           String? userId,
-      @JsonKey(name: 'userName')
+      @JsonKey(name: 'Username')
           String? username,
-      @JsonKey(name: 'name')
+      @JsonKey(name: 'Name')
           String? name,
+      @JsonKey(name: 'Gender', fromJson: genderFromJson, toJson: genderToJson)
+          Gender? gender,
+      @JsonKey(name: 'Active', defaultValue: false)
+          bool? active,
       @JsonKey(name: 'firstName')
           String? firstName,
       @JsonKey(name: 'lastName')
           String? lastName,
       @JsonKey(name: 'userType')
           String? userType,
-      @JsonKey(name: 'gender', fromJson: genderFromJson, toJson: genderToJson)
-          Gender? gender,
-      @JsonKey(name: 'active', defaultValue: false)
-          bool? active,
       @JsonKey(name: 'primaryContact')
           Contact? primaryContact,
       @JsonKey(name: 'lastSuccessfulLogin')
@@ -357,11 +357,11 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
     Object? userId = freezed,
     Object? username = freezed,
     Object? name = freezed,
+    Object? gender = freezed,
+    Object? active = freezed,
     Object? firstName = freezed,
     Object? lastName = freezed,
     Object? userType = freezed,
-    Object? gender = freezed,
-    Object? active = freezed,
     Object? primaryContact = freezed,
     Object? lastSuccessfulLogin = freezed,
     Object? lastFailedLogin = freezed,
@@ -392,6 +392,14 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
+      gender: freezed == gender
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as Gender?,
+      active: freezed == active
+          ? _value.active
+          : active // ignore: cast_nullable_to_non_nullable
+              as bool?,
       firstName: freezed == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -404,14 +412,6 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value.userType
           : userType // ignore: cast_nullable_to_non_nullable
               as String?,
-      gender: freezed == gender
-          ? _value.gender
-          : gender // ignore: cast_nullable_to_non_nullable
-              as Gender?,
-      active: freezed == active
-          ? _value.active
-          : active // ignore: cast_nullable_to_non_nullable
-              as bool?,
       primaryContact: freezed == primaryContact
           ? _value.primaryContact
           : primaryContact // ignore: cast_nullable_to_non_nullable
@@ -484,22 +484,22 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
 @JsonSerializable()
 class _$_User implements _User {
   _$_User(
-      {@JsonKey(name: 'userID')
+      {@JsonKey(name: 'ID')
           this.userId,
-      @JsonKey(name: 'userName')
+      @JsonKey(name: 'Username')
           this.username,
-      @JsonKey(name: 'name')
+      @JsonKey(name: 'Name')
           this.name,
+      @JsonKey(name: 'Gender', fromJson: genderFromJson, toJson: genderToJson)
+          this.gender,
+      @JsonKey(name: 'Active', defaultValue: false)
+          this.active,
       @JsonKey(name: 'firstName')
           this.firstName,
       @JsonKey(name: 'lastName')
           this.lastName,
       @JsonKey(name: 'userType')
           this.userType,
-      @JsonKey(name: 'gender', fromJson: genderFromJson, toJson: genderToJson)
-          this.gender,
-      @JsonKey(name: 'active', defaultValue: false)
-          this.active,
       @JsonKey(name: 'primaryContact')
           this.primaryContact,
       @JsonKey(name: 'lastSuccessfulLogin')
@@ -536,15 +536,21 @@ class _$_User implements _User {
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
   @override
-  @JsonKey(name: 'userID')
+  @JsonKey(name: 'ID')
   final String? userId;
   @override
-  @JsonKey(name: 'userName')
+  @JsonKey(name: 'Username')
   final String? username;
 // This is the nickname
   @override
-  @JsonKey(name: 'name')
+  @JsonKey(name: 'Name')
   final String? name;
+  @override
+  @JsonKey(name: 'Gender', fromJson: genderFromJson, toJson: genderToJson)
+  final Gender? gender;
+  @override
+  @JsonKey(name: 'Active', defaultValue: false)
+  final bool? active;
   @override
   @JsonKey(name: 'firstName')
   final String? firstName;
@@ -554,12 +560,6 @@ class _$_User implements _User {
   @override
   @JsonKey(name: 'userType')
   final String? userType;
-  @override
-  @JsonKey(name: 'gender', fromJson: genderFromJson, toJson: genderToJson)
-  final Gender? gender;
-  @override
-  @JsonKey(name: 'active', defaultValue: false)
-  final bool? active;
   @override
   @JsonKey(name: 'primaryContact')
   final Contact? primaryContact;
@@ -620,7 +620,7 @@ class _$_User implements _User {
 
   @override
   String toString() {
-    return 'User(userId: $userId, username: $username, name: $name, firstName: $firstName, lastName: $lastName, userType: $userType, gender: $gender, active: $active, primaryContact: $primaryContact, lastSuccessfulLogin: $lastSuccessfulLogin, lastFailedLogin: $lastFailedLogin, failedLoginCount: $failedLoginCount, nextAllowedLogin: $nextAllowedLogin, pinChangeRequired: $pinChangeRequired, hasSetPin: $hasSetPin, isPhoneVerified: $isPhoneVerified, hasSetSecurityQuestions: $hasSetSecurityQuestions, termsAccepted: $termsAccepted, acceptedTermsID: $acceptedTermsID, suspended: $suspended, avatar: $avatar, roles: $roles, pinUpdateRequired: $pinUpdateRequired, chatRoomToken: $chatRoomToken)';
+    return 'User(userId: $userId, username: $username, name: $name, gender: $gender, active: $active, firstName: $firstName, lastName: $lastName, userType: $userType, primaryContact: $primaryContact, lastSuccessfulLogin: $lastSuccessfulLogin, lastFailedLogin: $lastFailedLogin, failedLoginCount: $failedLoginCount, nextAllowedLogin: $nextAllowedLogin, pinChangeRequired: $pinChangeRequired, hasSetPin: $hasSetPin, isPhoneVerified: $isPhoneVerified, hasSetSecurityQuestions: $hasSetSecurityQuestions, termsAccepted: $termsAccepted, acceptedTermsID: $acceptedTermsID, suspended: $suspended, avatar: $avatar, roles: $roles, pinUpdateRequired: $pinUpdateRequired, chatRoomToken: $chatRoomToken)';
   }
 
   @override
@@ -632,14 +632,14 @@ class _$_User implements _User {
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.gender, gender) || other.gender == gender) &&
+            (identical(other.active, active) || other.active == active) &&
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
             (identical(other.lastName, lastName) ||
                 other.lastName == lastName) &&
             (identical(other.userType, userType) ||
                 other.userType == userType) &&
-            (identical(other.gender, gender) || other.gender == gender) &&
-            (identical(other.active, active) || other.active == active) &&
             (identical(other.primaryContact, primaryContact) ||
                 other.primaryContact == primaryContact) &&
             (identical(other.lastSuccessfulLogin, lastSuccessfulLogin) ||
@@ -680,11 +680,11 @@ class _$_User implements _User {
         userId,
         username,
         name,
+        gender,
+        active,
         firstName,
         lastName,
         userType,
-        gender,
-        active,
         primaryContact,
         lastSuccessfulLogin,
         lastFailedLogin,
@@ -719,22 +719,22 @@ class _$_User implements _User {
 
 abstract class _User implements User {
   factory _User(
-      {@JsonKey(name: 'userID')
+      {@JsonKey(name: 'ID')
           final String? userId,
-      @JsonKey(name: 'userName')
+      @JsonKey(name: 'Username')
           final String? username,
-      @JsonKey(name: 'name')
+      @JsonKey(name: 'Name')
           final String? name,
+      @JsonKey(name: 'Gender', fromJson: genderFromJson, toJson: genderToJson)
+          final Gender? gender,
+      @JsonKey(name: 'Active', defaultValue: false)
+          final bool? active,
       @JsonKey(name: 'firstName')
           final String? firstName,
       @JsonKey(name: 'lastName')
           final String? lastName,
       @JsonKey(name: 'userType')
           final String? userType,
-      @JsonKey(name: 'gender', fromJson: genderFromJson, toJson: genderToJson)
-          final Gender? gender,
-      @JsonKey(name: 'active', defaultValue: false)
-          final bool? active,
       @JsonKey(name: 'primaryContact')
           final Contact? primaryContact,
       @JsonKey(name: 'lastSuccessfulLogin')
@@ -770,14 +770,20 @@ abstract class _User implements User {
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
   @override
-  @JsonKey(name: 'userID')
+  @JsonKey(name: 'ID')
   String? get userId;
   @override
-  @JsonKey(name: 'userName')
+  @JsonKey(name: 'Username')
   String? get username;
   @override // This is the nickname
-  @JsonKey(name: 'name')
+  @JsonKey(name: 'Name')
   String? get name;
+  @override
+  @JsonKey(name: 'Gender', fromJson: genderFromJson, toJson: genderToJson)
+  Gender? get gender;
+  @override
+  @JsonKey(name: 'Active', defaultValue: false)
+  bool? get active;
   @override
   @JsonKey(name: 'firstName')
   String? get firstName;
@@ -787,12 +793,6 @@ abstract class _User implements User {
   @override
   @JsonKey(name: 'userType')
   String? get userType;
-  @override
-  @JsonKey(name: 'gender', fromJson: genderFromJson, toJson: genderToJson)
-  Gender? get gender;
-  @override
-  @JsonKey(name: 'active', defaultValue: false)
-  bool? get active;
   @override
   @JsonKey(name: 'primaryContact')
   Contact? get primaryContact;

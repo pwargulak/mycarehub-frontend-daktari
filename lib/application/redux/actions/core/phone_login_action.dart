@@ -15,7 +15,7 @@ import 'package:prohealth360_daktari/application/core/services/analytics_service
 import 'package:prohealth360_daktari/application/core/services/helpers.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/core/update_credentials_action.dart';
-import 'package:prohealth360_daktari/application/redux/actions/core/update_staff_profile_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/core/update_user_profile_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/core/update_user_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/actions/onboarding/update_onboarding_state_action.dart';
@@ -114,8 +114,7 @@ class PhoneLoginAction extends ReduxAction<AppState> {
       final String fullName =
           loginResponse.userResponse?.userProfile?.name ?? UNKNOWN;
 
-      final UserProfile? userProfile =
-          loginResponse.userResponse?.userProfile;
+      final UserProfile? userProfile = loginResponse.userResponse?.userProfile;
 
       User user = User(
         pinChangeRequired: false,
@@ -124,8 +123,7 @@ class PhoneLoginAction extends ReduxAction<AppState> {
         username: userProfile?.username,
         hasSetPin: userProfile?.hasSetPin,
         isPhoneVerified: userProfile?.isPhoneVerified,
-        hasSetSecurityQuestions:
-            userProfile?.hasSetSecurityQuestions,
+        hasSetSecurityQuestions: userProfile?.hasSetSecurityQuestions,
         pinUpdateRequired: userProfile?.pinUpdateRequired,
         termsAccepted: userProfile?.termsAccepted,
         suspended: userProfile?.suspended,
@@ -142,12 +140,10 @@ class PhoneLoginAction extends ReduxAction<AppState> {
 
       dispatch(
         UpdateOnboardingStateAction(
-          hasSetNickName:
-              (userProfile?.username?.isNotEmpty ?? false) &&
-                  (userProfile?.hasSetNickname ?? false),
+          hasSetNickName: (userProfile?.username?.isNotEmpty ?? false) &&
+              (userProfile?.hasSetNickname ?? false),
           hasAcceptedTerms: userProfile?.termsAccepted,
-          hasSetSecurityQuestions:
-              userProfile?.hasSetSecurityQuestions,
+          hasSetSecurityQuestions: userProfile?.hasSetSecurityQuestions,
           hasSetPin: userProfile?.hasSetPin,
           isPhoneVerified: userProfile?.isPhoneVerified,
         ),
@@ -156,14 +152,12 @@ class PhoneLoginAction extends ReduxAction<AppState> {
       dispatch(UpdateUserAction(user: user));
 
       dispatch(
-        UpdateStaffProfileAction(
+        UpdateUserProfileAction(
           id: loginResponse.userResponse?.userProfile?.id,
           staffNumber: loginResponse.userResponse?.userProfile?.staffNumber,
           defaultFacility:
               loginResponse.userResponse?.userProfile?.defaultFacility,
           facilities: loginResponse.userResponse?.userProfile?.facilities,
-          defaultFacilityName:
-              loginResponse.userResponse?.userProfile?.defaultFacilityName,
         ),
       );
 

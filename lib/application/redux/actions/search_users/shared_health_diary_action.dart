@@ -6,7 +6,7 @@ import 'package:sghi_core/flutter_graphql_client/i_flutter_graphql_client.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/core/graphql/queries.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
-import 'package:prohealth360_daktari/application/redux/actions/core/update_staff_profile_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/core/update_user_profile_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/health_diary/health_diary_entry.dart';
@@ -27,7 +27,7 @@ class SharedHealthDiaryAction extends ReduxAction<AppState> {
   void before() {
     super.before();
     dispatch(
-      UpdateStaffProfileAction(
+      UpdateUserProfileAction(
         healthDiaryEntries: <HealthDiaryEntry>[],
       ),
     );
@@ -77,7 +77,7 @@ class SharedHealthDiaryAction extends ReduxAction<AppState> {
       );
 
       dispatch(
-        UpdateStaffProfileAction(
+        UpdateUserProfileAction(
           healthDiaryEntries: healthDiaryResponse.healthDiaryEntry,
         ),
       );

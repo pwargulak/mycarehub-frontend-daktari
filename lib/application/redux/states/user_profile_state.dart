@@ -5,8 +5,7 @@ import 'package:prohealth360_daktari/domain/core/entities/core/user_profile.dart
 part 'user_profile_state.freezed.dart';
 part 'user_profile_state.g.dart';
 
-// AppState assembles all features states into one that can the pushed during creation
-// to create on global app store
+// UserProfileState assembles all the states relevant to the logged in user profile
 @freezed
 class UserProfileState with _$UserProfileState {
   factory UserProfileState({

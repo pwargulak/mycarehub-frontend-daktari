@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/actions/set_nick_name_action.dart';
-import 'package:prohealth360_daktari/application/redux/actions/update_user_profile_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/update_user_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/onboarding/set_nickname_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
@@ -144,7 +144,7 @@ class _SetNickNamePageState extends State<SetNickNamePage> {
                           nickName != null) {
                         StoreProvider.dispatch<AppState>(
                           context,
-                          UpdateUserProfileAction(nickName: nickName),
+                          UpdateUserStateAction(nickName: nickName),
                         );
 
                         await StoreProvider.dispatch<AppState>(

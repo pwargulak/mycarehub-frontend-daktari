@@ -493,13 +493,13 @@ class MockCustomGraphQlClient extends IGraphQlClient implements CustomClient {
   Future<AuthCredentials?> refreshToken() {
     return Future<AuthCredentials>(AuthCredentials.initial);
   }
-  
+
   @override
   BuildContext get context => throw UnimplementedError();
-  
+
   @override
   String get refreshTokenEndpoint => throw UnimplementedError();
-  
+
   @override
   String get userID => throw UnimplementedError();
 }
@@ -921,6 +921,37 @@ class MockTestGraphQlClient extends IGraphQlClient {
             <String, dynamic>{
               'data': <String, dynamic>{
                 'setStaffDefaultFacility': true,
+              }
+            },
+          ),
+          201,
+        ),
+      );
+    }
+    if (queryString.contains(setStaffProgramMutation)) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(
+            <String, dynamic>{
+              'data': <String, dynamic>{
+                'setStaffProgram': <String, dynamic>{
+                  'staffProfile': <String, dynamic>{
+                    'ID': 'testID',
+                    'StaffNumber': 'testStaffNumber',
+                    'DefaultFacility': <String, dynamic>{
+                      'ID': 'testID',
+                      'name': 'testName',
+                      'Username': 'testUserName',
+                      'Active': true,
+                      'Gender': 'male'
+                    },
+                    'User': <String, dynamic>{
+                      'ID': 'testID',
+                      'Name': 'testName'
+                    }
+                  },
+                  'communityToken': 'testToken'
+                },
               }
             },
           ),

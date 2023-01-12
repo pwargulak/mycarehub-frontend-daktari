@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:prohealth360_daktari/application/redux/actions/communities/check_user_is_owner.dart';
-import 'package:prohealth360_daktari/application/redux/actions/core/update_staff_profile_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/core/update_user_profile_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
@@ -23,7 +23,7 @@ void main() {
       final StoreTester<AppState> storeTester =
           StoreTester<AppState>.from(store);
 
-      storeTester.dispatch(UpdateStaffProfileAction(id: 'some-id'));
+      storeTester.dispatch(UpdateUserProfileAction(id: 'some-id'));
 
       final MockChannel mockStreamChannel = MockChannel();
       when(

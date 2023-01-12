@@ -1,5 +1,8 @@
 import 'dart:async';
 
+import 'package:prohealth360_daktari/application/core/services/app_setup_data.dart';
+import 'package:prohealth360_daktari/application/core/services/custom_client.dart';
+import 'package:prohealth360_daktari/application/core/services/helpers.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/foundation.dart';
@@ -19,6 +22,9 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.d
 import 'package:prohealth360_daktari/presentation/profile/widgets/edit_information_item.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
+import 'package:sghi_core/app_wrapper/enums.dart';
+import 'package:sghi_core/flutter_graphql_client/i_flutter_graphql_client.dart';
 
 ClientType clientTypeFromJson(String? clientString) {
   if (clientString == null || clientString.isEmpty || clientString == UNKNOWN) {
@@ -52,8 +58,7 @@ OnboardingPathInfo getOnboardingPath({required AppState state}) {
   final bool isSignedIn = state.credentials?.isSignedIn ?? false;
   final bool isPhoneVerified = state.onboardingState?.isPhoneVerified ?? false;
   final bool termsAccepted =
-      state.userProfileState?.userProfile?.user?.termsAccepted ??
-          false;
+      state.userProfileState?.userProfile?.user?.termsAccepted ?? false;
   final bool hasSetSecurityQuestions =
       state.onboardingState?.hasSetSecurityQuestions ?? false;
   final bool hasVerifiedSecurityQuestions =
@@ -61,8 +66,7 @@ OnboardingPathInfo getOnboardingPath({required AppState state}) {
   final bool hasSetPin = state.onboardingState?.hasSetPin ?? false;
   final bool hasSetNickName = state.onboardingState?.hasSetNickName ?? false;
   final String selectedProgramId =
-      state.userProfileState?.programsState?.selectedProgram?.id ??
-          UNKNOWN;
+      state.userProfileState?.programsState?.selectedProgram?.id ?? UNKNOWN;
 
   if (currentOnboardingStage == CurrentOnboardingStage.Login) {
     if (!isSignedIn) {
@@ -418,8 +422,7 @@ bool resumeWithPIN(AppState appState) {
   final OnboardingPathInfo navConfig = getOnboardingPath(state: appState);
   return isSignedIn &&
       (navConfig.nextRoute.compareTo(AppRoutes.homePage) == 0 ||
-          navConfig.nextRoute.compareTo(AppRoutes.programSelectionPage) ==
-              0) &&
+          navConfig.nextRoute.compareTo(AppRoutes.programSelectionPage) == 0) &&
       timeDifference > 5;
 }
 
@@ -485,9 +488,9 @@ dynamic reportErrorToSentry({
   Map<String, dynamic>? variables,
 }) {
   final Map<String, dynamic> stackTrace = <String, dynamic>{};
-  final String contact = state?.userProfileState?.userProfile?.user
-          ?.primaryContact?.value ??
-      UNKNOWN;
+  final String contact =
+      state?.userProfileState?.userProfile?.user?.primaryContact?.value ??
+          UNKNOWN;
   final bool isSignedIn = state?.credentials?.isSignedIn ?? false;
 
   if (response != null) {
@@ -511,4 +514,35 @@ dynamic reportErrorToSentry({
   });
 
   Sentry.captureException(stackTrace, stackTrace: stackTrace, hint: hint);
+}
+
+IGraphQlClient getCustomClient({
+  IGraphQlClient? graphQlClient,
+  required BuildContext context,
+}) {
+  if (graphQlClient != null) {
+    return graphQlClient;
+  }
+  final List<AppContext> contexts = AppWrapperBase.of(context)!.appContexts;
+  final AppSetupData appSetupData = getAppSetupData(contexts.last);
+  final String graphqlEndpoint =
+      appSetupData.customContext?.graphqlEndpoint ?? '';
+  final String refreshTokenEndpoint =
+      appSetupData.customContext?.refreshTokenEndpoint ?? '';
+
+  final String idToken =
+      StoreProvider.state<AppState>(context)?.credentials?.idToken ?? '';
+  final String userID = StoreProvider.state<AppState>(context)
+          ?.userProfileState
+          ?.userProfile
+          ?.id ??
+      '';
+
+  return CustomClient(
+    idToken,
+    graphqlEndpoint,
+    context: context,
+    refreshTokenEndpoint: refreshTokenEndpoint,
+    userID: userID,
+  );
 }

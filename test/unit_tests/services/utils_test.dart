@@ -14,7 +14,7 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/actions/core/update_credentials_action.dart';
-import 'package:prohealth360_daktari/application/redux/actions/core/update_staff_profile_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/core/update_user_profile_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/onboarding/update_onboarding_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/terms/update_terms_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
@@ -112,7 +112,7 @@ void main() {
     test('should return home page', () async {
       store.dispatch(UpdateCredentialsAction(isSignedIn: true));
       store.dispatch(
-        UpdateStaffProfileAction(
+        UpdateUserProfileAction(
           currentFacility: Facility(id: 'TestId', name: 'TestName'),
         ),
       );

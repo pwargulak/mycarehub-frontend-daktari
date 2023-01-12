@@ -31,15 +31,15 @@ class UserProfile with _$UserProfile {
     @JsonKey(name: 'pinUpdateRequired') bool? pinUpdateRequired,
     @JsonKey(name: 'termsAccepted') bool? termsAccepted,
     @JsonKey(name: 'suspended') bool? suspended,
-
     @JsonKey(name: 'user_id') String? userId,
     @JsonKey(name: 'active', defaultValue: false) bool? active,
-    @JsonKey(name: 'staff_number') String? staffNumber,
     @JsonKey(name: 'facilities') List<Facility>? facilities,
+
+    String? staffNumber,
+    Facility? defaultFacility,
     List<Facility>? linkedFacilities,
-    @JsonKey(name: 'default_facility') String? defaultFacility,
-    @JsonKey(name: 'defaultFacilityName') String? defaultFacilityName,
-    @JsonKey(name: 'user') User? user,
+    User? user,
+    String? defaultFacilityName,
 
     // invited communities
     CommunitiesState? communitiesState,
@@ -75,7 +75,8 @@ class UserProfile with _$UserProfile {
         facilities: <Facility>[],
         linkedFacilities: <Facility>[],
         managedClients: <ManagedClient>[],
-        defaultFacility: UNKNOWN,
+        defaultFacility: Facility.initial(),
+         defaultFacilityName: UNKNOWN,
         user: User.initial(),
         communitiesState: CommunitiesState.initial(),
         clientSharedDiaryEntries: <HealthDiaryEntry>[],

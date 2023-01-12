@@ -4,7 +4,7 @@ import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
-import 'package:prohealth360_daktari/application/redux/actions/core/update_staff_profile_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/core/update_user_profile_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/facilities/set_staff_default_facility_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
@@ -24,7 +24,7 @@ void main() {
         testInfoPrinter: (TestInfo<dynamic> testInfo) {},
       );
       storeTester.dispatch(
-        UpdateStaffProfileAction(
+        UpdateUserProfileAction(
           linkedFacilities: LinkedFacilities.fromJson(
             <String, dynamic>{'Facilities': mockFacilities},
           ).facilities,

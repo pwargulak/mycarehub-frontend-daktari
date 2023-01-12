@@ -655,7 +655,7 @@ class RouteGenerator {
 
       case AppRoutes.programSelectionPage:
         return MaterialPageRoute<ProgramSelectionPage>(
-          builder: (_) => ProgramSelectionPage(),
+          builder: (_) => const ProgramSelectionPage(),
           settings: const RouteSettings(name: 'Program Selection Page'),
         );
     }

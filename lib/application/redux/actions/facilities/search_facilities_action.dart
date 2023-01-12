@@ -5,7 +5,7 @@ import 'package:async_redux/async_redux.dart';
 import 'package:sghi_core/flutter_graphql_client/i_flutter_graphql_client.dart';
 import 'package:prohealth360_daktari/application/core/graphql/queries.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
-import 'package:prohealth360_daktari/application/redux/actions/core/update_staff_profile_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/core/update_user_profile_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
@@ -27,7 +27,7 @@ class SearchFacilitiesAction extends ReduxAction<AppState> {
   @override
   void before() {
     super.before();
-    dispatch(UpdateStaffProfileAction(facilities: <Facility>[]));
+    dispatch(UpdateUserProfileAction(facilities: <Facility>[]));
     dispatch(WaitAction<AppState>.add(fetchFacilitiesFlag));
   }
 
@@ -78,7 +78,7 @@ class SearchFacilitiesAction extends ReduxAction<AppState> {
         body['data'] as Map<String, dynamic>,
       );
 
-      dispatch(UpdateStaffProfileAction(facilities: facilities.facilities));
+      dispatch(UpdateUserProfileAction(facilities: facilities.facilities));
     } else {
       throw UserException(processedResponse.message);
     }

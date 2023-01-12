@@ -50,17 +50,14 @@ mixin _$UserProfile {
   String? get userId => throw _privateConstructorUsedError;
   @JsonKey(name: 'active', defaultValue: false)
   bool? get active => throw _privateConstructorUsedError;
-  @JsonKey(name: 'staff_number')
-  String? get staffNumber => throw _privateConstructorUsedError;
   @JsonKey(name: 'facilities')
   List<Facility>? get facilities => throw _privateConstructorUsedError;
+  String? get staffNumber => throw _privateConstructorUsedError;
+  Facility? get defaultFacility => throw _privateConstructorUsedError;
   List<Facility>? get linkedFacilities => throw _privateConstructorUsedError;
-  @JsonKey(name: 'default_facility')
-  String? get defaultFacility => throw _privateConstructorUsedError;
-  @JsonKey(name: 'defaultFacilityName')
-  String? get defaultFacilityName => throw _privateConstructorUsedError;
-  @JsonKey(name: 'user')
-  User? get user => throw _privateConstructorUsedError; // invited communities
+  User? get user => throw _privateConstructorUsedError;
+  String? get defaultFacilityName =>
+      throw _privateConstructorUsedError; // invited communities
   CommunitiesState? get communitiesState =>
       throw _privateConstructorUsedError; // recently shared health diary entries
   List<HealthDiaryEntry?>? get clientSharedDiaryEntries =>
@@ -99,12 +96,12 @@ abstract class $UserProfileCopyWith<$Res> {
       @JsonKey(name: 'suspended') bool? suspended,
       @JsonKey(name: 'user_id') String? userId,
       @JsonKey(name: 'active', defaultValue: false) bool? active,
-      @JsonKey(name: 'staff_number') String? staffNumber,
       @JsonKey(name: 'facilities') List<Facility>? facilities,
+      String? staffNumber,
+      Facility? defaultFacility,
       List<Facility>? linkedFacilities,
-      @JsonKey(name: 'default_facility') String? defaultFacility,
-      @JsonKey(name: 'defaultFacilityName') String? defaultFacilityName,
-      @JsonKey(name: 'user') User? user,
+      User? user,
+      String? defaultFacilityName,
       CommunitiesState? communitiesState,
       List<HealthDiaryEntry?>? clientSharedDiaryEntries,
       List<NotificationDetails?>? notifications,
@@ -113,6 +110,7 @@ abstract class $UserProfileCopyWith<$Res> {
       NotificationFilterState? notificationFilterState,
       Facility? currentFacility});
 
+  $FacilityCopyWith<$Res>? get defaultFacility;
   $UserCopyWith<$Res>? get user;
   $CommunitiesStateCopyWith<$Res>? get communitiesState;
   $NotificationFilterStateCopyWith<$Res>? get notificationFilterState;
@@ -145,12 +143,12 @@ class _$UserProfileCopyWithImpl<$Res, $Val extends UserProfile>
     Object? suspended = freezed,
     Object? userId = freezed,
     Object? active = freezed,
-    Object? staffNumber = freezed,
     Object? facilities = freezed,
-    Object? linkedFacilities = freezed,
+    Object? staffNumber = freezed,
     Object? defaultFacility = freezed,
-    Object? defaultFacilityName = freezed,
+    Object? linkedFacilities = freezed,
     Object? user = freezed,
+    Object? defaultFacilityName = freezed,
     Object? communitiesState = freezed,
     Object? clientSharedDiaryEntries = freezed,
     Object? notifications = freezed,
@@ -212,30 +210,30 @@ class _$UserProfileCopyWithImpl<$Res, $Val extends UserProfile>
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
               as bool?,
-      staffNumber: freezed == staffNumber
-          ? _value.staffNumber
-          : staffNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
       facilities: freezed == facilities
           ? _value.facilities
           : facilities // ignore: cast_nullable_to_non_nullable
               as List<Facility>?,
+      staffNumber: freezed == staffNumber
+          ? _value.staffNumber
+          : staffNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      defaultFacility: freezed == defaultFacility
+          ? _value.defaultFacility
+          : defaultFacility // ignore: cast_nullable_to_non_nullable
+              as Facility?,
       linkedFacilities: freezed == linkedFacilities
           ? _value.linkedFacilities
           : linkedFacilities // ignore: cast_nullable_to_non_nullable
               as List<Facility>?,
-      defaultFacility: freezed == defaultFacility
-          ? _value.defaultFacility
-          : defaultFacility // ignore: cast_nullable_to_non_nullable
-              as String?,
-      defaultFacilityName: freezed == defaultFacilityName
-          ? _value.defaultFacilityName
-          : defaultFacilityName // ignore: cast_nullable_to_non_nullable
-              as String?,
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User?,
+      defaultFacilityName: freezed == defaultFacilityName
+          ? _value.defaultFacilityName
+          : defaultFacilityName // ignore: cast_nullable_to_non_nullable
+              as String?,
       communitiesState: freezed == communitiesState
           ? _value.communitiesState
           : communitiesState // ignore: cast_nullable_to_non_nullable
@@ -265,6 +263,18 @@ class _$UserProfileCopyWithImpl<$Res, $Val extends UserProfile>
           : currentFacility // ignore: cast_nullable_to_non_nullable
               as Facility?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FacilityCopyWith<$Res>? get defaultFacility {
+    if (_value.defaultFacility == null) {
+      return null;
+    }
+
+    return $FacilityCopyWith<$Res>(_value.defaultFacility!, (value) {
+      return _then(_value.copyWith(defaultFacility: value) as $Val);
+    });
   }
 
   @override
@@ -339,12 +349,12 @@ abstract class _$$_UserProfileCopyWith<$Res>
       @JsonKey(name: 'suspended') bool? suspended,
       @JsonKey(name: 'user_id') String? userId,
       @JsonKey(name: 'active', defaultValue: false) bool? active,
-      @JsonKey(name: 'staff_number') String? staffNumber,
       @JsonKey(name: 'facilities') List<Facility>? facilities,
+      String? staffNumber,
+      Facility? defaultFacility,
       List<Facility>? linkedFacilities,
-      @JsonKey(name: 'default_facility') String? defaultFacility,
-      @JsonKey(name: 'defaultFacilityName') String? defaultFacilityName,
-      @JsonKey(name: 'user') User? user,
+      User? user,
+      String? defaultFacilityName,
       CommunitiesState? communitiesState,
       List<HealthDiaryEntry?>? clientSharedDiaryEntries,
       List<NotificationDetails?>? notifications,
@@ -353,6 +363,8 @@ abstract class _$$_UserProfileCopyWith<$Res>
       NotificationFilterState? notificationFilterState,
       Facility? currentFacility});
 
+  @override
+  $FacilityCopyWith<$Res>? get defaultFacility;
   @override
   $UserCopyWith<$Res>? get user;
   @override
@@ -387,12 +399,12 @@ class __$$_UserProfileCopyWithImpl<$Res>
     Object? suspended = freezed,
     Object? userId = freezed,
     Object? active = freezed,
-    Object? staffNumber = freezed,
     Object? facilities = freezed,
-    Object? linkedFacilities = freezed,
+    Object? staffNumber = freezed,
     Object? defaultFacility = freezed,
-    Object? defaultFacilityName = freezed,
+    Object? linkedFacilities = freezed,
     Object? user = freezed,
+    Object? defaultFacilityName = freezed,
     Object? communitiesState = freezed,
     Object? clientSharedDiaryEntries = freezed,
     Object? notifications = freezed,
@@ -454,30 +466,30 @@ class __$$_UserProfileCopyWithImpl<$Res>
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
               as bool?,
-      staffNumber: freezed == staffNumber
-          ? _value.staffNumber
-          : staffNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
       facilities: freezed == facilities
           ? _value._facilities
           : facilities // ignore: cast_nullable_to_non_nullable
               as List<Facility>?,
+      staffNumber: freezed == staffNumber
+          ? _value.staffNumber
+          : staffNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      defaultFacility: freezed == defaultFacility
+          ? _value.defaultFacility
+          : defaultFacility // ignore: cast_nullable_to_non_nullable
+              as Facility?,
       linkedFacilities: freezed == linkedFacilities
           ? _value._linkedFacilities
           : linkedFacilities // ignore: cast_nullable_to_non_nullable
               as List<Facility>?,
-      defaultFacility: freezed == defaultFacility
-          ? _value.defaultFacility
-          : defaultFacility // ignore: cast_nullable_to_non_nullable
-              as String?,
-      defaultFacilityName: freezed == defaultFacilityName
-          ? _value.defaultFacilityName
-          : defaultFacilityName // ignore: cast_nullable_to_non_nullable
-              as String?,
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User?,
+      defaultFacilityName: freezed == defaultFacilityName
+          ? _value.defaultFacilityName
+          : defaultFacilityName // ignore: cast_nullable_to_non_nullable
+              as String?,
       communitiesState: freezed == communitiesState
           ? _value.communitiesState
           : communitiesState // ignore: cast_nullable_to_non_nullable
@@ -527,12 +539,12 @@ class _$_UserProfile implements _UserProfile {
       @JsonKey(name: 'suspended') this.suspended,
       @JsonKey(name: 'user_id') this.userId,
       @JsonKey(name: 'active', defaultValue: false) this.active,
-      @JsonKey(name: 'staff_number') this.staffNumber,
       @JsonKey(name: 'facilities') final List<Facility>? facilities,
+      this.staffNumber,
+      this.defaultFacility,
       final List<Facility>? linkedFacilities,
-      @JsonKey(name: 'default_facility') this.defaultFacility,
-      @JsonKey(name: 'defaultFacilityName') this.defaultFacilityName,
-      @JsonKey(name: 'user') this.user,
+      this.user,
+      this.defaultFacilityName,
       this.communitiesState,
       final List<HealthDiaryEntry?>? clientSharedDiaryEntries,
       final List<NotificationDetails?>? notifications,
@@ -594,9 +606,6 @@ class _$_UserProfile implements _UserProfile {
   @override
   @JsonKey(name: 'active', defaultValue: false)
   final bool? active;
-  @override
-  @JsonKey(name: 'staff_number')
-  final String? staffNumber;
   final List<Facility>? _facilities;
   @override
   @JsonKey(name: 'facilities')
@@ -607,6 +616,10 @@ class _$_UserProfile implements _UserProfile {
     return EqualUnmodifiableListView(value);
   }
 
+  @override
+  final String? staffNumber;
+  @override
+  final Facility? defaultFacility;
   final List<Facility>? _linkedFacilities;
   @override
   List<Facility>? get linkedFacilities {
@@ -617,14 +630,9 @@ class _$_UserProfile implements _UserProfile {
   }
 
   @override
-  @JsonKey(name: 'default_facility')
-  final String? defaultFacility;
-  @override
-  @JsonKey(name: 'defaultFacilityName')
-  final String? defaultFacilityName;
-  @override
-  @JsonKey(name: 'user')
   final User? user;
+  @override
+  final String? defaultFacilityName;
 // invited communities
   @override
   final CommunitiesState? communitiesState;
@@ -675,7 +683,7 @@ class _$_UserProfile implements _UserProfile {
 
   @override
   String toString() {
-    return 'UserProfile(id: $id, username: $username, name: $name, pinChangeRequired: $pinChangeRequired, hasSetPin: $hasSetPin, isPhoneVerified: $isPhoneVerified, hasSetSecurityQuestions: $hasSetSecurityQuestions, hasSetNickname: $hasSetNickname, pinUpdateRequired: $pinUpdateRequired, termsAccepted: $termsAccepted, suspended: $suspended, userId: $userId, active: $active, staffNumber: $staffNumber, facilities: $facilities, linkedFacilities: $linkedFacilities, defaultFacility: $defaultFacility, defaultFacilityName: $defaultFacilityName, user: $user, communitiesState: $communitiesState, clientSharedDiaryEntries: $clientSharedDiaryEntries, notifications: $notifications, clientCaregivers: $clientCaregivers, managedClients: $managedClients, notificationFilterState: $notificationFilterState, currentFacility: $currentFacility)';
+    return 'UserProfile(id: $id, username: $username, name: $name, pinChangeRequired: $pinChangeRequired, hasSetPin: $hasSetPin, isPhoneVerified: $isPhoneVerified, hasSetSecurityQuestions: $hasSetSecurityQuestions, hasSetNickname: $hasSetNickname, pinUpdateRequired: $pinUpdateRequired, termsAccepted: $termsAccepted, suspended: $suspended, userId: $userId, active: $active, facilities: $facilities, staffNumber: $staffNumber, defaultFacility: $defaultFacility, linkedFacilities: $linkedFacilities, user: $user, defaultFacilityName: $defaultFacilityName, communitiesState: $communitiesState, clientSharedDiaryEntries: $clientSharedDiaryEntries, notifications: $notifications, clientCaregivers: $clientCaregivers, managedClients: $managedClients, notificationFilterState: $notificationFilterState, currentFacility: $currentFacility)';
   }
 
   @override
@@ -706,17 +714,17 @@ class _$_UserProfile implements _UserProfile {
                 other.suspended == suspended) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.active, active) || other.active == active) &&
-            (identical(other.staffNumber, staffNumber) ||
-                other.staffNumber == staffNumber) &&
             const DeepCollectionEquality()
                 .equals(other._facilities, _facilities) &&
-            const DeepCollectionEquality()
-                .equals(other._linkedFacilities, _linkedFacilities) &&
+            (identical(other.staffNumber, staffNumber) ||
+                other.staffNumber == staffNumber) &&
             (identical(other.defaultFacility, defaultFacility) ||
                 other.defaultFacility == defaultFacility) &&
+            const DeepCollectionEquality()
+                .equals(other._linkedFacilities, _linkedFacilities) &&
+            (identical(other.user, user) || other.user == user) &&
             (identical(other.defaultFacilityName, defaultFacilityName) ||
                 other.defaultFacilityName == defaultFacilityName) &&
-            (identical(other.user, user) || other.user == user) &&
             (identical(other.communitiesState, communitiesState) ||
                 other.communitiesState == communitiesState) &&
             const DeepCollectionEquality().equals(
@@ -751,12 +759,12 @@ class _$_UserProfile implements _UserProfile {
         suspended,
         userId,
         active,
-        staffNumber,
         const DeepCollectionEquality().hash(_facilities),
-        const DeepCollectionEquality().hash(_linkedFacilities),
+        staffNumber,
         defaultFacility,
-        defaultFacilityName,
+        const DeepCollectionEquality().hash(_linkedFacilities),
         user,
+        defaultFacilityName,
         communitiesState,
         const DeepCollectionEquality().hash(_clientSharedDiaryEntries),
         const DeepCollectionEquality().hash(_notifications),
@@ -808,17 +816,13 @@ abstract class _UserProfile implements UserProfile {
           final String? userId,
       @JsonKey(name: 'active', defaultValue: false)
           final bool? active,
-      @JsonKey(name: 'staff_number')
-          final String? staffNumber,
       @JsonKey(name: 'facilities')
           final List<Facility>? facilities,
+      final String? staffNumber,
+      final Facility? defaultFacility,
       final List<Facility>? linkedFacilities,
-      @JsonKey(name: 'default_facility')
-          final String? defaultFacility,
-      @JsonKey(name: 'defaultFacilityName')
-          final String? defaultFacilityName,
-      @JsonKey(name: 'user')
-          final User? user,
+      final User? user,
+      final String? defaultFacilityName,
       final CommunitiesState? communitiesState,
       final List<HealthDiaryEntry?>? clientSharedDiaryEntries,
       final List<NotificationDetails?>? notifications,
@@ -874,22 +878,18 @@ abstract class _UserProfile implements UserProfile {
   @JsonKey(name: 'active', defaultValue: false)
   bool? get active;
   @override
-  @JsonKey(name: 'staff_number')
-  String? get staffNumber;
-  @override
   @JsonKey(name: 'facilities')
   List<Facility>? get facilities;
   @override
+  String? get staffNumber;
+  @override
+  Facility? get defaultFacility;
+  @override
   List<Facility>? get linkedFacilities;
   @override
-  @JsonKey(name: 'default_facility')
-  String? get defaultFacility;
-  @override
-  @JsonKey(name: 'defaultFacilityName')
-  String? get defaultFacilityName;
-  @override
-  @JsonKey(name: 'user')
   User? get user;
+  @override
+  String? get defaultFacilityName;
   @override // invited communities
   CommunitiesState? get communitiesState;
   @override // recently shared health diary entries

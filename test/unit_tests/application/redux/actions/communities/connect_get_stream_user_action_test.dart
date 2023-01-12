@@ -4,7 +4,7 @@ import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:prohealth360_daktari/application/redux/actions/communities/connect_get_stream_user_action.dart';
-import 'package:prohealth360_daktari/application/redux/actions/core/update_staff_profile_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/core/update_user_profile_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/infrastructure/endpoints.dart';
@@ -26,7 +26,7 @@ void main() {
 
   group('ConnectGetStreamUserAction', () {
     test('should complete normally', () async {
-      store.dispatch(UpdateStaffProfileAction(id: 'some-id'));
+      store.dispatch(UpdateUserProfileAction(id: 'some-id'));
 
       final StoreTester<AppState> storeTester =
           StoreTester<AppState>.from(store);
@@ -62,7 +62,7 @@ void main() {
     });
 
     test('should throw exception if client profile id is null', () async {
-      store.dispatch(UpdateStaffProfileAction(id: ''));
+      store.dispatch(UpdateUserProfileAction(id: ''));
 
       final StoreTester<AppState> storeTester =
           StoreTester<AppState>.from(store);
@@ -94,7 +94,7 @@ void main() {
     });
 
     test('should handle StreamWebSocketError', () async {
-      store.dispatch(UpdateStaffProfileAction(id: 'some-id'));
+      store.dispatch(UpdateUserProfileAction(id: 'some-id'));
 
       final StoreTester<AppState> storeTester =
           StoreTester<AppState>.from(store);
@@ -134,7 +134,7 @@ void main() {
     });
 
     test('should handle StreamWebSocketError apart from token error', () async {
-      store.dispatch(UpdateStaffProfileAction(id: 'some-id'));
+      store.dispatch(UpdateUserProfileAction(id: 'some-id'));
 
       final StoreTester<AppState> storeTester =
           StoreTester<AppState>.from(store);
@@ -176,7 +176,7 @@ void main() {
     test(
         'should handle StreamWebSocketError when a connection is already in progress',
         () async {
-      store.dispatch(UpdateStaffProfileAction(id: 'some-id'));
+      store.dispatch(UpdateUserProfileAction(id: 'some-id'));
 
       final StoreTester<AppState> storeTester =
           StoreTester<AppState>.from(store);
@@ -213,7 +213,7 @@ void main() {
     });
 
     test('should handle general errors', () async {
-      store.dispatch(UpdateStaffProfileAction(id: 'some-id'));
+      store.dispatch(UpdateUserProfileAction(id: 'some-id'));
 
       final StoreTester<AppState> storeTester =
           StoreTester<AppState>.from(store);

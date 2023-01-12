@@ -1006,7 +1006,12 @@ String welcomeFacilitySelectionDescription(int count) =>
     "We've noticed that you're part of $count facilities. Choose which facility you would like to log into. Here are the details";
 
 const String selectFacilityString = 'Please select your facility';
+
+// User Programs
 const String selectProgramString = 'Please choose your program';
+const String fetchingProgramString = 'fetching your programs';
+const String noProgramsString = 'There are no programs linked to your account';
+
 
 const String continueString = 'Continue';
 

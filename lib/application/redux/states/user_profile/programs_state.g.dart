@@ -14,10 +14,12 @@ _$_ProgramsState _$$_ProgramsStateFromJson(Map<String, dynamic> json) =>
       selectedProgram: json['selectedProgram'] == null
           ? null
           : Program.fromJson(json['selectedProgram'] as Map<String, dynamic>),
+      errorGettingPrograms: json['errorGettingPrograms'] as bool?,
     );
 
 Map<String, dynamic> _$$_ProgramsStateToJson(_$_ProgramsState instance) =>
     <String, dynamic>{
       'userPrograms': instance.userPrograms,
       'selectedProgram': instance.selectedProgram,
+      'errorGettingPrograms': instance.errorGettingPrograms,
     };

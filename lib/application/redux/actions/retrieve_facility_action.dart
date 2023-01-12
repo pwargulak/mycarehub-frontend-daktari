@@ -4,7 +4,7 @@ import 'package:async_redux/async_redux.dart';
 import 'package:sghi_core/flutter_graphql_client/i_flutter_graphql_client.dart';
 import 'package:prohealth360_daktari/application/core/graphql/queries.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
-import 'package:prohealth360_daktari/application/redux/actions/core/update_staff_profile_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/core/update_user_profile_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:http/http.dart' as http;
@@ -35,7 +35,7 @@ class RetrieveFacilityAction extends ReduxAction<AppState> {
   @override
   Future<AppState> reduce() async {
     final String? facilityID =
-        state.userProfileState?.userProfile?.defaultFacility;
+        state.userProfileState?.userProfile?.defaultFacility?.id;
     final String? facilityName =
         state.userProfileState?.userProfile?.defaultFacilityName;
 
@@ -82,7 +82,7 @@ class RetrieveFacilityAction extends ReduxAction<AppState> {
             .where((Facility element) => element.name != facilityName)
             .toList();
         dispatch(
-          UpdateStaffProfileAction(
+          UpdateUserProfileAction(
             facilities: <Facility>[facility, ...removed],
           ),
         );

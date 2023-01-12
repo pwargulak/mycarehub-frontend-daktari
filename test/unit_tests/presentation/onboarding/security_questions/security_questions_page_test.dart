@@ -17,7 +17,7 @@ import 'package:intl/intl.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/actions/onboarding/update_onboarding_state_action.dart';
-import 'package:prohealth360_daktari/application/redux/actions/update_user_profile_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/update_user_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
@@ -196,7 +196,7 @@ void main() {
     testWidgets('Navigates to Create New Pin page',
         (WidgetTester tester) async {
       store.dispatch(
-        UpdateUserProfileAction(
+        UpdateUserStateAction(
           pinChangeRequired: true,
           termsAccepted: true,
           isPhoneVerified: true,

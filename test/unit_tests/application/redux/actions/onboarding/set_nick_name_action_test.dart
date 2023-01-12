@@ -93,7 +93,7 @@ void main() {
       expect(
         navDetails?.predicate.call(
           MaterialPageRoute<ProgramSelectionPage>(
-            builder: (BuildContext context) => ProgramSelectionPage(),
+            builder: (BuildContext context) => const ProgramSelectionPage(),
           ),
         ),
         false,

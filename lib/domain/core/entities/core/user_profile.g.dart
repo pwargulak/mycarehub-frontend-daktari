@@ -21,18 +21,20 @@ _$_UserProfile _$$_UserProfileFromJson(Map<String, dynamic> json) =>
       suspended: json['suspended'] as bool?,
       userId: json['user_id'] as String?,
       active: json['active'] as bool? ?? false,
-      staffNumber: json['staff_number'] as String?,
       facilities: (json['facilities'] as List<dynamic>?)
           ?.map((e) => Facility.fromJson(e as Map<String, dynamic>))
           .toList(),
+      staffNumber: json['staffNumber'] as String?,
+      defaultFacility: json['defaultFacility'] == null
+          ? null
+          : Facility.fromJson(json['defaultFacility'] as Map<String, dynamic>),
       linkedFacilities: (json['linkedFacilities'] as List<dynamic>?)
           ?.map((e) => Facility.fromJson(e as Map<String, dynamic>))
           .toList(),
-      defaultFacility: json['default_facility'] as String?,
-      defaultFacilityName: json['defaultFacilityName'] as String?,
       user: json['user'] == null
           ? null
           : User.fromJson(json['user'] as Map<String, dynamic>),
+      defaultFacilityName: json['defaultFacilityName'] as String?,
       communitiesState: json['communitiesState'] == null
           ? null
           : CommunitiesState.fromJson(
@@ -79,12 +81,12 @@ Map<String, dynamic> _$$_UserProfileToJson(_$_UserProfile instance) =>
       'suspended': instance.suspended,
       'user_id': instance.userId,
       'active': instance.active,
-      'staff_number': instance.staffNumber,
       'facilities': instance.facilities,
+      'staffNumber': instance.staffNumber,
+      'defaultFacility': instance.defaultFacility,
       'linkedFacilities': instance.linkedFacilities,
-      'default_facility': instance.defaultFacility,
-      'defaultFacilityName': instance.defaultFacilityName,
       'user': instance.user,
+      'defaultFacilityName': instance.defaultFacilityName,
       'communitiesState': instance.communitiesState,
       'clientSharedDiaryEntries': instance.clientSharedDiaryEntries,
       'notifications': instance.notifications,

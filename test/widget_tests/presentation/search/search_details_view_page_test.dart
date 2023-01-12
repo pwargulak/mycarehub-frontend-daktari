@@ -6,7 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
-import 'package:prohealth360_daktari/application/redux/actions/core/update_staff_profile_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/core/update_user_profile_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/actions/search_users/update_search_user_response_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
@@ -35,7 +35,7 @@ void main() {
       setupFirebaseMessagingMocks();
       await Firebase.initializeApp();
       store.dispatch(
-        UpdateStaffProfileAction(
+        UpdateUserProfileAction(
           currentFacility: Facility(id: 'testID', name: 'TestName'),
         ),
       );

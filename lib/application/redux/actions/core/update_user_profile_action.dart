@@ -7,8 +7,8 @@ import 'package:prohealth360_daktari/domain/core/entities/caregiver/caregiver.da
 import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
 import 'package:prohealth360_daktari/domain/core/entities/health_diary/health_diary_entry.dart';
 
-class UpdateStaffProfileAction extends ReduxAction<AppState> {
-  UpdateStaffProfileAction({
+class UpdateUserProfileAction extends ReduxAction<AppState> {
+  UpdateUserProfileAction({
     this.id,
     this.userId,
     this.active,
@@ -17,7 +17,6 @@ class UpdateStaffProfileAction extends ReduxAction<AppState> {
     this.facilities,
     this.linkedFacilities,
     this.healthDiaryEntries,
-    this.defaultFacilityName,
     this.notifications,
     this.managedClients,
     this.currentFacility,
@@ -25,8 +24,7 @@ class UpdateStaffProfileAction extends ReduxAction<AppState> {
   });
 
   final bool? active;
-  final String? defaultFacility;
-  final String? defaultFacilityName;
+  final Facility? defaultFacility;
   final List<Facility>? facilities;
   final List<Facility>? linkedFacilities;
   final List<ManagedClient>? managedClients;
@@ -58,8 +56,6 @@ class UpdateStaffProfileAction extends ReduxAction<AppState> {
               state.userProfileState?.userProfile?.clientSharedDiaryEntries,
           notifications: notifications ??
               state.userProfileState?.userProfile?.notifications,
-          defaultFacilityName: defaultFacilityName ??
-              state.userProfileState?.userProfile?.defaultFacilityName,
           managedClients: managedClients ??
               state.userProfileState?.userProfile?.managedClients,
           currentFacility: currentFacility ??

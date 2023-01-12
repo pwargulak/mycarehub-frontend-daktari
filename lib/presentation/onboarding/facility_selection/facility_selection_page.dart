@@ -5,7 +5,7 @@ import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
-import 'package:prohealth360_daktari/application/redux/actions/core/update_staff_profile_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/core/update_user_profile_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/facilities/fetch_user_linked_facilities_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/facilities/set_staff_default_facility_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
@@ -34,7 +34,7 @@ class FacilitySelectionPage extends StatelessWidget {
                         ?.id ??
                     '';
                 store.dispatch(
-                  UpdateStaffProfileAction(
+                  UpdateUserProfileAction(
                     currentFacility: Facility.initial(),
                   ),
                 );
