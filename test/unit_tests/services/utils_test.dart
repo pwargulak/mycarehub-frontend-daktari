@@ -94,20 +94,6 @@ void main() {
       expect(path.nextRoute, AppRoutes.setPinPage);
     });
 
-    test('should return set nickname page', () async {
-      store.dispatch(UpdateCredentialsAction(isSignedIn: true));
-      store.dispatch(
-        UpdateOnboardingStateAction(
-          isPhoneVerified: true,
-          hasSetSecurityQuestions: true,
-          hasSetPin: true,
-        ),
-      );
-      store.dispatch(UpdateTermsAndConditionsAction(isAccepted: true));
-
-      final OnboardingPathInfo path = getOnboardingPath(state: store.state);
-      expect(path.nextRoute, AppRoutes.setNicknamePage);
-    });
 
     test('should return home page', () async {
       store.dispatch(UpdateCredentialsAction(isSignedIn: true));

@@ -64,7 +64,6 @@ OnboardingPathInfo getOnboardingPath({required AppState state}) {
   final bool hasVerifiedSecurityQuestions =
       state.onboardingState?.hasVerifiedSecurityQuestions ?? false;
   final bool hasSetPin = state.onboardingState?.hasSetPin ?? false;
-  final bool hasSetNickName = state.onboardingState?.hasSetNickName ?? false;
   final String selectedProgramId =
       state.userProfileState?.programsState?.selectedProgram?.id ?? UNKNOWN;
 
@@ -94,12 +93,7 @@ OnboardingPathInfo getOnboardingPath({required AppState state}) {
         previousRoute: AppRoutes.securityQuestionsPage,
         nextRoute: AppRoutes.setPinPage,
       );
-    } else if (!hasSetNickName) {
-      return OnboardingPathInfo(
-        previousRoute: AppRoutes.setPinPage,
-        nextRoute: AppRoutes.setNicknamePage,
-      );
-    }
+    } 
 
     return OnboardingPathInfo(
       previousRoute: '',

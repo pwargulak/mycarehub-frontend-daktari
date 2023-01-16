@@ -45,7 +45,6 @@ import 'package:prohealth360_daktari/presentation/onboarding/caregiver/register_
 import 'package:prohealth360_daktari/presentation/onboarding/patient/register_client_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/pin_expired/pages/pin_expired_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/security_questions/security_questions_page.dart';
-import 'package:prohealth360_daktari/presentation/onboarding/set_nickname/set_nickname_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/staff/add_new_staff_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/terms/terms_and_conditions_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/verify_phone/pages/verify_phone_page.dart';
@@ -120,17 +119,6 @@ void main() {
 
     expect(route, isA<MaterialPageRoute<CreateNewPINPage>>());
     expect(route.builder(context), isA<CreateNewPINPage>());
-  });
-
-  test('Test router returns set nickname page', () {
-    const RouteSettings settings =
-        RouteSettings(name: AppRoutes.setNicknamePage);
-
-    final MaterialPageRoute<SetNickNamePage> route =
-        routeGenerator(settings)! as MaterialPageRoute<SetNickNamePage>;
-
-    expect(route, isA<MaterialPageRoute<SetNickNamePage>>());
-    expect(route.builder(context), isA<SetNickNamePage>());
   });
 
   test('Test router returns ContentPage', () {
@@ -313,17 +301,6 @@ void main() {
 
     expect(route, isA<MaterialPageRoute<TermsAndConditionsPage>>());
     expect(route?.builder(context), isA<TermsAndConditionsPage>());
-  });
-
-  test('Test router returns SetNickNamePage', () {
-    const RouteSettings settings =
-        RouteSettings(name: AppRoutes.setNicknamePage);
-
-    final MaterialPageRoute<SetNickNamePage>? route =
-        routeGenerator(settings) as MaterialPageRoute<SetNickNamePage>?;
-
-    expect(route, isA<MaterialPageRoute<SetNickNamePage>>());
-    expect(route?.builder(context), isA<SetNickNamePage>());
   });
   test('Test router returns SurveysPage', () {
     const RouteSettings settings = RouteSettings(name: AppRoutes.surveysPage);

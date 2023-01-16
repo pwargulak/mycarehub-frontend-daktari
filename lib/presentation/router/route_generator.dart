@@ -46,7 +46,6 @@ import 'package:prohealth360_daktari/presentation/onboarding/login/pages/pin_req
 import 'package:prohealth360_daktari/presentation/onboarding/patient/register_client_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/pin_expired/pages/pin_expired_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/security_questions/security_questions_page.dart';
-import 'package:prohealth360_daktari/presentation/onboarding/set_nickname/set_nickname_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/staff/add_new_staff_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/terms/terms_and_conditions_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/verify_phone/pages/verify_phone_page.dart';
@@ -115,12 +114,6 @@ class RouteGenerator {
         return MaterialPageRoute<CreateNewPINPage>(
           builder: (_) => const CreateNewPINPage(),
           settings: const RouteSettings(name: 'Create new pin page'),
-        );
-
-      case AppRoutes.setNicknamePage:
-        return MaterialPageRoute<SetNickNamePage>(
-          builder: (_) => const SetNickNamePage(),
-          settings: const RouteSettings(name: 'Set nickname page'),
         );
 
       case AppRoutes.loginPage:

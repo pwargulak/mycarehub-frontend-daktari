@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:prohealth360_daktari/presentation/onboarding/login/pages/login_page.dart';
+import 'package:prohealth360_daktari/presentation/onboarding/program_selection/program_selection_page.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -20,7 +21,6 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/create_pin/pages/create_new_pin_page.dart';
-import 'package:prohealth360_daktari/presentation/onboarding/set_nickname/set_nickname_page.dart';
 
 import '../../../../mocks/mocks.dart';
 import '../../../../mocks/test_helpers.dart';
@@ -128,7 +128,7 @@ void main() {
       await tester.tap(saveAndContinueButton);
       await tester.pumpAndSettle();
 
-      expect(find.byType(SetNickNamePage), findsOneWidget);
+      expect(find.byType(ProgramSelectionPage), findsOneWidget);
     });
 
     testWidgets(
