@@ -105,8 +105,11 @@ class _ServiceRequestsWidgetState extends State<ServiceRequestsWidget> {
       ServiceRequestType.SURVEY_RED_FLAG,
     );
 
-    final int totalCount =
-        redFlagCount + pinResetCount + staffPINResetCount + screeningToolsCount;
+    final int totalCount = redFlagCount +
+        pinResetCount +
+        staffPINResetCount +
+        screeningToolsCount +
+        surveysCount;
 
     return RefreshIndicator(
       onRefresh: () async {
