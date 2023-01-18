@@ -651,3 +651,24 @@ query listUserPrograms($userID: ID!, $flavour: Flavour!) {
   }
 }
 ''';
+
+const String getProgramFacilitiesQuery = r'''
+query getProgramFacilities($programID: ID!){
+  getProgramFacilities(programID: $programID){
+    ID
+    name
+    phone
+    active
+    county
+    description
+    fhirOrganisationID
+    workStationDetails{
+    Notifications
+    Messages
+    Surveys
+    Articles
+    ServiceRequests
+    }
+  }
+}
+''';

@@ -1,19 +1,16 @@
 import 'dart:async';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
-import 'package:flutter/material.dart';
 import 'package:sghi_core/flutter_graphql_client/i_flutter_graphql_client.dart';
 import 'package:prohealth360_daktari/application/core/graphql/queries.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/core/update_user_profile_action.dart';
-import 'package:prohealth360_daktari/application/redux/actions/facilities/set_staff_default_facility_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
 import 'package:prohealth360_daktari/domain/core/entities/facilities/get_facilities_response.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
-import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 class FetchUserLinkedFacilitiesAction extends ReduxAction<AppState> {
@@ -89,23 +86,6 @@ class FetchUserLinkedFacilitiesAction extends ReduxAction<AppState> {
           linkedFacilities: linkedFacilities,
         ),
       );
-      if (linkedFacilities.length < 2 && shouldNavigate) {
-        if (linkedFacilities.isNotEmpty) {
-          dispatch(
-            SetStaffDefaultFacilityAction(
-              client: client,
-              facilityId: linkedFacilities.first.id ?? '',
-            ),
-          );
-        } else {
-          dispatch(
-            NavigateAction<AppState>.pushNamedAndRemoveUntil(
-              AppRoutes.homePage,
-              (Route<dynamic> route) => false,
-            ),
-          );
-        }
-      }
     } else {
       onFailure?.call(getErrorMessage('facilities linked to this user'));
       Sentry.captureException(

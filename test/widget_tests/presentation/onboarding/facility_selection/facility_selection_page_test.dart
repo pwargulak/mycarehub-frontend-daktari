@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -35,99 +37,101 @@ void main() {
 
       await tester.pumpAndSettle();
 
-      expect(find.byType(GeneralWorkstationWidget), findsNWidgets(2));
+      expect(find.byType(GeneralWorkstationWidget), findsOneWidget);
 
-      await tester.tap(find.byType(MyAfyaHubPrimaryButton).first);
+      await tester.tap(find.byType(MyAfyaHubPrimaryButton));
       await tester.pumpAndSettle();
 
       expect(find.byType(HomePage), findsOneWidget);
     });
-
     testWidgets('renders loader correctly', (WidgetTester tester) async {
       tester.binding.window.physicalSizeTestValue = const Size(1280, 800);
       tester.binding.window.devicePixelRatioTestValue = 1;
-      store.dispatch(WaitAction<AppState>.add(setDefaultFacilityFlag));
+      store.dispatch(WaitAction<AppState>.add(fetchProgramFacilitiesFlag));
       await buildTestWidget(
         tester: tester,
         store: store,
         widget: FacilitySelectionPage(),
       );
-      await tester.pump();
 
       expect(find.byType(PlatformLoader), findsOneWidget);
     });
 
-    testWidgets('displays snackbar incase of an error',
+    testWidgets('shows no program widget when there are no programs',
         (WidgetTester tester) async {
+      final MockShortGraphQlClient customGraphQlClient =
+          MockShortGraphQlClient.withResponse(
+        '',
+        '',
+        Response(
+          jsonEncode(<String, dynamic>{
+            'data': <String, dynamic>{
+              'getProgramFacilities': <dynamic>[],
+            }
+          }),
+          201,
+        ),
+      );
       await buildTestWidget(
         tester: tester,
         store: store,
-        graphQlClient: MockShortGraphQlClient.withResponse(
-          '',
-          '',
-          Response(
-            jsonEncode(<String, String>{'error': 'error occurred'}),
-            500,
-          ),
-        ),
+        graphQlClient: customGraphQlClient,
         widget: FacilitySelectionPage(),
       );
-
       await tester.pumpAndSettle();
 
-      expect(find.byType(SnackBar), findsOneWidget);
+      expect(find.text(noProgramFacilitiesString), findsOneWidget);
+      await tester.pumpAndSettle();
     });
 
-    testWidgets(' navigates to home page correctly when there is no facility',
+    testWidgets('displays error widget incase of an error',
         (WidgetTester tester) async {
+      final MockShortGraphQlClient customGraphQlClient =
+          MockShortGraphQlClient.withResponse(
+        '',
+        '',
+        Response(
+          jsonEncode(<String, String>{'error': 'error occurred'}),
+          500,
+        ),
+      );
       await buildTestWidget(
         tester: tester,
         store: store,
-        graphQlClient: MockShortGraphQlClient.withResponse(
-          '',
-          '',
-          Response(
-            json.encode(<String, dynamic>{
-              'data': <String, dynamic>{
-                'getUserLinkedFacilities': <String, dynamic>{
-                  'Facilities': <dynamic>[]
-                }
-              }
-            }),
-            201,
-          ),
-        ),
+        graphQlClient: customGraphQlClient,
         widget: FacilitySelectionPage(),
       );
 
       await tester.pumpAndSettle();
-      expect(find.byType(HomePage), findsOneWidget);
+      expect(find.byType(GenericErrorWidget), findsOneWidget);
+
+      await tester.tap(find.byKey(helpNoDataWidgetKey));
+      await tester.pumpAndSettle();
+      expect(find.byType(GenericErrorWidget), findsOneWidget);
     });
-    testWidgets(' navigates to home page correctly when there is one facility',
+
+    testWidgets(
+        'displays an error widget if an error occurs while fetching programs',
         (WidgetTester tester) async {
+      final MockShortGraphQlClient customGraphQlClient =
+          MockShortGraphQlClient.withResponse(
+        '',
+        '',
+        Response(
+          jsonEncode(<String, String>{'error': 'error occurred'}),
+          201,
+        ),
+      );
       await buildTestWidget(
         tester: tester,
         store: store,
-        graphQlClient: MockShortGraphQlClient.withResponse(
-          '',
-          '',
-          Response(
-            json.encode(<String, dynamic>{
-              'data': <String, dynamic>{
-                'getUserLinkedFacilities': <String, dynamic>{
-                  'Facilities': <dynamic>[mockFacilities.first]
-                },
-                'setStaffDefaultFacility': true,
-              }
-            }),
-            201,
-          ),
-        ),
+        graphQlClient: customGraphQlClient,
         widget: FacilitySelectionPage(),
       );
 
       await tester.pumpAndSettle();
-      expect(find.byType(HomePage), findsOneWidget);
+
+      expect(find.byType(GenericErrorWidget), findsOneWidget);
     });
   });
 }

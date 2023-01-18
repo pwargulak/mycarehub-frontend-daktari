@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
+import 'package:prohealth360_daktari/presentation/onboarding/facility_selection/facility_selection_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/program_selection/program_selection_page.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
@@ -10,7 +11,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/presentation/engagement/home/pages/home_page.dart';
 import 'package:prohealth360_daktari/presentation/organization_selection/widgets/general_workstation_widget.dart';
 
 import '../../../../mocks/mocks.dart';
@@ -88,7 +88,7 @@ void main() {
       await tester.tap(primaryButton);
       await tester.pumpAndSettle();
 
-      expect(find.byType(HomePage), findsOneWidget);
+      expect(find.byType(FacilitySelectionPage), findsOneWidget);
     });
 
     testWidgets('renders loader correctly', (WidgetTester tester) async {
@@ -198,6 +198,9 @@ void main() {
       await tester.tap(find.byKey(helpNoDataWidgetKey));
       await tester.pumpAndSettle();
       expect(find.byType(GenericErrorWidget), findsOneWidget);
+
+      await tester.tap(find.text(logoutButtonText));
+      await tester.pumpAndSettle();
     });
     testWidgets(
         'displays an error widget if an error occurs while fetching programs',

@@ -1090,6 +1090,38 @@ class MockTestGraphQlClient extends IGraphQlClient {
       );
     }
 
+    if (queryString.contains(getProgramFacilitiesQuery)) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(
+            <String, dynamic>{
+              'data': <String, dynamic>{
+                'getProgramFacilities': <dynamic>[
+                  <String, dynamic>{
+                    'ID': 'testId',
+                    'name': 'testName',
+                    'phone': '+254725992732',
+                    'active': true,
+                    'county': 'testC',
+                    'description': 'Operates from Monday to Friday',
+                    'fhirOrganisationID': 'testId',
+                    'workStationDetails': <String, dynamic>{
+                      'Notifications': 1,
+                      'Messages': 2,
+                      'Surveys': 3,
+                      'Articles': 4,
+                      'ServiceRequests': 5
+                    }
+                  }
+                ]
+              }
+            },
+          ),
+          201,
+        ),
+      );
+    }
+
     if (queryString.contains(listMembersQuery)) {
       return Future<http.Response>.value(
         http.Response(

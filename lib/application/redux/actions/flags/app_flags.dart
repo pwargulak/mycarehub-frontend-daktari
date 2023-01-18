@@ -134,3 +134,7 @@ const String setDefaultFacilityFlag = 'set_default_facility_flag';
 // User programs
 const String fetchUserProgramsFlag = 'fetch_user_programs_flag';
 const String setUserProgramFlag = 'set_user_program_flag';
+
+// Program Facilities
+const String fetchProgramFacilitiesFlag = 'fetch_program_facilities_flag';
+const String setProgramFaFlag = 'set_user_program_flag';

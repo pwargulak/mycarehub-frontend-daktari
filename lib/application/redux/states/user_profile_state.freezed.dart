@@ -22,6 +22,7 @@ UserProfileState _$UserProfileStateFromJson(Map<String, dynamic> json) {
 mixin _$UserProfileState {
   UserProfile? get userProfile => throw _privateConstructorUsedError;
   ProgramsState? get programsState => throw _privateConstructorUsedError;
+  FacilitiesState? get facilitiesState => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,10 +36,14 @@ abstract class $UserProfileStateCopyWith<$Res> {
           UserProfileState value, $Res Function(UserProfileState) then) =
       _$UserProfileStateCopyWithImpl<$Res, UserProfileState>;
   @useResult
-  $Res call({UserProfile? userProfile, ProgramsState? programsState});
+  $Res call(
+      {UserProfile? userProfile,
+      ProgramsState? programsState,
+      FacilitiesState? facilitiesState});
 
   $UserProfileCopyWith<$Res>? get userProfile;
   $ProgramsStateCopyWith<$Res>? get programsState;
+  $FacilitiesStateCopyWith<$Res>? get facilitiesState;
 }
 
 /// @nodoc
@@ -56,6 +61,7 @@ class _$UserProfileStateCopyWithImpl<$Res, $Val extends UserProfileState>
   $Res call({
     Object? userProfile = freezed,
     Object? programsState = freezed,
+    Object? facilitiesState = freezed,
   }) {
     return _then(_value.copyWith(
       userProfile: freezed == userProfile
@@ -66,6 +72,10 @@ class _$UserProfileStateCopyWithImpl<$Res, $Val extends UserProfileState>
           ? _value.programsState
           : programsState // ignore: cast_nullable_to_non_nullable
               as ProgramsState?,
+      facilitiesState: freezed == facilitiesState
+          ? _value.facilitiesState
+          : facilitiesState // ignore: cast_nullable_to_non_nullable
+              as FacilitiesState?,
     ) as $Val);
   }
 
@@ -92,6 +102,18 @@ class _$UserProfileStateCopyWithImpl<$Res, $Val extends UserProfileState>
       return _then(_value.copyWith(programsState: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FacilitiesStateCopyWith<$Res>? get facilitiesState {
+    if (_value.facilitiesState == null) {
+      return null;
+    }
+
+    return $FacilitiesStateCopyWith<$Res>(_value.facilitiesState!, (value) {
+      return _then(_value.copyWith(facilitiesState: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -102,12 +124,17 @@ abstract class _$$_UserProfileStateCopyWith<$Res>
       __$$_UserProfileStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({UserProfile? userProfile, ProgramsState? programsState});
+  $Res call(
+      {UserProfile? userProfile,
+      ProgramsState? programsState,
+      FacilitiesState? facilitiesState});
 
   @override
   $UserProfileCopyWith<$Res>? get userProfile;
   @override
   $ProgramsStateCopyWith<$Res>? get programsState;
+  @override
+  $FacilitiesStateCopyWith<$Res>? get facilitiesState;
 }
 
 /// @nodoc
@@ -123,6 +150,7 @@ class __$$_UserProfileStateCopyWithImpl<$Res>
   $Res call({
     Object? userProfile = freezed,
     Object? programsState = freezed,
+    Object? facilitiesState = freezed,
   }) {
     return _then(_$_UserProfileState(
       userProfile: freezed == userProfile
@@ -133,6 +161,10 @@ class __$$_UserProfileStateCopyWithImpl<$Res>
           ? _value.programsState
           : programsState // ignore: cast_nullable_to_non_nullable
               as ProgramsState?,
+      facilitiesState: freezed == facilitiesState
+          ? _value.facilitiesState
+          : facilitiesState // ignore: cast_nullable_to_non_nullable
+              as FacilitiesState?,
     ));
   }
 }
@@ -140,7 +172,8 @@ class __$$_UserProfileStateCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_UserProfileState implements _UserProfileState {
-  _$_UserProfileState({this.userProfile, this.programsState});
+  _$_UserProfileState(
+      {this.userProfile, this.programsState, this.facilitiesState});
 
   factory _$_UserProfileState.fromJson(Map<String, dynamic> json) =>
       _$$_UserProfileStateFromJson(json);
@@ -149,10 +182,12 @@ class _$_UserProfileState implements _UserProfileState {
   final UserProfile? userProfile;
   @override
   final ProgramsState? programsState;
+  @override
+  final FacilitiesState? facilitiesState;
 
   @override
   String toString() {
-    return 'UserProfileState(userProfile: $userProfile, programsState: $programsState)';
+    return 'UserProfileState(userProfile: $userProfile, programsState: $programsState, facilitiesState: $facilitiesState)';
   }
 
   @override
@@ -163,12 +198,15 @@ class _$_UserProfileState implements _UserProfileState {
             (identical(other.userProfile, userProfile) ||
                 other.userProfile == userProfile) &&
             (identical(other.programsState, programsState) ||
-                other.programsState == programsState));
+                other.programsState == programsState) &&
+            (identical(other.facilitiesState, facilitiesState) ||
+                other.facilitiesState == facilitiesState));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, userProfile, programsState);
+  int get hashCode =>
+      Object.hash(runtimeType, userProfile, programsState, facilitiesState);
 
   @JsonKey(ignore: true)
   @override
@@ -187,7 +225,8 @@ class _$_UserProfileState implements _UserProfileState {
 abstract class _UserProfileState implements UserProfileState {
   factory _UserProfileState(
       {final UserProfile? userProfile,
-      final ProgramsState? programsState}) = _$_UserProfileState;
+      final ProgramsState? programsState,
+      final FacilitiesState? facilitiesState}) = _$_UserProfileState;
 
   factory _UserProfileState.fromJson(Map<String, dynamic> json) =
       _$_UserProfileState.fromJson;
@@ -196,6 +235,8 @@ abstract class _UserProfileState implements UserProfileState {
   UserProfile? get userProfile;
   @override
   ProgramsState? get programsState;
+  @override
+  FacilitiesState? get facilitiesState;
   @override
   @JsonKey(ignore: true)
   _$$_UserProfileStateCopyWith<_$_UserProfileState> get copyWith =>

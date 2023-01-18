@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/graphql/mutations.dart';
 import 'package:prohealth360_daktari/application/redux/actions/core/update_user_profile_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/programs/update_programs_state_action.dart';
@@ -103,9 +102,8 @@ class SetUserProgramAction extends ReduxAction<AppState> {
         ),
       );
       dispatch(
-        NavigateAction<AppState>.pushNamedAndRemoveUntil(
-          AppRoutes.homePage,
-          (Route<dynamic> route) => false,
+        NavigateAction<AppState>.pushNamed(
+          AppRoutes.facilitySelectionPage,
         ),
       );
     } else {

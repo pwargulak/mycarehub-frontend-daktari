@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
+import 'package:prohealth360_daktari/application/redux/actions/facilities/update_facilities_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/programs/fetch_user_programs_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/user_state_actions/logout_action.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/onboarding/programs_state_view_model.dart';
@@ -10,7 +11,6 @@ import 'package:async_redux/async_redux.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/program_selection/widgets/programs_widget_list.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
-import 'package:prohealth360_daktari/application/redux/actions/core/update_user_profile_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
@@ -39,8 +39,8 @@ class ProgramSelectionPage extends StatelessWidget {
                   ProgramsStateViewModel.fromStore(store),
               onInit: (Store<AppState> store) {
                 store.dispatch(
-                  UpdateUserProfileAction(
-                    currentFacility: Facility.initial(),
+                  UpdateFacilitiesStateAction(
+                    selectedFacility: Facility.initial(),
                   ),
                 );
                 store.dispatch(
@@ -54,14 +54,16 @@ class ProgramSelectionPage extends StatelessWidget {
                 );
               },
               builder: (BuildContext context, ProgramsStateViewModel vm) {
+
                 final List<Program>? programs = vm.userPrograms;
+                
                 return Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Center(
                       child: SvgPicture.asset(programAmicoImage),
                     ),
-                    if (vm.errorGettingPrograms ?? false)
+                    if (vm.errorGettingPrograms ?? false) ...<Widget>{
                       GenericErrorWidget(
                         actionKey: helpNoDataWidgetKey,
                         type: GenericNoDataTypes.noData,
@@ -79,8 +81,25 @@ class ProgramSelectionPage extends StatelessWidget {
                         messageBody: <TextSpan>[
                           TextSpan(text: getErrorMessage(fetchingProgramString))
                         ],
+                      ),
+                      smallVerticalSizedBox,
+                      Text(
+                        'or',
+                        style: boldSize18Text(),
+                      ),
+                      const SizedBox(height: 10),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 38),
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () => StoreProvider.dispatch(
+                            context,
+                            LogoutAction(),
+                          ),
+                          child: const Text(logoutButtonText),
+                        ),
                       )
-                    else if (vm.wait.isWaitingFor(fetchUserProgramsFlag))
+                    } else if (vm.wait.isWaitingFor(fetchUserProgramsFlag))
                       Container(
                         height: 300,
                         padding: const EdgeInsets.all(20),

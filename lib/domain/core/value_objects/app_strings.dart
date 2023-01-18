@@ -1010,7 +1010,9 @@ const String selectFacilityString = 'Please select your facility';
 // User Programs
 const String selectProgramString = 'Please choose your program';
 const String fetchingProgramString = 'fetching your programs';
+const String fetchingProgramFacilitiesString = "fetching your program's facilities";
 const String noProgramsString = 'There are no programs linked to your account';
+const String noProgramFacilitiesString = 'There are no facilities linked to this program';
 
 
 const String continueString = 'Continue';
