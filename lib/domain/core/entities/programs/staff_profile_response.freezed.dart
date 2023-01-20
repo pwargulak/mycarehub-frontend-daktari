@@ -20,13 +20,13 @@ StaffProfileResponse _$StaffProfileResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$StaffProfileResponse {
-  @JsonKey(name: 'ID')
+  @JsonKey(name: 'id')
   String? get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'User')
+  @JsonKey(name: 'user')
   User? get user => throw _privateConstructorUsedError;
-  @JsonKey(name: 'StaffNumber')
+  @JsonKey(name: 'staffNumber')
   String? get staffNumber => throw _privateConstructorUsedError;
-  @JsonKey(name: 'DefaultFacility')
+  @JsonKey(name: 'defaultFacility')
   Facility? get defaultFacility => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,10 +42,10 @@ abstract class $StaffProfileResponseCopyWith<$Res> {
       _$StaffProfileResponseCopyWithImpl<$Res, StaffProfileResponse>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'ID') String? id,
-      @JsonKey(name: 'User') User? user,
-      @JsonKey(name: 'StaffNumber') String? staffNumber,
-      @JsonKey(name: 'DefaultFacility') Facility? defaultFacility});
+      {@JsonKey(name: 'id') String? id,
+      @JsonKey(name: 'user') User? user,
+      @JsonKey(name: 'staffNumber') String? staffNumber,
+      @JsonKey(name: 'defaultFacility') Facility? defaultFacility});
 
   $UserCopyWith<$Res>? get user;
   $FacilityCopyWith<$Res>? get defaultFacility;
@@ -124,10 +124,10 @@ abstract class _$$_StaffProfileResponseCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'ID') String? id,
-      @JsonKey(name: 'User') User? user,
-      @JsonKey(name: 'StaffNumber') String? staffNumber,
-      @JsonKey(name: 'DefaultFacility') Facility? defaultFacility});
+      {@JsonKey(name: 'id') String? id,
+      @JsonKey(name: 'user') User? user,
+      @JsonKey(name: 'staffNumber') String? staffNumber,
+      @JsonKey(name: 'defaultFacility') Facility? defaultFacility});
 
   @override
   $UserCopyWith<$Res>? get user;
@@ -176,25 +176,25 @@ class __$$_StaffProfileResponseCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_StaffProfileResponse implements _StaffProfileResponse {
   _$_StaffProfileResponse(
-      {@JsonKey(name: 'ID') this.id,
-      @JsonKey(name: 'User') this.user,
-      @JsonKey(name: 'StaffNumber') this.staffNumber,
-      @JsonKey(name: 'DefaultFacility') this.defaultFacility});
+      {@JsonKey(name: 'id') this.id,
+      @JsonKey(name: 'user') this.user,
+      @JsonKey(name: 'staffNumber') this.staffNumber,
+      @JsonKey(name: 'defaultFacility') this.defaultFacility});
 
   factory _$_StaffProfileResponse.fromJson(Map<String, dynamic> json) =>
       _$$_StaffProfileResponseFromJson(json);
 
   @override
-  @JsonKey(name: 'ID')
+  @JsonKey(name: 'id')
   final String? id;
   @override
-  @JsonKey(name: 'User')
+  @JsonKey(name: 'user')
   final User? user;
   @override
-  @JsonKey(name: 'StaffNumber')
+  @JsonKey(name: 'staffNumber')
   final String? staffNumber;
   @override
-  @JsonKey(name: 'DefaultFacility')
+  @JsonKey(name: 'defaultFacility')
   final Facility? defaultFacility;
 
   @override
@@ -237,26 +237,26 @@ class _$_StaffProfileResponse implements _StaffProfileResponse {
 
 abstract class _StaffProfileResponse implements StaffProfileResponse {
   factory _StaffProfileResponse(
-          {@JsonKey(name: 'ID') final String? id,
-          @JsonKey(name: 'User') final User? user,
-          @JsonKey(name: 'StaffNumber') final String? staffNumber,
-          @JsonKey(name: 'DefaultFacility') final Facility? defaultFacility}) =
+          {@JsonKey(name: 'id') final String? id,
+          @JsonKey(name: 'user') final User? user,
+          @JsonKey(name: 'staffNumber') final String? staffNumber,
+          @JsonKey(name: 'defaultFacility') final Facility? defaultFacility}) =
       _$_StaffProfileResponse;
 
   factory _StaffProfileResponse.fromJson(Map<String, dynamic> json) =
       _$_StaffProfileResponse.fromJson;
 
   @override
-  @JsonKey(name: 'ID')
+  @JsonKey(name: 'id')
   String? get id;
   @override
-  @JsonKey(name: 'User')
+  @JsonKey(name: 'user')
   User? get user;
   @override
-  @JsonKey(name: 'StaffNumber')
+  @JsonKey(name: 'staffNumber')
   String? get staffNumber;
   @override
-  @JsonKey(name: 'DefaultFacility')
+  @JsonKey(name: 'defaultFacility')
   Facility? get defaultFacility;
   @override
   @JsonKey(ignore: true)

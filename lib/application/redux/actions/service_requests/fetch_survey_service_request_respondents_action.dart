@@ -54,8 +54,8 @@ class FetchSurveyRespondentsAction extends ReduxAction<AppState> {
       'formID': formID,
       'facilityID': facilityID,
       'paginationInput': <String, dynamic>{
-        'Limit': 20,
-        'CurrentPage': 1,
+        'limit': 20,
+        'currentPage': 1,
       }
     };
 

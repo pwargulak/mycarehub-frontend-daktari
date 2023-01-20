@@ -21,7 +21,7 @@ ProgramFacilitiesResponse _$ProgramFacilitiesResponseFromJson(
 
 /// @nodoc
 mixin _$ProgramFacilitiesResponse {
-  @JsonKey(name: 'getProgramFacilities')
+  @JsonKey(name: 'facilities')
   List<Facility>? get facilities => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,8 +36,7 @@ abstract class $ProgramFacilitiesResponseCopyWith<$Res> {
           $Res Function(ProgramFacilitiesResponse) then) =
       _$ProgramFacilitiesResponseCopyWithImpl<$Res, ProgramFacilitiesResponse>;
   @useResult
-  $Res call(
-      {@JsonKey(name: 'getProgramFacilities') List<Facility>? facilities});
+  $Res call({@JsonKey(name: 'facilities') List<Facility>? facilities});
 }
 
 /// @nodoc
@@ -74,8 +73,7 @@ abstract class _$$_ProgramFacilitiesResponseCopyWith<$Res>
       __$$_ProgramFacilitiesResponseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: 'getProgramFacilities') List<Facility>? facilities});
+  $Res call({@JsonKey(name: 'facilities') List<Facility>? facilities});
 }
 
 /// @nodoc
@@ -106,7 +104,7 @@ class __$$_ProgramFacilitiesResponseCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ProgramFacilitiesResponse implements _ProgramFacilitiesResponse {
   _$_ProgramFacilitiesResponse(
-      {@JsonKey(name: 'getProgramFacilities') final List<Facility>? facilities})
+      {@JsonKey(name: 'facilities') final List<Facility>? facilities})
       : _facilities = facilities;
 
   factory _$_ProgramFacilitiesResponse.fromJson(Map<String, dynamic> json) =>
@@ -114,7 +112,7 @@ class _$_ProgramFacilitiesResponse implements _ProgramFacilitiesResponse {
 
   final List<Facility>? _facilities;
   @override
-  @JsonKey(name: 'getProgramFacilities')
+  @JsonKey(name: 'facilities')
   List<Facility>? get facilities {
     final value = _facilities;
     if (value == null) return null;
@@ -158,14 +156,14 @@ class _$_ProgramFacilitiesResponse implements _ProgramFacilitiesResponse {
 
 abstract class _ProgramFacilitiesResponse implements ProgramFacilitiesResponse {
   factory _ProgramFacilitiesResponse(
-      {@JsonKey(name: 'getProgramFacilities')
-          final List<Facility>? facilities}) = _$_ProgramFacilitiesResponse;
+          {@JsonKey(name: 'facilities') final List<Facility>? facilities}) =
+      _$_ProgramFacilitiesResponse;
 
   factory _ProgramFacilitiesResponse.fromJson(Map<String, dynamic> json) =
       _$_ProgramFacilitiesResponse.fromJson;
 
   @override
-  @JsonKey(name: 'getProgramFacilities')
+  @JsonKey(name: 'facilities')
   List<Facility>? get facilities;
   @override
   @JsonKey(ignore: true)

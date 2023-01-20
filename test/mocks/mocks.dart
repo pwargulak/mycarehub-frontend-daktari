@@ -920,7 +920,9 @@ class MockTestGraphQlClient extends IGraphQlClient {
           json.encode(
             <String, dynamic>{
               'data': <String, dynamic>{
-                'setStaffDefaultFacility': true,
+                'setStaffDefaultFacility': <String, dynamic>{
+                  'id': 'testId'
+                },
               }
             },
           ),
@@ -1090,30 +1092,32 @@ class MockTestGraphQlClient extends IGraphQlClient {
       );
     }
 
-    if (queryString.contains(getProgramFacilitiesQuery)) {
+    if (queryString.contains(getStaffFacilitiesQuery)) {
       return Future<http.Response>.value(
         http.Response(
           json.encode(
             <String, dynamic>{
               'data': <String, dynamic>{
-                'getProgramFacilities': <dynamic>[
-                  <String, dynamic>{
-                    'ID': 'testId',
-                    'name': 'testName',
-                    'phone': '+254725992732',
-                    'active': true,
-                    'county': 'testC',
-                    'description': 'Operates from Monday to Friday',
-                    'fhirOrganisationID': 'testId',
-                    'workStationDetails': <String, dynamic>{
-                      'Notifications': 1,
-                      'Messages': 2,
-                      'Surveys': 3,
-                      'Articles': 4,
-                      'ServiceRequests': 5
+                'getStaffFacilities': <String, dynamic>{
+                  'facilities': <dynamic>[
+                    <String, dynamic>{
+                      'id': 'testId',
+                      'name': 'testName',
+                      'phone': '+254725992732',
+                      'active': true,
+                      'county': 'testC',
+                      'description': 'Operates from Monday to Friday',
+                      'fhirOrganisationID': 'testId',
+                      'workStationDetails': <String, dynamic>{
+                        'notifications': 1,
+                        'messages': 2,
+                        'surveys': 3,
+                        'articles': 4,
+                        'serviceRequests': 5
+                      }
                     }
-                  }
-                ]
+                  ]
+                }
               }
             },
           ),
@@ -1608,11 +1612,11 @@ final List<Map<String, dynamic>> mockFacilities = <Map<String, dynamic>>[
 ];
 
 Map<String, dynamic> mockSecurityQuestion = <String, dynamic>{
-  'SecurityQuestionID': 'id',
-  'QuestionStem': 'What are the last 4 digits of your CCC number?',
-  'Description': 'description',
-  'ResponseType': 'NUMBER',
-  'Active': true,
+  'securityQuestionID': 'id',
+  'questionStem': 'What are the last 4 digits of your CCC number?',
+  'description': 'description',
+  'responseType': 'NUMBER',
+  'active': true,
 };
 
 Map<String, dynamic> mockSecurityQuestionResponse = <String, dynamic>{
@@ -2236,25 +2240,25 @@ final Map<String, dynamic> mockAuthCredentials = <String, dynamic>{
 
 final List<dynamic> securityQuestionsMock = <dynamic>[
   <String, dynamic>{
-    'SecurityQuestionID': 'id1',
-    'QuestionStem': 'What are the last 4 digits of your CCC number?',
-    'Description': 'Please provide the last 4 digits of your clinic number',
-    'ResponseType': core.SecurityQuestionResponseType.UNKNOWN.name,
-    'Active': true,
+    'securityQuestionID': 'id1',
+    'questionStem': 'What are the last 4 digits of your CCC number?',
+    'description': 'Please provide the last 4 digits of your clinic number',
+    'responseType': core.SecurityQuestionResponseType.UNKNOWN.name,
+    'active': true,
   },
   <String, dynamic>{
-    'SecurityQuestionID': 'id2',
-    'QuestionStem': 'Which month did you start your treatment?',
-    'Description': 'Enter the month you started your treatment',
-    'ResponseType': core.SecurityQuestionResponseType.DATE.name,
-    'Active': true,
+    'securityQuestionID': 'id2',
+    'questionStem': 'Which month did you start your treatment?',
+    'description': 'Enter the month you started your treatment',
+    'responseType': core.SecurityQuestionResponseType.DATE.name,
+    'active': true,
   },
   <String, dynamic>{
-    'SecurityQuestionID': 'id3',
-    'QuestionStem': 'Which county is your clinic located?',
-    'Description': 'nter the name of the county in small letters',
-    'ResponseType': core.SecurityQuestionResponseType.UNKNOWN.name,
-    'Active': true,
+    'securityQuestionID': 'id3',
+    'questionStem': 'Which county is your clinic located?',
+    'description': 'nter the name of the county in small letters',
+    'responseType': core.SecurityQuestionResponseType.UNKNOWN.name,
+    'active': true,
   },
 ];
 
@@ -2268,11 +2272,11 @@ final List<dynamic> recordSecurityQuestionResponseMock = <dynamic>[
     'isCorrect': true,
   },
   <String, dynamic>{
-    'SecurityQuestionID': 'id2',
+    'securityQuestionID': 'id2',
     'isCorrect': true,
   },
   <String, dynamic>{
-    'SecurityQuestionID': 'id3',
+    'securityQuestionID': 'id3',
     'isCorrect': true,
   },
 ];
@@ -2820,7 +2824,7 @@ final List<Map<String, dynamic>> contentMock = <Map<String, dynamic>>[
 ];
 
 final Map<String, dynamic> documentContentMock = <String, dynamic>{
-  'ID': 16,
+  'id': 16,
   'title': 'Test Document',
   'date': '2022-01-13',
   'intro': 'This is a test document',
@@ -2851,12 +2855,12 @@ final Map<String, dynamic> documentContentMock = <String, dynamic>{
   'bookmarkCount': 0,
   'viewCount': 0,
   'shareCount': 0,
-  'author': <String, dynamic>{'ID': 'test-id-001'},
+  'author': <String, dynamic>{'id': 'test-id-001'},
   'documents': <Map<String, dynamic>>[
     <String, dynamic>{
-      'ID': 10001,
-      'Document': <String, dynamic>{
-        'ID': 10001,
+      'id': 10001,
+      'document': <String, dynamic>{
+        'id': 10001,
         'title': 'myCareHub Requirements',
         'meta': <String, dynamic>{
           'documentDetailUrl':
@@ -2869,7 +2873,7 @@ final Map<String, dynamic> documentContentMock = <String, dynamic>{
   ],
   'categoryDetails': <Map<String, dynamic>>[
     <String, dynamic>{
-      'ID': 6,
+      'id': 6,
       'categoryName': 'recommended',
       'categoryIcon': 'https://test.png'
     }

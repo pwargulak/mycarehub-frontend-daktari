@@ -9,21 +9,21 @@ part of 'staff_profile_response.dart';
 _$_StaffProfileResponse _$$_StaffProfileResponseFromJson(
         Map<String, dynamic> json) =>
     _$_StaffProfileResponse(
-      id: json['ID'] as String?,
-      user: json['User'] == null
+      id: json['id'] as String?,
+      user: json['user'] == null
           ? null
-          : User.fromJson(json['User'] as Map<String, dynamic>),
-      staffNumber: json['StaffNumber'] as String?,
-      defaultFacility: json['DefaultFacility'] == null
+          : User.fromJson(json['user'] as Map<String, dynamic>),
+      staffNumber: json['staffNumber'] as String?,
+      defaultFacility: json['defaultFacility'] == null
           ? null
-          : Facility.fromJson(json['DefaultFacility'] as Map<String, dynamic>),
+          : Facility.fromJson(json['defaultFacility'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_StaffProfileResponseToJson(
         _$_StaffProfileResponse instance) =>
     <String, dynamic>{
-      'ID': instance.id,
-      'User': instance.user,
-      'StaffNumber': instance.staffNumber,
-      'DefaultFacility': instance.defaultFacility,
+      'id': instance.id,
+      'user': instance.user,
+      'staffNumber': instance.staffNumber,
+      'defaultFacility': instance.defaultFacility,
     };

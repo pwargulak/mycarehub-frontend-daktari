@@ -122,13 +122,13 @@ class _ProfileFaqsPageState extends State<ProfileFaqsPage> {
                                 AppRoutes.viewDocumentPage,
                                 arguments: <String, dynamic>{
                                   'pdfTitle': currentSavedItem
-                                      .documents!.first.documentData!.title,
+                                      .documents?.first.documentData?.title,
                                   'pdfUrl': currentSavedItem
-                                      .documents!
-                                      .first
-                                      .documentData!
-                                      .documentMetaData!
-                                      .documentDownloadUrl,
+                                      .documents
+                                      ?.first
+                                      .documentData
+                                      ?.documentMetaData
+                                      ?.documentDownloadUrl,
                                 },
                               ),
                               onTapCallback: () =>

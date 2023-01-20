@@ -49,19 +49,39 @@ void main() {
             },
             'setStaffProgram': <String, dynamic>{
               'staffProfile': <String, dynamic>{
-                'ID': 'testID',
-                'StaffNumber': 'testStaffNumber',
-                'DefaultFacility': <String, dynamic>{
-                  'ID': 'testID',
+                'id': 'testID',
+                'staffNumber': 'testStaffNumber',
+                'defaultFacility': <String, dynamic>{
+                  'id': 'testID',
                   'name': 'testName',
-                  'Username': 'testUserName',
-                  'Active': true,
-                  'Gender': 'male'
+                  'username': 'testUserName',
+                  'active': true,
+                  'gender': 'male'
                 },
-                'User': <String, dynamic>{'ID': 'testID', 'Name': 'testName'}
+                'user': <String, dynamic>{'ID': 'testID', 'Name': 'testName'}
               },
               'communityToken': 'testToken'
             },
+             'getStaffFacilities': <String, dynamic>{
+              'facilities': <dynamic>[
+                <String, dynamic>{
+                  'id': 'testId',
+                  'name': 'testName',
+                  'phone': '+254725992732',
+                  'active': true,
+                  'county': 'testC',
+                  'description': 'Operates from Monday to Friday',
+                  'fhirOrganisationID': 'testId',
+                  'workStationDetails': <String, dynamic>{
+                    'notifications': 1,
+                    'messages': 2,
+                    'surveys': 3,
+                    'articles': 4,
+                    'serviceRequests': 5
+                  }
+                }
+              ]
+            }
           }
         }),
         201,

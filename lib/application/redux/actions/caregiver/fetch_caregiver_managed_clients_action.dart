@@ -44,8 +44,8 @@ class FetchCaregiverManagedClientsAction extends ReduxAction<AppState> {
     final Map<String, dynamic> variables = <String, dynamic>{
       'caregiverID': caregiverId,
       'paginationInput': <String, dynamic>{
-        'Limit': 20,
-        'CurrentPage': 1,
+        'limit': 20,
+        'currentPage': 1,
       },
     };
 

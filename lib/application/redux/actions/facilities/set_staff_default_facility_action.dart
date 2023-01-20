@@ -41,7 +41,7 @@ class SetStaffDefaultFacilityAction extends ReduxAction<AppState> {
   Future<AppState?> reduce() async {
     final Map<String, dynamic> variables = <String, dynamic>{
       'facilityID': facilityId,
-      'userID': state.userProfileState?.userProfile?.user?.userId
+      'staffID': state.userProfileState?.userProfile?.id
     };
 
     final Response response = await client.query(
@@ -67,9 +67,11 @@ class SetStaffDefaultFacilityAction extends ReduxAction<AppState> {
         );
 
         throw UserException(getErrorMessage('selecting facility'));
+
       }
-      if ((body['data'] as Map<String, dynamic>)['setStaffDefaultFacility'] ==
-          true) {
+      final Map<String, dynamic> data = body['data'] as Map<String, dynamic>;
+      if ((data['setStaffDefaultFacility'] as Map<String, dynamic>)['id'] ==
+          facilityId) {
         dispatch(
           UpdateUserProfileAction(
             defaultFacility: Facility(id: facilityId),

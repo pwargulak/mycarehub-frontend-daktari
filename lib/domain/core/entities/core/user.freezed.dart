@@ -20,16 +20,16 @@ User _$UserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$User {
-  @JsonKey(name: 'ID')
+  @JsonKey(name: 'id')
   String? get userId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'Username')
+  @JsonKey(name: 'username')
   String? get username =>
       throw _privateConstructorUsedError; // This is the nickname
-  @JsonKey(name: 'Name')
+  @JsonKey(name: 'name')
   String? get name => throw _privateConstructorUsedError;
-  @JsonKey(name: 'Gender', fromJson: genderFromJson, toJson: genderToJson)
+  @JsonKey(name: 'gender', fromJson: genderFromJson, toJson: genderToJson)
   Gender? get gender => throw _privateConstructorUsedError;
-  @JsonKey(name: 'Active', defaultValue: false)
+  @JsonKey(name: 'active', defaultValue: false)
   bool? get active => throw _privateConstructorUsedError;
   @JsonKey(name: 'firstName')
   String? get firstName => throw _privateConstructorUsedError;
@@ -84,15 +84,15 @@ abstract class $UserCopyWith<$Res> {
       _$UserCopyWithImpl<$Res, User>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'ID')
+      {@JsonKey(name: 'id')
           String? userId,
-      @JsonKey(name: 'Username')
+      @JsonKey(name: 'username')
           String? username,
-      @JsonKey(name: 'Name')
+      @JsonKey(name: 'name')
           String? name,
-      @JsonKey(name: 'Gender', fromJson: genderFromJson, toJson: genderToJson)
+      @JsonKey(name: 'gender', fromJson: genderFromJson, toJson: genderToJson)
           Gender? gender,
-      @JsonKey(name: 'Active', defaultValue: false)
+      @JsonKey(name: 'active', defaultValue: false)
           bool? active,
       @JsonKey(name: 'firstName')
           String? firstName,
@@ -293,15 +293,15 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'ID')
+      {@JsonKey(name: 'id')
           String? userId,
-      @JsonKey(name: 'Username')
+      @JsonKey(name: 'username')
           String? username,
-      @JsonKey(name: 'Name')
+      @JsonKey(name: 'name')
           String? name,
-      @JsonKey(name: 'Gender', fromJson: genderFromJson, toJson: genderToJson)
+      @JsonKey(name: 'gender', fromJson: genderFromJson, toJson: genderToJson)
           Gender? gender,
-      @JsonKey(name: 'Active', defaultValue: false)
+      @JsonKey(name: 'active', defaultValue: false)
           bool? active,
       @JsonKey(name: 'firstName')
           String? firstName,
@@ -484,15 +484,15 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
 @JsonSerializable()
 class _$_User implements _User {
   _$_User(
-      {@JsonKey(name: 'ID')
+      {@JsonKey(name: 'id')
           this.userId,
-      @JsonKey(name: 'Username')
+      @JsonKey(name: 'username')
           this.username,
-      @JsonKey(name: 'Name')
+      @JsonKey(name: 'name')
           this.name,
-      @JsonKey(name: 'Gender', fromJson: genderFromJson, toJson: genderToJson)
+      @JsonKey(name: 'gender', fromJson: genderFromJson, toJson: genderToJson)
           this.gender,
-      @JsonKey(name: 'Active', defaultValue: false)
+      @JsonKey(name: 'active', defaultValue: false)
           this.active,
       @JsonKey(name: 'firstName')
           this.firstName,
@@ -536,20 +536,20 @@ class _$_User implements _User {
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
   @override
-  @JsonKey(name: 'ID')
+  @JsonKey(name: 'id')
   final String? userId;
   @override
-  @JsonKey(name: 'Username')
+  @JsonKey(name: 'username')
   final String? username;
 // This is the nickname
   @override
-  @JsonKey(name: 'Name')
+  @JsonKey(name: 'name')
   final String? name;
   @override
-  @JsonKey(name: 'Gender', fromJson: genderFromJson, toJson: genderToJson)
+  @JsonKey(name: 'gender', fromJson: genderFromJson, toJson: genderToJson)
   final Gender? gender;
   @override
-  @JsonKey(name: 'Active', defaultValue: false)
+  @JsonKey(name: 'active', defaultValue: false)
   final bool? active;
   @override
   @JsonKey(name: 'firstName')
@@ -719,15 +719,15 @@ class _$_User implements _User {
 
 abstract class _User implements User {
   factory _User(
-      {@JsonKey(name: 'ID')
+      {@JsonKey(name: 'id')
           final String? userId,
-      @JsonKey(name: 'Username')
+      @JsonKey(name: 'username')
           final String? username,
-      @JsonKey(name: 'Name')
+      @JsonKey(name: 'name')
           final String? name,
-      @JsonKey(name: 'Gender', fromJson: genderFromJson, toJson: genderToJson)
+      @JsonKey(name: 'gender', fromJson: genderFromJson, toJson: genderToJson)
           final Gender? gender,
-      @JsonKey(name: 'Active', defaultValue: false)
+      @JsonKey(name: 'active', defaultValue: false)
           final bool? active,
       @JsonKey(name: 'firstName')
           final String? firstName,
@@ -770,19 +770,19 @@ abstract class _User implements User {
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
   @override
-  @JsonKey(name: 'ID')
+  @JsonKey(name: 'id')
   String? get userId;
   @override
-  @JsonKey(name: 'Username')
+  @JsonKey(name: 'username')
   String? get username;
   @override // This is the nickname
-  @JsonKey(name: 'Name')
+  @JsonKey(name: 'name')
   String? get name;
   @override
-  @JsonKey(name: 'Gender', fromJson: genderFromJson, toJson: genderToJson)
+  @JsonKey(name: 'gender', fromJson: genderFromJson, toJson: genderToJson)
   Gender? get gender;
   @override
-  @JsonKey(name: 'Active', defaultValue: false)
+  @JsonKey(name: 'active', defaultValue: false)
   bool? get active;
   @override
   @JsonKey(name: 'firstName')

@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:prohealth360_daktari/application/redux/actions/core/update_user_profile_action.dart';
+import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
@@ -28,6 +30,11 @@ void main() {
     });
 
     testWidgets('renders correctly', (WidgetTester tester) async {
+       store.dispatch(
+        UpdateUserProfileAction(
+          defaultFacility: Facility(id: 'testId'),
+        ),
+      );
       await buildTestWidget(
         tester: tester,
         store: store,
@@ -57,7 +64,7 @@ void main() {
       expect(find.byType(PlatformLoader), findsOneWidget);
     });
 
-    testWidgets('shows no program widget when there are no programs',
+    testWidgets('shows no facility widget when there are no facilities',
         (WidgetTester tester) async {
       final MockShortGraphQlClient customGraphQlClient =
           MockShortGraphQlClient.withResponse(
@@ -66,7 +73,9 @@ void main() {
         Response(
           jsonEncode(<String, dynamic>{
             'data': <String, dynamic>{
-              'getProgramFacilities': <dynamic>[],
+              'getStaffFacilities': <String, dynamic>{
+                'facilities' : <dynamic>[]
+              },
             }
           }),
           201,

@@ -652,10 +652,11 @@ query listUserPrograms($userID: ID!, $flavour: Flavour!) {
 }
 ''';
 
-const String getProgramFacilitiesQuery = r'''
-query getProgramFacilities($programID: ID!){
-  getProgramFacilities(programID: $programID){
-    ID
+const String getStaffFacilitiesQuery = r'''
+query getStaffFacilities($staffID: ID!, $paginationInput: PaginationsInput!){
+  getStaffFacilities(staffID: $staffID, paginationInput: $paginationInput){
+    facilities{
+    id
     name
     phone
     active
@@ -663,12 +664,13 @@ query getProgramFacilities($programID: ID!){
     description
     fhirOrganisationID
     workStationDetails{
-    Notifications
-    Messages
-    Surveys
-    Articles
-    ServiceRequests
-    }
+      notifications
+      messages
+      surveys
+      articles
+      serviceRequests
+      }
+    }   
   }
 }
 ''';

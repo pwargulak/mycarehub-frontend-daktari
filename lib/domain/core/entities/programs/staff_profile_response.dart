@@ -9,10 +9,10 @@ part 'staff_profile_response.g.dart';
 @freezed
 class StaffProfileResponse with _$StaffProfileResponse {
   factory StaffProfileResponse({
-    @JsonKey(name: 'ID') String? id,
-    @JsonKey(name: 'User') User? user,
-    @JsonKey(name: 'StaffNumber') String? staffNumber,
-    @JsonKey(name: 'DefaultFacility') Facility? defaultFacility,
+    @JsonKey(name: 'id') String? id,
+    @JsonKey(name: 'user') User? user,
+    @JsonKey(name: 'staffNumber') String? staffNumber,
+    @JsonKey(name: 'defaultFacility') Facility? defaultFacility,
   }) = _StaffProfileResponse;
 
   factory StaffProfileResponse.fromJson(Map<String, dynamic> json) =>

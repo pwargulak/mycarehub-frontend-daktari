@@ -13,8 +13,8 @@ import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:http/http.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-class FetchProgramFacilitiesAction extends ReduxAction<AppState> {
-  FetchProgramFacilitiesAction({required this.client});
+class FetchStaffFacilitiesAction extends ReduxAction<AppState> {
+  FetchStaffFacilitiesAction({required this.client});
 
   final IGraphQlClient client;
 
@@ -38,14 +38,17 @@ class FetchProgramFacilitiesAction extends ReduxAction<AppState> {
 
   @override
   Future<AppState?> reduce() async {
-    final String programId =
-        state.userProfileState?.programsState?.selectedProgram?.id ?? '';
+    final String staffId = state.userProfileState?.userProfile?.id ?? '';
     final Map<String, dynamic> variables = <String, dynamic>{
-      'programID': programId,
+      'staffID': staffId,
+      'paginationInput': <String, dynamic>{
+        'limit': 20,
+        'currentPage': 1,
+      },
     };
 
     final Response response =
-        await client.query(getProgramFacilitiesQuery, variables);
+        await client.query(getStaffFacilitiesQuery, variables);
 
     final ProcessedResponse processedResponse = processHttpResponse(response);
 
@@ -69,9 +72,11 @@ class FetchProgramFacilitiesAction extends ReduxAction<AppState> {
         return null;
       }
 
+      final Map<String, dynamic>? data = body['data'] as Map<String, dynamic>?;
+
       final ProgramFacilitiesResponse programFacilitiesResponse =
           ProgramFacilitiesResponse.fromJson(
-        body['data'] as Map<String, dynamic>,
+        data?['getStaffFacilities'] as Map<String, dynamic>,
       );
 
       dispatch(

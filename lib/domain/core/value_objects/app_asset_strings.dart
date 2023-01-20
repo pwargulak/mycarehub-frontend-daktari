@@ -1,7 +1,5 @@
 const String errorDisplayImgUrl = 'assets/images/error-display.png';
 
-const String doctorImageJpg = 'assets/images/doctor-2.jpg';
-
 //App Bar Icon Paths
 const String backIconSvgPath = 'assets/icons/app_bar_back_icon.svg';
 const String moreIconSvgPath = 'assets/icons/more_icon.svg';

@@ -44,8 +44,8 @@ class FetchUserLinkedFacilitiesAction extends ReduxAction<AppState> {
     final Map<String, dynamic> variables = <String, dynamic>{
       'userID': userId,
       'paginationInput': <String, dynamic>{
-        'Limit': 20,
-        'CurrentPage': 1,
+        'limit': 20,
+        'currentPage': 1,
       }
     };
 

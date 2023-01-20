@@ -277,7 +277,7 @@ void main() {
       store.dispatch(
         UpdateOnboardingStateAction(
           securityQuestions: <SecurityQuestion>[
-            SecurityQuestion.initial().copyWith(questionStem: firstQuestion),
+            SecurityQuestion.initial(),
           ],
           securityQuestionsResponses: <SecurityQuestionResponse>[
             SecurityQuestionResponse.initial().copyWith(response: testResponse),
@@ -285,7 +285,6 @@ void main() {
           currentOnboardingStage: CurrentOnboardingStage.ResetPIN,
         ),
       );
-
       await buildTestWidget(
         tester: tester,
         store: store,

@@ -48,7 +48,7 @@ class FetchNotificationsAction extends ReduxAction<AppState> {
     final Map<String, dynamic> variables = <String, dynamic>{
       'userID': userID,
       'flavour': Flavour.pro.name,
-      'paginationInput': <String, dynamic>{'Limit': 10, 'CurrentPage': 1},
+      'paginationInput': <String, dynamic>{'limit': 10, 'currentPage': 1},
       'filters': <String, dynamic>{
         'notificationTypes': filters,
         'isRead': isRead,

@@ -9,7 +9,7 @@ part of 'program_facilities_response.dart';
 _$_ProgramFacilitiesResponse _$$_ProgramFacilitiesResponseFromJson(
         Map<String, dynamic> json) =>
     _$_ProgramFacilitiesResponse(
-      facilities: (json['getProgramFacilities'] as List<dynamic>?)
+      facilities: (json['facilities'] as List<dynamic>?)
           ?.map((e) => Facility.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -17,5 +17,5 @@ _$_ProgramFacilitiesResponse _$$_ProgramFacilitiesResponseFromJson(
 Map<String, dynamic> _$$_ProgramFacilitiesResponseToJson(
         _$_ProgramFacilitiesResponse instance) =>
     <String, dynamic>{
-      'getProgramFacilities': instance.facilities,
+      'facilities': instance.facilities,
     };

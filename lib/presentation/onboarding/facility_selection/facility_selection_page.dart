@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:prohealth360_daktari/application/redux/actions/facilities/fetch_program_facilities_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/facilities/fetch_staff_facilities_action.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/onboarding/facilities_state_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/core/widgets/summary_badge_widget.dart';
@@ -35,7 +35,7 @@ class FacilitySelectionPage extends StatelessWidget {
                   ),
                 );
                 store.dispatch(
-                  FetchProgramFacilitiesAction(
+                  FetchStaffFacilitiesAction(
                     client: AppWrapperBase.of(context)!.graphQLClient,
                   ),
                 );
@@ -122,7 +122,7 @@ class FacilitySelectionPage extends StatelessWidget {
                         type: GenericNoDataTypes.noData,
                         recoverCallback: () => StoreProvider.dispatch(
                           context,
-                          FetchProgramFacilitiesAction(
+                          FetchStaffFacilitiesAction(
                             client: AppWrapperBase.of(context)!.graphQLClient,
                           ),
                         ),
@@ -161,7 +161,8 @@ class FacilitySelectionPage extends StatelessWidget {
                       ),
                       smallVerticalSizedBox,
                       ...facilitiesWidgetList,
-                    } else
+                    } else ...<Widget>{
+                      veryLargeVerticalSizedBox,
                       Text(
                         noProgramFacilitiesString,
                         style: boldSize20Text(
@@ -169,6 +170,7 @@ class FacilitySelectionPage extends StatelessWidget {
                         ),
                         textAlign: TextAlign.center,
                       )
+                    }
                   ],
                 );
               },
