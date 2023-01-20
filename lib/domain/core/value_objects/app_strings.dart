@@ -1010,10 +1010,11 @@ const String selectFacilityString = 'Please select your facility';
 // User Programs
 const String selectProgramString = 'Please choose your program';
 const String fetchingProgramString = 'fetching your programs';
-const String fetchingProgramFacilitiesString = "fetching your program's facilities";
+const String fetchingProgramFacilitiesString =
+    "fetching your program's facilities";
 const String noProgramsString = 'There are no programs linked to your account';
-const String noProgramFacilitiesString = 'There are no facilities linked to this program';
-
+const String noProgramFacilitiesString =
+    'There are no facilities linked to this program';
 
 const String continueString = 'Continue';
 
@@ -1054,7 +1055,7 @@ const String searchRoleString = 'Search for a role using its name';
 const String searchRoleHintString = 'Enter role name...';
 const String mostUsedRolesString = 'Most used roles';
 const String createRoleString = 'Create Role';
-const String tapToViewMoreInfoString = 'Tap to view more info and assign';
+const String tapToViewMoreInfoString = 'Tap to view more info';
 const String permissionsString = 'Permissions';
 const String updateRoleString = 'Update role';
 const String listOfThingsString =
@@ -1136,3 +1137,18 @@ final List<Map<String, String>> permissions = <Map<String, String>>[
         'This allows the user to ban clients on the platform for moderation purposes. A banned user will not be allowed to access the platform',
   },
 ];
+
+const String manageOrganizationString = 'Manage organizations';
+const String searchOrganizationTextString =
+    'Search for an Organization using its name';
+const String searchOrganizationHintString = 'Search organizations';
+const String mostViewedOrganizationString = 'Most viewed organizations';
+const String sghiString = 'SGHI';
+const String sghiDescriptionString =
+    'The Savannah Global Health Institute organization details go here';
+const String myCareHubOrgString = 'myCareHub org';
+const String myCareHubOrgDescriptionString =
+    'The myCareHub org details go here';
+const String kemriString = 'KEMRI';
+const String kemriDescriptionString = 'The KEMRI org details go here';
+const String createOrganizationString = 'Create Organization';
