@@ -33,23 +33,23 @@ void main() {
               'verifyClientPinResetServiceRequest': true,
               'getServiceRequests': <Map<String, dynamic>>[
                 <String, dynamic>{
-                  'ID': 'some-id',
-                  'RequestType': 'PIN_RESET',
-                  'ClientName': 'John Doe',
-                  'ClientContact': '+254798000000',
-                  'Status': 'PENDING',
-                  'Meta': <String, dynamic>{
+                  'id': 'some-id',
+                  'requestType': 'PIN_RESET',
+                  'clientName': 'John Doe',
+                  'clientContact': '+254798000000',
+                  'status': 'PENDING',
+                  'meta': <String, dynamic>{
                     'ccc_number': '12345678',
                     'is_ccc_number_valid': true,
                   }
                 },
                 <String, dynamic>{
-                  'ID': 'some-id-2',
-                  'RequestType': 'PIN_RESET',
-                  'ClientName': 'Jane Doe',
-                  'ClientContact': '+254798123456',
-                  'Status': 'PENDING',
-                  'Meta': <String, dynamic>{
+                  'id': 'some-id-2',
+                  'requestType': 'PIN_RESET',
+                  'clientName': 'Jane Doe',
+                  'clientContact': '+254798123456',
+                  'status': 'PENDING',
+                  'meta': <String, dynamic>{
                     'ccc_number': '98745612',
                     'is_ccc_number_valid': true,
                   }
@@ -57,12 +57,12 @@ void main() {
               ],
               'searchServiceRequests': <Map<String, dynamic>>[
                 <String, dynamic>{
-                  'ID': 'some-id',
-                  'RequestType': 'PIN_RESET',
-                  'ClientName': 'John Doe',
-                  'ClientContact': '+254798000000',
-                  'Status': 'PENDING',
-                  'Meta': <String, dynamic>{
+                  'id': 'some-id',
+                  'requestType': 'PIN_RESET',
+                  'clientName': 'John Doe',
+                  'clientContact': '+254798000000',
+                  'status': 'PENDING',
+                  'meta': <String, dynamic>{
                     'ccc_number': '12345678',
                     'is_ccc_number_valid': true,
                   }
@@ -116,23 +116,23 @@ void main() {
               'verifyClientPinResetServiceRequest': true,
               'getServiceRequests': <Map<String, dynamic>>[
                 <String, dynamic>{
-                  'ID': 'some-id',
-                  'RequestType': 'PIN_RESET',
-                  'ClientName': 'John Doe',
-                  'ClientContact': '+254798000000',
-                  'Status': 'PENDING',
-                  'Meta': <String, dynamic>{
+                  'id': 'some-id',
+                  'requestType': 'PIN_RESET',
+                  'clientName': 'John Doe',
+                  'clientContact': '+254798000000',
+                  'status': 'PENDING',
+                  'meta': <String, dynamic>{
                     'ccc_number': '12345678',
                     'is_ccc_number_valid': false,
                   }
                 },
                 <String, dynamic>{
-                  'ID': 'some-id2',
-                  'RequestType': 'PIN_RESET',
-                  'ClientName': 'John Doe',
-                  'ClientContact': '+254798000000',
-                  'Status': 'PENDING',
-                  'Meta': <String, dynamic>{
+                  'id': 'some-id2',
+                  'requestType': 'PIN_RESET',
+                  'clientName': 'John Doe',
+                  'clientContact': '+254798000000',
+                  'status': 'PENDING',
+                  'meta': <String, dynamic>{
                     'ccc_number': '12345678',
                     'is_ccc_number_valid': false,
                   }
@@ -189,18 +189,18 @@ void main() {
               'verifyClientPinResetServiceRequest': true,
               'getServiceRequests': <Map<String, dynamic>>[
                 <String, dynamic>{
-                  'ID': 'some-id',
-                  'RequestType': 'PIN_RESET',
-                  'ClientName': 'John Doe',
-                  'ClientContact': '+254798000000',
-                  'Status': 'PENDING',
+                  'id': 'some-id',
+                  'requestType': 'PIN_RESET',
+                  'clientName': 'John Doe',
+                  'clientContact': '+254798000000',
+                  'status': 'PENDING',
                 },
                 <String, dynamic>{
-                  'ID': 'some-id-2',
-                  'RequestType': 'PIN_RESET',
-                  'ClientName': 'Jane Doe',
-                  'ClientContact': '+254798123456',
-                  'Status': 'PENDING',
+                  'id': 'some-id-2',
+                  'requestType': 'PIN_RESET',
+                  'clientName': 'Jane Doe',
+                  'clientContact': '+254798123456',
+                  'status': 'PENDING',
                 }
               ],
             }
@@ -270,12 +270,12 @@ void main() {
               'verifyClientPinResetServiceRequest': true,
               'getServiceRequests': <Map<String, dynamic>>[
                 <String, dynamic>{
-                  'ID': 'some-id',
-                  'RequestType': 'PIN_RESET',
-                  'ClientName': 'John Doe',
-                  'ClientContact': '+254798000000',
-                  'Status': 'PENDING',
-                  'Meta': <String, dynamic>{
+                  'id': 'some-id',
+                  'requestType': 'PIN_RESET',
+                  'clientName': 'John Doe',
+                  'clientContact': '+254798000000',
+                  'status': 'PENDING',
+                  'meta': <String, dynamic>{
                     'ccc_number': '12345678',
                     'is_ccc_number_valid': true,
                   }
@@ -315,12 +315,12 @@ void main() {
               'data': <String, dynamic>{
                 'getServiceRequests': <Map<String, dynamic>>[
                   <String, dynamic>{
-                    'ID': 'some-id',
-                    'RequestType': 'PIN_RESET',
-                    'ClientName': 'John Doe',
-                    'ClientContact': '+254798000000',
-                    'Status': 'PENDING',
-                    'Meta': <String, dynamic>{
+                    'id': 'some-id',
+                    'requestType': 'PIN_RESET',
+                    'clientName': 'John Doe',
+                    'clientContact': '+254798000000',
+                    'status': 'PENDING',
+                    'meta': <String, dynamic>{
                       'ccc_number': '12345678',
                       'is_ccc_number_valid': true,
                     }

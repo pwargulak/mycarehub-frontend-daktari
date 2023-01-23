@@ -9,16 +9,16 @@ part of 'search_user_response.dart';
 _$_SearchUserResponse _$$_SearchUserResponseFromJson(
         Map<String, dynamic> json) =>
     _$_SearchUserResponse(
-      id: json['ID'] as String?,
-      clientCCCNumber: json['CCCNumber'] as String?,
-      isActive: json['Active'] as bool?,
-      staffNumber: json['StaffNumber'] as String?,
-      user: json['User'] == null
+      id: json['id'] as String?,
+      clientCCCNumber: json['cccNumber'] as String?,
+      isActive: json['active'] as bool?,
+      staffNumber: json['staffNumber'] as String?,
+      user: json['user'] == null
           ? null
-          : UserData.fromJson(json['User'] as Map<String, dynamic>),
-      defaultFacility: json['DefaultFacility'] == null
+          : UserData.fromJson(json['user'] as Map<String, dynamic>),
+      defaultFacility: json['defaultFacility'] == null
           ? null
-          : Facility.fromJson(json['DefaultFacility'] as Map<String, dynamic>),
+          : Facility.fromJson(json['defaultFacility'] as Map<String, dynamic>),
       rolesList: json['rolesList'] == null
           ? null
           : RolesList.fromJson(json['rolesList'] as Map<String, dynamic>),
@@ -27,11 +27,11 @@ _$_SearchUserResponse _$$_SearchUserResponseFromJson(
 Map<String, dynamic> _$$_SearchUserResponseToJson(
         _$_SearchUserResponse instance) =>
     <String, dynamic>{
-      'ID': instance.id,
-      'CCCNumber': instance.clientCCCNumber,
-      'Active': instance.isActive,
-      'StaffNumber': instance.staffNumber,
-      'User': instance.user,
-      'DefaultFacility': instance.defaultFacility,
+      'id': instance.id,
+      'cccNumber': instance.clientCCCNumber,
+      'active': instance.isActive,
+      'staffNumber': instance.staffNumber,
+      'user': instance.user,
+      'defaultFacility': instance.defaultFacility,
       'rolesList': instance.rolesList,
     };

@@ -50,7 +50,7 @@ Map<String, dynamic> setUserPINMutationVariables(
 const String registerClientMutation = r'''
 mutation registerClient($input: ClientRegistrationInput){
   registerClient(input:$input){
-    ID
+    id
     active
     clientTypes
     enrollmentDate
@@ -70,7 +70,7 @@ mutation registerClient($input: ClientRegistrationInput){
 const String registerStaffMutation = r'''
 mutation registerStaff($input: StaffRegistrationInput!){
   registerStaff(input:$input){
-    ID
+    id
     active
     staffNumber
     userID
@@ -159,7 +159,7 @@ mutation removeMembersFromCommunity($communityID: String!, $memberIDs: [String!]
 
 const String banUserMutation = r'''
 mutation BanUser($memberID: String!, $bannedBy: String!, $communityID: String!){
-  banUser(MemberID: $memberID, bannedBy: $bannedBy, communityID: $communityID)
+  banUser(memberID: $memberID, bannedBy: $bannedBy, communityID: $communityID)
 }
 ''';
 
@@ -231,8 +231,8 @@ mutation registerCaregiver($input: CaregiverInput!) {
     id
     caregiverNumber
     user {
-      ID
-      Name
+      id
+      name
     }
   }
 }

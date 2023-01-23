@@ -20,36 +20,36 @@ ServiceRequest _$ServiceRequestFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ServiceRequest {
-  @JsonKey(name: 'ID')
+  @JsonKey(name: 'id')
   String? get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'Request')
+  @JsonKey(name: 'request')
   String? get description => throw _privateConstructorUsedError;
-  @JsonKey(name: 'RequestType')
+  @JsonKey(name: 'requestType')
   ServiceRequestType? get serviceRequestType =>
       throw _privateConstructorUsedError;
-  @JsonKey(name: 'ClientID')
+  @JsonKey(name: 'clientID')
   String? get clientId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'ClientName')
+  @JsonKey(name: 'clientName')
   String? get clientName => throw _privateConstructorUsedError;
-  @JsonKey(name: 'ClientContact')
+  @JsonKey(name: 'clientContact')
   String? get clientPhoneNumber => throw _privateConstructorUsedError;
-  @JsonKey(name: 'Status')
+  @JsonKey(name: 'status')
   RequestStatus? get status => throw _privateConstructorUsedError;
-  @JsonKey(name: 'ResolvedAt')
+  @JsonKey(name: 'resolvedAt')
   String? get resolvedTime => throw _privateConstructorUsedError;
-  @JsonKey(name: 'ResolvedBy')
+  @JsonKey(name: 'resolvedBy')
   String? get resolvedBy => throw _privateConstructorUsedError;
-  @JsonKey(name: 'ResolvedByName')
+  @JsonKey(name: 'resolvedByName')
   String? get resolvedByName => throw _privateConstructorUsedError;
-  @JsonKey(name: 'CreatedAt')
+  @JsonKey(name: 'createdAt')
   String? get createdAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'Meta')
+  @JsonKey(name: 'meta')
   ServiceRequestMeta? get meta => throw _privateConstructorUsedError;
-  @JsonKey(name: 'StaffID')
+  @JsonKey(name: 'staffID')
   String? get staffId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'StaffName')
+  @JsonKey(name: 'staffName')
   String? get staffName => throw _privateConstructorUsedError;
-  @JsonKey(name: 'StaffContact')
+  @JsonKey(name: 'staffContact')
   String? get staffPhoneNumber => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -65,21 +65,21 @@ abstract class $ServiceRequestCopyWith<$Res> {
       _$ServiceRequestCopyWithImpl<$Res, ServiceRequest>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'ID') String? id,
-      @JsonKey(name: 'Request') String? description,
-      @JsonKey(name: 'RequestType') ServiceRequestType? serviceRequestType,
-      @JsonKey(name: 'ClientID') String? clientId,
-      @JsonKey(name: 'ClientName') String? clientName,
-      @JsonKey(name: 'ClientContact') String? clientPhoneNumber,
-      @JsonKey(name: 'Status') RequestStatus? status,
-      @JsonKey(name: 'ResolvedAt') String? resolvedTime,
-      @JsonKey(name: 'ResolvedBy') String? resolvedBy,
-      @JsonKey(name: 'ResolvedByName') String? resolvedByName,
-      @JsonKey(name: 'CreatedAt') String? createdAt,
-      @JsonKey(name: 'Meta') ServiceRequestMeta? meta,
-      @JsonKey(name: 'StaffID') String? staffId,
-      @JsonKey(name: 'StaffName') String? staffName,
-      @JsonKey(name: 'StaffContact') String? staffPhoneNumber});
+      {@JsonKey(name: 'id') String? id,
+      @JsonKey(name: 'request') String? description,
+      @JsonKey(name: 'requestType') ServiceRequestType? serviceRequestType,
+      @JsonKey(name: 'clientID') String? clientId,
+      @JsonKey(name: 'clientName') String? clientName,
+      @JsonKey(name: 'clientContact') String? clientPhoneNumber,
+      @JsonKey(name: 'status') RequestStatus? status,
+      @JsonKey(name: 'resolvedAt') String? resolvedTime,
+      @JsonKey(name: 'resolvedBy') String? resolvedBy,
+      @JsonKey(name: 'resolvedByName') String? resolvedByName,
+      @JsonKey(name: 'createdAt') String? createdAt,
+      @JsonKey(name: 'meta') ServiceRequestMeta? meta,
+      @JsonKey(name: 'staffID') String? staffId,
+      @JsonKey(name: 'staffName') String? staffName,
+      @JsonKey(name: 'staffContact') String? staffPhoneNumber});
 
   $ServiceRequestMetaCopyWith<$Res>? get meta;
 }
@@ -199,21 +199,21 @@ abstract class _$$_ServiceRequestCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'ID') String? id,
-      @JsonKey(name: 'Request') String? description,
-      @JsonKey(name: 'RequestType') ServiceRequestType? serviceRequestType,
-      @JsonKey(name: 'ClientID') String? clientId,
-      @JsonKey(name: 'ClientName') String? clientName,
-      @JsonKey(name: 'ClientContact') String? clientPhoneNumber,
-      @JsonKey(name: 'Status') RequestStatus? status,
-      @JsonKey(name: 'ResolvedAt') String? resolvedTime,
-      @JsonKey(name: 'ResolvedBy') String? resolvedBy,
-      @JsonKey(name: 'ResolvedByName') String? resolvedByName,
-      @JsonKey(name: 'CreatedAt') String? createdAt,
-      @JsonKey(name: 'Meta') ServiceRequestMeta? meta,
-      @JsonKey(name: 'StaffID') String? staffId,
-      @JsonKey(name: 'StaffName') String? staffName,
-      @JsonKey(name: 'StaffContact') String? staffPhoneNumber});
+      {@JsonKey(name: 'id') String? id,
+      @JsonKey(name: 'request') String? description,
+      @JsonKey(name: 'requestType') ServiceRequestType? serviceRequestType,
+      @JsonKey(name: 'clientID') String? clientId,
+      @JsonKey(name: 'clientName') String? clientName,
+      @JsonKey(name: 'clientContact') String? clientPhoneNumber,
+      @JsonKey(name: 'status') RequestStatus? status,
+      @JsonKey(name: 'resolvedAt') String? resolvedTime,
+      @JsonKey(name: 'resolvedBy') String? resolvedBy,
+      @JsonKey(name: 'resolvedByName') String? resolvedByName,
+      @JsonKey(name: 'createdAt') String? createdAt,
+      @JsonKey(name: 'meta') ServiceRequestMeta? meta,
+      @JsonKey(name: 'staffID') String? staffId,
+      @JsonKey(name: 'staffName') String? staffName,
+      @JsonKey(name: 'staffContact') String? staffPhoneNumber});
 
   @override
   $ServiceRequestMetaCopyWith<$Res>? get meta;
@@ -315,69 +315,69 @@ class __$$_ServiceRequestCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ServiceRequest implements _ServiceRequest {
   _$_ServiceRequest(
-      {@JsonKey(name: 'ID') this.id,
-      @JsonKey(name: 'Request') this.description,
-      @JsonKey(name: 'RequestType') this.serviceRequestType,
-      @JsonKey(name: 'ClientID') this.clientId,
-      @JsonKey(name: 'ClientName') this.clientName,
-      @JsonKey(name: 'ClientContact') this.clientPhoneNumber,
-      @JsonKey(name: 'Status') this.status,
-      @JsonKey(name: 'ResolvedAt') this.resolvedTime,
-      @JsonKey(name: 'ResolvedBy') this.resolvedBy,
-      @JsonKey(name: 'ResolvedByName') this.resolvedByName,
-      @JsonKey(name: 'CreatedAt') this.createdAt,
-      @JsonKey(name: 'Meta') this.meta,
-      @JsonKey(name: 'StaffID') this.staffId,
-      @JsonKey(name: 'StaffName') this.staffName,
-      @JsonKey(name: 'StaffContact') this.staffPhoneNumber});
+      {@JsonKey(name: 'id') this.id,
+      @JsonKey(name: 'request') this.description,
+      @JsonKey(name: 'requestType') this.serviceRequestType,
+      @JsonKey(name: 'clientID') this.clientId,
+      @JsonKey(name: 'clientName') this.clientName,
+      @JsonKey(name: 'clientContact') this.clientPhoneNumber,
+      @JsonKey(name: 'status') this.status,
+      @JsonKey(name: 'resolvedAt') this.resolvedTime,
+      @JsonKey(name: 'resolvedBy') this.resolvedBy,
+      @JsonKey(name: 'resolvedByName') this.resolvedByName,
+      @JsonKey(name: 'createdAt') this.createdAt,
+      @JsonKey(name: 'meta') this.meta,
+      @JsonKey(name: 'staffID') this.staffId,
+      @JsonKey(name: 'staffName') this.staffName,
+      @JsonKey(name: 'staffContact') this.staffPhoneNumber});
 
   factory _$_ServiceRequest.fromJson(Map<String, dynamic> json) =>
       _$$_ServiceRequestFromJson(json);
 
   @override
-  @JsonKey(name: 'ID')
+  @JsonKey(name: 'id')
   final String? id;
   @override
-  @JsonKey(name: 'Request')
+  @JsonKey(name: 'request')
   final String? description;
   @override
-  @JsonKey(name: 'RequestType')
+  @JsonKey(name: 'requestType')
   final ServiceRequestType? serviceRequestType;
   @override
-  @JsonKey(name: 'ClientID')
+  @JsonKey(name: 'clientID')
   final String? clientId;
   @override
-  @JsonKey(name: 'ClientName')
+  @JsonKey(name: 'clientName')
   final String? clientName;
   @override
-  @JsonKey(name: 'ClientContact')
+  @JsonKey(name: 'clientContact')
   final String? clientPhoneNumber;
   @override
-  @JsonKey(name: 'Status')
+  @JsonKey(name: 'status')
   final RequestStatus? status;
   @override
-  @JsonKey(name: 'ResolvedAt')
+  @JsonKey(name: 'resolvedAt')
   final String? resolvedTime;
   @override
-  @JsonKey(name: 'ResolvedBy')
+  @JsonKey(name: 'resolvedBy')
   final String? resolvedBy;
   @override
-  @JsonKey(name: 'ResolvedByName')
+  @JsonKey(name: 'resolvedByName')
   final String? resolvedByName;
   @override
-  @JsonKey(name: 'CreatedAt')
+  @JsonKey(name: 'createdAt')
   final String? createdAt;
   @override
-  @JsonKey(name: 'Meta')
+  @JsonKey(name: 'meta')
   final ServiceRequestMeta? meta;
   @override
-  @JsonKey(name: 'StaffID')
+  @JsonKey(name: 'staffID')
   final String? staffId;
   @override
-  @JsonKey(name: 'StaffName')
+  @JsonKey(name: 'staffName')
   final String? staffName;
   @override
-  @JsonKey(name: 'StaffContact')
+  @JsonKey(name: 'staffContact')
   final String? staffPhoneNumber;
 
   @override
@@ -454,84 +454,84 @@ class _$_ServiceRequest implements _ServiceRequest {
 
 abstract class _ServiceRequest implements ServiceRequest {
   factory _ServiceRequest(
-      {@JsonKey(name: 'ID')
+      {@JsonKey(name: 'id')
           final String? id,
-      @JsonKey(name: 'Request')
+      @JsonKey(name: 'request')
           final String? description,
-      @JsonKey(name: 'RequestType')
+      @JsonKey(name: 'requestType')
           final ServiceRequestType? serviceRequestType,
-      @JsonKey(name: 'ClientID')
+      @JsonKey(name: 'clientID')
           final String? clientId,
-      @JsonKey(name: 'ClientName')
+      @JsonKey(name: 'clientName')
           final String? clientName,
-      @JsonKey(name: 'ClientContact')
+      @JsonKey(name: 'clientContact')
           final String? clientPhoneNumber,
-      @JsonKey(name: 'Status')
+      @JsonKey(name: 'status')
           final RequestStatus? status,
-      @JsonKey(name: 'ResolvedAt')
+      @JsonKey(name: 'resolvedAt')
           final String? resolvedTime,
-      @JsonKey(name: 'ResolvedBy')
+      @JsonKey(name: 'resolvedBy')
           final String? resolvedBy,
-      @JsonKey(name: 'ResolvedByName')
+      @JsonKey(name: 'resolvedByName')
           final String? resolvedByName,
-      @JsonKey(name: 'CreatedAt')
+      @JsonKey(name: 'createdAt')
           final String? createdAt,
-      @JsonKey(name: 'Meta')
+      @JsonKey(name: 'meta')
           final ServiceRequestMeta? meta,
-      @JsonKey(name: 'StaffID')
+      @JsonKey(name: 'staffID')
           final String? staffId,
-      @JsonKey(name: 'StaffName')
+      @JsonKey(name: 'staffName')
           final String? staffName,
-      @JsonKey(name: 'StaffContact')
+      @JsonKey(name: 'staffContact')
           final String? staffPhoneNumber}) = _$_ServiceRequest;
 
   factory _ServiceRequest.fromJson(Map<String, dynamic> json) =
       _$_ServiceRequest.fromJson;
 
   @override
-  @JsonKey(name: 'ID')
+  @JsonKey(name: 'id')
   String? get id;
   @override
-  @JsonKey(name: 'Request')
+  @JsonKey(name: 'request')
   String? get description;
   @override
-  @JsonKey(name: 'RequestType')
+  @JsonKey(name: 'requestType')
   ServiceRequestType? get serviceRequestType;
   @override
-  @JsonKey(name: 'ClientID')
+  @JsonKey(name: 'clientID')
   String? get clientId;
   @override
-  @JsonKey(name: 'ClientName')
+  @JsonKey(name: 'clientName')
   String? get clientName;
   @override
-  @JsonKey(name: 'ClientContact')
+  @JsonKey(name: 'clientContact')
   String? get clientPhoneNumber;
   @override
-  @JsonKey(name: 'Status')
+  @JsonKey(name: 'status')
   RequestStatus? get status;
   @override
-  @JsonKey(name: 'ResolvedAt')
+  @JsonKey(name: 'resolvedAt')
   String? get resolvedTime;
   @override
-  @JsonKey(name: 'ResolvedBy')
+  @JsonKey(name: 'resolvedBy')
   String? get resolvedBy;
   @override
-  @JsonKey(name: 'ResolvedByName')
+  @JsonKey(name: 'resolvedByName')
   String? get resolvedByName;
   @override
-  @JsonKey(name: 'CreatedAt')
+  @JsonKey(name: 'createdAt')
   String? get createdAt;
   @override
-  @JsonKey(name: 'Meta')
+  @JsonKey(name: 'meta')
   ServiceRequestMeta? get meta;
   @override
-  @JsonKey(name: 'StaffID')
+  @JsonKey(name: 'staffID')
   String? get staffId;
   @override
-  @JsonKey(name: 'StaffName')
+  @JsonKey(name: 'staffName')
   String? get staffName;
   @override
-  @JsonKey(name: 'StaffContact')
+  @JsonKey(name: 'staffContact')
   String? get staffPhoneNumber;
   @override
   @JsonKey(ignore: true)

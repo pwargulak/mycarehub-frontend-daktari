@@ -20,7 +20,7 @@ LinkedFacilities _$LinkedFacilitiesFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$LinkedFacilities {
-  @JsonKey(name: 'Facilities')
+  @JsonKey(name: 'facilities')
   List<Facility>? get facilities => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +35,7 @@ abstract class $LinkedFacilitiesCopyWith<$Res> {
           LinkedFacilities value, $Res Function(LinkedFacilities) then) =
       _$LinkedFacilitiesCopyWithImpl<$Res, LinkedFacilities>;
   @useResult
-  $Res call({@JsonKey(name: 'Facilities') List<Facility>? facilities});
+  $Res call({@JsonKey(name: 'facilities') List<Facility>? facilities});
 }
 
 /// @nodoc
@@ -70,7 +70,7 @@ abstract class _$$_LinkedFacilitiesCopyWith<$Res>
       __$$_LinkedFacilitiesCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'Facilities') List<Facility>? facilities});
+  $Res call({@JsonKey(name: 'facilities') List<Facility>? facilities});
 }
 
 /// @nodoc
@@ -99,7 +99,7 @@ class __$$_LinkedFacilitiesCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_LinkedFacilities implements _LinkedFacilities {
   _$_LinkedFacilities(
-      {@JsonKey(name: 'Facilities') final List<Facility>? facilities})
+      {@JsonKey(name: 'facilities') final List<Facility>? facilities})
       : _facilities = facilities;
 
   factory _$_LinkedFacilities.fromJson(Map<String, dynamic> json) =>
@@ -107,7 +107,7 @@ class _$_LinkedFacilities implements _LinkedFacilities {
 
   final List<Facility>? _facilities;
   @override
-  @JsonKey(name: 'Facilities')
+  @JsonKey(name: 'facilities')
   List<Facility>? get facilities {
     final value = _facilities;
     if (value == null) return null;
@@ -150,14 +150,14 @@ class _$_LinkedFacilities implements _LinkedFacilities {
 
 abstract class _LinkedFacilities implements LinkedFacilities {
   factory _LinkedFacilities(
-          {@JsonKey(name: 'Facilities') final List<Facility>? facilities}) =
+          {@JsonKey(name: 'facilities') final List<Facility>? facilities}) =
       _$_LinkedFacilities;
 
   factory _LinkedFacilities.fromJson(Map<String, dynamic> json) =
       _$_LinkedFacilities.fromJson;
 
   @override
-  @JsonKey(name: 'Facilities')
+  @JsonKey(name: 'facilities')
   List<Facility>? get facilities;
   @override
   @JsonKey(ignore: true)

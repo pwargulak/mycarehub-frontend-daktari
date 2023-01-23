@@ -10,18 +10,18 @@ query getCurrentTerms($flavour: Flavour!) {
 const String getSecurityQuestionsQuery = r'''
 query getSecurityQuestions($flavour: Flavour!) {
   getSecurityQuestions(flavour: $flavour) {
-    SecurityQuestionID
-    QuestionStem
-    Description
-    Active
-    ResponseType
+    securityQuestionID
+    questionStem
+    description
+    active
+    responseType
   }
 }
 ''';
 const String searchFacilityQuery = r'''
 query searchFacility($searchParameter: String) {
   searchFacility(searchParameter: $searchParameter) {
-    ID
+    id
     name
     code
   }
@@ -31,19 +31,19 @@ query searchFacility($searchParameter: String) {
 const String getServiceRequestsQuery = r'''
 query getServiceRequests($type: String, $status: String, $facilityID: String!, $flavour: Flavour!){
   getServiceRequests(requestType: $type, requestStatus: $status, facilityID: $facilityID, flavour: $flavour){
-    ID
-    RequestType
-    Request
-    ClientID
-    FacilityID
-    ClientName
-    ClientContact
-    StaffContact
-    StaffID
-    StaffName
-    Status
-    CreatedAt
-    Meta
+    id
+    requestType
+    request
+    clientID
+    facilityID
+    clientName
+    clientContact
+    staffContact
+    staffID
+    staffName
+    status
+    createdAt
+    meta
   }
 }
 ''';
@@ -51,18 +51,18 @@ query getServiceRequests($type: String, $status: String, $facilityID: String!, $
 const String searchServiceRequestsQuery = r'''
 query searchServiceRequests($searchTerm: String!, $flavour: Flavour!, $requestType: String!, $facilityID: String!){
   searchServiceRequests(searchTerm: $searchTerm, flavour: $flavour, requestType: $requestType, facilityID: $facilityID){
-    ID
-    RequestType
-    ClientName
-    StaffName
-    Status
-    ClientID
-    CreatedAt
-    StaffContact
-    ClientContact
-    Meta
-    ClientContact
-    StaffContact
+    id
+    requestType
+    clientName
+    staffName
+    status
+    clientID
+    createdAt
+    staffContact
+    clientContact
+    meta
+    clientContact
+    staffContact
   }
 }
 ''';
@@ -70,22 +70,22 @@ query searchServiceRequests($searchTerm: String!, $flavour: Flavour!, $requestTy
 const String getResolvedServiceRequestsQuery = r'''
 query getServiceRequests($type: String, $status: String, $facilityID: String!, $flavour: Flavour!){
   getServiceRequests(requestType: $type, requestStatus: $status, facilityID: $facilityID, flavour: $flavour){
-    ID
-    RequestType
-    Request
-    ClientID
-    FacilityID
-    ClientName
-    ClientContact
-    Status
-    ResolvedAt
-    ResolvedBy
-    ResolvedByName
-    CreatedAt
-    Meta
-    StaffID
-    StaffName
-    StaffContact
+    id
+    requestType
+    request
+    clientID
+    facilityID
+    clientName
+    clientContact
+    status
+    resolvedAt
+    resolvedBy
+    resolvedByName
+    createdAt
+    meta
+    staffID
+    staffName
+    staffContact
   }
 }
 ''';
@@ -165,24 +165,24 @@ query listPendingInvites($memberID: String!, $input: QueryOption){
 const String searchClientQuery = r'''
 query searchClientUser($searchParameter: String!) {
   searchClientUser(searchParameter: $searchParameter){
-    ID
-    CCCNumber
-    Active 
-    User{
-      ID
-      Username
-      Name
-      Active
-      Contacts{
+    id
+    cccNumber
+    active 
+    user{
+      id
+      username
+      name
+      active
+      contacts{
         id
         contactValue
         active
         optedIn
       }
-      TermsAccepted
+      termsAccepted
     }
-      DefaultFacility{
-      ID
+      defaultFacility{
+      id
       name
       code
       phone
@@ -197,24 +197,24 @@ query searchClientUser($searchParameter: String!) {
 const String searchStaffMemberQuery = r'''
 query searchStaffUser($searchParameter: String!) {
   searchStaffUser(searchParameter: $searchParameter) {
-    ID
-    StaffNumber
-    User{
-      ID
-      Username
-      Name
-      Active
-      Contacts{
+    id
+    staffNumber
+    user{
+      id
+      username
+      name
+      active
+      contacts{
         id
         contactType
         contactValue
         active
         optedIn
       }
-      TermsAccepted
+      termsAccepted
     }
-    DefaultFacility{
-      ID
+    defaultFacility{
+      id
       name
       code
       phone
@@ -408,7 +408,7 @@ const String getFAQsQuery = r'''
 query getFAQs($flavour: Flavour!){
   getFAQs(flavour: $flavour){
     items {
-      ID
+      id
       title
       date
       intro
@@ -433,9 +433,9 @@ query getFAQs($flavour: Flavour!){
         alt
       }
       documents {
-        ID
+        id
         Document {
-          ID
+          id
           title
           meta {
             documentDetailUrl
@@ -444,7 +444,7 @@ query getFAQs($flavour: Flavour!){
         }
       }
       featuredMedia{
-        ID
+        id
         url
         title
         type
@@ -455,9 +455,9 @@ query getFAQs($flavour: Flavour!){
         duration
       }
       galleryImages{
-        ID
+        id
         image{
-          ID
+          id
           title
           meta{
             imageDownloadUrl
@@ -472,7 +472,7 @@ query getFAQs($flavour: Flavour!){
 const String retrieveFacilityQuery = r'''
 query retrieveFacility($id: String!, $active: Boolean!){
   retrieveFacility(id: $id, active: $active) {
-    ID
+    id
     name
     code
     phone
@@ -508,12 +508,12 @@ query listSurveyRespondents(
       formID
     }
     pagination{
-      Limit
-      CurrentPage
-      Count
-      TotalPages
-      NextPage
-      PreviousPage
+      limit
+      currentPage
+      count
+      totalPages
+      nextPage
+      previousPage
     }
   }
 }''';
@@ -533,10 +533,10 @@ query searchCaregiverUser($searchParameter: String!){
   searchCaregiverUser(searchParameter: $searchParameter){
     id
     user{
-      ID
-      Username
-      Name
-      Contacts{
+      id
+      username
+      name
+      contacts{
         contactType
         contactValue
       }
@@ -550,16 +550,16 @@ query searchCaregiverUser($searchParameter: String!){
 const String getUserLinkedFacilitiesQuery = r'''
 query getUserLinkedFacilities($userID: ID! $paginationInput: PaginationsInput!){
   getUserLinkedFacilities(userID: $userID, paginationInput: $paginationInput){
-    Pagination{
-      Limit
-      CurrentPage
-      Count
-      TotalPages
-      NextPage
-      PreviousPage
+    pagination{
+      limit
+      currentPage
+      count
+      totalPages
+      nextPage
+      previousPage
     }
-    Facilities{
-      ID
+    facilities{
+      id
       name
       code
       phone
@@ -568,10 +568,10 @@ query getUserLinkedFacilities($userID: ID! $paginationInput: PaginationsInput!){
       description
       fhirOrganisationID
       workStationDetails{
-        Notifications
-        Surveys
-        Articles
-        Messages
+        notifications
+        surveys
+        articles
+        messages
       }
     }
   }
@@ -587,26 +587,25 @@ query getCaregiverManagedClients(
     caregiverID: $caregiverID
     paginationInput: $paginationInput
   ){
-    ManagedClients{
+    managedClients{
       caregiverConsent
 			clientConsent
       clientProfile{
-        ID
-        User{
-          ID
-          Username
-          Name
-          Contacts{
+        id
+        user{
+          id
+          username
+          name
+          contacts{
             id
             contactType
             contactValue
           }
-          DateOfBirth
         }
       }
       workStationDetails{
-        Notifications
-        Surveys
+        notifications
+        surveys
       }
     }
   }
@@ -619,10 +618,10 @@ query listClientsCaregivers($clientID: String!, $paginationInput: PaginationsInp
     caregivers {
       id
       user {
-        ID
-        Username
-        Name
-        Contacts {
+        id
+        username
+        name
+        contacts {
           contactValue
         }
       }

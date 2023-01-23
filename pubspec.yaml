@@ -36,7 +36,7 @@ dependencies:
   quiver: ^3.1.0
   rxdart: ^0.27.5
   sentry_flutter: ^6.15.1
-  sghi_core: ^0.2.6
+  sghi_core: ^0.2.8
   sms_autofill: ^2.2.0
   sqflite: ^2.0.3+1
   stream_chat_flutter: ^5.1.0

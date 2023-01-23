@@ -23,27 +23,27 @@ void main() {
               'verifyStaffPinResetServiceRequest': true,
               'getServiceRequests': <Map<String, dynamic>>[
                 <String, dynamic>{
-                  'ID': 'some-id',
-                  'RequestType': 'STAFF_PIN_RESET',
-                  'StaffName': 'John Doe',
-                  'StaffContact': '+254798000000',
-                  'Status': 'PENDING',
+                  'id': 'some-id',
+                  'requestType': 'STAFF_PIN_RESET',
+                  'staffName': 'John Doe',
+                  'staffContact': '+254798000000',
+                  'status': 'PENDING',
                 },
                 <String, dynamic>{
-                  'ID': 'some-id-2',
-                  'RequestType': 'STAFF_PIN_RESET',
-                  'StaffName': 'John Doe',
-                  'StaffContact': '+254798000000',
-                  'Status': 'PENDING',
+                  'id': 'some-id-2',
+                  'requestType': 'STAFF_PIN_RESET',
+                  'staffName': 'John Doe',
+                  'staffContact': '+254798000000',
+                  'status': 'PENDING',
                 }
               ],
               'searchServiceRequests': <Map<String, dynamic>>[
                 <String, dynamic>{
-                  'ID': 'some-id',
-                  'RequestType': 'STAFF_PIN_RESET',
-                  'StaffName': 'John Doe',
-                  'StaffContact': '+254798000000',
-                  'Status': 'PENDING',
+                  'id': 'some-id',
+                  'requestType': 'STAFF_PIN_RESET',
+                  'staffName': 'John Doe',
+                  'staffContact': '+254798000000',
+                  'status': 'PENDING',
                 },
               ],
             }
@@ -121,11 +121,11 @@ void main() {
               'verifyStaffPinResetServiceRequest': true,
               'getServiceRequests': <Map<String, dynamic>>[
                 <String, dynamic>{
-                  'ID': 'some-id',
-                  'RequestType': 'STAFF_PIN_RESET',
-                  'StaffName': 'John Doe',
-                  'StaffContact': '+254798000000',
-                  'Status': 'PENDING',
+                  'id': 'some-id',
+                  'requestType': 'STAFF_PIN_RESET',
+                  'staffName': 'John Doe',
+                  'staffContact': '+254798000000',
+                  'status': 'PENDING',
                 },
               ],
             }
@@ -162,11 +162,11 @@ void main() {
               'data': <String, dynamic>{
                 'getServiceRequests': <Map<String, dynamic>>[
                   <String, dynamic>{
-                    'ID': 'some-id',
-                    'RequestType': 'STAFF_PIN_RESET',
-                    'StaffName': 'John Doe',
-                    'StaffContact': '+254798000000',
-                    'Status': 'PENDING',
+                    'id': 'some-id',
+                    'requestType': 'STAFF_PIN_RESET',
+                    'staffName': 'John Doe',
+                    'staffContact': '+254798000000',
+                    'status': 'PENDING',
                   }
                 ],
                 'searchServiceRequests': <dynamic>[]

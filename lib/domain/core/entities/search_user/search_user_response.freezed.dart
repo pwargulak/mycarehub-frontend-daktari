@@ -20,20 +20,20 @@ SearchUserResponse _$SearchUserResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SearchUserResponse {
-  @JsonKey(name: 'ID')
+  @JsonKey(name: 'id')
   String? get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'CCCNumber')
+  @JsonKey(name: 'cccNumber')
   String? get clientCCCNumber =>
       throw _privateConstructorUsedError; // This is the CCCNumber if the person being searched is a client
-  @JsonKey(name: 'Active')
+  @JsonKey(name: 'active')
   bool? get isActive =>
       throw _privateConstructorUsedError; // This is a boolean for checking if the user was deactivated from the platform
-  @JsonKey(name: 'StaffNumber')
+  @JsonKey(name: 'staffNumber')
   String? get staffNumber =>
       throw _privateConstructorUsedError; // this is the staff number if the person being searched is a staff member
-  @JsonKey(name: 'User')
+  @JsonKey(name: 'user')
   UserData? get user => throw _privateConstructorUsedError;
-  @JsonKey(name: 'DefaultFacility')
+  @JsonKey(name: 'defaultFacility')
   Facility? get defaultFacility => throw _privateConstructorUsedError;
   @JsonKey(name: 'rolesList')
   RolesList? get rolesList => throw _privateConstructorUsedError;
@@ -51,12 +51,12 @@ abstract class $SearchUserResponseCopyWith<$Res> {
       _$SearchUserResponseCopyWithImpl<$Res, SearchUserResponse>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'ID') String? id,
-      @JsonKey(name: 'CCCNumber') String? clientCCCNumber,
-      @JsonKey(name: 'Active') bool? isActive,
-      @JsonKey(name: 'StaffNumber') String? staffNumber,
-      @JsonKey(name: 'User') UserData? user,
-      @JsonKey(name: 'DefaultFacility') Facility? defaultFacility,
+      {@JsonKey(name: 'id') String? id,
+      @JsonKey(name: 'cccNumber') String? clientCCCNumber,
+      @JsonKey(name: 'active') bool? isActive,
+      @JsonKey(name: 'staffNumber') String? staffNumber,
+      @JsonKey(name: 'user') UserData? user,
+      @JsonKey(name: 'defaultFacility') Facility? defaultFacility,
       @JsonKey(name: 'rolesList') RolesList? rolesList});
 
   $UserDataCopyWith<$Res>? get user;
@@ -163,12 +163,12 @@ abstract class _$$_SearchUserResponseCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'ID') String? id,
-      @JsonKey(name: 'CCCNumber') String? clientCCCNumber,
-      @JsonKey(name: 'Active') bool? isActive,
-      @JsonKey(name: 'StaffNumber') String? staffNumber,
-      @JsonKey(name: 'User') UserData? user,
-      @JsonKey(name: 'DefaultFacility') Facility? defaultFacility,
+      {@JsonKey(name: 'id') String? id,
+      @JsonKey(name: 'cccNumber') String? clientCCCNumber,
+      @JsonKey(name: 'active') bool? isActive,
+      @JsonKey(name: 'staffNumber') String? staffNumber,
+      @JsonKey(name: 'user') UserData? user,
+      @JsonKey(name: 'defaultFacility') Facility? defaultFacility,
       @JsonKey(name: 'rolesList') RolesList? rolesList});
 
   @override
@@ -235,37 +235,37 @@ class __$$_SearchUserResponseCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_SearchUserResponse implements _SearchUserResponse {
   _$_SearchUserResponse(
-      {@JsonKey(name: 'ID') this.id,
-      @JsonKey(name: 'CCCNumber') this.clientCCCNumber,
-      @JsonKey(name: 'Active') this.isActive,
-      @JsonKey(name: 'StaffNumber') this.staffNumber,
-      @JsonKey(name: 'User') this.user,
-      @JsonKey(name: 'DefaultFacility') this.defaultFacility,
+      {@JsonKey(name: 'id') this.id,
+      @JsonKey(name: 'cccNumber') this.clientCCCNumber,
+      @JsonKey(name: 'active') this.isActive,
+      @JsonKey(name: 'staffNumber') this.staffNumber,
+      @JsonKey(name: 'user') this.user,
+      @JsonKey(name: 'defaultFacility') this.defaultFacility,
       @JsonKey(name: 'rolesList') this.rolesList});
 
   factory _$_SearchUserResponse.fromJson(Map<String, dynamic> json) =>
       _$$_SearchUserResponseFromJson(json);
 
   @override
-  @JsonKey(name: 'ID')
+  @JsonKey(name: 'id')
   final String? id;
   @override
-  @JsonKey(name: 'CCCNumber')
+  @JsonKey(name: 'cccNumber')
   final String? clientCCCNumber;
 // This is the CCCNumber if the person being searched is a client
   @override
-  @JsonKey(name: 'Active')
+  @JsonKey(name: 'active')
   final bool? isActive;
 // This is a boolean for checking if the user was deactivated from the platform
   @override
-  @JsonKey(name: 'StaffNumber')
+  @JsonKey(name: 'staffNumber')
   final String? staffNumber;
 // this is the staff number if the person being searched is a staff member
   @override
-  @JsonKey(name: 'User')
+  @JsonKey(name: 'user')
   final UserData? user;
   @override
-  @JsonKey(name: 'DefaultFacility')
+  @JsonKey(name: 'defaultFacility')
   final Facility? defaultFacility;
   @override
   @JsonKey(name: 'rolesList')
@@ -317,12 +317,12 @@ class _$_SearchUserResponse implements _SearchUserResponse {
 
 abstract class _SearchUserResponse implements SearchUserResponse {
   factory _SearchUserResponse(
-          {@JsonKey(name: 'ID') final String? id,
-          @JsonKey(name: 'CCCNumber') final String? clientCCCNumber,
-          @JsonKey(name: 'Active') final bool? isActive,
-          @JsonKey(name: 'StaffNumber') final String? staffNumber,
-          @JsonKey(name: 'User') final UserData? user,
-          @JsonKey(name: 'DefaultFacility') final Facility? defaultFacility,
+          {@JsonKey(name: 'id') final String? id,
+          @JsonKey(name: 'cccNumber') final String? clientCCCNumber,
+          @JsonKey(name: 'active') final bool? isActive,
+          @JsonKey(name: 'staffNumber') final String? staffNumber,
+          @JsonKey(name: 'user') final UserData? user,
+          @JsonKey(name: 'defaultFacility') final Facility? defaultFacility,
           @JsonKey(name: 'rolesList') final RolesList? rolesList}) =
       _$_SearchUserResponse;
 
@@ -330,22 +330,22 @@ abstract class _SearchUserResponse implements SearchUserResponse {
       _$_SearchUserResponse.fromJson;
 
   @override
-  @JsonKey(name: 'ID')
+  @JsonKey(name: 'id')
   String? get id;
   @override
-  @JsonKey(name: 'CCCNumber')
+  @JsonKey(name: 'cccNumber')
   String? get clientCCCNumber;
   @override // This is the CCCNumber if the person being searched is a client
-  @JsonKey(name: 'Active')
+  @JsonKey(name: 'active')
   bool? get isActive;
   @override // This is a boolean for checking if the user was deactivated from the platform
-  @JsonKey(name: 'StaffNumber')
+  @JsonKey(name: 'staffNumber')
   String? get staffNumber;
   @override // this is the staff number if the person being searched is a staff member
-  @JsonKey(name: 'User')
+  @JsonKey(name: 'user')
   UserData? get user;
   @override
-  @JsonKey(name: 'DefaultFacility')
+  @JsonKey(name: 'defaultFacility')
   Facility? get defaultFacility;
   @override
   @JsonKey(name: 'rolesList')

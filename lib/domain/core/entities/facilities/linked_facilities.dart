@@ -7,7 +7,7 @@ part 'linked_facilities.g.dart';
 @freezed
 class LinkedFacilities with _$LinkedFacilities {
   factory LinkedFacilities({
-    @JsonKey(name: 'Facilities') List<Facility>? facilities,
+    @JsonKey(name: 'facilities') List<Facility>? facilities,
   }) = _LinkedFacilities;
 
   factory LinkedFacilities.fromJson(Map<String, dynamic> json) =>

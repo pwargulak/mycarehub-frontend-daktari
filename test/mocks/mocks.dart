@@ -772,7 +772,7 @@ class MockTestGraphQlClient extends IGraphQlClient {
             <String, dynamic>{
               'data': <String, dynamic>{
                 'registerClient': <String, dynamic>{
-                  'ID': '',
+                  'id': '',
                   'active': false,
                   'clientType': '',
                   'enrollmentDate': null,
@@ -905,7 +905,7 @@ class MockTestGraphQlClient extends IGraphQlClient {
           json.encode(<String, dynamic>{
             'data': <String, dynamic>{
               'getUserLinkedFacilities': <String, dynamic>{
-                'Facilities': mockFacilities
+                'facilities': mockFacilities
               }
             }
           }),
@@ -968,45 +968,45 @@ class MockTestGraphQlClient extends IGraphQlClient {
             <String, dynamic>{
               'data': <String, dynamic>{
                 'getCaregiverManagedClients': <String, dynamic>{
-                  'Pagination': <String, dynamic>{
-                    'Limit': 20,
-                    'CurrentPage': 1,
-                    'Count': 2,
-                    'TotalPages': 1,
-                    'NextPage': null,
-                    'PreviousPage': null
+                  'pagination': <String, dynamic>{
+                    'limit': 20,
+                    'currentPage': 1,
+                    'count': 2,
+                    'totalPages': 1,
+                    'nextPage': null,
+                    'previousPage': null
                   },
-                  'ManagedClients': <dynamic>[
+                  'managedClients': <dynamic>[
                     <String, dynamic>{
                       'caregiverConsent': true,
                       'clientConsent': true,
                       'workStationDetails': <String, dynamic>{
-                        'Notifications': 1,
-                        'Surveys': 1,
-                        'Articles': 1,
-                        'Messages': 1
+                        'notifications': 1,
+                        'surveys': 1,
+                        'articles': 1,
+                        'messages': 1
                       },
                       'clientProfile': <String, dynamic>{
-                        'ID': '0some-id',
-                        'Username': 'testUserName',
-                        'Active': true,
-                        'TermsAccepted': true,
+                        'id': '0some-id',
+                        'username': 'testUserName',
+                        'active': true,
+                        'termsAccepted': true,
                       }
                     },
                     <String, dynamic>{
                       'caregiverConsent': true,
                       'clientConsent': true,
                       'workStationDetails': <String, dynamic>{
-                        'Notifications': 0,
-                        'Surveys': 0,
-                        'Articles': 0,
-                        'Messages': 0
+                        'notifications': 0,
+                        'surveys': 0,
+                        'articles': 0,
+                        'messages': 0
                       },
                       'clientProfile': <String, dynamic>{
-                        'ID': '0some-id',
-                        'Username': 'testUserName',
-                        'Active': true,
-                        'TermsAccepted': true,
+                        'id': '0some-id',
+                        'username': 'testUserName',
+                        'active': true,
+                        'termsAccepted': true,
                       }
                     }
                   ]
@@ -1262,7 +1262,7 @@ class MockTestGraphQlClient extends IGraphQlClient {
             <String, dynamic>{
               'data': <String, dynamic>{
                 'registerStaff': <String, dynamic>{
-                  'ID': '',
+                  'id': '',
                   'active': false,
                   'staffNumber': '12345678',
                   'userID': 'some-id',
@@ -1509,7 +1509,7 @@ class MockTestGraphQlClient extends IGraphQlClient {
               'data': <String, dynamic>{
                 'retrieveFacility': <String, dynamic>{
                   'code': 12345,
-                  'ID': 'test',
+                  'id': 'test',
                   'phone': '0712345678',
                 },
               }
@@ -1580,7 +1580,7 @@ class MockTestGraphQlClient extends IGraphQlClient {
 
 final List<Map<String, dynamic>> mockFacilities = <Map<String, dynamic>>[
   <String, dynamic>{
-    'ID': 'some-id',
+    'id': 'some-id',
     'name': 'Test Facility',
     'code': 1234,
     'description': '',
@@ -1589,13 +1589,13 @@ final List<Map<String, dynamic>> mockFacilities = <Map<String, dynamic>>[
     'county': 'Test',
     'fhirOrganisationID': '',
     'workStationDetails': <String, dynamic>{
-      'Notifications': 1,
-      'Messages': 1,
-      'ServiceRequests': 1
+      'notifications': 1,
+      'messages': 1,
+      'serviceRequests': 1
     }
   },
   <String, dynamic>{
-    'ID': 'some-id',
+    'id': 'some-id',
     'name': 'Kanairo',
     'code': 5678,
     'description': 'Kanairo Hospital',
@@ -1604,9 +1604,9 @@ final List<Map<String, dynamic>> mockFacilities = <Map<String, dynamic>>[
     'county': 'Kanairo',
     'fhirOrganisationID': '',
     'workStationDetails': <String, dynamic>{
-      'Notifications': 1,
-      'Messages': 1,
-      'ServiceRequests': 1
+      'notifications': 1,
+      'messages': 1,
+      'serviceRequests': 1
     }
   },
 ];
@@ -1783,89 +1783,89 @@ final Map<String, dynamic> mockUserProfile = <String, dynamic>{
 
 final List<dynamic> mockServiceRequestsResponse = <dynamic>[
   <String, dynamic>{
-    'ID': 'test',
-    'RequestType': 'RED_FLAG',
-    'Request': 'test',
-    'ClientID': 'test',
-    'FacilityID': 'test',
-    'ClientName': 'test',
-    'ClientContact': 'test',
-    'ResolvedAt': 'test',
-    'ResolvedBy': 'test',
-    'ResolvedByName': 'test',
-    'CreatedAt': '2022-02-09T08:40:46Z'
+    'id': 'test',
+    'requestType': 'RED_FLAG',
+    'request': 'test',
+    'clientID': 'test',
+    'facilityID': 'test',
+    'clientName': 'test',
+    'clientContact': 'test',
+    'resolvedAt': 'test',
+    'resolvedBy': 'test',
+    'resolvedByName': 'test',
+    'createdAt': '2022-02-09T08:40:46Z'
   },
   <String, dynamic>{
-    'ID': 'test',
-    'RequestType': 'STAFF_PIN_RESET',
-    'Request': 'I have not been myself lately',
-    'ClientID': 'test',
-    'FacilityID': 'test',
-    'ClientName': 'Calvin Ojiambo',
-    'ClientContact': '+254712345678',
-    'StaffName': 'Calvin Ojiambo',
-    'StaffContact': '+254712345678',
-    'ResolvedAt': '2022-02-09T08:40:46Z',
-    'ResolvedBy': 'test',
-    'ResolvedByName': 'test',
-    'CreatedAt': '2022-02-09T08:40:46Z',
-    'Meta': <String, dynamic>{
+    'id': 'test',
+    'requestType': 'STAFF_PIN_RESET',
+    'request': 'I have not been myself lately',
+    'clientID': 'test',
+    'facilityID': 'test',
+    'clientName': 'Calvin Ojiambo',
+    'clientContact': '+254712345678',
+    'staffName': 'Calvin Ojiambo',
+    'staffContact': '+254712345678',
+    'resolvedAt': '2022-02-09T08:40:46Z',
+    'resolvedBy': 'test',
+    'resolvedByName': 'test',
+    'createdAt': '2022-02-09T08:40:46Z',
+    'meta': <String, dynamic>{
       'ccc_number': '1234567890',
       'is_ccc_number_valid': true
     }
   },
   <String, dynamic>{
-    'ID': 'test',
-    'RequestType': 'PIN_RESET',
-    'Request': 'I am feeling very bad',
-    'ClientID': 'test',
-    'FacilityID': 'test',
-    'ClientName': 'Jenny McLaren',
-    'ClientContact': '+254712345678',
-    'StaffName': 'Jenny McLaren',
-    'StaffContact': '+254712345678',
-    'ResolvedAt': 'test',
-    'ResolvedBy': 'test',
-    'ResolvedByName': 'test',
-    'CreatedAt': '2022-02-09T08:40:46Z',
-    'Meta': <String, dynamic>{
+    'id': 'test',
+    'requestType': 'PIN_RESET',
+    'request': 'I am feeling very bad',
+    'clientID': 'test',
+    'facilityID': 'test',
+    'clientName': 'Jenny McLaren',
+    'clientContact': '+254712345678',
+    'staffName': 'Jenny McLaren',
+    'staffContact': '+254712345678',
+    'resolvedAt': 'test',
+    'resolvedBy': 'test',
+    'resolvedByName': 'test',
+    'createdAt': '2022-02-09T08:40:46Z',
+    'meta': <String, dynamic>{
       'ccc_number': '1234567890',
       'is_ccc_number_valid': false
     }
   },
   <String, dynamic>{
-    'ID': 'test',
-    'RequestType': 'SCREENING_TOOLS_RED_FLAG',
-    'Request': 'I have not been myself lately',
-    'ClientID': 'test',
-    'FacilityID': 'test',
-    'ClientName': 'Calvin Ojiambo',
-    'ClientContact': '+254712345678',
-    'StaffName': 'Calvin Ojiambo',
-    'StaffContact': '+254712345678',
-    'ResolvedAt': '2022-02-09T08:40:46Z',
-    'ResolvedBy': 'test',
-    'ResolvedByName': 'test',
-    'CreatedAt': '2022-02-09T08:40:46Z',
-    'Meta': <String, dynamic>{
+    'id': 'test',
+    'requestType': 'SCREENING_TOOLS_RED_FLAG',
+    'request': 'I have not been myself lately',
+    'clientID': 'test',
+    'facilityID': 'test',
+    'clientName': 'Calvin Ojiambo',
+    'clientContact': '+254712345678',
+    'staffName': 'Calvin Ojiambo',
+    'staffContact': '+254712345678',
+    'resolvedAt': '2022-02-09T08:40:46Z',
+    'resolvedBy': 'test',
+    'resolvedByName': 'test',
+    'createdAt': '2022-02-09T08:40:46Z',
+    'meta': <String, dynamic>{
       'ccc_number': '1234567890',
       'is_ccc_number_valid': true
     }
   },
   <String, dynamic>{
-    'ID': 'test',
-    'Request': 'I have not been myself lately',
-    'ClientID': 'test',
-    'FacilityID': 'test',
-    'ClientName': 'Calvin Ojiambo',
-    'ClientContact': '+254712345678',
-    'StaffName': 'Calvin Ojiambo',
-    'StaffContact': '+254712345678',
-    'ResolvedAt': '2022-02-09T08:40:46Z',
-    'ResolvedBy': 'test',
-    'ResolvedByName': 'test',
-    'CreatedAt': '2022-02-09T08:40:46Z',
-    'Meta': <String, dynamic>{
+    'id': 'test',
+    'request': 'I have not been myself lately',
+    'clientID': 'test',
+    'facilityID': 'test',
+    'clientName': 'Calvin Ojiambo',
+    'clientContact': '+254712345678',
+    'staffName': 'Calvin Ojiambo',
+    'staffContact': '+254712345678',
+    'resolvedAt': '2022-02-09T08:40:46Z',
+    'resolvedBy': 'test',
+    'resolvedByName': 'test',
+    'createdAt': '2022-02-09T08:40:46Z',
+    'meta': <String, dynamic>{
       'ccc_number': '1234567890',
       'is_ccc_number_valid': true
     }
@@ -1966,20 +1966,20 @@ final Map<String, dynamic> surveyServiceRequestsRespondentsMock =
 final Map<String, dynamic> clientResponseMock = <String, dynamic>{
   'searchClientUser': <dynamic>[
     <String, dynamic>{
-      'ID': 'some-id',
-      'CCCNumber': '1234',
-      'Active': true,
-      'User': <String, dynamic>{
-        'ID': 'some-id',
-        'Username': 'Username',
-        'Name': 'User Name',
-        'Active': false,
-        'TermsAccepted': false,
-        'Contacts': <String, dynamic>{
-          'ContactType': 'PHONE',
-          'ContactValue': '07000000',
-          'Active': false,
-          'OptedIn': false,
+      'id': 'some-id',
+      'cccNumber': '1234',
+      'active': true,
+      'user': <String, dynamic>{
+        'id': 'some-id',
+        'username': 'Username',
+        'name': 'User Name',
+        'active': false,
+        'termsAccepted': false,
+        'contacts': <String, dynamic>{
+          'contactType': 'PHONE',
+          'contactValue': '07000000',
+          'active': false,
+          'optedIn': false,
         }
       }
     }
@@ -1992,11 +1992,11 @@ final Map<String, dynamic> caregiverResponseMock = <String, dynamic>{
       'id': 'some-id',
       'caregiverNumber': '1234',
       'user': <String, dynamic>{
-        'ID': 'some-id',
-        'Username': 'Username',
-        'Name': 'User Name',
-        'Contacts': <String, dynamic>{
-          'ContactType': 'PHONE',
+        'id': 'some-id',
+        'username': 'Username',
+        'name': 'User Name',
+        'contacts': <String, dynamic>{
+          'contactType': 'PHONE',
           'contactValue': '07000000',
         }
       },
@@ -2008,23 +2008,23 @@ final Map<String, dynamic> caregiverResponseMock = <String, dynamic>{
 final Map<String, dynamic> staffMembersResponseMock = <String, dynamic>{
   'searchStaffUser': <dynamic>[
     <String, dynamic>{
-      'ID': 'some-id',
-      'CCCNumber': '12345',
+      'id': 'some-id',
+      'cccNumber': '12345',
       'active': true,
-      'User': <String, dynamic>{
-        'ID': 'some-id',
-        'Username': 'Username',
-        'Name': 'User Name',
-        'Active': false,
-        'TermsAccepted': false,
-        'Contacts': <String, dynamic>{
-          'ContactType': 'PHONE',
-          'ContactValue': '07000000',
-          'Active': false,
-          'OptedIn': false,
+      'user': <String, dynamic>{
+        'id': 'some-id',
+        'username': 'Username',
+        'name': 'User Name',
+        'active': false,
+        'termsAccepted': false,
+        'contacts': <String, dynamic>{
+          'contactType': 'PHONE',
+          'contactValue': '07000000',
+          'active': false,
+          'optedIn': false,
         }
       },
-      'StaffNumber': 'some-id'
+      'staffNumber': 'some-id'
     },
   ]
 };

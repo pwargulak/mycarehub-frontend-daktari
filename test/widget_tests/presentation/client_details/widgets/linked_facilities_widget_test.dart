@@ -172,7 +172,7 @@ void main() {
             json.encode(<String, dynamic>{
               'data': <String, dynamic>{
                 'getUserLinkedFacilities': <String, dynamic>{
-                  'Facilities': mockFacilities
+                  'facilities': mockFacilities
                 },
                 'removeFacilitiesFromStaffProfile': false
               }
@@ -213,7 +213,7 @@ void main() {
             json.encode(<String, dynamic>{
               'data': <String, dynamic>{
                 'getUserLinkedFacilities': <String, dynamic>{
-                  'Facilities': mockFacilities
+                  'facilities': mockFacilities
                 },
                 'removeFacilitiesFromClientProfile': false
               }
