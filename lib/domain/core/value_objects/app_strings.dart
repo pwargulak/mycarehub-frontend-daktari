@@ -1148,7 +1148,29 @@ const String sghiDescriptionString =
     'The Savannah Global Health Institute organization details go here';
 const String myCareHubOrgString = 'myCareHub org';
 const String myCareHubOrgDescriptionString =
-    'The myCareHub org details go here';
+    'A program to help patients manage their medical information';
 const String kemriString = 'KEMRI';
+const String FYJ = 'FYJ';
+const String fYJOrgDescriptionString =
+    'A program to help clients manage their medical information';
 const String kemriDescriptionString = 'The KEMRI org details go here';
 const String createOrganizationString = 'Create Organization';
+
+String orgName(String name) {
+  return '$name Organization';
+}
+
+const String SGHIOrgDetailString =
+    'The Savannah Global Health Institute is an  organization that deals with HIV, diabetes and hypertension in Nairobi and Kajiado county in Kenya';
+
+String orgDetail(String detail) {
+  return detail;
+}
+
+const String programsString = 'Programs';
+const String runningProgramString =
+    'Programs that the organization is currently running';
+const String addProgramString = 'Add Program';
+const String deleteOrgString = 'Delete Organization';
+const String deleteOrgInfoString =
+    'This will remove this organization from myCareHub';
