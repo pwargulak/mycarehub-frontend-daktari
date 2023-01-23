@@ -1,4 +1,3 @@
-import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
@@ -9,11 +8,13 @@ class ListItemWithCancelButton extends StatelessWidget {
     super.key,
     required this.title,
     required this.description,
+    this.moreInfo,
     this.onCancelCallback,
   });
 
   final String title;
   final String description;
+  final String? moreInfo;
   final VoidCallback? onCancelCallback;
 
   @override
@@ -63,10 +64,11 @@ class ListItemWithCancelButton extends StatelessWidget {
             style: normalSize15Text(AppColors.greyTextColor),
           ),
           size15VerticalSizedBox,
-          Text(
-            tapToViewMoreInfoString,
-            style: normalSize14Text(AppColors.greyTextColor.withOpacity(0.5)),
-          ),
+          if (moreInfo != null)
+            Text(
+              moreInfo!,
+              style: normalSize14Text(AppColors.greyTextColor.withOpacity(0.5)),
+            ),
         ],
       ),
     );

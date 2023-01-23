@@ -1,19 +1,20 @@
-import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 
-class DeleteOrganizationWidget extends StatelessWidget {
-  const DeleteOrganizationWidget({
+class DeleteWidget extends StatelessWidget {
+  const DeleteWidget({
     super.key,
     required this.title,
     required this.description,
+    required this.buttonText,
     this.onPressedCallback,
   });
 
   final String title;
   final String description;
+  final String buttonText;
   final VoidCallback? onPressedCallback;
 
   @override
@@ -46,7 +47,7 @@ class DeleteOrganizationWidget extends StatelessWidget {
             child: MyAfyaHubPrimaryButton(
               buttonKey: deleteButtonKey,
               buttonColor: AppColors.warningColor,
-              text: deleteOrgString,
+              text: buttonText,
               onPressed: onPressedCallback,
             ),
           ),

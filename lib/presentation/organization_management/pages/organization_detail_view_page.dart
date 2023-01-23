@@ -4,7 +4,7 @@ import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
-import 'package:prohealth360_daktari/presentation/organization_management/widgets/delete_organization_widget.dart';
+import 'package:prohealth360_daktari/presentation/organization_management/widgets/delete_widget.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/widgets/list_item_with_cancel.dart';
 import 'package:sghi_core/afya_moja_core/src/presentation/buttons.dart';
 import 'package:sghi_core/afya_moja_core/src/presentation/spaces.dart';
@@ -30,6 +30,11 @@ class OrganizationDetailViewPage extends StatelessWidget {
                 Center(
                   key: const Key('OrganizationImage'),
                   child: SvgPicture.asset(organizationImage),
+                ),
+                mediumVerticalSizedBox,
+                Text(
+                  sghiString,
+                  style: heavySize18Text(AppColors.blackColor),
                 ),
                 largeVerticalSizedBox,
                 Text(
@@ -58,11 +63,13 @@ class OrganizationDetailViewPage extends StatelessWidget {
                       const ListItemWithCancelButton(
                         title: myCareHubOrgString,
                         description: myCareHubOrgDescriptionString,
+                        moreInfo: tapToViewMoreInfoString,
                       ),
                       mediumVerticalSizedBox,
                       const ListItemWithCancelButton(
                         title: FYJ,
                         description: fYJOrgDescriptionString,
+                        moreInfo: tapToViewMoreInfoString,
                       ),
                       largeVerticalSizedBox,
                       const SizedBox(
@@ -77,10 +84,11 @@ class OrganizationDetailViewPage extends StatelessWidget {
                   ),
                 ),
                 largeVerticalSizedBox,
-                const DeleteOrganizationWidget(
+                const DeleteWidget(
                   title: deleteOrgString,
                   description: deleteOrgInfoString,
-                )
+                  buttonText: deleteOrgString,
+                ),
               ],
             ),
           ),

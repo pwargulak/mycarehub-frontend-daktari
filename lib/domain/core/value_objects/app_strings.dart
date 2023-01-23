@@ -1144,9 +1144,7 @@ const String searchOrganizationTextString =
 const String searchOrganizationHintString = 'Search organizations';
 const String mostViewedOrganizationString = 'Most viewed organizations';
 const String sghiString = 'SGHI';
-const String sghiDescriptionString =
-    'The Savannah Global Health Institute organization details go here';
-const String myCareHubOrgString = 'myCareHub org';
+const String myCareHubOrgString = 'myCareHub';
 const String myCareHubOrgDescriptionString =
     'A program to help patients manage their medical information';
 const String kemriString = 'KEMRI';
@@ -1174,3 +1172,23 @@ const String addProgramString = 'Add Program';
 const String deleteOrgString = 'Delete Organization';
 const String deleteOrgInfoString =
     'This will remove this organization from myCareHub';
+
+String programName(String name) {
+  return '$name Program';
+}
+
+const String deleteProgramString = 'Delete Program';
+const String deleteProgramInfoString =
+    'This will remove this program from myCareHub';
+const String organizationString = 'Organization';
+const String organizationDescriptionString =
+    'University of Nairobi School of Medicine';
+const String diseaseAreasString = 'Disease Areas';
+const String diseaseAreasDescriptionString =
+    'Disease areas that this program is running on';
+const String runningFacilitiesString =
+    'Facilities that this program is running on';
+const String ruiru = 'Ruiru SCH';
+const String ruiruFacilityDescriptionString = 'Ruiru sub-county hospital';
+const String kiambu = 'Kiambu';
+const String kiambuFacilityDescriptionString = 'Kiambu hospital';

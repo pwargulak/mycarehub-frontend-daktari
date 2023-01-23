@@ -50,7 +50,7 @@ class ManageOrganizationPage extends StatelessWidget {
                     mediumVerticalSizedBox,
                     const OrganizationListItem(
                       title: sghiString,
-                      description: sghiDescriptionString,
+                      description: SGHIOrgDetailString,
                     ),
                     size15VerticalSizedBox,
                     const OrganizationListItem(
