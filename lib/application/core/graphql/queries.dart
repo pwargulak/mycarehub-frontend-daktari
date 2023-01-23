@@ -1,6 +1,6 @@
-const String getTermsQuery = r'''
-query getCurrentTerms($flavour: Flavour!) {
-  getCurrentTerms(flavour: $flavour) {
+const String getTermsQuery = '''
+query getCurrentTerms {
+  getCurrentTerms {
     termsID
     text
   }
@@ -659,7 +659,6 @@ query getStaffFacilities($staffID: ID!, $paginationInput: PaginationsInput!){
     name
     phone
     active
-    county
     description
     fhirOrganisationID
     workStationDetails{

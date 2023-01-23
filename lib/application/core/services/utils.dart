@@ -93,7 +93,7 @@ OnboardingPathInfo getOnboardingPath({required AppState state}) {
         previousRoute: AppRoutes.securityQuestionsPage,
         nextRoute: AppRoutes.setPinPage,
       );
-    } 
+    }
 
     return OnboardingPathInfo(
       previousRoute: '',
