@@ -21,11 +21,9 @@ void main() {
         initialState: AppState.initial()
             .copyWith
             .userProfileState!
-            .userProfile
-            !.user!
+            .userProfile!
             .call(
-              primaryContact: Contact(value: '+254717356476'),
-              userId: 'user-id',
+              username: 'testUser',
             )
             .copyWith
             .onboardingState!
@@ -40,9 +38,48 @@ void main() {
       await Firebase.initializeApp();
     });
 
-    testWidgets(
-        'should fail to send an otp if the userID and phone number are '
-        'UNKNOWN', (WidgetTester tester) async {
+    testWidgets('works correctly', (WidgetTester tester) async {
+      final MockShortGraphQlClient mockShortSILGraphQlClient =
+          MockShortGraphQlClient.withResponse(
+        'idToken',
+        'endpoint',
+        Response(
+          json.encode(<String, dynamic>{
+            'data': <String, dynamic>{'sendOTP': '0000'}
+          }),
+          201,
+        ),
+      );
+
+      await buildTestWidget(
+        tester: tester,
+        store: store,
+        graphQlClient: mockShortSILGraphQlClient,
+        widget: Builder(
+          builder: (BuildContext context) {
+            return MyAfyaHubPrimaryButton(
+              buttonKey: const Key('update_contacts'),
+              onPressed: () {
+                StoreProvider.dispatch<AppState>(
+                  context,
+                  SendOTPAction(context: context),
+                );
+              },
+            );
+          },
+        ),
+      );
+
+      await tester.tap(find.byKey(const Key('update_contacts')));
+      await tester.pumpAndSettle();
+
+      expect(
+        store.state.onboardingState!.otp,
+        '0000',
+      );
+    });
+    testWidgets('should fail to send an otp if the username is UNKNOWN',
+        (WidgetTester tester) async {
       store = Store<AppState>(initialState: AppState.initial());
 
       final MockShortGraphQlClient mockShortSILGraphQlClient =
@@ -97,6 +134,50 @@ void main() {
         Response(
           json.encode(<String, dynamic>{'data': 'some data'}),
           403,
+        ),
+      );
+
+      await buildTestWidget(
+        tester: tester,
+        store: store,
+        graphQlClient: mockShortSILGraphQlClient,
+        widget: Builder(
+          builder: (BuildContext context) {
+            return MyAfyaHubPrimaryButton(
+              buttonKey: const Key('update_contacts'),
+              onPressed: () async {
+                await store.dispatch(
+                  SendOTPAction(context: context),
+                );
+              },
+            );
+          },
+        ),
+      );
+
+      await tester.tap(find.byKey(const Key('update_contacts')));
+      await tester.pumpAndSettle();
+
+      expect(
+        store.state.onboardingState!.failedToSendOTP,
+        true,
+      );
+    });
+    testWidgets(
+        'should fail to send an OTP if there is an error in the response',
+        (WidgetTester tester) async {
+      expect(
+        store.state.onboardingState!.failedToSendOTP,
+        false,
+      );
+
+      final MockShortGraphQlClient mockShortSILGraphQlClient =
+          MockShortGraphQlClient.withResponse(
+        'idToken',
+        'endpoint',
+        Response(
+          json.encode(<String, dynamic>{'error': 'some errors'}),
+          201,
         ),
       );
 

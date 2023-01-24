@@ -42,11 +42,11 @@ class SendOTPAction extends ReduxAction<AppState> {
 
   @override
   Future<AppState?> reduce() async {
-    final String? phoneNumber = state.onboardingState?.phoneNumber;
+    final String username = state.userProfileState?.userProfile?.username ?? '';
 
-    if (phoneNumber != UNKNOWN) {
+    if (username != UNKNOWN) {
       final Map<String, dynamic> variables = <String, dynamic>{
-        'phoneNumber': phoneNumber,
+        'username': username,
         'flavour': Flavour.pro.name,
       };
 

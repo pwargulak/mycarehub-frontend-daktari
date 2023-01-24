@@ -1,3 +1,4 @@
+import 'package:prohealth360_daktari/domain/core/entities/search_user/roles_list.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:async_redux/async_redux.dart';
@@ -59,7 +60,7 @@ class _SearchPageDetailViewState extends State<SearchPageDetailView> {
                     );
                   }
                   return StaffSearchWidget(
-                    rolesList: vm.selectedSearchUserResponse!.rolesList!,
+                    rolesList: vm.selectedSearchUserResponse?.rolesList ?? RolesList.initial(),
                   );
                 },
               ),

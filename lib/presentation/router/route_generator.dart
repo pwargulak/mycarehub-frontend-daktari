@@ -89,6 +89,7 @@ import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_send_con
 class RouteGenerator {
   static Route<dynamic>? generateRoute(RouteSettings settings) {
     final dynamic args = settings.arguments;
+    
     switch (settings.name) {
       case AppRoutes.deepLink:
         return MaterialPageRoute<HandleDeepLink>(

@@ -144,7 +144,6 @@ const String gender = 'Male';
 const String searchUser = 'Search user';
 const String firstName = 'John';
 const String time = '09:56 pm';
-const String username = 'John Doe';
 const String comingSoonText = 'Coming Soon';
 const String addNewClientText = 'Add New Client';
 const String serviceRequestsText = 'Service Requests';

@@ -184,10 +184,8 @@ query searchClientUser($searchParameter: String!) {
       defaultFacility{
       id
       name
-      code
       phone
       active
-      county
       description
     }
   }
@@ -216,10 +214,8 @@ query searchStaffUser($searchParameter: String!) {
     defaultFacility{
       id
       name
-      code
       phone
       active
-      county
       description
     }
   }
@@ -434,7 +430,7 @@ query getFAQs($flavour: Flavour!){
       }
       documents {
         id
-        Document {
+        document {
           id
           title
           meta {
@@ -561,10 +557,8 @@ query getUserLinkedFacilities($userID: ID! $paginationInput: PaginationsInput!){
     facilities{
       id
       name
-      code
       phone
       active
-      county
       description
       fhirOrganisationID
       workStationDetails{
