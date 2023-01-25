@@ -31,6 +31,8 @@ mixin _$User {
   Gender? get gender => throw _privateConstructorUsedError;
   @JsonKey(name: 'active', defaultValue: false)
   bool? get active => throw _privateConstructorUsedError;
+  @JsonKey(name: 'contacts')
+  Contact? get contact => throw _privateConstructorUsedError;
   @JsonKey(name: 'firstName')
   String? get firstName => throw _privateConstructorUsedError;
   @JsonKey(name: 'lastName')
@@ -94,6 +96,8 @@ abstract class $UserCopyWith<$Res> {
           Gender? gender,
       @JsonKey(name: 'active', defaultValue: false)
           bool? active,
+      @JsonKey(name: 'contacts')
+          Contact? contact,
       @JsonKey(name: 'firstName')
           String? firstName,
       @JsonKey(name: 'lastName')
@@ -132,6 +136,7 @@ abstract class $UserCopyWith<$Res> {
           bool? pinUpdateRequired,
       String? chatRoomToken});
 
+  $ContactCopyWith<$Res>? get contact;
   $ContactCopyWith<$Res>? get primaryContact;
 }
 
@@ -153,6 +158,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? name = freezed,
     Object? gender = freezed,
     Object? active = freezed,
+    Object? contact = freezed,
     Object? firstName = freezed,
     Object? lastName = freezed,
     Object? userType = freezed,
@@ -194,6 +200,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
               as bool?,
+      contact: freezed == contact
+          ? _value.contact
+          : contact // ignore: cast_nullable_to_non_nullable
+              as Contact?,
       firstName: freezed == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -275,6 +285,18 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
 
   @override
   @pragma('vm:prefer-inline')
+  $ContactCopyWith<$Res>? get contact {
+    if (_value.contact == null) {
+      return null;
+    }
+
+    return $ContactCopyWith<$Res>(_value.contact!, (value) {
+      return _then(_value.copyWith(contact: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
   $ContactCopyWith<$Res>? get primaryContact {
     if (_value.primaryContact == null) {
       return null;
@@ -303,6 +325,8 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
           Gender? gender,
       @JsonKey(name: 'active', defaultValue: false)
           bool? active,
+      @JsonKey(name: 'contacts')
+          Contact? contact,
       @JsonKey(name: 'firstName')
           String? firstName,
       @JsonKey(name: 'lastName')
@@ -342,6 +366,8 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       String? chatRoomToken});
 
   @override
+  $ContactCopyWith<$Res>? get contact;
+  @override
   $ContactCopyWith<$Res>? get primaryContact;
 }
 
@@ -359,6 +385,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
     Object? name = freezed,
     Object? gender = freezed,
     Object? active = freezed,
+    Object? contact = freezed,
     Object? firstName = freezed,
     Object? lastName = freezed,
     Object? userType = freezed,
@@ -400,6 +427,10 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
               as bool?,
+      contact: freezed == contact
+          ? _value.contact
+          : contact // ignore: cast_nullable_to_non_nullable
+              as Contact?,
       firstName: freezed == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -494,6 +525,8 @@ class _$_User implements _User {
           this.gender,
       @JsonKey(name: 'active', defaultValue: false)
           this.active,
+      @JsonKey(name: 'contacts')
+          this.contact,
       @JsonKey(name: 'firstName')
           this.firstName,
       @JsonKey(name: 'lastName')
@@ -551,6 +584,9 @@ class _$_User implements _User {
   @override
   @JsonKey(name: 'active', defaultValue: false)
   final bool? active;
+  @override
+  @JsonKey(name: 'contacts')
+  final Contact? contact;
   @override
   @JsonKey(name: 'firstName')
   final String? firstName;
@@ -620,7 +656,7 @@ class _$_User implements _User {
 
   @override
   String toString() {
-    return 'User(userId: $userId, username: $username, name: $name, gender: $gender, active: $active, firstName: $firstName, lastName: $lastName, userType: $userType, primaryContact: $primaryContact, lastSuccessfulLogin: $lastSuccessfulLogin, lastFailedLogin: $lastFailedLogin, failedLoginCount: $failedLoginCount, nextAllowedLogin: $nextAllowedLogin, pinChangeRequired: $pinChangeRequired, hasSetPin: $hasSetPin, isPhoneVerified: $isPhoneVerified, hasSetSecurityQuestions: $hasSetSecurityQuestions, termsAccepted: $termsAccepted, acceptedTermsID: $acceptedTermsID, suspended: $suspended, avatar: $avatar, roles: $roles, pinUpdateRequired: $pinUpdateRequired, chatRoomToken: $chatRoomToken)';
+    return 'User(userId: $userId, username: $username, name: $name, gender: $gender, active: $active, contact: $contact, firstName: $firstName, lastName: $lastName, userType: $userType, primaryContact: $primaryContact, lastSuccessfulLogin: $lastSuccessfulLogin, lastFailedLogin: $lastFailedLogin, failedLoginCount: $failedLoginCount, nextAllowedLogin: $nextAllowedLogin, pinChangeRequired: $pinChangeRequired, hasSetPin: $hasSetPin, isPhoneVerified: $isPhoneVerified, hasSetSecurityQuestions: $hasSetSecurityQuestions, termsAccepted: $termsAccepted, acceptedTermsID: $acceptedTermsID, suspended: $suspended, avatar: $avatar, roles: $roles, pinUpdateRequired: $pinUpdateRequired, chatRoomToken: $chatRoomToken)';
   }
 
   @override
@@ -634,6 +670,7 @@ class _$_User implements _User {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.active, active) || other.active == active) &&
+            (identical(other.contact, contact) || other.contact == contact) &&
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
             (identical(other.lastName, lastName) ||
@@ -682,6 +719,7 @@ class _$_User implements _User {
         name,
         gender,
         active,
+        contact,
         firstName,
         lastName,
         userType,
@@ -729,6 +767,8 @@ abstract class _User implements User {
           final Gender? gender,
       @JsonKey(name: 'active', defaultValue: false)
           final bool? active,
+      @JsonKey(name: 'contacts')
+          final Contact? contact,
       @JsonKey(name: 'firstName')
           final String? firstName,
       @JsonKey(name: 'lastName')
@@ -784,6 +824,9 @@ abstract class _User implements User {
   @override
   @JsonKey(name: 'active', defaultValue: false)
   bool? get active;
+  @override
+  @JsonKey(name: 'contacts')
+  Contact? get contact;
   @override
   @JsonKey(name: 'firstName')
   String? get firstName;

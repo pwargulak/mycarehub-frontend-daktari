@@ -14,6 +14,7 @@ class User with _$User {
     @JsonKey(name: 'gender', fromJson: genderFromJson, toJson: genderToJson)
         Gender? gender,
     @JsonKey(name: 'active', defaultValue: false) bool? active,
+    @JsonKey(name: 'contacts') Contact? contact,
 
     @JsonKey(name: 'firstName') String? firstName,
     @JsonKey(name: 'lastName') String? lastName,
@@ -67,5 +68,6 @@ class User with _$User {
         avatar: UNKNOWN,
         roles: <Role>[],
         pinUpdateRequired: false,
+        contact: Contact.initial(),
       );
 }

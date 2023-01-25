@@ -296,6 +296,11 @@ mutation setStaffProgram($programID: ID!) {
         name
         gender
         active
+        contacts{
+          id
+          contactType
+          contactValue
+        }
       }
       staffNumber
       defaultFacility{
