@@ -27,7 +27,8 @@ class ProgramSelectionPage extends StatelessWidget {
     final String userId = StoreProvider.state<AppState>(context)
             ?.userProfileState
             ?.userProfile
-            ?.id ??
+            ?.user
+            ?.userId ??
         '';
     return Scaffold(
       body: SafeArea(
@@ -54,9 +55,8 @@ class ProgramSelectionPage extends StatelessWidget {
                 );
               },
               builder: (BuildContext context, ProgramsStateViewModel vm) {
-
                 final List<Program>? programs = vm.userPrograms;
-                
+
                 return Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[

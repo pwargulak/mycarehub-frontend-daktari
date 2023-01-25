@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:prohealth360_daktari/domain/core/entities/login/send_otp_response.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
@@ -85,10 +86,16 @@ class SendOTPAction extends ReduxAction<AppState> {
         final Map<String, dynamic>? data =
             parsed['data'] as Map<String, dynamic>?;
 
-        final String otp = data?['sendOTP'] as String;
+        final SendOTPResponse sendOTPResponse =
+            SendOTPResponse.fromJson(data?['sendOTP'] as Map<String, dynamic>);
 
         // save the OTP to state
-        dispatch(UpdateOnboardingStateAction(otp: otp));
+        dispatch(
+          UpdateOnboardingStateAction(
+            otp: sendOTPResponse.otp,
+            phoneNumber: sendOTPResponse.phoneNumber,
+          ),
+        );
 
         await AnalyticsService().logEvent(
           name: sendOTPEvent,

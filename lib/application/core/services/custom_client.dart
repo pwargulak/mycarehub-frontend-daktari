@@ -95,12 +95,12 @@ class CustomClient extends IGraphQlClient {
   Future<AuthCredentials?> refreshToken() async {
     String currentUserId = userID;
     if(currentUserId == UNKNOWN){
-     currentUserId =  StoreProvider.state<AppState>(context)?.userProfileState?.userProfile?.id ?? '';
+     currentUserId =  StoreProvider.state<AppState>(context)?.userProfileState?.userProfile?.user?.userId ?? '';
     }
     final Response refreshTokenResponse = await _client.post(
       Uri.parse(refreshTokenEndpoint),
       headers: <String, String>{'content-type': 'application/json'},
-      body: jsonEncode(<String, String>{'userID': userID}),
+      body: jsonEncode(<String, String>{'userID': currentUserId}),
     );
 
     AuthCredentials? credentials =

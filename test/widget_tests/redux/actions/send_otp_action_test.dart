@@ -45,7 +45,12 @@ void main() {
         'endpoint',
         Response(
           json.encode(<String, dynamic>{
-            'data': <String, dynamic>{'sendOTP': '0000'}
+            'data': <String, dynamic>{
+              'sendOTP': <String, dynamic>{
+                'otp': '0000',
+                'phoneNumber': '254712345678'
+              }
+            }
           }),
           201,
         ),

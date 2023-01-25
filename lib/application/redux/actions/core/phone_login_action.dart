@@ -128,6 +128,7 @@ class PhoneLoginAction extends ReduxAction<AppState> {
         termsAccepted: userProfile?.termsAccepted,
         suspended: userProfile?.suspended,
         active: userProfile?.active,
+        userId: userProfile?.id,
       );
 
       if (fullName != UNKNOWN && fullName.isNotEmpty) {
@@ -158,6 +159,7 @@ class PhoneLoginAction extends ReduxAction<AppState> {
           defaultFacility:
               loginResponse.userResponse?.userProfile?.defaultFacility,
           facilities: loginResponse.userResponse?.userProfile?.facilities,
+          userName: loginResponse.userResponse?.userProfile?.username,
         ),
       );
 

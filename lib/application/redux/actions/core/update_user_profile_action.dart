@@ -20,6 +20,7 @@ class UpdateUserProfileAction extends ReduxAction<AppState> {
     this.notifications,
     this.managedClients,
     this.currentFacility,
+    this.userName,
     this.clientCaregivers,
   });
 
@@ -34,6 +35,7 @@ class UpdateUserProfileAction extends ReduxAction<AppState> {
   final List<Caregiver?>? clientCaregivers;
   final String? staffNumber;
   final String? userId;
+  final String? userName;
   final Facility? currentFacility;
 
   @override
@@ -62,6 +64,8 @@ class UpdateUserProfileAction extends ReduxAction<AppState> {
               state.userProfileState?.userProfile?.currentFacility,
           clientCaregivers: clientCaregivers ??
               state.userProfileState?.userProfile?.clientCaregivers,
+          username: userName ??
+              state.userProfileState?.userProfile?.username,
         ),
       ),
     );
