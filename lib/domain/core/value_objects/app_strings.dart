@@ -1191,3 +1191,7 @@ const String ruiru = 'Ruiru SCH';
 const String ruiruFacilityDescriptionString = 'Ruiru sub-county hospital';
 const String kiambu = 'Kiambu';
 const String kiambuFacilityDescriptionString = 'Kiambu hospital';
+const String addOrganizationDetailsString =
+    'Add details about your new organization';
+const String nameString = 'Name';
+const String descriptionString = 'Description';

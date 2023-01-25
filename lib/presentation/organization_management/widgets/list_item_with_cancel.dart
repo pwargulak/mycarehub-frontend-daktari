@@ -59,10 +59,10 @@ class ListItemWithCancelButton extends StatelessWidget {
               ),
             ],
           ),
-          Text(
+          Padding(padding: const EdgeInsetsDirectional.only(end: 10), child: Text(
             description,
             style: normalSize15Text(AppColors.greyTextColor),
-          ),
+          ),),
           size15VerticalSizedBox,
           if (moreInfo != null)
             Text(
