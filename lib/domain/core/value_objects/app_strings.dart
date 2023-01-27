@@ -1195,3 +1195,8 @@ const String addOrganizationDetailsString =
     'Add details about your new organization';
 const String nameString = 'Name';
 const String descriptionString = 'Description';
+
+const String searchProgramTextString =
+    'Search for a program using its name';
+const String searchProgramHintString = 'Search programs';
+const String mostViewedProgramsString = 'Most viewed programs';
