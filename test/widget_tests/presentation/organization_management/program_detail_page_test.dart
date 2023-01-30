@@ -1,11 +1,11 @@
 import 'package:async_redux/async_redux.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/presentation/organization_management/pages/program_detail_view_page.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
+import 'package:prohealth360_daktari/presentation/organization_management/pages/program_detail_page.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/widgets/badge_widget.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/widgets/deactivate_widget.dart';
-import 'package:prohealth360_daktari/presentation/organization_management/widgets/list_item_with_cancel.dart';
+import 'package:prohealth360_daktari/presentation/organization_management/widgets/program_list_item_widget.dart';
 
 import '../../../mocks/mocks.dart';
 import '../../../mocks/test_helpers.dart';
@@ -20,13 +20,17 @@ void main() {
         tester: tester,
         store: store,
         graphQlClient: MockTestGraphQlClient(),
-        widget: const ProgramDetailViewPage(),
+        widget: const ProgramDetailPage(),
       );
       await tester.pumpAndSettle();
-      expect(find.byKey(const Key('ProgramImage')), findsOneWidget);
       expect(find.byType(BadgeWidget), findsNWidgets(4));
-      expect(find.byType(ListItemWithCancelButton), findsNWidgets(2));
+      expect(find.byType(ProgramListItem), findsNWidgets(2));
       expect(find.byType(DeactivateWidget), findsOneWidget);
+
+      await tester.tap(find.byKey(cancelButtonKey).first);
+      await tester.tap(find.byKey(cancelButtonKey).last);
+      await tester.pumpAndSettle();
+      //TODO(Byron) Add more expectations when backend data is available
     });
   });
 }

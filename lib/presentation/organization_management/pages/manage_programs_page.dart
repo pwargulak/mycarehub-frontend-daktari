@@ -49,16 +49,18 @@ class ManageProgramsPage extends StatelessWidget {
                       style: veryBoldSize16Text(AppColors.greyTextColor),
                     ),
                     mediumVerticalSizedBox,
-                    const ProgramListItem(
+                    ProgramListItem(
                       title: myCareHubOrgString,
                       subtitle: universityOfNairobiString,
                       description: myCareHubOrgDescriptionString,
+                      onTap: () {},
                     ),
                     size15VerticalSizedBox,
-                    const ProgramListItem(
+                    ProgramListItem(
                       title: FYJ,
                       subtitle: sghiString,
                       description: fYJOrgDescriptionString,
+                      onTap: () {},
                     ),
                     size15VerticalSizedBox,
                     const Spacer(),

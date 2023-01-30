@@ -3,6 +3,10 @@ import 'package:prohealth360_daktari/presentation/admin/admin_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/core/search_organisations_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/login/pages/login_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/program_selection/program_selection_page.dart';
+import 'package:prohealth360_daktari/presentation/organization_management/pages/create_organization_page.dart';
+import 'package:prohealth360_daktari/presentation/organization_management/pages/manage_organization_page.dart';
+import 'package:prohealth360_daktari/presentation/organization_management/pages/organization_detail_page.dart';
+import 'package:prohealth360_daktari/presentation/organization_management/pages/program_detail_page.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/services/analytics_service.dart';
@@ -87,9 +91,9 @@ import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_response
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_send_configuration_page.dart';
 
 class RouteGenerator {
-  static Route<dynamic>? generateRoute(RouteSettings settings) {
+  static Route<dynamic> generateRoute(RouteSettings settings) {
     final dynamic args = settings.arguments;
-    
+
     switch (settings.name) {
       case AppRoutes.deepLink:
         return MaterialPageRoute<HandleDeepLink>(
@@ -643,7 +647,7 @@ class RouteGenerator {
 
       case AppRoutes.adminPage:
         return MaterialPageRoute<AdminPage>(
-          builder: (_) => AdminPage(),
+          builder: (_) => const AdminPage(),
           settings: const RouteSettings(name: 'Admin Page'),
         );
 
@@ -652,8 +656,36 @@ class RouteGenerator {
           builder: (_) => const ProgramSelectionPage(),
           settings: const RouteSettings(name: 'Program Selection Page'),
         );
-    }
 
-    return null;
+      case AppRoutes.manageOrganizationsPageRoute:
+        return MaterialPageRoute<ManageOrganizationPage>(
+          builder: (_) => const ManageOrganizationPage(),
+          settings: const RouteSettings(name: 'Manage Organization Page'),
+        );
+
+      case AppRoutes.organizationDetailPageRoute:
+        return MaterialPageRoute<OrganizationDetailPage>(
+          builder: (_) => const OrganizationDetailPage(),
+          settings: const RouteSettings(name: 'Organization Detail Page'),
+        );
+
+      case AppRoutes.createOrganizationRoute:
+        return MaterialPageRoute<CreateOrganizationPage>(
+          builder: (_) => const CreateOrganizationPage(),
+          settings: const RouteSettings(name: 'Create Organization Page'),
+        );
+
+      case AppRoutes.programDetailPageRoute:
+        return MaterialPageRoute<ProgramDetailPage>(
+          builder: (_) => const ProgramDetailPage(),
+          settings: const RouteSettings(name: 'Program Detail Page'),
+        );
+
+      default:
+        return MaterialPageRoute<LoginPage>(
+          builder: (_) => LoginPage(),
+          settings: const RouteSettings(name: 'Login page'),
+        );
+    }
   }
 }

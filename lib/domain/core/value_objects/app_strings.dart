@@ -1142,6 +1142,9 @@ const String searchOrganizationTextString =
     'Search for an Organization using its name';
 const String searchOrganizationHintString = 'Search organizations';
 const String mostViewedOrganizationString = 'Most viewed organizations';
+
+//TODO(Byron): Some of the strings below are hardcoded for scaffolding purposes.
+// Need to be deleted once Backend is ready
 const String sghiString = 'SGHI';
 const String myCareHubOrgString = 'myCareHub';
 const String myCareHubOrgDescriptionString =

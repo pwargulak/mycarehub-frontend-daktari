@@ -5,13 +5,14 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/widgets/deactivate_widget.dart';
-import 'package:prohealth360_daktari/presentation/organization_management/widgets/list_item_with_cancel.dart';
+import 'package:prohealth360_daktari/presentation/organization_management/widgets/program_list_item_widget.dart';
+import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:sghi_core/afya_moja_core/src/presentation/buttons.dart';
 import 'package:sghi_core/afya_moja_core/src/presentation/spaces.dart';
 import 'package:sghi_core/afya_moja_core/src/presentation/text_themes.dart';
 
-class OrganizationDetailViewPage extends StatelessWidget {
-  const OrganizationDetailViewPage({super.key});
+class OrganizationDetailPage extends StatelessWidget {
+  const OrganizationDetailPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,6 @@ class OrganizationDetailViewPage extends StatelessWidget {
               children: <Widget>[
                 mediumVerticalSizedBox,
                 Center(
-                  key: const Key('OrganizationImage'),
                   child: SvgPicture.asset(organizationImage),
                 ),
                 mediumVerticalSizedBox,
@@ -60,16 +60,24 @@ class OrganizationDetailViewPage extends StatelessWidget {
                         style: normalSize14Text(AppColors.greyTextColor),
                       ),
                       mediumVerticalSizedBox,
-                      const ListItemWithCancelButton(
+                      ProgramListItem(
                         title: myCareHubOrgString,
                         description: myCareHubOrgDescriptionString,
-                        moreInfo: tapToViewMoreInfoString,
+                        onCancel: () {},
+                        onTap: () {
+                          Navigator.of(context)
+                              .pushNamed(AppRoutes.programDetailPageRoute);
+                        },
                       ),
                       mediumVerticalSizedBox,
-                      const ListItemWithCancelButton(
+                      ProgramListItem(
                         title: FYJ,
                         description: fYJOrgDescriptionString,
-                        moreInfo: tapToViewMoreInfoString,
+                        onCancel: () {},
+                        onTap: () {
+                          Navigator.of(context)
+                              .pushNamed(AppRoutes.programDetailPageRoute);
+                        },
                       ),
                       largeVerticalSizedBox,
                       const SizedBox(

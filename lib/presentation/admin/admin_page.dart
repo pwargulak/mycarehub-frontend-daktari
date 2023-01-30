@@ -10,6 +10,8 @@ import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.da
 import 'package:prohealth360_daktari/presentation/engagement/home/widgets/action_card.dart';
 
 class AdminPage extends StatelessWidget {
+  const AdminPage();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +24,6 @@ class AdminPage extends StatelessWidget {
             children: <Widget>[
               mediumVerticalSizedBox,
               Center(
-                key: const Key('adminSvgPath'),
                 child: SvgPicture.asset(adminSvgPath),
               ),
               Padding(
@@ -44,6 +45,10 @@ class AdminPage extends StatelessWidget {
                       iconUrl: organizationImage,
                       title: organizations,
                       backgroundColor: AppColors.primaryColor.withOpacity(0.15),
+                      onTap: () {
+                        Navigator.of(context)
+                            .pushNamed(AppRoutes.manageOrganizationsPageRoute);
+                      },
                     ),
                     ActionCard(
                       key: programsCardKey,

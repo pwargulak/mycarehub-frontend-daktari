@@ -21,6 +21,10 @@ void main() {
       );
 
       expect(find.byType(ProgramListItem), findsNWidgets(2));
+      await tester.tap(find.byType(ProgramListItem).first);
+      await tester.tap(find.byType(ProgramListItem).last);
+      await tester.pumpAndSettle();
+      //TODO(Byron) Add more expectations when backend data is available
     });
   });
 }

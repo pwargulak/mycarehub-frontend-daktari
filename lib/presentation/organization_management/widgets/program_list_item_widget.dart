@@ -1,3 +1,4 @@
+import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
@@ -7,17 +8,22 @@ class ProgramListItem extends StatelessWidget {
   const ProgramListItem({
     super.key,
     required this.title,
-    required this.subtitle,
-    required this.description,
+    this.description,
+    this.onTap,
+    this.subtitle,
+    this.onCancel,
   });
   final String title;
-  final String subtitle;
-  final String description;
+  final String? description;
+  final String? subtitle;
+  final Function()? onCancel;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
+      onTap: onTap != null ? () => onTap?.call() : null,
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(
@@ -34,26 +40,66 @@ class ProgramListItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(
-              title,
-              style: veryBoldSize17Text(AppColors.primaryColor),
-            ),
-            smallVerticalSizedBox,
-            Text(
-              subtitle,
-              style: normalSize16Text(AppColors.greyTextColor.withOpacity(0.5)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  title,
+                  style: veryBoldSize17Text(AppColors.primaryColor),
+                ),
+                if (onCancel != null)
+                  GestureDetector(
+                    key: cancelButtonKey,
+                    onTap: () {
+                      onCancel!.call();
+                    },
+                    child: Container(
+                      width: 30,
+                      height: 30,
+                      padding: const EdgeInsets.all(4.0),
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).primaryColor.withOpacity(0.14),
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(
+                        Icons.close,
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
+                  ),
+              ],
             ),
             size15VerticalSizedBox,
-            Text(
-              description,
-              overflow: TextOverflow.ellipsis,
-              style: normalSize16Text(AppColors.greyTextColor),
-            ),
-            size15VerticalSizedBox,
-            Text(
-              tapToViewMoreInfoString,
-              style: normalSize16Text(AppColors.greyTextColor.withOpacity(0.5)),
-            ),
+            if (subtitle != null)
+              Column(
+                children: <Widget>[
+                  Text(
+                    subtitle!,
+                    style: normalSize16Text(
+                      AppColors.greyTextColor.withOpacity(0.5),
+                    ),
+                  ),
+                  size15VerticalSizedBox,
+                ],
+              ),
+            if (description != null)
+              Text(
+                description!,
+                overflow: TextOverflow.ellipsis,
+                style: normalSize16Text(AppColors.greyTextColor),
+              ),
+            if (onTap != null)
+              Column(
+                children: <Widget>[
+                  size15VerticalSizedBox,
+                  Text(
+                    tapToViewMoreInfoString,
+                    style: normalSize16Text(
+                      AppColors.greyTextColor.withOpacity(0.5),
+                    ),
+                  ),
+                ],
+              ),
           ],
         ),
       ),

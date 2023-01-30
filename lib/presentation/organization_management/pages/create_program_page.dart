@@ -4,7 +4,7 @@ import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
-import 'package:prohealth360_daktari/presentation/organization_management/widgets/list_item_with_cancel.dart';
+import 'package:prohealth360_daktari/presentation/organization_management/widgets/program_list_item_widget.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 
 class CreateProgramPage extends StatelessWidget {
@@ -25,7 +25,6 @@ class CreateProgramPage extends StatelessWidget {
               children: <Widget>[
                 mediumVerticalSizedBox,
                 Center(
-                  key: const Key('ProgramImage'),
                   child: SvgPicture.asset(serviceRequestsIconSvg),
                 ),
                 mediumVerticalSizedBox,
@@ -69,8 +68,9 @@ class CreateProgramPage extends StatelessWidget {
                         style: normalSize14Text(AppColors.greyTextColor),
                       ),
                       smallVerticalSizedBox,
-                      const ListItemWithCancelButton(
+                      const ProgramListItem(
                         title: universityOfNairobiString,
+                        description: '',
                       ),
                       mediumVerticalSizedBox,
                       Container(
@@ -89,12 +89,12 @@ class CreateProgramPage extends StatelessWidget {
                               style: normalSize14Text(AppColors.greyTextColor),
                             ),
                             smallVerticalSizedBox,
-                            const ListItemWithCancelButton(
+                            const ProgramListItem(
                               title: ruiru,
                               description: ruiruFacilityDescriptionString,
                             ),
                             smallVerticalSizedBox,
-                            const ListItemWithCancelButton(
+                            const ProgramListItem(
                               title: kiambu,
                               description: kiambuFacilityDescriptionString,
                             ),

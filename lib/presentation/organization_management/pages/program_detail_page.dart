@@ -6,11 +6,11 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart'
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/widgets/badge_widget.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/widgets/deactivate_widget.dart';
-import 'package:prohealth360_daktari/presentation/organization_management/widgets/list_item_with_cancel.dart';
+import 'package:prohealth360_daktari/presentation/organization_management/widgets/program_list_item_widget.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 
-class ProgramDetailViewPage extends StatelessWidget {
-  const ProgramDetailViewPage({super.key});
+class ProgramDetailPage extends StatelessWidget {
+  const ProgramDetailPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,6 @@ class ProgramDetailViewPage extends StatelessWidget {
               children: <Widget>[
                 mediumVerticalSizedBox,
                 Center(
-                  key: const Key('ProgramImage'),
                   child: SvgPicture.asset(serviceRequestsIconSvg),
                 ),
                 smallVerticalSizedBox,
@@ -107,14 +106,16 @@ class ProgramDetailViewPage extends StatelessWidget {
                             style: normalSize14Text(AppColors.greyTextColor),
                           ),
                           smallVerticalSizedBox,
-                          const ListItemWithCancelButton(
+                          ProgramListItem(
                             title: ruiru,
                             description: ruiruFacilityDescriptionString,
+                            onCancel: () {},
                           ),
                           smallVerticalSizedBox,
-                          const ListItemWithCancelButton(
+                          ProgramListItem(
                             title: kiambu,
                             description: kiambuFacilityDescriptionString,
+                            onCancel: () {},
                           ),
                           mediumVerticalSizedBox,
                           const SizedBox(

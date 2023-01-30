@@ -1,3 +1,4 @@
+import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
@@ -16,6 +17,9 @@ class OrganizationListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
+      onTap: () {
+        Navigator.of(context).pushNamed(AppRoutes.organizationDetailPageRoute);
+      },
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(
@@ -52,5 +56,3 @@ class OrganizationListItem extends StatelessWidget {
     );
   }
 }
-
-   

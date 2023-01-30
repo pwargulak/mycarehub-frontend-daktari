@@ -1,7 +1,12 @@
 // Flutter imports:
 import 'package:prohealth360_daktari/presentation/admin/admin_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/core/search_organisations_page.dart';
+import 'package:prohealth360_daktari/presentation/onboarding/login/pages/login_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/program_selection/program_selection_page.dart';
+import 'package:prohealth360_daktari/presentation/organization_management/pages/create_organization_page.dart';
+import 'package:prohealth360_daktari/presentation/organization_management/pages/manage_organization_page.dart';
+import 'package:prohealth360_daktari/presentation/organization_management/pages/organization_detail_page.dart';
+import 'package:prohealth360_daktari/presentation/organization_management/pages/program_detail_page.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:connectivity_plus_platform_interface/connectivity_plus_platform_interface.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -83,16 +88,29 @@ import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_send_con
 import '../../../mocks/mocks.dart';
 
 void main() {
-  const Route<dynamic>? Function(RouteSettings settings) routeGenerator =
+  const Route<dynamic> Function(RouteSettings settings) routeGenerator =
       RouteGenerator.generateRoute;
 
   final BuildContext context = MockBuildContext();
+
+  test('Test router returns default page', () {
+    final MockConnectivityPlatform fakePlatform = MockConnectivityPlatform();
+    ConnectivityPlatform.instance = fakePlatform;
+
+    const RouteSettings settings = RouteSettings();
+
+    final MaterialPageRoute<LoginPage> route =
+        routeGenerator(settings) as MaterialPageRoute<LoginPage>;
+
+    expect(route, isA<MaterialPageRoute<LoginPage>>());
+    expect(route.builder(context), isA<LoginPage>());
+  });
 
   test('Test router returns HomePage', () {
     const RouteSettings settings = RouteSettings(name: AppRoutes.homePage);
 
     final MaterialPageRoute<HomePage> route =
-        routeGenerator(settings)! as MaterialPageRoute<HomePage>;
+        routeGenerator(settings) as MaterialPageRoute<HomePage>;
 
     expect(route, isA<MaterialPageRoute<HomePage>>());
     expect(route.builder(context), isA<HomePage>());
@@ -102,7 +120,7 @@ void main() {
     const RouteSettings settings = RouteSettings(name: AppRoutes.deepLink);
 
     final MaterialPageRoute<HandleDeepLink> route =
-        routeGenerator(settings)! as MaterialPageRoute<HandleDeepLink>;
+        routeGenerator(settings) as MaterialPageRoute<HandleDeepLink>;
 
     expect(route, isA<MaterialPageRoute<HandleDeepLink>>());
     expect(route.builder(context), isA<HandleDeepLink>());
@@ -115,7 +133,7 @@ void main() {
     const RouteSettings settings = RouteSettings(name: AppRoutes.setPinPage);
 
     final MaterialPageRoute<CreateNewPINPage> route =
-        routeGenerator(settings)! as MaterialPageRoute<CreateNewPINPage>;
+        routeGenerator(settings) as MaterialPageRoute<CreateNewPINPage>;
 
     expect(route, isA<MaterialPageRoute<CreateNewPINPage>>());
     expect(route.builder(context), isA<CreateNewPINPage>());
@@ -125,7 +143,7 @@ void main() {
     const RouteSettings settings = RouteSettings(name: AppRoutes.contentPage);
 
     final MaterialPageRoute<ContentPage> route =
-        routeGenerator(settings)! as MaterialPageRoute<ContentPage>;
+        routeGenerator(settings) as MaterialPageRoute<ContentPage>;
 
     expect(route, isA<MaterialPageRoute<ContentPage>>());
     expect(route.builder(context), isA<ContentPage>());
@@ -326,7 +344,7 @@ void main() {
   test('Test router returns SettingsPage', () {
     const RouteSettings settings = RouteSettings(name: AppRoutes.settingsPage);
     final MaterialPageRoute<SettingsPage> route =
-        routeGenerator(settings)! as MaterialPageRoute<SettingsPage>;
+        routeGenerator(settings) as MaterialPageRoute<SettingsPage>;
     expect(route, isA<MaterialPageRoute<SettingsPage>>());
     expect(route.builder(context), isA<SettingsPage>());
   });
@@ -339,7 +357,7 @@ void main() {
       },
     );
     final MaterialPageRoute<EditInformationPage> route =
-        routeGenerator(settings)! as MaterialPageRoute<EditInformationPage>;
+        routeGenerator(settings) as MaterialPageRoute<EditInformationPage>;
     expect(route, isA<MaterialPageRoute<EditInformationPage>>());
     expect(route.builder(context), isA<EditInformationPage>());
   });
@@ -807,5 +825,45 @@ void main() {
         routeGenerator(settings) as MaterialPageRoute<ProgramSelectionPage>?;
     expect(route, isA<MaterialPageRoute<ProgramSelectionPage>>());
     expect(route?.builder(context), isA<ProgramSelectionPage>());
+  });
+
+  test('Test router returns Manage Organization Page', () {
+    const RouteSettings settings = RouteSettings(
+      name: AppRoutes.manageOrganizationsPageRoute,
+    );
+    final MaterialPageRoute<ManageOrganizationPage>? route =
+        routeGenerator(settings) as MaterialPageRoute<ManageOrganizationPage>?;
+    expect(route, isA<MaterialPageRoute<ManageOrganizationPage>>());
+    expect(route?.builder(context), isA<ManageOrganizationPage>());
+  });
+
+  test('Test router returns Organization Detail Page', () {
+    const RouteSettings settings = RouteSettings(
+      name: AppRoutes.organizationDetailPageRoute,
+    );
+    final MaterialPageRoute<OrganizationDetailPage>? route =
+        routeGenerator(settings) as MaterialPageRoute<OrganizationDetailPage>?;
+    expect(route, isA<MaterialPageRoute<OrganizationDetailPage>>());
+    expect(route?.builder(context), isA<OrganizationDetailPage>());
+  });
+
+  test('Test router returns Create Organization Page', () {
+    const RouteSettings settings = RouteSettings(
+      name: AppRoutes.createOrganizationRoute,
+    );
+    final MaterialPageRoute<CreateOrganizationPage>? route =
+        routeGenerator(settings) as MaterialPageRoute<CreateOrganizationPage>?;
+    expect(route, isA<MaterialPageRoute<CreateOrganizationPage>>());
+    expect(route?.builder(context), isA<CreateOrganizationPage>());
+  });
+
+  test('Test router returns Program Detail Page', () {
+    const RouteSettings settings = RouteSettings(
+      name: AppRoutes.programDetailPageRoute,
+    );
+    final MaterialPageRoute<ProgramDetailPage>? route =
+        routeGenerator(settings) as MaterialPageRoute<ProgramDetailPage>?;
+    expect(route, isA<MaterialPageRoute<ProgramDetailPage>>());
+    expect(route?.builder(context), isA<ProgramDetailPage>());
   });
 }

@@ -4,7 +4,7 @@ import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
-import 'package:prohealth360_daktari/presentation/organization_management/widgets/list_item_with_cancel.dart';
+import 'package:prohealth360_daktari/presentation/organization_management/widgets/program_list_item_widget.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:sghi_core/user_profile/constants.dart';
 
@@ -26,7 +26,6 @@ class CreateOrganizationPage extends StatelessWidget {
               children: <Widget>[
                 mediumVerticalSizedBox,
                 Center(
-                  key: const Key('OrganizationImage'),
                   child: SvgPicture.asset(organizationImage),
                 ),
                 mediumVerticalSizedBox,
@@ -138,12 +137,12 @@ class CreateOrganizationPage extends StatelessWidget {
                               style: normalSize14Text(AppColors.greyTextColor),
                             ),
                             smallVerticalSizedBox,
-                            const ListItemWithCancelButton(
+                            const ProgramListItem(
                               title: myCareHubOrgString,
                               description: myCareHubOrgDescriptionString,
                             ),
                             smallVerticalSizedBox,
-                            const ListItemWithCancelButton(
+                            const ProgramListItem(
                               title: FYJ,
                               description: fYJOrgDescriptionString,
                             ),

@@ -131,7 +131,7 @@ class AppRoutes {
   // Onboarding
   static const String facilitySelectionPage = '/facilitySelectionPage';
   static const String programSelectionPage = '/programSelectionPage';
-  
+
   static const String searchCaregiverDetailsPage =
       '/searchCaregiverDetailsPage';
   static const String organizationSelectionPage = '/organizationSelectionPage';
@@ -142,6 +142,12 @@ class AppRoutes {
   static const String roleDetailsPage = '/roleDetailsPage';
   static const String createRolePage = '/createRolePage';
   static const String roleCreateSuccessPage = '/roleCreateSuccessPage';
+  static const String manageOrganizationsPageRoute =
+      '/manageOrganizationsPageRoute';
+  static const String organizationDetailPageRoute =
+      '/organizationDetailPageRoute';
+  static const String createOrganizationRoute = '/createOrganizationRoute';
+  static const String programDetailPageRoute = '/programDetailPageRoute';
 
   // admin
   static const String adminPage = '/adminPage';
