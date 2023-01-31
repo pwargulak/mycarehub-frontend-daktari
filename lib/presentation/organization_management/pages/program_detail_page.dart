@@ -3,10 +3,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/widgets/badge_widget.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/widgets/deactivate_widget.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/widgets/program_list_item_widget.dart';
+import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 
 class ProgramDetailPage extends StatelessWidget {
@@ -118,12 +120,15 @@ class ProgramDetailPage extends StatelessWidget {
                             onCancel: () {},
                           ),
                           mediumVerticalSizedBox,
-                          const SizedBox(
+                          SizedBox(
                             width: double.infinity,
                             height: 48,
                             child: MyAfyaHubPrimaryButton(
                               borderColor: Colors.transparent,
+                              buttonKey: addFacilityButtonKey,
                               text: addFacilityString,
+                              onPressed: () => Navigator.of(context)
+                                  .pushNamed(AppRoutes.searchFacilitiesPage),
                             ),
                           ),
                         ],

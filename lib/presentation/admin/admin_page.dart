@@ -34,10 +34,8 @@ class AdminPage extends StatelessWidget {
                       key: rolesCardKey,
                       iconUrl: manageRolesImage,
                       title: rolesString,
-                      onTap: () {
-                        Navigator.of(context)
-                            .pushNamed(AppRoutes.manageRolesPage);
-                      },
+                      onTap: () => Navigator.of(context)
+                          .pushNamed(AppRoutes.manageRolesPage),
                       backgroundColor: AppColors.primaryColor.withOpacity(0.15),
                     ),
                     ActionCard(
@@ -45,16 +43,16 @@ class AdminPage extends StatelessWidget {
                       iconUrl: organizationImage,
                       title: organizations,
                       backgroundColor: AppColors.primaryColor.withOpacity(0.15),
-                      onTap: () {
-                        Navigator.of(context)
-                            .pushNamed(AppRoutes.manageOrganizationsPageRoute);
-                      },
+                      onTap: () => Navigator.of(context)
+                          .pushNamed(AppRoutes.manageOrganizationsPageRoute),
                     ),
                     ActionCard(
                       key: programsCardKey,
                       iconUrl: serviceRequestsIconSvg,
                       title: programs,
                       backgroundColor: AppColors.primaryColor.withOpacity(0.15),
+                      onTap: () => Navigator.of(context)
+                          .pushNamed(AppRoutes.manageProgramsPageRoute),
                     )
                   ],
                 ),

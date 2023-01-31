@@ -148,6 +148,8 @@ class AppRoutes {
       '/organizationDetailPageRoute';
   static const String createOrganizationRoute = '/createOrganizationRoute';
   static const String programDetailPageRoute = '/programDetailPageRoute';
+  static const String manageProgramsPageRoute = '/manageProgramsPageRoute';
+  static const String createProgramRoute = '/createProgramRoute';
 
   // admin
   static const String adminPage = '/adminPage';

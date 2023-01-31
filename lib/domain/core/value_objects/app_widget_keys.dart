@@ -219,3 +219,5 @@ const Key rolesCardKey = Key('roles_card_key');
 const Key organizationsCardKey = Key('organizations_card_key');
 const Key programsCardKey = Key('programs_card_key');
 const Key createOrganizationButtonKey = Key('create_organization_button_key');
+const Key addProgramButtonKey = Key('add_program_button_key');
+const Key createProgramButtonKey = Key('create_program_button_key');

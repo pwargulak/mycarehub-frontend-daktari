@@ -4,7 +4,9 @@ import 'package:prohealth360_daktari/presentation/onboarding/core/search_organis
 import 'package:prohealth360_daktari/presentation/onboarding/login/pages/login_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/program_selection/program_selection_page.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/pages/create_organization_page.dart';
+import 'package:prohealth360_daktari/presentation/organization_management/pages/create_program_page.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/pages/manage_organization_page.dart';
+import 'package:prohealth360_daktari/presentation/organization_management/pages/manage_programs_page.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/pages/organization_detail_page.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/pages/program_detail_page.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
@@ -679,6 +681,18 @@ class RouteGenerator {
         return MaterialPageRoute<ProgramDetailPage>(
           builder: (_) => const ProgramDetailPage(),
           settings: const RouteSettings(name: 'Program Detail Page'),
+        );
+
+      case AppRoutes.manageProgramsPageRoute:
+        return MaterialPageRoute<ManageProgramsPage>(
+          builder: (_) => const ManageProgramsPage(),
+          settings: const RouteSettings(name: 'Manage Programs Page'),
+        );
+
+      case AppRoutes.createProgramRoute:
+        return MaterialPageRoute<CreateProgramPage>(
+          builder: (_) => const CreateProgramPage(),
+          settings: const RouteSettings(name: 'Create Program Page'),
         );
 
       default:
