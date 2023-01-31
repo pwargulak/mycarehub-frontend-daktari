@@ -59,7 +59,7 @@ void main() {
 
         await tester.pumpAndSettle();
         expect(
-          find.text(getErrorMessage('facilities linked to this user')),
+          find.text(getErrorMessage('facilities linked to this client')),
           findsOneWidget,
         );
       },
@@ -88,7 +88,7 @@ void main() {
         );
         await tester.pumpAndSettle();
         expect(
-          find.text(getErrorMessage('facilities linked to this user')),
+          find.text(getErrorMessage('facilities linked to this client')),
           findsOneWidget,
         );
       },
@@ -156,9 +156,9 @@ void main() {
 
         await tester.pumpAndSettle();
         final Finder cancelButton = find.byKey(cancelButtonKey);
-        expect(cancelButton, findsNWidgets(2));
+        expect(cancelButton, findsOneWidget);
 
-        await tester.tap(cancelButton.first);
+        await tester.tap(cancelButton);
         await tester.pumpAndSettle();
         expect(find.text(removedFacilitySuccessString), findsOneWidget);
       });
@@ -171,7 +171,7 @@ void main() {
           Response(
             json.encode(<String, dynamic>{
               'data': <String, dynamic>{
-                'getUserLinkedFacilities': <String, dynamic>{
+                'getStaffFacilities': <String, dynamic>{
                   'facilities': mockFacilities
                 },
                 'removeFacilitiesFromStaffProfile': false
@@ -212,7 +212,7 @@ void main() {
           Response(
             json.encode(<String, dynamic>{
               'data': <String, dynamic>{
-                'getUserLinkedFacilities': <String, dynamic>{
+                'getClientFacilities': <String, dynamic>{
                   'facilities': mockFacilities
                 },
                 'removeFacilitiesFromClientProfile': false

@@ -8,7 +8,7 @@ import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/core/update_user_profile_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
+import 'package:prohealth360_daktari/domain/core/entities/facilities/facility.dart';
 import 'package:prohealth360_daktari/domain/core/entities/register_client/fetch_facilities_response.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';

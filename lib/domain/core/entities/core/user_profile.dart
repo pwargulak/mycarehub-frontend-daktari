@@ -1,9 +1,9 @@
 // Package imports:
+import 'package:prohealth360_daktari/domain/core/entities/facilities/facility.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:prohealth360_daktari/application/redux/states/communities_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/caregiver/caregiver.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/notification_filter_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/user.dart';
 import 'package:prohealth360_daktari/domain/core/entities/health_diary/health_diary_entry.dart';

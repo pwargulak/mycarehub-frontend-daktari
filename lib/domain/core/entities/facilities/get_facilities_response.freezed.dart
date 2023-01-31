@@ -21,8 +21,12 @@ GetFacilitiesResponse _$GetFacilitiesResponseFromJson(
 
 /// @nodoc
 mixin _$GetFacilitiesResponse {
-  @JsonKey(name: 'getUserLinkedFacilities')
-  LinkedFacilities? get linkedFacilities => throw _privateConstructorUsedError;
+  @JsonKey(name: 'getStaffFacilities')
+  LinkedFacilities? get staffLinkedFacilities =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: 'getClientFacilities')
+  LinkedFacilities? get clientLinkedFacilities =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,10 +41,13 @@ abstract class $GetFacilitiesResponseCopyWith<$Res> {
       _$GetFacilitiesResponseCopyWithImpl<$Res, GetFacilitiesResponse>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'getUserLinkedFacilities')
-          LinkedFacilities? linkedFacilities});
+      {@JsonKey(name: 'getStaffFacilities')
+          LinkedFacilities? staffLinkedFacilities,
+      @JsonKey(name: 'getClientFacilities')
+          LinkedFacilities? clientLinkedFacilities});
 
-  $LinkedFacilitiesCopyWith<$Res>? get linkedFacilities;
+  $LinkedFacilitiesCopyWith<$Res>? get staffLinkedFacilities;
+  $LinkedFacilitiesCopyWith<$Res>? get clientLinkedFacilities;
 }
 
 /// @nodoc
@@ -57,25 +64,44 @@ class _$GetFacilitiesResponseCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? linkedFacilities = freezed,
+    Object? staffLinkedFacilities = freezed,
+    Object? clientLinkedFacilities = freezed,
   }) {
     return _then(_value.copyWith(
-      linkedFacilities: freezed == linkedFacilities
-          ? _value.linkedFacilities
-          : linkedFacilities // ignore: cast_nullable_to_non_nullable
+      staffLinkedFacilities: freezed == staffLinkedFacilities
+          ? _value.staffLinkedFacilities
+          : staffLinkedFacilities // ignore: cast_nullable_to_non_nullable
+              as LinkedFacilities?,
+      clientLinkedFacilities: freezed == clientLinkedFacilities
+          ? _value.clientLinkedFacilities
+          : clientLinkedFacilities // ignore: cast_nullable_to_non_nullable
               as LinkedFacilities?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $LinkedFacilitiesCopyWith<$Res>? get linkedFacilities {
-    if (_value.linkedFacilities == null) {
+  $LinkedFacilitiesCopyWith<$Res>? get staffLinkedFacilities {
+    if (_value.staffLinkedFacilities == null) {
       return null;
     }
 
-    return $LinkedFacilitiesCopyWith<$Res>(_value.linkedFacilities!, (value) {
-      return _then(_value.copyWith(linkedFacilities: value) as $Val);
+    return $LinkedFacilitiesCopyWith<$Res>(_value.staffLinkedFacilities!,
+        (value) {
+      return _then(_value.copyWith(staffLinkedFacilities: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $LinkedFacilitiesCopyWith<$Res>? get clientLinkedFacilities {
+    if (_value.clientLinkedFacilities == null) {
+      return null;
+    }
+
+    return $LinkedFacilitiesCopyWith<$Res>(_value.clientLinkedFacilities!,
+        (value) {
+      return _then(_value.copyWith(clientLinkedFacilities: value) as $Val);
     });
   }
 }
@@ -89,11 +115,15 @@ abstract class _$$_GetFacilitiesResponseCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'getUserLinkedFacilities')
-          LinkedFacilities? linkedFacilities});
+      {@JsonKey(name: 'getStaffFacilities')
+          LinkedFacilities? staffLinkedFacilities,
+      @JsonKey(name: 'getClientFacilities')
+          LinkedFacilities? clientLinkedFacilities});
 
   @override
-  $LinkedFacilitiesCopyWith<$Res>? get linkedFacilities;
+  $LinkedFacilitiesCopyWith<$Res>? get staffLinkedFacilities;
+  @override
+  $LinkedFacilitiesCopyWith<$Res>? get clientLinkedFacilities;
 }
 
 /// @nodoc
@@ -107,12 +137,17 @@ class __$$_GetFacilitiesResponseCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? linkedFacilities = freezed,
+    Object? staffLinkedFacilities = freezed,
+    Object? clientLinkedFacilities = freezed,
   }) {
     return _then(_$_GetFacilitiesResponse(
-      linkedFacilities: freezed == linkedFacilities
-          ? _value.linkedFacilities
-          : linkedFacilities // ignore: cast_nullable_to_non_nullable
+      staffLinkedFacilities: freezed == staffLinkedFacilities
+          ? _value.staffLinkedFacilities
+          : staffLinkedFacilities // ignore: cast_nullable_to_non_nullable
+              as LinkedFacilities?,
+      clientLinkedFacilities: freezed == clientLinkedFacilities
+          ? _value.clientLinkedFacilities
+          : clientLinkedFacilities // ignore: cast_nullable_to_non_nullable
               as LinkedFacilities?,
     ));
   }
@@ -122,18 +157,22 @@ class __$$_GetFacilitiesResponseCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_GetFacilitiesResponse implements _GetFacilitiesResponse {
   _$_GetFacilitiesResponse(
-      {@JsonKey(name: 'getUserLinkedFacilities') this.linkedFacilities});
+      {@JsonKey(name: 'getStaffFacilities') this.staffLinkedFacilities,
+      @JsonKey(name: 'getClientFacilities') this.clientLinkedFacilities});
 
   factory _$_GetFacilitiesResponse.fromJson(Map<String, dynamic> json) =>
       _$$_GetFacilitiesResponseFromJson(json);
 
   @override
-  @JsonKey(name: 'getUserLinkedFacilities')
-  final LinkedFacilities? linkedFacilities;
+  @JsonKey(name: 'getStaffFacilities')
+  final LinkedFacilities? staffLinkedFacilities;
+  @override
+  @JsonKey(name: 'getClientFacilities')
+  final LinkedFacilities? clientLinkedFacilities;
 
   @override
   String toString() {
-    return 'GetFacilitiesResponse(linkedFacilities: $linkedFacilities)';
+    return 'GetFacilitiesResponse(staffLinkedFacilities: $staffLinkedFacilities, clientLinkedFacilities: $clientLinkedFacilities)';
   }
 
   @override
@@ -141,13 +180,16 @@ class _$_GetFacilitiesResponse implements _GetFacilitiesResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_GetFacilitiesResponse &&
-            (identical(other.linkedFacilities, linkedFacilities) ||
-                other.linkedFacilities == linkedFacilities));
+            (identical(other.staffLinkedFacilities, staffLinkedFacilities) ||
+                other.staffLinkedFacilities == staffLinkedFacilities) &&
+            (identical(other.clientLinkedFacilities, clientLinkedFacilities) ||
+                other.clientLinkedFacilities == clientLinkedFacilities));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, linkedFacilities);
+  int get hashCode =>
+      Object.hash(runtimeType, staffLinkedFacilities, clientLinkedFacilities);
 
   @JsonKey(ignore: true)
   @override
@@ -166,15 +208,21 @@ class _$_GetFacilitiesResponse implements _GetFacilitiesResponse {
 
 abstract class _GetFacilitiesResponse implements GetFacilitiesResponse {
   factory _GetFacilitiesResponse(
-      {@JsonKey(name: 'getUserLinkedFacilities')
-          final LinkedFacilities? linkedFacilities}) = _$_GetFacilitiesResponse;
+          {@JsonKey(name: 'getStaffFacilities')
+              final LinkedFacilities? staffLinkedFacilities,
+          @JsonKey(name: 'getClientFacilities')
+              final LinkedFacilities? clientLinkedFacilities}) =
+      _$_GetFacilitiesResponse;
 
   factory _GetFacilitiesResponse.fromJson(Map<String, dynamic> json) =
       _$_GetFacilitiesResponse.fromJson;
 
   @override
-  @JsonKey(name: 'getUserLinkedFacilities')
-  LinkedFacilities? get linkedFacilities;
+  @JsonKey(name: 'getStaffFacilities')
+  LinkedFacilities? get staffLinkedFacilities;
+  @override
+  @JsonKey(name: 'getClientFacilities')
+  LinkedFacilities? get clientLinkedFacilities;
   @override
   @JsonKey(ignore: true)
   _$$_GetFacilitiesResponseCopyWith<_$_GetFacilitiesResponse> get copyWith =>

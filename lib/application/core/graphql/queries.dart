@@ -23,7 +23,11 @@ query searchFacility($searchParameter: String) {
   searchFacility(searchParameter: $searchParameter) {
     id
     name
-    code
+    identifier{
+      id
+      value
+      type
+    }
   }
 }
 ''';
@@ -543,17 +547,9 @@ query searchCaregiverUser($searchParameter: String!){
 }
 ''';
 
-const String getUserLinkedFacilitiesQuery = r'''
-query getUserLinkedFacilities($userID: ID! $paginationInput: PaginationsInput!){
-  getUserLinkedFacilities(userID: $userID, paginationInput: $paginationInput){
-    pagination{
-      limit
-      currentPage
-      count
-      totalPages
-      nextPage
-      previousPage
-    }
+const String getClientFacilitiesQuery = r'''
+query getClientFacilities($clientID: ID! $paginationInput: PaginationsInput!){
+  getClientFacilities(clientID: $clientID, paginationInput: $paginationInput){
     facilities{
       id
       name

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:prohealth360_daktari/application/redux/actions/core/update_user_profile_action.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
+import 'package:prohealth360_daktari/domain/core/entities/facilities/facility.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
@@ -30,7 +30,7 @@ void main() {
     });
 
     testWidgets('renders correctly', (WidgetTester tester) async {
-       store.dispatch(
+      store.dispatch(
         UpdateUserProfileAction(
           defaultFacility: Facility(id: 'testId'),
         ),
@@ -74,7 +74,7 @@ void main() {
           jsonEncode(<String, dynamic>{
             'data': <String, dynamic>{
               'getStaffFacilities': <String, dynamic>{
-                'facilities' : <dynamic>[]
+                'facilities': <dynamic>[]
               },
             }
           }),

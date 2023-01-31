@@ -4,7 +4,7 @@ import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
+import 'package:prohealth360_daktari/domain/core/entities/facilities/facility.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/user_profile.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/user.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
@@ -63,24 +63,25 @@ void main() {
         (WidgetTester tester) async {
       final Store<AppState> store = Store<AppState>(
         initialState: AppState.initial().copyWith(
-            userProfileState: UserProfileState(
-          userProfile: UserProfile(
-            defaultFacility: Facility(id: 'test'),
-            defaultFacilityName: 'test',
-            facilities: <Facility>[
-              Facility(name: 'test', id: 'test', phone: '0712345678')
-            ],
-            user: User(
-              roles: <Role>[
-                Role(
-                  active: true,
-                  name: RoleValue.COMMUNITY_MANAGEMENT,
-                  roleID: 'test',
-                )
+          userProfileState: UserProfileState(
+            userProfile: UserProfile(
+              defaultFacility: Facility(id: 'test'),
+              defaultFacilityName: 'test',
+              facilities: <Facility>[
+                Facility(name: 'test', id: 'test', phone: '0712345678')
               ],
+              user: User(
+                roles: <Role>[
+                  Role(
+                    active: true,
+                    name: RoleValue.COMMUNITY_MANAGEMENT,
+                    roleID: 'test',
+                  )
+                ],
+              ),
             ),
           ),
-        ),),
+        ),
       );
       await buildTestWidget(
         tester: tester,

@@ -1,3 +1,4 @@
+import 'package:prohealth360_daktari/application/redux/actions/facilities/fetch_staff_linked_facilities_action.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
@@ -10,7 +11,7 @@ import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 
 import 'package:prohealth360_daktari/application/redux/actions/core/batch_update_misc_state_action.dart';
 
-import 'package:prohealth360_daktari/application/redux/actions/facilities/fetch_user_linked_facilities_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/facilities/fetch_client_facilities_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/facilities/remove_facility_from_client_profile_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/facilities/remove_facility_from_staff_profile_action.dart';
 
@@ -20,7 +21,7 @@ import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 
 import 'package:prohealth360_daktari/application/redux/view_models/register_client/fetch_facilities_view_model.dart';
 
-import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
+import 'package:prohealth360_daktari/domain/core/entities/facilities/facility.dart';
 
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 
@@ -48,29 +49,53 @@ class LinkedFacilitiesWidget extends StatelessWidget {
       converter: (Store<AppState> store) =>
           ListFacilitiesViewModel.fromStore(store),
       onInit: (Store<AppState> store) => store.dispatch(
-        FetchUserLinkedFacilitiesAction(
-          client: AppWrapperBase.of(context)!.graphQLClient,
-          onFailure: (String message) {
-            ScaffoldMessenger.of(context)
-              ..hideCurrentSnackBar()
-              ..showSnackBar(
-                SnackBar(
-                  content: Text(
-                    message,
-                  ),
-                  duration: const Duration(
-                    seconds: 5,
-                  ),
-                  action: dismissSnackBar(
-                    closeString,
-                    Colors.white,
-                    context,
-                  ),
-                ),
-              );
-          },
-          userId: userId,
-        ),
+        isClient
+            ? FetchClientFacilitiesAction(
+                client: AppWrapperBase.of(context)!.graphQLClient,
+                onFailure: (String message) {
+                  ScaffoldMessenger.of(context)
+                    ..hideCurrentSnackBar()
+                    ..showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          message,
+                        ),
+                        duration: const Duration(
+                          seconds: 5,
+                        ),
+                        action: dismissSnackBar(
+                          closeString,
+                          Colors.white,
+                          context,
+                        ),
+                      ),
+                    );
+                },
+                userId: userId,
+              )
+            : FetchStaffFacilitiesAction(
+                client: AppWrapperBase.of(context)!.graphQLClient,
+                onFailure: (String message) {
+                  ScaffoldMessenger.of(context)
+                    ..hideCurrentSnackBar()
+                    ..showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          message,
+                        ),
+                        duration: const Duration(
+                          seconds: 5,
+                        ),
+                        action: dismissSnackBar(
+                          closeString,
+                          Colors.white,
+                          context,
+                        ),
+                      ),
+                    );
+                },
+                userId: userId,
+              ),
       ),
       builder: (BuildContext context, ListFacilitiesViewModel vm) {
         final List<Facility> facilities = vm.linkedFacilities ?? <Facility>[];
@@ -89,7 +114,7 @@ class LinkedFacilitiesWidget extends StatelessWidget {
                         ? const PlatformLoader()
                         : ListCardWithCancelButton(
                             title: facility?.name ?? '',
-                            description: facility?.code?.toString(),
+                            description: facility?.facilityIdentifier?.value?.toString(),
                             onCancelCallback: () {
                               if (isClient) {
                                 StoreProvider.dispatch<AppState>(

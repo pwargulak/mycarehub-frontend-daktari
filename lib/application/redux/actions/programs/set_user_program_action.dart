@@ -67,7 +67,7 @@ class SetUserProgramAction extends ReduxAction<AppState> {
         );
 
         onFailure?.call(getErrorMessage('setting your program'));
-        return null;
+        return state;
       }
       final Map<String, dynamic>? data = body['data'] as Map<String, dynamic>?;
 

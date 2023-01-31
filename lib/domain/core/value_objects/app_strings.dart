@@ -256,7 +256,9 @@ const String noNotificationsDescription =
 
 // Add patient page
 const String CCCNumberLabel = 'CCC Number *';
+const String usernameLabel = 'Username *';
 const String cccNumberHint = 'Enter CCC Number...';
+const String usernameHint = 'Enter your username...';
 const String facilityLabel = 'Facility *';
 const String organisationString = 'Organisation';
 const String firstNameLabel = 'First Name *';

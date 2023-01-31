@@ -8,13 +8,13 @@ import 'package:prohealth360_daktari/application/redux/actions/core/update_user_
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:http/http.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
+import 'package:prohealth360_daktari/domain/core/entities/facilities/facility.dart';
 import 'package:prohealth360_daktari/domain/core/entities/facilities/get_facilities_response.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-class FetchUserLinkedFacilitiesAction extends ReduxAction<AppState> {
-  FetchUserLinkedFacilitiesAction({
+class FetchStaffFacilitiesAction extends ReduxAction<AppState> {
+  FetchStaffFacilitiesAction({
     required this.client,
     this.onFailure,
     required this.userId,
@@ -42,7 +42,7 @@ class FetchUserLinkedFacilitiesAction extends ReduxAction<AppState> {
   @override
   Future<AppState?> reduce() async {
     final Map<String, dynamic> variables = <String, dynamic>{
-      'userID': userId,
+      'staffID': userId,
       'paginationInput': <String, dynamic>{
         'limit': 20,
         'currentPage': 1,
@@ -50,7 +50,7 @@ class FetchUserLinkedFacilitiesAction extends ReduxAction<AppState> {
     };
 
     final Response response =
-        await client.query(getUserLinkedFacilitiesQuery, variables);
+        await client.query(getStaffFacilitiesQuery, variables);
 
     final ProcessedResponse processedResponse = processHttpResponse(response);
 
@@ -63,7 +63,7 @@ class FetchUserLinkedFacilitiesAction extends ReduxAction<AppState> {
       if (errors != null) {
         reportErrorToSentry(
           hint: errorFetchingFacilitiesString,
-          query: getUserLinkedFacilitiesQuery,
+          query: getStaffFacilitiesQuery,
           variables: variables,
           response: response,
           state: state,
@@ -79,7 +79,8 @@ class FetchUserLinkedFacilitiesAction extends ReduxAction<AppState> {
         body['data'] as Map<String, dynamic>,
       );
       final List<Facility> linkedFacilities =
-          getFacilitiesResponse.linkedFacilities?.facilities ?? <Facility>[];
+          getFacilitiesResponse.staffLinkedFacilities?.facilities ??
+              <Facility>[];
 
       dispatch(
         UpdateUserProfileAction(
@@ -91,7 +92,7 @@ class FetchUserLinkedFacilitiesAction extends ReduxAction<AppState> {
       Sentry.captureException(
         UserException(
           processedResponse.message,
-          cause: getUserLinkedFacilitiesQuery,
+          cause: getStaffFacilitiesQuery,
         ),
       );
     }

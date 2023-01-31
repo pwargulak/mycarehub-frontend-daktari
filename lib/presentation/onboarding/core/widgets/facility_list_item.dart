@@ -2,7 +2,7 @@ import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
+import 'package:prohealth360_daktari/domain/core/entities/facilities/facility.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 
 class FacilityListItem extends StatelessWidget {
@@ -50,9 +50,9 @@ class FacilityListItem extends StatelessWidget {
                       facility.name!,
                       style: boldSize14Text().copyWith(),
                     ),
-                    if (facility.code != null)
+                    if (facility.facilityIdentifier?.value != null)
                       Text(
-                        facility.code.toString(),
+                        facility.facilityIdentifier?.value?.toString() ?? '',
                         style: boldSize12Text().copyWith(
                           color: greyTextColor.withOpacity(0.6),
                           fontSize: 10,

@@ -5,7 +5,7 @@ import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/actions/core/batch_update_misc_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/register_client/fetch_facilities_view_model.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
+import 'package:prohealth360_daktari/domain/core/entities/facilities/facility.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
@@ -66,8 +66,8 @@ class _SearchFacilityFieldState extends State<SearchFacilityField> {
             final bool isFacilityChosen =
                 facilityName.isNotEmpty && facilityName != UNKNOWN;
 
-            final String facilityCode = vm.selectedFacility.code != null
-                ? vm.selectedFacility.code.toString()
+            final String facilityCode = vm.selectedFacility.facilityIdentifier?.value != null
+                ? vm.selectedFacility.facilityIdentifier?.value.toString() ?? ''
                 : '';
 
             if (isFacilityChosen) {

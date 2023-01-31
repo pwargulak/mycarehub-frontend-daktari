@@ -10,6 +10,7 @@ part 'register_client_payload.g.dart';
 class RegisterClientPayload with _$RegisterClientPayload {
   factory RegisterClientPayload({
     @JsonKey(name: 'facility') String? facility,
+    @JsonKey(name: 'username') String? username,
     @JsonKey(name: 'clientTypes') List<ClientType>? clientTypes,
     @JsonKey(name: 'clientName') String? clientName,
     @JsonKey(name: 'gender', fromJson: genderFromJson) Gender? gender,

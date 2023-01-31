@@ -899,12 +899,12 @@ class MockTestGraphQlClient extends IGraphQlClient {
         ),
       );
     }
-    if (queryString.contains(getUserLinkedFacilitiesQuery)) {
+    if (queryString.contains(getClientFacilitiesQuery)) {
       return Future<http.Response>.value(
         http.Response(
           json.encode(<String, dynamic>{
             'data': <String, dynamic>{
-              'getUserLinkedFacilities': <String, dynamic>{
+              'getClientFacilities': <String, dynamic>{
                 'facilities': mockFacilities
               }
             }
@@ -920,9 +920,7 @@ class MockTestGraphQlClient extends IGraphQlClient {
           json.encode(
             <String, dynamic>{
               'data': <String, dynamic>{
-                'setStaffDefaultFacility': <String, dynamic>{
-                  'id': 'testId'
-                },
+                'setStaffDefaultFacility': <String, dynamic>{'id': 'testId'},
               }
             },
           ),
@@ -1582,7 +1580,11 @@ final List<Map<String, dynamic>> mockFacilities = <Map<String, dynamic>>[
   <String, dynamic>{
     'id': 'some-id',
     'name': 'Test Facility',
-    'code': 1234,
+    'identifier': <String, dynamic>{
+      'id': 'some-id',
+      'value': '1234',
+      'type': 'MFL_CODE'
+    },
     'description': '',
     'phone': '',
     'active': true,
@@ -1597,7 +1599,11 @@ final List<Map<String, dynamic>> mockFacilities = <Map<String, dynamic>>[
   <String, dynamic>{
     'id': 'some-id',
     'name': 'Kanairo',
-    'code': 5678,
+    'identifier': <String, dynamic>{
+      'id': 'some-id',
+      'value': '5678',
+      'type': 'MFL_CODE'
+    },
     'description': 'Kanairo Hospital',
     'phone': '',
     'active': true,

@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
+import 'package:prohealth360_daktari/domain/core/entities/facilities/facility.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
@@ -67,7 +67,6 @@ class SetStaffDefaultFacilityAction extends ReduxAction<AppState> {
         );
 
         throw UserException(getErrorMessage('selecting facility'));
-
       }
       final Map<String, dynamic> data = body['data'] as Map<String, dynamic>;
       if ((data['setStaffDefaultFacility'] as Map<String, dynamic>)['id'] ==

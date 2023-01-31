@@ -8,7 +8,7 @@ import 'package:prohealth360_daktari/application/redux/actions/core/update_user_
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:http/http.dart' as http;
-import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
+import 'package:prohealth360_daktari/domain/core/entities/facilities/facility.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 /// [RetrieveFacilityAction] is a Redux Action whose job is to retrieve a staff's

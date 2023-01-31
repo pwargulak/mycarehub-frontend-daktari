@@ -38,6 +38,7 @@ void main() {
           find.byKey(searchFacilityIconBtnKey);
       expect(facilityFieldFinder, findsOneWidget);
       await tester.tap(facilityFieldFinder);
+      
       await tester.pumpAndSettle();
       await tester.tap(find.text('Kanairo').last);
       await tester.pumpAndSettle();

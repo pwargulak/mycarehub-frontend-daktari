@@ -1,6 +1,6 @@
 // Package imports:
-import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:prohealth360_daktari/domain/core/entities/facilities/facility.dart';
 
 part 'program_facilities_response.freezed.dart';
 part 'program_facilities_response.g.dart';

@@ -10,6 +10,7 @@ _$_RegisterClientPayload _$$_RegisterClientPayloadFromJson(
         Map<String, dynamic> json) =>
     _$_RegisterClientPayload(
       facility: json['facility'] as String?,
+      username: json['username'] as String?,
       clientTypes: (json['clientTypes'] as List<dynamic>?)
           ?.map((e) => $enumDecode(_$ClientTypeEnumMap, e))
           .toList(),
@@ -31,6 +32,7 @@ Map<String, dynamic> _$$_RegisterClientPayloadToJson(
         _$_RegisterClientPayload instance) =>
     <String, dynamic>{
       'facility': instance.facility,
+      'username': instance.username,
       'clientTypes':
           instance.clientTypes?.map((e) => _$ClientTypeEnumMap[e]!).toList(),
       'clientName': instance.clientName,

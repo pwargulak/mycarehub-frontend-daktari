@@ -4,7 +4,7 @@ import 'package:async_redux/async_redux.dart';
 // Project imports:
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/caregiver/caregiver.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
+import 'package:prohealth360_daktari/domain/core/entities/facilities/facility.dart';
 import 'package:prohealth360_daktari/domain/core/entities/health_diary/health_diary_entry.dart';
 
 class UpdateUserProfileAction extends ReduxAction<AppState> {
@@ -64,8 +64,7 @@ class UpdateUserProfileAction extends ReduxAction<AppState> {
               state.userProfileState?.userProfile?.currentFacility,
           clientCaregivers: clientCaregivers ??
               state.userProfileState?.userProfile?.clientCaregivers,
-          username: userName ??
-              state.userProfileState?.userProfile?.username,
+          username: userName ?? state.userProfileState?.userProfile?.username,
         ),
       ),
     );

@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:prohealth360_daktari/application/redux/actions/retrieve_facility_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/connectivity_state.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
+import 'package:prohealth360_daktari/domain/core/entities/facilities/facility.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/user_profile.dart';
 
 import '../../../../../mocks/mocks.dart';

@@ -24,14 +24,15 @@ mixin _$Facility {
   String? get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
   String? get name => throw _privateConstructorUsedError;
-  @JsonKey(name: 'code')
-  int? get code => throw _privateConstructorUsedError;
   @JsonKey(name: 'phone')
   String? get phone => throw _privateConstructorUsedError;
   @JsonKey(name: 'active', defaultValue: false)
   bool? get active => throw _privateConstructorUsedError;
   @JsonKey(name: 'county')
   String? get county => throw _privateConstructorUsedError;
+  @JsonKey(name: 'identifier')
+  FacilityIdentifier? get facilityIdentifier =>
+      throw _privateConstructorUsedError;
   @JsonKey(name: 'description')
   String? get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'fhirOrganisationID')
@@ -56,14 +57,14 @@ abstract class $FacilityCopyWith<$Res> {
           String? id,
       @JsonKey(name: 'name')
           String? name,
-      @JsonKey(name: 'code')
-          int? code,
       @JsonKey(name: 'phone')
           String? phone,
       @JsonKey(name: 'active', defaultValue: false)
           bool? active,
       @JsonKey(name: 'county')
           String? county,
+      @JsonKey(name: 'identifier')
+          FacilityIdentifier? facilityIdentifier,
       @JsonKey(name: 'description')
           String? description,
       @JsonKey(name: 'fhirOrganisationID')
@@ -71,6 +72,7 @@ abstract class $FacilityCopyWith<$Res> {
       @JsonKey(name: 'workStationDetails')
           WorkStationDetails? workStationDetails});
 
+  $FacilityIdentifierCopyWith<$Res>? get facilityIdentifier;
   $WorkStationDetailsCopyWith<$Res>? get workStationDetails;
 }
 
@@ -89,10 +91,10 @@ class _$FacilityCopyWithImpl<$Res, $Val extends Facility>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
-    Object? code = freezed,
     Object? phone = freezed,
     Object? active = freezed,
     Object? county = freezed,
+    Object? facilityIdentifier = freezed,
     Object? description = freezed,
     Object? fhirOrganisationID = freezed,
     Object? workStationDetails = freezed,
@@ -106,10 +108,6 @@ class _$FacilityCopyWithImpl<$Res, $Val extends Facility>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      code: freezed == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as int?,
       phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
@@ -122,6 +120,10 @@ class _$FacilityCopyWithImpl<$Res, $Val extends Facility>
           ? _value.county
           : county // ignore: cast_nullable_to_non_nullable
               as String?,
+      facilityIdentifier: freezed == facilityIdentifier
+          ? _value.facilityIdentifier
+          : facilityIdentifier // ignore: cast_nullable_to_non_nullable
+              as FacilityIdentifier?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -135,6 +137,19 @@ class _$FacilityCopyWithImpl<$Res, $Val extends Facility>
           : workStationDetails // ignore: cast_nullable_to_non_nullable
               as WorkStationDetails?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FacilityIdentifierCopyWith<$Res>? get facilityIdentifier {
+    if (_value.facilityIdentifier == null) {
+      return null;
+    }
+
+    return $FacilityIdentifierCopyWith<$Res>(_value.facilityIdentifier!,
+        (value) {
+      return _then(_value.copyWith(facilityIdentifier: value) as $Val);
+    });
   }
 
   @override
@@ -163,14 +178,14 @@ abstract class _$$_FacilityCopyWith<$Res> implements $FacilityCopyWith<$Res> {
           String? id,
       @JsonKey(name: 'name')
           String? name,
-      @JsonKey(name: 'code')
-          int? code,
       @JsonKey(name: 'phone')
           String? phone,
       @JsonKey(name: 'active', defaultValue: false)
           bool? active,
       @JsonKey(name: 'county')
           String? county,
+      @JsonKey(name: 'identifier')
+          FacilityIdentifier? facilityIdentifier,
       @JsonKey(name: 'description')
           String? description,
       @JsonKey(name: 'fhirOrganisationID')
@@ -178,6 +193,8 @@ abstract class _$$_FacilityCopyWith<$Res> implements $FacilityCopyWith<$Res> {
       @JsonKey(name: 'workStationDetails')
           WorkStationDetails? workStationDetails});
 
+  @override
+  $FacilityIdentifierCopyWith<$Res>? get facilityIdentifier;
   @override
   $WorkStationDetailsCopyWith<$Res>? get workStationDetails;
 }
@@ -195,10 +212,10 @@ class __$$_FacilityCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
-    Object? code = freezed,
     Object? phone = freezed,
     Object? active = freezed,
     Object? county = freezed,
+    Object? facilityIdentifier = freezed,
     Object? description = freezed,
     Object? fhirOrganisationID = freezed,
     Object? workStationDetails = freezed,
@@ -212,10 +229,6 @@ class __$$_FacilityCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      code: freezed == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as int?,
       phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
@@ -228,6 +241,10 @@ class __$$_FacilityCopyWithImpl<$Res>
           ? _value.county
           : county // ignore: cast_nullable_to_non_nullable
               as String?,
+      facilityIdentifier: freezed == facilityIdentifier
+          ? _value.facilityIdentifier
+          : facilityIdentifier // ignore: cast_nullable_to_non_nullable
+              as FacilityIdentifier?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -250,10 +267,10 @@ class _$_Facility implements _Facility {
   _$_Facility(
       {@JsonKey(name: 'id') this.id,
       @JsonKey(name: 'name') this.name,
-      @JsonKey(name: 'code') this.code,
       @JsonKey(name: 'phone') this.phone,
       @JsonKey(name: 'active', defaultValue: false) this.active,
       @JsonKey(name: 'county') this.county,
+      @JsonKey(name: 'identifier') this.facilityIdentifier,
       @JsonKey(name: 'description') this.description,
       @JsonKey(name: 'fhirOrganisationID') this.fhirOrganisationID,
       @JsonKey(name: 'workStationDetails') this.workStationDetails});
@@ -268,9 +285,6 @@ class _$_Facility implements _Facility {
   @JsonKey(name: 'name')
   final String? name;
   @override
-  @JsonKey(name: 'code')
-  final int? code;
-  @override
   @JsonKey(name: 'phone')
   final String? phone;
   @override
@@ -279,6 +293,9 @@ class _$_Facility implements _Facility {
   @override
   @JsonKey(name: 'county')
   final String? county;
+  @override
+  @JsonKey(name: 'identifier')
+  final FacilityIdentifier? facilityIdentifier;
   @override
   @JsonKey(name: 'description')
   final String? description;
@@ -291,7 +308,7 @@ class _$_Facility implements _Facility {
 
   @override
   String toString() {
-    return 'Facility(id: $id, name: $name, code: $code, phone: $phone, active: $active, county: $county, description: $description, fhirOrganisationID: $fhirOrganisationID, workStationDetails: $workStationDetails)';
+    return 'Facility(id: $id, name: $name, phone: $phone, active: $active, county: $county, facilityIdentifier: $facilityIdentifier, description: $description, fhirOrganisationID: $fhirOrganisationID, workStationDetails: $workStationDetails)';
   }
 
   @override
@@ -301,10 +318,11 @@ class _$_Facility implements _Facility {
             other is _$_Facility &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.code, code) || other.code == code) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.active, active) || other.active == active) &&
             (identical(other.county, county) || other.county == county) &&
+            (identical(other.facilityIdentifier, facilityIdentifier) ||
+                other.facilityIdentifier == facilityIdentifier) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.fhirOrganisationID, fhirOrganisationID) ||
@@ -315,8 +333,8 @@ class _$_Facility implements _Facility {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, code, phone, active,
-      county, description, fhirOrganisationID, workStationDetails);
+  int get hashCode => Object.hash(runtimeType, id, name, phone, active, county,
+      facilityIdentifier, description, fhirOrganisationID, workStationDetails);
 
   @JsonKey(ignore: true)
   @override
@@ -338,14 +356,14 @@ abstract class _Facility implements Facility {
           final String? id,
       @JsonKey(name: 'name')
           final String? name,
-      @JsonKey(name: 'code')
-          final int? code,
       @JsonKey(name: 'phone')
           final String? phone,
       @JsonKey(name: 'active', defaultValue: false)
           final bool? active,
       @JsonKey(name: 'county')
           final String? county,
+      @JsonKey(name: 'identifier')
+          final FacilityIdentifier? facilityIdentifier,
       @JsonKey(name: 'description')
           final String? description,
       @JsonKey(name: 'fhirOrganisationID')
@@ -362,9 +380,6 @@ abstract class _Facility implements Facility {
   @JsonKey(name: 'name')
   String? get name;
   @override
-  @JsonKey(name: 'code')
-  int? get code;
-  @override
   @JsonKey(name: 'phone')
   String? get phone;
   @override
@@ -373,6 +388,9 @@ abstract class _Facility implements Facility {
   @override
   @JsonKey(name: 'county')
   String? get county;
+  @override
+  @JsonKey(name: 'identifier')
+  FacilityIdentifier? get facilityIdentifier;
   @override
   @JsonKey(name: 'description')
   String? get description;

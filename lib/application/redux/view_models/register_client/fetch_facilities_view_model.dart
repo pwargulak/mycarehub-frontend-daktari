@@ -1,11 +1,11 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
+import 'package:prohealth360_daktari/domain/core/entities/facilities/facility.dart';
 
 class ListFacilitiesViewModel extends Vm {
   ListFacilitiesViewModel({
     required this.wait,
-  this.facilities,
+    this.facilities,
     this.linkedFacilities,
     this.updateFacility,
     required this.selectedFacility,
@@ -29,7 +29,8 @@ class ListFacilitiesViewModel extends Vm {
     return ListFacilitiesViewModel(
       wait: store.state.wait!,
       facilities: store.state.userProfileState?.userProfile?.facilities,
-      linkedFacilities: store.state.userProfileState?.userProfile?.linkedFacilities,
+      linkedFacilities:
+          store.state.userProfileState?.userProfile?.linkedFacilities,
       updateFacility: store.state.miscState?.updateFacility,
       selectedFacility:
           store.state.miscState?.selectedFacility ?? Facility.initial(),

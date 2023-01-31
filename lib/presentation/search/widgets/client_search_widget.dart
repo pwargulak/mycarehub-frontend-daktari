@@ -127,7 +127,7 @@ class ClientSearchWidget extends StatelessWidget {
                         ],
                       ),
                     LinkedFacilitiesWidget(
-                      userId: selectedSearchUserResponse.user?.id ?? '',
+                      userId: selectedSearchUserResponse.id ?? '',
                       userName: selectedSearchUserResponse.user?.name ?? '',
                     ),
                     ClientCaregiversWidget(

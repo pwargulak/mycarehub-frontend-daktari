@@ -2,7 +2,7 @@
 
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
+import 'package:prohealth360_daktari/domain/core/entities/facilities/facility.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/roles_list.dart';
 
 part 'search_user_response.freezed.dart';

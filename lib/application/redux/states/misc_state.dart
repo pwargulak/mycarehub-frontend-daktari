@@ -4,7 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:prohealth360_daktari/application/redux/states/groups_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/search_user_response_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/caregiver/search_caregiver_response_state.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
+import 'package:prohealth360_daktari/domain/core/entities/facilities/facility.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 
 part 'misc_state.freezed.dart';

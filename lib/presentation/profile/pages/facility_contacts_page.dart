@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/staff_state_view_model.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
+import 'package:prohealth360_daktari/domain/core/entities/facilities/facility.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
@@ -57,14 +57,12 @@ class _FacilityContactsPageState extends State<FacilityContactsPage> {
           converter: (Store<AppState> store) =>
               UserProfileViewModel.fromStore(store),
           builder: (BuildContext context, UserProfileViewModel vm) {
-            final String phoneNumber =
-                (vm.userProfile?.facilities?.firstWhere(
-                      (Facility facility) =>
-                          facility.name ==
-                          vm.userProfile?.defaultFacilityName,
-                      orElse: () => Facility.initial(),
-                    ))?.phone ??
-                    '';
+            final String phoneNumber = (vm.userProfile?.facilities?.firstWhere(
+                  (Facility facility) =>
+                      facility.name == vm.userProfile?.defaultFacilityName,
+                  orElse: () => Facility.initial(),
+                ))?.phone ??
+                '';
             return vm.wait?.isWaitingFor(retrieveFacilityFlag) ?? false
                 ? const PlatformLoader()
                 : phoneNumber.isNotEmpty && phoneNumber != UNKNOWN

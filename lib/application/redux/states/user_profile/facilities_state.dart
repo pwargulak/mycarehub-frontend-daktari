@@ -1,8 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
+import 'package:prohealth360_daktari/domain/core/entities/facilities/facility.dart';
 
 part 'facilities_state.freezed.dart';
 part 'facilities_state.g.dart';
+
 @freezed
 class FacilitiesState with _$FacilitiesState {
   factory FacilitiesState({

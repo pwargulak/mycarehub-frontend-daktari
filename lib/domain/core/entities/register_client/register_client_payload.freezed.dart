@@ -23,6 +23,8 @@ RegisterClientPayload _$RegisterClientPayloadFromJson(
 mixin _$RegisterClientPayload {
   @JsonKey(name: 'facility')
   String? get facility => throw _privateConstructorUsedError;
+  @JsonKey(name: 'username')
+  String? get username => throw _privateConstructorUsedError;
   @JsonKey(name: 'clientTypes')
   List<ClientType>? get clientTypes => throw _privateConstructorUsedError;
   @JsonKey(name: 'clientName')
@@ -57,6 +59,8 @@ abstract class $RegisterClientPayloadCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'facility')
           String? facility,
+      @JsonKey(name: 'username')
+          String? username,
       @JsonKey(name: 'clientTypes')
           List<ClientType>? clientTypes,
       @JsonKey(name: 'clientName')
@@ -92,6 +96,7 @@ class _$RegisterClientPayloadCopyWithImpl<$Res,
   @override
   $Res call({
     Object? facility = freezed,
+    Object? username = freezed,
     Object? clientTypes = freezed,
     Object? clientName = freezed,
     Object? gender = freezed,
@@ -106,6 +111,10 @@ class _$RegisterClientPayloadCopyWithImpl<$Res,
       facility: freezed == facility
           ? _value.facility
           : facility // ignore: cast_nullable_to_non_nullable
+              as String?,
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String?,
       clientTypes: freezed == clientTypes
           ? _value.clientTypes
@@ -158,6 +167,8 @@ abstract class _$$_RegisterClientPayloadCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'facility')
           String? facility,
+      @JsonKey(name: 'username')
+          String? username,
       @JsonKey(name: 'clientTypes')
           List<ClientType>? clientTypes,
       @JsonKey(name: 'clientName')
@@ -190,6 +201,7 @@ class __$$_RegisterClientPayloadCopyWithImpl<$Res>
   @override
   $Res call({
     Object? facility = freezed,
+    Object? username = freezed,
     Object? clientTypes = freezed,
     Object? clientName = freezed,
     Object? gender = freezed,
@@ -204,6 +216,10 @@ class __$$_RegisterClientPayloadCopyWithImpl<$Res>
       facility: freezed == facility
           ? _value.facility
           : facility // ignore: cast_nullable_to_non_nullable
+              as String?,
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String?,
       clientTypes: freezed == clientTypes
           ? _value._clientTypes
@@ -250,6 +266,7 @@ class __$$_RegisterClientPayloadCopyWithImpl<$Res>
 class _$_RegisterClientPayload implements _RegisterClientPayload {
   _$_RegisterClientPayload(
       {@JsonKey(name: 'facility') this.facility,
+      @JsonKey(name: 'username') this.username,
       @JsonKey(name: 'clientTypes') final List<ClientType>? clientTypes,
       @JsonKey(name: 'clientName') this.clientName,
       @JsonKey(name: 'gender', fromJson: genderFromJson) this.gender,
@@ -267,6 +284,9 @@ class _$_RegisterClientPayload implements _RegisterClientPayload {
   @override
   @JsonKey(name: 'facility')
   final String? facility;
+  @override
+  @JsonKey(name: 'username')
+  final String? username;
   final List<ClientType>? _clientTypes;
   @override
   @JsonKey(name: 'clientTypes')
@@ -304,7 +324,7 @@ class _$_RegisterClientPayload implements _RegisterClientPayload {
 
   @override
   String toString() {
-    return 'RegisterClientPayload(facility: $facility, clientTypes: $clientTypes, clientName: $clientName, gender: $gender, dateOfBirth: $dateOfBirth, phoneNumber: $phoneNumber, enrollmentDate: $enrollmentDate, cccNumber: $cccNumber, counselled: $counselled, inviteClient: $inviteClient)';
+    return 'RegisterClientPayload(facility: $facility, username: $username, clientTypes: $clientTypes, clientName: $clientName, gender: $gender, dateOfBirth: $dateOfBirth, phoneNumber: $phoneNumber, enrollmentDate: $enrollmentDate, cccNumber: $cccNumber, counselled: $counselled, inviteClient: $inviteClient)';
   }
 
   @override
@@ -314,6 +334,8 @@ class _$_RegisterClientPayload implements _RegisterClientPayload {
             other is _$_RegisterClientPayload &&
             (identical(other.facility, facility) ||
                 other.facility == facility) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
             const DeepCollectionEquality()
                 .equals(other._clientTypes, _clientTypes) &&
             (identical(other.clientName, clientName) ||
@@ -338,6 +360,7 @@ class _$_RegisterClientPayload implements _RegisterClientPayload {
   int get hashCode => Object.hash(
       runtimeType,
       facility,
+      username,
       const DeepCollectionEquality().hash(_clientTypes),
       clientName,
       gender,
@@ -367,6 +390,8 @@ abstract class _RegisterClientPayload implements RegisterClientPayload {
   factory _RegisterClientPayload(
       {@JsonKey(name: 'facility')
           final String? facility,
+      @JsonKey(name: 'username')
+          final String? username,
       @JsonKey(name: 'clientTypes')
           final List<ClientType>? clientTypes,
       @JsonKey(name: 'clientName')
@@ -392,6 +417,9 @@ abstract class _RegisterClientPayload implements RegisterClientPayload {
   @override
   @JsonKey(name: 'facility')
   String? get facility;
+  @override
+  @JsonKey(name: 'username')
+  String? get username;
   @override
   @JsonKey(name: 'clientTypes')
   List<ClientType>? get clientTypes;

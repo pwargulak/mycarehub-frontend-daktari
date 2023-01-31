@@ -1,4 +1,5 @@
 // Package imports:
+import 'package:prohealth360_daktari/domain/core/entities/facilities/facility_identifier.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -10,10 +11,10 @@ class Facility with _$Facility {
   factory Facility({
     @JsonKey(name: 'id') String? id,
     @JsonKey(name: 'name') String? name,
-    @JsonKey(name: 'code') int? code,
     @JsonKey(name: 'phone') String? phone,
     @JsonKey(name: 'active', defaultValue: false) bool? active,
     @JsonKey(name: 'county') String? county,
+    @JsonKey(name: 'identifier') FacilityIdentifier? facilityIdentifier,
     @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'fhirOrganisationID') String? fhirOrganisationID,
     @JsonKey(name: 'workStationDetails') WorkStationDetails? workStationDetails,
@@ -25,10 +26,10 @@ class Facility with _$Facility {
   factory Facility.initial() => Facility(
         id: UNKNOWN,
         name: UNKNOWN,
-        code: 0,
         phone: UNKNOWN,
         active: false,
         county: UNKNOWN,
+        facilityIdentifier: FacilityIdentifier.initial(),
         description: UNKNOWN,
         fhirOrganisationID: UNKNOWN,
         workStationDetails: WorkStationDetails.initial(),

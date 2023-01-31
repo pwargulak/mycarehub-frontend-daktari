@@ -21,7 +21,7 @@ import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/misc_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/onboarding/onboarding_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/auth_credentials.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
+import 'package:prohealth360_daktari/domain/core/entities/facilities/facility.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/onboarding_path_info.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/user_profile.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/user.dart';
@@ -93,7 +93,6 @@ void main() {
       final OnboardingPathInfo path = getOnboardingPath(state: store.state);
       expect(path.nextRoute, AppRoutes.setPinPage);
     });
-
 
     test('should return home page', () async {
       store.dispatch(UpdateCredentialsAction(isSignedIn: true));

@@ -4,7 +4,7 @@ import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 // Project imports:
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
+import 'package:prohealth360_daktari/domain/core/entities/facilities/facility.dart';
 
 /// [BatchUpdateMiscStateAction] is the ONLY action that should be called to update [miscState]
 /// with the exception of [IncrementUserVisitCountAction]
@@ -44,7 +44,8 @@ class BatchUpdateMiscStateAction extends ReduxAction<AppState> {
         resumeWithPin: resumeWithPin ?? state.miscState?.resumeWithPin,
         selectedFacility: selectedFacility ?? state.miscState?.selectedFacility,
         updateFacility: updateFacility ?? state.miscState?.updateFacility,
-        selectedOrganisation: selectedOrganisation ?? state.miscState?.selectedOrganisation,
+        selectedOrganisation:
+            selectedOrganisation ?? state.miscState?.selectedOrganisation,
       ),
     );
 

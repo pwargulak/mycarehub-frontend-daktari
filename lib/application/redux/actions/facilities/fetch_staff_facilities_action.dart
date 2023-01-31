@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:prohealth360_daktari/application/redux/actions/facilities/update_facilities_state_action.dart';
-import 'package:prohealth360_daktari/domain/core/entities/core/facility.dart';
+import 'package:prohealth360_daktari/domain/core/entities/facilities/facility.dart';
 import 'package:prohealth360_daktari/domain/core/entities/facilities/program_facilities_response.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';

@@ -9,14 +9,19 @@ part of 'get_facilities_response.dart';
 _$_GetFacilitiesResponse _$$_GetFacilitiesResponseFromJson(
         Map<String, dynamic> json) =>
     _$_GetFacilitiesResponse(
-      linkedFacilities: json['getUserLinkedFacilities'] == null
+      staffLinkedFacilities: json['getStaffFacilities'] == null
           ? null
           : LinkedFacilities.fromJson(
-              json['getUserLinkedFacilities'] as Map<String, dynamic>),
+              json['getStaffFacilities'] as Map<String, dynamic>),
+      clientLinkedFacilities: json['getClientFacilities'] == null
+          ? null
+          : LinkedFacilities.fromJson(
+              json['getClientFacilities'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_GetFacilitiesResponseToJson(
         _$_GetFacilitiesResponse instance) =>
     <String, dynamic>{
-      'getUserLinkedFacilities': instance.linkedFacilities,
+      'getStaffFacilities': instance.staffLinkedFacilities,
+      'getClientFacilities': instance.clientLinkedFacilities,
     };
