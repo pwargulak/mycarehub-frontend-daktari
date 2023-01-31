@@ -7,20 +7,20 @@ class ListItemWithCancelButton extends StatelessWidget {
   const ListItemWithCancelButton({
     super.key,
     required this.title,
-    required this.description,
+    this.description,
     this.moreInfo,
     this.onCancelCallback,
   });
 
   final String title;
-  final String description;
+  final String? description;
   final String? moreInfo;
   final VoidCallback? onCancelCallback;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(10.0),
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColor.withOpacity(0.15),
         borderRadius: BorderRadius.circular(8.0),
@@ -54,15 +54,20 @@ class ListItemWithCancelButton extends StatelessWidget {
                   child: Icon(
                     Icons.close,
                     color: Theme.of(context).primaryColor,
+                    size: 20.0,
                   ),
                 ),
               ),
             ],
           ),
-          Padding(padding: const EdgeInsetsDirectional.only(end: 10), child: Text(
-            description,
-            style: normalSize15Text(AppColors.greyTextColor),
-          ),),
+          if (description != null)
+            Padding(
+              padding: const EdgeInsetsDirectional.only(end: 10),
+              child: Text(
+                description!,
+                style: normalSize15Text(AppColors.greyTextColor),
+              ),
+            ),
           size15VerticalSizedBox,
           if (moreInfo != null)
             Text(

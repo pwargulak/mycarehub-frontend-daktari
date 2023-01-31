@@ -4,7 +4,7 @@ import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
-import 'package:prohealth360_daktari/presentation/organization_management/widgets/delete_widget.dart';
+import 'package:prohealth360_daktari/presentation/organization_management/widgets/deactivate_widget.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/widgets/list_item_with_cancel.dart';
 import 'package:sghi_core/afya_moja_core/src/presentation/buttons.dart';
 import 'package:sghi_core/afya_moja_core/src/presentation/spaces.dart';
@@ -38,7 +38,7 @@ class OrganizationDetailViewPage extends StatelessWidget {
                 ),
                 largeVerticalSizedBox,
                 Text(
-                  orgDetail(SGHIOrgDetailString),
+                  SGHIOrgDetailString,
                   style: normalSize14Text(AppColors.greyTextColor),
                   textAlign: TextAlign.center,
                 ),
@@ -84,10 +84,10 @@ class OrganizationDetailViewPage extends StatelessWidget {
                   ),
                 ),
                 largeVerticalSizedBox,
-                const DeleteWidget(
-                  title: deleteOrgString,
-                  description: deleteOrgInfoString,
-                  buttonText: deleteOrgString,
+                const DeactivateWidget(
+                  title: deactivateOrgString,
+                  description: deactivateOrgInfoString,
+                  buttonText: deactivateOrgString,
                 ),
               ],
             ),

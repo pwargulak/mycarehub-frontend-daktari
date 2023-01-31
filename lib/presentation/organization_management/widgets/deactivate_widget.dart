@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 
-class DeleteWidget extends StatelessWidget {
-  const DeleteWidget({
+class DeactivateWidget extends StatelessWidget {
+  const DeactivateWidget({
     super.key,
     required this.title,
     required this.description,

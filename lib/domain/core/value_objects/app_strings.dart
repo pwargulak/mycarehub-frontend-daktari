@@ -1160,25 +1160,21 @@ String orgName(String name) {
 const String SGHIOrgDetailString =
     'The Savannah Global Health Institute is an  organization that deals with HIV, diabetes and hypertension in Nairobi and Kajiado county in Kenya';
 
-String orgDetail(String detail) {
-  return detail;
-}
-
 const String programsString = 'Programs';
 const String runningProgramString =
     'Programs that the organization is currently running';
 const String addProgramString = 'Add Program';
-const String deleteOrgString = 'Delete Organization';
-const String deleteOrgInfoString =
-    'This will remove this organization from myCareHub';
+const String deactivateOrgString = 'Deactivate Organization';
+const String deactivateOrgInfoString =
+    'This will deactivate this organization on myCareHub';
 
 String programName(String name) {
   return '$name Program';
 }
 
-const String deleteProgramString = 'Delete Program';
-const String deleteProgramInfoString =
-    'This will remove this program from myCareHub';
+const String deactivateProgramString = 'Deactivate Program';
+const String deactivateProgramInfoString =
+    'This will deactivate this program on myCareHub';
 const String organizationString = 'Organization';
 const String organizationDescriptionString =
     'University of Nairobi School of Medicine';
@@ -1196,7 +1192,13 @@ const String addOrganizationDetailsString =
 const String nameString = 'Name';
 const String descriptionString = 'Description';
 
-const String searchProgramTextString =
-    'Search for a program using its name';
+const String searchProgramTextString = 'Search for a program using its name';
 const String searchProgramHintString = 'Search programs';
 const String mostViewedProgramsString = 'Most viewed programs';
+const String createProgramString = 'Create Program';
+const String addProgramDetailString = 'Add details about your new program';
+
+const String registrationNumberString = 'Registration Number';
+const String countryString = 'Country';
+
+const String physicalAddressString = 'Physical Address';

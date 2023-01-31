@@ -6,16 +6,15 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart'
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/widgets/list_item_with_cancel.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
-import 'package:sghi_core/user_profile/constants.dart';
 
-class CreateOrganizationPage extends StatelessWidget {
-  const CreateOrganizationPage({super.key});
+class CreateProgramPage extends StatelessWidget {
+  const CreateProgramPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(
-        title: createOrganizationString,
+        title: createProgramString,
         showNotificationIcon: true,
       ),
       body: SafeArea(
@@ -26,12 +25,12 @@ class CreateOrganizationPage extends StatelessWidget {
               children: <Widget>[
                 mediumVerticalSizedBox,
                 Center(
-                  key: const Key('OrganizationImage'),
-                  child: SvgPicture.asset(organizationImage),
+                  key: const Key('ProgramImage'),
+                  child: SvgPicture.asset(serviceRequestsIconSvg),
                 ),
                 mediumVerticalSizedBox,
                 Text(
-                  addOrganizationDetailsString,
+                  addProgramDetailString,
                   style: normalSize14Text(AppColors.greyTextColor),
                   textAlign: TextAlign.center,
                 ),
@@ -41,28 +40,6 @@ class CreateOrganizationPage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(
-                        registrationNumberString,
-                        style: normalSize14Text(AppColors.greyTextColor),
-                      ),
-                      smallVerticalSizedBox,
-                      CustomTextField(
-                        borderColor: Colors.white,
-                        customFillColor:
-                            AppColors.greyTextColor.withOpacity(0.15),
-                      ),
-                      mediumVerticalSizedBox,
-                      Text(
-                        phoneNumberString,
-                        style: normalSize14Text(AppColors.greyTextColor),
-                      ),
-                      smallVerticalSizedBox,
-                      CustomTextField(
-                        borderColor: Colors.white,
-                        customFillColor:
-                            AppColors.greyTextColor.withOpacity(0.15),
-                      ),
-                      mediumVerticalSizedBox,
                       Text(
                         nameString,
                         style: normalSize14Text(AppColors.greyTextColor),
@@ -88,38 +65,12 @@ class CreateOrganizationPage extends StatelessWidget {
                       ),
                       mediumVerticalSizedBox,
                       Text(
-                        countryString,
+                        organisationString,
                         style: normalSize14Text(AppColors.greyTextColor),
                       ),
                       smallVerticalSizedBox,
-                      CustomTextField(
-                        borderColor: Colors.white,
-                        customFillColor:
-                            AppColors.greyTextColor.withOpacity(0.15),
-                      ),
-                      mediumVerticalSizedBox,
-                      Text(
-                        email,
-                        style: normalSize14Text(AppColors.greyTextColor),
-                      ),
-                      smallVerticalSizedBox,
-                      CustomTextField(
-                        borderColor: Colors.white,
-                        customFillColor:
-                            AppColors.greyTextColor.withOpacity(0.15),
-                      ),
-                      mediumVerticalSizedBox,
-                      Text(
-                        physicalAddressString,
-                        style: normalSize14Text(AppColors.greyTextColor),
-                      ),
-                      smallVerticalSizedBox,
-                      CustomTextField(
-                        borderColor: Colors.white,
-                        customFillColor:
-                            AppColors.greyTextColor.withOpacity(0.15),
-                        maxLines: 3,
-                        minLines: 3,
+                      const ListItemWithCancelButton(
+                        title: universityOfNairobiString,
                       ),
                       mediumVerticalSizedBox,
                       Container(
@@ -134,18 +85,18 @@ class CreateOrganizationPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              programsString,
+                              facilitiesString,
                               style: normalSize14Text(AppColors.greyTextColor),
                             ),
                             smallVerticalSizedBox,
                             const ListItemWithCancelButton(
-                              title: myCareHubOrgString,
-                              description: myCareHubOrgDescriptionString,
+                              title: ruiru,
+                              description: ruiruFacilityDescriptionString,
                             ),
                             smallVerticalSizedBox,
                             const ListItemWithCancelButton(
-                              title: FYJ,
-                              description: fYJOrgDescriptionString,
+                              title: kiambu,
+                              description: kiambuFacilityDescriptionString,
                             ),
                             smallVerticalSizedBox,
                             const SizedBox(
@@ -153,7 +104,7 @@ class CreateOrganizationPage extends StatelessWidget {
                               height: 48,
                               child: MyAfyaHubPrimaryButton(
                                 borderColor: Colors.transparent,
-                                text: addProgramString,
+                                text: addFacilityString,
                               ),
                             ),
                           ],
@@ -168,7 +119,7 @@ class CreateOrganizationPage extends StatelessWidget {
                   height: 48,
                   child: MyAfyaHubPrimaryButton(
                     borderColor: Colors.transparent,
-                    text: createOrganizationString,
+                    text: createProgramString,
                   ),
                 ),
               ],
