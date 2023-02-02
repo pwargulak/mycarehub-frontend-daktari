@@ -10,6 +10,7 @@ class RegisterStaffPayload with _$RegisterStaffPayload {
   factory RegisterStaffPayload({
     @JsonKey(name: 'facility') String? facility,
     @JsonKey(name: 'staffName') String? staffName,
+    @JsonKey(name: 'username') String? username,
     @JsonKey(name: 'gender', fromJson: genderFromJson) Gender? gender,
     @JsonKey(name: 'phoneNumber') String? phoneNumber,
     @JsonKey(name: 'idNumber') String? idNumber,

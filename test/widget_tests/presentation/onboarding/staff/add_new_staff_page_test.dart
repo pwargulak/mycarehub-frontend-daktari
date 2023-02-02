@@ -46,10 +46,17 @@ void main() {
       await tester.tap(lNameFieldFinder);
       await tester.enterText(lNameFieldFinder, 'Doe');
 
+      final Finder usernameFieldFinder = find.byKey(usernameFieldKey);
+      expect(usernameFieldFinder, findsOneWidget);
+      await tester.ensureVisible(usernameFieldFinder);
+      await tester.tap(usernameFieldFinder);
+      await tester.enterText(usernameFieldFinder, 'testUsername');
+
       final Finder facilityFieldFinder =
           find.byKey(facilitySelectOptionFieldKey);
       final Finder saveFacilityBtnFinder = find.byKey(saveFacilityBtnKey);
       expect(facilityFieldFinder, findsOneWidget);
+      await tester.ensureVisible(facilityFieldFinder);
       await tester.tap(facilityFieldFinder);
       await tester.pumpAndSettle();
       await tester.tap(find.text('Kanairo').last);
@@ -154,10 +161,17 @@ void main() {
       await tester.tap(lNameFieldFinder);
       await tester.enterText(lNameFieldFinder, 'Doe');
 
+        final Finder usernameFieldFinder = find.byKey(usernameFieldKey);
+      expect(usernameFieldFinder, findsOneWidget);
+      await tester.ensureVisible(usernameFieldFinder);
+      await tester.tap(usernameFieldFinder);
+      await tester.enterText(usernameFieldFinder, 'testUsername');
+
       final Finder facilityFieldFinder =
           find.byKey(facilitySelectOptionFieldKey);
       final Finder saveFacilityBtnFinder = find.byKey(saveFacilityBtnKey);
       expect(facilityFieldFinder, findsOneWidget);
+      await tester.ensureVisible(facilityFieldFinder);
       await tester.tap(facilityFieldFinder);
       await tester.pumpAndSettle();
       await tester.tap(find.text('Kanairo').last);

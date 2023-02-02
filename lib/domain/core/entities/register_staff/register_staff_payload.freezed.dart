@@ -24,6 +24,8 @@ mixin _$RegisterStaffPayload {
   String? get facility => throw _privateConstructorUsedError;
   @JsonKey(name: 'staffName')
   String? get staffName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'username')
+  String? get username => throw _privateConstructorUsedError;
   @JsonKey(name: 'gender', fromJson: genderFromJson)
   Gender? get gender => throw _privateConstructorUsedError;
   @JsonKey(name: 'phoneNumber')
@@ -54,6 +56,7 @@ abstract class $RegisterStaffPayloadCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'facility') String? facility,
       @JsonKey(name: 'staffName') String? staffName,
+      @JsonKey(name: 'username') String? username,
       @JsonKey(name: 'gender', fromJson: genderFromJson) Gender? gender,
       @JsonKey(name: 'phoneNumber') String? phoneNumber,
       @JsonKey(name: 'idNumber') String? idNumber,
@@ -79,6 +82,7 @@ class _$RegisterStaffPayloadCopyWithImpl<$Res,
   $Res call({
     Object? facility = freezed,
     Object? staffName = freezed,
+    Object? username = freezed,
     Object? gender = freezed,
     Object? phoneNumber = freezed,
     Object? idNumber = freezed,
@@ -95,6 +99,10 @@ class _$RegisterStaffPayloadCopyWithImpl<$Res,
       staffName: freezed == staffName
           ? _value.staffName
           : staffName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String?,
       gender: freezed == gender
           ? _value.gender
@@ -139,6 +147,7 @@ abstract class _$$_RegisterStaffPayloadCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'facility') String? facility,
       @JsonKey(name: 'staffName') String? staffName,
+      @JsonKey(name: 'username') String? username,
       @JsonKey(name: 'gender', fromJson: genderFromJson) Gender? gender,
       @JsonKey(name: 'phoneNumber') String? phoneNumber,
       @JsonKey(name: 'idNumber') String? idNumber,
@@ -161,6 +170,7 @@ class __$$_RegisterStaffPayloadCopyWithImpl<$Res>
   $Res call({
     Object? facility = freezed,
     Object? staffName = freezed,
+    Object? username = freezed,
     Object? gender = freezed,
     Object? phoneNumber = freezed,
     Object? idNumber = freezed,
@@ -177,6 +187,10 @@ class __$$_RegisterStaffPayloadCopyWithImpl<$Res>
       staffName: freezed == staffName
           ? _value.staffName
           : staffName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String?,
       gender: freezed == gender
           ? _value.gender
@@ -216,6 +230,7 @@ class _$_RegisterStaffPayload implements _RegisterStaffPayload {
   _$_RegisterStaffPayload(
       {@JsonKey(name: 'facility') this.facility,
       @JsonKey(name: 'staffName') this.staffName,
+      @JsonKey(name: 'username') this.username,
       @JsonKey(name: 'gender', fromJson: genderFromJson) this.gender,
       @JsonKey(name: 'phoneNumber') this.phoneNumber,
       @JsonKey(name: 'idNumber') this.idNumber,
@@ -233,6 +248,9 @@ class _$_RegisterStaffPayload implements _RegisterStaffPayload {
   @override
   @JsonKey(name: 'staffName')
   final String? staffName;
+  @override
+  @JsonKey(name: 'username')
+  final String? username;
   @override
   @JsonKey(name: 'gender', fromJson: genderFromJson)
   final Gender? gender;
@@ -257,7 +275,7 @@ class _$_RegisterStaffPayload implements _RegisterStaffPayload {
 
   @override
   String toString() {
-    return 'RegisterStaffPayload(facility: $facility, staffName: $staffName, gender: $gender, phoneNumber: $phoneNumber, idNumber: $idNumber, staffNumber: $staffNumber, role: $role, inviteStaff: $inviteStaff, dateOfBirth: $dateOfBirth)';
+    return 'RegisterStaffPayload(facility: $facility, staffName: $staffName, username: $username, gender: $gender, phoneNumber: $phoneNumber, idNumber: $idNumber, staffNumber: $staffNumber, role: $role, inviteStaff: $inviteStaff, dateOfBirth: $dateOfBirth)';
   }
 
   @override
@@ -269,6 +287,8 @@ class _$_RegisterStaffPayload implements _RegisterStaffPayload {
                 other.facility == facility) &&
             (identical(other.staffName, staffName) ||
                 other.staffName == staffName) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
@@ -285,8 +305,18 @@ class _$_RegisterStaffPayload implements _RegisterStaffPayload {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, facility, staffName, gender,
-      phoneNumber, idNumber, staffNumber, role, inviteStaff, dateOfBirth);
+  int get hashCode => Object.hash(
+      runtimeType,
+      facility,
+      staffName,
+      username,
+      gender,
+      phoneNumber,
+      idNumber,
+      staffNumber,
+      role,
+      inviteStaff,
+      dateOfBirth);
 
   @JsonKey(ignore: true)
   @override
@@ -309,6 +339,8 @@ abstract class _RegisterStaffPayload implements RegisterStaffPayload {
           final String? facility,
       @JsonKey(name: 'staffName')
           final String? staffName,
+      @JsonKey(name: 'username')
+          final String? username,
       @JsonKey(name: 'gender', fromJson: genderFromJson)
           final Gender? gender,
       @JsonKey(name: 'phoneNumber')
@@ -333,6 +365,9 @@ abstract class _RegisterStaffPayload implements RegisterStaffPayload {
   @override
   @JsonKey(name: 'staffName')
   String? get staffName;
+  @override
+  @JsonKey(name: 'username')
+  String? get username;
   @override
   @JsonKey(name: 'gender', fromJson: genderFromJson)
   Gender? get gender;

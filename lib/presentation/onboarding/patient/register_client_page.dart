@@ -102,7 +102,6 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
                             ) {
                               return PatientDetailsTextFormField(
                                 textFieldKey: cccFieldKey,
-                                textInputAction: TextInputAction.none,
                                 hintText: cccNumberHint,
                                 keyboardType: TextInputType.text,
                                 inputFormatters: <TextInputFormatter>[

@@ -11,6 +11,7 @@ _$_RegisterStaffPayload _$$_RegisterStaffPayloadFromJson(
     _$_RegisterStaffPayload(
       facility: json['facility'] as String?,
       staffName: json['staffName'] as String?,
+      username: json['username'] as String?,
       gender: genderFromJson(json['gender'] as String?),
       phoneNumber: json['phoneNumber'] as String?,
       idNumber: json['idNumber'] as String?,
@@ -27,6 +28,7 @@ Map<String, dynamic> _$$_RegisterStaffPayloadToJson(
     <String, dynamic>{
       'facility': instance.facility,
       'staffName': instance.staffName,
+      'username': instance.username,
       'gender': _$GenderEnumMap[instance.gender],
       'phoneNumber': instance.phoneNumber,
       'idNumber': instance.idNumber,

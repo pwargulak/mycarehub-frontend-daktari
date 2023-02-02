@@ -1,3 +1,4 @@
+import 'package:prohealth360_daktari/presentation/onboarding/patient/validator_mixin.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:async_redux/async_redux.dart';
@@ -30,6 +31,7 @@ class AddNewStaffPage extends StatefulWidget {
 class _AddNewStaffPageState extends State<AddNewStaffPage> {
   final RegisterStaffFormManager _formManager = RegisterStaffFormManager();
   final TextEditingController dobTextController = TextEditingController();
+  String username = '';
 
   final InputDecoration dropdownDecoration = InputDecoration(
     filled: true,
@@ -117,6 +119,24 @@ class _AddNewStaffPageState extends State<AddNewStaffPage> {
                       ),
                     ),
                   ],
+                ),
+                const SizedBox(height: 24),
+                // Username
+                PatientDetailsTextFormField(
+                  textFieldKey: usernameFieldKey,
+                  hintText: usernameHint,
+                  keyboardType: TextInputType.text,
+                  label: usernameLabel,
+                  onChanged: (String value) {
+                    setState(() {
+                      username = value;
+                    });
+                  },
+                  validator: (String? value) {
+                    return Validator.isValidName(value ?? '')
+                        ? null
+                        : fieldCannotBeEmptyText;
+                  },
                 ),
                 const SizedBox(height: 24),
                 // Facility
@@ -440,7 +460,9 @@ class _AddNewStaffPageState extends State<AddNewStaffPage> {
                                 height: 48,
                                 child: ElevatedButton(
                                   key: const Key('staffRegisterButton'),
-                                  onPressed: hasData && snapshot.data!
+                                  onPressed: hasData &&
+                                          snapshot.data! &&
+                                          username.isNotEmpty
                                       ? () =>
                                           _processAndNavigate(vm.hasConnection)
                                       : null,
@@ -521,7 +543,8 @@ class _AddNewStaffPageState extends State<AddNewStaffPage> {
     StoreProvider.dispatch(
       context,
       RegisterStaffAction(
-        registerStaffPayload: _formManager.submit(),
+        registerStaffPayload:
+            _formManager.submit().copyWith(username: username),
         client: AppWrapperBase.of(context)!.graphQLClient,
         onSuccess: () {
           ScaffoldMessenger.of(context).showSnackBar(
