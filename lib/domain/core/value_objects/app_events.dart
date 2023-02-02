@@ -24,6 +24,8 @@ const String resolveServiceRequest = 'resolve_service_request';
 
 const String registerClient = 'register_staff';
 
+const String checkIfIdentifierExists = 'check_if_identifier_exists';
+
 const String registerCaregiver = 'register_caregiver';
 
 const String viewNotificationsEvent = 'view_notifications';

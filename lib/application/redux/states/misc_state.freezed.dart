@@ -33,6 +33,7 @@ mixin _$MiscState {
   String? get inactiveTime => throw _privateConstructorUsedError;
   bool? get resumeWithPin => throw _privateConstructorUsedError;
   bool? get updateFacility => throw _privateConstructorUsedError;
+  bool? get cccNumberExists => throw _privateConstructorUsedError;
   SearchCaregiverResponseState? get searchCaregiverResponseState =>
       throw _privateConstructorUsedError;
 
@@ -59,6 +60,7 @@ abstract class $MiscStateCopyWith<$Res> {
       String? inactiveTime,
       bool? resumeWithPin,
       bool? updateFacility,
+      bool? cccNumberExists,
       SearchCaregiverResponseState? searchCaregiverResponseState});
 
   $FAQsContentStateCopyWith<$Res>? get profileFAQsContentState;
@@ -93,6 +95,7 @@ class _$MiscStateCopyWithImpl<$Res, $Val extends MiscState>
     Object? inactiveTime = freezed,
     Object? resumeWithPin = freezed,
     Object? updateFacility = freezed,
+    Object? cccNumberExists = freezed,
     Object? searchCaregiverResponseState = freezed,
   }) {
     return _then(_value.copyWith(
@@ -139,6 +142,10 @@ class _$MiscStateCopyWithImpl<$Res, $Val extends MiscState>
       updateFacility: freezed == updateFacility
           ? _value.updateFacility
           : updateFacility // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      cccNumberExists: freezed == cccNumberExists
+          ? _value.cccNumberExists
+          : cccNumberExists // ignore: cast_nullable_to_non_nullable
               as bool?,
       searchCaregiverResponseState: freezed == searchCaregiverResponseState
           ? _value.searchCaregiverResponseState
@@ -244,6 +251,7 @@ abstract class _$$_MiscStateCopyWith<$Res> implements $MiscStateCopyWith<$Res> {
       String? inactiveTime,
       bool? resumeWithPin,
       bool? updateFacility,
+      bool? cccNumberExists,
       SearchCaregiverResponseState? searchCaregiverResponseState});
 
   @override
@@ -282,6 +290,7 @@ class __$$_MiscStateCopyWithImpl<$Res>
     Object? inactiveTime = freezed,
     Object? resumeWithPin = freezed,
     Object? updateFacility = freezed,
+    Object? cccNumberExists = freezed,
     Object? searchCaregiverResponseState = freezed,
   }) {
     return _then(_$_MiscState(
@@ -329,6 +338,10 @@ class __$$_MiscStateCopyWithImpl<$Res>
           ? _value.updateFacility
           : updateFacility // ignore: cast_nullable_to_non_nullable
               as bool?,
+      cccNumberExists: freezed == cccNumberExists
+          ? _value.cccNumberExists
+          : cccNumberExists // ignore: cast_nullable_to_non_nullable
+              as bool?,
       searchCaregiverResponseState: freezed == searchCaregiverResponseState
           ? _value.searchCaregiverResponseState
           : searchCaregiverResponseState // ignore: cast_nullable_to_non_nullable
@@ -352,6 +365,7 @@ class _$_MiscState implements _MiscState {
       this.inactiveTime,
       this.resumeWithPin,
       this.updateFacility,
+      this.cccNumberExists,
       this.searchCaregiverResponseState})
       : _communityMembers = communityMembers;
 
@@ -388,11 +402,13 @@ class _$_MiscState implements _MiscState {
   @override
   final bool? updateFacility;
   @override
+  final bool? cccNumberExists;
+  @override
   final SearchCaregiverResponseState? searchCaregiverResponseState;
 
   @override
   String toString() {
-    return 'MiscState(initialRoute: $initialRoute, error: $error, profileFAQsContentState: $profileFAQsContentState, communityMembers: $communityMembers, selectedFacility: $selectedFacility, selectedOrganisation: $selectedOrganisation, groupState: $groupState, searchUserResponseState: $searchUserResponseState, inactiveTime: $inactiveTime, resumeWithPin: $resumeWithPin, updateFacility: $updateFacility, searchCaregiverResponseState: $searchCaregiverResponseState)';
+    return 'MiscState(initialRoute: $initialRoute, error: $error, profileFAQsContentState: $profileFAQsContentState, communityMembers: $communityMembers, selectedFacility: $selectedFacility, selectedOrganisation: $selectedOrganisation, groupState: $groupState, searchUserResponseState: $searchUserResponseState, inactiveTime: $inactiveTime, resumeWithPin: $resumeWithPin, updateFacility: $updateFacility, cccNumberExists: $cccNumberExists, searchCaregiverResponseState: $searchCaregiverResponseState)';
   }
 
   @override
@@ -423,6 +439,8 @@ class _$_MiscState implements _MiscState {
                 other.resumeWithPin == resumeWithPin) &&
             (identical(other.updateFacility, updateFacility) ||
                 other.updateFacility == updateFacility) &&
+            (identical(other.cccNumberExists, cccNumberExists) ||
+                other.cccNumberExists == cccNumberExists) &&
             (identical(other.searchCaregiverResponseState,
                     searchCaregiverResponseState) ||
                 other.searchCaregiverResponseState ==
@@ -444,6 +462,7 @@ class _$_MiscState implements _MiscState {
       inactiveTime,
       resumeWithPin,
       updateFacility,
+      cccNumberExists,
       searchCaregiverResponseState);
 
   @JsonKey(ignore: true)
@@ -473,6 +492,7 @@ abstract class _MiscState implements MiscState {
           final String? inactiveTime,
           final bool? resumeWithPin,
           final bool? updateFacility,
+          final bool? cccNumberExists,
           final SearchCaregiverResponseState? searchCaregiverResponseState}) =
       _$_MiscState;
 
@@ -501,6 +521,8 @@ abstract class _MiscState implements MiscState {
   bool? get resumeWithPin;
   @override
   bool? get updateFacility;
+  @override
+  bool? get cccNumberExists;
   @override
   SearchCaregiverResponseState? get searchCaregiverResponseState;
   @override

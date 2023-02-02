@@ -1,3 +1,5 @@
+import 'package:prohealth360_daktari/application/redux/actions/core/batch_update_misc_state_action.dart';
+import 'package:prohealth360_daktari/presentation/onboarding/patient/validator_mixin.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:async_redux/async_redux.dart';
@@ -31,6 +33,7 @@ class RegisterClientPage extends StatefulWidget {
 class _RegisterClientPageState extends State<RegisterClientPage> {
   final RegisterClientFormManager _formManager = RegisterClientFormManager();
   final TextEditingController dobTextController = TextEditingController();
+  String username = '';
   final TextEditingController enrollmentDateTextController =
       TextEditingController();
 
@@ -67,392 +70,422 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
         child: Padding(
           padding: const EdgeInsets.all(24.0),
           child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                SvgPicture.asset(
-                  addNewUserIconSvg,
-                  height: 180,
-                ),
-                const SizedBox(height: 24),
-                Row(
+            child: StoreConnector<AppState, RegisterClientViewModel>(
+              converter: (Store<AppState> store) =>
+                  RegisterClientViewModel.fromStore(
+                store,
+              ),
+              onInit: (Store<AppState> store) => store.dispatch(
+                BatchUpdateMiscStateAction(cccNumberExists: false),
+              ),
+              builder: (
+                BuildContext context,
+                RegisterClientViewModel vm,
+              ) {
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    // CCC number
-                    Flexible(
-                      child: StreamBuilder<String>(
-                        stream: _formManager.cccNumber,
-                        builder: (
-                          BuildContext context,
-                          AsyncSnapshot<String> snapshot,
-                        ) {
-                          return PatientDetailsTextFormField(
-                            textFieldKey: cccFieldKey,
-                            hintText: cccNumberHint,
-                            keyboardType: TextInputType.text,
-                            inputFormatters: <TextInputFormatter>[
-                              LengthLimitingTextInputFormatter(15),
-                            ],
-                            label: CCCNumberLabel,
-                            onChanged: (String value) {
-                              _formManager.inCccNumber.add(value);
-                            },
-                            validator: (String? value) {
-                              if (snapshot.hasError) {
-                                return (snapshot.error! as UserException).msg;
-                              }
-                              return null;
-                            },
-                          );
-                        },
-                      ),
+                    SvgPicture.asset(
+                      addNewUserIconSvg,
+                      height: 180,
                     ),
-                  ],
-                ),
-                const SizedBox(height: 24),
-                // Facilities
-                Flexible(
-                  child: SearchFacilityField(
-                    onChanged: (String facilityCode) =>
-                        _formManager.inFacility.add(facilityCode),
-                    onFieldCleared: () => _formManager.inFacility.add(''),
-                  ),
-                ),
-                const SizedBox(height: 24),
-                Row(
-                  children: <Widget>[
-                    // First name
-                    Flexible(
-                      child: StreamBuilder<String>(
-                        stream: _formManager.firstName,
-                        builder: (
-                          BuildContext context,
-                          AsyncSnapshot<String> snapshot,
-                        ) {
-                          return PatientDetailsTextFormField(
-                            textFieldKey: firstNameKey,
-                            label: firstNameLabel,
-                            onChanged: (String value) {
-                              _formManager.inFirstName.add(value);
-                            },
-                            validator: (String? value) {
-                              if (snapshot.hasError) {
-                                return (snapshot.error! as UserException).msg;
-                              }
-                              return null;
-                            },
-                          );
-                        },
-                      ),
-                    ),
-                    const SizedBox(width: 10),
-                    // Last name
-                    Flexible(
-                      child: StreamBuilder<String>(
-                        stream: _formManager.lastName,
-                        builder: (
-                          BuildContext context,
-                          AsyncSnapshot<String> snapshot,
-                        ) {
-                          return PatientDetailsTextFormField(
-                            textFieldKey: lastNameKey,
-                            label: lastNameLabel,
-                            onChanged: (String value) {
-                              _formManager.inLastName.add(value);
-                            },
-                            validator: (String? value) {
-                              if (snapshot.hasError) {
-                                return (snapshot.error! as UserException).msg;
-                              }
-                              return null;
-                            },
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 24),
-                Row(
-                  children: <Widget>[
-                    // Birth date
-                    Flexible(
-                      child: Column(
-                        children: <Widget>[
-                          const Align(
-                            alignment: Alignment.topLeft,
-                            child: Text(
-                              birthDateLabel,
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: AppColors.greyTextColor,
-                              ),
-                            ),
-                          ),
-                          smallVerticalSizedBox,
-                          DatePickerField(
-                            allowCurrentYear: true,
-                            gestureDateKey: dobKey,
-                            controller: dobTextController,
-                            decoration: InputDecoration(
-                              suffixIcon: const Icon(Icons.date_range),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide: BorderSide.none,
-                              ),
-                              filled: true,
-                              contentPadding: const EdgeInsets.all(8.0),
-                            ),
-                            style:
-                                const TextStyle(color: AppColors.greyTextColor),
-                            onChanged: (String? value) {
-                              if (value != null) {
-                                final DateTime date =
-                                    DateFormat(datePickerFormat)
-                                        .parseLoose(value);
-                                _formManager.inDateOfBirth.add(date);
-                              }
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(width: 10),
-
-                    // Gender dropdown
-
-                    Flexible(
-                      child: Column(
-                        children: <Widget>[
-                          const Align(
-                            alignment: Alignment.topLeft,
-                            child: Text(
-                              genderLabel,
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: AppColors.greyTextColor,
-                              ),
-                            ),
-                          ),
-                          smallVerticalSizedBox,
-                          StreamBuilder<Gender>(
-                            stream: _formManager.gender,
+                    const SizedBox(height: 24),
+                    Row(
+                      children: <Widget>[
+                        // CCC number
+                        Flexible(
+                          child: StreamBuilder<String>(
+                            stream: _formManager.cccNumber,
                             builder: (
                               BuildContext context,
-                              AsyncSnapshot<Gender> snapshot,
+                              AsyncSnapshot<String> snapshot,
                             ) {
-                              final Gender? data = snapshot.data;
-
-                              return SelectOptionField(
-                                decoration: dropdownDecoration,
-                                dropDownInputKey: genderOptionFieldKey,
-                                value: data == null
-                                    ? capitalizeFirst(
-                                        describeEnum(Gender.other),
-                                      )
-                                    : capitalizeFirst(data.name),
-                                options: getGenderList(),
-                                onChanged: (String? value) {
-                                  if (value != null) {
-                                    _formManager.inGender
-                                        .add(genderFromJson(value));
+                              return PatientDetailsTextFormField(
+                                textFieldKey: cccFieldKey,
+                                textInputAction: TextInputAction.none,
+                                hintText: cccNumberHint,
+                                keyboardType: TextInputType.text,
+                                inputFormatters: <TextInputFormatter>[
+                                  LengthLimitingTextInputFormatter(15),
+                                ],
+                                label: CCCNumberLabel,
+                                onChanged: (String value) {
+                                  _formManager.inCccNumber.add(value);
+                                },
+                                validator: (String? value) {
+                                  if (snapshot.hasError) {
+                                    return (snapshot.error! as UserException)
+                                        .msg;
                                   }
+                                  return null;
                                 },
                               );
                             },
                           ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-                const SizedBox(height: 24),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 24),
+                    // Username
+                    PatientDetailsTextFormField(
+                      textFieldKey: usernameFieldKey,
+                      hintText: usernameHint,
+                      keyboardType: TextInputType.text,
+                      label: usernameLabel,
+                      onChanged: (String value) {
+                        setState(() {
+                          username = value;
+                        });
+                      },
+                      validator: (String? value) {
+                        return Validator.isValidName(value ?? '')
+                            ? null
+                            : fieldCannotBeEmptyText;
+                      },
+                    ),
 
-                // Phone number
-                Row(
-                  children: <Widget>[
+                    const SizedBox(height: 24),
+                    // Facilities
                     Flexible(
-                      child: StreamBuilder<String>(
-                        stream: _formManager.phoneNumber,
-                        builder: (
-                          BuildContext context,
-                          AsyncSnapshot<String> snapshot,
-                        ) {
-                          return MyAfyaHubPhoneInput(
-                            textFormFieldKey: patientNumberField,
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide: BorderSide.none,
-                              ),
-                              filled: true,
-                              contentPadding: const EdgeInsets.all(8.0),
-                            ),
-                            style:
-                                const TextStyle(color: AppColors.greyTextColor),
-                            onChanged: (String? value) {
-                              if (value != null) {
-                                _formManager.inPhoneNumber.add(value);
-                              }
-                            },
-                            phoneNumberFormatter: formatPhoneNumber,
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                          );
-                        },
+                      child: SearchFacilityField(
+                        onChanged: (String facilityCode) =>
+                            _formManager.inFacility.add(facilityCode),
+                        onFieldCleared: () => _formManager.inFacility.add(''),
                       ),
                     ),
-                  ],
-                ),
-                const SizedBox(height: 24),
+                    const SizedBox(height: 24),
+                    Row(
+                      children: <Widget>[
+                        // First name
+                        Flexible(
+                          child: StreamBuilder<String>(
+                            stream: _formManager.firstName,
+                            builder: (
+                              BuildContext context,
+                              AsyncSnapshot<String> snapshot,
+                            ) {
+                              return PatientDetailsTextFormField(
+                                textFieldKey: firstNameKey,
+                                label: firstNameLabel,
+                                onChanged: (String value) {
+                                  _formManager.inFirstName.add(value);
+                                },
+                                validator: (String? value) {
+                                  if (snapshot.hasError) {
+                                    return (snapshot.error! as UserException)
+                                        .msg;
+                                  }
+                                  return null;
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        // Last name
+                        Flexible(
+                          child: StreamBuilder<String>(
+                            stream: _formManager.lastName,
+                            builder: (
+                              BuildContext context,
+                              AsyncSnapshot<String> snapshot,
+                            ) {
+                              return PatientDetailsTextFormField(
+                                textFieldKey: lastNameKey,
+                                label: lastNameLabel,
+                                onChanged: (String value) {
+                                  _formManager.inLastName.add(value);
+                                },
+                                validator: (String? value) {
+                                  if (snapshot.hasError) {
+                                    return (snapshot.error! as UserException)
+                                        .msg;
+                                  }
+                                  return null;
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
 
-                // Enrollment date
-                Row(
-                  children: <Widget>[
-                    Flexible(
-                      child: Column(
-                        children: <Widget>[
-                          const Align(
-                            alignment: Alignment.topLeft,
-                            child: Text(
-                              enrollmentDateLabel,
+                    const SizedBox(height: 24),
+                    Row(
+                      children: <Widget>[
+                        // Birth date
+                        Flexible(
+                          child: Column(
+                            children: <Widget>[
+                              const Align(
+                                alignment: Alignment.topLeft,
+                                child: Text(
+                                  birthDateLabel,
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: AppColors.greyTextColor,
+                                  ),
+                                ),
+                              ),
+                              smallVerticalSizedBox,
+                              DatePickerField(
+                                allowCurrentYear: true,
+                                gestureDateKey: dobKey,
+                                controller: dobTextController,
+                                decoration: InputDecoration(
+                                  suffixIcon: const Icon(Icons.date_range),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                  filled: true,
+                                  contentPadding: const EdgeInsets.all(8.0),
+                                ),
+                                style: const TextStyle(
+                                  color: AppColors.greyTextColor,
+                                ),
+                                onChanged: (String? value) {
+                                  if (value != null) {
+                                    final DateTime date =
+                                        DateFormat(datePickerFormat)
+                                            .parseLoose(value);
+                                    _formManager.inDateOfBirth.add(date);
+                                  }
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+
+                        // Gender dropdown
+                        Flexible(
+                          child: Column(
+                            children: <Widget>[
+                              const Align(
+                                alignment: Alignment.topLeft,
+                                child: Text(
+                                  genderLabel,
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: AppColors.greyTextColor,
+                                  ),
+                                ),
+                              ),
+                              smallVerticalSizedBox,
+                              StreamBuilder<Gender>(
+                                stream: _formManager.gender,
+                                builder: (
+                                  BuildContext context,
+                                  AsyncSnapshot<Gender> snapshot,
+                                ) {
+                                  final Gender? data = snapshot.data;
+
+                                  return SelectOptionField(
+                                    decoration: dropdownDecoration,
+                                    dropDownInputKey: genderOptionFieldKey,
+                                    value: data == null
+                                        ? capitalizeFirst(
+                                            describeEnum(Gender.other),
+                                          )
+                                        : capitalizeFirst(data.name),
+                                    options: getGenderList(),
+                                    onChanged: (String? value) {
+                                      if (value != null) {
+                                        _formManager.inGender
+                                            .add(genderFromJson(value));
+                                      }
+                                    },
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    const SizedBox(height: 24),
+
+                    // Phone number
+                    Row(
+                      children: <Widget>[
+                        Flexible(
+                          child: StreamBuilder<String>(
+                            stream: _formManager.phoneNumber,
+                            builder: (
+                              BuildContext context,
+                              AsyncSnapshot<String> snapshot,
+                            ) {
+                              return MyAfyaHubPhoneInput(
+                                textFormFieldKey: patientNumberField,
+                                decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                  filled: true,
+                                  contentPadding: const EdgeInsets.all(8.0),
+                                ),
+                                style: const TextStyle(
+                                  color: AppColors.greyTextColor,
+                                ),
+                                onChanged: (String? value) {
+                                  if (value != null) {
+                                    _formManager.inPhoneNumber.add(value);
+                                  }
+                                },
+                                phoneNumberFormatter: formatPhoneNumber,
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 24),
+
+                    // Enrollment date
+                    Row(
+                      children: <Widget>[
+                        Flexible(
+                          child: Column(
+                            children: <Widget>[
+                              const Align(
+                                alignment: Alignment.topLeft,
+                                child: Text(
+                                  enrollmentDateLabel,
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: AppColors.greyTextColor,
+                                  ),
+                                ),
+                              ),
+                              smallVerticalSizedBox,
+                              DatePickerField(
+                                allowCurrentYear: true,
+                                gestureDateKey: enrollmentFieldKey,
+                                controller: enrollmentDateTextController,
+                                decoration: InputDecoration(
+                                  suffixIcon: const Icon(Icons.date_range),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                  filled: true,
+                                  contentPadding: const EdgeInsets.all(8.0),
+                                ),
+                                style: const TextStyle(
+                                  color: AppColors.greyTextColor,
+                                ),
+                                onChanged: (String? value) {
+                                  if (value != null) {
+                                    final DateTime date =
+                                        DateFormat(datePickerFormat)
+                                            .parseLoose(value);
+                                    _formManager.inEnrollmentDate.add(date);
+                                  }
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 24),
+                    const Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        clientTypeLabel,
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: AppColors.greyTextColor,
+                        ),
+                      ),
+                    ),
+                    StreamBuilder<Map<ClientType, bool>>(
+                      stream: _formManager.clientTypes,
+                      builder: (
+                        BuildContext context,
+                        AsyncSnapshot<Map<ClientType, bool>> snapshot,
+                      ) {
+                        final Map<ClientType, bool> clientTypes =
+                            snapshot.data ?? <ClientType, bool>{};
+
+                        return GridView(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 1 / .4,
+                          ),
+                          children: getCheckBoxes(clientTypes),
+                        );
+                      },
+                    ),
+                    const SizedBox(height: 28),
+                    Row(
+                      children: <Widget>[
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            const Text(
+                              appInviteText,
                               style: TextStyle(
                                 fontSize: 14,
                                 color: AppColors.greyTextColor,
                               ),
                             ),
-                          ),
-                          smallVerticalSizedBox,
-                          DatePickerField(
-                            allowCurrentYear: true,
-                            gestureDateKey: enrollmentFieldKey,
-                            controller: enrollmentDateTextController,
-                            decoration: InputDecoration(
-                              suffixIcon: const Icon(Icons.date_range),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide: BorderSide.none,
-                              ),
-                              filled: true,
-                              contentPadding: const EdgeInsets.all(8.0),
-                            ),
-                            style:
-                                const TextStyle(color: AppColors.greyTextColor),
-                            onChanged: (String? value) {
-                              if (value != null) {
-                                final DateTime date =
-                                    DateFormat(datePickerFormat)
-                                        .parseLoose(value);
-                                _formManager.inEnrollmentDate.add(date);
-                              }
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 24),
-                const Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    clientTypeLabel,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: AppColors.greyTextColor,
-                    ),
-                  ),
-                ),
-                StreamBuilder<Map<ClientType, bool>>(
-                  stream: _formManager.clientTypes,
-                  builder: (
-                    BuildContext context,
-                    AsyncSnapshot<Map<ClientType, bool>> snapshot,
-                  ) {
-                    final Map<ClientType, bool> clientTypes =
-                        snapshot.data ?? <ClientType, bool>{};
+                            Row(
+                              children: <Widget>[
+                                StreamBuilder<bool>(
+                                  stream: _formManager.inviteClient,
+                                  builder: (
+                                    BuildContext context,
+                                    AsyncSnapshot<bool> snapshot,
+                                  ) {
+                                    final bool? data = snapshot.data;
 
-                    return GridView(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        childAspectRatio: 1 / .4,
-                      ),
-                      children: getCheckBoxes(clientTypes),
-                    );
-                  },
-                ),
-                const SizedBox(height: 28),
-                Row(
-                  children: <Widget>[
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        const Text(
-                          appInviteText,
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: AppColors.greyTextColor,
-                          ),
-                        ),
-                        Row(
-                          children: <Widget>[
-                            StreamBuilder<bool>(
-                              stream: _formManager.inviteClient,
-                              builder: (
-                                BuildContext context,
-                                AsyncSnapshot<bool> snapshot,
-                              ) {
-                                final bool? data = snapshot.data;
-
-                                return Checkbox(
-                                  key: myAfyaHubInviteKey,
-                                  value: data ?? false,
-                                  fillColor: MaterialStateProperty.all<Color>(
-                                    AppColors.primaryColor,
-                                  ),
-                                  onChanged: (bool? value) {
-                                    if (value != null) {
-                                      _formManager.inInviteClient.add(value);
-                                    }
+                                    return Checkbox(
+                                      key: myAfyaHubInviteKey,
+                                      value: data ?? false,
+                                      fillColor:
+                                          MaterialStateProperty.all<Color>(
+                                        AppColors.primaryColor,
+                                      ),
+                                      onChanged: (bool? value) {
+                                        if (value != null) {
+                                          _formManager.inInviteClient
+                                              .add(value);
+                                        }
+                                      },
+                                    );
                                   },
-                                );
-                              },
+                                ),
+                                const Text(appInviteText),
+                              ],
                             ),
-                            const Text(appInviteText),
                           ],
                         ),
                       ],
                     ),
-                  ],
-                ),
-                const SizedBox(height: 24),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    // Submit button
-                    SizedBox(
-                      width: double.infinity,
-                      child: StreamBuilder<bool>(
-                        stream: _formManager.isFormValid,
-                        builder: (
-                          BuildContext context,
-                          AsyncSnapshot<bool> snapshot,
-                        ) {
-                          final bool hasData =
-                              snapshot.hasData && snapshot.data != null;
-
-                          return StoreConnector<AppState,
-                              RegisterClientViewModel>(
-                            converter: (Store<AppState> store) =>
-                                RegisterClientViewModel.fromStore(
-                              store,
-                            ),
+                    const SizedBox(height: 24),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        // Submit button
+                        SizedBox(
+                          width: double.infinity,
+                          child: StreamBuilder<bool>(
+                            stream: _formManager.isFormValid,
                             builder: (
                               BuildContext context,
-                              RegisterClientViewModel vm,
+                              AsyncSnapshot<bool> snapshot,
                             ) {
+                              final bool hasData =
+                                  snapshot.hasData && snapshot.data != null;
+
                               if (vm.wait.isWaitingFor(registerClientFlag)) {
                                 return const PlatformLoader();
                               }
@@ -461,7 +494,9 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
                                 height: 48,
                                 child: ElevatedButton(
                                   key: patientRegisterBtnKey,
-                                  onPressed: hasData && snapshot.data!
+                                  onPressed: hasData &&
+                                          snapshot.data! &&
+                                          username.isNotEmpty
                                       ? () => _processAndNavigate(
                                             vm.hasConnection,
                                           )
@@ -470,13 +505,13 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
                                 ),
                               );
                             },
-                          );
-                        },
-                      ),
-                    )
+                          ),
+                        )
+                      ],
+                    ),
                   ],
-                ),
-              ],
+                );
+              },
             ),
           ),
         ),
@@ -533,7 +568,8 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
     StoreProvider.dispatch(
       context,
       RegisterClientAction(
-        registerClientPayload: _formManager.submit(),
+        registerClientPayload:
+            _formManager.submit().copyWith(username: username),
         client: AppWrapperBase.of(context)!.graphQLClient,
         onSuccess: () {
           ScaffoldMessenger.of(context).showSnackBar(

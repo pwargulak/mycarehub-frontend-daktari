@@ -24,6 +24,7 @@ class MiscState with _$MiscState {
     String? inactiveTime,
     bool? resumeWithPin,
     bool? updateFacility,
+    bool? cccNumberExists,
     SearchCaregiverResponseState? searchCaregiverResponseState,
   }) = _MiscState;
 
@@ -41,6 +42,7 @@ class MiscState with _$MiscState {
         inactiveTime: UNKNOWN,
         resumeWithPin: false,
         updateFacility: false,
+        cccNumberExists: false,
         searchCaregiverResponseState: SearchCaregiverResponseState.initial(),
       );
 }

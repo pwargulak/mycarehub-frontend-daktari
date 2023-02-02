@@ -21,6 +21,7 @@ class PatientDetailsTextFormField extends StatelessWidget {
     this.autovalidateMode = AutovalidateMode.onUserInteraction,
     this.obscureText = false,
     this.maxLength,
+    this.textInputAction,
   });
 
   final String label;
@@ -36,6 +37,7 @@ class PatientDetailsTextFormField extends StatelessWidget {
   final AutovalidateMode autovalidateMode;
   final bool obscureText;
   final int? maxLength;
+  final TextInputAction? textInputAction;
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +57,7 @@ class PatientDetailsTextFormField extends StatelessWidget {
         TextFormField(
           controller: controller,
           key: textFieldKey,
+          textInputAction: textInputAction,
           initialValue: initialValue,
           decoration: InputDecoration(
             hintText: hintText,

@@ -13,6 +13,7 @@ const String retrieveFacilityFlag = 'retrieve_facility_flag';
 
 // Register client page
 const String registerClientFlag = 'register_client_flag';
+const String checkIdentifierFlag = 'check_identifier_flag';
 
 // Caregiver
 const String registerCaregiverFlag = 'register_caregiver_flag';

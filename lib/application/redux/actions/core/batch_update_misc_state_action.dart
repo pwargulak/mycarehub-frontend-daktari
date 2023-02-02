@@ -21,6 +21,7 @@ class BatchUpdateMiscStateAction extends ReduxAction<AppState> {
   final Facility? selectedFacility;
   final Organisation? selectedOrganisation;
   final bool? updateFacility;
+  final bool? cccNumberExists;
 
   BatchUpdateMiscStateAction({
     this.initialRoute,
@@ -31,6 +32,7 @@ class BatchUpdateMiscStateAction extends ReduxAction<AppState> {
     this.selectedFacility,
     this.selectedOrganisation,
     this.updateFacility,
+    this.cccNumberExists,
   });
 
   @override
@@ -46,6 +48,8 @@ class BatchUpdateMiscStateAction extends ReduxAction<AppState> {
         updateFacility: updateFacility ?? state.miscState?.updateFacility,
         selectedOrganisation:
             selectedOrganisation ?? state.miscState?.selectedOrganisation,
+        cccNumberExists:
+            cccNumberExists ?? state.miscState?.cccNumberExists,
       ),
     );
 

@@ -6,7 +6,7 @@ const Key signinKey = Key('signin_key');
 const Key saveOrganisationBtnKey = Key('save_organisation_btn_key');
 const Key searchOrganisationIconBtnKey =
     Key('search_organisation_icon_btn_key');
-const Key usernameFieldKey = Key('username_field_field');
+const Key usernameFieldKey = Key('username_field');
 
 const Key errorAlertBoxTextKey = Key('errorAlertBoxTextKey');
 
