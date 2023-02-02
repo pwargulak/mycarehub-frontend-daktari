@@ -6,7 +6,6 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart'
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/widgets/badge_widget.dart';
-import 'package:prohealth360_daktari/presentation/organization_management/widgets/deactivate_widget.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/widgets/program_list_item_widget.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
@@ -135,12 +134,6 @@ class ProgramDetailPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                ),
-                mediumVerticalSizedBox,
-                const DeactivateWidget(
-                  title: deactivateProgramString,
-                  description: deactivateProgramInfoString,
-                  buttonText: deactivateProgramString,
                 ),
               ],
             ),
