@@ -21,7 +21,9 @@ ProgramsState _$ProgramsStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ProgramsState {
   List<Program>? get userPrograms => throw _privateConstructorUsedError;
+  List<Program>? get programs => throw _privateConstructorUsedError;
   Program? get selectedProgram => throw _privateConstructorUsedError;
+  Program? get selectedUserProgram => throw _privateConstructorUsedError;
   bool? get errorGettingPrograms => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,10 +40,13 @@ abstract class $ProgramsStateCopyWith<$Res> {
   @useResult
   $Res call(
       {List<Program>? userPrograms,
+      List<Program>? programs,
       Program? selectedProgram,
+      Program? selectedUserProgram,
       bool? errorGettingPrograms});
 
   $ProgramCopyWith<$Res>? get selectedProgram;
+  $ProgramCopyWith<$Res>? get selectedUserProgram;
 }
 
 /// @nodoc
@@ -58,7 +63,9 @@ class _$ProgramsStateCopyWithImpl<$Res, $Val extends ProgramsState>
   @override
   $Res call({
     Object? userPrograms = freezed,
+    Object? programs = freezed,
     Object? selectedProgram = freezed,
+    Object? selectedUserProgram = freezed,
     Object? errorGettingPrograms = freezed,
   }) {
     return _then(_value.copyWith(
@@ -66,9 +73,17 @@ class _$ProgramsStateCopyWithImpl<$Res, $Val extends ProgramsState>
           ? _value.userPrograms
           : userPrograms // ignore: cast_nullable_to_non_nullable
               as List<Program>?,
+      programs: freezed == programs
+          ? _value.programs
+          : programs // ignore: cast_nullable_to_non_nullable
+              as List<Program>?,
       selectedProgram: freezed == selectedProgram
           ? _value.selectedProgram
           : selectedProgram // ignore: cast_nullable_to_non_nullable
+              as Program?,
+      selectedUserProgram: freezed == selectedUserProgram
+          ? _value.selectedUserProgram
+          : selectedUserProgram // ignore: cast_nullable_to_non_nullable
               as Program?,
       errorGettingPrograms: freezed == errorGettingPrograms
           ? _value.errorGettingPrograms
@@ -88,6 +103,18 @@ class _$ProgramsStateCopyWithImpl<$Res, $Val extends ProgramsState>
       return _then(_value.copyWith(selectedProgram: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ProgramCopyWith<$Res>? get selectedUserProgram {
+    if (_value.selectedUserProgram == null) {
+      return null;
+    }
+
+    return $ProgramCopyWith<$Res>(_value.selectedUserProgram!, (value) {
+      return _then(_value.copyWith(selectedUserProgram: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -100,11 +127,15 @@ abstract class _$$_ProgramsStateCopyWith<$Res>
   @useResult
   $Res call(
       {List<Program>? userPrograms,
+      List<Program>? programs,
       Program? selectedProgram,
+      Program? selectedUserProgram,
       bool? errorGettingPrograms});
 
   @override
   $ProgramCopyWith<$Res>? get selectedProgram;
+  @override
+  $ProgramCopyWith<$Res>? get selectedUserProgram;
 }
 
 /// @nodoc
@@ -119,7 +150,9 @@ class __$$_ProgramsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userPrograms = freezed,
+    Object? programs = freezed,
     Object? selectedProgram = freezed,
+    Object? selectedUserProgram = freezed,
     Object? errorGettingPrograms = freezed,
   }) {
     return _then(_$_ProgramsState(
@@ -127,9 +160,17 @@ class __$$_ProgramsStateCopyWithImpl<$Res>
           ? _value._userPrograms
           : userPrograms // ignore: cast_nullable_to_non_nullable
               as List<Program>?,
+      programs: freezed == programs
+          ? _value._programs
+          : programs // ignore: cast_nullable_to_non_nullable
+              as List<Program>?,
       selectedProgram: freezed == selectedProgram
           ? _value.selectedProgram
           : selectedProgram // ignore: cast_nullable_to_non_nullable
+              as Program?,
+      selectedUserProgram: freezed == selectedUserProgram
+          ? _value.selectedUserProgram
+          : selectedUserProgram // ignore: cast_nullable_to_non_nullable
               as Program?,
       errorGettingPrograms: freezed == errorGettingPrograms
           ? _value.errorGettingPrograms
@@ -144,9 +185,12 @@ class __$$_ProgramsStateCopyWithImpl<$Res>
 class _$_ProgramsState implements _ProgramsState {
   _$_ProgramsState(
       {final List<Program>? userPrograms,
+      final List<Program>? programs,
       this.selectedProgram,
+      this.selectedUserProgram,
       this.errorGettingPrograms})
-      : _userPrograms = userPrograms;
+      : _userPrograms = userPrograms,
+        _programs = programs;
 
   factory _$_ProgramsState.fromJson(Map<String, dynamic> json) =>
       _$$_ProgramsStateFromJson(json);
@@ -160,14 +204,25 @@ class _$_ProgramsState implements _ProgramsState {
     return EqualUnmodifiableListView(value);
   }
 
+  final List<Program>? _programs;
+  @override
+  List<Program>? get programs {
+    final value = _programs;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final Program? selectedProgram;
+  @override
+  final Program? selectedUserProgram;
   @override
   final bool? errorGettingPrograms;
 
   @override
   String toString() {
-    return 'ProgramsState(userPrograms: $userPrograms, selectedProgram: $selectedProgram, errorGettingPrograms: $errorGettingPrograms)';
+    return 'ProgramsState(userPrograms: $userPrograms, programs: $programs, selectedProgram: $selectedProgram, selectedUserProgram: $selectedUserProgram, errorGettingPrograms: $errorGettingPrograms)';
   }
 
   @override
@@ -177,8 +232,11 @@ class _$_ProgramsState implements _ProgramsState {
             other is _$_ProgramsState &&
             const DeepCollectionEquality()
                 .equals(other._userPrograms, _userPrograms) &&
+            const DeepCollectionEquality().equals(other._programs, _programs) &&
             (identical(other.selectedProgram, selectedProgram) ||
                 other.selectedProgram == selectedProgram) &&
+            (identical(other.selectedUserProgram, selectedUserProgram) ||
+                other.selectedUserProgram == selectedUserProgram) &&
             (identical(other.errorGettingPrograms, errorGettingPrograms) ||
                 other.errorGettingPrograms == errorGettingPrograms));
   }
@@ -188,7 +246,9 @@ class _$_ProgramsState implements _ProgramsState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_userPrograms),
+      const DeepCollectionEquality().hash(_programs),
       selectedProgram,
+      selectedUserProgram,
       errorGettingPrograms);
 
   @JsonKey(ignore: true)
@@ -208,7 +268,9 @@ class _$_ProgramsState implements _ProgramsState {
 abstract class _ProgramsState implements ProgramsState {
   factory _ProgramsState(
       {final List<Program>? userPrograms,
+      final List<Program>? programs,
       final Program? selectedProgram,
+      final Program? selectedUserProgram,
       final bool? errorGettingPrograms}) = _$_ProgramsState;
 
   factory _ProgramsState.fromJson(Map<String, dynamic> json) =
@@ -217,7 +279,11 @@ abstract class _ProgramsState implements ProgramsState {
   @override
   List<Program>? get userPrograms;
   @override
+  List<Program>? get programs;
+  @override
   Program? get selectedProgram;
+  @override
+  Program? get selectedUserProgram;
   @override
   bool? get errorGettingPrograms;
   @override

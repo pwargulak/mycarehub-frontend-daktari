@@ -17,7 +17,7 @@ class InitialRouteViewModel extends Vm {
     return InitialRouteViewModel(
       initialRoute: state.miscState?.initialRoute,
       currentIndex: state.bottomNavigationState?.currentBottomNavIndex,
-      selectedProgram: state.userProfileState?.programsState?.selectedProgram,
+      selectedProgram: state.userProfileState?.programsState?.selectedUserProgram,
     );
   }
 }

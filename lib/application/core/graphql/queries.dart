@@ -709,3 +709,18 @@ query searchOrganisations($searchParameter: String!){
 } 
 }
 ''';
+
+const String searchProgramsQuery = r'''
+query searchPrograms($searchParameter: String!){
+  searchPrograms(searchParameter: $searchParameter){
+    id
+    active
+    name
+    organisation{
+      id
+      name
+      description
+    }
+  }
+}
+''';

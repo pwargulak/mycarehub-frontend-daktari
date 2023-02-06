@@ -1,9 +1,9 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/domain/core/entities/programs/program.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/program_selection/widgets/programs_widget_list.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
@@ -16,13 +16,11 @@ import '../../../../../mocks/test_helpers.dart';
 void main() {
   group('Program Selection Page', () {
     late Store<AppState> store;
-
     setUp(() async {
       store = Store<AppState>(initialState: AppState.initial());
       setupFirebaseMessagingMocks();
       await Firebase.initializeApp();
     });
-
     final MockCustomGraphQlClient mockCustomGraphQlClient =
         MockCustomGraphQlClient.withResponse(
       '',
@@ -50,7 +48,6 @@ void main() {
         201,
       ),
     );
-
     testWidgets('renders correctly', (WidgetTester tester) async {
       await buildTestWidget(
         tester: tester,
@@ -67,9 +64,7 @@ void main() {
           ],
         ),
       );
-
       await tester.pumpAndSettle();
-
       expect(find.byType(GeneralWorkstationWidget), findsOneWidget);
     });
 
@@ -133,7 +128,6 @@ void main() {
           ],
         ),
       );
-
       final Finder primaryButton = find.byType(MyAfyaHubPrimaryButton);
       expect(primaryButton, findsOneWidget);
 

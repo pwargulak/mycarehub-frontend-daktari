@@ -9,7 +9,8 @@ part 'list_user_programs_response.g.dart';
 class ListUserProgramsResponse with _$ListUserProgramsResponse {
   factory ListUserProgramsResponse({
     @JsonKey(name: 'count') int? count,
-    @JsonKey(name: 'programs') List<Program>? programs,
+    @JsonKey(name: 'programs') List<Program>? userPrograms,
+    @JsonKey(name: 'searchPrograms') List<Program>? programs,
   }) = _ListUserProgramsResponse;
 
   factory ListUserProgramsResponse.fromJson(Map<String, dynamic> json) =>

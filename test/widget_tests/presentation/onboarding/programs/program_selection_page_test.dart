@@ -62,7 +62,7 @@ void main() {
               },
               'communityToken': 'testToken'
             },
-             'getStaffFacilities': <String, dynamic>{
+            'getStaffFacilities': <String, dynamic>{
               'facilities': <dynamic>[
                 <String, dynamic>{
                   'id': 'testId',

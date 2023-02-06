@@ -24,6 +24,8 @@ mixin _$ListUserProgramsResponse {
   @JsonKey(name: 'count')
   int? get count => throw _privateConstructorUsedError;
   @JsonKey(name: 'programs')
+  List<Program>? get userPrograms => throw _privateConstructorUsedError;
+  @JsonKey(name: 'searchPrograms')
   List<Program>? get programs => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,7 +42,8 @@ abstract class $ListUserProgramsResponseCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'count') int? count,
-      @JsonKey(name: 'programs') List<Program>? programs});
+      @JsonKey(name: 'programs') List<Program>? userPrograms,
+      @JsonKey(name: 'searchPrograms') List<Program>? programs});
 }
 
 /// @nodoc
@@ -58,6 +61,7 @@ class _$ListUserProgramsResponseCopyWithImpl<$Res,
   @override
   $Res call({
     Object? count = freezed,
+    Object? userPrograms = freezed,
     Object? programs = freezed,
   }) {
     return _then(_value.copyWith(
@@ -65,6 +69,10 @@ class _$ListUserProgramsResponseCopyWithImpl<$Res,
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int?,
+      userPrograms: freezed == userPrograms
+          ? _value.userPrograms
+          : userPrograms // ignore: cast_nullable_to_non_nullable
+              as List<Program>?,
       programs: freezed == programs
           ? _value.programs
           : programs // ignore: cast_nullable_to_non_nullable
@@ -84,7 +92,8 @@ abstract class _$$_ListUserProgramsResponseCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'count') int? count,
-      @JsonKey(name: 'programs') List<Program>? programs});
+      @JsonKey(name: 'programs') List<Program>? userPrograms,
+      @JsonKey(name: 'searchPrograms') List<Program>? programs});
 }
 
 /// @nodoc
@@ -100,6 +109,7 @@ class __$$_ListUserProgramsResponseCopyWithImpl<$Res>
   @override
   $Res call({
     Object? count = freezed,
+    Object? userPrograms = freezed,
     Object? programs = freezed,
   }) {
     return _then(_$_ListUserProgramsResponse(
@@ -107,6 +117,10 @@ class __$$_ListUserProgramsResponseCopyWithImpl<$Res>
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int?,
+      userPrograms: freezed == userPrograms
+          ? _value._userPrograms
+          : userPrograms // ignore: cast_nullable_to_non_nullable
+              as List<Program>?,
       programs: freezed == programs
           ? _value._programs
           : programs // ignore: cast_nullable_to_non_nullable
@@ -120,8 +134,10 @@ class __$$_ListUserProgramsResponseCopyWithImpl<$Res>
 class _$_ListUserProgramsResponse implements _ListUserProgramsResponse {
   _$_ListUserProgramsResponse(
       {@JsonKey(name: 'count') this.count,
-      @JsonKey(name: 'programs') final List<Program>? programs})
-      : _programs = programs;
+      @JsonKey(name: 'programs') final List<Program>? userPrograms,
+      @JsonKey(name: 'searchPrograms') final List<Program>? programs})
+      : _userPrograms = userPrograms,
+        _programs = programs;
 
   factory _$_ListUserProgramsResponse.fromJson(Map<String, dynamic> json) =>
       _$$_ListUserProgramsResponseFromJson(json);
@@ -129,9 +145,19 @@ class _$_ListUserProgramsResponse implements _ListUserProgramsResponse {
   @override
   @JsonKey(name: 'count')
   final int? count;
-  final List<Program>? _programs;
+  final List<Program>? _userPrograms;
   @override
   @JsonKey(name: 'programs')
+  List<Program>? get userPrograms {
+    final value = _userPrograms;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<Program>? _programs;
+  @override
+  @JsonKey(name: 'searchPrograms')
   List<Program>? get programs {
     final value = _programs;
     if (value == null) return null;
@@ -141,7 +167,7 @@ class _$_ListUserProgramsResponse implements _ListUserProgramsResponse {
 
   @override
   String toString() {
-    return 'ListUserProgramsResponse(count: $count, programs: $programs)';
+    return 'ListUserProgramsResponse(count: $count, userPrograms: $userPrograms, programs: $programs)';
   }
 
   @override
@@ -150,13 +176,18 @@ class _$_ListUserProgramsResponse implements _ListUserProgramsResponse {
         (other.runtimeType == runtimeType &&
             other is _$_ListUserProgramsResponse &&
             (identical(other.count, count) || other.count == count) &&
+            const DeepCollectionEquality()
+                .equals(other._userPrograms, _userPrograms) &&
             const DeepCollectionEquality().equals(other._programs, _programs));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, count, const DeepCollectionEquality().hash(_programs));
+      runtimeType,
+      count,
+      const DeepCollectionEquality().hash(_userPrograms),
+      const DeepCollectionEquality().hash(_programs));
 
   @JsonKey(ignore: true)
   @override
@@ -176,7 +207,8 @@ class _$_ListUserProgramsResponse implements _ListUserProgramsResponse {
 abstract class _ListUserProgramsResponse implements ListUserProgramsResponse {
   factory _ListUserProgramsResponse(
           {@JsonKey(name: 'count') final int? count,
-          @JsonKey(name: 'programs') final List<Program>? programs}) =
+          @JsonKey(name: 'programs') final List<Program>? userPrograms,
+          @JsonKey(name: 'searchPrograms') final List<Program>? programs}) =
       _$_ListUserProgramsResponse;
 
   factory _ListUserProgramsResponse.fromJson(Map<String, dynamic> json) =
@@ -187,6 +219,9 @@ abstract class _ListUserProgramsResponse implements ListUserProgramsResponse {
   int? get count;
   @override
   @JsonKey(name: 'programs')
+  List<Program>? get userPrograms;
+  @override
+  @JsonKey(name: 'searchPrograms')
   List<Program>? get programs;
   @override
   @JsonKey(ignore: true)

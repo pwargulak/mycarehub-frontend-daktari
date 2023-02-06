@@ -6,30 +6,40 @@ class ProgramsStateViewModel extends Vm {
   ProgramsStateViewModel({
     required this.wait,
     this.userPrograms,
-    this.selectedProgram,
+    required this.programs,
+    required this.selectedProgram,
+    this.selectedUserProgram,
     this.errorGettingPrograms,
   }) : super(
           equals: <Object?>[
             wait,
             userPrograms,
+            programs,
             selectedProgram,
+            selectedUserProgram,
             errorGettingPrograms
           ],
         );
 
   final Wait wait;
   final List<Program>? userPrograms;
+  final List<Program> programs;
   final Program? selectedProgram;
+  final Program? selectedUserProgram;
   final bool? errorGettingPrograms;
 
   factory ProgramsStateViewModel.fromStore(Store<AppState> store) {
     return ProgramsStateViewModel(
       wait: store.state.wait!,
       userPrograms: store.state.userProfileState?.programsState?.userPrograms,
-      selectedProgram:
-          store.state.userProfileState?.programsState?.selectedProgram,
+      selectedUserProgram:
+          store.state.userProfileState?.programsState?.selectedUserProgram,
       errorGettingPrograms:
           store.state.userProfileState?.programsState?.errorGettingPrograms,
+      programs:
+          store.state.userProfileState?.programsState?.programs ?? <Program>[],
+      selectedProgram:
+          store.state.userProfileState?.programsState?.selectedProgram,
     );
   }
 }

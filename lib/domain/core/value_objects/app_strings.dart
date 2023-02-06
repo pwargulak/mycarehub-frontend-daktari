@@ -548,17 +548,21 @@ const String searchMembersString = 'Search members ...';
 const String fetchingMemberFlagText = 'fetching members';
 const String availableMembersText = 'available members';
 const String noAvailableFacilitiesText = 'There are no available facilities';
+const String noAvailableProgramsText = 'There are no available programs';
 const String noAvailableMemberDescription =
     'Please try again or contact support';
 const String inviteMembersSuccessfulText = 'Members invited successfully';
 const String noMemberFoundText = 'No member found with that name';
 const String noFacilityFoundText = 'No facility found with that code';
+const String noProgramFoundText = 'No program found with that name';
 const String noOrganizationFoundText = 'No organisation found with that name';
 const String noRecordFoundText = 'No record found with that keyword';
 const String couldNotFindAMemberText =
     'It seems like we could not find a member by the name ';
 const String couldNotFindFacilityText =
     'It seems like we could not find a facility by the code ';
+const String couldNotFindProgramText =
+    'It seems like we could not find a program by the name ';
 const String couldNotFindOrganizationText =
     'It seems like we could not find an organisation by the name ';
 const String couldNotFindRedFlagsText =
@@ -1199,7 +1203,7 @@ const String descriptionString = 'Description';
 
 const String searchProgramTextString = 'Search for a program using its name';
 const String searchProgramHintString = 'Search programs';
-const String mostViewedProgramsString = 'Most viewed programs';
+const String searchResultsString = 'Search results';
 const String createProgramString = 'Create Program';
 const String addProgramDetailString = 'Add details about your new program';
 

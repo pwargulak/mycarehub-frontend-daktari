@@ -8,7 +8,9 @@ part 'programs_state.g.dart';
 class ProgramsState with _$ProgramsState {
   factory ProgramsState({
     List<Program>? userPrograms,
+    List<Program>? programs,
     Program? selectedProgram,
+    Program? selectedUserProgram,
     bool? errorGettingPrograms,
   }) = _ProgramsState;
 
@@ -17,7 +19,9 @@ class ProgramsState with _$ProgramsState {
 
   factory ProgramsState.initial() => ProgramsState(
         userPrograms: <Program>[],
+        programs: <Program>[],
         selectedProgram: Program.initial(),
+        selectedUserProgram: Program.initial(),
         errorGettingPrograms: false,
       );
 }

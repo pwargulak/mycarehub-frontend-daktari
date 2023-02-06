@@ -65,7 +65,7 @@ OnboardingPathInfo getOnboardingPath({required AppState state}) {
       state.onboardingState?.hasVerifiedSecurityQuestions ?? false;
   final bool hasSetPin = state.onboardingState?.hasSetPin ?? false;
   final String selectedProgramId =
-      state.userProfileState?.programsState?.selectedProgram?.id ?? UNKNOWN;
+      state.userProfileState?.programsState?.selectedUserProgram?.id ?? UNKNOWN;
 
   if (currentOnboardingStage == CurrentOnboardingStage.Login) {
     if (!isSignedIn) {

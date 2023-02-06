@@ -9,10 +9,12 @@ class UpdateProgramsStateAction extends ReduxAction<AppState> {
     this.selectedProgram,
     this.userPrograms,
     this.errorGettingPrograms,
+    this.programs,
   });
 
   final Program? selectedProgram;
   final List<Program>? userPrograms;
+  final List<Program>? programs;
   final bool? errorGettingPrograms;
 
   @override
@@ -20,10 +22,12 @@ class UpdateProgramsStateAction extends ReduxAction<AppState> {
     final AppState newState = state.copyWith(
       userProfileState: state.userProfileState?.copyWith.call(
         programsState: state.userProfileState?.programsState?.copyWith.call(
-          selectedProgram: selectedProgram ??
-              state.userProfileState?.programsState?.selectedProgram,
+          selectedUserProgram: selectedProgram ??
+              state.userProfileState?.programsState?.selectedUserProgram,
           userPrograms: userPrograms ??
               state.userProfileState?.programsState?.userPrograms,
+          programs: programs ??
+              state.userProfileState?.programsState?.programs,
           errorGettingPrograms: errorGettingPrograms ??
               state.userProfileState?.programsState?.errorGettingPrograms,
         ),

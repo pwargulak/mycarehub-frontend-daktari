@@ -37,6 +37,7 @@ class SetUserProgramAction extends ReduxAction<AppState> {
   void before() {
     super.before();
     dispatch(WaitAction<AppState>.add(setUserProgramFlag));
+    dispatch(UpdateProgramsStateAction(errorGettingPrograms: false));
   }
 
   @override
@@ -52,11 +53,12 @@ class SetUserProgramAction extends ReduxAction<AppState> {
 
     if (processedResponse.ok) {
       final Map<String, dynamic> body = client.toMap(response);
-      client.close();
+     
 
       final String? errors = client.parseError(body);
 
       if (errors != null) {
+        dispatch(UpdateProgramsStateAction(errorGettingPrograms: true));
         reportErrorToSentry(
           hint: setUserProgramErrorString,
           query: setStaffProgramMutation,
