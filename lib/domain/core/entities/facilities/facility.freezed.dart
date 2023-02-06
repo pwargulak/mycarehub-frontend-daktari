@@ -28,8 +28,8 @@ mixin _$Facility {
   String? get phone => throw _privateConstructorUsedError;
   @JsonKey(name: 'active', defaultValue: false)
   bool? get active => throw _privateConstructorUsedError;
-  @JsonKey(name: 'county')
-  String? get county => throw _privateConstructorUsedError;
+  @JsonKey(name: 'country')
+  String? get country => throw _privateConstructorUsedError;
   @JsonKey(name: 'identifier')
   FacilityIdentifier? get facilityIdentifier =>
       throw _privateConstructorUsedError;
@@ -61,8 +61,8 @@ abstract class $FacilityCopyWith<$Res> {
           String? phone,
       @JsonKey(name: 'active', defaultValue: false)
           bool? active,
-      @JsonKey(name: 'county')
-          String? county,
+      @JsonKey(name: 'country')
+          String? country,
       @JsonKey(name: 'identifier')
           FacilityIdentifier? facilityIdentifier,
       @JsonKey(name: 'description')
@@ -93,7 +93,7 @@ class _$FacilityCopyWithImpl<$Res, $Val extends Facility>
     Object? name = freezed,
     Object? phone = freezed,
     Object? active = freezed,
-    Object? county = freezed,
+    Object? country = freezed,
     Object? facilityIdentifier = freezed,
     Object? description = freezed,
     Object? fhirOrganisationID = freezed,
@@ -116,9 +116,9 @@ class _$FacilityCopyWithImpl<$Res, $Val extends Facility>
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
               as bool?,
-      county: freezed == county
-          ? _value.county
-          : county // ignore: cast_nullable_to_non_nullable
+      country: freezed == country
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
               as String?,
       facilityIdentifier: freezed == facilityIdentifier
           ? _value.facilityIdentifier
@@ -182,8 +182,8 @@ abstract class _$$_FacilityCopyWith<$Res> implements $FacilityCopyWith<$Res> {
           String? phone,
       @JsonKey(name: 'active', defaultValue: false)
           bool? active,
-      @JsonKey(name: 'county')
-          String? county,
+      @JsonKey(name: 'country')
+          String? country,
       @JsonKey(name: 'identifier')
           FacilityIdentifier? facilityIdentifier,
       @JsonKey(name: 'description')
@@ -214,7 +214,7 @@ class __$$_FacilityCopyWithImpl<$Res>
     Object? name = freezed,
     Object? phone = freezed,
     Object? active = freezed,
-    Object? county = freezed,
+    Object? country = freezed,
     Object? facilityIdentifier = freezed,
     Object? description = freezed,
     Object? fhirOrganisationID = freezed,
@@ -237,9 +237,9 @@ class __$$_FacilityCopyWithImpl<$Res>
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
               as bool?,
-      county: freezed == county
-          ? _value.county
-          : county // ignore: cast_nullable_to_non_nullable
+      country: freezed == country
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
               as String?,
       facilityIdentifier: freezed == facilityIdentifier
           ? _value.facilityIdentifier
@@ -269,7 +269,7 @@ class _$_Facility implements _Facility {
       @JsonKey(name: 'name') this.name,
       @JsonKey(name: 'phone') this.phone,
       @JsonKey(name: 'active', defaultValue: false) this.active,
-      @JsonKey(name: 'county') this.county,
+      @JsonKey(name: 'country') this.country,
       @JsonKey(name: 'identifier') this.facilityIdentifier,
       @JsonKey(name: 'description') this.description,
       @JsonKey(name: 'fhirOrganisationID') this.fhirOrganisationID,
@@ -291,8 +291,8 @@ class _$_Facility implements _Facility {
   @JsonKey(name: 'active', defaultValue: false)
   final bool? active;
   @override
-  @JsonKey(name: 'county')
-  final String? county;
+  @JsonKey(name: 'country')
+  final String? country;
   @override
   @JsonKey(name: 'identifier')
   final FacilityIdentifier? facilityIdentifier;
@@ -308,7 +308,7 @@ class _$_Facility implements _Facility {
 
   @override
   String toString() {
-    return 'Facility(id: $id, name: $name, phone: $phone, active: $active, county: $county, facilityIdentifier: $facilityIdentifier, description: $description, fhirOrganisationID: $fhirOrganisationID, workStationDetails: $workStationDetails)';
+    return 'Facility(id: $id, name: $name, phone: $phone, active: $active, country: $country, facilityIdentifier: $facilityIdentifier, description: $description, fhirOrganisationID: $fhirOrganisationID, workStationDetails: $workStationDetails)';
   }
 
   @override
@@ -320,7 +320,7 @@ class _$_Facility implements _Facility {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.active, active) || other.active == active) &&
-            (identical(other.county, county) || other.county == county) &&
+            (identical(other.country, country) || other.country == country) &&
             (identical(other.facilityIdentifier, facilityIdentifier) ||
                 other.facilityIdentifier == facilityIdentifier) &&
             (identical(other.description, description) ||
@@ -333,7 +333,7 @@ class _$_Facility implements _Facility {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, phone, active, county,
+  int get hashCode => Object.hash(runtimeType, id, name, phone, active, country,
       facilityIdentifier, description, fhirOrganisationID, workStationDetails);
 
   @JsonKey(ignore: true)
@@ -360,8 +360,8 @@ abstract class _Facility implements Facility {
           final String? phone,
       @JsonKey(name: 'active', defaultValue: false)
           final bool? active,
-      @JsonKey(name: 'county')
-          final String? county,
+      @JsonKey(name: 'country')
+          final String? country,
       @JsonKey(name: 'identifier')
           final FacilityIdentifier? facilityIdentifier,
       @JsonKey(name: 'description')
@@ -386,8 +386,8 @@ abstract class _Facility implements Facility {
   @JsonKey(name: 'active', defaultValue: false)
   bool? get active;
   @override
-  @JsonKey(name: 'county')
-  String? get county;
+  @JsonKey(name: 'country')
+  String? get country;
   @override
   @JsonKey(name: 'identifier')
   FacilityIdentifier? get facilityIdentifier;

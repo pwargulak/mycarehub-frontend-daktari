@@ -1,5 +1,5 @@
 // Package imports:
-import 'package:prohealth360_daktari/domain/core/entities/core/organisation.dart';
+import 'package:prohealth360_daktari/domain/core/entities/organisations/organisation.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 // Project imports:
@@ -48,8 +48,7 @@ class BatchUpdateMiscStateAction extends ReduxAction<AppState> {
         updateFacility: updateFacility ?? state.miscState?.updateFacility,
         selectedOrganisation:
             selectedOrganisation ?? state.miscState?.selectedOrganisation,
-        cccNumberExists:
-            cccNumberExists ?? state.miscState?.cccNumberExists,
+        cccNumberExists: cccNumberExists ?? state.miscState?.cccNumberExists,
       ),
     );
 

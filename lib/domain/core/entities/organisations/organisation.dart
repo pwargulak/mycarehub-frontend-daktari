@@ -1,4 +1,4 @@
-// Package imports:
+import 'package:prohealth360_daktari/domain/core/entities/programs/program.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -11,7 +11,8 @@ class Organisation with _$Organisation {
     @JsonKey(name: 'id') String? id,
     @JsonKey(name: 'name') String? name,
     @JsonKey(name: 'description') String? description,
-  }) = _Organisation;
+    @JsonKey(name: 'programs') List<Program?>? programs,
+  }) = _Organization;
 
   factory Organisation.fromJson(Map<String, dynamic> json) =>
       _$OrganisationFromJson(json);
@@ -20,5 +21,6 @@ class Organisation with _$Organisation {
         id: UNKNOWN,
         name: UNKNOWN,
         description: UNKNOWN,
+        programs: <Program>[],
       );
 }

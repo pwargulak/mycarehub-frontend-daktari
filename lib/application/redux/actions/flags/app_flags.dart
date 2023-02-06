@@ -139,3 +139,6 @@ const String setUserProgramFlag = 'set_user_program_flag';
 // Program Facilities
 const String fetchProgramFacilitiesFlag = 'fetch_program_facilities_flag';
 const String setProgramFaFlag = 'set_user_program_flag';
+
+const String listOrganizationsFlag = 'list_organizations_flag';
+const String searchOrganizationsFlag = 'search_organizations_flag';

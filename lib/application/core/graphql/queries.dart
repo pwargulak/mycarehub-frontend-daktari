@@ -662,3 +662,50 @@ query getStaffFacilities($staffID: ID!, $paginationInput: PaginationsInput!){
   }
 }
 ''';
+
+const String listOrganizationsQuery = r'''
+query listOrganisations($paginationInput: PaginationsInput!){
+  listOrganisations(paginationInput: $paginationInput){
+    organisations{
+      id
+      name
+      description
+      programs {
+        id
+        name
+        description
+        facilities {
+          id
+          name
+          phone
+          country
+          description
+          fhirOrganisationID
+          identifier {
+            id
+            active
+            type
+            value
+          }
+        }
+      }
+    }
+  }
+}
+''';
+
+const String searchOrganizationQuery = r'''
+query searchOrganisations($searchParameter: String!){
+ searchOrganisations(searchParameter: $searchParameter){
+  id
+  name
+  description
+  programs{
+    id
+    active
+    name
+    description
+  }
+} 
+}
+''';

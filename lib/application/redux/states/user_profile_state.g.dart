@@ -19,6 +19,10 @@ _$_UserProfileState _$$_UserProfileStateFromJson(Map<String, dynamic> json) =>
           ? null
           : FacilitiesState.fromJson(
               json['facilitiesState'] as Map<String, dynamic>),
+      organizationState: json['organizationState'] == null
+          ? null
+          : OrganisationState.fromJson(
+              json['organizationState'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_UserProfileStateToJson(_$_UserProfileState instance) =>
@@ -26,4 +30,5 @@ Map<String, dynamic> _$$_UserProfileStateToJson(_$_UserProfileState instance) =>
       'userProfile': instance.userProfile,
       'programsState': instance.programsState,
       'facilitiesState': instance.facilitiesState,
+      'organizationState': instance.organizationState,
     };

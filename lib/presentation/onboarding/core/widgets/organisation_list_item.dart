@@ -1,4 +1,4 @@
-import 'package:prohealth360_daktari/domain/core/entities/core/organisation.dart';
+import 'package:prohealth360_daktari/domain/core/entities/organisations/organisation.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

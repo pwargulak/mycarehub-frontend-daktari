@@ -23,6 +23,8 @@ mixin _$UserProfileState {
   UserProfile? get userProfile => throw _privateConstructorUsedError;
   ProgramsState? get programsState => throw _privateConstructorUsedError;
   FacilitiesState? get facilitiesState => throw _privateConstructorUsedError;
+  OrganisationState? get organizationState =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,11 +41,13 @@ abstract class $UserProfileStateCopyWith<$Res> {
   $Res call(
       {UserProfile? userProfile,
       ProgramsState? programsState,
-      FacilitiesState? facilitiesState});
+      FacilitiesState? facilitiesState,
+      OrganisationState? organizationState});
 
   $UserProfileCopyWith<$Res>? get userProfile;
   $ProgramsStateCopyWith<$Res>? get programsState;
   $FacilitiesStateCopyWith<$Res>? get facilitiesState;
+  $OrganisationStateCopyWith<$Res>? get organizationState;
 }
 
 /// @nodoc
@@ -62,6 +66,7 @@ class _$UserProfileStateCopyWithImpl<$Res, $Val extends UserProfileState>
     Object? userProfile = freezed,
     Object? programsState = freezed,
     Object? facilitiesState = freezed,
+    Object? organizationState = freezed,
   }) {
     return _then(_value.copyWith(
       userProfile: freezed == userProfile
@@ -76,6 +81,10 @@ class _$UserProfileStateCopyWithImpl<$Res, $Val extends UserProfileState>
           ? _value.facilitiesState
           : facilitiesState // ignore: cast_nullable_to_non_nullable
               as FacilitiesState?,
+      organizationState: freezed == organizationState
+          ? _value.organizationState
+          : organizationState // ignore: cast_nullable_to_non_nullable
+              as OrganisationState?,
     ) as $Val);
   }
 
@@ -114,6 +123,18 @@ class _$UserProfileStateCopyWithImpl<$Res, $Val extends UserProfileState>
       return _then(_value.copyWith(facilitiesState: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $OrganisationStateCopyWith<$Res>? get organizationState {
+    if (_value.organizationState == null) {
+      return null;
+    }
+
+    return $OrganisationStateCopyWith<$Res>(_value.organizationState!, (value) {
+      return _then(_value.copyWith(organizationState: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -127,7 +148,8 @@ abstract class _$$_UserProfileStateCopyWith<$Res>
   $Res call(
       {UserProfile? userProfile,
       ProgramsState? programsState,
-      FacilitiesState? facilitiesState});
+      FacilitiesState? facilitiesState,
+      OrganisationState? organizationState});
 
   @override
   $UserProfileCopyWith<$Res>? get userProfile;
@@ -135,6 +157,8 @@ abstract class _$$_UserProfileStateCopyWith<$Res>
   $ProgramsStateCopyWith<$Res>? get programsState;
   @override
   $FacilitiesStateCopyWith<$Res>? get facilitiesState;
+  @override
+  $OrganisationStateCopyWith<$Res>? get organizationState;
 }
 
 /// @nodoc
@@ -151,6 +175,7 @@ class __$$_UserProfileStateCopyWithImpl<$Res>
     Object? userProfile = freezed,
     Object? programsState = freezed,
     Object? facilitiesState = freezed,
+    Object? organizationState = freezed,
   }) {
     return _then(_$_UserProfileState(
       userProfile: freezed == userProfile
@@ -165,6 +190,10 @@ class __$$_UserProfileStateCopyWithImpl<$Res>
           ? _value.facilitiesState
           : facilitiesState // ignore: cast_nullable_to_non_nullable
               as FacilitiesState?,
+      organizationState: freezed == organizationState
+          ? _value.organizationState
+          : organizationState // ignore: cast_nullable_to_non_nullable
+              as OrganisationState?,
     ));
   }
 }
@@ -173,7 +202,10 @@ class __$$_UserProfileStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_UserProfileState implements _UserProfileState {
   _$_UserProfileState(
-      {this.userProfile, this.programsState, this.facilitiesState});
+      {this.userProfile,
+      this.programsState,
+      this.facilitiesState,
+      this.organizationState});
 
   factory _$_UserProfileState.fromJson(Map<String, dynamic> json) =>
       _$$_UserProfileStateFromJson(json);
@@ -184,10 +216,12 @@ class _$_UserProfileState implements _UserProfileState {
   final ProgramsState? programsState;
   @override
   final FacilitiesState? facilitiesState;
+  @override
+  final OrganisationState? organizationState;
 
   @override
   String toString() {
-    return 'UserProfileState(userProfile: $userProfile, programsState: $programsState, facilitiesState: $facilitiesState)';
+    return 'UserProfileState(userProfile: $userProfile, programsState: $programsState, facilitiesState: $facilitiesState, organizationState: $organizationState)';
   }
 
   @override
@@ -200,13 +234,15 @@ class _$_UserProfileState implements _UserProfileState {
             (identical(other.programsState, programsState) ||
                 other.programsState == programsState) &&
             (identical(other.facilitiesState, facilitiesState) ||
-                other.facilitiesState == facilitiesState));
+                other.facilitiesState == facilitiesState) &&
+            (identical(other.organizationState, organizationState) ||
+                other.organizationState == organizationState));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, userProfile, programsState, facilitiesState);
+  int get hashCode => Object.hash(runtimeType, userProfile, programsState,
+      facilitiesState, organizationState);
 
   @JsonKey(ignore: true)
   @override
@@ -226,7 +262,8 @@ abstract class _UserProfileState implements UserProfileState {
   factory _UserProfileState(
       {final UserProfile? userProfile,
       final ProgramsState? programsState,
-      final FacilitiesState? facilitiesState}) = _$_UserProfileState;
+      final FacilitiesState? facilitiesState,
+      final OrganisationState? organizationState}) = _$_UserProfileState;
 
   factory _UserProfileState.fromJson(Map<String, dynamic> json) =
       _$_UserProfileState.fromJson;
@@ -237,6 +274,8 @@ abstract class _UserProfileState implements UserProfileState {
   ProgramsState? get programsState;
   @override
   FacilitiesState? get facilitiesState;
+  @override
+  OrganisationState? get organizationState;
   @override
   @JsonKey(ignore: true)
   _$$_UserProfileStateCopyWith<_$_UserProfileState> get copyWith =>

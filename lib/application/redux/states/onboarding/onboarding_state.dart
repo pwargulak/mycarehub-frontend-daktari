@@ -1,5 +1,5 @@
 // Package imports:
-import 'package:prohealth360_daktari/domain/core/entities/core/organisation.dart';
+import 'package:prohealth360_daktari/domain/core/entities/organisations/organisation.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:prohealth360_daktari/domain/core/entities/terms/terms_and_conditions.dart';

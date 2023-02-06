@@ -1,9 +1,8 @@
 import 'dart:convert';
 
-import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:prohealth360_daktari/application/redux/actions/facilities/search_facilities_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/organizations/search_organisations_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/connectivity_state.dart';
 import 'package:http/http.dart';
@@ -11,7 +10,7 @@ import 'package:http/http.dart';
 import '../../../../../mocks/mocks.dart';
 
 void main() {
-  group('FetchFacilitiesAction', () {
+  group('SearchOrganisationsAction', () {
     late StoreTester<AppState> storeTester;
 
     setUp(() {
@@ -22,23 +21,10 @@ void main() {
       );
     });
 
-    test('should run successfully', () async {
-      storeTester.dispatch(
-        SearchFacilitiesAction(client: MockTestGraphQlClient(), mflCode: ''),
-      );
-
-      final TestInfo<AppState> info =
-          await storeTester.waitUntil(SearchFacilitiesAction);
-
-      expect(
-        info.state.userProfileState?.userProfile?.facilities?.first.name,
-        'Test Facility',
-      );
-    });
-
     test('should throw error if api call is not 200', () async {
       storeTester.dispatch(
-        SearchFacilitiesAction(
+        SearchOrganisationsAction(
+          query: '',
           client: MockShortGraphQlClient.withResponse(
             '',
             '',
@@ -47,28 +33,23 @@ void main() {
               500,
             ),
           ),
-          mflCode: '',
         ),
       );
 
       final TestInfo<AppState> info =
-          await storeTester.waitUntil(SearchFacilitiesAction);
+          await storeTester.waitUntil(SearchOrganisationsAction);
 
       expect(
-        info.state,
-        AppState.initial()
-            .copyWith(connectivityState: ConnectivityState(isConnected: true)),
-      );
-      expect(
-        (info.error! as UserException).msg,
-        'Sorry, an unknown error occurred, please try again or get help from our '
-        'help center.',
+        info.state.userProfileState?.organizationState
+            ?.errorGettingOrganisations,
+        true,
       );
     });
 
     test('should throw error if response has error', () async {
       storeTester.dispatch(
-        SearchFacilitiesAction(
+        SearchOrganisationsAction(
+          query: '',
           client: MockShortGraphQlClient.withResponse(
             '',
             '',
@@ -77,21 +58,16 @@ void main() {
               200,
             ),
           ),
-          mflCode: '',
         ),
       );
 
       final TestInfo<AppState> info =
-          await storeTester.waitUntil(SearchFacilitiesAction);
+          await storeTester.waitUntil(SearchOrganisationsAction);
 
       expect(
-        info.state,
-        AppState.initial()
-            .copyWith(connectivityState: ConnectivityState(isConnected: true)),
-      );
-      expect(
-        (info.error! as UserException).msg,
-        getErrorMessage('fetching facilities'),
+        info.state.userProfileState?.organizationState
+            ?.errorGettingOrganisations,
+        true,
       );
     });
   });

@@ -24,10 +24,14 @@ mixin _$Program {
   String? get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
   String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'description')
+  String? get description => throw _privateConstructorUsedError;
   @JsonKey(name: 'active', defaultValue: false)
   bool? get active => throw _privateConstructorUsedError;
   @JsonKey(name: 'organisation')
   Organisation? get organisation => throw _privateConstructorUsedError;
+  @JsonKey(name: 'facility')
+  List<Facility?>? get facilities => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,8 +46,10 @@ abstract class $ProgramCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'name') String? name,
+      @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'active', defaultValue: false) bool? active,
-      @JsonKey(name: 'organisation') Organisation? organisation});
+      @JsonKey(name: 'organisation') Organisation? organisation,
+      @JsonKey(name: 'facility') List<Facility?>? facilities});
 
   $OrganisationCopyWith<$Res>? get organisation;
 }
@@ -63,8 +69,10 @@ class _$ProgramCopyWithImpl<$Res, $Val extends Program>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? description = freezed,
     Object? active = freezed,
     Object? organisation = freezed,
+    Object? facilities = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -75,6 +83,10 @@ class _$ProgramCopyWithImpl<$Res, $Val extends Program>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
       active: freezed == active
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
@@ -83,6 +95,10 @@ class _$ProgramCopyWithImpl<$Res, $Val extends Program>
           ? _value.organisation
           : organisation // ignore: cast_nullable_to_non_nullable
               as Organisation?,
+      facilities: freezed == facilities
+          ? _value.facilities
+          : facilities // ignore: cast_nullable_to_non_nullable
+              as List<Facility?>?,
     ) as $Val);
   }
 
@@ -109,8 +125,10 @@ abstract class _$$_ProgramCopyWith<$Res> implements $ProgramCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'name') String? name,
+      @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'active', defaultValue: false) bool? active,
-      @JsonKey(name: 'organisation') Organisation? organisation});
+      @JsonKey(name: 'organisation') Organisation? organisation,
+      @JsonKey(name: 'facility') List<Facility?>? facilities});
 
   @override
   $OrganisationCopyWith<$Res>? get organisation;
@@ -128,8 +146,10 @@ class __$$_ProgramCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? description = freezed,
     Object? active = freezed,
     Object? organisation = freezed,
+    Object? facilities = freezed,
   }) {
     return _then(_$_Program(
       id: freezed == id
@@ -140,6 +160,10 @@ class __$$_ProgramCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
       active: freezed == active
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
@@ -148,6 +172,10 @@ class __$$_ProgramCopyWithImpl<$Res>
           ? _value.organisation
           : organisation // ignore: cast_nullable_to_non_nullable
               as Organisation?,
+      facilities: freezed == facilities
+          ? _value._facilities
+          : facilities // ignore: cast_nullable_to_non_nullable
+              as List<Facility?>?,
     ));
   }
 }
@@ -158,8 +186,11 @@ class _$_Program implements _Program {
   _$_Program(
       {@JsonKey(name: 'id') this.id,
       @JsonKey(name: 'name') this.name,
+      @JsonKey(name: 'description') this.description,
       @JsonKey(name: 'active', defaultValue: false) this.active,
-      @JsonKey(name: 'organisation') this.organisation});
+      @JsonKey(name: 'organisation') this.organisation,
+      @JsonKey(name: 'facility') final List<Facility?>? facilities})
+      : _facilities = facilities;
 
   factory _$_Program.fromJson(Map<String, dynamic> json) =>
       _$$_ProgramFromJson(json);
@@ -171,15 +202,27 @@ class _$_Program implements _Program {
   @JsonKey(name: 'name')
   final String? name;
   @override
+  @JsonKey(name: 'description')
+  final String? description;
+  @override
   @JsonKey(name: 'active', defaultValue: false)
   final bool? active;
   @override
   @JsonKey(name: 'organisation')
   final Organisation? organisation;
+  final List<Facility?>? _facilities;
+  @override
+  @JsonKey(name: 'facility')
+  List<Facility?>? get facilities {
+    final value = _facilities;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'Program(id: $id, name: $name, active: $active, organisation: $organisation)';
+    return 'Program(id: $id, name: $name, description: $description, active: $active, organisation: $organisation, facilities: $facilities)';
   }
 
   @override
@@ -189,14 +232,19 @@ class _$_Program implements _Program {
             other is _$_Program &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.active, active) || other.active == active) &&
             (identical(other.organisation, organisation) ||
-                other.organisation == organisation));
+                other.organisation == organisation) &&
+            const DeepCollectionEquality()
+                .equals(other._facilities, _facilities));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, active, organisation);
+  int get hashCode => Object.hash(runtimeType, id, name, description, active,
+      organisation, const DeepCollectionEquality().hash(_facilities));
 
   @JsonKey(ignore: true)
   @override
@@ -216,8 +264,10 @@ abstract class _Program implements Program {
   factory _Program(
           {@JsonKey(name: 'id') final String? id,
           @JsonKey(name: 'name') final String? name,
+          @JsonKey(name: 'description') final String? description,
           @JsonKey(name: 'active', defaultValue: false) final bool? active,
-          @JsonKey(name: 'organisation') final Organisation? organisation}) =
+          @JsonKey(name: 'organisation') final Organisation? organisation,
+          @JsonKey(name: 'facility') final List<Facility?>? facilities}) =
       _$_Program;
 
   factory _Program.fromJson(Map<String, dynamic> json) = _$_Program.fromJson;
@@ -229,11 +279,17 @@ abstract class _Program implements Program {
   @JsonKey(name: 'name')
   String? get name;
   @override
+  @JsonKey(name: 'description')
+  String? get description;
+  @override
   @JsonKey(name: 'active', defaultValue: false)
   bool? get active;
   @override
   @JsonKey(name: 'organisation')
   Organisation? get organisation;
+  @override
+  @JsonKey(name: 'facility')
+  List<Facility?>? get facilities;
   @override
   @JsonKey(ignore: true)
   _$$_ProgramCopyWith<_$_Program> get copyWith =>

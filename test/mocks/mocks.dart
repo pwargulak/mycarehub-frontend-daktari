@@ -914,6 +914,70 @@ class MockTestGraphQlClient extends IGraphQlClient {
       );
     }
 
+    if (queryString.contains(listOrganizationsQuery)) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(
+            <String, dynamic>{
+              'data': <String, dynamic>{
+                'listOrganisations': <String, dynamic>{
+                  'organisations': <dynamic>[
+                    <String, dynamic>{
+                      'id': 'some-id',
+                      'name': 'Organisation SI THREE',
+                      'description': 'Organisation SI Two',
+                      'programs': <dynamic>[mockProgramData]
+                    },
+                    <String, dynamic>{
+                      'id': 'some-id',
+                      'name': 'Organisation Two Five Four',
+                      'description': 'Test Organisation Two Five Four',
+                      'programs': <dynamic>[mockProgramData]
+                    },
+                    <String, dynamic>{
+                      'id': 'some-id',
+                      'name': 'Organisation SI THREE',
+                      'description': 'Organisation SI Two',
+                      'programs': <dynamic>[mockProgramData]
+                    },
+                  ]
+                }
+              }
+            },
+          ),
+          201,
+        ),
+      );
+    }
+
+    if (queryString.contains(searchOrganizationQuery)) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(
+            <String, dynamic>{
+              'data': <String, dynamic>{
+                'searchOrganisations': <dynamic>[
+                  <String, dynamic>{
+                    'id': 'some-id',
+                    'name': 'Organisation SI THREE',
+                    'description': 'Organisation SI Two',
+                    'programs': <dynamic>[mockProgramData]
+                  },
+                  <String, dynamic>{
+                    'id': 'some-id',
+                    'name': 'Organisation Two Five Four',
+                    'description': 'Test Organisation Two Five Four',
+                    'programs': <dynamic>[mockProgramData]
+                  },
+                ]
+              }
+            },
+          ),
+          201,
+        ),
+      );
+    }
+
     if (queryString.contains(setStaffDefaultFacilityMutation)) {
       return Future<http.Response>.value(
         http.Response(
@@ -1699,6 +1763,19 @@ final Map<String, dynamic> mockUserData = <String, dynamic>{
   'Username': 'test user',
   'Name': 'test user',
   'Contacts': <String, dynamic>{'contactValue': '1779185060'}
+};
+
+final Map<String, dynamic> mockProgramData = <String, dynamic>{
+  'id': 'bbe653e3-4159-44a0-8f75-ff1af971521f',
+  'active': true,
+  'name': 'Mycarehub',
+  'description': '',
+  'organisation': <String, dynamic>{
+    'id': '4181df12-ca96-4f28-b78b-8e8ad88b25df',
+    'name': 'Savannah Informatics Global Health Institute',
+    'description': 'Savannah Informatics Global Health Institute'
+  },
+  'facilities': mockFacilities
 };
 
 final Map<String, dynamic> mockLoginUser = <String, dynamic>{

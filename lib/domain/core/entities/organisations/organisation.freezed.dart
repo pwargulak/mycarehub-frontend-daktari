@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Organisation _$OrganisationFromJson(Map<String, dynamic> json) {
-  return _Organisation.fromJson(json);
+  return _Organization.fromJson(json);
 }
 
 /// @nodoc
@@ -26,6 +26,8 @@ mixin _$Organisation {
   String? get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'description')
   String? get description => throw _privateConstructorUsedError;
+  @JsonKey(name: 'programs')
+  List<Program?>? get programs => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,7 +44,8 @@ abstract class $OrganisationCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'name') String? name,
-      @JsonKey(name: 'description') String? description});
+      @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'programs') List<Program?>? programs});
 }
 
 /// @nodoc
@@ -61,6 +64,7 @@ class _$OrganisationCopyWithImpl<$Res, $Val extends Organisation>
     Object? id = freezed,
     Object? name = freezed,
     Object? description = freezed,
+    Object? programs = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -75,30 +79,35 @@ class _$OrganisationCopyWithImpl<$Res, $Val extends Organisation>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
+      programs: freezed == programs
+          ? _value.programs
+          : programs // ignore: cast_nullable_to_non_nullable
+              as List<Program?>?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_OrganisationCopyWith<$Res>
+abstract class _$$_OrganizationCopyWith<$Res>
     implements $OrganisationCopyWith<$Res> {
-  factory _$$_OrganisationCopyWith(
-          _$_Organisation value, $Res Function(_$_Organisation) then) =
-      __$$_OrganisationCopyWithImpl<$Res>;
+  factory _$$_OrganizationCopyWith(
+          _$_Organization value, $Res Function(_$_Organization) then) =
+      __$$_OrganizationCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'name') String? name,
-      @JsonKey(name: 'description') String? description});
+      @JsonKey(name: 'description') String? description,
+      @JsonKey(name: 'programs') List<Program?>? programs});
 }
 
 /// @nodoc
-class __$$_OrganisationCopyWithImpl<$Res>
-    extends _$OrganisationCopyWithImpl<$Res, _$_Organisation>
-    implements _$$_OrganisationCopyWith<$Res> {
-  __$$_OrganisationCopyWithImpl(
-      _$_Organisation _value, $Res Function(_$_Organisation) _then)
+class __$$_OrganizationCopyWithImpl<$Res>
+    extends _$OrganisationCopyWithImpl<$Res, _$_Organization>
+    implements _$$_OrganizationCopyWith<$Res> {
+  __$$_OrganizationCopyWithImpl(
+      _$_Organization _value, $Res Function(_$_Organization) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -107,8 +116,9 @@ class __$$_OrganisationCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? description = freezed,
+    Object? programs = freezed,
   }) {
-    return _then(_$_Organisation(
+    return _then(_$_Organization(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -121,20 +131,26 @@ class __$$_OrganisationCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
+      programs: freezed == programs
+          ? _value._programs
+          : programs // ignore: cast_nullable_to_non_nullable
+              as List<Program?>?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_Organisation implements _Organisation {
-  _$_Organisation(
+class _$_Organization implements _Organization {
+  _$_Organization(
       {@JsonKey(name: 'id') this.id,
       @JsonKey(name: 'name') this.name,
-      @JsonKey(name: 'description') this.description});
+      @JsonKey(name: 'description') this.description,
+      @JsonKey(name: 'programs') final List<Program?>? programs})
+      : _programs = programs;
 
-  factory _$_Organisation.fromJson(Map<String, dynamic> json) =>
-      _$$_OrganisationFromJson(json);
+  factory _$_Organization.fromJson(Map<String, dynamic> json) =>
+      _$$_OrganizationFromJson(json);
 
   @override
   @JsonKey(name: 'id')
@@ -145,50 +161,62 @@ class _$_Organisation implements _Organisation {
   @override
   @JsonKey(name: 'description')
   final String? description;
+  final List<Program?>? _programs;
+  @override
+  @JsonKey(name: 'programs')
+  List<Program?>? get programs {
+    final value = _programs;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'Organisation(id: $id, name: $name, description: $description)';
+    return 'Organisation(id: $id, name: $name, description: $description, programs: $programs)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Organisation &&
+            other is _$_Organization &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
-                other.description == description));
+                other.description == description) &&
+            const DeepCollectionEquality().equals(other._programs, _programs));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, description);
+  int get hashCode => Object.hash(runtimeType, id, name, description,
+      const DeepCollectionEquality().hash(_programs));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OrganisationCopyWith<_$_Organisation> get copyWith =>
-      __$$_OrganisationCopyWithImpl<_$_Organisation>(this, _$identity);
+  _$$_OrganizationCopyWith<_$_Organization> get copyWith =>
+      __$$_OrganizationCopyWithImpl<_$_Organization>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OrganisationToJson(
+    return _$$_OrganizationToJson(
       this,
     );
   }
 }
 
-abstract class _Organisation implements Organisation {
-  factory _Organisation(
+abstract class _Organization implements Organisation {
+  factory _Organization(
           {@JsonKey(name: 'id') final String? id,
           @JsonKey(name: 'name') final String? name,
-          @JsonKey(name: 'description') final String? description}) =
-      _$_Organisation;
+          @JsonKey(name: 'description') final String? description,
+          @JsonKey(name: 'programs') final List<Program?>? programs}) =
+      _$_Organization;
 
-  factory _Organisation.fromJson(Map<String, dynamic> json) =
-      _$_Organisation.fromJson;
+  factory _Organization.fromJson(Map<String, dynamic> json) =
+      _$_Organization.fromJson;
 
   @override
   @JsonKey(name: 'id')
@@ -200,7 +228,10 @@ abstract class _Organisation implements Organisation {
   @JsonKey(name: 'description')
   String? get description;
   @override
+  @JsonKey(name: 'programs')
+  List<Program?>? get programs;
+  @override
   @JsonKey(ignore: true)
-  _$$_OrganisationCopyWith<_$_Organisation> get copyWith =>
+  _$$_OrganizationCopyWith<_$_Organization> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -83,5 +83,8 @@ const String errorSelectingDefaultFacility = 'Error selecting default facility';
 // User Programs
 const String fetchUserProgramsErrorString =
     'Error while fetching user programs';
-const String setUserProgramErrorString =
-    'Error while setting user program';
+const String setUserProgramErrorString = 'Error while setting user program';
+const String fetchUserOrganizationsErrorString =
+    'Error while fetching organizations';
+const String searchOrganizationsErrorString =
+    'Error while searching organizations';

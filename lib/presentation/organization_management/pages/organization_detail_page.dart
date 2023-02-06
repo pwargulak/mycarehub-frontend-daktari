@@ -1,6 +1,9 @@
+import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
+import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
+import 'package:prohealth360_daktari/application/redux/view_models/onboarding/organisations_state_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
@@ -22,81 +25,97 @@ class OrganizationDetailPage extends StatelessWidget {
         showNotificationIcon: true,
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: <Widget>[
-                mediumVerticalSizedBox,
-                Center(
-                  child: SvgPicture.asset(organizationImage),
+        child: StoreConnector<AppState, OrganisationsStateViewModel>(
+          converter: (Store<AppState> store) =>
+              OrganisationsStateViewModel.fromStore(store),
+          builder: (BuildContext context, OrganisationsStateViewModel vm) {
+            return SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: <Widget>[
+                    mediumVerticalSizedBox,
+                    Center(
+                      child: SvgPicture.asset(organizationImage),
+                    ),
+                    mediumVerticalSizedBox,
+                    Text(
+                      vm.selectedOrganisation?.name ?? '',
+                      style: heavySize18Text(AppColors.blackColor),
+                    ),
+                    largeVerticalSizedBox,
+                    Text(
+                      vm.selectedOrganisation?.description ?? '',
+                      style: normalSize14Text(AppColors.greyTextColor),
+                      textAlign: TextAlign.center,
+                    ),
+                    mediumVerticalSizedBox,
+                    const Divider(),
+                    mediumVerticalSizedBox,
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            programsString,
+                            style: heavySize16Text(AppColors.blackColor),
+                          ),
+                          smallVerticalSizedBox,
+                          Text(
+                            runningProgramString,
+                            style: normalSize14Text(AppColors.greyTextColor),
+                          ),
+                          mediumVerticalSizedBox,
+                          if (vm.selectedOrganisation?.programs?.isNotEmpty ??
+                              false)
+                            ListView.builder(
+                              shrinkWrap: true,
+                              itemCount:
+                                  vm.selectedOrganisation!.programs?.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Container(
+                                  margin: const EdgeInsets.only(bottom: 20),
+                                  child: ProgramListItem(
+                                    title: vm.selectedOrganisation!
+                                            .programs?[index]?.name ??
+                                        '',
+                                    description: vm.selectedOrganisation!
+                                            .programs?[index]?.description ??
+                                        '',
+                                    onCancel: () {},
+                                    onTap: () {
+                                      Navigator.of(context).pushNamed(
+                                        AppRoutes.programDetailPageRoute,
+                                      );
+                                    },
+                                  ),
+                                );
+                              },
+                            ),
+
+                          // ),
+                          largeVerticalSizedBox,
+                          SizedBox(
+                            width: double.infinity,
+                            height: 48,
+                            child: MyAfyaHubPrimaryButton(
+                              borderColor: Colors.transparent,
+                              buttonKey: addProgramButtonKey,
+                              text: addProgramString,
+                              onPressed: () => Navigator.of(context)
+                                  .pushNamed(AppRoutes.manageProgramsPageRoute),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-                mediumVerticalSizedBox,
-                Text(
-                  sghiString,
-                  style: heavySize18Text(AppColors.blackColor),
-                ),
-                largeVerticalSizedBox,
-                Text(
-                  SGHIOrgDetailString,
-                  style: normalSize14Text(AppColors.greyTextColor),
-                  textAlign: TextAlign.center,
-                ),
-                mediumVerticalSizedBox,
-                const Divider(),
-                mediumVerticalSizedBox,
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        programsString,
-                        style: heavySize16Text(AppColors.blackColor),
-                      ),
-                      smallVerticalSizedBox,
-                      Text(
-                        runningProgramString,
-                        style: normalSize14Text(AppColors.greyTextColor),
-                      ),
-                      mediumVerticalSizedBox,
-                      ProgramListItem(
-                        title: myCareHubOrgString,
-                        description: myCareHubOrgDescriptionString,
-                        onCancel: () {},
-                        onTap: () {
-                          Navigator.of(context)
-                              .pushNamed(AppRoutes.programDetailPageRoute);
-                        },
-                      ),
-                      mediumVerticalSizedBox,
-                      ProgramListItem(
-                        title: FYJ,
-                        description: fYJOrgDescriptionString,
-                        onCancel: () {},
-                        onTap: () {
-                          Navigator.of(context)
-                              .pushNamed(AppRoutes.programDetailPageRoute);
-                        },
-                      ),
-                      largeVerticalSizedBox,
-                      SizedBox(
-                        width: double.infinity,
-                        height: 48,
-                        child: MyAfyaHubPrimaryButton(
-                          borderColor: Colors.transparent,
-                          buttonKey: addProgramButtonKey,
-                          text: addProgramString,
-                          onPressed: () => Navigator.of(context)
-                              .pushNamed(AppRoutes.manageProgramsPageRoute),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
+              ),
+            );
+          },
         ),
       ),
     );

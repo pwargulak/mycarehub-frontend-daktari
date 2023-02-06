@@ -14,6 +14,7 @@ void main() {
   final Store<AppState> store = Store<AppState>(
     initialState: AppState.initial(),
   );
+
   group('Manage Organization Page', () {
     testWidgets('renders correctly', (WidgetTester tester) async {
       await buildTestWidget(
@@ -22,6 +23,7 @@ void main() {
         graphQlClient: MockTestGraphQlClient(),
         widget: const ManageOrganizationPage(),
       );
+      await tester.pumpAndSettle();
 
       expect(find.byType(OrganizationListItem), findsNWidgets(3));
 
@@ -38,12 +40,49 @@ void main() {
         graphQlClient: MockTestGraphQlClient(),
         widget: const ManageOrganizationPage(),
       );
+      await tester.pumpAndSettle();
 
       expect(find.byType(OrganizationListItem), findsNWidgets(3));
 
       await tester.tap(find.byType(OrganizationListItem).first);
       await tester.pumpAndSettle();
       expect(find.byType(OrganizationDetailPage), findsOneWidget);
+    });
+
+    testWidgets('search organisation works correctly',
+        (WidgetTester tester) async {
+      await buildTestWidget(
+        tester: tester,
+        store: store,
+        graphQlClient: MockTestGraphQlClient(),
+        widget: const ManageOrganizationPage(),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.byType(OrganizationListItem), findsNWidgets(3));
+
+      await tester.tap(find.byKey(searchOrganizationButtonKey));
+      await tester.pumpAndSettle();
+
+      expect(find.byType(OrganizationListItem), findsNWidgets(2));
+    });
+
+    testWidgets('search organisation works correctly',
+        (WidgetTester tester) async {
+      await buildTestWidget(
+        tester: tester,
+        store: store,
+        graphQlClient: MockTestGraphQlClient(),
+        widget: const ManageOrganizationPage(),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.byType(OrganizationListItem), findsNWidgets(3));
+
+      await tester.tap(find.byKey(searchOrganizationButtonKey));
+      await tester.pumpAndSettle();
+
+      expect(find.byType(OrganizationListItem), findsNWidgets(2));
     });
   });
 }

@@ -11,7 +11,7 @@ _$_Facility _$$_FacilityFromJson(Map<String, dynamic> json) => _$_Facility(
       name: json['name'] as String?,
       phone: json['phone'] as String?,
       active: json['active'] as bool? ?? false,
-      county: json['county'] as String?,
+      country: json['country'] as String?,
       facilityIdentifier: json['identifier'] == null
           ? null
           : FacilityIdentifier.fromJson(
@@ -30,7 +30,7 @@ Map<String, dynamic> _$$_FacilityToJson(_$_Facility instance) =>
       'name': instance.name,
       'phone': instance.phone,
       'active': instance.active,
-      'county': instance.county,
+      'country': instance.country,
       'identifier': instance.facilityIdentifier,
       'description': instance.description,
       'fhirOrganisationID': instance.fhirOrganisationID,
