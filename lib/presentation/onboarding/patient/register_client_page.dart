@@ -536,7 +536,7 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
             clientTypesCopy[key] = !value;
             _formManager.inClientTypes.add(clientTypesCopy);
           },
-        ),
+        ), 
       );
     });
 

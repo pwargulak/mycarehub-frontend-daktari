@@ -15,6 +15,16 @@ mixin Validator {
       }
     },
   );
+  final StreamTransformer<String, String> validateEmail =
+      StreamTransformer<String, String>.fromHandlers(
+    handleData: (String value, EventSink<String> sink) {
+      if (isValidOptionalEmail(value)) {
+        sink.add(value);
+      } else {
+        sink.addError(const UserException(validEmailAddressText));
+      }
+    },
+  );
 
   final StreamTransformer<String, String> validateCcc =
       StreamTransformer<String, String>.fromHandlers(
@@ -82,6 +92,14 @@ mixin Validator {
 
   static bool isValidDate(DateTime date) {
     return date.year <= DateTime.now().year;
+  }
+
+  static bool isValidOptionalEmail(String email) {
+    const String pattern =
+        r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$";
+
+    final RegExp regExp = RegExp(pattern);
+    return email.isEmpty || (email.isNotEmpty && regExp.hasMatch(email));
   }
 
   static bool isValidPhone(String value) {

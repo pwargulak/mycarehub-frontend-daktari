@@ -1023,6 +1023,22 @@ class MockTestGraphQlClient extends IGraphQlClient {
         ),
       );
     }
+    if (queryString.contains(createOrganisationMutation)) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(
+            <String, dynamic>{
+              'data': <String, dynamic>{
+                'createOrganisation': <String, dynamic>{
+                  'staffProfile': true,
+                }
+              }
+            },
+          ),
+          201,
+        ),
+      );
+    }
     if (queryString.contains(getCaregiverManagedClientsQuery)) {
       return Future<http.Response>.value(
         http.Response(

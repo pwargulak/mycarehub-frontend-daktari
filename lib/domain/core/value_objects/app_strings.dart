@@ -275,6 +275,7 @@ const String addNewPatientTitleText = 'Add new patient';
 const String enrollmentDateLabel = 'Enrollment Date *';
 const String clientTypeLabel = 'Client Type *';
 const String registerClientSuccess = 'Successfully registered client';
+const String registerOrganisationSuccess = 'Successfully created organisation';
 const String registerCaregiverSuccess = 'Successfully registered caregiver';
 const String cccExists =
     'a client with this identifier type and value already exists';
@@ -362,6 +363,7 @@ const String errorNoUserFound = 'Error: no user found';
 const String connectionLostText = 'Internet connection lost';
 
 const String fieldCannotBeEmptyText = 'Field cannot be empty';
+const String validEmailAddressText = 'Enter a valid email address';
 const String enterAValidCCCNumberText = 'Enter a valid CCC number';
 
 // PhoneNumberFormConstants
@@ -1050,6 +1052,7 @@ const String switchingYourFacility = 'Switching your facility';
 String getOrganizationDescriptionString(String userName) {
   return 'Hi $userName! Please select your organization';
 }
+const String optionalString = 'optional';
 
 // Roles
 const String rolesString = 'Roles';

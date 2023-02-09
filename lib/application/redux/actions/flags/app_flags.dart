@@ -22,6 +22,9 @@ const String searchCaregiverFlag = 'search_caregiver_flag';
 // Register staff page
 const String registerStaffFlag = 'register_staff_flag';
 
+// Register organisation page
+const String registerOrganisationFlag = 'register_organisation_flag';
+
 // Create group page
 const String createGroupFlag = 'create_group_flag';
 

@@ -237,7 +237,6 @@ mutation registerCaregiver($input: CaregiverInput!) {
   }
 }
 ''';
-
 const String addFacilitiesToClientProfileMutation = r'''
 mutation addFacilitiesToClientProfile(
   $clientID: ID! ,
@@ -310,5 +309,10 @@ mutation setStaffProgram($programID: ID!) {
     }
     communityToken
   }
+}
+''';
+const String createOrganisationMutation = r'''
+mutation createOrganisation($organisationInput: OrganisationInput!, $programInput: [ProgramInput]) {
+  createOrganisation(organisationInput: $organisationInput, programInput: $programInput)
 }
 ''';

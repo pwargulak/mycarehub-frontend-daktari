@@ -32,6 +32,7 @@ const String registerClientErrorString = 'Error registering client';
 const String fetchFacilitiesErrorString = 'Error fetching facilities';
 const String fetchProgramsErrorString = 'Error fetching programs';
 const String fetchStaffErrorString = 'Error fetching staff';
+const String createOrganisationErrorString = 'Error creating organisation';
 const String pinVerificationErrorString = 'Error while verifying user PIN';
 const String assignRolesErrorString = 'Error assigning roles';
 const String getRolesErrorString = 'Error getting roles';

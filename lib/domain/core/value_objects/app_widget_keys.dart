@@ -60,6 +60,7 @@ const Key sendSurveyButtonKey = Key('send_survey_button_key');
 // add new patient page
 const Key myAfyaHubInviteKey = Key('appAccessKey');
 const Key patientRegisterBtnKey = Key('patientRegisterButton');
+const Key createOrganisationBtnKey = Key('createOrganisationButton');
 const Key saveFacilityBtnKey = Key('save_facility_btn_key');
 const Key facilitySelectOptionFieldKey = Key('facility_select_option_field');
 const Key organisationSelectOptionFieldKey =
@@ -222,3 +223,12 @@ const Key createOrganizationButtonKey = Key('create_organization_button_key');
 const Key addProgramButtonKey = Key('add_program_button_key');
 const Key createProgramButtonKey = Key('create_program_button_key');
 const Key searchOrganizationButtonKey = Key('search_organisation_button_key');
+
+// Create organization
+const Key registrationNumberKey = Key('registration_number');
+const Key phoneNumberKey = Key('phone_number');
+const Key nameKey = Key('name_key');
+const Key countryKey = Key('country_key');
+const Key descriptionKey = Key('description_key');
+const Key emailKey = Key('email_key');
+const Key addressKey = Key('address_key');
