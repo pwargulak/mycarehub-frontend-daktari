@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:prohealth360_daktari/presentation/admin/admin_page.dart';
+import 'package:prohealth360_daktari/presentation/onboarding/core/search_organization_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/login/pages/login_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/program_selection/program_selection_page.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/pages/create_organization_page.dart';
@@ -568,6 +569,12 @@ class RouteGenerator {
             isClient: args?['isClient'] as bool?,
           ),
           settings: const RouteSettings(name: 'Search facilities page'),
+        );
+
+      case AppRoutes.searchOrganisationsPage:
+        return MaterialPageRoute<SearchOrganisationsPage>(
+          builder: (_) => const SearchOrganisationsPage(),
+          settings: const RouteSettings(name: 'Search organisations page'),
         );
 
       case AppRoutes.surveyRespondentsPage:

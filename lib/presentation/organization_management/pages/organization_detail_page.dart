@@ -16,7 +16,6 @@ import 'package:sghi_core/afya_moja_core/src/presentation/text_themes.dart';
 
 class OrganizationDetailPage extends StatelessWidget {
   const OrganizationDetailPage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,7 +93,6 @@ class OrganizationDetailPage extends StatelessWidget {
                                 );
                               },
                             ),
-
                           // ),
                           largeVerticalSizedBox,
                           SizedBox(

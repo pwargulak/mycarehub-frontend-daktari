@@ -6,10 +6,9 @@ import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/connectivity_state.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
+import 'package:prohealth360_daktari/presentation/organization_management/widgets/program_list_item_widget.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/pages/create_organization_page.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/pages/manage_programs_page.dart';
-import 'package:prohealth360_daktari/presentation/organization_management/widgets/program_list_item_widget.dart';
-
 import '../../../mocks/mocks.dart';
 import '../../../mocks/test_helpers.dart';
 
@@ -45,7 +44,8 @@ void main() {
 
       await tester.pumpAndSettle();
 
-      final Finder registrationNumberField = find.byKey(registrationNumberKey);
+      final Finder registrationNumberField =
+          find.byKey(registrationNumberFieldKey);
       expect(registrationNumberField, findsOneWidget);
       await tester.ensureVisible(registrationNumberField);
       await tester.tap(registrationNumberField);
@@ -113,7 +113,8 @@ void main() {
 
       await tester.pumpAndSettle();
 
-      final Finder registrationNumberField = find.byKey(registrationNumberKey);
+      final Finder registrationNumberField =
+          find.byKey(registrationNumberFieldKey);
       expect(registrationNumberField, findsOneWidget);
       await tester.ensureVisible(registrationNumberField);
       await tester.tap(registrationNumberField);
@@ -180,7 +181,8 @@ void main() {
         widget: const CreateOrganizationPage(),
       );
       await tester.pumpAndSettle();
-      final Finder registrationNumberField = find.byKey(registrationNumberKey);
+      final Finder registrationNumberField =
+          find.byKey(registrationNumberFieldKey);
       expect(registrationNumberField, findsOneWidget);
       await tester.ensureVisible(registrationNumberField);
       await tester.tap(registrationNumberField);

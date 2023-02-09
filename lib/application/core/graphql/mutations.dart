@@ -316,3 +316,8 @@ mutation createOrganisation($organisationInput: OrganisationInput!, $programInpu
   createOrganisation(organisationInput: $organisationInput, programInput: $programInput)
 }
 ''';
+
+const String createProgramMutation = r'''
+mutation createProgram($input: ProgramInput!) {
+  createProgram(input: $input)
+}''';

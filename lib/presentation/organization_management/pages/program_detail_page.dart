@@ -16,7 +16,6 @@ import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 
 class ProgramDetailPage extends StatelessWidget {
   const ProgramDetailPage({super.key});
-
   @override
   Widget build(BuildContext context) {
     final List<String> diseases = <String>[

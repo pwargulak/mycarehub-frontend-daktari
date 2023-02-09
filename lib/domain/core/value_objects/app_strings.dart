@@ -1214,3 +1214,4 @@ const String registrationNumberString = 'Registration Number';
 const String countryString = 'Country';
 
 const String physicalAddressString = 'Physical Address';
+const String createProgramSuccess = 'Successfully created program';

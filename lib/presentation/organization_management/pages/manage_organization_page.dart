@@ -17,7 +17,6 @@ import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 
 class ManageOrganizationPage extends StatefulWidget {
   const ManageOrganizationPage();
-
   @override
   State<ManageOrganizationPage> createState() => _ManageOrganizationPageState();
 }

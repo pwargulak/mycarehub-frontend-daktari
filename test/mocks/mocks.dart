@@ -3077,3 +3077,9 @@ void setupFirebaseAnalyticsMocks([Callback? customHandlers]) {
     }
   });
 }
+
+Map<String, dynamic> mockCreateProgramPayload = <String, dynamic>{
+  'name': 'mycarehub',
+  'description': 'Test',
+  'organisationID': '9ec6e794-9e5c-4a40-8fa5-6d84f05c0eda',
+};

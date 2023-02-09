@@ -114,6 +114,7 @@ class AppRoutes {
   static const String editGroupInfoPage = '/editGroupInfoPage';
 
   static const String searchFacilitiesPage = '/searchFacilitiesPage';
+  static const String searchOrganisationsPage = '/searchOrganisationsPage';
   static const String surveyRespondentsPage = '/surveyRespondentsPage';
   static const String surveyServiceRequestResponsesPage =
       '/surveyServiceRequestResponsesPage';

@@ -18,7 +18,6 @@ import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 
 class ManageProgramsPage extends StatefulWidget {
   const ManageProgramsPage();
-
   @override
   State<ManageProgramsPage> createState() => _ManageProgramsPageState();
 }
@@ -27,7 +26,6 @@ class _ManageProgramsPageState extends State<ManageProgramsPage> {
   bool isSearching = false;
   String searchTerm = '';
   final TextEditingController searchController = TextEditingController();
-
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();

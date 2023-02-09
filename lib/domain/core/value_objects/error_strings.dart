@@ -90,3 +90,4 @@ const String fetchUserOrganizationsErrorString =
     'Error while fetching organizations';
 const String searchOrganizationsErrorString =
     'Error while searching organizations';
+const String createProgramErrorString = 'Error while creating program';

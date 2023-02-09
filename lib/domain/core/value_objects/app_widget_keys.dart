@@ -225,10 +225,15 @@ const Key createProgramButtonKey = Key('create_program_button_key');
 const Key searchOrganizationButtonKey = Key('search_organisation_button_key');
 
 // Create organization
-const Key registrationNumberKey = Key('registration_number');
+const Key registrationNumberFieldKey = Key('registration_number');
 const Key phoneNumberKey = Key('phone_number');
 const Key nameKey = Key('name_key');
 const Key countryKey = Key('country_key');
 const Key descriptionKey = Key('description_key');
 const Key emailKey = Key('email_key');
 const Key addressKey = Key('address_key');
+const Key programNameFieldKey = Key('program_name_field');
+const Key programDescriptionFieldKey = Key('program_description_field');
+const Key organizationSelectOptionFieldKey = Key('organization_select_option_field');
+const Key searchOrganisationconBtnKey = Key('search_organisation_icon_btn_key');
+const Key addNewProgramButtonKey = Key('add_new_program_button_key');

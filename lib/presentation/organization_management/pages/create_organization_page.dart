@@ -76,7 +76,7 @@ class _CreateOrganizationPageState extends State<CreateOrganizationPage> {
                           AsyncSnapshot<String> snapshot,
                         ) {
                           return CustomTextField(
-                            formFieldKey: registrationNumberKey,
+                            formFieldKey: registrationNumberFieldKey,
                             focusedBorderColor: Colors.transparent,
                             borderColor: Colors.transparent,
                             customFillColor:
