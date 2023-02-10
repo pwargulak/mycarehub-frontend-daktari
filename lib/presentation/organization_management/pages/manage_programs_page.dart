@@ -2,6 +2,7 @@ import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/actions/programs/search_programs_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/programs/update_programs_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/onboarding/programs_state_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/entities/programs/program.dart';
@@ -92,8 +93,7 @@ class _ManageProgramsPageState extends State<ManageProgramsPage> {
             converter: (Store<AppState> store) =>
                 ProgramsStateViewModel.fromStore(store),
             builder: (BuildContext context, ProgramsStateViewModel vm) {
-              if (vm.wait.isWaitingFor(fetchProgramsFlag) ||
-                  vm.wait.isWaitingFor(fetchProgramsFlag)) {
+              if (vm.wait.isWaitingFor(fetchProgramsFlag)) {
                 return Container(
                   height: 300,
                   padding: const EdgeInsets.all(20),
@@ -111,6 +111,16 @@ class _ManageProgramsPageState extends State<ManageProgramsPage> {
                           title: program.name ?? '',
                           subtitle: program.organisation?.name ?? '',
                           description: program.organisation?.description ?? '',
+                          onTap: () {
+                            StoreProvider.dispatch(
+                              context,
+                              UpdateProgramsStateAction(
+                                selectedProgram: program,
+                              ),
+                            );
+                            Navigator.of(context)
+                                .pushNamed(AppRoutes.programDetailPageRoute);
+                          },
                         ),
                         size15VerticalSizedBox
                       ],

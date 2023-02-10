@@ -33,107 +33,118 @@ class _ManageOrganizationPageState extends State<ManageOrganizationPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-        child: SingleChildScrollView(
-          child: StoreConnector<AppState, OrganisationsStateViewModel>(
-            converter: (Store<AppState> store) =>
-                OrganisationsStateViewModel.fromStore(store),
-            onInit: (Store<AppState> store) {
-              store.dispatch(
-                ListOrganisationsAction(
-                  client: AppWrapperBase.of(context)!.graphQLClient,
-                ),
+        child: StoreConnector<AppState, OrganisationsStateViewModel>(
+          converter: (Store<AppState> store) =>
+              OrganisationsStateViewModel.fromStore(store),
+          onInit: (Store<AppState> store) {
+            store.dispatch(
+              ListOrganisationsAction(
+                client: AppWrapperBase.of(context)!.graphQLClient,
+              ),
+            );
+          },
+          builder: (BuildContext context, OrganisationsStateViewModel vm) {
+            if (vm.wait.isWaitingFor(listOrganizationsFlag) ||
+                vm.wait.isWaitingFor(searchOrganizationsFlag)) {
+              return Container(
+                height: 300,
+                padding: const EdgeInsets.all(20),
+                child: const PlatformLoader(),
               );
-            },
-            builder: (BuildContext context, OrganisationsStateViewModel vm) {
-              if (vm.wait.isWaitingFor(listOrganizationsFlag) ||
-                  vm.wait.isWaitingFor(searchOrganizationsFlag)) {
-                return Container(
-                  height: 300,
-                  padding: const EdgeInsets.all(20),
-                  child: const PlatformLoader(),
-                );
-              }
-              return Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    searchOrganizationTextString,
-                    style: normalSize14Text(AppColors.greyTextColor),
-                  ),
-                  mediumVerticalSizedBox,
-                  CustomTextField(
-                    hintText: searchOrganizationHintString,
-                    controller: searchController,
-                    suffixIcon: Padding(
-                      padding: const EdgeInsets.only(right: 4.0),
-                      child: IconButton(
-                        key: searchOrganizationButtonKey,
-                        onPressed: () {
-                          StoreProvider.dispatch(
-                            context,
-                            SearchOrganisationsAction(
-                              client: AppWrapperBase.of(context)!.graphQLClient,
-                              query: searchController.text,
+            }
+            return Column(
+              children: <Widget>[
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          searchOrganizationTextString,
+                          style: normalSize14Text(AppColors.greyTextColor),
+                        ),
+                        mediumVerticalSizedBox,
+                        CustomTextField(
+                          hintText: searchOrganizationHintString,
+                          controller: searchController,
+                          suffixIcon: Padding(
+                            padding: const EdgeInsets.only(right: 4.0),
+                            child: IconButton(
+                              key: searchOrganizationButtonKey,
+                              onPressed: () {
+                                StoreProvider.dispatch(
+                                  context,
+                                  SearchOrganisationsAction(
+                                    client: AppWrapperBase.of(context)!
+                                        .graphQLClient,
+                                    query: searchController.text,
+                                  ),
+                                );
+                              },
+                              icon: const Icon(Icons.search),
                             ),
-                          );
-                        },
-                        icon: const Icon(Icons.search),
-                      ),
-                    ),
-                    borderColor: Colors.white,
-                    customFillColor: AppColors.primaryColor.withOpacity(0.15),
-                  ),
-                  mediumVerticalSizedBox,
-                  Text(
-                    mostViewedOrganizationString,
-                    style: boldSize16Text(AppColors.greyTextColor),
-                  ),
-                  mediumVerticalSizedBox,
-                  if (vm.organisations?.isNotEmpty ?? false)
-                    ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: vm.organisations!.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Container(
-                          margin: const EdgeInsets.only(bottom: 15),
-                          child: OrganizationListItem(
-                            description:
-                                vm.organisations![index].description ?? '',
-                            title: vm.organisations![index].name ?? '',
-                            onTap: () {
-                              StoreProvider.dispatch(
-                                context,
-                                UpdateOrganisationsStateAction(
-                                  selectedOrganisation:
-                                      vm.organisations![index],
+                          ),
+                          borderColor: Colors.white,
+                          customFillColor:
+                              AppColors.primaryColor.withOpacity(0.15),
+                        ),
+                        mediumVerticalSizedBox,
+                        Text(
+                          mostViewedOrganizationString,
+                          style: boldSize16Text(AppColors.greyTextColor),
+                        ),
+                        mediumVerticalSizedBox,
+                        if (vm.organisations?.isNotEmpty ?? false)
+                          ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: vm.organisations!.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return Container(
+                                margin: const EdgeInsets.only(bottom: 15),
+                                child: OrganizationListItem(
+                                  description:
+                                      vm.organisations![index].description ??
+                                          '',
+                                  title: vm.organisations![index].name ?? '',
+                                  onTap: () {
+                                    StoreProvider.dispatch(
+                                      context,
+                                      UpdateOrganisationsStateAction(
+                                        selectedOrganisation:
+                                            vm.organisations![index],
+                                      ),
+                                    );
+                                    Navigator.of(context).pushNamed(
+                                      AppRoutes.organizationDetailPageRoute,
+                                    );
+                                  },
                                 ),
-                              );
-                              Navigator.of(context).pushNamed(
-                                AppRoutes.organizationDetailPageRoute,
                               );
                             },
                           ),
-                        );
-                      },
+                      ],
                     ),
-                ],
-              );
-            },
-          ),
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        width: double.infinity,
-        height: 48,
-        child: MyAfyaHubPrimaryButton(
-          borderColor: Colors.transparent,
-          text: createOrganizationString,
-          buttonKey: createOrganizationButtonKey,
-          onPressed: () {
-            Navigator.of(context).pushNamed(AppRoutes.createOrganizationRoute);
+                  ),
+                ),
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                  width: double.infinity,
+                  height: 48,
+                  child: MyAfyaHubPrimaryButton(
+                    borderColor: Colors.transparent,
+                    text: createOrganizationString,
+                    buttonKey: createOrganizationButtonKey,
+                    onPressed: () {
+                      Navigator.of(context)
+                          .pushNamed(AppRoutes.createOrganizationRoute);
+                    },
+                  ),
+                )
+              ],
+            );
           },
         ),
       ),

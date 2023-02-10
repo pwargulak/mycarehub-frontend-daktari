@@ -11,6 +11,7 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart'
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/pages/create_program_page.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/pages/manage_programs_page.dart';
+import 'package:prohealth360_daktari/presentation/organization_management/pages/program_detail_page.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/widgets/program_list_item_widget.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 
@@ -42,6 +43,26 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.byType(CreateProgramPage), findsOneWidget);
+    });
+
+    testWidgets('navigates to detail page correctly',
+        (WidgetTester tester) async {
+      store.dispatch(UpdateConnectivityAction(hasConnection: true));
+      await buildTestWidget(
+        tester: tester,
+        store: store,
+        graphQlClient: MockTestGraphQlClient(),
+        widget: const ManageProgramsPage(),
+      );
+
+      await tester.pumpAndSettle();
+      expect(find.byType(CustomTextField), findsOneWidget);
+
+      expect(find.byType(ProgramListItem), findsOneWidget);
+      await tester.tap(find.byType(ProgramListItem));
+
+      await tester.pumpAndSettle();
+      expect(find.byType(ProgramDetailPage), findsOneWidget);
     });
     testWidgets(
         'displays error if there is no internet connection when fetching programs by search',
@@ -157,7 +178,7 @@ void main() {
     testWidgets(
       'should show GenericErrorWidget when there is no program when searching',
       (WidgetTester tester) async {
-         tester.binding.window.physicalSizeTestValue = const Size(1280, 800);
+        tester.binding.window.physicalSizeTestValue = const Size(1280, 800);
         tester.binding.window.devicePixelRatioTestValue = 1;
         TestWidgetsFlutterBinding.ensureInitialized();
         final MockShortGraphQlClient mockShortGraphQlClient =

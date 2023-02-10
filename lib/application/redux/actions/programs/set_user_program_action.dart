@@ -53,7 +53,6 @@ class SetUserProgramAction extends ReduxAction<AppState> {
 
     if (processedResponse.ok) {
       final Map<String, dynamic> body = client.toMap(response);
-     
 
       final String? errors = client.parseError(body);
 
@@ -100,7 +99,7 @@ class SetUserProgramAction extends ReduxAction<AppState> {
       );
       dispatch(
         UpdateProgramsStateAction(
-          selectedProgram: program,
+          selectedUserProgram: program,
         ),
       );
       dispatch(

@@ -1,6 +1,10 @@
+import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
+import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
+import 'package:prohealth360_daktari/application/redux/view_models/onboarding/programs_state_view_model.dart';
+import 'package:prohealth360_daktari/domain/core/entities/programs/program.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
@@ -22,124 +26,144 @@ class ProgramDetailPage extends StatelessWidget {
       'Schizophrenia',
     ];
 
-    return Scaffold(
-      appBar: CustomAppBar(
-        title: programName(myCareHubOrgString),
-        showNotificationIcon: true,
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: <Widget>[
-                mediumVerticalSizedBox,
-                Center(
-                  child: SvgPicture.asset(serviceRequestsIconSvg),
-                ),
-                smallVerticalSizedBox,
-                Text(
-                  myCareHubOrgString,
-                  style: heavySize18Text(AppColors.blackColor),
-                ),
-                mediumVerticalSizedBox,
-                Text(
-                  myCareHubOrgDescriptionString,
-                  style: normalSize14Text(AppColors.greyTextColor),
-                  textAlign: TextAlign.center,
-                ),
-                mediumVerticalSizedBox,
-                const Divider(),
-                verySmallVerticalSizedBox,
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Text(
-                        organizationString,
-                        style: heavySize16Text(AppColors.blackColor),
-                      ),
-                      smallVerticalSizedBox,
-                      Text(
-                        organizationDescriptionString,
-                        style: normalSize14Text(AppColors.greyTextColor),
-                      ),
-                      mediumVerticalSizedBox,
-                      Column(
+    return StoreConnector<AppState, ProgramsStateViewModel>(
+      converter: (Store<AppState> store) =>
+          ProgramsStateViewModel.fromStore(store),
+      builder: (BuildContext context, ProgramsStateViewModel vm) {
+        final Program? selectedProgram = vm.selectedProgram;
+        return Scaffold(
+          appBar: CustomAppBar(
+            title: programName(vm.selectedProgram?.name ?? ''),
+            showNotificationIcon: true,
+          ),
+          body: SafeArea(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: <Widget>[
+                    mediumVerticalSizedBox,
+                    Center(
+                      child: SvgPicture.asset(serviceRequestsIconSvg),
+                    ),
+                    smallVerticalSizedBox,
+                    Text(
+                      selectedProgram?.name ?? '',
+                      style: heavySize18Text(AppColors.blackColor),
+                    ),
+                    mediumVerticalSizedBox,
+                    Text(
+                      selectedProgram?.description ?? '',
+                      style: normalSize14Text(AppColors.greyTextColor),
+                      textAlign: TextAlign.center,
+                    ),
+                    mediumVerticalSizedBox,
+                    const Divider(),
+                    verySmallVerticalSizedBox,
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           Text(
-                            diseaseAreasString,
+                            organizationString,
                             style: heavySize16Text(AppColors.blackColor),
                           ),
                           smallVerticalSizedBox,
                           Text(
-                            diseaseAreasDescriptionString,
+                            selectedProgram?.organisation?.description ?? '',
                             style: normalSize14Text(AppColors.greyTextColor),
                           ),
-                          smallVerticalSizedBox,
-                          Wrap(
-                            runSpacing: 10,
-                            spacing: 10,
+                          mediumVerticalSizedBox,
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              for (String disease in diseases) ...<Widget>[
-                                BadgeWidget(
-                                  title: disease,
-                                )
-                              ],
+                              Text(
+                                diseaseAreasString,
+                                style: heavySize16Text(AppColors.blackColor),
+                              ),
+                              smallVerticalSizedBox,
+                              Text(
+                                diseaseAreasDescriptionString,
+                                style:
+                                    normalSize14Text(AppColors.greyTextColor),
+                              ),
+                              smallVerticalSizedBox,
+                              Wrap(
+                                runSpacing: 10,
+                                spacing: 10,
+                                children: <Widget>[
+                                  for (String disease in diseases) ...<Widget>[
+                                    BadgeWidget(
+                                      title: disease,
+                                    )
+                                  ],
+                                ],
+                              ),
+                            ],
+                          ),
+                          mediumVerticalSizedBox,
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                facilitiesString,
+                                style: heavySize16Text(AppColors.blackColor),
+                              ),
+                              smallVerticalSizedBox,
+                              Text(
+                                runningFacilitiesString,
+                                style:
+                                    normalSize14Text(AppColors.greyTextColor),
+                              ),
+                              smallVerticalSizedBox,
+                              if (selectedProgram?.facilities?.isNotEmpty ??
+                                  false)
+                                ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount:
+                                      selectedProgram?.facilities?.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return ProgramListItem(
+                                      title: selectedProgram!
+                                              .facilities?[index]?.name ??
+                                          '',
+                                      description: selectedProgram
+                                              .facilities?[index]
+                                              ?.description ??
+                                          '',
+                                      onCancel: () {},
+                                    );
+                                  },
+                                ),
+                              mediumVerticalSizedBox,
+                              SizedBox(
+                                width: double.infinity,
+                                height: 48,
+                                child: MyAfyaHubPrimaryButton(
+                                  borderColor: Colors.transparent,
+                                  buttonKey: addFacilityButtonKey,
+                                  text: addFacilityString,
+                                  onPressed: () =>
+                                      Navigator.of(context).pushNamed(
+                                    AppRoutes.searchFacilitiesPage,
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ],
                       ),
-                      mediumVerticalSizedBox,
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            facilitiesString,
-                            style: heavySize16Text(AppColors.blackColor),
-                          ),
-                          smallVerticalSizedBox,
-                          Text(
-                            runningFacilitiesString,
-                            style: normalSize14Text(AppColors.greyTextColor),
-                          ),
-                          smallVerticalSizedBox,
-                          ProgramListItem(
-                            title: ruiru,
-                            description: ruiruFacilityDescriptionString,
-                            onCancel: () {},
-                          ),
-                          smallVerticalSizedBox,
-                          ProgramListItem(
-                            title: kiambu,
-                            description: kiambuFacilityDescriptionString,
-                            onCancel: () {},
-                          ),
-                          mediumVerticalSizedBox,
-                          SizedBox(
-                            width: double.infinity,
-                            height: 48,
-                            child: MyAfyaHubPrimaryButton(
-                              borderColor: Colors.transparent,
-                              buttonKey: addFacilityButtonKey,
-                              text: addFacilityString,
-                              onPressed: () => Navigator.of(context)
-                                  .pushNamed(AppRoutes.searchFacilitiesPage),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
