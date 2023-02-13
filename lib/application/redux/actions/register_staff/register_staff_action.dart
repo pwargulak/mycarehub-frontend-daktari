@@ -65,6 +65,10 @@ class RegisterStaffAction extends ReduxAction<AppState> {
           throw const UserException(staffCccExists);
         }
 
+        if (errors.contains('username') && errors.contains('already exists')) {
+          throw const UserException(userWithUserNameExists);
+        }
+
         reportErrorToSentry(
           hint: fetchStaffErrorString,
           query: registerStaffMutation,

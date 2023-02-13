@@ -295,6 +295,8 @@ const String phoneExists =
     'a contact with this value and flavour already exists';
 const String staffCccExists =
     'A staff member with that CCC number already exists';
+const String userWithUserNameExists =
+    'A staff member with that username already exists';
 
 // add new group page
 const String enterGroupNameText = 'Enter Group name';
@@ -1052,6 +1054,7 @@ const String switchingYourFacility = 'Switching your facility';
 String getOrganizationDescriptionString(String userName) {
   return 'Hi $userName! Please select your organization';
 }
+
 const String optionalString = 'optional';
 
 // Roles
