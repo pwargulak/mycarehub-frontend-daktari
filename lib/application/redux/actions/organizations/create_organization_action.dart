@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:prohealth360_daktari/application/redux/actions/organizations/list_organisations_action.dart';
 import 'package:prohealth360_daktari/domain/core/entities/organisations/register_organisation_input_payload.dart';
+import 'package:prohealth360_daktari/domain/core/entities/program_management/create_program_payload.dart';
+import 'package:prohealth360_daktari/domain/core/entities/programs/program.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/foundation.dart';
@@ -45,9 +47,29 @@ class CreateOrganizationAction extends ReduxAction<AppState> {
     final Map<String, dynamic> payload =
         registerOrganisationInputPayload.toJson();
 
+    final List<dynamic> programInputs = <dynamic>[];
+
+    final List<Program> selectedPrograms =
+        state.userProfileState?.programsState?.selectedPrograms ?? <Program>[];
+
+    if (selectedPrograms.isNotEmpty) {
+      for (final Program program in selectedPrograms) {
+        programInputs.add(
+          CreateProgramPayload(
+            name: program.name,
+            description: program.description,
+            organisationID: program.organisation?.id,
+          ).toJson(),
+        );
+      }
+    }
+    
     final Response response = await client.query(
       createOrganisationMutation,
-      <String, dynamic>{'organisationInput': payload},
+      <String, dynamic>{
+        'organisationInput': payload,
+        'programInput': programInputs
+      },
     );
 
     final ProcessedResponse processedResponse = processHttpResponse(response);

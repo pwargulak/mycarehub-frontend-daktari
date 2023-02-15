@@ -4,12 +4,12 @@ import 'package:prohealth360_daktari/domain/core/entities/programs/program.dart'
 part 'programs_state.freezed.dart';
 part 'programs_state.g.dart';
 
-@freezed
+@Freezed(makeCollectionsUnmodifiable: false)
 class ProgramsState with _$ProgramsState {
   factory ProgramsState({
     List<Program>? userPrograms,
     List<Program>? programs,
-    Program? selectedProgram,
+    List<Program>? selectedPrograms,
     Program? selectedUserProgram,
     bool? errorGettingPrograms,
   }) = _ProgramsState;
@@ -20,7 +20,7 @@ class ProgramsState with _$ProgramsState {
   factory ProgramsState.initial() => ProgramsState(
         userPrograms: <Program>[],
         programs: <Program>[],
-        selectedProgram: Program.initial(),
+        selectedPrograms: <Program>[],
         selectedUserProgram: Program.initial(),
         errorGettingPrograms: false,
       );

@@ -83,12 +83,7 @@ class OrganizationDetailPage extends StatelessWidget {
                                     description: vm.selectedOrganisation!
                                             .programs?[index]?.description ??
                                         '',
-                                    onCancel: () {},
-                                    onTap: () {
-                                      Navigator.of(context).pushNamed(
-                                        AppRoutes.programDetailPageRoute,
-                                      );
-                                    },
+                                    
                                   ),
                                 );
                               },
@@ -102,8 +97,10 @@ class OrganizationDetailPage extends StatelessWidget {
                               borderColor: Colors.transparent,
                               buttonKey: addProgramButtonKey,
                               text: addProgramString,
-                              onPressed: () => Navigator.of(context)
-                                  .pushNamed(AppRoutes.manageProgramsPageRoute),
+                              onPressed: () => Navigator.of(context).pushNamed(
+                                AppRoutes.manageProgramsPageRoute,
+                                arguments: true,
+                              ),
                             ),
                           ),
                         ],

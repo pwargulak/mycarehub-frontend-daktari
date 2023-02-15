@@ -1,3 +1,5 @@
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:flutter/material.dart';
@@ -12,13 +14,14 @@ class ProgramListItem extends StatelessWidget {
     this.onTap,
     this.subtitle,
     this.onCancel,
+    this.isSelected = false,
   });
   final String title;
+  final bool isSelected;
   final String? description;
   final String? subtitle;
   final Function()? onCancel;
   final Function()? onTap;
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -47,7 +50,9 @@ class ProgramListItem extends StatelessWidget {
                   title,
                   style: veryBoldSize17Text(AppColors.primaryColor),
                 ),
-                if (onCancel != null)
+                if (isSelected)
+                  SvgPicture.asset(doneIconSvgPath)
+                else if (onCancel != null)
                   GestureDetector(
                     key: cancelButtonKey,
                     onTap: () {

@@ -36,10 +36,12 @@ void main() {
       expect(find.byType(CustomTextField), findsOneWidget);
 
       final Finder createProgramFinder = find.byKey(createProgramButtonKey);
-      expect(find.byType(ProgramListItem), findsOneWidget);
+      final Finder programListItemFinder = find.byType(ProgramListItem);
+
+      expect(programListItemFinder, findsNWidgets(2));
 
       await tester.ensureVisible(createProgramFinder);
-      await tester.tap(createProgramFinder);
+      await tester.tap(createProgramFinder.first);
       await tester.pumpAndSettle();
 
       expect(find.byType(CreateProgramPage), findsOneWidget);
@@ -58,8 +60,8 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.byType(CustomTextField), findsOneWidget);
 
-      expect(find.byType(ProgramListItem), findsOneWidget);
-      await tester.tap(find.byType(ProgramListItem));
+      expect(find.byType(ProgramListItem), findsNWidgets(2));
+      await tester.tap(find.byType(ProgramListItem).first);
 
       await tester.pumpAndSettle();
       expect(find.byType(ProgramDetailPage), findsOneWidget);
@@ -123,7 +125,7 @@ void main() {
       await tester.testTextInput.receiveAction(TextInputAction.done);
       await tester.pumpAndSettle();
 
-      expect(find.byType(ProgramListItem), findsOneWidget);
+      expect(find.byType(ProgramListItem), findsNWidgets(2));
     });
     testWidgets(
         'displays error if there is no internet connection when fetching programs by search using onSubmit',

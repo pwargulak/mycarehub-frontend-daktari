@@ -1,3 +1,4 @@
+import 'package:prohealth360_daktari/application/redux/view_models/connectivity_view_model.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:async_redux/async_redux.dart';
@@ -9,7 +10,6 @@ import 'package:prohealth360_daktari/application/redux/actions/create_pin_action
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/actions/onboarding/update_onboarding_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/application/redux/view_models/onboarding/create_pin_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
@@ -41,10 +41,10 @@ class _CreateNewPINPageState extends State<CreateNewPINPage> {
     return OnboardingScaffold(
       title: isResetPin ? resetPINTitleString : createNewPINTitleString,
       description: createNewPINSubTitleString,
-      child: StoreConnector<AppState, CreatePinViewModel>(
+      child: StoreConnector<AppState, ConnectivityViewModel>(
         converter: (Store<AppState> store) =>
-            CreatePinViewModel.fromStore(store),
-        builder: (BuildContext context, CreatePinViewModel vm) {
+            ConnectivityViewModel.fromStore(store),
+        builder: (BuildContext context, ConnectivityViewModel vm) {
           return SizedBox(
             height: MediaQuery.of(context).size.height / 1.6,
             child: Stack(
@@ -129,7 +129,7 @@ class _CreateNewPINPageState extends State<CreateNewPINPage> {
                       onPressed: vm.wait.isWaitingFor(createPinFlag)
                           ? null
                           : () async {
-                              if (!vm.hasConnection) {
+                              if (!vm.isConnected) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
                                     content: Text(noInternetConnection),

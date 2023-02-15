@@ -1,3 +1,4 @@
+import 'package:prohealth360_daktari/application/redux/view_models/connectivity_view_model.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:async_redux/async_redux.dart';
@@ -11,7 +12,6 @@ import 'package:prohealth360_daktari/application/redux/actions/caregiver/registe
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/actions/search_users/update_search_user_response_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/application/redux/view_models/register_client/register_client_view_model.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/search/search_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
@@ -353,14 +353,14 @@ class _RegisterCaregiverPageState extends State<RegisterCaregiverPage> {
                       final bool hasData =
                           snapshot.hasData && snapshot.data != null;
 
-                      return StoreConnector<AppState, RegisterClientViewModel>(
+                      return StoreConnector<AppState, ConnectivityViewModel>(
                         converter: (Store<AppState> store) =>
-                            RegisterClientViewModel.fromStore(
+                            ConnectivityViewModel.fromStore(
                           store,
                         ),
                         builder: (
                           BuildContext context,
-                          RegisterClientViewModel vm,
+                          ConnectivityViewModel vm,
                         ) {
                           if (vm.wait.isWaitingFor(registerCaregiverFlag)) {
                             return const PlatformLoader();
@@ -369,7 +369,7 @@ class _RegisterCaregiverPageState extends State<RegisterCaregiverPage> {
                             key: registerCaregiverButtonKey,
                             onPressed: hasData && snapshot.data!
                                 ? () => _processAndNavigate(
-                                      vm.hasConnection,
+                                      vm.isConnected,
                                     )
                                 : null,
                             child: const Text(registerBtnText),

@@ -31,17 +31,8 @@ void main() {
         tester: tester,
         store: store,
         graphQlClient: MockTestGraphQlClient(),
-        widget: const CreateOrganizationPage(),
+        widget: CreateOrganizationPage(),
       );
-
-      await tester.pumpAndSettle();
-      expect(find.byType(ProgramListItem), findsNWidgets(2));
-      await tester.ensureVisible(find.byKey(cancelButtonKey).first);
-      await tester.tap(find.byKey(cancelButtonKey).first);
-      await tester.pumpAndSettle();
-      await tester.ensureVisible(find.byKey(cancelButtonKey).last);
-      await tester.tap(find.byKey(cancelButtonKey).last);
-
       await tester.pumpAndSettle();
 
       final Finder registrationNumberField =
@@ -92,7 +83,37 @@ void main() {
       await tester.enterText(addressFieldFinder, 'Test address');
       await tester.pumpAndSettle();
 
-      await tester.ensureVisible(addressFieldFinder);
+      final Finder addProgramButtonFinder = find.byKey(addProgramButtonKey);
+      expect(addProgramButtonFinder, findsOneWidget);
+      await tester.ensureVisible(addProgramButtonFinder);
+      await tester.tap(addProgramButtonFinder);
+      await tester.pumpAndSettle();
+      expect(find.byType(ManageProgramsPage), findsOneWidget);
+
+      final Finder programListItemFinder = find.byType(ProgramListItem);
+      expect(programListItemFinder, findsNWidgets(2));
+      await tester.tap(programListItemFinder.first);
+      await tester.pumpAndSettle();
+      await tester.tap(programListItemFinder.last);
+      await tester.pumpAndSettle();
+
+      final Finder createProgramFinder = find.byKey(createProgramButtonKey);
+      await tester.ensureVisible(createProgramFinder);
+      await tester.tap(createProgramFinder);
+      await tester.pumpAndSettle();
+
+      await tester.ensureVisible(addProgramButtonFinder);
+      await tester.tap(addProgramButtonFinder);
+      await tester.pumpAndSettle();
+      await tester.tap(programListItemFinder.first);
+      await tester.pumpAndSettle();
+      await tester.ensureVisible(createProgramFinder);
+      await tester.tap(createProgramFinder);
+      await tester.pumpAndSettle();
+      await tester.ensureVisible(find.byKey(cancelButtonKey).first);
+      await tester.tap(find.byKey(cancelButtonKey).first);
+      await tester.pumpAndSettle();
+
       final Finder createOrganisationBtnFinder =
           find.byKey(createOrganisationBtnKey);
       await tester.ensureVisible(createOrganisationBtnFinder);
@@ -108,7 +129,7 @@ void main() {
         tester: tester,
         store: store,
         graphQlClient: MockTestGraphQlClient(),
-        widget: const CreateOrganizationPage(),
+        widget: CreateOrganizationPage(),
       );
 
       await tester.pumpAndSettle();
@@ -178,7 +199,7 @@ void main() {
       await buildTestWidget(
         store: store,
         tester: tester,
-        widget: const CreateOrganizationPage(),
+        widget: CreateOrganizationPage(),
       );
       await tester.pumpAndSettle();
       final Finder registrationNumberField =
@@ -198,7 +219,7 @@ void main() {
       await buildTestWidget(
         store: store,
         tester: tester,
-        widget: const CreateOrganizationPage(),
+        widget: CreateOrganizationPage(),
       );
       await tester.pumpAndSettle();
       final Finder nameFieldFinder = find.byKey(nameKey);
@@ -219,7 +240,7 @@ void main() {
       await buildTestWidget(
         store: store,
         tester: tester,
-        widget: const CreateOrganizationPage(),
+        widget: CreateOrganizationPage(),
       );
       await tester.pumpAndSettle();
 
@@ -239,7 +260,7 @@ void main() {
       await buildTestWidget(
         store: store,
         tester: tester,
-        widget: const CreateOrganizationPage(),
+        widget: CreateOrganizationPage(),
       );
       await tester.pumpAndSettle();
       final Finder descriptionFieldFinder = find.byKey(descriptionKey);
@@ -257,7 +278,7 @@ void main() {
       await buildTestWidget(
         store: store,
         tester: tester,
-        widget: const CreateOrganizationPage(),
+        widget: CreateOrganizationPage(),
       );
       await tester.pumpAndSettle();
 
@@ -276,7 +297,7 @@ void main() {
       await buildTestWidget(
         store: store,
         tester: tester,
-        widget: const CreateOrganizationPage(),
+        widget: CreateOrganizationPage(),
       );
       await tester.pumpAndSettle();
 
@@ -296,7 +317,7 @@ void main() {
       await buildTestWidget(
         store: store,
         tester: tester,
-        widget: const CreateOrganizationPage(),
+        widget: CreateOrganizationPage(),
       );
       await tester.pumpAndSettle();
 
@@ -310,21 +331,6 @@ void main() {
       await tester.pump();
 
       expect(find.text(fieldCannotBeEmptyText), findsOneWidget);
-    });
-    testWidgets('add program works correctly', (WidgetTester tester) async {
-      await buildTestWidget(
-        tester: tester,
-        store: store,
-        graphQlClient: MockTestGraphQlClient(),
-        widget: const CreateOrganizationPage(),
-      );
-      await tester.pumpAndSettle();
-      expect(find.byType(ProgramListItem), findsNWidgets(2));
-      await tester.ensureVisible(find.byKey(addProgramButtonKey));
-      await tester.tap(find.byKey(addProgramButtonKey));
-      await tester.pumpAndSettle();
-
-      expect(find.byType(ManageProgramsPage), findsOneWidget);
     });
   });
 }

@@ -6,14 +6,14 @@ import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 
 class UpdateProgramsStateAction extends ReduxAction<AppState> {
   UpdateProgramsStateAction({
-    this.selectedProgram,
+    this.selectedPrograms,
     this.selectedUserProgram,
     this.userPrograms,
     this.errorGettingPrograms,
     this.programs,
   });
 
-  final Program? selectedProgram;
+  final List<Program>? selectedPrograms;
   final Program? selectedUserProgram;
   final List<Program>? userPrograms;
   final List<Program>? programs;
@@ -31,8 +31,8 @@ class UpdateProgramsStateAction extends ReduxAction<AppState> {
           programs: programs ?? state.userProfileState?.programsState?.programs,
           errorGettingPrograms: errorGettingPrograms ??
               state.userProfileState?.programsState?.errorGettingPrograms,
-          selectedProgram: selectedProgram ??
-              state.userProfileState?.programsState?.selectedProgram,
+          selectedPrograms: selectedPrograms ??
+              state.userProfileState?.programsState?.selectedPrograms,
         ),
       ),
     );

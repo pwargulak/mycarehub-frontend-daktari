@@ -5,7 +5,7 @@ import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/actions/program_management/create_program_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/application/redux/view_models/program_management/create_program_view_model.dart';
+import 'package:prohealth360_daktari/application/redux/view_models/connectivity_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
@@ -39,12 +39,12 @@ class _CreateProgramPageState extends State<CreateProgramPage> {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
-            child: StoreConnector<AppState, CreateProgramViewModel>(
+            child: StoreConnector<AppState, ConnectivityViewModel>(
               converter: (Store<AppState> store) =>
-                  CreateProgramViewModel.fromStore(
+                  ConnectivityViewModel.fromStore(
                 store,
               ),
-              builder: (BuildContext context, CreateProgramViewModel vm) {
+              builder: (BuildContext context, ConnectivityViewModel vm) {
                 return Column(
                   children: <Widget>[
                     mediumVerticalSizedBox,
@@ -157,7 +157,7 @@ class _CreateProgramPageState extends State<CreateProgramPage> {
                               text: createProgramString,
                               onPressed: hasData && snapshot.data!
                                   ? () => _processAndNavigate(
-                                        vm.hasConnection,
+                                        vm.isConnected,
                                       )
                                   : null,
                             ),

@@ -1219,6 +1219,15 @@ class MockTestGraphQlClient extends IGraphQlClient {
                       'description': 'testOrgDescription',
                     },
                   },
+                  <String, dynamic>{
+                    'id': 'testId2',
+                    'name': 'testName2',
+                    'active': true,
+                    'organisation': <String, dynamic>{
+                      'id': 'testOrgId2',
+                      'description': 'testOrgDescription2',
+                    },
+                  },
                 ]
               }
             },

@@ -1,3 +1,4 @@
+import 'package:prohealth360_daktari/application/redux/view_models/connectivity_view_model.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:async_redux/async_redux.dart';
@@ -9,7 +10,6 @@ import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/actions/create_group/create_group_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/application/redux/view_models/create_group/create_group_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/entities/create_group/create_group_payload.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
@@ -338,10 +338,10 @@ class _CreateGroupPageState extends State<CreateGroupPage> {
                     ) {
                       final bool isValid = snapshot.data ?? false;
 
-                      return StoreConnector<AppState, CreateGroupViewModel>(
+                      return StoreConnector<AppState, ConnectivityViewModel>(
                         converter: (Store<AppState> store) =>
-                            CreateGroupViewModel.fromStore(store),
-                        builder: (_, CreateGroupViewModel vm) {
+                            ConnectivityViewModel.fromStore(store),
+                        builder: (_, ConnectivityViewModel vm) {
                           return ElevatedButton(
                             key: createGroupBtnKey,
                             onPressed: isValid ? () => _submitForm() : null,

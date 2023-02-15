@@ -7,7 +7,7 @@ class ProgramsStateViewModel extends Vm {
     required this.wait,
     this.userPrograms,
     required this.programs,
-    required this.selectedProgram,
+    required this.selectedPrograms,
     this.selectedUserProgram,
     this.errorGettingPrograms,
   }) : super(
@@ -15,7 +15,7 @@ class ProgramsStateViewModel extends Vm {
             wait,
             userPrograms,
             programs,
-            selectedProgram,
+            selectedPrograms,
             selectedUserProgram,
             errorGettingPrograms
           ],
@@ -24,7 +24,7 @@ class ProgramsStateViewModel extends Vm {
   final Wait wait;
   final List<Program>? userPrograms;
   final List<Program> programs;
-  final Program? selectedProgram;
+ final List<Program>? selectedPrograms;
   final Program? selectedUserProgram;
   final bool? errorGettingPrograms;
 
@@ -38,8 +38,8 @@ class ProgramsStateViewModel extends Vm {
           store.state.userProfileState?.programsState?.errorGettingPrograms,
       programs:
           store.state.userProfileState?.programsState?.programs ?? <Program>[],
-      selectedProgram:
-          store.state.userProfileState?.programsState?.selectedProgram,
+      selectedPrograms:
+          store.state.userProfileState?.programsState?.selectedPrograms,
     );
   }
 }

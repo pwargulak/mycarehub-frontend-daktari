@@ -1,3 +1,4 @@
+import 'package:prohealth360_daktari/application/redux/view_models/connectivity_view_model.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/patient/validator_mixin.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
@@ -12,7 +13,6 @@ import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/actions/register_staff/register_staff_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/application/redux/view_models/register_staff/register_staff_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
@@ -448,10 +448,10 @@ class _AddNewStaffPageState extends State<AddNewStaffPage> {
                               snapshot.hasData && snapshot.data != null;
 
                           return StoreConnector<AppState,
-                              RegisterStaffViewModel>(
+                              ConnectivityViewModel>(
                             converter: (Store<AppState> store) =>
-                                RegisterStaffViewModel.fromStore(store),
-                            builder: (_, RegisterStaffViewModel vm) {
+                                ConnectivityViewModel.fromStore(store),
+                            builder: (_, ConnectivityViewModel vm) {
                               if (vm.wait.isWaitingFor(registerStaffFlag)) {
                                 return const PlatformLoader();
                               }
@@ -464,7 +464,7 @@ class _AddNewStaffPageState extends State<AddNewStaffPage> {
                                           snapshot.data! &&
                                           username.isNotEmpty
                                       ? () =>
-                                          _processAndNavigate(vm.hasConnection)
+                                          _processAndNavigate(vm.isConnected)
                                       : null,
                                   style: ElevatedButton.styleFrom(
                                     padding: const EdgeInsets.all(8),

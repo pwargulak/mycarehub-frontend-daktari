@@ -29,10 +29,10 @@ class ProgramDetailPage extends StatelessWidget {
       converter: (Store<AppState> store) =>
           ProgramsStateViewModel.fromStore(store),
       builder: (BuildContext context, ProgramsStateViewModel vm) {
-        final Program? selectedProgram = vm.selectedProgram;
+        final Program? selectedProgram = vm.selectedPrograms?.first;
         return Scaffold(
           appBar: CustomAppBar(
-            title: programName(vm.selectedProgram?.name ?? ''),
+            title: programName(selectedProgram?.name ?? ''),
             showNotificationIcon: true,
           ),
           body: SafeArea(

@@ -1,4 +1,5 @@
 import 'package:prohealth360_daktari/application/redux/actions/core/batch_update_misc_state_action.dart';
+import 'package:prohealth360_daktari/application/redux/view_models/connectivity_view_model.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/patient/validator_mixin.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
@@ -13,7 +14,6 @@ import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/actions/register_client/register_client_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/application/redux/view_models/register_client/register_client_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
@@ -70,9 +70,9 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
         child: Padding(
           padding: const EdgeInsets.all(24.0),
           child: SingleChildScrollView(
-            child: StoreConnector<AppState, RegisterClientViewModel>(
+            child: StoreConnector<AppState, ConnectivityViewModel>(
               converter: (Store<AppState> store) =>
-                  RegisterClientViewModel.fromStore(
+                  ConnectivityViewModel.fromStore(
                 store,
               ),
               onInit: (Store<AppState> store) => store.dispatch(
@@ -80,7 +80,7 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
               ),
               builder: (
                 BuildContext context,
-                RegisterClientViewModel vm,
+                ConnectivityViewModel vm,
               ) {
                 return Column(
                   mainAxisSize: MainAxisSize.min,
@@ -497,7 +497,7 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
                                           snapshot.data! &&
                                           username.isNotEmpty
                                       ? () => _processAndNavigate(
-                                            vm.hasConnection,
+                                            vm.isConnected,
                                           )
                                       : null,
                                   child: const Text(registerBtnText),

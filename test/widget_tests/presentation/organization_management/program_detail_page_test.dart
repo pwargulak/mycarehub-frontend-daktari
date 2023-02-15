@@ -35,13 +35,13 @@ void main() {
     );
     store.dispatch(
       UpdateProgramsStateAction(
-        selectedProgram: Program(
+        selectedPrograms: <Program>[Program(
           name: 'some name',
           description: 'some description',
           facilities: <Facility>[testFacility, testFacility],
           id: 'some id',
           active: true,
-        ),
+        )],
       ),
     );
     testWidgets('renders correctly', (WidgetTester tester) async {

@@ -8,7 +8,6 @@ import 'package:prohealth360_daktari/domain/core/entities/programs/program.dart'
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/pages/manage_programs_page.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/pages/organization_detail_page.dart';
-import 'package:prohealth360_daktari/presentation/organization_management/pages/program_detail_page.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/widgets/program_list_item_widget.dart';
 
 import '../../../mocks/mocks.dart';
@@ -58,33 +57,12 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.byType(ProgramListItem), findsNWidgets(2));
 
-      await tester.tap(find.byKey(cancelButtonKey).first);
-      await tester.tap(find.byKey(cancelButtonKey).last);
-
-      await tester.tap(find.byType(ProgramListItem).first);
+      final Finder addProgramButtonFinder = find.byKey(addProgramButtonKey);
+      expect(addProgramButtonFinder, findsOneWidget);
+      await tester.ensureVisible(addProgramButtonFinder);
+      await tester.tap(addProgramButtonFinder);
       await tester.pumpAndSettle();
-
-      expect(find.byType(ProgramDetailPage), findsOneWidget);
-    });
-
-    testWidgets('navigates to details page correctly',
-        (WidgetTester tester) async {
-      await buildTestWidget(
-        tester: tester,
-        store: store,
-        graphQlClient: MockTestGraphQlClient(),
-        widget: const OrganizationDetailPage(),
-      );
-      await tester.pumpAndSettle();
-      expect(find.byType(ProgramListItem), findsNWidgets(2));
-
-      await tester.tap(find.byKey(cancelButtonKey).first);
-      await tester.tap(find.byKey(cancelButtonKey).last);
-
-      await tester.tap(find.byType(ProgramListItem).last);
-      await tester.pumpAndSettle();
-
-      expect(find.byType(ProgramDetailPage), findsOneWidget);
+      expect(find.byType(ManageProgramsPage), findsOneWidget);
     });
 
     testWidgets('add program button works correctly',

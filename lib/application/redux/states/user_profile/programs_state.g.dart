@@ -14,9 +14,9 @@ _$_ProgramsState _$$_ProgramsStateFromJson(Map<String, dynamic> json) =>
       programs: (json['programs'] as List<dynamic>?)
           ?.map((e) => Program.fromJson(e as Map<String, dynamic>))
           .toList(),
-      selectedProgram: json['selectedProgram'] == null
-          ? null
-          : Program.fromJson(json['selectedProgram'] as Map<String, dynamic>),
+      selectedPrograms: (json['selectedPrograms'] as List<dynamic>?)
+          ?.map((e) => Program.fromJson(e as Map<String, dynamic>))
+          .toList(),
       selectedUserProgram: json['selectedUserProgram'] == null
           ? null
           : Program.fromJson(
@@ -28,7 +28,7 @@ Map<String, dynamic> _$$_ProgramsStateToJson(_$_ProgramsState instance) =>
     <String, dynamic>{
       'userPrograms': instance.userPrograms,
       'programs': instance.programs,
-      'selectedProgram': instance.selectedProgram,
+      'selectedPrograms': instance.selectedPrograms,
       'selectedUserProgram': instance.selectedUserProgram,
       'errorGettingPrograms': instance.errorGettingPrograms,
     };
