@@ -114,7 +114,7 @@ jobs:
       - run:
           name: "Build and publish to firebase app distribution"
           command: |
-            flutter build apk --release --build-number $CIRCLE_BUILD_NUM --build-name=$BUILD_VERSION_ROOT.$CIRCLE_BUILD_NUM-internal
+            flutter build apk --release --build-number $CIRCLE_BUILD_NUM --build-name=$BUILD_VERSION_ROOT.$CIRCLE_BUILD_NUM-multitenant --dart-define=APPVERSION=$BUILD_VERSION_ROOT.$CIRCLE_BUILD_NUM-multitenant
             BUNDLE_FILE_PATH=$HOME/project/build/app/outputs/flutter-apk/app-release.apk
             firebase appdistribution:distribute $BUNDLE_FILE_PATH --app $MULTITENANT_FIREBASE_APP_ID --groups "internal-testers" --token $FIREBASE_TOKEN --release-notes-file $HOME/project/release-notes.txt
 
