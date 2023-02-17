@@ -84,6 +84,7 @@ class _SearchCaregiverPageState extends State<SearchCaregiverPage> {
                   ),
                   mediumVerticalSizedBox,
                   CustomTextField(
+                    maxLines: 1,
                     controller: searchController,
                     hintText: '$searchCaregiverString...',
                     suffixIcon: Padding(

@@ -28,6 +28,7 @@ class SearchRolePage extends StatelessWidget {
               ),
               mediumVerticalSizedBox,
               CustomTextField(
+                maxLines: 1,
                 hintText: searchRoleHintString,
                 prefixIcon: const Padding(
                   padding: EdgeInsets.only(right: 4.0),

@@ -87,6 +87,7 @@ class _SearchClientPageState extends State<SearchClientPage> {
                         ),
                         mediumVerticalSizedBox,
                         CustomTextField(
+                          maxLines: 1,
                           controller: searchController,
                           hintText: searchClientsHintString,
                           onSubmitted: (_) {

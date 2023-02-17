@@ -123,6 +123,7 @@ class _SearchFacilitiesPageState extends State<SearchFacilitiesPage> {
                         ),
                         mediumVerticalSizedBox,
                         CustomTextField(
+                          maxLines: 1,
                           controller: searchController,
                           hintText: '$searchFacilitiesString...',
                           suffixIcon: Padding(

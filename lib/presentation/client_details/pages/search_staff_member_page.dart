@@ -84,6 +84,7 @@ class _SearchStaffMemberPageState extends State<SearchStaffMemberPage> {
                         ),
                         mediumVerticalSizedBox,
                         CustomTextField(
+                          maxLines: 1,
                           controller: searchController,
                           hintText: searchStaffMembersHintString,
                           onSubmitted: (_) {

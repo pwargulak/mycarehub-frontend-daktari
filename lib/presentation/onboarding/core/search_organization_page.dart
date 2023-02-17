@@ -102,6 +102,7 @@ class _SearchOrganisationsPageState extends State<SearchOrganisationsPage> {
                         ),
                         mediumVerticalSizedBox,
                         CustomTextField(
+                          maxLines: 1,
                           controller: searchController,
                           hintText: '$searchOrganisationsString...',
                           suffixIcon: Padding(

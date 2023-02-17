@@ -1,7 +1,6 @@
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
-import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 
 class RoleListItemWidget extends StatelessWidget {
   const RoleListItemWidget({
@@ -40,11 +39,6 @@ class RoleListItemWidget extends StatelessWidget {
             Text(
               description,
               style: normalSize16Text(AppColors.greyTextColor),
-            ),
-            size15VerticalSizedBox,
-            Text(
-              tapToViewMoreInfoString,
-              style: normalSize16Text(AppColors.greyTextColor.withOpacity(0.5)),
             ),
           ],
         ),
