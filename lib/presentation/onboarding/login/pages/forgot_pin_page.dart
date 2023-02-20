@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
@@ -64,7 +65,21 @@ class ForgotPinPage extends StatelessWidget {
                           .pushReplacementNamed(config.nextRoute);
                     },
                   ),
-                )
+                ),
+                mediumVerticalSizedBox,
+                SizedBox(
+                  width: double.infinity,
+                  height: 48,
+                  child: MyAfyaHubPrimaryButton(
+                    buttonKey: cancelButtonKey,
+                    text: cancelString,
+                    textColor: AppColors.redColor,
+                    buttonColor: AppColors.redColor.withOpacity(0.1),
+                    borderColor: Colors.transparent,
+                    onPressed: () => Navigator.of(context)
+                        .popAndPushNamed(AppRoutes.loginPage),
+                  ),
+                ),
               ],
             ),
           ),

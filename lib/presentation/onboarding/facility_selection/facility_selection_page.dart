@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:prohealth360_daktari/application/redux/actions/facilities/fetch_staff_facilities_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/user_state_actions/logout_action.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/onboarding/facilities_state_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/core/widgets/summary_badge_widget.dart';
@@ -117,22 +118,46 @@ class FacilitySelectionPage extends StatelessWidget {
                       child: SvgPicture.asset(workStationChooserImage),
                     ),
                     if (vm.errorGettingFacilities ?? false)
-                      GenericErrorWidget(
-                        actionKey: helpNoDataWidgetKey,
-                        type: GenericNoDataTypes.noData,
-                        recoverCallback: () => StoreProvider.dispatch(
-                          context,
-                          FetchStaffFacilitiesAction(
-                            client: AppWrapperBase.of(context)!.graphQLClient,
-                          ),
-                        ),
-                        messageTitle: '',
-                        messageBody: <TextSpan>[
-                          TextSpan(
-                            text: getErrorMessage(
-                              fetchingProgramFacilitiesString,
+                      Column(
+                        children: <Widget>[
+                          GenericErrorWidget(
+                            actionKey: helpNoDataWidgetKey,
+                            type: GenericNoDataTypes.noData,
+                            recoverCallback: () => StoreProvider.dispatch(
+                              context,
+                              FetchStaffFacilitiesAction(
+                                client:
+                                    AppWrapperBase.of(context)!.graphQLClient,
+                              ),
                             ),
-                          )
+                            messageTitle: '',
+                            messageBody: <TextSpan>[
+                              TextSpan(
+                                text: getErrorMessage(
+                                  fetchingProgramFacilitiesString,
+                                ),
+                              )
+                            ],
+                          ),
+                          mediumVerticalSizedBox,
+                          SizedBox(
+                            width: double.infinity,
+                            height: 48,
+                            child: MyAfyaHubPrimaryButton(
+                              buttonKey: logoutButtonKey,
+                              onPressed: () {
+                                StoreProvider.dispatch(
+                                  context,
+                                  LogoutAction(),
+                                );
+                              },
+                              text: logoutButtonText,
+                              textColor: AppColors.primaryColor,
+                              borderColor: Colors.transparent,
+                              buttonColor:
+                                  AppColors.primaryColor.withOpacity(0.14),
+                            ),
+                          ),
                         ],
                       )
                     else if (vm.wait.isWaitingFor(fetchProgramFacilitiesFlag))
@@ -161,6 +186,24 @@ class FacilitySelectionPage extends StatelessWidget {
                       ),
                       smallVerticalSizedBox,
                       ...facilitiesWidgetList,
+                      mediumVerticalSizedBox,
+                      SizedBox(
+                        width: double.infinity,
+                        height: 48,
+                        child: MyAfyaHubPrimaryButton(
+                          buttonKey: logoutButtonKey,
+                          onPressed: () {
+                            StoreProvider.dispatch(
+                              context,
+                              LogoutAction(),
+                            );
+                          },
+                          text: logoutButtonText,
+                          textColor: AppColors.primaryColor,
+                          borderColor: Colors.transparent,
+                          buttonColor: AppColors.primaryColor.withOpacity(0.14),
+                        ),
+                      ),
                     } else ...<Widget>{
                       veryLargeVerticalSizedBox,
                       Text(
@@ -169,7 +212,25 @@ class FacilitySelectionPage extends StatelessWidget {
                           AppColors.primaryColor,
                         ),
                         textAlign: TextAlign.center,
-                      )
+                      ),
+                      mediumVerticalSizedBox,
+                      SizedBox(
+                        width: double.infinity,
+                        height: 48,
+                        child: MyAfyaHubPrimaryButton(
+                          buttonKey: logoutButtonKey,
+                          onPressed: () {
+                            StoreProvider.dispatch(
+                              context,
+                              LogoutAction(),
+                            );
+                          },
+                          text: logoutButtonText,
+                          textColor: AppColors.primaryColor,
+                          borderColor: Colors.transparent,
+                          buttonColor: AppColors.primaryColor.withOpacity(0.14),
+                        ),
+                      ),
                     }
                   ],
                 );

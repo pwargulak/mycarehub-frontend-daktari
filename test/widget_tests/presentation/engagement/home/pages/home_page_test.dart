@@ -14,7 +14,6 @@ import 'package:prohealth360_daktari/domain/core/entities/core/user.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/caregiver/register_caregiver_page.dart';
-import 'package:prohealth360_daktari/presentation/create_group/create_group.dart';
 import 'package:prohealth360_daktari/presentation/engagement/home/pages/home_page.dart';
 import 'package:prohealth360_daktari/presentation/engagement/home/widgets/action_card.dart';
 import 'package:prohealth360_daktari/presentation/engagement/home/widgets/appbar_user.dart';
@@ -139,27 +138,6 @@ void main() {
       await tester.tap(genericNoDataButton);
       await tester.pumpAndSettle();
       expect(find.byType(ServiceRequestsPage), findsNothing);
-    });
-
-    testWidgets('navigates to create group page', (WidgetTester tester) async {
-      const String firstName = 'Laura';
-      store.dispatch(
-        UpdateUserAction(user: User.initial().copyWith(firstName: firstName)),
-      );
-
-      await buildTestWidget(
-        tester: tester,
-        store: store,
-        widget: const HomePage(),
-      );
-
-      final Finder createGroupWidget = find.text(createGroupText);
-
-      await tester.ensureVisible(createGroupWidget);
-      await tester.pumpAndSettle();
-      await tester.tap(createGroupWidget);
-      await tester.pumpAndSettle();
-      expect(find.byType(CreateGroupPage), findsWidgets);
     });
 
     testWidgets('navigates to add new staff page', (WidgetTester tester) async {

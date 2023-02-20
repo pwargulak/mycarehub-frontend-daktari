@@ -129,7 +129,7 @@ class _AddNewStaffPageState extends State<AddNewStaffPage> {
                   label: usernameLabel,
                   onChanged: (String value) {
                     setState(() {
-                      username = value;
+                      username = value.trim();
                     });
                   },
                   validator: (String? value) {

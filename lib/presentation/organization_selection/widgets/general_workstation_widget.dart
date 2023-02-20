@@ -22,10 +22,7 @@ class GeneralWorkstationWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(
-        horizontal: 16,
-        vertical: 20,
-      ),
+      padding: const EdgeInsets.all(15.0),
       decoration: BoxDecoration(
         color: AppColors.primaryColor.withOpacity(0.15),
         borderRadius: BorderRadius.circular(10),
@@ -40,9 +37,9 @@ class GeneralWorkstationWidget extends StatelessWidget {
             title,
             style: veryBoldSize17Text(AppColors.primaryColor),
           ),
-          mediumVerticalSizedBox,
+          smallVerticalSizedBox,
           bodyWidget,
-          mediumVerticalSizedBox,
+          smallVerticalSizedBox,
           SizedBox(
             height: 48,
             width: double.infinity,

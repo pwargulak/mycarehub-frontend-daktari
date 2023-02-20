@@ -1,5 +1,6 @@
 // Project imports:
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/constants.dart';
 
 RegExp validNumberRegexp = RegExp(r'^-?[0-9]+$');
 
@@ -45,6 +46,8 @@ class InputValidators {
   }) {
     if (value == null || value.isEmpty) {
       return enterUsernamePrompt;
+    } else if (!userNameRegex.hasMatch(value)) {
+      return errorNicknameInputString;
     }
     return null;
   }

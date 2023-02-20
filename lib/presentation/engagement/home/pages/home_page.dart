@@ -134,14 +134,6 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       ActionCard(
-                        title: createGroupText,
-                        iconUrl: newGroupImage,
-                        onTap: () {
-                          Navigator.of(context)
-                              .pushNamed(AppRoutes.addNewGroupPage);
-                        },
-                      ),
-                      ActionCard(
                         key: searchActionCardKey,
                         title: searchString,
                         iconUrl: searchSvgPath,

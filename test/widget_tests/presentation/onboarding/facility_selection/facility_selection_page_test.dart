@@ -43,14 +43,41 @@ void main() {
       );
 
       await tester.pumpAndSettle();
+      final Finder findLogoutButton = find.byKey(logoutButtonKey);
 
       expect(find.byType(GeneralWorkstationWidget), findsOneWidget);
+      expect(findLogoutButton, findsWidgets);
 
-      await tester.tap(find.byType(MyAfyaHubPrimaryButton));
+      final Finder findContinueButton = find.byKey(const Key(continueString));
+
+      await tester.tap(findContinueButton);
       await tester.pumpAndSettle();
 
       expect(find.byType(HomePage), findsOneWidget);
     });
+
+    testWidgets('logout button navigates correctly', (WidgetTester tester) async {
+      store.dispatch(
+        UpdateUserProfileAction(
+          defaultFacility: Facility(id: 'testId'),
+        ),
+      );
+      await buildTestWidget(
+        tester: tester,
+        store: store,
+        graphQlClient: MockTestGraphQlClient(),
+        widget: FacilitySelectionPage(),
+      );
+
+      await tester.pumpAndSettle();
+      final Finder findLogoutButton = find.byKey(logoutButtonKey);
+      expect(findLogoutButton, findsWidgets);
+
+      await tester.tap(findLogoutButton);
+      await tester.pumpAndSettle();
+
+    });
+
     testWidgets('renders loader correctly', (WidgetTester tester) async {
       tester.binding.window.physicalSizeTestValue = const Size(1280, 800);
       tester.binding.window.devicePixelRatioTestValue = 1;
@@ -91,6 +118,11 @@ void main() {
 
       expect(find.text(noProgramFacilitiesString), findsOneWidget);
       await tester.pumpAndSettle();
+
+      final Finder findLogoutButton = find.byKey(logoutButtonKey);
+
+      await tester.tap(findLogoutButton);
+      await tester.pumpAndSettle();
     });
 
     testWidgets('displays error widget incase of an error',
@@ -117,6 +149,11 @@ void main() {
       await tester.tap(find.byKey(helpNoDataWidgetKey));
       await tester.pumpAndSettle();
       expect(find.byType(GenericErrorWidget), findsOneWidget);
+      final Finder findLogoutButton = find.byKey(logoutButtonKey);
+
+      await tester.tap(findLogoutButton);
+      await tester.pumpAndSettle();
+
     });
 
     testWidgets(
@@ -141,6 +178,10 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.byType(GenericErrorWidget), findsOneWidget);
+      final Finder findLogoutButton = find.byKey(logoutButtonKey);
+
+      await tester.tap(findLogoutButton);
+      await tester.pumpAndSettle();
     });
   });
 }

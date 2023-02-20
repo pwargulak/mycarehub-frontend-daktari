@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/facility_selection/facility_selection_page.dart';
+
 import 'package:prohealth360_daktari/presentation/onboarding/program_selection/program_selection_page.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
@@ -100,15 +101,19 @@ void main() {
 
       await tester.pumpAndSettle();
 
-      final Finder primaryButton = find.byType(MyAfyaHubPrimaryButton);
+      final Finder findLogoutButton = find.byKey(logoutButtonKey);
+      final Finder findProceedButton = find.byKey(const Key(proceedText));
 
       expect(find.byType(GeneralWorkstationWidget), findsOneWidget);
-      expect(primaryButton, findsOneWidget);
+      expect(findProceedButton, findsOneWidget);
+      expect(findLogoutButton, findsWidgets);
 
-      await tester.tap(primaryButton);
+      await tester.tap(findProceedButton);
       await tester.pumpAndSettle();
 
       expect(find.byType(FacilitySelectionPage), findsOneWidget);
+      await tester.pumpAndSettle();
+
     });
 
     testWidgets('renders loader correctly', (WidgetTester tester) async {
@@ -159,6 +164,10 @@ void main() {
       await tester.pump();
 
       expect(find.byType(PlatformLoader), findsOneWidget);
+
+      final Finder findLogoutButton = find.byKey(logoutButtonKey);
+      await tester.tap(findLogoutButton);
+      await tester.pump();
     });
     testWidgets('shows no program widget when there are no programs',
         (WidgetTester tester) async {

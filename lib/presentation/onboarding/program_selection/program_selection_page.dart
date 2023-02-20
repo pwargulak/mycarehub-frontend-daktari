@@ -87,18 +87,24 @@ class ProgramSelectionPage extends StatelessWidget {
                         'or',
                         style: boldSize18Text(),
                       ),
-                      const SizedBox(height: 10),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 38),
+                      mediumVerticalSizedBox,
+                      SizedBox(
                         width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () => StoreProvider.dispatch(
-                            context,
-                            LogoutAction(),
-                          ),
-                          child: const Text(logoutButtonText),
+                        height: 48,
+                        child: MyAfyaHubPrimaryButton(
+                          buttonKey: logoutButtonKey,
+                          onPressed: () {
+                            StoreProvider.dispatch(
+                              context,
+                              LogoutAction(),
+                            );
+                          },
+                          text: logoutButtonText,
+                          textColor: AppColors.primaryColor,
+                          borderColor: Colors.transparent,
+                          buttonColor: AppColors.primaryColor.withOpacity(0.14),
                         ),
-                      )
+                      ),
                     } else if (vm.wait.isWaitingFor(fetchUserProgramsFlag))
                       Container(
                         height: 300,
@@ -127,6 +133,24 @@ class ProgramSelectionPage extends StatelessWidget {
                             graphQlClient: graphQlClient,
                           ),
                         ),
+                      mediumVerticalSizedBox,
+                      SizedBox(
+                        width: double.infinity,
+                        height: 48,
+                        child: MyAfyaHubPrimaryButton(
+                          buttonKey: logoutButtonKey,
+                          onPressed: () {
+                            StoreProvider.dispatch(
+                              context,
+                              LogoutAction(),
+                            );
+                          },
+                          text: logoutButtonText,
+                          textColor: AppColors.primaryColor,
+                          borderColor: Colors.transparent,
+                          buttonColor: AppColors.primaryColor.withOpacity(0.14),
+                        ),
+                      ),
                     } else ...<Widget>{
                       largeVerticalSizedBox,
                       Text(
@@ -146,7 +170,7 @@ class ProgramSelectionPage extends StatelessWidget {
                           ),
                           child: const Text(logoutButtonText),
                         ),
-                      )
+                      ),
                     }
                   ],
                 );
