@@ -8,6 +8,7 @@ import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/register_client/register_client_payload.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:sghi_core/domain_objects/value_objects/unknown.dart';
 
 import '../../../../../mocks/mocks.dart';
@@ -133,6 +134,34 @@ void main() {
       expect(
         (info.error! as UserException).msg,
         'A client with that ccc number already exists',
+      );
+    });
+    test('should throw error if username exists', () async {
+      storeTester.dispatch(
+        RegisterClientAction(
+          registerClientPayload: RegisterClientPayload(),
+          client: MockShortGraphQlClient.withResponse(
+            '',
+            '',
+            Response(
+              jsonEncode(<String, String>{
+                'error':
+                    'a client with this username type and value already exists'
+              }),
+              200,
+            ),
+          ),
+          onSuccess: () {},
+        ),
+      );
+
+      final TestInfo<AppState> info =
+          await storeTester.waitUntil(RegisterClientAction);
+
+      expect(info.state, AppState.initial());
+      expect(
+        (info.error! as UserException).msg,
+        clientUsernameExists,
       );
     });
   });

@@ -57,10 +57,12 @@ class RegisterClientAction extends ReduxAction<AppState> {
       final String? errors = client.parseError(body);
 
       if (errors != null) {
-        if (errors == cccExists) {
+        if (errors.contains(identifierString) &&
+            errors.contains(alreadyExistsString)) {
           throw UserException(capitalizeFirst(clientCccExists));
-        } else if (errors.contains(contactExists)) {
-          throw const UserException(clientPhoneExists);
+        } else if (errors.contains('username') &&
+            errors.contains(alreadyExistsString)) {
+          throw const UserException(clientUsernameExists);
         }
 
         reportErrorToSentry(

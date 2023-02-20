@@ -63,7 +63,7 @@ class CreateOrganizationAction extends ReduxAction<AppState> {
         );
       }
     }
-    
+
     final Response response = await client.query(
       createOrganisationMutation,
       <String, dynamic>{
@@ -81,14 +81,6 @@ class CreateOrganizationAction extends ReduxAction<AppState> {
       final String? errors = client.parseError(body);
 
       if (errors != null) {
-        if (errors.contains(phoneExists)) {
-          throw const UserException(userWithPhoneExists);
-        }
-
-        if (errors.contains(cccExists)) {
-          throw const UserException(staffCccExists);
-        }
-
         reportErrorToSentry(
           hint: createOrganisationErrorString,
           query: createOrganisationMutation,

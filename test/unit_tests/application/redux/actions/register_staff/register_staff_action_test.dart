@@ -7,6 +7,7 @@ import 'package:prohealth360_daktari/application/redux/actions/register_staff/re
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/domain/core/entities/register_staff/register_staff_payload.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 
 import '../../../../../mocks/mocks.dart';
 
@@ -99,6 +100,65 @@ void main() {
         (info.error! as UserException).msg,
         'Sorry, an unknown error occurred, please try again or get help from our '
         'help center.',
+      );
+    });
+
+    test('should throw error if staff number exists', () async {
+      int called = 0;
+
+      storeTester.dispatch(
+        RegisterStaffAction(
+          registerStaffPayload: RegisterStaffPayload(),
+          client: MockShortGraphQlClient.withResponse(
+            '',
+            '',
+            Response(
+              jsonEncode(
+                <String, String>{'error': 'identifier already exists'},
+              ),
+              200,
+            ),
+          ),
+          onSuccess: () => called++,
+        ),
+      );
+
+      final TestInfo<AppState> info =
+          await storeTester.waitUntil(RegisterStaffAction);
+
+      expect(info.state, AppState.initial());
+      expect(called, 0);
+      expect(
+        (info.error! as UserException).msg,
+        staffCccExists,
+      );
+    });
+    test('should throw error if username exists', () async {
+      int called = 0;
+
+      storeTester.dispatch(
+        RegisterStaffAction(
+          registerStaffPayload: RegisterStaffPayload(),
+          client: MockShortGraphQlClient.withResponse(
+            '',
+            '',
+            Response(
+              jsonEncode(<String, String>{'error': 'username already exists'}),
+              200,
+            ),
+          ),
+          onSuccess: () => called++,
+        ),
+      );
+
+      final TestInfo<AppState> info =
+          await storeTester.waitUntil(RegisterStaffAction);
+
+      expect(info.state, AppState.initial());
+      expect(called, 0);
+      expect(
+        (info.error! as UserException).msg,
+        userWithUserNameExists,
       );
     });
   });

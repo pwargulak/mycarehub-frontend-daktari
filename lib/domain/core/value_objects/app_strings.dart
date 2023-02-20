@@ -279,9 +279,13 @@ const String registerOrganisationSuccess = 'Successfully created organisation';
 const String registerCaregiverSuccess = 'Successfully registered caregiver';
 const String cccExists =
     'a client with this identifier type and value already exists';
+const String identifierString = 'identifier';
+const String alreadyExistsString = 'already exists';
 const String clientCccExists = 'A client with that CCC number already exists';
 const String clientPhoneExists =
     'A client with that phone number already exists';
+const String clientUsernameExists =
+    'A client with that username already exists';
 const String contactExists =
     'a contact with this value and flavour already exists';
 const String searchFacilitiesString = 'Search facilities';
@@ -294,7 +298,7 @@ const String userWithPhoneExists =
 const String phoneExists =
     'a contact with this value and flavour already exists';
 const String staffCccExists =
-    'A staff member with that CCC number already exists';
+    'A staff member with that ID or Staff number already exists';
 const String userWithUserNameExists =
     'A staff member with that username already exists';
 

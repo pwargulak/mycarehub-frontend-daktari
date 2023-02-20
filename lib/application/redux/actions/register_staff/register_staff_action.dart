@@ -57,15 +57,11 @@ class RegisterStaffAction extends ReduxAction<AppState> {
       final String? errors = client.parseError(body);
 
       if (errors != null) {
-        if (errors.contains(phoneExists)) {
-          throw const UserException(userWithPhoneExists);
-        }
-
-        if (errors.contains(cccExists)) {
+       if (errors.contains(identifierString) &&
+            errors.contains(alreadyExistsString)) {
           throw const UserException(staffCccExists);
-        }
-
-        if (errors.contains('username') && errors.contains('already exists')) {
+        } else if (errors.contains('username') &&
+            errors.contains(alreadyExistsString)) {
           throw const UserException(userWithUserNameExists);
         }
 
