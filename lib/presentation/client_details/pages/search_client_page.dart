@@ -15,6 +15,7 @@ import 'package:prohealth360_daktari/presentation/client_details/widgets/search_
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
+import 'package:sghi_core/user_profile/shared/widget_keys.dart';
 
 class SearchClientPage extends StatefulWidget {
   const SearchClientPage({this.selectMultiple});
@@ -41,6 +42,7 @@ class _SearchClientPageState extends State<SearchClientPage> {
           noUserFound: false,
           errorSearchingUser: false,
           timeoutSearchingUser: false,
+          searchUserResponses: <SearchUserResponse>[],
         ),
       );
     });
@@ -229,6 +231,26 @@ class _SearchClientPageState extends State<SearchClientPage> {
                   ),
                 ),
               ),
+              if (widget.selectMultiple ?? false)
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    margin: const EdgeInsets.all(
+                      24.0,
+                    ),
+                    width: double.infinity,
+                    height: 48,
+                    child: ElevatedButton(
+                      key: saveButtonKey,
+                      onPressed: (vm.selectedUsers?.isNotEmpty ?? false)
+                          ? () => Navigator.pop(context)
+                          : null,
+                      child: const Text(
+                        saveString,
+                      ),
+                    ),
+                  ),
+                )
             ],
           );
         },

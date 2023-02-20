@@ -66,6 +66,13 @@ void main() {
       await tester.enterText(lNameFieldFinder, 'Doe');
       await tester.pumpAndSettle();
 
+      final Finder usernameFieldFinder = find.byKey(usernameFieldKey);
+      expect(usernameFieldFinder, findsOneWidget);
+      await tester.ensureVisible(usernameFieldFinder);
+      await tester.tap(usernameFieldFinder);
+      await tester.enterText(usernameFieldFinder, 'testUser');
+      await tester.pumpAndSettle();
+
       final Finder dobField = find.byKey(dobKey);
       expect(dobField, findsOneWidget);
       expect(find.byKey(patientNumberField), findsOneWidget);
@@ -101,9 +108,6 @@ void main() {
       await tester.tap(clientItem.last);
       await tester.pumpAndSettle();
 
-      await tester.tap(find.byKey(appBarBackButtonKey));
-      await tester.pumpAndSettle();
-
       store.dispatch(
         UpdateSearchUserResponseStateAction(
           selectedUsers: <SearchUserResponse>[
@@ -112,6 +116,9 @@ void main() {
           ],
         ),
       );
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byType(ElevatedButton));
       await tester.pumpAndSettle();
 
       final Finder listCard = find.byType(ListCardWithCancelButton);
@@ -164,6 +171,13 @@ void main() {
       await tester.ensureVisible(fNameFieldFinder);
       await tester.tap(fNameFieldFinder);
       await tester.enterText(fNameFieldFinder, 'John');
+      await tester.pumpAndSettle();
+
+      final Finder usernameFieldFinder = find.byKey(usernameFieldKey);
+      expect(usernameFieldFinder, findsOneWidget);
+      await tester.ensureVisible(usernameFieldFinder);
+      await tester.tap(usernameFieldFinder);
+      await tester.enterText(usernameFieldFinder, 'testUser');
       await tester.pumpAndSettle();
 
       final Finder phoneNumberFieldFinder = find.byKey(patientNumberField);
@@ -225,6 +239,27 @@ void main() {
       await tester.enterText(lNameFieldFinder, 'Doe');
 
       await tester.enterText(lNameFieldFinder, '');
+      await tester.pump();
+
+      expect(find.text(fieldCannotBeEmptyText), findsOneWidget);
+    });
+    testWidgets('username field should show error',
+        (WidgetTester tester) async {
+      await buildTestWidget(
+        store: store,
+        tester: tester,
+        widget: const RegisterCaregiverPage(),
+      );
+      await tester.pumpAndSettle();
+
+      final Finder usernameFieldFinder = find.byKey(usernameFieldKey);
+      expect(usernameFieldFinder, findsOneWidget);
+      await tester.ensureVisible(usernameFieldFinder);
+      await tester.tap(usernameFieldFinder);
+      await tester.enterText(usernameFieldFinder, 'testUser');
+      await tester.pumpAndSettle();
+
+      await tester.enterText(usernameFieldFinder, '');
       await tester.pump();
 
       expect(find.text(fieldCannotBeEmptyText), findsOneWidget);

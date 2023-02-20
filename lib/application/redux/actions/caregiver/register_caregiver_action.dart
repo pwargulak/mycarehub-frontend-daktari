@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:prohealth360_daktari/application/core/services/utils.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/widgets.dart';
@@ -12,7 +14,6 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_events.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:http/http.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:sghi_core/flutter_graphql_client/i_flutter_graphql_client.dart';
 
 class RegisterCaregiverAction extends ReduxAction<AppState> {
@@ -56,7 +57,20 @@ class RegisterCaregiverAction extends ReduxAction<AppState> {
       final String? errors = client.parseError(body);
 
       if (errors != null) {
-        Sentry.captureException(UserException(errors));
+      if (errors.contains(identifierString) &&
+            errors.contains(alreadyExistsString)) {
+          throw UserException(capitalizeFirst(clientCccExists));
+        } else if (errors.contains('username') &&
+            errors.contains(alreadyExistsString)) {
+          throw const UserException(clientUsernameExists);
+        }
+        reportErrorToSentry(
+          hint: registerCaregiverErrorString,
+          query: registerCaregiverMutation,
+          response: response,
+          state: state,
+          variables: payload,
+        );
 
         throw const UserException(somethingWentWrongText);
       }
@@ -71,6 +85,13 @@ class RegisterCaregiverAction extends ReduxAction<AppState> {
         },
       );
     } else {
+      reportErrorToSentry(
+        hint: registerCaregiverErrorString,
+        query: registerCaregiverMutation,
+        response: response,
+        state: state,
+        variables: payload,
+      );
       throw UserException(processedResponse.message);
     }
 

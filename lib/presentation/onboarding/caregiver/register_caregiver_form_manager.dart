@@ -17,6 +17,10 @@ class RegisterCaregiverFormManager with Validator {
   Stream<String> get lastName => _lastName.stream.transform(validateName);
   Sink<String> get inLastName => _lastName.sink;
 
+  final BehaviorSubject<String> _username = BehaviorSubject<String>();
+  Stream<String> get username => _username.stream.transform(validateName);
+  Sink<String> get inUsername => _username.sink;
+
   final BehaviorSubject<Gender> _gender = BehaviorSubject<Gender>();
   Stream<Gender> get gender => _gender.stream.transform(validateGender);
   Sink<Gender> get inGender => _gender.sink;
@@ -29,21 +33,20 @@ class RegisterCaregiverFormManager with Validator {
       _phoneNumber.stream.transform(validatePhoneNumbers);
   Sink<String> get inPhoneNumber => _phoneNumber.sink;
 
-  Stream<bool> get isFormValid => CombineLatestStream.combine5<
-          String,
-          String,
-          Gender,
-          DateTime,
-          String,
-          bool>(_firstName, _lastName, _gender, _dateOfBirth, _phoneNumber, (
+  Stream<bool> get isFormValid => CombineLatestStream.combine6<String, String,
+              String, Gender, DateTime, String, bool>(
+          _firstName, _lastName, _username, _gender, _dateOfBirth, _phoneNumber,
+          (
         String firstName,
         String lastName,
+        String username,
         Gender gender,
         DateTime dateOfBirth,
         String phoneNumber,
       ) {
         return Validator.isValidName(firstName) &&
             Validator.isValidName(lastName) &&
+            Validator.isValidName(username) &&
             Validator.isValidGender(gender) &&
             Validator.isValidDate(dateOfBirth) &&
             Validator.isValidPhone(phoneNumber);
@@ -73,6 +76,7 @@ class RegisterCaregiverFormManager with Validator {
 
     return RegisterCaregiverPayload(
       name: '$firstNameValue $lastNameValue',
+      username: _username.valueOrNull,
       gender: _gender.valueOrNull,
       dateOfBirth: _dateOfBirth.valueOrNull,
       phoneNumber: _phoneNumber.valueOrNull,

@@ -29,6 +29,7 @@ const String fetchNotificationFiltersErrorString =
 const String pinServiceRequestFailedErrorString =
     'Error, PIN service request failed';
 const String registerClientErrorString = 'Error registering client';
+const String registerCaregiverErrorString = 'Error registering caregiver';
 const String fetchFacilitiesErrorString = 'Error fetching facilities';
 const String fetchProgramsErrorString = 'Error fetching programs';
 const String fetchStaffErrorString = 'Error fetching staff';

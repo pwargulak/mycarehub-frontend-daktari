@@ -7,6 +7,7 @@ import 'package:prohealth360_daktari/application/redux/actions/caregiver/registe
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/domain/core/entities/caregiver/register_caregiver_payload.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:sghi_core/afya_moja_core/src/enums.dart';
 import 'package:sghi_core/domain_objects/value_objects/unknown.dart';
 
@@ -105,6 +106,63 @@ void main() {
         (info.error! as UserException).msg,
         'Sorry, an unknown error occurred, please try again or get help from our '
         'help center.',
+      );
+    });
+    test('should throw error if client exists', () async {
+      storeTester.dispatch(
+        RegisterCaregiverAction(
+          registerCaregiverPayload: RegisterCaregiverPayload(),
+          client: MockShortGraphQlClient.withResponse(
+            '',
+            '',
+            Response(
+              jsonEncode(<String, String>{
+                'error':
+                    'a client with this identifier type and value already exists'
+              }),
+              200,
+            ),
+          ),
+          onSuccess: () {},
+        ),
+      );
+
+      final TestInfo<AppState> info =
+          await storeTester.waitUntil(RegisterCaregiverAction);
+
+      expect(info.state, AppState.initial());
+      expect(
+        (info.error! as UserException).msg,
+        'A client with that ccc number already exists',
+      );
+    });
+
+    test('should throw error if username exists', () async {
+      storeTester.dispatch(
+        RegisterCaregiverAction(
+          registerCaregiverPayload: RegisterCaregiverPayload(),
+          client: MockShortGraphQlClient.withResponse(
+            '',
+            '',
+            Response(
+              jsonEncode(<String, String>{
+                'error':
+                    'a client with this username type and value already exists'
+              }),
+              200,
+            ),
+          ),
+          onSuccess: () {},
+        ),
+      );
+
+      final TestInfo<AppState> info =
+          await storeTester.waitUntil(RegisterCaregiverAction);
+
+      expect(info.state, AppState.initial());
+      expect(
+        (info.error! as UserException).msg,
+        clientUsernameExists,
       );
     });
   });

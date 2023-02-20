@@ -67,6 +67,7 @@ class _ManageOrganizationPageState extends State<ManageOrganizationPage> {
                         CustomTextField(
                           hintText: searchOrganizationHintString,
                           controller: searchController,
+                          maxLines: 1,
                           suffixIcon: Padding(
                             padding: const EdgeInsets.only(right: 4.0),
                             child: IconButton(

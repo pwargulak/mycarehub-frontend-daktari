@@ -196,6 +196,8 @@ class _StaffSearchWidgetState extends State<StaffSearchWidget> {
                             userId: selectedSearchUserResponse.id ?? '',
                             userName:
                                 selectedSearchUserResponse.user?.name ?? '',
+                            defaultFacility:
+                                selectedSearchUserResponse.defaultFacility,
                             isClient: false,
                           ),
                           mediumVerticalSizedBox,

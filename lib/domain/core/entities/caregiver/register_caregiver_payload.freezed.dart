@@ -23,6 +23,8 @@ RegisterCaregiverPayload _$RegisterCaregiverPayloadFromJson(
 mixin _$RegisterCaregiverPayload {
   @JsonKey(name: 'name')
   String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'username')
+  String? get username => throw _privateConstructorUsedError;
   @JsonKey(name: 'gender', fromJson: genderFromJson)
   Gender? get gender => throw _privateConstructorUsedError;
   @JsonKey(name: 'dateOfBirth', toJson: dobToJson)
@@ -51,6 +53,7 @@ abstract class $RegisterCaregiverPayloadCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'name') String? name,
+      @JsonKey(name: 'username') String? username,
       @JsonKey(name: 'gender', fromJson: genderFromJson) Gender? gender,
       @JsonKey(name: 'dateOfBirth', toJson: dobToJson) DateTime? dateOfBirth,
       @JsonKey(name: 'phoneNumber') String? phoneNumber,
@@ -74,6 +77,7 @@ class _$RegisterCaregiverPayloadCopyWithImpl<$Res,
   @override
   $Res call({
     Object? name = freezed,
+    Object? username = freezed,
     Object? gender = freezed,
     Object? dateOfBirth = freezed,
     Object? phoneNumber = freezed,
@@ -85,6 +89,10 @@ class _$RegisterCaregiverPayloadCopyWithImpl<$Res,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String?,
       gender: freezed == gender
           ? _value.gender
@@ -125,6 +133,7 @@ abstract class _$$_RegisterCaregiverPayloadCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'name') String? name,
+      @JsonKey(name: 'username') String? username,
       @JsonKey(name: 'gender', fromJson: genderFromJson) Gender? gender,
       @JsonKey(name: 'dateOfBirth', toJson: dobToJson) DateTime? dateOfBirth,
       @JsonKey(name: 'phoneNumber') String? phoneNumber,
@@ -146,6 +155,7 @@ class __$$_RegisterCaregiverPayloadCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = freezed,
+    Object? username = freezed,
     Object? gender = freezed,
     Object? dateOfBirth = freezed,
     Object? phoneNumber = freezed,
@@ -157,6 +167,10 @@ class __$$_RegisterCaregiverPayloadCopyWithImpl<$Res>
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String?,
       gender: freezed == gender
           ? _value.gender
@@ -193,6 +207,8 @@ class _$_RegisterCaregiverPayload implements _RegisterCaregiverPayload {
   _$_RegisterCaregiverPayload(
       {@JsonKey(name: 'name')
           this.name,
+      @JsonKey(name: 'username')
+          this.username,
       @JsonKey(name: 'gender', fromJson: genderFromJson)
           this.gender,
       @JsonKey(name: 'dateOfBirth', toJson: dobToJson)
@@ -213,6 +229,9 @@ class _$_RegisterCaregiverPayload implements _RegisterCaregiverPayload {
   @override
   @JsonKey(name: 'name')
   final String? name;
+  @override
+  @JsonKey(name: 'username')
+  final String? username;
   @override
   @JsonKey(name: 'gender', fromJson: genderFromJson)
   final Gender? gender;
@@ -240,7 +259,7 @@ class _$_RegisterCaregiverPayload implements _RegisterCaregiverPayload {
 
   @override
   String toString() {
-    return 'RegisterCaregiverPayload(name: $name, gender: $gender, dateOfBirth: $dateOfBirth, phoneNumber: $phoneNumber, caregiverNumber: $caregiverNumber, sendInvite: $sendInvite, assignedClients: $assignedClients)';
+    return 'RegisterCaregiverPayload(name: $name, username: $username, gender: $gender, dateOfBirth: $dateOfBirth, phoneNumber: $phoneNumber, caregiverNumber: $caregiverNumber, sendInvite: $sendInvite, assignedClients: $assignedClients)';
   }
 
   @override
@@ -249,6 +268,8 @@ class _$_RegisterCaregiverPayload implements _RegisterCaregiverPayload {
         (other.runtimeType == runtimeType &&
             other is _$_RegisterCaregiverPayload &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.dateOfBirth, dateOfBirth) ||
                 other.dateOfBirth == dateOfBirth) &&
@@ -267,6 +288,7 @@ class _$_RegisterCaregiverPayload implements _RegisterCaregiverPayload {
   int get hashCode => Object.hash(
       runtimeType,
       name,
+      username,
       gender,
       dateOfBirth,
       phoneNumber,
@@ -293,6 +315,8 @@ abstract class _RegisterCaregiverPayload implements RegisterCaregiverPayload {
   factory _RegisterCaregiverPayload(
           {@JsonKey(name: 'name')
               final String? name,
+          @JsonKey(name: 'username')
+              final String? username,
           @JsonKey(name: 'gender', fromJson: genderFromJson)
               final Gender? gender,
           @JsonKey(name: 'dateOfBirth', toJson: dobToJson)
@@ -313,6 +337,9 @@ abstract class _RegisterCaregiverPayload implements RegisterCaregiverPayload {
   @override
   @JsonKey(name: 'name')
   String? get name;
+  @override
+  @JsonKey(name: 'username')
+  String? get username;
   @override
   @JsonKey(name: 'gender', fromJson: genderFromJson)
   Gender? get gender;

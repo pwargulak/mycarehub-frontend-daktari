@@ -118,6 +118,36 @@ class _RegisterCaregiverPageState extends State<RegisterCaregiverPage> {
                   ],
                 ),
                 const SizedBox(height: 24),
+                // Username
+                Row(
+                  children: <Widget>[
+                    Flexible(
+                      child: StreamBuilder<String>(
+                        stream: _formManager.username,
+                        builder: (
+                          BuildContext context,
+                          AsyncSnapshot<String> snapshot,
+                        ) {
+                          return PatientDetailsTextFormField(
+                            textFieldKey: usernameFieldKey,
+                            label: usernameLabel,
+                            onChanged: (String value) {
+                              _formManager.inUsername.add(value);
+                            },
+                            validator: (String? value) {
+                              if (snapshot.hasError) {
+                                return (snapshot.error! as UserException).msg;
+                              }
+                              return null;
+                            },
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 24),
                 Row(
                   children: <Widget>[
                     // Birth date

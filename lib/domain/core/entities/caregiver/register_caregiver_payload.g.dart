@@ -10,6 +10,7 @@ _$_RegisterCaregiverPayload _$$_RegisterCaregiverPayloadFromJson(
         Map<String, dynamic> json) =>
     _$_RegisterCaregiverPayload(
       name: json['name'] as String?,
+      username: json['username'] as String?,
       gender: genderFromJson(json['gender'] as String?),
       dateOfBirth: json['dateOfBirth'] == null
           ? null
@@ -26,6 +27,7 @@ Map<String, dynamic> _$$_RegisterCaregiverPayloadToJson(
         _$_RegisterCaregiverPayload instance) =>
     <String, dynamic>{
       'name': instance.name,
+      'username': instance.username,
       'gender': _$GenderEnumMap[instance.gender],
       'dateOfBirth': dobToJson(instance.dateOfBirth),
       'phoneNumber': instance.phoneNumber,

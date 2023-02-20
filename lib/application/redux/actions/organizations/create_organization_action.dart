@@ -57,7 +57,7 @@ class CreateOrganizationAction extends ReduxAction<AppState> {
         programInputs.add(
           CreateProgramPayload(
             name: program.name,
-            description: program.description,
+            description: program.description ?? '',
             organisationID: program.organisation?.id,
           ).toJson(),
         );

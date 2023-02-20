@@ -55,23 +55,24 @@ class ListCardWithCancelButton extends StatelessWidget {
                   ],
                 ),
               ),
-              GestureDetector(
-                key: cancelButtonKey,
-                onTap: onCancelCallback,
-                child: Container(
-                  width: 40,
-                  height: 40,
-                  padding: const EdgeInsets.all(4.0),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor.withOpacity(0.14),
-                    shape: BoxShape.circle,
+              if (onCancelCallback != null)
+                GestureDetector(
+                  key: cancelButtonKey,
+                  onTap: onCancelCallback,
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    padding: const EdgeInsets.all(4.0),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor.withOpacity(0.14),
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      Icons.close,
+                      color: Theme.of(context).primaryColor,
+                    ),
                   ),
-                  child: Icon(
-                    Icons.close,
-                    color: Theme.of(context).primaryColor,
-                  ),
-                ),
-              )
+                )
             ],
           ),
           if (body != null) body!,

@@ -11,6 +11,7 @@ class RegisterCaregiverPayload with _$RegisterCaregiverPayload {
   @JsonSerializable(explicitToJson: true)
   factory RegisterCaregiverPayload({
     @JsonKey(name: 'name') String? name,
+    @JsonKey(name: 'username') String? username,
     @JsonKey(name: 'gender', fromJson: genderFromJson) Gender? gender,
     @JsonKey(name: 'dateOfBirth', toJson: dobToJson) DateTime? dateOfBirth,
     @JsonKey(name: 'phoneNumber') String? phoneNumber,
