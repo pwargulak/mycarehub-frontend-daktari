@@ -12,7 +12,6 @@ import 'package:http/http.dart' as http;
 import 'package:prohealth360_daktari/application/core/graphql/mutations.dart';
 import 'package:prohealth360_daktari/application/core/services/analytics_service.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
-import 'package:prohealth360_daktari/application/redux/actions/complete_onboarding_tour.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/actions/onboarding/update_onboarding_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
@@ -103,10 +102,6 @@ class SetNicknameAction extends ReduxAction<AppState> {
       );
 
       onSuccess?.call();
-
-      await dispatch(
-        CompleteOnboardingTourAction(userID: userID, client: client),
-      );
 
       final CurrentOnboardingStage? currentOnboardingStage =
           state.onboardingState?.currentOnboardingStage;

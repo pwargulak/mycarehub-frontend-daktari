@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:prohealth360_daktari/application/redux/actions/complete_onboarding_tour.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/foundation.dart';
@@ -137,6 +138,9 @@ class CreatePINAction extends ReduxAction<AppState> {
       if (data?['setUserPIN'] == true) {
         onSuccess?.call();
         dispatch(UpdateOnboardingStateAction(hasSetPin: true));
+        await dispatch(
+          CompleteOnboardingTourAction(userID: userID, client: client),
+        );
         final OnboardingPathInfo path = getOnboardingPath(state: state);
         dispatch(NavigateAction<AppState>.pushNamed(path.nextRoute));
         final CurrentOnboardingStage? currentOnboardingStage =
