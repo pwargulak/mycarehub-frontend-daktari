@@ -124,7 +124,6 @@ class MockStateDB extends Mock implements Database {
     throw UnimplementedError();
   }
 
-  @override
   Future<int> getVersion() {
     throw UnimplementedError();
   }
@@ -171,7 +170,6 @@ class MockStateDB extends Mock implements Database {
     throw UnimplementedError();
   }
 
-  @override
   Future<void> setVersion(int version) {
     throw UnimplementedError();
   }
@@ -550,8 +548,14 @@ class MockTestGraphQlClient extends IGraphQlClient {
             <String, dynamic>{
               'data': <String, dynamic>{
                 'getCurrentTerms': termsMock,
-                'sendOTP': '123456',
-                'sendRetryOTP': '123456',
+                'sendOTP': <String, dynamic>{
+                  'otp': '123456',
+                  'phoneNumber': '0712345678',
+                },
+                'sendRetryOTP': <String, dynamic>{
+                  'otp': '123456',
+                  'phoneNumber': '0712345678',
+                },
                 'verifyOTP': true
               }
             },
@@ -568,8 +572,14 @@ class MockTestGraphQlClient extends IGraphQlClient {
             <String, dynamic>{
               'data': <String, dynamic>{
                 'getCurrentTerms': termsMock,
-                'sendOTP': '123456',
-                'sendRetryOTP': '123456',
+                'sendOTP': <String, dynamic>{
+                  'otp': '123456',
+                  'phoneNumber': '0712345678',
+                },
+                'sendRetryOTP': <String, dynamic>{
+                  'otp': '123456',
+                  'phoneNumber': '0712345678',
+                },
                 'verifyOTP': true
               }
             },

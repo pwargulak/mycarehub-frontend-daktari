@@ -23,7 +23,10 @@ class VerifyPhonePage extends StatelessWidget {
       onInit: (Store<AppState> store) {
         StoreProvider.dispatch<AppState>(
           context,
-          SendOTPAction(context: context),
+          SendOTPAction(
+            context: context,
+            userName: store.state.onboardingState?.username ?? '',
+          ),
         );
       },
       builder: (BuildContext context, VerifyPhoneViewModel vm) {
