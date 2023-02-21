@@ -214,6 +214,11 @@ query searchStaffUser($searchParameter: String!) {
         optedIn
       }
       termsAccepted
+      isPhoneVerified
+      acceptedTermsID
+      suspended
+      currentProgramID
+      currentOrganizationID
     }
     defaultFacility{
       id
@@ -227,8 +232,8 @@ query searchStaffUser($searchParameter: String!) {
 ''';
 
 const String getUserRolesQuery = r'''
-query getUserRoles($userID: String!){
-  getUserRoles(userID: $userID){
+query getUserRoles($userID: String!, $organisationID: String!){
+  getUserRoles(userID: $userID, organisationID: $organisationID){
     authorityRoleID
     name
     active

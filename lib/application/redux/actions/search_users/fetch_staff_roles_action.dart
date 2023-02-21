@@ -18,10 +18,12 @@ class FetchStaffRolesAction extends ReduxAction<AppState> {
     required this.userID,
     required this.client,
     required this.onFailure,
+    required this.organisationID,
   });
 
   final IGraphQlClient client;
   final String userID;
+  final String organisationID;
   final void Function()? onFailure;
 
   @override
@@ -40,6 +42,7 @@ class FetchStaffRolesAction extends ReduxAction<AppState> {
   Future<AppState?> reduce() async {
     final Map<String, dynamic> variables = <String, dynamic>{
       'userID': userID,
+      'organisationID': organisationID,
     };
     final Response response = await client.query(getUserRolesQuery, variables);
 

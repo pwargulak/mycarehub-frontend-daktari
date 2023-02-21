@@ -139,6 +139,38 @@ void main() {
         expect(find.byType(SearchDetailsInformationWidget), findsOneWidget);
       });
 
+      testWidgets('renders correctly for staff without roles',
+          (WidgetTester tester) async {
+        store = Store<AppState>(
+          initialState: AppState.initial(),
+        );
+
+        await buildTestWidget(
+          tester: tester,
+          store: store,
+          graphQlClient: MockTestGraphQlClient(),
+          widget: SearchPageDetailView(
+            searchUserResponse: SearchUserResponse.initial(),
+            isClient: false,
+          ),
+        );
+        store.dispatch(
+          UpdateSearchUserResponseStateAction(
+            selectedSearchUserResponse: SearchUserResponse(
+              user: UserData.initial(),
+              staffNumber: '123',
+              id: '123',
+            ),
+          ),
+        );
+
+        await tester.pumpAndSettle();
+        await tester.pumpAndSettle(const Duration(seconds: 10));
+
+        expect(find.byType(StaffSearchWidget), findsOneWidget);
+        expect(find.byType(SearchDetailsInformationWidget), findsOneWidget);
+      });
+
       testWidgets('invite button works correctly for clients',
           (WidgetTester tester) async {
         await buildTestWidget(

@@ -46,12 +46,17 @@ class _SearchPageDetailViewState extends State<SearchPageDetailView> {
                       FetchStaffRolesAction(
                         userID: widget.searchUserResponse?.user?.id ?? '',
                         client: AppWrapperBase.of(context)!.graphQLClient,
+                        organisationID: widget.searchUserResponse?.user
+                                ?.currentOrganizationID ??
+                            '',
                         onFailure: () {},
                       ),
                     );
                   }
                 },
                 builder: (BuildContext context, SearchViewModel vm) {
+                  final RolesList? rolesList =
+                      vm.selectedSearchUserResponse!.rolesList;
                   if (vm.wait.isWaitingFor(getUserRolesFlag)) {
                     return Container(
                       height: 300,
@@ -60,7 +65,7 @@ class _SearchPageDetailViewState extends State<SearchPageDetailView> {
                     );
                   }
                   return StaffSearchWidget(
-                    rolesList: vm.selectedSearchUserResponse?.rolesList ?? RolesList.initial(),
+                    rolesList: rolesList ?? RolesList.initial(),
                   );
                 },
               ),
