@@ -21,10 +21,12 @@ class SendOTPAction extends ReduxAction<AppState> {
   SendOTPAction({
     required this.context,
     this.callBackFunction,
+    required this.userName,
   });
 
   final VoidCallback? callBackFunction;
   final BuildContext context;
+  final String userName;
 
   @override
   void after() {
@@ -43,11 +45,9 @@ class SendOTPAction extends ReduxAction<AppState> {
 
   @override
   Future<AppState?> reduce() async {
-    final String username = state.userProfileState?.userProfile?.username ?? '';
-
-    if (username != UNKNOWN) {
+    if (userName != UNKNOWN) {
       final Map<String, dynamic> variables = <String, dynamic>{
-        'username': username,
+        'username': userName,
         'flavour': Flavour.pro.name,
       };
 

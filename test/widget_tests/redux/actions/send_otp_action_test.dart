@@ -67,7 +67,7 @@ void main() {
               onPressed: () {
                 StoreProvider.dispatch<AppState>(
                   context,
-                  SendOTPAction(context: context),
+                  SendOTPAction(context: context, userName: 'username'),
                 );
               },
             );
@@ -108,7 +108,7 @@ void main() {
               onPressed: () {
                 StoreProvider.dispatch<AppState>(
                   context,
-                  SendOTPAction(context: context),
+                  SendOTPAction(context: context, userName: 'username'),
                 );
               },
             );
@@ -152,7 +152,7 @@ void main() {
               buttonKey: const Key('update_contacts'),
               onPressed: () async {
                 await store.dispatch(
-                  SendOTPAction(context: context),
+                  SendOTPAction(context: context, userName: 'username'),
                 );
               },
             );
@@ -196,7 +196,7 @@ void main() {
               buttonKey: const Key('update_contacts'),
               onPressed: () async {
                 await store.dispatch(
-                  SendOTPAction(context: context),
+                  SendOTPAction(context: context, userName: 'username'),
                 );
               },
             );
