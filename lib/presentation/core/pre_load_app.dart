@@ -124,16 +124,24 @@ class _PreLoadAppState extends State<PreLoadApp> with WidgetsBindingObserver {
       onDispose: (Store<AppState> store) {},
       builder: (BuildContext context, InitialRouteViewModel vm) {
         String initialRoute = vm.initialRoute ?? AppRoutes.loginPage;
-        
+
         final bool isPhoneLogin =
             initialRoute.compareTo(AppRoutes.loginPage) == 0;
         final bool isResumeWithPin =
             initialRoute.compareTo(AppRoutes.resumeWithPin) == 0;
         if (!isPhoneLogin && !isResumeWithPin) {
-          initialRoute = AppRoutes.programSelectionPage;
+          initialRoute = AppRoutes.homePage;
         }
 
-        if (initialRoute == AppRoutes.homePage &&
+        if ((initialRoute == AppRoutes.homePage ||
+                initialRoute == AppRoutes.programSelectionPage) &&
+            (vm.defaultFacility?.id == null ||
+                vm.defaultFacility?.id == afya_moja_core.UNKNOWN)) {
+          initialRoute = AppRoutes.facilitySelectionPage;
+        }
+
+        if ((initialRoute == AppRoutes.homePage ||
+                initialRoute == AppRoutes.facilitySelectionPage) &&
             (vm.selectedProgram?.id == null ||
                 vm.selectedProgram?.id == afya_moja_core.UNKNOWN)) {
           initialRoute = AppRoutes.programSelectionPage;
