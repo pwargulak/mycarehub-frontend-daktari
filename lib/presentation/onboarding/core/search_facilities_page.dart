@@ -1,3 +1,4 @@
+import 'package:prohealth360_daktari/application/redux/actions/facilities/add_facility_to_staff_profile_action.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:async_redux/async_redux.dart';
@@ -315,51 +316,101 @@ class _SearchFacilitiesPageState extends State<SearchFacilitiesPage> {
                                   ? null
                                   : (vm.updateFacility ?? false)
                                       ? () {
-                                          StoreProvider.dispatch<AppState>(
-                                            context,
-                                            AddFacilityToClientProfileAction(
-                                              client:
-                                                  AppWrapperBase.of(context)!
-                                                      .graphQLClient,
-                                              onFailure: (String message) {
-                                                ScaffoldMessenger.of(context)
-                                                  ..hideCurrentSnackBar()
-                                                  ..showSnackBar(
-                                                    SnackBar(
+                                          if (widget.isClient ?? false) {
+                                            StoreProvider.dispatch<AppState>(
+                                              context,
+                                              AddFacilityToClientProfileAction(
+                                                client:
+                                                    AppWrapperBase.of(context)!
+                                                        .graphQLClient,
+                                                onFailure: (String message) {
+                                                  ScaffoldMessenger.of(context)
+                                                    ..hideCurrentSnackBar()
+                                                    ..showSnackBar(
+                                                      SnackBar(
+                                                        content: Text(
+                                                          message,
+                                                        ),
+                                                        duration:
+                                                            const Duration(
+                                                          seconds: 5,
+                                                        ),
+                                                        action: dismissSnackBar(
+                                                          closeString,
+                                                          Colors.white,
+                                                          context,
+                                                        ),
+                                                      ),
+                                                    );
+                                                },
+                                                onSuccess: () {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    const SnackBar(
                                                       content: Text(
-                                                        message,
+                                                        addFacilitySuccessString,
                                                       ),
-                                                      duration: const Duration(
-                                                        seconds: 5,
-                                                      ),
-                                                      action: dismissSnackBar(
-                                                        closeString,
-                                                        Colors.white,
-                                                        context,
+                                                      duration: Duration(
+                                                        seconds:
+                                                            kShortSnackBarDuration,
                                                       ),
                                                     ),
                                                   );
-                                              },
-                                              onSuccess: () {
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(
-                                                  const SnackBar(
-                                                    content: Text(
-                                                      addFacilitySuccessString,
+                                                  Navigator.pop(context);
+                                                },
+                                                clientId: widget.userID ?? '',
+                                                facilityId:
+                                                    selectedFacility.id ?? '',
+                                              ),
+                                            );
+                                          } else {
+                                            StoreProvider.dispatch<AppState>(
+                                              context,
+                                              AddFacilityToStaffProfileAction(
+                                                client:
+                                                    AppWrapperBase.of(context)!
+                                                        .graphQLClient,
+                                                onFailure: (String message) {
+                                                  ScaffoldMessenger.of(context)
+                                                    ..hideCurrentSnackBar()
+                                                    ..showSnackBar(
+                                                      SnackBar(
+                                                        content: Text(
+                                                          message,
+                                                        ),
+                                                        duration:
+                                                            const Duration(
+                                                          seconds: 5,
+                                                        ),
+                                                        action: dismissSnackBar(
+                                                          closeString,
+                                                          Colors.white,
+                                                          context,
+                                                        ),
+                                                      ),
+                                                    );
+                                                },
+                                                onSuccess: () {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    const SnackBar(
+                                                      content: Text(
+                                                        addFacilitySuccessString,
+                                                      ),
+                                                      duration: Duration(
+                                                        seconds:
+                                                            kShortSnackBarDuration,
+                                                      ),
                                                     ),
-                                                    duration: Duration(
-                                                      seconds:
-                                                          kShortSnackBarDuration,
-                                                    ),
-                                                  ),
-                                                );
-                                                Navigator.pop(context);
-                                              },
-                                              clientId: widget.userID ?? '',
-                                              facilityId:
-                                                  selectedFacility.id ?? '',
-                                            ),
-                                          );
+                                                  );
+                                                  Navigator.pop(context);
+                                                },
+                                                staffId: widget.userID ?? '',
+                                                facilityId:
+                                                    selectedFacility.id ?? '',
+                                              ),
+                                            );
+                                          }
                                         }
                                       : () {
                                           StoreProvider.dispatch<AppState>(

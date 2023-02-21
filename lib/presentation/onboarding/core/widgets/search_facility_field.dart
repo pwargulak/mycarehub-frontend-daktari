@@ -15,7 +15,7 @@ class SearchFacilityField extends StatefulWidget {
     super.key,
     this.onChanged,
     this.onFieldCleared,
-  }); 
+  });
 
   final void Function(String mflCode)? onChanged;
   final VoidCallback? onFieldCleared;
@@ -66,9 +66,11 @@ class _SearchFacilityFieldState extends State<SearchFacilityField> {
             final bool isFacilityChosen =
                 facilityName.isNotEmpty && facilityName != UNKNOWN;
 
-            final String facilityCode = vm.selectedFacility.facilityIdentifier?.value != null
+            final String facilityCode = vm
+                        .selectedFacility.facilityIdentifier?.value !=
+                    null
                 ? vm.selectedFacility.facilityIdentifier?.value.toString() ?? ''
-                : ''; 
+                : '';
 
             if (isFacilityChosen) {
               widget.onChanged?.call(
@@ -83,10 +85,18 @@ class _SearchFacilityFieldState extends State<SearchFacilityField> {
               key: facilitySelectOptionFieldKey,
               onTap: isFacilityChosen
                   ? null
-                  : () => Navigator.pushNamed(
+                  : () {
+                      StoreProvider.dispatch<AppState>(
+                        context,
+                        BatchUpdateMiscStateAction(
+                          updateFacility: false,
+                        ),
+                      );
+                      Navigator.pushNamed(
                         context,
                         AppRoutes.searchFacilitiesPage,
-                      ),
+                      );
+                    },
               readOnly: true,
               decoration: InputDecoration(
                 hintText: searchFacilityActionString,

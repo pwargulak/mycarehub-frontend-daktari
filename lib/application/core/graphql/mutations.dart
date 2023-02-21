@@ -249,6 +249,18 @@ mutation addFacilitiesToClientProfile(
 }
 ''';
 
+const String addFacilitiesToStaffProfileMutation = r'''
+mutation addFacilitiesToStaffProfile(
+  $staffID: ID! ,
+  $facilities: [ID!]!
+) {
+  addFacilitiesToStaffProfile(
+    staffID: $staffID,
+    facilities: $facilities
+  )
+}
+''';
+
 const String removeFacilitiesFromClientProfileMutation = r'''
 mutation removeFacilitiesFromClientProfile(
   $clientID: ID! ,

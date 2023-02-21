@@ -1,7 +1,6 @@
 import 'dart:async';
-
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
-import 'package:prohealth360_daktari/application/redux/actions/facilities/fetch_client_facilities_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/facilities/fetch_staff_linked_facilities_action.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
@@ -13,18 +12,18 @@ import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 
-class AddFacilityToClientProfileAction extends ReduxAction<AppState> {
+class AddFacilityToStaffProfileAction extends ReduxAction<AppState> {
   final IGraphQlClient client;
   final void Function(String message)? onFailure;
   final VoidCallback? onSuccess;
-  final String clientId;
+  final String staffId;
   final String facilityId;
 
-  AddFacilityToClientProfileAction({
+  AddFacilityToStaffProfileAction({
     required this.client,
     this.onFailure,
     this.onSuccess,
-    required this.clientId,
+    required this.staffId,
     required this.facilityId,
   });
 
@@ -49,12 +48,12 @@ class AddFacilityToClientProfileAction extends ReduxAction<AppState> {
     }
 
     final Map<String, dynamic> variables = <String, dynamic>{
-      'clientID': clientId,
+      'staffID': staffId,
       'facilities': <dynamic>[facilityId],
     };
 
     final Response response =
-        await client.query(addFacilitiesToClientProfileMutation, variables);
+        await client.query(addFacilitiesToStaffProfileMutation, variables);
 
     final ProcessedResponse processedResponse = processHttpResponse(response);
 
@@ -68,7 +67,7 @@ class AddFacilityToClientProfileAction extends ReduxAction<AppState> {
         onFailure?.call(getErrorMessage('adding the facility to client'));
         reportErrorToSentry(
           hint: addFacilityErrorString,
-          query: addFacilitiesToClientProfileMutation,
+          query: addFacilitiesToStaffProfileMutation,
           response: response,
           state: state,
           variables: variables,
@@ -77,9 +76,9 @@ class AddFacilityToClientProfileAction extends ReduxAction<AppState> {
       }
 
       final Map<String, dynamic> data = body['data'] as Map<String, dynamic>;
-      if ((data['addFacilitiesToClientProfile'] as bool?) ?? false) {
+      if ((data['addFacilitiesToStaffProfile'] as bool?) ?? false) {
         dispatch(
-          FetchClientFacilitiesAction(client: client, userId: clientId),
+          FetchStaffFacilitiesAction(client: client, userId: staffId),
         );
         onSuccess?.call();
       }
@@ -87,7 +86,7 @@ class AddFacilityToClientProfileAction extends ReduxAction<AppState> {
       onFailure?.call(getErrorMessage('adding the facility to client'));
       reportErrorToSentry(
         hint: addFacilityErrorString,
-        query: addFacilitiesToClientProfileMutation,
+        query: addFacilitiesToStaffProfileMutation,
         response: response,
         state: state,
         variables: variables,
