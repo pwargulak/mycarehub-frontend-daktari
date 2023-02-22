@@ -6,6 +6,7 @@ import 'package:prohealth360_daktari/application/redux/actions/organizations/sea
 import 'package:prohealth360_daktari/application/redux/actions/organizations/update_organisations_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/onboarding/organisations_state_view_model.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
@@ -23,6 +24,24 @@ class ManageOrganizationPage extends StatefulWidget {
 
 class _ManageOrganizationPageState extends State<ManageOrganizationPage> {
   final TextEditingController searchController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    searchController.addListener(() {
+      if (searchController.text.isEmpty) {
+        setState(() {
+          isSearching = false;
+        });
+      } else {
+        setState(() {
+          isSearching = true;
+        });
+      }
+    });
+  }
+
+  bool isSearching = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -124,10 +143,61 @@ class _ManageOrganizationPageState extends State<ManageOrganizationPage> {
                               );
                             },
                           ),
+                        if (vm.organisations!.isEmpty && isSearching)
+                          GenericErrorWidget(
+                            actionKey: searchNotFoundKey,
+                            headerIconSvgUrl: searchNotFoundImage,
+                            padding: EdgeInsets.zero,
+                            recoverCallback: () {
+                              StoreProvider.dispatch(
+                                context,
+                                SearchOrganisationsAction(
+                                  client:
+                                      AppWrapperBase.of(context)!.graphQLClient,
+                                  query: searchController.text,
+                                ),
+                              );
+                            },
+                            messageTitle: noOrganizationFoundText,
+                            messageBody: <TextSpan>[
+                              TextSpan(
+                                text: noAvailableMemberDescription,
+                                style: normalSize16Text(
+                                  AppColors.greyTextColor,
+                                ),
+                              ),
+                            ],
+                          )
+                        else if (vm.organisations?.isEmpty ?? true &&  !isSearching)
+                          GenericErrorWidget(
+                            actionKey: helpNoDataWidgetKey,
+                            headerIconSvgUrl: searchNotFoundImage,
+                            padding: EdgeInsets.zero,
+                            recoverCallback: () {
+                              StoreProvider.dispatch(
+                                context,
+                                SearchOrganisationsAction(
+                                  client:
+                                      AppWrapperBase.of(context)!.graphQLClient,
+                                  query: searchController.text,
+                                ),
+                              );
+                            },
+                            messageTitle: noOrganizationFoundText,
+                            messageBody: <TextSpan>[
+                              TextSpan(
+                                text: noAvailableMemberDescription,
+                                style: normalSize16Text(
+                                  AppColors.greyTextColor,
+                                ),
+                              ),
+                            ],
+                          )
                       ],
                     ),
                   ),
                 ),
+                if (vm.organisations?.isNotEmpty ?? false)
                 Container(
                   margin:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
