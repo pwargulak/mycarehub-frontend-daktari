@@ -13,21 +13,18 @@ import 'package:prohealth360_daktari/application/redux/view_model_factories/app_
 import 'package:prohealth360_daktari/application/redux/view_models/app_entry_point_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/core/pre_load_app.dart';
-import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 class MyCareHubProApp extends StatelessWidget {
   const MyCareHubProApp({
     super.key,
     required this.store,
     required this.appSetupData,
-    required this.streamClient,
     required this.analyticsObserver,
     required this.appName,
   });
 
   final AppSetupData appSetupData;
   final Store<AppState> store;
-  final StreamChatClient streamClient;
   final FirebaseAnalyticsObserver analyticsObserver;
   final String appName;
 
@@ -63,7 +60,6 @@ class MyCareHubProApp extends StatelessWidget {
             child: PreLoadApp(
               appName: appName,
               appContexts: appSetupData.appContexts,
-              streamClient: streamClient,
               analyticsObserver: analyticsObserver,
             ),
           );

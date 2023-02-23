@@ -2,7 +2,6 @@
 import 'package:prohealth360_daktari/domain/core/entities/facilities/facility.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:prohealth360_daktari/application/redux/states/communities_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/caregiver/caregiver.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/notification_filter_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/user.dart';
@@ -34,15 +33,11 @@ class UserProfile with _$UserProfile {
     @JsonKey(name: 'user_id') String? userId,
     @JsonKey(name: 'active', defaultValue: false) bool? active,
     @JsonKey(name: 'facilities') List<Facility>? facilities,
-
     String? staffNumber,
     Facility? defaultFacility,
     List<Facility>? linkedFacilities,
     User? user,
     String? defaultFacilityName,
-
-    // invited communities
-    CommunitiesState? communitiesState,
 
     // recently shared health diary entries
     List<HealthDiaryEntry?>? clientSharedDiaryEntries,
@@ -76,9 +71,8 @@ class UserProfile with _$UserProfile {
         linkedFacilities: <Facility>[],
         managedClients: <ManagedClient>[],
         defaultFacility: Facility.initial(),
-         defaultFacilityName: UNKNOWN,
+        defaultFacilityName: UNKNOWN,
         user: User.initial(),
-        communitiesState: CommunitiesState.initial(),
         clientSharedDiaryEntries: <HealthDiaryEntry>[],
         notifications: <NotificationDetails>[],
         currentFacility: Facility.initial(),

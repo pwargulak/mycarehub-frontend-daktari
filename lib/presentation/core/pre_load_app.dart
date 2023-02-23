@@ -13,7 +13,6 @@ import 'package:prohealth360_daktari/application/redux/actions/core/batch_update
 import 'package:rxdart/src/streams/merge.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:sghi_core/app_wrapper/enums.dart';
-import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 import 'package:prohealth360_daktari/application/core/services/custom_client.dart';
 import 'package:prohealth360_daktari/application/core/services/localization.dart';
@@ -34,14 +33,12 @@ class PreLoadApp extends StatefulWidget {
   const PreLoadApp({
     required this.appName,
     required this.appContexts,
-    required this.streamClient,
     required this.analyticsObserver,
   });
 
   final FirebaseAnalyticsObserver analyticsObserver;
   final List<AppContext> appContexts;
   final String appName;
-  final StreamChatClient streamClient;
 
   @override
   State<PreLoadApp> createState() => _PreLoadAppState();
@@ -199,13 +196,7 @@ class _PreLoadAppState extends State<PreLoadApp> with WidgetsBindingObserver {
                     },
                   );
                 },
-                child: StreamChat(
-                  client: widget.streamClient,
-                  streamChatThemeData: StreamChatThemeData(
-                    channelHeaderTheme: const StreamChannelHeaderThemeData(),
-                  ),
-                  child: childWidget,
-                ),
+                child: childWidget!,
               );
             },
             theme: AppTheme.getAppTheme(),

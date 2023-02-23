@@ -88,8 +88,6 @@ const String invitationAcceptedSuccessfully =
 const String invitationDeclinedSuccessfully =
     'Invitation declined successfully';
 const String communitiesRejectionSuccessful = 'Invite rejection successful';
-String groupInviteDescription(String groupName) =>
-    'You have been invited to join the $groupName group. Tap the options below to accept or decline the group invite';
 const String okThanksText = 'Ok, thanks';
 const String joinGroup = 'Join Group';
 const String declineInvite = 'Decline Invite';
@@ -1159,25 +1157,11 @@ const String searchOrganizationTextString =
 const String searchOrganizationHintString = 'Search organizations';
 const String mostViewedOrganizationString = 'Most viewed organizations';
 
-//TODO(Byron): Some of the strings below are hardcoded for scaffolding purposes.
-// Need to be deleted once Backend is ready
-const String sghiString = 'SGHI';
-const String myCareHubOrgString = 'myCareHub';
-const String myCareHubOrgDescriptionString =
-    'A program to help patients manage their medical information';
-const String kemriString = 'KEMRI';
-const String FYJ = 'FYJ';
-const String fYJOrgDescriptionString =
-    'A program to help clients manage their medical information';
-const String kemriDescriptionString = 'The KEMRI org details go here';
 const String createOrganizationString = 'Create Organization';
 
 String orgName(String name) {
   return '$name Organization';
 }
-
-const String SGHIOrgDetailString =
-    'The Savannah Global Health Institute is an  organization that deals with HIV, diabetes and hypertension in Nairobi and Kajiado county in Kenya';
 
 const String programsString = 'Programs';
 const String runningProgramString =
@@ -1195,17 +1179,11 @@ const String deactivateProgramString = 'Deactivate Program';
 const String deactivateProgramInfoString =
     'This will deactivate this program on myCareHub';
 const String organizationString = 'Organization';
-const String organizationDescriptionString =
-    'University of Nairobi School of Medicine';
 const String diseaseAreasString = 'Disease Areas';
 const String diseaseAreasDescriptionString =
     'Disease areas that this program is running on';
 const String runningFacilitiesString =
     'Facilities that this program is running on';
-const String ruiru = 'Ruiru SCH';
-const String ruiruFacilityDescriptionString = 'Ruiru sub-county hospital';
-const String kiambu = 'Kiambu';
-const String kiambuFacilityDescriptionString = 'Kiambu hospital';
 const String addOrganizationDetailsString =
     'Add details about your new organization';
 const String nameString = 'Name';
@@ -1224,3 +1202,5 @@ const String physicalAddressString = 'Physical Address';
 const String createProgramSuccess = 'Successfully created program';
 
 const String defaultString = 'Default';
+const String acceptGroupInvites = 'Accept group invites';
+const String invitedGroups = 'Invited groups';

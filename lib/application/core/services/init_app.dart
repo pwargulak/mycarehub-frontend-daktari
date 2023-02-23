@@ -23,7 +23,6 @@ import 'package:prohealth360_daktari/infrastructure/repository/database_state_pe
 import 'package:prohealth360_daktari/presentation/core/mycarehub_pro_app.dart';
 import 'package:prohealth360_daktari/presentation/core/widgets/unrecoverable_error_widget.dart';
 import 'package:sghi_core/app_wrapper/enums.dart';
-import 'package:stream_chat_flutter/stream_chat_flutter.dart';
 
 /// Responsible for putting together everything that the app needs in order
 /// to run safely.
@@ -69,11 +68,6 @@ Future<void> initApp(List<AppContext> appContexts) async {
     defaultDistinct: true,
   );
 
-  final StreamChatClient streamClient = StreamChatClient(
-    appSetupData.streamAPIKey,
-    logLevel: Level.ALL,
-  );
-
   /// Configures which error widget to show depending  on whether the app is
   /// in debug or release mode.
   ErrorWidget.builder = (FlutterErrorDetails details) {
@@ -111,7 +105,6 @@ Future<void> initApp(List<AppContext> appContexts) async {
             store: store,
             appName: appSetupData.appName,
             appSetupData: appSetupData,
-            streamClient: streamClient,
             analyticsObserver: AnalyticsService().getAnalyticsObserver(),
           ),
         ),

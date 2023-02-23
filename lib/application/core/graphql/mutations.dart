@@ -85,22 +85,6 @@ mutation inviteUser($userID: String!, $phoneNumber: String!, $flavour: Flavour!)
 }
  ''';
 
-const String createCommunityMutation = r'''
-mutation createCommunity($input: CommunityInput!) {
-  createCommunity(input: $input){
-    name
-    description
-    ageRange{
-      lowerBound
-      upperBound
-    }
-    gender
-    clientType
-    inviteOnly
-  }
-}
-''';
-
 const String verifyClientPinResetServiceRequestQuery = r'''
 mutation verifyClientPinResetServiceRequest(
   $clientID: String!
@@ -127,18 +111,6 @@ mutation verifyStaffPinResetServiceRequest($phoneNumber: String!, $serviceReques
 }
 ''';
 
-const String acceptInvitationMutation = r'''
-mutation acceptInvitation($memberID: String!, $communityID: String!){
-  acceptInvitation(memberID: $memberID, communityID: $communityID)
-}
-''';
-
-const String rejectInvitationMutation = r'''
-mutation rejectInvitation($memberID: String!, $communityID: String!){
-  rejectInvitation(memberID: $memberID, communityID: $communityID)
-}
-''';
-
 const String inviteUserMutation = r'''
 mutation inviteUser($userID: String!, $phoneNumber: String!, $flavour: Flavour!, $reinvite: Boolean!) {
   inviteUser(userID: $userID, phoneNumber: $phoneNumber, flavour: $flavour, reinvite: $reinvite)
@@ -151,41 +123,6 @@ mutation assignOrRevokeRoles($userID: String!, $roles: [UserRoleType!]!){
 }
 ''';
 
-const String removeFromGroupMutation = r'''
-mutation removeMembersFromCommunity($communityID: String!, $memberIDs: [String!]!){
-  removeMembersFromCommunity(communityID: $communityID, memberIDs: $memberIDs)
-}
-''';
-
-const String banUserMutation = r'''
-mutation BanUser($memberID: String!, $bannedBy: String!, $communityID: String!){
-  banUser(memberID: $memberID, bannedBy: $bannedBy, communityID: $communityID)
-}
-''';
-
-const String promoteToModeratorMutation = r'''
-mutation addModerators($memberIDs: [String!]!, $communityID: String!){
-  addModerators(memberIDs: $memberIDs, communityID: $communityID)
-}
-''';
-
-const String demoteModeratorMutation = r'''
-mutation demoteModerators($memberIDs: [String!]!, $communityID: String!){
-  demoteModerators(memberIDs: $memberIDs, communityID: $communityID)
-}
-''';
-
-const String unBanUserMutation = r'''
-mutation UnBanUser($memberID: String!, $communityID: String!){
-  unBanUser(memberID: $memberID, communityID: $communityID)
-}
-''';
-
-const String deleteCommunityMessageMutation = r'''
-mutation deleteCommunityMessage($messageID: String!){
-  deleteCommunityMessage(messageID: $messageID)
-}
-''';
 const String resolveServiceRequestMutation = r'''
 mutation ResolveServiceRequest($staffID: String!, $requestID: String!, $action: [String!]!, $comment: String){
   resolveServiceRequest(staffID: $staffID, requestID: $requestID, action: $action, comment: $comment)

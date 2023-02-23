@@ -39,7 +39,6 @@ final AppSetupData devAppSetupData = AppSetupData(
   environment: 'DEV',
   appName: appName,
   sentryDNS: FlutterConfig.get('DEV_SENTRY_DNS') as String,
-  streamAPIKey: FlutterConfig.get('DEV_STREAM_API_KEY') as String,
   customContext: const BaseContext(
     listOrganisationsEndpoint: '',
     anonymousLoginEndpoint: '',
@@ -73,7 +72,6 @@ final AppSetupData demoAppSetupData = AppSetupData(
   environment: 'DEMO',
   appName: appName,
   sentryDNS: FlutterConfig.get('DEMO_SENTRY_DNS') as String,
-  streamAPIKey: FlutterConfig.get('DEMO_STREAM_API_KEY') as String,
   customContext: const BaseContext(
     listOrganisationsEndpoint: '',
     anonymousLoginEndpoint: '',
@@ -106,7 +104,6 @@ final AppSetupData prodAppSetupData = AppSetupData(
   appContexts: prodAppContexts,
   environment: 'PROD',
   sentryDNS: FlutterConfig.get('PROD_SENTRY_DNS') as String,
-  streamAPIKey: FlutterConfig.get('PROD_STREAM_API_KEY') as String,
   appName: appName,
   customContext: const BaseContext(
     listOrganisationsEndpoint: '',

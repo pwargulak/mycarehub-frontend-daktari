@@ -1272,77 +1272,6 @@ class MockTestGraphQlClient extends IGraphQlClient {
       );
     }
 
-    if (queryString.contains(inviteMembersToCommunityQuery)) {
-      return Future<http.Response>.value(
-        http.Response(
-          json.encode(<String, dynamic>{
-            'data': <String, dynamic>{
-              'inviteMembersToCommunity': true,
-            }
-          }),
-          201,
-        ),
-      );
-    }
-
-    if (queryString.contains(listFlaggedMessagesQuery)) {
-      return Future<http.Response>.value(
-        http.Response(
-          json.encode(<String, dynamic>{
-            'data': <String, dynamic>{
-              'listFlaggedMessages': mockListFlaggedMessages,
-            }
-          }),
-          201,
-        ),
-      );
-    }
-
-    if (queryString.contains(deleteCommunityMessageMutation)) {
-      return Future<http.Response>.value(
-        http.Response(
-          json.encode(<String, dynamic>{
-            'data': <String, dynamic>{
-              'deleteCommunityMessage': true,
-            }
-          }),
-          201,
-        ),
-      );
-    }
-
-    if (queryString.contains(createCommunityMutation)) {
-      return Future<http.Response>.value(
-        http.Response(
-          json.encode(<String, dynamic>{
-            'data': <String, dynamic>{
-              'createCommunity': <String, dynamic>{
-                'name': 'Test',
-                'description': 'test group',
-                'ageRange': <String, dynamic>{
-                  'lowerBound': 17,
-                  'upperBound': 25
-                },
-                'gender': <String>['male', 'female'],
-                'clientType': <String>['PMTCT', 'OVC'],
-                'inviteOnly': false
-              }
-            }
-          }),
-          201,
-        ),
-      );
-    }
-
-    if (queryString.contains(listCommunityMembersQuery)) {
-      return Future<http.Response>.value(
-        http.Response(
-          json.encode(<String, dynamic>{'data': groupStateMock}),
-          201,
-        ),
-      );
-    }
-
     if (queryString.contains(searchClientQuery)) {
       return Future<http.Response>.value(
         http.Response(
@@ -1457,43 +1386,6 @@ class MockTestGraphQlClient extends IGraphQlClient {
           json.encode(
             <String, dynamic>{
               'data': <String, dynamic>{'assignOrRevokeRoles': true}
-            },
-          ),
-          201,
-        ),
-      );
-    }
-    if (queryString.contains(removeFromGroupMutation)) {
-      return Future<http.Response>.value(
-        http.Response(
-          json.encode(
-            <String, dynamic>{
-              'data': <String, dynamic>{'removeMembersFromCommunity': true}
-            },
-          ),
-          201,
-        ),
-      );
-    }
-
-    if (queryString.contains(banUserMutation)) {
-      return Future<http.Response>.value(
-        http.Response(
-          json.encode(
-            <String, dynamic>{
-              'data': <String, dynamic>{'banUser': true}
-            },
-          ),
-          201,
-        ),
-      );
-    }
-    if (queryString.contains(unBanUserMutation)) {
-      return Future<http.Response>.value(
-        http.Response(
-          json.encode(
-            <String, dynamic>{
-              'data': <String, dynamic>{'unBanUser': true}
             },
           ),
           201,
@@ -2193,6 +2085,7 @@ final Map<String, dynamic> mockMiscState = <String, dynamic>{
     'eventPayload': 'UNKNOWN'
   },
   'createPin': 'UNKNOWN',
+  'cccNumberExists': false,
   'confirmPin': 'UNKNOWN',
   'accountExists': false,
   'invalidPin': false,
@@ -2205,7 +2098,6 @@ final Map<String, dynamic> mockMiscState = <String, dynamic>{
     'errorFetchingFAQs': false,
     'timeoutFetchingFAQs': false
   },
-  'communityMembers': <dynamic>[],
   'groupState': groupStateMock,
   'searchUserResponseState': mockSearchUserResponseState,
 };
@@ -2464,54 +2356,6 @@ final List<dynamic> listMembersMock = <dynamic>[
     'username': 'Julian',
     'gender': core.Gender.male.name,
   },
-];
-
-final List<dynamic> mockListFlaggedMessages = <dynamic>[
-  <String, dynamic>{
-    'message': <String, dynamic>{
-      'id': '1fc5d6be-8550-47a4-8f46-e515ae04f7a9',
-      'text': 'Test',
-      'created_at': '2022-04-08T12:02:20Z',
-      'attachments': <dynamic>[],
-      'mentioned_users': <dynamic>[],
-      'user': <String, dynamic>{
-        'id': '740128ce-32b4-4b5e-8359-a92442c8f741',
-        'userID': '',
-        'name': 'John Ngugi',
-        'username': ''
-      }
-    }
-  },
-  <String, dynamic>{
-    'message': <String, dynamic>{
-      'id': '71a64e8a-98cb-4a27-9ee7-4786eb7a8135',
-      'text': "Who's available?",
-      'created_at': '2022-03-04T12:45:54Z',
-      'attachments': <dynamic>[],
-      'mentioned_users': <dynamic>[],
-      'user': <String, dynamic>{
-        'id': 'da614cc4-b503-4bd8-9530-a7eb0d676433',
-        'userID': '',
-        'name': 'Nairoua Salaton',
-        'username': ''
-      }
-    }
-  },
-  <String, dynamic>{
-    'message': <String, dynamic>{
-      'id': '1c2a059c-f49b-4b6e-a130-2812777bb280',
-      'text': 'Hi I am now available',
-      'created_at': '2022-04-09T08:07:38Z',
-      'attachments': <dynamic>[],
-      'mentioned_users': <dynamic>[],
-      'user': <String, dynamic>{
-        'id': '305db9b5-2ff9-4e4c-9a7a-57660b31df4c',
-        'userID': '',
-        'name': 'Abiud Consumer',
-        'username': ''
-      }
-    }
-  }
 ];
 
 final Map<String, dynamic> groupInfoPagePayloadMock = <String, dynamic>{

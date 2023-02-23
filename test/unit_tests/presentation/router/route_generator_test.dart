@@ -1,5 +1,7 @@
 // Flutter imports:
 import 'package:prohealth360_daktari/presentation/admin/admin_page.dart';
+import 'package:prohealth360_daktari/presentation/communities/pages/accept_group_invites_page.dart';
+import 'package:prohealth360_daktari/presentation/communities/pages/communities_list_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/core/search_organization_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/login/pages/login_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/program_selection/program_selection_page.dart';
@@ -33,14 +35,9 @@ import 'package:prohealth360_daktari/presentation/caregiver/search_caregiver_det
 import 'package:prohealth360_daktari/presentation/caregiver/search_caregiver_page.dart';
 // Project imports:
 import 'package:prohealth360_daktari/presentation/client_details/pages/search_client_page.dart';
-import 'package:prohealth360_daktari/presentation/communities/group_info/pages/edit_group_info_page.dart';
-import 'package:prohealth360_daktari/presentation/communities/invited_groups/pages/accept_group_invites_page.dart';
-import 'package:prohealth360_daktari/presentation/communities/pages/community_list_page.dart';
 import 'package:prohealth360_daktari/presentation/contact_admin/pages/contact_admin_page.dart';
 import 'package:prohealth360_daktari/presentation/core/widgets/handle_deep_link.dart';
 import 'package:prohealth360_daktari/presentation/create_group/create_group.dart';
-import 'package:prohealth360_daktari/presentation/create_group/invite_members/invite_members_page.dart';
-import 'package:prohealth360_daktari/presentation/engagement/home/pages/content_page.dart';
 import 'package:prohealth360_daktari/presentation/engagement/home/pages/home_page.dart';
 import 'package:prohealth360_daktari/presentation/notifications/notifications_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/create_pin/pages/create_new_pin_page.dart';
@@ -141,23 +138,13 @@ void main() {
     expect(route.builder(context), isA<CreateNewPINPage>());
   });
 
-  test('Test router returns ContentPage', () {
-    const RouteSettings settings = RouteSettings(name: AppRoutes.contentPage);
-
-    final MaterialPageRoute<ContentPage> route =
-        routeGenerator(settings) as MaterialPageRoute<ContentPage>;
-
-    expect(route, isA<MaterialPageRoute<ContentPage>>());
-    expect(route.builder(context), isA<ContentPage>());
-  });
-
   test('Test router returns CommunityListView', () {
     const RouteSettings settings = RouteSettings(name: AppRoutes.communityPage);
 
-    final MaterialPageRoute<CommunityListPage>? route =
-        routeGenerator(settings) as MaterialPageRoute<CommunityListPage>?;
-    expect(route, isA<MaterialPageRoute<CommunityListPage>>());
-    expect(route?.builder(context), isA<CommunityListPage>());
+    final MaterialPageRoute<CommunitiesListPage>? route =
+        routeGenerator(settings) as MaterialPageRoute<CommunitiesListPage>?;
+    expect(route, isA<MaterialPageRoute<CommunitiesListPage>>());
+    expect(route?.builder(context), isA<CommunitiesListPage>());
   });
 
   test('Test router returns NotificationsPage', () async {
@@ -233,18 +220,6 @@ void main() {
         routeGenerator(settings) as MaterialPageRoute<RegisterClientPage>?;
     expect(route, isA<MaterialPageRoute<RegisterClientPage>>());
     expect(route?.builder(context), isA<RegisterClientPage>());
-  });
-
-  test('Test router returns InviteMembersPage', () {
-    const RouteSettings settings = RouteSettings(
-      name: AppRoutes.inviteMembersPage,
-      arguments: 'some-channel-id',
-    );
-
-    final MaterialPageRoute<InviteMembersPage>? route =
-        routeGenerator(settings) as MaterialPageRoute<InviteMembersPage>?;
-    expect(route, isA<MaterialPageRoute<InviteMembersPage>>());
-    expect(route?.builder(context), isA<InviteMembersPage>());
   });
 
   test('Test router returns CreateGroupPage', () {
@@ -587,16 +562,6 @@ void main() {
     expect(route?.builder(context), isA<AssessmentToolResponsesPage>());
   });
 
-  test('Test router returns successful edit group info page', () {
-    const RouteSettings routeSettings =
-        RouteSettings(name: AppRoutes.editGroupInfoPage);
-    final MaterialPageRoute<dynamic>? route =
-        routeGenerator(routeSettings) as MaterialPageRoute<dynamic>?;
-
-    expect(route, isA<MaterialPageRoute<EditGroupInfoPage>>());
-    expect(route?.builder(context), isA<EditGroupInfoPage>());
-  });
-
   test('Test router returns successful resume pin connector', () {
     const RouteSettings settings = RouteSettings(name: AppRoutes.resumeWithPin);
 
@@ -892,5 +857,4 @@ void main() {
     expect(route, isA<MaterialPageRoute<SearchOrganisationsPage>>());
     expect(route?.builder(context), isA<SearchOrganisationsPage>());
   });
-
 }

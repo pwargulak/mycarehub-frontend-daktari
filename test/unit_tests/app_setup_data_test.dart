@@ -10,7 +10,6 @@ void main() {
     final AppSetupData appSetup = AppSetupData(
       appContexts: <AppContext>[AppContext.AfyaMoja],
       sentryDNS: 'some sentryDNS',
-      streamAPIKey: 'some-stream-api-key',
       environment: '',
       appName: '',
     );
@@ -21,7 +20,6 @@ void main() {
     final AppSetupData sameSetup = AppSetupData(
       appContexts: <AppContext>[AppContext.AfyaMoja],
       sentryDNS: 'some sentryDNS',
-      streamAPIKey: 'some-stream-api-key',
       environment: '',
       appName: '',
     );

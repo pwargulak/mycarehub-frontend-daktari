@@ -41,7 +41,6 @@ class BatchUpdateMiscStateAction extends ReduxAction<AppState> {
       miscState: state.miscState!.copyWith(
         error: error ?? state.miscState?.error,
         initialRoute: initialRoute ?? state.miscState?.initialRoute,
-        communityMembers: communityMembers,
         inactiveTime: inactiveTime ?? state.miscState?.inactiveTime,
         resumeWithPin: resumeWithPin ?? state.miscState?.resumeWithPin,
         selectedFacility: selectedFacility ?? state.miscState?.selectedFacility,

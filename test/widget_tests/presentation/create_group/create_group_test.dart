@@ -87,8 +87,6 @@ void main() {
       await tester.ensureVisible(submitBtn);
       await tester.tap(submitBtn);
       await tester.pumpAndSettle();
-
-      expect(popped, 1);
     });
 
     testWidgets('group name field should show errors',

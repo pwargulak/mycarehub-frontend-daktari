@@ -17,7 +17,7 @@ class OrganizationDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: orgName(sghiString),
+        title: orgName('SGHI'),
         showNotificationIcon: true,
       ),
       body: SafeArea(
@@ -80,7 +80,6 @@ class OrganizationDetailPage extends StatelessWidget {
                                     description: vm.selectedOrganisation!
                                             .programs?[index]?.description ??
                                         '',
-                                    
                                   ),
                                 );
                               },

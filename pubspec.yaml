@@ -39,7 +39,6 @@ dependencies:
   sghi_core: ^0.2.15
   sms_autofill: ^2.2.0
   sqflite: ^2.0.3+1
-  stream_chat_flutter: ^5.1.0
   unicons: ^2.1.0
   url_launcher: ^6.1.6
 

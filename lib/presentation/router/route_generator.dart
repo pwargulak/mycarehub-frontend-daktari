@@ -1,5 +1,9 @@
 // Flutter imports:
 import 'package:prohealth360_daktari/presentation/admin/admin_page.dart';
+import 'package:prohealth360_daktari/presentation/communities/pages/accept_group_invites_page.dart';
+import 'package:prohealth360_daktari/presentation/communities/pages/communities_list_page.dart';
+import 'package:prohealth360_daktari/presentation/communities/pages/invited_groups_page.dart';
+import 'package:prohealth360_daktari/presentation/create_group/create_group.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/core/search_organization_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/login/pages/login_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/program_selection/program_selection_page.dart';
@@ -32,15 +36,8 @@ import 'package:prohealth360_daktari/presentation/onboarding/caregiver/register_
 // Project imports:
 import 'package:prohealth360_daktari/presentation/client_details/pages/search_client_page.dart';
 import 'package:prohealth360_daktari/presentation/client_details/pages/search_staff_member_page.dart';
-import 'package:prohealth360_daktari/presentation/communities/group_info/pages/edit_group_info_page.dart';
-import 'package:prohealth360_daktari/presentation/communities/invited_groups/pages/accept_group_invites_page.dart';
-import 'package:prohealth360_daktari/presentation/communities/invited_groups/pages/invited_groups_page.dart';
-import 'package:prohealth360_daktari/presentation/communities/pages/community_list_page.dart';
 import 'package:prohealth360_daktari/presentation/contact_admin/pages/contact_admin_page.dart';
 import 'package:prohealth360_daktari/presentation/core/widgets/handle_deep_link.dart';
-import 'package:prohealth360_daktari/presentation/create_group/create_group.dart';
-import 'package:prohealth360_daktari/presentation/create_group/invite_members/invite_members_page.dart';
-import 'package:prohealth360_daktari/presentation/engagement/home/pages/content_page.dart';
 import 'package:prohealth360_daktari/presentation/engagement/home/pages/home_page.dart';
 import 'package:prohealth360_daktari/presentation/notifications/notifications_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/core/search_facilities_page.dart';
@@ -130,8 +127,8 @@ class RouteGenerator {
         );
 
       case AppRoutes.communityPage:
-        return MaterialPageRoute<CommunityListPage>(
-          builder: (_) => const CommunityListPage(),
+        return MaterialPageRoute<CommunitiesListPage>(
+          builder: (_) => const CommunitiesListPage(),
           settings: const RouteSettings(name: 'Communities list page'),
         );
 
@@ -150,11 +147,6 @@ class RouteGenerator {
           settings: const RouteSettings(name: 'Notifications page'),
         );
 
-      case AppRoutes.contentPage:
-        return MaterialPageRoute<ContentPage>(
-          builder: (_) => ContentPage(),
-        );
-
       case AppRoutes.addNewGroupPage:
         return MaterialPageRoute<CreateGroupPage>(
           builder: (_) {
@@ -168,12 +160,6 @@ class RouteGenerator {
             return const CreateGroupPage();
           },
           settings: const RouteSettings(name: 'Create group page'),
-        );
-
-      case AppRoutes.inviteMembersPage:
-        return MaterialPageRoute<InviteMembersPage>(
-          builder: (_) => InviteMembersPage(channelId: args as String),
-          settings: const RouteSettings(name: 'Invite members page'),
         );
 
       case AppRoutes.securityQuestionsPage:
@@ -536,17 +522,8 @@ class RouteGenerator {
         );
 
       case AppRoutes.acceptGroupInvitesPage:
-        final String groupId =
-            (args as Map<String, dynamic>)['groupId'] as String;
-        final String groupName = args['groupName'] as String;
-        final int numberOfMembers = args['numberOfMembers'] as int;
-
         return MaterialPageRoute<AcceptGroupInvitesPage>(
-          builder: (_) => AcceptGroupInvitesPage(
-            groupId: groupId,
-            groupName: groupName,
-            numberOfMembers: numberOfMembers,
-          ),
+          builder: (_) => const AcceptGroupInvitesPage(),
           settings: const RouteSettings(name: 'Accepted group invites page'),
         );
 
@@ -554,12 +531,6 @@ class RouteGenerator {
         return MaterialPageRoute<ResumePinConnector>(
           builder: (_) => const ResumePinConnector(),
           settings: const RouteSettings(name: 'Resume with pin page'),
-        );
-
-      case AppRoutes.editGroupInfoPage:
-        return MaterialPageRoute<EditGroupInfoPage>(
-          builder: (_) => const EditGroupInfoPage(),
-          settings: const RouteSettings(name: 'Edit group info page'),
         );
 
       case AppRoutes.searchFacilitiesPage:
@@ -674,7 +645,7 @@ class RouteGenerator {
 
       case AppRoutes.createOrganizationRoute:
         return MaterialPageRoute<CreateOrganizationPage>(
-          builder: (_) =>  CreateOrganizationPage(),
+          builder: (_) => CreateOrganizationPage(),
           settings: const RouteSettings(name: 'Create Organization Page'),
         );
 

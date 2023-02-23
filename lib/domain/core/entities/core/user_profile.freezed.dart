@@ -57,8 +57,6 @@ mixin _$UserProfile {
   List<Facility>? get linkedFacilities => throw _privateConstructorUsedError;
   User? get user => throw _privateConstructorUsedError;
   String? get defaultFacilityName =>
-      throw _privateConstructorUsedError; // invited communities
-  CommunitiesState? get communitiesState =>
       throw _privateConstructorUsedError; // recently shared health diary entries
   List<HealthDiaryEntry?>? get clientSharedDiaryEntries =>
       throw _privateConstructorUsedError; // staff notifications
@@ -102,7 +100,6 @@ abstract class $UserProfileCopyWith<$Res> {
       List<Facility>? linkedFacilities,
       User? user,
       String? defaultFacilityName,
-      CommunitiesState? communitiesState,
       List<HealthDiaryEntry?>? clientSharedDiaryEntries,
       List<NotificationDetails?>? notifications,
       List<Caregiver?>? clientCaregivers,
@@ -112,7 +109,6 @@ abstract class $UserProfileCopyWith<$Res> {
 
   $FacilityCopyWith<$Res>? get defaultFacility;
   $UserCopyWith<$Res>? get user;
-  $CommunitiesStateCopyWith<$Res>? get communitiesState;
   $NotificationFilterStateCopyWith<$Res>? get notificationFilterState;
   $FacilityCopyWith<$Res>? get currentFacility;
 }
@@ -149,7 +145,6 @@ class _$UserProfileCopyWithImpl<$Res, $Val extends UserProfile>
     Object? linkedFacilities = freezed,
     Object? user = freezed,
     Object? defaultFacilityName = freezed,
-    Object? communitiesState = freezed,
     Object? clientSharedDiaryEntries = freezed,
     Object? notifications = freezed,
     Object? clientCaregivers = freezed,
@@ -234,10 +229,6 @@ class _$UserProfileCopyWithImpl<$Res, $Val extends UserProfile>
           ? _value.defaultFacilityName
           : defaultFacilityName // ignore: cast_nullable_to_non_nullable
               as String?,
-      communitiesState: freezed == communitiesState
-          ? _value.communitiesState
-          : communitiesState // ignore: cast_nullable_to_non_nullable
-              as CommunitiesState?,
       clientSharedDiaryEntries: freezed == clientSharedDiaryEntries
           ? _value.clientSharedDiaryEntries
           : clientSharedDiaryEntries // ignore: cast_nullable_to_non_nullable
@@ -286,18 +277,6 @@ class _$UserProfileCopyWithImpl<$Res, $Val extends UserProfile>
 
     return $UserCopyWith<$Res>(_value.user!, (value) {
       return _then(_value.copyWith(user: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $CommunitiesStateCopyWith<$Res>? get communitiesState {
-    if (_value.communitiesState == null) {
-      return null;
-    }
-
-    return $CommunitiesStateCopyWith<$Res>(_value.communitiesState!, (value) {
-      return _then(_value.copyWith(communitiesState: value) as $Val);
     });
   }
 
@@ -355,7 +334,6 @@ abstract class _$$_UserProfileCopyWith<$Res>
       List<Facility>? linkedFacilities,
       User? user,
       String? defaultFacilityName,
-      CommunitiesState? communitiesState,
       List<HealthDiaryEntry?>? clientSharedDiaryEntries,
       List<NotificationDetails?>? notifications,
       List<Caregiver?>? clientCaregivers,
@@ -367,8 +345,6 @@ abstract class _$$_UserProfileCopyWith<$Res>
   $FacilityCopyWith<$Res>? get defaultFacility;
   @override
   $UserCopyWith<$Res>? get user;
-  @override
-  $CommunitiesStateCopyWith<$Res>? get communitiesState;
   @override
   $NotificationFilterStateCopyWith<$Res>? get notificationFilterState;
   @override
@@ -405,7 +381,6 @@ class __$$_UserProfileCopyWithImpl<$Res>
     Object? linkedFacilities = freezed,
     Object? user = freezed,
     Object? defaultFacilityName = freezed,
-    Object? communitiesState = freezed,
     Object? clientSharedDiaryEntries = freezed,
     Object? notifications = freezed,
     Object? clientCaregivers = freezed,
@@ -490,10 +465,6 @@ class __$$_UserProfileCopyWithImpl<$Res>
           ? _value.defaultFacilityName
           : defaultFacilityName // ignore: cast_nullable_to_non_nullable
               as String?,
-      communitiesState: freezed == communitiesState
-          ? _value.communitiesState
-          : communitiesState // ignore: cast_nullable_to_non_nullable
-              as CommunitiesState?,
       clientSharedDiaryEntries: freezed == clientSharedDiaryEntries
           ? _value._clientSharedDiaryEntries
           : clientSharedDiaryEntries // ignore: cast_nullable_to_non_nullable
@@ -545,7 +516,6 @@ class _$_UserProfile implements _UserProfile {
       final List<Facility>? linkedFacilities,
       this.user,
       this.defaultFacilityName,
-      this.communitiesState,
       final List<HealthDiaryEntry?>? clientSharedDiaryEntries,
       final List<NotificationDetails?>? notifications,
       final List<Caregiver?>? clientCaregivers,
@@ -633,9 +603,6 @@ class _$_UserProfile implements _UserProfile {
   final User? user;
   @override
   final String? defaultFacilityName;
-// invited communities
-  @override
-  final CommunitiesState? communitiesState;
 // recently shared health diary entries
   final List<HealthDiaryEntry?>? _clientSharedDiaryEntries;
 // recently shared health diary entries
@@ -683,7 +650,7 @@ class _$_UserProfile implements _UserProfile {
 
   @override
   String toString() {
-    return 'UserProfile(id: $id, username: $username, name: $name, pinChangeRequired: $pinChangeRequired, hasSetPin: $hasSetPin, isPhoneVerified: $isPhoneVerified, hasSetSecurityQuestions: $hasSetSecurityQuestions, hasSetNickname: $hasSetNickname, pinUpdateRequired: $pinUpdateRequired, termsAccepted: $termsAccepted, suspended: $suspended, userId: $userId, active: $active, facilities: $facilities, staffNumber: $staffNumber, defaultFacility: $defaultFacility, linkedFacilities: $linkedFacilities, user: $user, defaultFacilityName: $defaultFacilityName, communitiesState: $communitiesState, clientSharedDiaryEntries: $clientSharedDiaryEntries, notifications: $notifications, clientCaregivers: $clientCaregivers, managedClients: $managedClients, notificationFilterState: $notificationFilterState, currentFacility: $currentFacility)';
+    return 'UserProfile(id: $id, username: $username, name: $name, pinChangeRequired: $pinChangeRequired, hasSetPin: $hasSetPin, isPhoneVerified: $isPhoneVerified, hasSetSecurityQuestions: $hasSetSecurityQuestions, hasSetNickname: $hasSetNickname, pinUpdateRequired: $pinUpdateRequired, termsAccepted: $termsAccepted, suspended: $suspended, userId: $userId, active: $active, facilities: $facilities, staffNumber: $staffNumber, defaultFacility: $defaultFacility, linkedFacilities: $linkedFacilities, user: $user, defaultFacilityName: $defaultFacilityName, clientSharedDiaryEntries: $clientSharedDiaryEntries, notifications: $notifications, clientCaregivers: $clientCaregivers, managedClients: $managedClients, notificationFilterState: $notificationFilterState, currentFacility: $currentFacility)';
   }
 
   @override
@@ -725,8 +692,6 @@ class _$_UserProfile implements _UserProfile {
             (identical(other.user, user) || other.user == user) &&
             (identical(other.defaultFacilityName, defaultFacilityName) ||
                 other.defaultFacilityName == defaultFacilityName) &&
-            (identical(other.communitiesState, communitiesState) ||
-                other.communitiesState == communitiesState) &&
             const DeepCollectionEquality().equals(
                 other._clientSharedDiaryEntries, _clientSharedDiaryEntries) &&
             const DeepCollectionEquality()
@@ -765,7 +730,6 @@ class _$_UserProfile implements _UserProfile {
         const DeepCollectionEquality().hash(_linkedFacilities),
         user,
         defaultFacilityName,
-        communitiesState,
         const DeepCollectionEquality().hash(_clientSharedDiaryEntries),
         const DeepCollectionEquality().hash(_notifications),
         const DeepCollectionEquality().hash(_clientCaregivers),
@@ -823,7 +787,6 @@ abstract class _UserProfile implements UserProfile {
       final List<Facility>? linkedFacilities,
       final User? user,
       final String? defaultFacilityName,
-      final CommunitiesState? communitiesState,
       final List<HealthDiaryEntry?>? clientSharedDiaryEntries,
       final List<NotificationDetails?>? notifications,
       final List<Caregiver?>? clientCaregivers,
@@ -890,8 +853,6 @@ abstract class _UserProfile implements UserProfile {
   User? get user;
   @override
   String? get defaultFacilityName;
-  @override // invited communities
-  CommunitiesState? get communitiesState;
   @override // recently shared health diary entries
   List<HealthDiaryEntry?>? get clientSharedDiaryEntries;
   @override // staff notifications

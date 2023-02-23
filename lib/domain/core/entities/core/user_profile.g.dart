@@ -35,10 +35,6 @@ _$_UserProfile _$$_UserProfileFromJson(Map<String, dynamic> json) =>
           ? null
           : User.fromJson(json['user'] as Map<String, dynamic>),
       defaultFacilityName: json['defaultFacilityName'] as String?,
-      communitiesState: json['communitiesState'] == null
-          ? null
-          : CommunitiesState.fromJson(
-              json['communitiesState'] as Map<String, dynamic>),
       clientSharedDiaryEntries:
           (json['clientSharedDiaryEntries'] as List<dynamic>?)
               ?.map((e) => e == null
@@ -87,7 +83,6 @@ Map<String, dynamic> _$$_UserProfileToJson(_$_UserProfile instance) =>
       'linkedFacilities': instance.linkedFacilities,
       'user': instance.user,
       'defaultFacilityName': instance.defaultFacilityName,
-      'communitiesState': instance.communitiesState,
       'clientSharedDiaryEntries': instance.clientSharedDiaryEntries,
       'notifications': instance.notifications,
       'clientCaregivers': instance.clientCaregivers,

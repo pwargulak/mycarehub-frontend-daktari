@@ -125,47 +125,6 @@ query listMembers($input: QueryOption){
 }
 ''';
 
-const String inviteMembersToCommunityQuery = r'''
-query inviteMembersToCommunity($communityID: String!,$memberIDs: [String!]! ){
-  inviteMembersToCommunity(communityID: $communityID, memberIDs: $memberIDs)
-}
-''';
-
-const String listCommunityMembersQuery = r'''
-query listCommunityMembers($communityID: ID!, $communityMembersFilter: QueryOption!, $listCommunitiesFilter: QueryOption!){
-	listCommunityMembers(communityID: $communityID, input: $communityMembersFilter) {
-      user{
-        id
-        userID
-        username
-        role
-        extraData
-      }
-      isModerator
-  }
-  listCommunities(input: $listCommunitiesFilter) {
-    ageRange {
-      lowerBound
-      upperBound
-    }
-    gender
-    clientType
-  }
-}
-''';
-
-const String listUserInvitedCommunitiesQuery = r'''
-query listPendingInvites($memberID: String!, $input: QueryOption){
-  listPendingInvites(memberID: $memberID, input: $input){
-    id
-    name
-    memberCount
-    gender
-    description
-  }
-}
-''';
-
 const String searchClientQuery = r'''
 query searchClientUser($searchParameter: String!) {
   searchClientUser(searchParameter: $searchParameter){
@@ -237,29 +196,6 @@ query getUserRoles($userID: String!, $organisationID: String!){
     authorityRoleID
     name
     active
-  }
-}
-''';
-
-const String listFlaggedMessagesQuery = r'''
-query listFlaggedMessages($communityCID: String,$memberIDs: [String]){
-  listFlaggedMessages(communityCID: $communityCID,memberIDs: $memberIDs){
-    message{
-      id
-      text
-      created_at
-      user{
-        id
-        userID
-        name
-        username
-      }
-      attachments{
-        type
-        title
-        image_url
-      }
-    }
   }
 }
 ''';

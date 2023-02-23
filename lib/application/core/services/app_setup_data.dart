@@ -20,9 +20,6 @@ class AppSetupData {
   // Custom context for setting up different endpoints
   final BaseContext? customContext;
 
-  // The Stream API key
-  final String streamAPIKey;
-
   /// The environment this app is running on. Will mostly be used for sentry
   final String environment;
   final String appName;
@@ -30,7 +27,6 @@ class AppSetupData {
   AppSetupData({
     required this.appContexts,
     required this.sentryDNS,
-    required this.streamAPIKey,
     required this.environment,
     required this.appName,
     this.customContext,

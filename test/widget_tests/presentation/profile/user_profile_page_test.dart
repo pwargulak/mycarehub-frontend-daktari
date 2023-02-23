@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:prohealth360_daktari/application/redux/states/user_profile_state.dart';
+import 'package:prohealth360_daktari/presentation/communities/pages/invited_groups_page.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -15,7 +16,6 @@ import 'package:prohealth360_daktari/domain/core/entities/core/user_profile.dart
 import 'package:prohealth360_daktari/domain/core/entities/core/user.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
-import 'package:prohealth360_daktari/presentation/communities/invited_groups/pages/invited_groups_page.dart';
 import 'package:prohealth360_daktari/presentation/contact_admin/pages/contact_admin_page.dart';
 import 'package:prohealth360_daktari/presentation/engagement/home/widgets/action_card.dart';
 import 'package:prohealth360_daktari/presentation/profile/faqs/pages/profile_faqs_page.dart';

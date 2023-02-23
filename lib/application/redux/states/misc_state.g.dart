@@ -13,9 +13,6 @@ _$_MiscState _$$_MiscStateFromJson(Map<String, dynamic> json) => _$_MiscState(
           ? null
           : FAQsContentState.fromJson(
               json['profileFAQsContentState'] as Map<String, dynamic>),
-      communityMembers: (json['communityMembers'] as List<dynamic>?)
-          ?.map((e) => Member.fromJson(e as Map<String, dynamic>))
-          .toList(),
       selectedFacility: json['selectedFacility'] == null
           ? null
           : Facility.fromJson(json['selectedFacility'] as Map<String, dynamic>),
@@ -23,9 +20,6 @@ _$_MiscState _$$_MiscStateFromJson(Map<String, dynamic> json) => _$_MiscState(
           ? null
           : Organisation.fromJson(
               json['selectedOrganisation'] as Map<String, dynamic>),
-      groupState: json['groupState'] == null
-          ? null
-          : GroupState.fromJson(json['groupState'] as Map<String, dynamic>),
       searchUserResponseState: json['searchUserResponseState'] == null
           ? null
           : SearchUserResponseState.fromJson(
@@ -45,10 +39,8 @@ Map<String, dynamic> _$$_MiscStateToJson(_$_MiscState instance) =>
       'initialRoute': instance.initialRoute,
       'error': instance.error,
       'profileFAQsContentState': instance.profileFAQsContentState,
-      'communityMembers': instance.communityMembers,
       'selectedFacility': instance.selectedFacility,
       'selectedOrganisation': instance.selectedOrganisation,
-      'groupState': instance.groupState,
       'searchUserResponseState': instance.searchUserResponseState,
       'inactiveTime': instance.inactiveTime,
       'resumeWithPin': instance.resumeWithPin,
