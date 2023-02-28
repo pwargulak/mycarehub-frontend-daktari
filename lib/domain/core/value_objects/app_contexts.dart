@@ -16,9 +16,3 @@ const List<AppContext> prodAppContexts = <AppContext>[
   AppContext.AfyaMoja,
   AppContext.AppProd
 ];
-
-// TODO(abiud): this is temporary> Use AppContext.AppExternal from app_wrapper
-const List<AppContext> externalAppContexts = <AppContext>[
-  AppContext.AfyaMoja,
-  AppContext.AppE2E
-];
