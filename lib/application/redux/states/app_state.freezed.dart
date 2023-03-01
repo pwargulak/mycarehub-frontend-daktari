@@ -69,7 +69,6 @@ abstract class $AppStateCopyWith<$Res> {
   $SurveyStateCopyWith<$Res>? get surveyState;
   $ServiceRequestStateCopyWith<$Res>? get serviceRequestState;
   $ConnectivityStateCopyWith<$Res>? get connectivityState;
-  $ChatStateCopyWith<$Res>? get chatState;
 }
 
 /// @nodoc
@@ -94,7 +93,7 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
     Object? surveyState = freezed,
     Object? serviceRequestState = freezed,
     Object? connectivityState = freezed,
-    Object? chatState = freezed,
+    Object? chatState = null,
     Object? wait = freezed,
   }) {
     return _then(_value.copyWith(
@@ -134,7 +133,7 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
           ? _value.connectivityState
           : connectivityState // ignore: cast_nullable_to_non_nullable
               as ConnectivityState?,
-      chatState: freezed == chatState
+      chatState: null == chatState
           ? _value.chatState
           : chatState // ignore: cast_nullable_to_non_nullable
               as ChatState?,
@@ -254,18 +253,6 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
       return _then(_value.copyWith(connectivityState: value) as $Val);
     });
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ChatStateCopyWith<$Res>? get chatState {
-    if (_value.chatState == null) {
-      return null;
-    }
-
-    return $ChatStateCopyWith<$Res>(_value.chatState!, (value) {
-      return _then(_value.copyWith(chatState: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -305,8 +292,6 @@ abstract class _$$_StateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
   $ServiceRequestStateCopyWith<$Res>? get serviceRequestState;
   @override
   $ConnectivityStateCopyWith<$Res>? get connectivityState;
-  @override
-  $ChatStateCopyWith<$Res>? get chatState;
 }
 
 /// @nodoc
@@ -328,7 +313,7 @@ class __$$_StateCopyWithImpl<$Res>
     Object? surveyState = freezed,
     Object? serviceRequestState = freezed,
     Object? connectivityState = freezed,
-    Object? chatState = freezed,
+    Object? chatState = null,
     Object? wait = freezed,
   }) {
     return _then(_$_State(
@@ -368,7 +353,7 @@ class __$$_StateCopyWithImpl<$Res>
           ? _value.connectivityState
           : connectivityState // ignore: cast_nullable_to_non_nullable
               as ConnectivityState?,
-      chatState: freezed == chatState
+      chatState: null == chatState
           ? _value.chatState
           : chatState // ignore: cast_nullable_to_non_nullable
               as ChatState?,
@@ -451,8 +436,7 @@ class _$_State implements _State {
                 other.serviceRequestState == serviceRequestState) &&
             (identical(other.connectivityState, connectivityState) ||
                 other.connectivityState == connectivityState) &&
-            (identical(other.chatState, chatState) ||
-                other.chatState == chatState) &&
+            const DeepCollectionEquality().equals(other.chatState, chatState) &&
             (identical(other.wait, wait) || other.wait == wait));
   }
 
@@ -469,7 +453,7 @@ class _$_State implements _State {
       surveyState,
       serviceRequestState,
       connectivityState,
-      chatState,
+      const DeepCollectionEquality().hash(chatState),
       wait);
 
   @JsonKey(ignore: true)

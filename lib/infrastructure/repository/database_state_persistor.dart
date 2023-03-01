@@ -4,6 +4,7 @@ import 'package:async_redux/async_redux.dart';
 import 'package:flutter/foundation.dart';
 // Project imports:
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
+import 'package:prohealth360_daktari/application/redux/states/chat/chat_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/home/bottom_nav_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/home_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/misc_state.dart';
@@ -15,7 +16,6 @@ import 'package:prohealth360_daktari/domain/core/entities/core/auth_credentials.
 import 'package:prohealth360_daktari/infrastructure/repository/database_base.dart';
 import 'package:prohealth360_daktari/infrastructure/repository/database_mobile.dart';
 import 'package:prohealth360_daktari/infrastructure/repository/initialize_db.dart';
-import 'package:sghi_core/communities/states/chat_state.dart';
 import 'package:sqflite/sqlite_api.dart';
 
 /// [MyCareHubProfessionalStateDatabase] is the middleware that interacts with the database

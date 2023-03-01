@@ -2958,3 +2958,102 @@ Map<String, dynamic> mockCreateProgramPayload = <String, dynamic>{
   'description': 'Test',
   'organisationID': '9ec6e794-9e5c-4a40-8fa5-6d84f05c0eda',
 };
+
+final Map<String, dynamic> messageEventMock = <String, dynamic>{
+  'type': 'm.room.message',
+  'sender': '@abiudrn:chat.savannahghi.org',
+  'content': <String, dynamic>{
+    'org.matrix.msc1767.text': 'ala!',
+    'body': 'ala!',
+    'msgtype': 'm.text'
+  },
+  'event_id': '166896610153WDxHa:chat.savannahghi.org',
+  'origin_server_ts': 1668966101714,
+  'unsigned': <String, dynamic>{'age': 5484013963}
+};
+final Map<String, dynamic> syncResponseMock = <String, dynamic>{
+  'next_batch': 'sample-next-batch',
+  'presence': <String, dynamic>{
+    'events': <Map<String, dynamic>>[
+      <String, dynamic>{
+        'type': 'm.presence',
+        'sender': '@abiudrn:chat.savannahghi.org',
+        'content': <String, dynamic>{
+          'presence': 'online',
+          'last_active_ago': 56,
+          'currently_active': true
+        }
+      }
+    ],
+  },
+  'rooms': <String, dynamic>{
+    'join': <String, dynamic>{
+      '!testRoom:chat.savannahghi.org': <String, dynamic>{
+        'timeline': <String, dynamic>{
+          'events': <Map<String, dynamic>>[
+            <String, dynamic>{
+              'type': 'm.room.message',
+              'sender': '@test:chat.savannahghi.org',
+              'content': <String, dynamic>{
+                'org.matrix.msc1767.text': 'ala!',
+                'body': 'ala!',
+                'msgtype': 'm.text'
+              },
+              'event_id': 'test:chat.savannahghi.org',
+              'origin_server_ts': 1668966101714,
+            },
+          ],
+        },
+        'state': <String, dynamic>{
+          'events': <Map<String, dynamic>>[
+            <String, dynamic>{
+              'type': 'm.room.name',
+              'sender': '@test:chat.savannahghi.org',
+              'content': <String, dynamic>{'name': 'The Grand Gaming Squad'},
+              'state_key': '',
+              'event_id': 'test-event-id:chat.savannahghi.org',
+              'origin_server_ts': 1668712693930,
+              'unsigned': <String, dynamic>{'age': 5737421747}
+            },
+          ],
+        },
+        'unread_notifications': <String, dynamic>{
+          'notification_count': 0,
+          'highlight_count': 0
+        },
+        'summary': <String, dynamic>{
+          'm.joined_member_count': 3,
+          'm.invited_member_count': 0
+        },
+      }
+    },
+    'invite': <String, dynamic>{
+      '!NvYSqaASzlfRpFCMtr:chat.savannahghi.org': <String, dynamic>{
+        'invite_state': <String, dynamic>{
+          'events': <Map<String, dynamic>>[
+            <String, dynamic>{
+              'type': 'm.room.topic',
+              'state_key': '',
+              'content': <String, dynamic>{
+                'topic':
+                    "A group about Arsenal's thrashing of Manchester United (3-2)"
+              },
+              'sender': '@test:chat.savannahghi.org'
+            },
+          ],
+        }
+      }
+    },
+    'knock': <String, dynamic>{},
+    'leave': <String, dynamic>{},
+  }
+};
+
+final Map<String, dynamic> loginResponseMock = <String, dynamic>{
+  'user_id': '@abiudrn:chat.savannahghi.org',
+  'device_id': 'some-device-id',
+  'display_name': 'Abiud Orina',
+  'access_token': 'some-sample-token',
+  'avatar_url': 'some-avatar-url',
+  'isSignedIn': true,
+};

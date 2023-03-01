@@ -1,6 +1,7 @@
 // Package imports:
 import 'package:async_redux/async_redux.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:prohealth360_daktari/application/redux/states/chat/chat_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/connectivity_state.dart';
 
 // Project imports:
@@ -12,7 +13,6 @@ import 'package:prohealth360_daktari/application/redux/states/service_requests/s
 import 'package:prohealth360_daktari/application/redux/states/survey_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/user_profile_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/auth_credentials.dart';
-import 'package:sghi_core/communities/states/chat_state.dart';
 
 part 'app_state.freezed.dart';
 part 'app_state.g.dart';
