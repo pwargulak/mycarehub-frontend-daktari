@@ -15,11 +15,12 @@ void main() {
       expect(Tables.UserProfileState.name, 'userProfileState');
       expect(Tables.SurveyState.name, 'surveyState');
       expect(Tables.ServiceRequestState.name, 'serviceRequestState');
+      expect(Tables.ChatState.name, 'chatState');
     });
 
     test('migrations', () {
       expect(migrations, isA<List<String>>());
-      expect(migrations.length, 8);
+      expect(migrations.length, 9);
     });
   });
 }

@@ -26,4 +26,7 @@ final List<String> migrations = <String>[
   '''
   CREATE TABLE IF NOT EXISTS ${Tables.ServiceRequestState.name} (id INTEGER PRIMARY KEY, 
           serviceRequestState TEXT)''',
+  '''
+  CREATE TABLE IF NOT EXISTS ${Tables.ChatState.name} (id INTEGER PRIMARY KEY, 
+          chatState TEXT)''',
 ];

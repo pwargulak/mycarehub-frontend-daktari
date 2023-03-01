@@ -15,6 +15,7 @@ import 'package:prohealth360_daktari/domain/core/entities/core/auth_credentials.
 import 'package:prohealth360_daktari/infrastructure/repository/database_base.dart';
 import 'package:prohealth360_daktari/infrastructure/repository/database_mobile.dart';
 import 'package:prohealth360_daktari/infrastructure/repository/initialize_db.dart';
+import 'package:sghi_core/communities/states/chat_state.dart';
 import 'package:sqflite/sqlite_api.dart';
 
 /// [MyCareHubProfessionalStateDatabase] is the middleware that interacts with the database
@@ -61,7 +62,8 @@ class MyCareHubProfessionalStateDatabase
         lastPersistedState.userProfileState != newState.userProfileState ||
         lastPersistedState.surveyState != newState.surveyState ||
         lastPersistedState.serviceRequestState !=
-            newState.serviceRequestState) {
+            newState.serviceRequestState ||
+        lastPersistedState.chatState != newState.chatState) {
       await persistState(
         newState,
         MyCareHubProfessionalDatabaseMobile<Database>(
@@ -154,6 +156,12 @@ class MyCareHubProfessionalStateDatabase
       data: newState.serviceRequestState!.toJson(),
       table: Tables.ServiceRequestState,
     );
+
+    // save chat state
+    await database.saveState(
+      data: newState.chatState!.toJson(),
+      table: Tables.ChatState,
+    );
   }
 
   @visibleForTesting
@@ -198,6 +206,11 @@ class MyCareHubProfessionalStateDatabase
       // retrieve service request state
       serviceRequestState: ServiceRequestState.fromJson(
         await database.retrieveState(Tables.ServiceRequestState),
+      ),
+
+      // retrieve chat state
+      chatState: ChatState.fromJson(
+        await database.retrieveState(Tables.ChatState),
       ),
 
       wait: Wait(),

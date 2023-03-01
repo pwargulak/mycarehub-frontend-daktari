@@ -35,6 +35,7 @@ enum Tables {
   UserProfileState,
   SurveyState,
   ServiceRequestState,
+  ChatState,
 }
 
 /// [TablesEx] extends [Tables] enum to get the values as
@@ -58,6 +59,8 @@ extension TablesEx on Tables {
         return 'surveyState';
       case Tables.ServiceRequestState:
         return 'serviceRequestState';
+      case Tables.ChatState:
+        return 'chatState';
     }
   }
 }

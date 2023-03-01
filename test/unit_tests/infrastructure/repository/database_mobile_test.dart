@@ -87,6 +87,7 @@ void main() {
       buildWhenMock('userProfileState', 10);
       buildWhenMock('surveyState', 10);
       buildWhenMock('serviceRequestState', 10);
+      buildWhenMock('chatState', 10);
       expect(await db.isDatabaseEmpty(), false);
     });
 
@@ -99,6 +100,7 @@ void main() {
       buildWhenMock('userProfileState', 0);
       buildWhenMock('surveyState', 0);
       buildWhenMock('serviceRequestState', 0);
+      buildWhenMock('chatState', 0);
       expect(await db.isDatabaseEmpty(), true);
     });
   });

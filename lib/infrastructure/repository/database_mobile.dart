@@ -54,8 +54,9 @@ class MyCareHubProfessionalDatabaseMobile<T extends DatabaseExecutor>
     final int t6 = await countTableRecords(Tables.UserProfileState);
     final int t7 = await countTableRecords(Tables.SurveyState);
     final int t8 = await countTableRecords(Tables.ServiceRequestState);
+    final int t9 = await countTableRecords(Tables.ChatState);
 
-    final int counts = t1 + t2 + t3 + t4 + t5 + t6 + t7 + t8;
+    final int counts = t1 + t2 + t3 + t4 + t5 + t6 + t7 + t8 + t9;
     if (counts > 0) {
       return false;
     }
