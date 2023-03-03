@@ -147,3 +147,32 @@ const String setProgramFaFlag = 'set_user_program_flag';
 const String listOrganizationsFlag = 'list_organizations_flag';
 const String searchOrganizationsFlag = 'search_organizations_flag';
 const String createProgramFlag = 'create_program_flag';
+
+// Communities
+const String communitiesSignOutFlag = 'communitiesSignOutFlag';
+
+const String createRoomFlag = 'createRoomFlag';
+
+const String fetchRoomInfoFlag = 'fetchRoomInfoFlag';
+
+const String searchRoomMembersFlag = 'searchRoomMembersFlag';
+
+const String communitiesInviteMembersFlag = 'communitiesInviteMembersFlag';
+
+const String listRoomsFlag = 'listRoomsFlag';
+
+const String fetchMessagesFlag = 'fetchMessagesFlag';
+
+const String sendMessageFlag = 'sendMessageFlag';
+
+const String fetchRoomMembersFlag = 'fetchRoomMembersFlag';
+
+const String deleteMessageFlag = 'deleteMessageFlag';
+
+const String syncingEventsFlag = 'syncingEventsFlag';
+
+const String startingSyncObserverFlag = 'startingSyncObserverFlag';
+
+const String joinRoomFlag = 'joinRoomFlag';
+
+const String leaveRoomFlag = 'leaveRoomFlag';

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:prohealth360_daktari/application/core/services/custom_client.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/auth_credentials.dart';
@@ -7,6 +8,7 @@ import 'package:connectivity_plus_platform_interface/connectivity_plus_platform_
 // Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sghi_core/communities/core/endpoints.dart';
 import 'package:sghi_core/flutter_graphql_client/i_flutter_graphql_client.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
@@ -521,7 +523,7 @@ class MockTestGraphQlClient extends IGraphQlClient {
     required String endpoint,
     required String method,
     Map<String, dynamic>? variables,
-  }) {
+  }) async {
     if (endpoint.contains('upload')) {
       return Future<http.Response>.value(
         http.Response(
@@ -592,6 +594,125 @@ class MockTestGraphQlClient extends IGraphQlClient {
       return Future<http.Response>.value(
         http.Response(
           json.encode(<String, dynamic>{'status': true}),
+          201,
+        ),
+      );
+    }
+    if (endpoint.contains(syncEndpoint)) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(syncResponseMock),
+          201,
+        ),
+      );
+    }
+
+    if (endpoint.contains('joined_members')) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(joinedMembersResponseMock),
+          201,
+        ),
+      );
+    }
+
+    if (endpoint.contains('/send/m.room.message/')) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(<String, dynamic>{
+            'event_id': '16741180035XJnPW:chat.savannahghi.org',
+          }),
+          201,
+        ),
+      );
+    }
+
+    if (endpoint.contains('m.room.power_levels')) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(powerLevelsResponseMock),
+          201,
+        ),
+      );
+    }
+
+    if (endpoint.contains('/invite')) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(<String, dynamic>{}),
+          201,
+        ),
+      );
+    }
+
+    if (endpoint.contains('/join')) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(<String, dynamic>{
+            'room_id': '!NvYSqaASzlfRpFCMtr:chat.savannahghi.org',
+          }),
+          201,
+        ),
+      );
+    }
+
+    if (endpoint.contains('/leave')) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(<String, dynamic>{}),
+          201,
+        ),
+      );
+    }
+
+    if (endpoint.contains('/kick')) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(<String, dynamic>{}),
+          201,
+        ),
+      );
+    }
+
+    if (endpoint.contains('/redact')) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(<String, dynamic>{
+            'event_id': '16741180035XJnPW:chat.savannahghi.org',
+          }),
+          201,
+        ),
+      );
+    }
+
+    if (endpoint.contains('/createRoom')) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(<String, dynamic>{
+            'room_id': '!NvYSqaASzlfRpFCMtr:chat.savannahghi.org',
+          }),
+          201,
+        ),
+      );
+    }
+
+    if (endpoint.contains('/media/v3/download/')) {
+      final String dir = Directory.current.path;
+      final String imgPath = '$dir/test/test_resources/test_file.png';
+      final ByteData imgData = await rootBundle.load(imgPath);
+      final Uint8List uint8list = imgData.buffer.asUint8List();
+
+      return Future<http.Response>.value(
+        http.Response(json.encode(uint8list), 201),
+      );
+    }
+
+    if (endpoint.contains(searchMembersEndpoint)) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(<String, dynamic>{
+            'results': <Map<String, dynamic>>[loginResponseMock],
+          }),
           201,
         ),
       );
@@ -2176,6 +2297,20 @@ final Map<String, dynamic> appStateMock = <String, dynamic>{
   'connectivityState': <String, dynamic>{'isConnected': false},
 };
 
+final Map<String, dynamic> joinedMembersResponseMock = <String, dynamic>{
+  'joined': <String, dynamic>{
+    '@abiudrn:chat.savannahghi.org': loginResponseMock,
+  }
+};
+
+final Map<String, dynamic> powerLevelsResponseMock = <String, dynamic>{
+  'users': <String, dynamic>{
+    '@abiudrn:chat.savannahghi.org': 100,
+    '@salaton:chat.savannahghi.org': 100,
+    '@kowalski:chat.savannahghi.org': 0,
+  }
+};
+
 final Map<String, dynamic> mockLoginResponse = <String, dynamic>{
   'code': 0,
   'message': 'success',
@@ -3056,4 +3191,84 @@ final Map<String, dynamic> loginResponseMock = <String, dynamic>{
   'access_token': 'some-sample-token',
   'avatar_url': 'some-avatar-url',
   'isSignedIn': true,
+};
+
+final Map<String, dynamic> roomMock = <String, dynamic>{
+  'room_id': '!testRoom:chat.savannahghi.org',
+  'topic': 'test topic',
+  'timeline': <String, dynamic>{
+    'events': <Map<String, dynamic>>[
+      <String, dynamic>{
+        'type': 'm.room.message',
+        'sender': '@test:chat.savannahghi.org',
+        'content': <String, dynamic>{
+          'org.matrix.msc1767.text': 'ala!',
+          'body': 'ala!',
+          'msgtype': 'm.text'
+        },
+        'event_id': 'test:chat.savannahghi.org',
+        'origin_server_ts': 1668966101714,
+      },
+    ],
+  },
+  'state': <String, dynamic>{
+    'events': <Map<String, dynamic>>[
+      <String, dynamic>{
+        'type': 'm.room.name',
+        'sender': '@test:chat.savannahghi.org',
+        'content': <String, dynamic>{'name': 'The Grand Gaming Squad'},
+        'state_key': '',
+        'event_id': 'test-event-id:chat.savannahghi.org',
+        'origin_server_ts': 1668712693930,
+        'unsigned': <String, dynamic>{'age': 5737421747}
+      },
+    ],
+  },
+  'unread_notifications': <String, dynamic>{
+    'notification_count': 0,
+    'highlight_count': 0
+  },
+  'summary': <String, dynamic>{
+    'm.joined_member_count': 3,
+    'm.invited_member_count': 0
+  },
+};
+
+final Map<String, dynamic> redactionEventMock = <String, dynamic>{
+  'type': 'm.room.redaction',
+  'sender': '!testRoom:chat.savannahghi.org',
+  'room_id': '!testRoom:chat.savannahghi.org',
+  'content': <String, dynamic>{},
+  'redacts': 'test:chat.savannahghi.org',
+  'event_id': 'test:chat.savannahghi.org',
+  'origin_server_ts': 1674118003585,
+};
+
+final Map<String, dynamic> memberEventMock = <String, dynamic>{
+  'type': 'm.room.member',
+  'sender': '@abiudrn:chat.savannahghi.org',
+  'content': <String, dynamic>{'membership': 'join', 'displayname': 'abiudrn'},
+  'state_key': '@salaton:chat.savannahghi.org',
+  'event_id': '16687126931TgVrw:chat.savannahghi.org',
+  'origin_server_ts': 1668712693799,
+};
+
+final Map<String, dynamic> topicEventMock = <String, dynamic>{
+  'type': 'm.room.topic',
+  'sender': '@salaton:chat.savannahghi.org',
+  'content': <String, dynamic>{'topic': 'All about gaming'},
+  'state_key': '',
+  'event_id': '16687126937jDnoh:chat.savannahghi.org',
+  'origin_server_ts': 1668712693976,
+};
+final Map<String, dynamic> createEventMock = <String, dynamic>{
+  'type': 'm.room.create',
+  'sender': '@abiudrn:chat.savannahghi.org',
+  'content': <String, dynamic>{
+    'room_version': '1',
+    'creator': '@abiudrn:chat.savannahghi.org'
+  },
+  'state_key': '',
+  'event_id': '16687126930gHYFh:chat.savannahghi.org',
+  'origin_server_ts': 1668712693753,
 };

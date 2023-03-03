@@ -40,7 +40,9 @@ _$_State _$$_StateFromJson(Map<String, dynamic> json) => _$_State(
           ? null
           : ConnectivityState.fromJson(
               json['connectivityState'] as Map<String, dynamic>),
-      chatState: json['chatState'],
+      chatState: json['chatState'] == null
+          ? null
+          : ChatState.fromJson(json['chatState'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_StateToJson(_$_State instance) => <String, dynamic>{

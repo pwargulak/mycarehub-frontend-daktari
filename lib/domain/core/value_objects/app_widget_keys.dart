@@ -238,3 +238,45 @@ const Key programDescriptionFieldKey = Key('program_description_field');
 const Key organizationSelectOptionFieldKey = Key('organization_select_option_field');
 const Key searchOrganisationconBtnKey = Key('search_organisation_icon_btn_key');
 const Key addNewProgramButtonKey = Key('add_new_program_button_key');
+
+///*   Communities Widget Keys    *///
+// Create room
+const Key createRoomKey = Key('createRoomKey');
+const Key topicInputKey = Key('topicInputKey');
+
+// Invite users page
+const Key searchMembersInputKey = Key('searchMembersInputKey');
+
+const Key navToCreateRoomKey = Key('navToCreateRoomKey');
+
+const Key logoutKey = Key('logoutKey');
+
+const Key promoteToModKey = Key('promoteToModKey');
+
+const Key removeFromGroupKey = Key('removeFromGroupKey');
+
+const Key banUserKey = Key('banUserKey');
+
+const Key emptyChatsNewRoomKey = Key('emptyChatsNewRoomKey');
+
+const Key leaveRoomKey = Key('leaveRoomKey');
+
+const Key inviteUsersKey = Key('inviteUsersKey');
+
+const Key acceptInviteKey = Key('acceptInviteKey');
+
+const Key declineInviteKey = Key('declineInviteKey');
+
+const Key messageOptionsKey = Key('messageOptionsKey');
+
+const Key replyMessageKey = Key('replyMessageKey');
+
+const Key deleteMessageKey = Key('deleteMessageKey');
+
+const Key navigateToGroupInfoPageKey = Key('navigateToGroupInfoPageKey');
+
+const Key messageInputKey = Key('messageInputKey');
+
+const Key sendMessageIconKey = Key('sendMessageIconKey');
+
+const Key roomListItemKey = Key('roomListItemKey');

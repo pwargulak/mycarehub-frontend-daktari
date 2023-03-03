@@ -153,4 +153,9 @@ class AppRoutes {
 
   // admin
   static const String adminPage = '/adminPage';
+
+  // Communities
+  static const String roomListPage = '/roomListPage';
+  static const String roomPage = '/roomPage';
+  static const String createRoomPage = '/createRoomPage';
 }

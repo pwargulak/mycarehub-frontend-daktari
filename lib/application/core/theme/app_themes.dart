@@ -106,3 +106,16 @@ class ThemeColors {
     this.textSelectionColor,
   );
 }
+
+// Communities text styles
+TextStyle coloredTitleStyle(Color? color) =>
+    TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: color);
+
+const TextStyle titleStyle =
+    TextStyle(fontSize: 20, fontWeight: FontWeight.w800);
+
+const TextStyle bodyStyle =
+    TextStyle(fontSize: 16, fontWeight: FontWeight.w300);
+    
+TextStyle coloredBodyStyle(Color? color) =>
+    TextStyle(fontSize: 16, fontWeight: FontWeight.w300, color: color);

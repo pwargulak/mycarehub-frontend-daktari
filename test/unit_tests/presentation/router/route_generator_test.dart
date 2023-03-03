@@ -2,6 +2,9 @@
 import 'package:prohealth360_daktari/presentation/admin/admin_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/accept_group_invites_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/communities_list_page.dart';
+import 'package:prohealth360_daktari/presentation/communities/pages/create_room_page.dart';
+import 'package:prohealth360_daktari/presentation/communities/pages/room_list_page.dart';
+import 'package:prohealth360_daktari/presentation/communities/pages/room_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/core/search_organization_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/login/pages/login_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/program_selection/program_selection_page.dart';
@@ -37,7 +40,6 @@ import 'package:prohealth360_daktari/presentation/caregiver/search_caregiver_pag
 import 'package:prohealth360_daktari/presentation/client_details/pages/search_client_page.dart';
 import 'package:prohealth360_daktari/presentation/contact_admin/pages/contact_admin_page.dart';
 import 'package:prohealth360_daktari/presentation/core/widgets/handle_deep_link.dart';
-import 'package:prohealth360_daktari/presentation/create_group/create_group.dart';
 import 'package:prohealth360_daktari/presentation/engagement/home/pages/home_page.dart';
 import 'package:prohealth360_daktari/presentation/notifications/notifications_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/create_pin/pages/create_new_pin_page.dart';
@@ -83,6 +85,7 @@ import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_page.dar
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_respondents_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_responses_preview_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_send_configuration_page.dart';
+import 'package:sghi_core/communities/models/room.dart';
 
 import '../../../mocks/mocks.dart';
 
@@ -221,17 +224,6 @@ void main() {
     expect(route, isA<MaterialPageRoute<RegisterClientPage>>());
     expect(route?.builder(context), isA<RegisterClientPage>());
   });
-
-  test('Test router returns CreateGroupPage', () {
-    const RouteSettings settings =
-        RouteSettings(name: AppRoutes.addNewGroupPage);
-
-    final MaterialPageRoute<CreateGroupPage>? route =
-        routeGenerator(settings) as MaterialPageRoute<CreateGroupPage>?;
-    expect(route, isA<MaterialPageRoute<CreateGroupPage>>());
-    expect(route?.builder(context), isA<CreateGroupPage>());
-  });
-
   test('Test router returns RedFlagsPage', () {
     const RouteSettings settings = RouteSettings(name: AppRoutes.redFlagsPage);
 
@@ -856,5 +848,39 @@ void main() {
 
     expect(route, isA<MaterialPageRoute<SearchOrganisationsPage>>());
     expect(route?.builder(context), isA<SearchOrganisationsPage>());
+  });
+  test('Test router returns Room List Page', () {
+    const RouteSettings settings = RouteSettings(
+      name: AppRoutes.roomListPage,
+    );
+
+    final MaterialPageRoute<RoomListPage>? route =
+        routeGenerator(settings) as MaterialPageRoute<RoomListPage>?;
+
+    expect(route, isA<MaterialPageRoute<RoomListPage>>());
+    expect(route?.builder(context), isA<RoomListPage>());
+  });
+  test('Test router returns Room Page', () {
+    final RouteSettings settings = RouteSettings(
+      name: AppRoutes.roomPage,
+      arguments: Room.initial(),
+    );
+
+    final MaterialPageRoute<RoomPage>? route =
+        routeGenerator(settings) as MaterialPageRoute<RoomPage>?;
+
+    expect(route, isA<MaterialPageRoute<RoomPage>>());
+    expect(route?.builder(context), isA<RoomPage>());
+  });
+  test('Test router returns Create Room Page', () {
+    const RouteSettings settings = RouteSettings(
+      name: AppRoutes.createRoomPage,
+    );
+
+    final MaterialPageRoute<CreateRoomPage>? route =
+        routeGenerator(settings) as MaterialPageRoute<CreateRoomPage>?;
+
+    expect(route, isA<MaterialPageRoute<CreateRoomPage>>());
+    expect(route?.builder(context), isA<CreateRoomPage>());
   });
 }

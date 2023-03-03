@@ -1,6 +1,6 @@
 // Project imports:
+import 'package:prohealth360_daktari/application/core/services/communities_utils.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
-import 'package:prohealth360_daktari/domain/core/value_objects/constants.dart';
 
 RegExp validNumberRegexp = RegExp(r'^-?[0-9]+$');
 

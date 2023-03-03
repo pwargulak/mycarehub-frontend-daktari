@@ -4,6 +4,7 @@ We are using staging endpoints here so as to match what the backend does.
 
 The environment that these endpoints call is STRICTLY for internal DEVs only
 */
+
 const String kTestGraphqlEndpoint =
     'https://mycarehub-multitenant-staging.savannahghi.org/graphql';
 const String kTestLoginByPhoneEndpoint =
@@ -90,3 +91,7 @@ const String kProdPINResetServiceRequestEndpoint =
     'https://mycarehub-prod.savannahghi.org/service-requests';
 const String kProdOptInEndpoint =
     'https://mycarehub-prod.savannahghi.org/opt-in';
+    
+const String kMatrixHomeServer = 'https://chat.savannahghi.org';
+
+const String kMatrixMediaServer = 'chat.savannahghi.org';

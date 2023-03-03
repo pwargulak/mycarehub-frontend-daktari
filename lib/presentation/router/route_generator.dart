@@ -2,8 +2,10 @@
 import 'package:prohealth360_daktari/presentation/admin/admin_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/accept_group_invites_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/communities_list_page.dart';
+import 'package:prohealth360_daktari/presentation/communities/pages/create_room_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/invited_groups_page.dart';
-import 'package:prohealth360_daktari/presentation/create_group/create_group.dart';
+import 'package:prohealth360_daktari/presentation/communities/pages/room_list_page.dart';
+import 'package:prohealth360_daktari/presentation/communities/pages/room_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/core/search_organization_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/login/pages/login_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/program_selection/program_selection_page.dart';
@@ -88,6 +90,7 @@ import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_page.dar
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_respondents_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_responses_preview_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_send_configuration_page.dart';
+import 'package:sghi_core/communities/models/room.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -145,21 +148,6 @@ class RouteGenerator {
             return NotificationsPage();
           },
           settings: const RouteSettings(name: 'Notifications page'),
-        );
-
-      case AppRoutes.addNewGroupPage:
-        return MaterialPageRoute<CreateGroupPage>(
-          builder: (_) {
-            /// Log as a navigation event
-            AnalyticsService()
-                .logEvent(
-                  name: createGroup,
-                  eventType: AnalyticsEventType.NAVIGATION,
-                )
-                .then((_) => null);
-            return const CreateGroupPage();
-          },
-          settings: const RouteSettings(name: 'Create group page'),
         );
 
       case AppRoutes.securityQuestionsPage:
@@ -667,6 +655,23 @@ class RouteGenerator {
         return MaterialPageRoute<CreateProgramPage>(
           builder: (_) => const CreateProgramPage(),
           settings: const RouteSettings(name: 'Create Program Page'),
+        );
+
+      // Communities
+      case AppRoutes.roomListPage:
+        return MaterialPageRoute<RoomListPage>(
+          builder: (_) => const RoomListPage(),
+          settings: const RouteSettings(name: 'Room List Page'),
+        );
+      case AppRoutes.roomPage:
+        return MaterialPageRoute<RoomPage>(
+          builder: (_) => RoomPage(room: args as Room),
+          settings: const RouteSettings(name: 'Room Page'),
+        );
+      case AppRoutes.createRoomPage:
+        return MaterialPageRoute<CreateRoomPage>(
+          builder: (_) => const CreateRoomPage(),
+          settings: const RouteSettings(name: 'Create Room Page'),
         );
 
       default:

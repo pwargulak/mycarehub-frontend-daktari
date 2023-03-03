@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:prohealth360_daktari/application/core/services/app_setup_data.dart';
 import 'package:prohealth360_daktari/application/core/services/custom_client.dart';
 import 'package:prohealth360_daktari/application/core/services/helpers.dart';
@@ -25,16 +24,6 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:sghi_core/app_wrapper/enums.dart';
 import 'package:sghi_core/flutter_graphql_client/i_flutter_graphql_client.dart';
-
-ClientType clientTypeFromJson(String? clientString) {
-  if (clientString == null || clientString.isEmpty || clientString == UNKNOWN) {
-    return ClientType.YOUTH;
-  }
-
-  return ClientType.values.where((ClientType clientType) {
-    return clientType.name.toLowerCase() == clientString.toLowerCase();
-  }).first;
-}
 
 String dobToJson(DateTime? dateTime) {
   if (dateTime != null) {
