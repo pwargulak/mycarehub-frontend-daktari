@@ -262,7 +262,7 @@ void main() {
       await tester.enterText(usernameFieldFinder, '');
       await tester.pump();
 
-      expect(find.text(fieldCannotBeEmptyText), findsOneWidget);
+      expect(find.text(enterUsernamePrompt), findsOneWidget);
     });
   });
 }

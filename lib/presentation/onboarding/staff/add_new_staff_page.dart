@@ -1,5 +1,5 @@
+import 'package:prohealth360_daktari/application/core/services/input_validators.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/connectivity_view_model.dart';
-import 'package:prohealth360_daktari/presentation/onboarding/patient/validator_mixin.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:async_redux/async_redux.dart';
@@ -133,9 +133,9 @@ class _AddNewStaffPageState extends State<AddNewStaffPage> {
                     });
                   },
                   validator: (String? value) {
-                    return Validator.isValidName(value ?? '')
-                        ? null
-                        : fieldCannotBeEmptyText;
+                    return InputValidators.validateUsername(
+                      value: value,
+                    );
                   },
                 ),
                 const SizedBox(height: 24),

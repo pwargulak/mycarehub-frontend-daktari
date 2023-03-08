@@ -1,3 +1,4 @@
+import 'package:prohealth360_daktari/application/core/services/input_validators.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/connectivity_view_model.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
@@ -135,10 +136,9 @@ class _RegisterCaregiverPageState extends State<RegisterCaregiverPage> {
                               _formManager.inUsername.add(value);
                             },
                             validator: (String? value) {
-                              if (snapshot.hasError) {
-                                return (snapshot.error! as UserException).msg;
-                              }
-                              return null;
+                              return InputValidators.validateUsername(
+                                value: value,
+                              );
                             },
                           );
                         },
