@@ -7,13 +7,13 @@ part of 'survey.dart';
 // **************************************************************************
 
 _$_Survey _$$_SurveyFromJson(Map<String, dynamic> json) => _$_Survey(
-      projectId: json['projectId'] as int?,
-      xmlFormId: json['xmlFormId'] as String?,
+      projectId: json['projectID'] as int?,
+      xmlFormId: json['xmlFormID'] as String?,
       name: json['name'] as String?,
     );
 
 Map<String, dynamic> _$$_SurveyToJson(_$_Survey instance) => <String, dynamic>{
-      'projectId': instance.projectId,
-      'xmlFormId': instance.xmlFormId,
+      'projectID': instance.projectId,
+      'xmlFormID': instance.xmlFormId,
       'name': instance.name,
     };

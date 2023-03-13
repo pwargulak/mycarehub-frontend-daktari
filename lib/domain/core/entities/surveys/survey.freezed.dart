@@ -20,9 +20,9 @@ Survey _$SurveyFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Survey {
-  @JsonKey(name: 'projectId')
+  @JsonKey(name: 'projectID')
   int? get projectId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'xmlFormId')
+  @JsonKey(name: 'xmlFormID')
   String? get xmlFormId => throw _privateConstructorUsedError;
   @JsonKey(name: 'name')
   String? get name => throw _privateConstructorUsedError;
@@ -38,8 +38,8 @@ abstract class $SurveyCopyWith<$Res> {
       _$SurveyCopyWithImpl<$Res, Survey>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'projectId') int? projectId,
-      @JsonKey(name: 'xmlFormId') String? xmlFormId,
+      {@JsonKey(name: 'projectID') int? projectId,
+      @JsonKey(name: 'xmlFormID') String? xmlFormId,
       @JsonKey(name: 'name') String? name});
 }
 
@@ -84,8 +84,8 @@ abstract class _$$_SurveyCopyWith<$Res> implements $SurveyCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'projectId') int? projectId,
-      @JsonKey(name: 'xmlFormId') String? xmlFormId,
+      {@JsonKey(name: 'projectID') int? projectId,
+      @JsonKey(name: 'xmlFormID') String? xmlFormId,
       @JsonKey(name: 'name') String? name});
 }
 
@@ -124,18 +124,18 @@ class __$$_SurveyCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Survey implements _Survey {
   _$_Survey(
-      {@JsonKey(name: 'projectId') this.projectId,
-      @JsonKey(name: 'xmlFormId') this.xmlFormId,
+      {@JsonKey(name: 'projectID') this.projectId,
+      @JsonKey(name: 'xmlFormID') this.xmlFormId,
       @JsonKey(name: 'name') this.name});
 
   factory _$_Survey.fromJson(Map<String, dynamic> json) =>
       _$$_SurveyFromJson(json);
 
   @override
-  @JsonKey(name: 'projectId')
+  @JsonKey(name: 'projectID')
   final int? projectId;
   @override
-  @JsonKey(name: 'xmlFormId')
+  @JsonKey(name: 'xmlFormID')
   final String? xmlFormId;
   @override
   @JsonKey(name: 'name')
@@ -178,17 +178,17 @@ class _$_Survey implements _Survey {
 
 abstract class _Survey implements Survey {
   factory _Survey(
-      {@JsonKey(name: 'projectId') final int? projectId,
-      @JsonKey(name: 'xmlFormId') final String? xmlFormId,
+      {@JsonKey(name: 'projectID') final int? projectId,
+      @JsonKey(name: 'xmlFormID') final String? xmlFormId,
       @JsonKey(name: 'name') final String? name}) = _$_Survey;
 
   factory _Survey.fromJson(Map<String, dynamic> json) = _$_Survey.fromJson;
 
   @override
-  @JsonKey(name: 'projectId')
+  @JsonKey(name: 'projectID')
   int? get projectId;
   @override
-  @JsonKey(name: 'xmlFormId')
+  @JsonKey(name: 'xmlFormID')
   String? get xmlFormId;
   @override
   @JsonKey(name: 'name')
