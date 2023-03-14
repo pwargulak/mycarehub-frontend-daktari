@@ -93,3 +93,4 @@ const String fetchUserOrganizationsErrorString =
 const String searchOrganizationsErrorString =
     'Error while searching organizations';
 const String createProgramErrorString = 'Error while creating program';
+const String assignCaregiverErrorString = 'Error while assigning caregiver';

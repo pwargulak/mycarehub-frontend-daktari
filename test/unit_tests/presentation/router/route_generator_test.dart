@@ -5,6 +5,7 @@ import 'package:prohealth360_daktari/presentation/communities/pages/communities_
 import 'package:prohealth360_daktari/presentation/communities/pages/create_room_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/room_list_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/room_page.dart';
+import 'package:prohealth360_daktari/presentation/onboarding/core/assign_caregiver_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/core/search_organization_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/login/pages/login_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/program_selection/program_selection_page.dart';
@@ -655,6 +656,18 @@ void main() {
 
     expect(route, isA<MaterialPageRoute<SearchCaregiverPage>>());
     expect(route?.builder(context), isA<SearchCaregiverPage>());
+  });
+
+  test('Test router returns assign Caregiver Page', () {
+    const RouteSettings settings = RouteSettings(
+      name: AppRoutes.assignCaregiverPage,
+    );
+
+    final MaterialPageRoute<AssignCaregiverPage>? route =
+        routeGenerator(settings) as MaterialPageRoute<AssignCaregiverPage>?;
+
+    expect(route, isA<MaterialPageRoute<AssignCaregiverPage>>());
+    expect(route?.builder(context), isA<AssignCaregiverPage>());
   });
 
   test('Test router returns successful Facility Selection Page', () {

@@ -7,7 +7,7 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings
 
 class OrganisationListItem extends StatelessWidget {
   const OrganisationListItem({
-    required this.organisation,
+    required this.organisation, 
     required this.onClicked,
     this.isSelected = false,
   });
