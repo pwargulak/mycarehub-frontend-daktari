@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
+import 'package:prohealth360_daktari/presentation/caregiver/assign_caregiver_page.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -30,6 +32,9 @@ void main() {
 
       await tester.pumpAndSettle();
       expect(find.byType(ListCardWithCancelButton), findsNWidgets(3));
+      await tester.tap(find.text(addCaregiverText));
+      await tester.pumpAndSettle();
+      expect(find.byType(AssignCaregiverPage), findsOneWidget);
     });
 
     testWidgets(

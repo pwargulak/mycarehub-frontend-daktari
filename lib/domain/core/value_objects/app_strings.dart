@@ -275,6 +275,7 @@ const String clientTypeLabel = 'Client Type *';
 const String registerClientSuccess = 'Successfully registered client';
 const String registerOrganisationSuccess = 'Successfully created organisation';
 const String registerCaregiverSuccess = 'Successfully registered caregiver';
+const String assignCaregiverSuccess = 'Successfully assigned caregiver';
 const String cccExists =
     'a client with this identifier type and value already exists';
 const String identifierString = 'identifier';

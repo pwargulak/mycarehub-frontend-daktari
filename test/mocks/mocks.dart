@@ -362,6 +362,12 @@ Map<String, dynamic> mockRegisterCaregiverPayload = <String, dynamic>{
   ]
 };
 
+Map<String, dynamic> mockAssignCaregiver = <String, dynamic>{
+  'clientID': 'Id',
+  'caregiverID': 'id',
+  'caregiverType': 'FATHER',
+};
+
 Map<String, dynamic> mockClientConfigurationPayload = <String, dynamic>{
   'clientType': 'PMTCT',
   'ageGroup': '14 - 16 yrs',

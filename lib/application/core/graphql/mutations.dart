@@ -270,3 +270,8 @@ const String createProgramMutation = r'''
 mutation createProgram($input: ProgramInput!) {
   createProgram(input: $input)
 }''';
+
+const String assignCaregiverMutation = r'''
+mutation assignCaregiver($input: ClientCaregiverInput!) {
+  assignCaregiver(input: $input)
+}''';

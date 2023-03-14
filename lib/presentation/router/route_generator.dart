@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:prohealth360_daktari/presentation/admin/admin_page.dart';
+import 'package:prohealth360_daktari/presentation/caregiver/assign_caregiver_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/accept_group_invites_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/create_room_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/invite_users_page.dart';
@@ -547,6 +548,13 @@ class RouteGenerator {
         return MaterialPageRoute<SearchCaregiverPage>(
           builder: (_) => const SearchCaregiverPage(),
           settings: const RouteSettings(name: 'Search caregiver page'),
+        );
+      case AppRoutes.assignCaregiverPage:
+        return MaterialPageRoute<AssignCaregiverPage>(
+          builder: (_) => AssignCaregiverPage(
+            clientId: args as String,
+          ),
+          settings: const RouteSettings(name: 'assign caregiver page'),
         );
 
       case AppRoutes.facilitySelectionPage:

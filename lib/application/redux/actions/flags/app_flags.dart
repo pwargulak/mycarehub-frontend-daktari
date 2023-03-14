@@ -19,6 +19,7 @@ const String checkIdentifierFlag = 'check_identifier_flag';
 // Caregiver
 const String registerCaregiverFlag = 'register_caregiver_flag';
 const String searchCaregiverFlag = 'search_caregiver_flag';
+const String assignCaregiverFlag = 'assign_caregiver_flag';
 
 // Register staff page
 const String registerStaffFlag = 'register_staff_flag';

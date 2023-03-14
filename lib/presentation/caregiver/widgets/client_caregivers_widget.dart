@@ -1,3 +1,4 @@
+import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
@@ -101,8 +102,12 @@ class ClientCaregiversWidget extends StatelessWidget {
             smallVerticalSizedBox,
             SizedBox(
               width: MediaQuery.of(context).size.width,
-              child: const MyAfyaHubPrimaryButton(
-                text: addClientsString,
+              child: MyAfyaHubPrimaryButton(
+                text: addCaregiverText,
+                onPressed: () {
+                  Navigator.of(context)
+                      .pushNamed(AppRoutes.assignCaregiverPage, arguments: id);
+                },
               ),
             ),
             largeVerticalSizedBox,
