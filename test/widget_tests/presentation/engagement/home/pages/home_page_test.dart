@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:prohealth360_daktari/presentation/admin/admin_page.dart';
+import 'package:prohealth360_daktari/presentation/communities/pages/create_room_page.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -235,6 +236,22 @@ void main() {
       await tester.tap(adminCardFinder);
       await tester.pumpAndSettle();
       expect(find.byType(AdminPage), findsOneWidget);
+    });
+    testWidgets('navigates to Create Room Page', (WidgetTester tester) async {
+      await buildTestWidget(
+        tester: tester,
+        store: store,
+        widget: const HomePage(),
+        graphQlClient: mockShortSILGraphQlClient,
+      );
+
+      final Finder createGroupFinder = find.byKey(createGroupKey);
+
+      await tester.ensureVisible(createGroupFinder);
+      await tester.pumpAndSettle();
+      await tester.tap(createGroupFinder);
+      await tester.pumpAndSettle();
+      expect(find.byType(CreateRoomPage), findsOneWidget);
     });
   });
 }

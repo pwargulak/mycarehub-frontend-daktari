@@ -1,8 +1,8 @@
 // Flutter imports:
 import 'package:prohealth360_daktari/presentation/admin/admin_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/accept_group_invites_page.dart';
-import 'package:prohealth360_daktari/presentation/communities/pages/communities_list_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/create_room_page.dart';
+import 'package:prohealth360_daktari/presentation/communities/pages/invite_users_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/invited_groups_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/room_list_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/room_page.dart';
@@ -127,12 +127,6 @@ class RouteGenerator {
         return MaterialPageRoute<LoginPage>(
           builder: (_) => LoginPage(),
           settings: const RouteSettings(name: 'Login page'),
-        );
-
-      case AppRoutes.communityPage:
-        return MaterialPageRoute<CommunitiesListPage>(
-          builder: (_) => const CommunitiesListPage(),
-          settings: const RouteSettings(name: 'Communities list page'),
         );
 
       case AppRoutes.notificationsPage:
@@ -660,7 +654,7 @@ class RouteGenerator {
       // Communities
       case AppRoutes.roomListPage:
         return MaterialPageRoute<RoomListPage>(
-          builder: (_) => const RoomListPage(),
+          builder: (_) => RoomListPage(),
           settings: const RouteSettings(name: 'Room List Page'),
         );
       case AppRoutes.roomPage:
@@ -672,6 +666,13 @@ class RouteGenerator {
         return MaterialPageRoute<CreateRoomPage>(
           builder: (_) => const CreateRoomPage(),
           settings: const RouteSettings(name: 'Create Room Page'),
+        );
+      case AppRoutes.inviteUsersPage:
+        return MaterialPageRoute<InviteUsersPage>(
+          builder: (_) => InviteUsersPage(
+            room: args as Room,
+          ),
+          settings: const RouteSettings(name: 'Invite Users Page'),
         );
 
       default:

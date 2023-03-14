@@ -91,6 +91,7 @@ const String communitiesRejectionSuccessful = 'Invite rejection successful';
 const String okThanksText = 'Ok, thanks';
 const String joinGroup = 'Join Group';
 const String declineInvite = 'Decline Invite';
+const String leaveGroupString = 'Leave Group';
 
 //Phone Login
 const String phoneLoginPageTitle = 'Welcome to ';
@@ -1083,6 +1084,8 @@ const String deleteRoleDescriptionString =
 const String manageTenantString = 'Manage Tenants';
 const String manageProgramsString = 'Manage Program';
 const String areYouReallySureTitle = 'Are you really sure?';
+const String leaveGroupTitle = 'Leave group?';
+const String leaveGroupDescriptionText= 'Please confirm that you want to leave the group';
 const String confirmDeletionSting =
     'Please confirm that you want to delete the ';
 const String confirmRevokeSting = 'Please confirm that you want to revoke the';

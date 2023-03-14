@@ -38,6 +38,7 @@ Future<void> buildTestWidget({
     'DEV_STREAM_API_KEY': 'dev_stream_api_key',
     'DEMO_STREAM_API_KEY': 'demo_stream_api_key',
     'PROD_STREAM_API_KEY': 'prod_stream_api_key',
+    'MATRIX_USERNAME': 'eugene'
   });
 
   NavigateAction.setNavigatorKey(globalAppNavigatorKey);
@@ -50,6 +51,7 @@ Future<void> buildTestWidget({
         appContexts: testAppContexts,
         baseContext: devAppSetupData.customContext,
         graphQLClient: graphQlClient ?? mockGraphQlClient,
+        communitiesClient: graphQlClient ?? mockGraphQlClient,
         child: OverlaySupport(
           child: MaterialApp(
             onGenerateRoute: RouteGenerator.generateRoute,

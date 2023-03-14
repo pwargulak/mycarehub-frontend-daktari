@@ -167,6 +167,15 @@ class _HomePageState extends State<HomePage> {
                           Navigator.of(context).pushNamed(AppRoutes.adminPage);
                         },
                       ),
+                      ActionCard(
+                        key: createGroupKey,
+                        title: createGroupText,
+                        iconUrl: newGroupImage,
+                        onTap: () {
+                          Navigator.pushNamed(context, AppRoutes.createRoomPage);
+                        },
+                      ),
+                      
                     ],
                   ),
                 ),

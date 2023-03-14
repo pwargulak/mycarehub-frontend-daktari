@@ -74,7 +74,7 @@ class UserListItem extends StatelessWidget {
                                 roomID: roomID,
                                 userID: userID,
                                 client:
-                                    AppWrapperBase.of(context)!.graphQLClient,
+                                    AppWrapperBase.of(context)!.communitiesClient!,
                                 onSuccess: () {
                                   ScaffoldMessenger.of(context)
                                     ..hideCurrentSnackBar()

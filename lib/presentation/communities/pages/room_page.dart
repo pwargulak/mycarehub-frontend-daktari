@@ -9,6 +9,7 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.d
 import 'package:prohealth360_daktari/presentation/communities/pages/group_info_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/message_widget.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/review_invite_widget.dart';
+import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:sghi_core/communities/models/message.dart';
@@ -24,10 +25,11 @@ class RoomPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final String roomName = room.name ?? noNameString;
     final String roomID = room.roomID ?? UNKNOWN;
-
+    final String roomInitials = getInitials(room.name ?? 'No room name');
     return Scaffold(
-      appBar: AppBar(
-        title: InkWell(
+      appBar: CustomAppBar(
+        title: roomName,
+        trailingWidget: GestureDetector(
           key: navigateToGroupInfoPageKey,
           onTap: () {
             Navigator.of(context).push(
@@ -37,9 +39,15 @@ class RoomPage extends StatelessWidget {
             );
           },
           child: Container(
-            padding: const EdgeInsets.all(10),
-            width: MediaQuery.of(context).size.width,
-            child: Center(child: Text(roomName)),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.purple.withOpacity(0.4),
+            ),
+            padding: const EdgeInsets.all(15),
+            child: Text(
+              roomInitials.toUpperCase(),
+              style: heavySize14Text(Colors.purple),
+            ),
           ),
         ),
       ),
@@ -130,7 +138,8 @@ class RoomPage extends StatelessWidget {
                                 }
                               },
                               message: msgCtrl.text,
-                              client: AppWrapperBase.of(context)!.graphQLClient,
+                              client: AppWrapperBase.of(context)!
+                                  .communitiesClient!,
                             ),
                           );
                         }

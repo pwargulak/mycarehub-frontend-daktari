@@ -29,7 +29,7 @@ List<BottomNavItem> bottomNavItems = <BottomNavItem>[
   BottomNavItem(
     iconUrl: communityIconSvgPath,
     text: 'Conversations',
-    onTapRoute: AppRoutes.communityPage,
+    onTapRoute: AppRoutes.roomListPage,
     index: BottomNavIndex.communities.index,
   ),
   BottomNavItem(

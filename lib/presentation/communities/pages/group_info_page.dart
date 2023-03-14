@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/services/communities_utils.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/actions/communities/fetch_room_members_action.dart';
-import 'package:prohealth360_daktari/application/redux/actions/communities/leave_room_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/communities/room_info_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
-import 'package:prohealth360_daktari/presentation/communities/pages/invite_users_page.dart';
+import 'package:prohealth360_daktari/presentation/communities/widgets/confirm_leave_room_dialog.dart';
 import 'package:prohealth360_daktari/presentation/communities/widgets/user_list_item_widget.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
@@ -89,7 +88,9 @@ class RoomInfoPage extends StatelessWidget {
               fontWeight: FontWeight.w800,
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(
+            height: 10,
+          ),
           const Text(
             groupMembersInstructionString,
             style: TextStyle(
@@ -105,12 +106,10 @@ class RoomInfoPage extends StatelessWidget {
               onPressed: () async {
                 // Search for a user and add them
                 // navigate to rooms page
-                Navigator.of(context).push(
-                  MaterialPageRoute<bool>(
-                    builder: (BuildContext context) => InviteUsersPage(
-                      room: room,
-                    ),
-                  ),
+                Navigator.pushNamed(
+                  context,
+                  AppRoutes.inviteUsersPage,
+                  arguments: room,
                 );
               },
               child: const Padding(
@@ -164,17 +163,12 @@ class RoomInfoPage extends StatelessWidget {
               }
               return TextButton(
                 key: leaveRoomKey,
-                onPressed: () async {
-                  StoreProvider.dispatch<AppState>(
-                    context,
-                    LeaveRoomAction(
-                      roomID: room.roomID!,
-                      onSuccess: () =>
-                        Navigator.pushNamed(context, AppRoutes.roomListPage),
-                      client: AppWrapperBase.of(context)!.graphQLClient,
-                    ),
-                  );
-                },
+                onPressed: () => showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return ConfirmLeaveRoomDialog(room: room);
+                  },
+                ),
                 child: const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text(leaveRoomString),

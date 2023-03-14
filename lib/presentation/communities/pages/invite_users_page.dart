@@ -10,6 +10,7 @@ import 'package:prohealth360_daktari/application/redux/view_models/communities/s
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/communities/widgets/user_list_item_widget.dart';
+import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:sghi_core/communities/models/room.dart';
 import 'package:sghi_core/communities/models/user.dart';
@@ -24,12 +25,9 @@ class InviteUsersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Container(
-          padding: const EdgeInsets.all(10),
-          width: MediaQuery.of(context).size.width,
-          child: const Center(child: Text(inviteMembersString)),
-        ),
+      appBar: const CustomAppBar(
+        title: inviteMembersString,
+        trailingWidget: SizedBox(),
       ),
       body: ListView(
         padding: const EdgeInsets.all(20),
@@ -72,7 +70,7 @@ class InviteUsersPage extends StatelessWidget {
                   context,
                   SearchMembersAction(
                     searchParam: value,
-                    client: AppWrapperBase.of(context)!.graphQLClient,
+                    client: AppWrapperBase.of(context)!.communitiesClient!,
                   ),
                 );
               }
@@ -115,7 +113,7 @@ class InviteUsersPage extends StatelessWidget {
                         InviteUserAction(
                           roomID: room.roomID!,
                           userID: currentUser.userID!,
-                          client: AppWrapperBase.of(context)!.graphQLClient,
+                          client: AppWrapperBase.of(context)!.communitiesClient!,
                           onSuccess: () {
                             ScaffoldMessenger.of(context)
                               ..hideCurrentSnackBar()

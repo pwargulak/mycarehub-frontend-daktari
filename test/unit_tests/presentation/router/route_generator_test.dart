@@ -1,8 +1,8 @@
 // Flutter imports:
 import 'package:prohealth360_daktari/presentation/admin/admin_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/accept_group_invites_page.dart';
-import 'package:prohealth360_daktari/presentation/communities/pages/communities_list_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/create_room_page.dart';
+import 'package:prohealth360_daktari/presentation/communities/pages/invite_users_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/room_list_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/room_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/core/search_organization_page.dart';
@@ -140,16 +140,6 @@ void main() {
     expect(route, isA<MaterialPageRoute<CreateNewPINPage>>());
     expect(route.builder(context), isA<CreateNewPINPage>());
   });
-
-  test('Test router returns CommunityListView', () {
-    const RouteSettings settings = RouteSettings(name: AppRoutes.communityPage);
-
-    final MaterialPageRoute<CommunitiesListPage>? route =
-        routeGenerator(settings) as MaterialPageRoute<CommunitiesListPage>?;
-    expect(route, isA<MaterialPageRoute<CommunitiesListPage>>());
-    expect(route?.builder(context), isA<CommunitiesListPage>());
-  });
-
   test('Test router returns NotificationsPage', () async {
     setupFirebaseAnalyticsMocks();
     await Firebase.initializeApp();
@@ -882,5 +872,17 @@ void main() {
 
     expect(route, isA<MaterialPageRoute<CreateRoomPage>>());
     expect(route?.builder(context), isA<CreateRoomPage>());
+  });
+  test('Test router returns Invite Users Page', () {
+    final RouteSettings settings = RouteSettings(
+      name: AppRoutes.inviteUsersPage,
+      arguments: Room.initial(),
+    );
+
+    final MaterialPageRoute<InviteUsersPage>? route =
+        routeGenerator(settings) as MaterialPageRoute<InviteUsersPage>?;
+
+    expect(route, isA<MaterialPageRoute<InviteUsersPage>>());
+    expect(route?.builder(context), isA<InviteUsersPage>());
   });
 }

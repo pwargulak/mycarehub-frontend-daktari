@@ -78,7 +78,7 @@ class NormalMessageItem extends StatelessWidget {
                                   }
                                 },
                                 client:
-                                    AppWrapperBase.of(context)!.graphQLClient,
+                                    AppWrapperBase.of(context)!.communitiesClient!,
                               ),
                             );
                           },

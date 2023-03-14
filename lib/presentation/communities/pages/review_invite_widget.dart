@@ -8,7 +8,7 @@ import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/communities/room_info_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
-import 'package:prohealth360_daktari/presentation/communities/pages/room_list_page.dart';
+import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:sghi_core/communities/models/room.dart';
 
@@ -86,14 +86,9 @@ class ReviewInviteWidget extends StatelessWidget {
                         roomID: room.roomID!,
                         onSuccess: () {
                           /// Do something nice here
-                          Navigator.of(context).push(
-                            MaterialPageRoute<bool>(
-                              builder: (BuildContext context) =>
-                                  const RoomListPage(),
-                            ),
-                          );
+                          Navigator.pushNamed(context, AppRoutes.roomListPage);
                         },
-                        client: AppWrapperBase.of(context)!.graphQLClient,
+                        client: AppWrapperBase.of(context)!.communitiesClient!,
                       ),
                     );
                   },

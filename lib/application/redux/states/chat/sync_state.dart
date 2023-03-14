@@ -34,8 +34,8 @@ class SyncState with _$SyncState {
       _$SyncStateFromJson(json);
 
   factory SyncState.initial() => SyncState(
-        syncInterval: 5000,
-        syncPollTimeout: 5000,
+        syncInterval: 3000,
+        syncPollTimeout: 3000,
         lastUpdate: 0,
         lastAttempt: 0,
         lastSince: UNKNOWN,

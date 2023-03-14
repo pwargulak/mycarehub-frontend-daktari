@@ -35,7 +35,7 @@ class _MediaItemState extends State<MediaItem> {
         context,
         FetchMediaAction(
           mediaUri: widget.url,
-          client: AppWrapperBase.of(context)!.graphQLClient,
+          client: AppWrapperBase.of(context)!.communitiesClient!,
         ),
       );
     });

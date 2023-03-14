@@ -73,7 +73,6 @@ Future<SyncResponse> synchronizeEvents(SyncParams syncParams) async {
       : '';
 
   final IGraphQlClient processedClient = syncParams.client;
-
   final Response response = await processedClient.callRESTAPI(
     endpoint: endpoint,
     method: httpGET,

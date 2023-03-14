@@ -11,8 +11,6 @@ class AppRoutes {
 
   static const String landingPage = '/landingPage';
 
-  static const String communityPage = '/communityPage';
-
   static const String notificationsPage = '/notificationsPage';
 
   static const String contentPage = '/contentPage';
@@ -157,5 +155,7 @@ class AppRoutes {
   // Communities
   static const String roomListPage = '/roomListPage';
   static const String roomPage = '/roomPage';
+  static const String roomInfoPage = '/roomInfoPage';
   static const String createRoomPage = '/createRoomPage';
+  static const String inviteUsersPage = '/inviteUsersPage';
 }

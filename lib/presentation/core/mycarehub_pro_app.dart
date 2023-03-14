@@ -37,6 +37,7 @@ class MyCareHubProApp extends StatelessWidget {
         vm: () => AppEntryPointViewModelFactory(),
         builder: (BuildContext context, AppEntryPointViewModel vm) {
           final String idToken = vm.idToken ?? '';
+          final String communitiesAccessToken = vm.communitiesAccessToken ?? '';
 
           final String graphqlEndpoint =
               appSetupData.customContext!.graphqlEndpoint;
@@ -52,6 +53,13 @@ class MyCareHubProApp extends StatelessWidget {
             baseContext: appSetupData.customContext,
             graphQLClient: CustomClient(
               idToken,
+              graphqlEndpoint,
+              context: context,
+              refreshTokenEndpoint: refreshTokenEndpoint,
+              userID: userID,
+            ),
+            communitiesClient: CustomClient(
+              communitiesAccessToken,
               graphqlEndpoint,
               context: context,
               refreshTokenEndpoint: refreshTokenEndpoint,

@@ -12,6 +12,7 @@ class AppEntryPointViewModelFactory
     return AppEntryPointViewModel(
       idToken: state.credentials?.idToken,
       userId: state.userProfileState?.userProfile?.user?.userId,
+      communitiesAccessToken: state.chatState?.userProfile?.accessToken,
     );
   }
 }

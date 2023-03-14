@@ -4,8 +4,10 @@ class AppEntryPointViewModel extends Vm {
   AppEntryPointViewModel({
     required this.idToken,
     required this.userId,
-  }) : super(equals: <Object?>[idToken, userId]);
+    required this.communitiesAccessToken,
+  }) : super(equals: <Object?>[idToken, userId, communitiesAccessToken]);
 
   final String? idToken;
   final String? userId;
+  final String? communitiesAccessToken;
 }

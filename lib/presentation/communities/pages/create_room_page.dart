@@ -111,7 +111,7 @@ class _CreateRoomPageState extends State<CreateRoomPage> {
                           Navigator.of(context).pop(true);
                         }
                       },
-                      client: AppWrapperBase.of(context)!.graphQLClient,
+                      client: AppWrapperBase.of(context)!.communitiesClient!,
                     ),
                   );
                 },

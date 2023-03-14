@@ -223,6 +223,7 @@ const Key programsCardKey = Key('programs_card_key');
 const Key createOrganizationButtonKey = Key('create_organization_button_key');
 const Key addProgramButtonKey = Key('add_program_button_key');
 const Key createProgramButtonKey = Key('create_program_button_key');
+const Key createGroupKey = Key('create_group_key');
 const Key searchOrganizationButtonKey = Key('search_organisation_button_key');
 
 // Create organization
@@ -280,3 +281,6 @@ const Key messageInputKey = Key('messageInputKey');
 const Key sendMessageIconKey = Key('sendMessageIconKey');
 
 const Key roomListItemKey = Key('roomListItemKey');
+
+const Key confirmLeaveRoomKey = Key('confirmLeaveRoomKey');
+const Key cancelLeaveRoomKey = Key('cancelLeaveRoomKey');
