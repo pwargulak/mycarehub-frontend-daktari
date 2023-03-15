@@ -90,11 +90,6 @@ class _CreateProgramPageState extends State<CreateProgramPage> {
                           ),
                           mediumVerticalSizedBox,
                           // program description
-                          Text(
-                            descriptionString,
-                            style: normalSize14Text(AppColors.greyTextColor),
-                          ),
-                          smallVerticalSizedBox,
                           StreamBuilder<String>(
                             stream:
                                 _createProgramFormManager.programDescription,
@@ -102,11 +97,10 @@ class _CreateProgramPageState extends State<CreateProgramPage> {
                               BuildContext context,
                               AsyncSnapshot<String> snapshot,
                             ) {
-                              return CustomTextField(
-                                formFieldKey: programDescriptionFieldKey,
+                              return PatientDetailsTextFormField(
+                                textFieldKey: programDescriptionFieldKey,
+                                label: descriptionString,
                                 keyboardType: TextInputType.text,
-                                maxLines: 3,
-                                minLines: 3,
                                 onChanged: (String value) {
                                   _createProgramFormManager.inProgramDescription
                                       .add(value);

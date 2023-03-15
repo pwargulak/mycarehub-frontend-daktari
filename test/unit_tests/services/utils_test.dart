@@ -345,6 +345,7 @@ void main() {
     expect(store.state, AppState.initial());
     expect(find.byType(LoginPage), findsOneWidget);
   });
+
   test('formatSecurityQuestionDate should return birth date in en_GB format',
       () {
     initializeDateFormatting();

@@ -31,14 +31,6 @@ class AdminPage extends StatelessWidget {
                 child: Wrap(
                   children: <Widget>[
                     ActionCard(
-                      key: rolesCardKey,
-                      iconUrl: manageRolesImage,
-                      title: rolesString,
-                      onTap: () => Navigator.of(context)
-                          .pushNamed(AppRoutes.manageRolesPage),
-                      backgroundColor: AppColors.primaryColor.withOpacity(0.15),
-                    ),
-                    ActionCard(
                       key: organizationsCardKey,
                       iconUrl: organizationImage,
                       title: organizations,

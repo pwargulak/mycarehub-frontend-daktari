@@ -166,11 +166,6 @@ Function() logoutUser({required BuildContext context}) {
   };
 }
 
-String returnCurrentYear() {
-  final DateTime now = DateTime.now();
-  return DateFormat('y').format(now);
-}
-
 String? securityQuestionValidator(String? value) {
   if (value != null && (value.isEmpty || value == UNKNOWN)) {
     return 'A Response is required';

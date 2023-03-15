@@ -114,18 +114,9 @@ class UserProfilePage extends StatelessWidget {
                     height: 56,
                     child: LogoutButton(),
                   ),
-                  mediumVerticalSizedBox,
-
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Center(
-                        child: Text(
-                          copyrightString,
-                          style: normalSize10Text(Colors.grey),
-                        ),
-                      ),
-                      smallVerticalSizedBox,
                       Text(
                         poweredByMyCareHubString,
                         style: normalSize10Text(Colors.grey),

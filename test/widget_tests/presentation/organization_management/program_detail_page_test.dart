@@ -8,7 +8,6 @@ import 'package:prohealth360_daktari/domain/core/entities/programs/program.dart'
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/core/search_facilities_page.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/pages/program_detail_page.dart';
-import 'package:prohealth360_daktari/presentation/organization_management/widgets/badge_widget.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/widgets/program_list_item_widget.dart';
 
 import '../../../mocks/mocks.dart';
@@ -52,7 +51,6 @@ void main() {
         widget: const ProgramDetailPage(),
       );
       await tester.pumpAndSettle();
-      expect(find.byType(BadgeWidget), findsNWidgets(4));
       expect(find.byType(ProgramListItem), findsNWidgets(2));
 
       await tester.tap(find.byKey(cancelButtonKey).first);
@@ -70,7 +68,6 @@ void main() {
         widget: const ProgramDetailPage(),
       );
       await tester.pumpAndSettle();
-      expect(find.byType(BadgeWidget), findsNWidgets(4));
       expect(find.byType(ProgramListItem), findsNWidgets(2));
 
       await tester.ensureVisible(find.byKey(addFacilityButtonKey));

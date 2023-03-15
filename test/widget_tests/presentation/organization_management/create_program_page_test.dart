@@ -184,7 +184,7 @@ void main() {
           find.byKey(programDescriptionFieldKey);
       expect(programDescriptionField, findsOneWidget);
       await tester.enterText(programDescriptionField, 'mycarehub description');
-
+      
       await tester.enterText(programDescriptionField, '');
       await tester.pump();
 

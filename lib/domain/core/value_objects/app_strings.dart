@@ -1,5 +1,4 @@
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
-import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 
 const String appName = 'myCareHub Professional';
@@ -434,8 +433,6 @@ const String nicknameSuccessString = 'Nickname created successfully';
 const String logoutButtonText = 'Logout';
 const String usernameTakenText = 'Username has already been taken.';
 
-final String copyrightString =
-    'Content © University of Nairobi ${returnCurrentYear()}';
 const String copyrightDescriptionString =
     'myCareHub™ is a platform developed by Johnson & Johnson Global public Health, used under license';
 const String poweredByMyCareHubString = 'Powered by myCareHub™';

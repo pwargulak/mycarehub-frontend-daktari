@@ -30,22 +30,7 @@ void main() {
       );
 
       await tester.pumpAndSettle();
-      expect(find.byType(ActionCard), findsNWidgets(3));
-    });
-
-    testWidgets('roles card navigates to roles page correctly',
-        (WidgetTester tester) async {
-      await buildTestWidget(
-        tester: tester,
-        store: store,
-        graphQlClient: MockTestGraphQlClient(),
-        widget: const AdminPage(),
-      );
-      final Finder roleCardFinder = find.byKey(rolesCardKey);
-      await tester.pumpAndSettle();
-      expect(roleCardFinder, findsOneWidget);
-
-      await tester.tap(roleCardFinder);
+      expect(find.byType(ActionCard), findsNWidgets(2));
     });
 
     testWidgets('organizations card navigates to organizations page correctly',

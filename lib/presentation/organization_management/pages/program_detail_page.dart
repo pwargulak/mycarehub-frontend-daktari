@@ -9,7 +9,6 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
-import 'package:prohealth360_daktari/presentation/organization_management/widgets/badge_widget.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/widgets/program_list_item_widget.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
@@ -18,12 +17,6 @@ class ProgramDetailPage extends StatelessWidget {
   const ProgramDetailPage({super.key});
   @override
   Widget build(BuildContext context) {
-    final List<String> diseases = <String>[
-      'HIV',
-      'Diabetes',
-      'Hypertension',
-      'Schizophrenia',
-    ];
 
     return StoreConnector<AppState, ProgramsStateViewModel>(
       converter: (Store<AppState> store) =>
@@ -73,34 +66,6 @@ class ProgramDetailPage extends StatelessWidget {
                           Text(
                             selectedProgram?.organisation?.description ?? '',
                             style: normalSize14Text(AppColors.greyTextColor),
-                          ),
-                          mediumVerticalSizedBox,
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
-                                diseaseAreasString,
-                                style: heavySize16Text(AppColors.blackColor),
-                              ),
-                              smallVerticalSizedBox,
-                              Text(
-                                diseaseAreasDescriptionString,
-                                style:
-                                    normalSize14Text(AppColors.greyTextColor),
-                              ),
-                              smallVerticalSizedBox,
-                              Wrap(
-                                runSpacing: 10,
-                                spacing: 10,
-                                children: <Widget>[
-                                  for (String disease in diseases) ...<Widget>[
-                                    BadgeWidget(
-                                      title: disease,
-                                    )
-                                  ],
-                                ],
-                              ),
-                            ],
                           ),
                           mediumVerticalSizedBox,
                           Column(
