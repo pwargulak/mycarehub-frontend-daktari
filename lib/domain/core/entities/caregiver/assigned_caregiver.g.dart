@@ -26,5 +26,5 @@ const _$CaregiverTypeEnumMap = {
   CaregiverType.FATHER: 'FATHER',
   CaregiverType.MOTHER: 'MOTHER',
   CaregiverType.SIBLING: 'SIBLING',
-  CaregiverType.HEALTH_PROFESSIONAL: 'HEALTH_PROFESSIONAL',
+  CaregiverType.HEALTHCARE_PROFESSIONAL: 'HEALTHCARE_PROFESSIONAL',
 };

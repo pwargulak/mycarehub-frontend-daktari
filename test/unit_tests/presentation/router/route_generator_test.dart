@@ -1,11 +1,11 @@
 // Flutter imports:
 import 'package:prohealth360_daktari/presentation/admin/admin_page.dart';
+import 'package:prohealth360_daktari/presentation/caregiver/assign_caregiver_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/accept_group_invites_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/communities_list_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/create_room_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/room_list_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/room_page.dart';
-import 'package:prohealth360_daktari/presentation/onboarding/core/assign_caregiver_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/core/search_organization_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/login/pages/login_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/program_selection/program_selection_page.dart';
@@ -661,6 +661,7 @@ void main() {
   test('Test router returns assign Caregiver Page', () {
     const RouteSettings settings = RouteSettings(
       name: AppRoutes.assignCaregiverPage,
+      arguments: 'test',
     );
 
     final MaterialPageRoute<AssignCaregiverPage>? route =

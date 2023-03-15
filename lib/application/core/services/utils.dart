@@ -340,7 +340,7 @@ final EditInformationInputItem relationInputItem = EditInformationInputItem(
   dropDownOptionList: CaregiverType.values
       .map<String>((CaregiverType type) => type.name)
       .toList(),
-  apiFieldValue: 'caregiverType',
+  apiFieldValue: 'caregiverType',          
 );
 
 MoodItemData getMoodColor(String? mood) {

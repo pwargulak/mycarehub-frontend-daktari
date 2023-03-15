@@ -18,7 +18,9 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.d
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
 
 class AssignCaregiverPage extends StatefulWidget {
-  const AssignCaregiverPage({super.key});
+  final String clientId;
+
+  const AssignCaregiverPage({super.key, required this.clientId});
   @override
   State<AssignCaregiverPage> createState() => _AssignCaregiverPageState();
 }
@@ -238,7 +240,12 @@ class _AssignCaregiverPageState extends State<AssignCaregiverPage> {
                                       StoreProvider.dispatch<AppState>(
                                         context,
                                         AssignCaregiverAction(
-                                          assignedCaregiver: AssignedCaregiver(caregiverID: selectedCaregiver.id, caregiverType: CaregiverType.SIBLING),
+                                          assignedCaregiver: AssignedCaregiver(
+                                            clientID: widget.clientId,
+                                            caregiverID: selectedCaregiver.id,
+                                            caregiverType:
+                                                CaregiverType.SIBLING,
+                                          ),
                                           client: AppWrapperBase.of(context)!
                                               .graphQLClient,
                                           onSuccess: () {

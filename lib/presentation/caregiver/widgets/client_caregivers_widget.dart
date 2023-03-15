@@ -106,7 +106,7 @@ class ClientCaregiversWidget extends StatelessWidget {
                 text: addCaregiverText,
                 onPressed: () {
                   Navigator.of(context)
-                      .pushNamed(AppRoutes.assignCaregiverPage);
+                      .pushNamed(AppRoutes.assignCaregiverPage, arguments: id);
                 },
               ),
             ),

@@ -557,7 +557,9 @@ class RouteGenerator {
         );
       case AppRoutes.assignCaregiverPage:
         return MaterialPageRoute<AssignCaregiverPage>(
-          builder: (_) => const AssignCaregiverPage(),
+          builder: (_) => AssignCaregiverPage(
+            clientId: args as String,
+          ),
           settings: const RouteSettings(name: 'assign caregiver page'),
         );
 
