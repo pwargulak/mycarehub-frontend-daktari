@@ -288,6 +288,9 @@ const String contactExists =
     'a contact with this value and flavour already exists';
 const String searchFacilitiesString = 'Search facilities';
 const String searchOrganisationsString = 'Search organisations';
+const String userAlreadyExistsString = 'User already exists';
+const String selectedProgramDescriptionString = 'The client will be added to this program and organization';
+const String userCCCAlreadyExistsDescriptionString = 'There is an already existing user with that CCC number. Do you still want to continue';
 
 // add new staff page
 const String registerStaffSuccess = 'Successfully registered staff';
@@ -1165,6 +1168,7 @@ String orgName(String name) {
 }
 
 const String programsString = 'Programs';
+const String programString = 'Program';
 const String runningProgramString =
     'Programs that the organization is currently running';
 const String addProgramString = 'Add Program';

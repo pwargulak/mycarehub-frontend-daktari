@@ -1379,6 +1379,18 @@ class MockTestGraphQlClient extends IGraphQlClient {
         ),
       );
     }
+    if (queryString.contains(checkIdentifierExistsQuery)) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(
+            <String, dynamic>{
+              'data': <String, dynamic>{'checkIdentifierExists': true}
+            },
+          ),
+          201,
+        ),
+      );
+    }
 
     if (queryString.contains(listMembersQuery)) {
       return Future<http.Response>.value(

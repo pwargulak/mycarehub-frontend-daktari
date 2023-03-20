@@ -22,6 +22,7 @@ class PatientDetailsTextFormField extends StatelessWidget {
     this.obscureText = false,
     this.maxLength,
     this.textInputAction,
+    this.focusNode,
   });
 
   final String label;
@@ -38,6 +39,7 @@ class PatientDetailsTextFormField extends StatelessWidget {
   final bool obscureText;
   final int? maxLength;
   final TextInputAction? textInputAction;
+  final FocusNode? focusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +59,7 @@ class PatientDetailsTextFormField extends StatelessWidget {
         TextFormField(
           controller: controller,
           key: textFieldKey,
+          focusNode: focusNode,
           textInputAction: textInputAction,
           initialValue: initialValue,
           decoration: InputDecoration(

@@ -1,3 +1,9 @@
+import 'dart:convert';
+
+import 'package:http/http.dart';
+import 'package:prohealth360_daktari/application/redux/actions/programs/update_programs_state_action.dart';
+import 'package:prohealth360_daktari/domain/core/entities/organisations/organisation.dart';
+import 'package:prohealth360_daktari/domain/core/entities/programs/program.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -25,6 +31,18 @@ void main() {
       );
       setupFirebaseAnalyticsMocks();
       await Firebase.initializeApp();
+      store.dispatch(
+        UpdateProgramsStateAction(
+          selectedUserProgram: Program(
+            name: 'testName',
+            id: 'testId',
+            organisation: Organisation(
+              name: 'testName',
+              description: 'testDesc',
+            ),
+          ),
+        ),
+      );
     });
 
     testWidgets('register button calls RegisterClientAction',
@@ -38,6 +56,7 @@ void main() {
       await tester.pumpAndSettle();
 
       final Finder cccFieldFinder = find.byKey(cccFieldKey);
+      final Finder continueButtonFinder = find.byKey(continueKey);
       expect(cccFieldFinder, findsOneWidget);
       await tester.tap(cccFieldFinder);
       await tester.enterText(cccFieldFinder, '12345678');
@@ -47,6 +66,12 @@ void main() {
       await tester.ensureVisible(usernameFieldFinder);
       await tester.tap(usernameFieldFinder);
       await tester.enterText(usernameFieldFinder, 'testUsername');
+
+      expect(continueButtonFinder, findsOneWidget);
+      await tester.ensureVisible(continueButtonFinder);
+      await tester.tap(continueButtonFinder);
+      await tester.pumpAndSettle();
+      expect(continueButtonFinder, findsNothing);
 
       final Finder facilityFieldFinder =
           find.byKey(facilitySelectOptionFieldKey);
@@ -258,15 +283,34 @@ void main() {
 
     testWidgets('ccc number field should show error',
         (WidgetTester tester) async {
+      final MockShortGraphQlClient mockShortGraphQlClient =
+          MockShortGraphQlClient.withResponse(
+        'idToken',
+        'endpoint',
+        Response(
+          json.encode(<String, dynamic>{'errors': 'some error occurred'}),
+          201,
+        ),
+      );
       await buildTestWidget(
         store: store,
         tester: tester,
         widget: const RegisterClientPage(),
+        graphQlClient: mockShortGraphQlClient,
       );
       await tester.pumpAndSettle();
 
       final Finder cccFieldFinder = find.byKey(cccFieldKey);
       expect(cccFieldFinder, findsOneWidget);
+      await tester.tap(cccFieldFinder);
+      await tester.enterText(cccFieldFinder, '12345678');
+
+      final Finder usernameFieldFinder = find.byKey(usernameFieldKey);
+      expect(usernameFieldFinder, findsOneWidget);
+      await tester.ensureVisible(usernameFieldFinder);
+      await tester.tap(usernameFieldFinder);
+      await tester.enterText(usernameFieldFinder, 'testUsername');
+
       await tester.enterText(cccFieldFinder, '1234567890');
       expect(find.text('1234567890'), findsOneWidget);
 

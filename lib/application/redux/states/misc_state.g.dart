@@ -32,6 +32,7 @@ _$_MiscState _$$_MiscStateFromJson(Map<String, dynamic> json) => _$_MiscState(
           ? null
           : SearchCaregiverResponseState.fromJson(
               json['searchCaregiverResponseState'] as Map<String, dynamic>),
+      userExists: json['userExists'] as bool?,
     );
 
 Map<String, dynamic> _$$_MiscStateToJson(_$_MiscState instance) =>
@@ -47,4 +48,5 @@ Map<String, dynamic> _$$_MiscStateToJson(_$_MiscState instance) =>
       'updateFacility': instance.updateFacility,
       'cccNumberExists': instance.cccNumberExists,
       'searchCaregiverResponseState': instance.searchCaregiverResponseState,
+      'userExists': instance.userExists,
     };

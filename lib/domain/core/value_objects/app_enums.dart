@@ -108,3 +108,11 @@ enum AnalyticsEventType {
 enum QuestionType { SINGLE_CHOICE, MULTIPLE_CHOICE, UNKNOWN }
 
 enum ConsentStatus { ACCEPTED, REJECTED, PENDING, UNKNOWN }
+
+enum IdentifierType { CCC, NATIONAL_ID }
+
+extension IdentifierTypeEx on IdentifierType {
+  String get name {
+    return describeEnum(this);
+  }
+}

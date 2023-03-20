@@ -7,13 +7,13 @@ class GeneralWorkstationWidget extends StatelessWidget {
     super.key,
     required this.title,
     required this.bodyWidget,
-    required this.buttonText,
+    this.buttonText,
     this.onButtonCallback,
     this.buttonWidget,
   });
 
   final String title;
-  final String buttonText;
+  final String? buttonText;
   final Widget bodyWidget;
   final VoidCallback? onButtonCallback;
   final Widget? buttonWidget;
@@ -40,16 +40,17 @@ class GeneralWorkstationWidget extends StatelessWidget {
           smallVerticalSizedBox,
           bodyWidget,
           smallVerticalSizedBox,
-          SizedBox(
-            height: 48,
-            width: double.infinity,
-            child: MyAfyaHubPrimaryButton(
-              buttonKey: Key(buttonText),
-              onPressed: onButtonCallback,
-              customChild: buttonWidget ??
-                  Text(buttonText, style: veryBoldSize15Text(whiteColor)),
-            ),
-          )
+          if (buttonText?.isNotEmpty ?? false)
+            SizedBox(
+              height: 48,
+              width: double.infinity,
+              child: MyAfyaHubPrimaryButton(
+                buttonKey: Key(buttonText!),
+                onPressed: onButtonCallback,
+                customChild: buttonWidget ??
+                    Text(buttonText!, style: veryBoldSize15Text(whiteColor)),
+              ),
+            )
         ],
       ),
     );

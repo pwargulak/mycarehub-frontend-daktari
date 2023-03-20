@@ -6,7 +6,7 @@ class MiscStateViewModel extends Vm {
   MiscStateViewModel({
     required this.wait,
     this.state,
-  });
+  }) : super(equals: <Object?>[wait, state]);
 
   final MiscState? state;
   final Wait wait;

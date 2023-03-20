@@ -21,8 +21,8 @@ class MiscState with _$MiscState {
     String? inactiveTime,
     bool? resumeWithPin,
     bool? updateFacility,
-    bool? cccNumberExists,
     SearchCaregiverResponseState? searchCaregiverResponseState,
+    bool? userExists,
   }) = _MiscState;
 
   factory MiscState.fromJson(Map<String, dynamic> json) =>
@@ -37,7 +37,7 @@ class MiscState with _$MiscState {
         inactiveTime: UNKNOWN,
         resumeWithPin: false,
         updateFacility: false,
-        cccNumberExists: false,
+        userExists: false,
         searchCaregiverResponseState: SearchCaregiverResponseState.initial(),
       );
 }

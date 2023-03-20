@@ -1,6 +1,11 @@
 import 'package:prohealth360_daktari/application/core/services/input_validators.dart';
 import 'package:prohealth360_daktari/application/redux/actions/core/batch_update_misc_state_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/register_client/check_if_idenfier_exists_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/register_client/register_client_action.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/connectivity_view_model.dart';
+import 'package:prohealth360_daktari/application/redux/view_models/misc_state_view_model.dart';
+import 'package:prohealth360_daktari/domain/core/entities/programs/program.dart';
+import 'package:prohealth360_daktari/presentation/organization_selection/widgets/general_workstation_widget.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:async_redux/async_redux.dart';
@@ -12,7 +17,6 @@ import 'package:intl/intl.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
-import 'package:prohealth360_daktari/application/redux/actions/register_client/register_client_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
@@ -31,6 +35,7 @@ class RegisterClientPage extends StatefulWidget {
 }
 
 class _RegisterClientPageState extends State<RegisterClientPage> {
+  FocusNode focus = FocusNode();
   final RegisterClientFormManager _formManager = RegisterClientFormManager();
   final TextEditingController dobTextController = TextEditingController();
   String username = '';
@@ -48,6 +53,7 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
   @override
   void initState() {
     super.initState();
+    focus.addListener(onCCCNumberFocusChange);
     _formManager.inGender.add(Gender.other);
 
     final Map<ClientType, bool> initialClientTypes =
@@ -60,6 +66,10 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
 
   @override
   Widget build(BuildContext context) {
+    final Program? selectedProgram = StoreProvider.state<AppState>(context)
+        ?.userProfileState
+        ?.programsState
+        ?.selectedUserProgram;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: const CustomAppBar(
@@ -75,9 +85,6 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
                   ConnectivityViewModel.fromStore(
                 store,
               ),
-              onInit: (Store<AppState> store) => store.dispatch(
-                BatchUpdateMiscStateAction(cccNumberExists: false),
-              ),
               builder: (
                 BuildContext context,
                 ConnectivityViewModel vm,
@@ -90,6 +97,47 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
                       height: 180,
                     ),
                     const SizedBox(height: 24),
+                    if (selectedProgram != null &&
+                        selectedProgram.id != UNKNOWN)
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              programString,
+                              style: normalSize14Text(
+                                AppColors.greyTextColor,
+                              ),
+                            ),
+                            smallVerticalSizedBox,
+                            GeneralWorkstationWidget(
+                              title: selectedProgram.name ?? '',
+                              bodyWidget: Column(
+                                children: <Widget>[
+                                  if (selectedProgram
+                                          .organisation?.name?.isNotEmpty ??
+                                      false)
+                                    Text(
+                                      selectedProgram.organisation?.name ?? '',
+                                      style: normalSize16Text(
+                                        AppColors.greyTextColor,
+                                      ),
+                                    ),
+                                  smallVerticalSizedBox,
+                                  Text(
+                                    selectedProgramDescriptionString,
+                                    style: normalSize16Text(
+                                      AppColors.greyTextColor.withOpacity(0.5),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    const SizedBox(height: 24),
                     Row(
                       children: <Widget>[
                         // CCC number
@@ -101,6 +149,7 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
                               AsyncSnapshot<String> snapshot,
                             ) {
                               return PatientDetailsTextFormField(
+                                focusNode: focus,
                                 textFieldKey: cccFieldKey,
                                 hintText: cccNumberHint,
                                 keyboardType: TextInputType.text,
@@ -123,6 +172,11 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
                           ),
                         ),
                       ],
+                    ),
+                    smallVerticalSizedBox,
+                    const UserExistsBanner(
+                      title: userAlreadyExistsString,
+                      description: userCCCAlreadyExistsDescriptionString,
                     ),
                     const SizedBox(height: 24),
                     // Username
@@ -518,6 +572,13 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
     );
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    focus.removeListener(onCCCNumberFocusChange);
+    focus.dispose();
+  }
+
   List<Widget> getCheckBoxes(Map<ClientType, bool> clientTypes) {
     final List<Widget> result = <Widget>[];
     final Map<ClientType, bool> clientTypesCopy = clientTypes;
@@ -541,6 +602,19 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
     });
 
     return result;
+  }
+
+  void onCCCNumberFocusChange() {
+    if (!focus.hasFocus) {
+      StoreProvider.dispatch(
+        context,
+        CheckIfIdentifierExistsAction(
+          client: AppWrapperBase.of(context)!.graphQLClient,
+          identifierType: IdentifierType.CCC,
+          identifierValue: _formManager.submit().cccNumber ?? '',
+        ),
+      );
+    }
   }
 
   void _processAndNavigate(bool hasConnection) {
@@ -581,6 +655,71 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
           Navigator.of(context).pop();
         },
       ),
+    );
+  }
+}
+
+class UserExistsBanner extends StatelessWidget {
+  final String title;
+  final String description;
+
+  const UserExistsBanner({
+    super.key,
+    required this.title,
+    required this.description,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return StoreConnector<AppState, MiscStateViewModel>(
+      converter: (Store<AppState> store) => MiscStateViewModel.fromStore(
+        store,
+      ),
+      onInit: (Store<AppState> store) => store.dispatch(
+        BatchUpdateMiscStateAction(userExists: false),
+      ),
+      builder: (
+        BuildContext context,
+        MiscStateViewModel vm,
+      ) {
+        return vm.wait.isWaitingFor(checkIfIdentifierExistsFlag)
+            ? const PlatformLoader()
+            : vm.state?.userExists ?? false
+                ? GeneralWorkstationWidget(
+                    title: title,
+                    bodyWidget: Column(
+                      children: <Widget>[
+                        Text(
+                          description,
+                          style: normalSize16Text(
+                            AppColors.greyTextColor.withOpacity(0.5),
+                          ),
+                        ),
+                        smallVerticalSizedBox,
+                        SizedBox(
+                          height: 48,
+                          width: double.infinity,
+                          child: MyAfyaHubPrimaryButton(
+                            buttonKey: continueKey,
+                            borderColor: Colors.transparent,
+                            buttonColor: Theme.of(context)
+                                .primaryColor
+                                .withOpacity(0.15),
+                            onPressed: () {
+                              StoreProvider.dispatch(
+                                context,
+                                BatchUpdateMiscStateAction(userExists: false),
+                              );
+                            },
+                            text: continueString,
+                            textColor: Theme.of(context).primaryColor,
+                          ),
+                        )
+                      ],
+                    ),
+                  )
+                : const SizedBox();
+      },
     );
   }
 }

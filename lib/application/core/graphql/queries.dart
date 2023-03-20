@@ -665,3 +665,9 @@ query searchPrograms($searchParameter: String!){
   }
 }
 ''';
+
+const String checkIdentifierExistsQuery = r'''
+query checkIdentifierExists($identifierType: ClientIdentifierType!, $identifierValue: String!){
+  checkIdentifierExists(identifierType: $identifierType, identifierValue: $identifierValue)
+}
+ ''';
