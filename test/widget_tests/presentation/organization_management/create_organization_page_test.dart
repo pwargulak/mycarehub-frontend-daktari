@@ -6,9 +6,8 @@ import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/connectivity_state.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
-import 'package:prohealth360_daktari/presentation/organization_management/widgets/program_list_item_widget.dart';
+import 'package:prohealth360_daktari/presentation/organization_management/pages/create_program_page.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/pages/create_organization_page.dart';
-import 'package:prohealth360_daktari/presentation/organization_management/pages/manage_programs_page.dart';
 import '../../../mocks/mocks.dart';
 import '../../../mocks/test_helpers.dart';
 
@@ -88,28 +87,53 @@ void main() {
       await tester.ensureVisible(addProgramButtonFinder);
       await tester.tap(addProgramButtonFinder);
       await tester.pumpAndSettle();
-      expect(find.byType(ManageProgramsPage), findsOneWidget);
+      expect(find.byType(CreateProgramPage), findsOneWidget);
 
-      final Finder programListItemFinder = find.byType(ProgramListItem);
-      expect(programListItemFinder, findsNWidgets(2));
-      await tester.tap(programListItemFinder.first);
-      await tester.pumpAndSettle();
-      await tester.tap(programListItemFinder.last);
+      final Finder programNameField = find.byKey(programNameFieldKey);
+      expect(programNameField, findsOneWidget);
+      await tester.ensureVisible(programNameField);
+      await tester.tap(programNameField);
+      await tester.enterText(programNameField, 'mycarehub');
       await tester.pumpAndSettle();
 
-      final Finder createProgramFinder = find.byKey(createProgramButtonKey);
-      await tester.ensureVisible(createProgramFinder);
-      await tester.tap(createProgramFinder);
+      // program description
+      final Finder programDescriptionField =
+          find.byKey(programDescriptionFieldKey);
+      expect(programDescriptionField, findsOneWidget);
+      await tester.ensureVisible(programDescriptionField);
+      await tester.tap(programDescriptionField);
+      await tester.enterText(programDescriptionField, 'mycarehub description');
+      await tester.pumpAndSettle();
+
+      final Finder createProgramButton = find.byKey(addNewProgramButtonKey);
+      await tester.ensureVisible(createProgramButton);
+      await tester.tap(createProgramButton);
       await tester.pumpAndSettle();
 
       await tester.ensureVisible(addProgramButtonFinder);
       await tester.tap(addProgramButtonFinder);
       await tester.pumpAndSettle();
-      await tester.tap(programListItemFinder.first);
+      expect(find.byType(CreateProgramPage), findsOneWidget);
+
+      await tester.ensureVisible(programNameField);
+      await tester.tap(programNameField);
+      await tester.enterText(programNameField, 'uon program');
       await tester.pumpAndSettle();
-      await tester.ensureVisible(createProgramFinder);
-      await tester.tap(createProgramFinder);
+
+      // program description
+      expect(programDescriptionField, findsOneWidget);
+      await tester.ensureVisible(programDescriptionField);
+      await tester.tap(programDescriptionField);
+      await tester.enterText(
+        programDescriptionField,
+        'A test program description',
+      );
       await tester.pumpAndSettle();
+
+      await tester.ensureVisible(createProgramButton);
+      await tester.tap(createProgramButton);
+      await tester.pumpAndSettle();
+
       await tester.ensureVisible(find.byKey(cancelButtonKey).first);
       await tester.tap(find.byKey(cancelButtonKey).first);
       await tester.pumpAndSettle();

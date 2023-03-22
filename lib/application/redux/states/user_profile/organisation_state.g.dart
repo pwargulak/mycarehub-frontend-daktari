@@ -16,6 +16,9 @@ _$_OrganisationState _$$_OrganisationStateFromJson(Map<String, dynamic> json) =>
           : Organisation.fromJson(
               json['selectedOrganisation'] as Map<String, dynamic>),
       errorGettingOrganisations: json['errorGettingOrganisations'] as bool?,
+      programsPayload: (json['programsPayload'] as List<dynamic>?)
+          ?.map((e) => e as Map<String, dynamic>)
+          .toList(),
     );
 
 Map<String, dynamic> _$$_OrganisationStateToJson(
@@ -24,4 +27,5 @@ Map<String, dynamic> _$$_OrganisationStateToJson(
       'organisations': instance.organisations,
       'selectedOrganisation': instance.selectedOrganisation,
       'errorGettingOrganisations': instance.errorGettingOrganisations,
+      'programsPayload': instance.programsPayload,
     };

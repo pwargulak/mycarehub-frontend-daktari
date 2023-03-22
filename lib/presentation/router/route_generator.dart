@@ -647,15 +647,16 @@ class RouteGenerator {
 
       case AppRoutes.manageProgramsPageRoute:
         return MaterialPageRoute<ManageProgramsPage>(
-          builder: (_) => ManageProgramsPage(
-            selectProgram: args as bool?,
+          builder: (_) => const ManageProgramsPage(
           ),
           settings: const RouteSettings(name: 'Manage Programs Page'),
         );
 
       case AppRoutes.createProgramRoute:
         return MaterialPageRoute<CreateProgramPage>(
-          builder: (_) => const CreateProgramPage(),
+          builder: (_) => CreateProgramPage(
+            addToOrganisation: args as bool?,
+          ),
           settings: const RouteSettings(name: 'Create Program Page'),
         );
 

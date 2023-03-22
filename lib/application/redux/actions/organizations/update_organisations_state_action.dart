@@ -7,11 +7,13 @@ class UpdateOrganisationsStateAction extends ReduxAction<AppState> {
     this.selectedOrganisation,
     this.organisations,
     this.errorGettingOrganisations,
+    this.programsPayload,
   });
 
   final Organisation? selectedOrganisation;
   final List<Organisation>? organisations;
   final bool? errorGettingOrganisations;
+  final List<Map<String, dynamic>>? programsPayload;
 
   @override
   AppState reduce() {
@@ -26,6 +28,9 @@ class UpdateOrganisationsStateAction extends ReduxAction<AppState> {
           errorGettingOrganisations: errorGettingOrganisations ??
               state.userProfileState?.organizationState
                   ?.errorGettingOrganisations,
+          programsPayload: programsPayload ??
+              state.userProfileState?.organizationState
+                  ?.programsPayload,
         ),
       ),
     );

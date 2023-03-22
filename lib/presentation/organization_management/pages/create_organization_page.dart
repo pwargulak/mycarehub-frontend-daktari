@@ -4,10 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/actions/organizations/create_organization_action.dart';
-import 'package:prohealth360_daktari/application/redux/actions/programs/update_programs_state_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/organizations/update_organisations_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/organisations/create_organisation_view_model.dart';
-import 'package:prohealth360_daktari/domain/core/entities/programs/program.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
@@ -27,7 +26,6 @@ class CreateOrganizationPage extends StatefulWidget {
 class _CreateOrganizationPageState extends State<CreateOrganizationPage> {
   final CreateOrganizationFormManager formManager =
       CreateOrganizationFormManager();
-  List<Program> selectedPrograms = <Program>[];
 
   @override
   void initState() {
@@ -50,35 +48,36 @@ class _CreateOrganizationPageState extends State<CreateOrganizationPage> {
               converter: (Store<AppState> store) =>
                   CreateOrganisationViewModel.fromStore(store),
               onInit: (Store<AppState> store) => store.dispatch(
-                UpdateProgramsStateAction(
-                  selectedPrograms: <Program>[],
+                UpdateOrganisationsStateAction(
+                  programsPayload: <Map<String, dynamic>>[],
                 ),
               ),
               builder: (_, CreateOrganisationViewModel vm) {
                 final List<Widget> programsList = <Widget>[];
-                selectedPrograms =
-                    vm.programsState?.selectedPrograms ?? <Program>[];
+                final List<Map<String, dynamic>> selectedPrograms = vm.programsPayload;
 
                 if (selectedPrograms.isNotEmpty) {
-                  for (final Program program in selectedPrograms) {
+                  for (final Map<String, dynamic> program in selectedPrograms) {
                     programsList.add(
                       Padding(
                         padding: const EdgeInsets.only(
                           top: 10.0,
                         ),
                         child: ProgramListItem(
-                          title: program.name ?? '',
-                          description: program.description,
+                          title: (program['name'] as String?) ?? '',
+                          description: program['description'] as String? ?? '',
                           onCancel: () {
-                            final List<Program> programs = selectedPrograms
-                                .where(
-                                  (Program element) => element.id != program.id,
-                                )
-                                .toList();
+                            final List<Map<String, dynamic>> programs =
+                                selectedPrograms
+                                    .where(
+                                      (Map<String, dynamic> element) =>
+                                          element != program,
+                                    )
+                                    .toList();
                             StoreProvider.dispatch(
                               context,
-                              UpdateProgramsStateAction(
-                                selectedPrograms: programs,
+                              UpdateOrganisationsStateAction(
+                                programsPayload: programs,
                               ),
                             );
                           },
@@ -378,7 +377,7 @@ class _CreateOrganizationPageState extends State<CreateOrganizationPage> {
                                     text: addProgramString,
                                     onPressed: () =>
                                         Navigator.of(context).pushNamed(
-                                      AppRoutes.manageProgramsPageRoute,
+                                      AppRoutes.createProgramRoute,
                                       arguments: true,
                                     ),
                                   ),

@@ -27,7 +27,6 @@ _$_MiscState _$$_MiscStateFromJson(Map<String, dynamic> json) => _$_MiscState(
       inactiveTime: json['inactiveTime'] as String?,
       resumeWithPin: json['resumeWithPin'] as bool?,
       updateFacility: json['updateFacility'] as bool?,
-      cccNumberExists: json['cccNumberExists'] as bool?,
       searchCaregiverResponseState: json['searchCaregiverResponseState'] == null
           ? null
           : SearchCaregiverResponseState.fromJson(
@@ -46,7 +45,6 @@ Map<String, dynamic> _$$_MiscStateToJson(_$_MiscState instance) =>
       'inactiveTime': instance.inactiveTime,
       'resumeWithPin': instance.resumeWithPin,
       'updateFacility': instance.updateFacility,
-      'cccNumberExists': instance.cccNumberExists,
       'searchCaregiverResponseState': instance.searchCaregiverResponseState,
       'userExists': instance.userExists,
     };

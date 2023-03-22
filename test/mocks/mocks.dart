@@ -2224,7 +2224,7 @@ final Map<String, dynamic> mockMiscState = <String, dynamic>{
     'eventPayload': 'UNKNOWN'
   },
   'createPin': 'UNKNOWN',
-  'cccNumberExists': false,
+  'resumeWithPin': false,
   'confirmPin': 'UNKNOWN',
   'accountExists': false,
   'invalidPin': false,

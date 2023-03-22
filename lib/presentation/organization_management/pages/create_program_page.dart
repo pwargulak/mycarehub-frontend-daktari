@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
+import 'package:prohealth360_daktari/application/redux/actions/organizations/update_organisations_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/program_management/create_program_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/connectivity_view_model.dart';
@@ -17,7 +18,9 @@ import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 
 class CreateProgramPage extends StatefulWidget {
-  const CreateProgramPage({super.key});
+  final bool? addToOrganisation;
+
+  const CreateProgramPage({super.key, this.addToOrganisation});
 
   @override
   State<CreateProgramPage> createState() => _CreateProgramPageState();
@@ -26,7 +29,7 @@ class CreateProgramPage extends StatefulWidget {
 class _CreateProgramPageState extends State<CreateProgramPage> {
   final CreateProgramFormManager _createProgramFormManager =
       CreateProgramFormManager();
-  final TextEditingController textEditingController = TextEditingController();
+  String name = '';
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +80,9 @@ class _CreateProgramPageState extends State<CreateProgramPage> {
                                 onChanged: (String value) {
                                   _createProgramFormManager.inProgramName
                                       .add(value);
+                                  setState(() {
+                                    name = value;
+                                  });
                                 },
                                 validator: (String? value) {
                                   if (snapshot.hasError) {
@@ -116,49 +122,89 @@ class _CreateProgramPageState extends State<CreateProgramPage> {
                             },
                           ),
                           mediumVerticalSizedBox,
-                          // organisation
-                          SearchOrganisationField(
-                            onChanged: (String organisationCode) =>
-                                _createProgramFormManager.inOrganisation
-                                    .add(organisationCode),
-                            onFieldCleared: () => _createProgramFormManager
-                                .inOrganisation
-                                .add(''),
-                          ),
+                          if (!(widget.addToOrganisation ?? false))
+                            // organisation
+                            SearchOrganisationField(
+                              onChanged: (String organisationCode) =>
+                                  _createProgramFormManager.inOrganisation
+                                      .add(organisationCode),
+                              onFieldCleared: () => _createProgramFormManager
+                                  .inOrganisation
+                                  .add(''),
+                            ),
                         ],
                       ),
                     ),
                     mediumVerticalSizedBox,
-                    // create program button
-                    SizedBox(
-                      width: double.infinity,
-                      child: StreamBuilder<bool>(
-                        stream: _createProgramFormManager.isFormValid,
-                        builder: (
-                          BuildContext context,
-                          AsyncSnapshot<bool> snapshot,
-                        ) {
-                          final bool hasData =
-                              snapshot.hasData && snapshot.data != null;
-                          if (vm.wait.isWaitingFor(createProgramFlag)) {
-                            return const PlatformLoader();
-                          }
-                          return SizedBox(
-                            height: 48,
-                            child: MyAfyaHubPrimaryButton(
-                              buttonKey: addNewProgramButtonKey,
-                              borderColor: Colors.transparent,
-                              text: createProgramString,
-                              onPressed: hasData && snapshot.data!
-                                  ? () => _processAndNavigate(
-                                        vm.isConnected,
-                                      )
-                                  : null,
-                            ),
-                          );
-                        },
+                    if (!(widget.addToOrganisation ?? false))
+                      // create program button
+                      SizedBox(
+                        width: double.infinity,
+                        child: StreamBuilder<bool>(
+                          stream: _createProgramFormManager.isFormValid,
+                          builder: (
+                            BuildContext context,
+                            AsyncSnapshot<bool> snapshot,
+                          ) {
+                            final bool hasData =
+                                snapshot.hasData && snapshot.data != null;
+                            if (vm.wait.isWaitingFor(createProgramFlag)) {
+                              return const PlatformLoader();
+                            }
+                            return SizedBox(
+                              height: 48,
+                              child: MyAfyaHubPrimaryButton(
+                                buttonKey: addNewProgramButtonKey,
+                                borderColor: Colors.transparent,
+                                text: createProgramString,
+                                onPressed: hasData && snapshot.data!
+                                    ? () => _processAndNavigate(
+                                          vm.isConnected,
+                                        )
+                                    : null,
+                              ),
+                            );
+                          },
+                        ),
+                      )
+                    else
+                      Container(
+                        height: 48,
+                        width: double.infinity,
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: ElevatedButton(
+                          key: addNewProgramButtonKey,
+                          onPressed: name.isNotEmpty
+                              ? () {
+                                  final List<Map<String, dynamic>>
+                                      programsPayload =
+                                      StoreProvider.state<AppState>(context)
+                                              ?.userProfileState
+                                              ?.organizationState
+                                              ?.programsPayload ?? <Map<String, dynamic>>[];
+                                  final Map<String, dynamic> newProgram =
+                                      <String, dynamic>{
+                                    'name': name,
+                                    'description': _createProgramFormManager
+                                            .submit()
+                                            .description ??
+                                        '',
+                                  };
+                                  StoreProvider.dispatch(
+                                    context,
+                                    UpdateOrganisationsStateAction(
+                                      programsPayload: <Map<String, dynamic>>[
+                                        ...programsPayload,
+                                        newProgram
+                                      ],
+                                    ),
+                                  );
+                                  Navigator.pop(context);
+                                }
+                              : null,
+                          child: const Text(saveString),
+                        ),
                       ),
-                    ),
                   ],
                 );
               },

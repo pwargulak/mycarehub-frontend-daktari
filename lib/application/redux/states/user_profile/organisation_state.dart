@@ -4,12 +4,15 @@ import 'package:prohealth360_daktari/domain/core/entities/organisations/organisa
 part 'organisation_state.freezed.dart';
 part 'organisation_state.g.dart';
 
-@freezed
+@Freezed(makeCollectionsUnmodifiable: false)
 class OrganisationState with _$OrganisationState {
   factory OrganisationState({
     List<Organisation>? organisations,
     Organisation? selectedOrganisation,
     bool? errorGettingOrganisations,
+
+    //Used when creating an organisation
+    List<Map<String, dynamic>>? programsPayload,
   }) = _OrganisationState;
 
   factory OrganisationState.fromJson(Map<String, dynamic> json) =>
@@ -19,5 +22,6 @@ class OrganisationState with _$OrganisationState {
         organisations: <Organisation>[],
         selectedOrganisation: Organisation.initial(),
         errorGettingOrganisations: false,
+        programsPayload: <Map<String, dynamic>>[],
       );
 }

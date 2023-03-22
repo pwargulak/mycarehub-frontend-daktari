@@ -22,7 +22,10 @@ OrganisationState _$OrganisationStateFromJson(Map<String, dynamic> json) {
 mixin _$OrganisationState {
   List<Organisation>? get organisations => throw _privateConstructorUsedError;
   Organisation? get selectedOrganisation => throw _privateConstructorUsedError;
-  bool? get errorGettingOrganisations => throw _privateConstructorUsedError;
+  bool? get errorGettingOrganisations =>
+      throw _privateConstructorUsedError; //User when creating an organisation
+  List<Map<String, dynamic>>? get programsPayload =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,7 +42,8 @@ abstract class $OrganisationStateCopyWith<$Res> {
   $Res call(
       {List<Organisation>? organisations,
       Organisation? selectedOrganisation,
-      bool? errorGettingOrganisations});
+      bool? errorGettingOrganisations,
+      List<Map<String, dynamic>>? programsPayload});
 
   $OrganisationCopyWith<$Res>? get selectedOrganisation;
 }
@@ -60,6 +64,7 @@ class _$OrganisationStateCopyWithImpl<$Res, $Val extends OrganisationState>
     Object? organisations = freezed,
     Object? selectedOrganisation = freezed,
     Object? errorGettingOrganisations = freezed,
+    Object? programsPayload = freezed,
   }) {
     return _then(_value.copyWith(
       organisations: freezed == organisations
@@ -74,6 +79,10 @@ class _$OrganisationStateCopyWithImpl<$Res, $Val extends OrganisationState>
           ? _value.errorGettingOrganisations
           : errorGettingOrganisations // ignore: cast_nullable_to_non_nullable
               as bool?,
+      programsPayload: freezed == programsPayload
+          ? _value.programsPayload
+          : programsPayload // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>?,
     ) as $Val);
   }
 
@@ -101,7 +110,8 @@ abstract class _$$_OrganisationStateCopyWith<$Res>
   $Res call(
       {List<Organisation>? organisations,
       Organisation? selectedOrganisation,
-      bool? errorGettingOrganisations});
+      bool? errorGettingOrganisations,
+      List<Map<String, dynamic>>? programsPayload});
 
   @override
   $OrganisationCopyWith<$Res>? get selectedOrganisation;
@@ -121,10 +131,11 @@ class __$$_OrganisationStateCopyWithImpl<$Res>
     Object? organisations = freezed,
     Object? selectedOrganisation = freezed,
     Object? errorGettingOrganisations = freezed,
+    Object? programsPayload = freezed,
   }) {
     return _then(_$_OrganisationState(
       organisations: freezed == organisations
-          ? _value._organisations
+          ? _value.organisations
           : organisations // ignore: cast_nullable_to_non_nullable
               as List<Organisation>?,
       selectedOrganisation: freezed == selectedOrganisation
@@ -135,6 +146,10 @@ class __$$_OrganisationStateCopyWithImpl<$Res>
           ? _value.errorGettingOrganisations
           : errorGettingOrganisations // ignore: cast_nullable_to_non_nullable
               as bool?,
+      programsPayload: freezed == programsPayload
+          ? _value.programsPayload
+          : programsPayload // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>?,
     ));
   }
 }
@@ -143,31 +158,27 @@ class __$$_OrganisationStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_OrganisationState implements _OrganisationState {
   _$_OrganisationState(
-      {final List<Organisation>? organisations,
+      {this.organisations,
       this.selectedOrganisation,
-      this.errorGettingOrganisations})
-      : _organisations = organisations;
+      this.errorGettingOrganisations,
+      this.programsPayload});
 
   factory _$_OrganisationState.fromJson(Map<String, dynamic> json) =>
       _$$_OrganisationStateFromJson(json);
 
-  final List<Organisation>? _organisations;
   @override
-  List<Organisation>? get organisations {
-    final value = _organisations;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final List<Organisation>? organisations;
   @override
   final Organisation? selectedOrganisation;
   @override
   final bool? errorGettingOrganisations;
+//User when creating an organisation
+  @override
+  final List<Map<String, dynamic>>? programsPayload;
 
   @override
   String toString() {
-    return 'OrganisationState(organisations: $organisations, selectedOrganisation: $selectedOrganisation, errorGettingOrganisations: $errorGettingOrganisations)';
+    return 'OrganisationState(organisations: $organisations, selectedOrganisation: $selectedOrganisation, errorGettingOrganisations: $errorGettingOrganisations, programsPayload: $programsPayload)';
   }
 
   @override
@@ -176,21 +187,24 @@ class _$_OrganisationState implements _OrganisationState {
         (other.runtimeType == runtimeType &&
             other is _$_OrganisationState &&
             const DeepCollectionEquality()
-                .equals(other._organisations, _organisations) &&
+                .equals(other.organisations, organisations) &&
             (identical(other.selectedOrganisation, selectedOrganisation) ||
                 other.selectedOrganisation == selectedOrganisation) &&
             (identical(other.errorGettingOrganisations,
                     errorGettingOrganisations) ||
-                other.errorGettingOrganisations == errorGettingOrganisations));
+                other.errorGettingOrganisations == errorGettingOrganisations) &&
+            const DeepCollectionEquality()
+                .equals(other.programsPayload, programsPayload));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_organisations),
+      const DeepCollectionEquality().hash(organisations),
       selectedOrganisation,
-      errorGettingOrganisations);
+      errorGettingOrganisations,
+      const DeepCollectionEquality().hash(programsPayload));
 
   @JsonKey(ignore: true)
   @override
@@ -209,9 +223,11 @@ class _$_OrganisationState implements _OrganisationState {
 
 abstract class _OrganisationState implements OrganisationState {
   factory _OrganisationState(
-      {final List<Organisation>? organisations,
-      final Organisation? selectedOrganisation,
-      final bool? errorGettingOrganisations}) = _$_OrganisationState;
+          {final List<Organisation>? organisations,
+          final Organisation? selectedOrganisation,
+          final bool? errorGettingOrganisations,
+          final List<Map<String, dynamic>>? programsPayload}) =
+      _$_OrganisationState;
 
   factory _OrganisationState.fromJson(Map<String, dynamic> json) =
       _$_OrganisationState.fromJson;
@@ -222,6 +238,8 @@ abstract class _OrganisationState implements OrganisationState {
   Organisation? get selectedOrganisation;
   @override
   bool? get errorGettingOrganisations;
+  @override //User when creating an organisation
+  List<Map<String, dynamic>>? get programsPayload;
   @override
   @JsonKey(ignore: true)
   _$$_OrganisationStateCopyWith<_$_OrganisationState> get copyWith =>

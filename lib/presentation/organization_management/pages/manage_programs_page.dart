@@ -17,15 +17,12 @@ import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 
 class ManageProgramsPage extends StatefulWidget {
-  final bool? selectProgram;
-
-  const ManageProgramsPage({super.key, this.selectProgram});
+  const ManageProgramsPage({super.key});
   @override
   State<ManageProgramsPage> createState() => _ManageProgramsPageState();
 }
 
 class _ManageProgramsPageState extends State<ManageProgramsPage> {
-  Program selectedProgram = Program.initial();
   bool isSearching = false;
   String searchTerm = '';
   final TextEditingController searchController = TextEditingController();
@@ -104,9 +101,6 @@ class _ManageProgramsPageState extends State<ManageProgramsPage> {
               final List<Widget> programsWidgetList = <Widget>[];
               final List<Program> programs = vm.programs;
 
-              final bool isSelectionValid =
-                  (selectedProgram.name?.isNotEmpty ?? false) &&
-                      selectedProgram.name != UNKNOWN;
               if (programs.isNotEmpty) {
                 for (final Program program in programs) {
                   programsWidgetList.add(
@@ -116,29 +110,20 @@ class _ManageProgramsPageState extends State<ManageProgramsPage> {
                           title: program.name ?? '',
                           subtitle: program.organisation?.name ?? '',
                           description: program.organisation?.description ?? '',
-                          isSelected: (program.id?.isNotEmpty ?? false) &&
-                              program.id != UNKNOWN &&
-                              selectedProgram.id == program.id,
-                          onTap: (widget.selectProgram ?? false)
-                              ? () {
-                                  setState(() {
-                                    selectedProgram = program;
-                                  });
-                                }
-                              : () {
-                                  StoreProvider.dispatch(
-                                    context,
-                                    UpdateProgramsStateAction(
-                                      selectedPrograms: <Program>[
-                                        program,
-                                        ...?vm.selectedPrograms
-                                      ],
-                                    ),
-                                  );
-                                  Navigator.of(context).pushNamed(
-                                    AppRoutes.programDetailPageRoute,
-                                  );
-                                },
+                          onTap: () {
+                            StoreProvider.dispatch(
+                              context,
+                              UpdateProgramsStateAction(
+                                selectedPrograms: <Program>[
+                                  program,
+                                  ...?vm.selectedPrograms
+                                ],
+                              ),
+                            );
+                            Navigator.of(context).pushNamed(
+                              AppRoutes.programDetailPageRoute,
+                            );
+                          },
                         ),
                         size15VerticalSizedBox
                       ],
@@ -347,35 +332,11 @@ class _ManageProgramsPageState extends State<ManageProgramsPage> {
                           height: 48,
                           child: ElevatedButton(
                             key: createProgramButtonKey,
-                            onPressed: (widget.selectProgram ?? false) &&
-                                    isSelectionValid
-                                ? () {
-                                    StoreProvider.dispatch(
-                                      context,
-                                      UpdateProgramsStateAction(
-                                        selectedPrograms: <Program>[
-                                          selectedProgram,
-                                          ...?vm.selectedPrograms
-                                        ],
-                                      ),
-                                    );
-                                    if (Navigator.canPop(context)) {
-                                      Navigator.pop(context);
-                                    }
-                                  }
-                                : (widget.selectProgram ?? false) &&
-                                        !isSelectionValid
-                                    ? null
-                                    : !(widget.selectProgram ?? false) &&
-                                            !isSelectionValid
-                                        ? () => Navigator.of(context).pushNamed(
-                                              AppRoutes.createProgramRoute,
-                                            )
-                                        : null,
-                            child: Text(
-                              (widget.selectProgram ?? false)
-                                  ? saveString
-                                  : createProgramString,
+                            onPressed: () => Navigator.of(context).pushNamed(
+                              AppRoutes.createProgramRoute,
+                            ),
+                            child: const Text(
+                              createProgramString,
                             ),
                           ),
                         ),
