@@ -46,9 +46,14 @@ class FacilityListItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text(
-                      facility.name!,
-                      style: boldSize14Text().copyWith(),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width - 136,
+                      child: Text(
+                        facility.name!,
+                        style: boldSize14Text().copyWith(),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
+                      ),
                     ),
                     if (facility.facilityIdentifier?.value != null)
                       Text(
