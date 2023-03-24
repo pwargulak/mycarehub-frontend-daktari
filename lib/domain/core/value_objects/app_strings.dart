@@ -290,8 +290,10 @@ const String contactExists =
 const String searchFacilitiesString = 'Search facilities';
 const String searchOrganisationsString = 'Search organisations';
 const String userAlreadyExistsString = 'User already exists';
-const String selectedProgramDescriptionString = 'The client will be added to this program and organization';
-const String userPhoneAlreadyExistsDescriptionString = 'There is an already existing user with that phone number. Do you still want to continue';
+const String selectedProgramDescriptionString =
+    'The client will be added to this program and organization';
+const String userPhoneAlreadyExistsDescriptionString =
+    'There is an already existing user with that phone number. Do you still want to continue';
 
 // add new staff page
 const String registerStaffSuccess = 'Successfully registered staff';
@@ -797,32 +799,6 @@ final String screeningToolsPageLongDescription =
 const String assessmentToolsResponsesPageDescription =
     "These are responses captured in the client's screening tools";
 
-String getScreeningToolDescription(ScreeningToolsType toolType) {
-  switch (toolType) {
-    case ScreeningToolsType.ALCOHOL_SUBSTANCE_ASSESSMENT:
-      return 'Responses from the CRAFFT screening tool';
-    case ScreeningToolsType.CONTRACEPTIVE_ASSESSMENT:
-      return 'Responses from the contraceptive use screening tool';
-    case ScreeningToolsType.TB_ASSESSMENT:
-      return 'Responses from the TB screening tool';
-    default:
-      return 'Responses from the GBV screening tool';
-  }
-}
-
-String getScreeningToolTitle(ScreeningToolsType toolType) {
-  switch (toolType) {
-    case ScreeningToolsType.ALCOHOL_SUBSTANCE_ASSESSMENT:
-      return 'Alcohol use assessment';
-    case ScreeningToolsType.CONTRACEPTIVE_ASSESSMENT:
-      return 'Contraceptives';
-    case ScreeningToolsType.TB_ASSESSMENT:
-      return 'Tuberculosis';
-    default:
-      return 'Violence';
-  }
-}
-
 String fetchingScreeningToolsString = 'fetching screening tools';
 String fetchingAssessmentResponsesString =
     'fetching this assessment tool responses';
@@ -877,7 +853,7 @@ String getAssessmentScoreName({
 }
 
 const String assessmentRequestItemDescriptionString =
-    'Tap to view their full assessment card and reach our to them';
+    'Tap to view their full assessment card and reach out to them';
 // resume with pin
 String welcomeBackUserText(String? user) => 'Welcome back, ${user ?? ''}';
 const String resumeWithPinText =
@@ -1086,7 +1062,8 @@ const String manageTenantString = 'Manage Tenants';
 const String manageProgramsString = 'Manage Program';
 const String areYouReallySureTitle = 'Are you really sure?';
 const String leaveGroupTitle = 'Leave group?';
-const String leaveGroupDescriptionText= 'Please confirm that you want to leave the group';
+const String leaveGroupDescriptionText =
+    'Please confirm that you want to leave the group';
 const String confirmDeletionSting =
     'Please confirm that you want to delete the ';
 const String confirmRevokeSting = 'Please confirm that you want to revoke the';
@@ -1213,7 +1190,8 @@ const String invitedGroups = 'Invited groups';
 const String createARoom = 'Create a room';
 const String createRoomString = 'Create Room';
 const String leaveRoomString = 'Leave room';
-const String welcomeAndEnterYourRoomDetailsString = 'Welcome, enter your room details below';
+const String welcomeAndEnterYourRoomDetailsString =
+    'Welcome, enter your room details below';
 const String enterNameString = 'Enter name';
 const String topicString = 'Topic';
 const String enterTopicString = 'Enter topic';
@@ -1226,22 +1204,30 @@ const String groupMembersString = 'Group members';
 const String createdTheGroupOnString = 'created the group on';
 const String groupString = 'group';
 const String thisMessageHasBeenDeletedString = 'This message was deleted';
-const String youHaveBeenInvitedToJoinString = 'You have been invite to join the';
-const String tapTheOptionsBelowToDeclineText = 'Tap the options below to accept or decline the group invite';
-const String groupMembersInstructionString = 'Long press on a member to promote them to a moderator, '
+const String youHaveBeenInvitedToJoinString =
+    'You have been invite to join the';
+const String tapTheOptionsBelowToDeclineText =
+    'Tap the options below to accept or decline the group invite';
+const String groupMembersInstructionString =
+    'Long press on a member to promote them to a moderator, '
     'remove or ban them from this group';
-const String searchMembersInstructionString = 'Search for members to invite to the group';
-const String optionsToBeAvailableSoonString = 'Options for this media item will be available soon';
+const String searchMembersInstructionString =
+    'Search for members to invite to the group';
+const String optionsToBeAvailableSoonString =
+    'Options for this media item will be available soon';
 const String messageOptionsString = 'Message options';
 const String replyInThreadString = 'Reply in thread';
 const String fetchingYourMessagesString = 'Fetching your messages...';
 const String noMessagesHereString = 'No messages here';
 const String removeFromGroupString = 'Remove from group';
 const String banThisUserString = 'Ban this user';
-const String youWereInvitedInstructionText = 'You were invited. Tap for more info';
+const String youWereInvitedInstructionText =
+    'You were invited. Tap for more info';
 const String userRemovedSuccessText = 'User removed from group successfully!';
-const String permissionErrorMessageText = 'Sorry, you do not have permissions to delete their message';
+const String permissionErrorMessageText =
+    'Sorry, you do not have permissions to delete their message';
 const String membersString = 'members';
 const String sendATextMessageString = 'Send a text message...';
 const String typeYourTextMessageString = 'Type your text message...';
-const String roomsZeroStateDescriptionText =    'Sorry, You have no rooms yet. No worries though, tap the button below to create your first group';
+const String roomsZeroStateDescriptionText =
+    'Sorry, You have no rooms yet. No worries though, tap the button below to create your first group';

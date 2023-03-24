@@ -11,8 +11,7 @@ import 'package:prohealth360_daktari/application/redux/actions/service_requests/
 import 'package:prohealth360_daktari/application/redux/actions/service_requests/update_screening_tools_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/service_requests/screening_tools_state.dart';
-import 'package:prohealth360_daktari/application/redux/states/service_requests/tool_assessment_response.dart';
-import 'package:prohealth360_daktari/application/redux/states/service_requests/tool_service_request_response.dart';
+import 'package:prohealth360_daktari/application/redux/states/service_requests/screening_tool_respondent.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 
@@ -38,7 +37,7 @@ void main() {
         widget: AssessmentCardAnswersPage(
           payload: <String, dynamic>{
             'toolType': ScreeningToolsType.ALCOHOL_SUBSTANCE_ASSESSMENT,
-            'assessmentResponse': ToolAssessmentResponse.fromJson(
+            'assessmentResponse': ScreeningToolRespondent.fromJson(
               mockToolAssessmentResponses,
             ),
           },
@@ -52,32 +51,18 @@ void main() {
     testWidgets(
         'should show a loading indicator when fetching screening tool responses',
         (WidgetTester tester) async {
-      final MockShortGraphQlClient mockShortGraphQlClient =
-          MockShortGraphQlClient.withResponse(
-        'idToken',
-        'endpoint',
-        Response(
-          json.encode(<String, dynamic>{
-            'data': <String, dynamic>{'loading': true}
-          }),
-          201,
-        ),
-      );
       store.dispatch(
         WaitAction<AppState>.add(fetchScreeningToolResponsesFlag),
       );
       await buildTestWidget(
         tester: tester,
         store: store,
-        graphQlClient: mockShortGraphQlClient,
+        graphQlClient: mockGraphQlClient,
         widget: AssessmentCardAnswersPage(
           payload: <String, dynamic>{
             'toolType': ScreeningToolsType.ALCOHOL_SUBSTANCE_ASSESSMENT,
-            'assessmentResponse': ToolAssessmentResponse.fromJson(
+            'assessmentResponse': ScreeningToolRespondent.fromJson(
               mockAssessmentResponsesByToolType,
-            ).copyWith(
-              toolAssessmentRequestResponse:
-                  ToolAssessmentRequestResponse.initial(),
             )
           },
         ),
@@ -105,7 +90,7 @@ void main() {
           widget: AssessmentCardAnswersPage(
             payload: <String, dynamic>{
               'toolType': ScreeningToolsType.ALCOHOL_SUBSTANCE_ASSESSMENT,
-              'assessmentResponse': ToolAssessmentResponse.fromJson(
+              'assessmentResponse': ScreeningToolRespondent.fromJson(
                 mockAssessmentResponsesByToolType,
               ),
             },
@@ -126,13 +111,13 @@ void main() {
     testWidgets('resolve button works correctly', (WidgetTester tester) async {
       store.dispatch(
         UpdateScreeningToolsStateAction(
-          toolAssessmentResponses:
+          screeningToolRespondents:
               ScreeningToolsState.fromJson(<String, dynamic>{
             'getAssessmentResponsesByToolType': <dynamic>[
               mockAssessmentResponsesByToolType,
               mockAssessmentResponsesByToolType
             ]
-          }).toolAssessmentResponses,
+          }).screeningToolRespondents,
         ),
       );
       await buildTestWidget(
@@ -142,7 +127,7 @@ void main() {
         widget: AssessmentCardAnswersPage(
           payload: <String, dynamic>{
             'toolType': ScreeningToolsType.ALCOHOL_SUBSTANCE_ASSESSMENT,
-            'assessmentResponse': ToolAssessmentResponse.fromJson(
+            'assessmentResponse': ScreeningToolRespondent.fromJson(
               mockAssessmentResponsesByToolType,
             ),
           },
@@ -200,15 +185,24 @@ void main() {
         Response(
           json.encode(<String, dynamic>{
             'data': <String, dynamic>{
-              'getScreeningToolServiceRequestResponses': <String, dynamic>{
-                'serviceRequestID': 'test',
-                'screeningToolResponses': <dynamic>[
-                  <String, dynamic>{
-                    'toolIndex': 0,
-                    'tool': 'Have you experienced a chough for any duration?',
-                    'response': 'Yes',
-                  },
-                ]
+              'getScreeningToolResponse': <String, dynamic>{
+                'getScreeningToolResponse': <String, dynamic>{
+                  'id': 'some-id',
+                  'screeningToolID': 'tool-id',
+                  'facilityID': 'facility-id',
+                  'clientID': 'client-id',
+                  'questionResponses': <dynamic>[
+                    <String, dynamic>{
+                      'questionType': 'CLOSE_ENDED',
+                      'selectMultiple': false,
+                      'responseValueType': 'STRING',
+                      'sequence': 1,
+                      'questionText':
+                          'Have you experienced a cough for any duration?',
+                      'normalizedResponse': <String, dynamic>{'0': 'Yes'}
+                    },
+                  ]
+                }
               },
               'resolveServiceRequest': false,
             }
@@ -223,7 +217,7 @@ void main() {
         widget: AssessmentCardAnswersPage(
           payload: <String, dynamic>{
             'toolType': ScreeningToolsType.ALCOHOL_SUBSTANCE_ASSESSMENT,
-            'assessmentResponse': ToolAssessmentResponse.fromJson(
+            'assessmentResponse': ScreeningToolRespondent.fromJson(
               mockAssessmentResponsesByToolType,
             ),
           },
@@ -296,10 +290,8 @@ void main() {
               onPressed: () => StoreProvider.dispatch<AppState>(
                 context,
                 ResolveScreeningToolServiceRequestAction(
+                  screeningToolId: '',
                   client: AppWrapperBase.of(context)!.graphQLClient,
-                  serviceRequestId: 'test',
-                  screeningToolsType:
-                      ScreeningToolsType.ALCOHOL_SUBSTANCE_ASSESSMENT,
                   actionsTaken: <String>[],
                   onFailure: () => testString = 'error',
                 ),

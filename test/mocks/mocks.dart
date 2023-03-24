@@ -393,9 +393,13 @@ final Map<String, dynamic> termsMock = <String, dynamic>{
 
 final Map<String, dynamic> mockAssessmentResponsesByToolType =
     <String, dynamic>{
-  'clientName': 'John Doe',
-  'dateAnswered': '2022-02-18T12:54:53Z',
-  'clientID': '58074133-2d76-43ac-b233-3f33504a0bd8',
+  'clientID': 'client-id',
+  'screeningToolResponseID': 'screening-id',
+  'serviceRequestID': 'sr-id',
+  'name': 'Test',
+  'phoneNumber': '+254712345678',
+  'serviceRequest':
+      'Test has a score of 3 for TB Assessment. They require your attention'
 };
 
 final Map<String, dynamic> mockToolAssessmentResponses = <String, dynamic>{
@@ -1597,12 +1601,62 @@ class MockTestGraphQlClient extends IGraphQlClient {
         http.Response(
           json.encode(<String, dynamic>{
             'data': <String, dynamic>{
-              'getAvailableFacilityScreeningTools': <dynamic>[
-                <String, dynamic>{'toolType': 'TB_ASSESSMENT'},
-                <String, dynamic>{'toolType': 'VIOLENCE_ASSESSMENT'},
-                <String, dynamic>{'toolType': 'CONTRACEPTIVE_ASSESSMENT'},
-                <String, dynamic>{'toolType': 'ALCOHOL_SUBSTANCE_ASSESSMENT'},
-              ]
+              'getFacilityRespondedScreeningTools': <String, dynamic>{
+                'screeningTools': <dynamic>[
+                  <String, dynamic>{
+                    'id': 'some-id',
+                    'active': true,
+                    'questionnaireID': 'some-id',
+                    'questionnaire': <String, dynamic>{
+                      'id': 'some-id',
+                      'active': true,
+                      'name': 'TB Assessment',
+                      'description': 'TB Description'
+                    }
+                  },
+                  <String, dynamic>{
+                    'id': 'some-id',
+                    'active': true,
+                    'questionnaireID': 'some-id',
+                    'questionnaire': <String, dynamic>{
+                      'id': 'some-id',
+                      'active': true,
+                      'name': 'Violence Assessment',
+                      'description': 'Violence Description'
+                    }
+                  },
+                  <String, dynamic>{
+                    'id': 'some-id',
+                    'active': true,
+                    'questionnaireID': 'some-id',
+                    'questionnaire': <String, dynamic>{
+                      'id': 'some-id',
+                      'active': true,
+                      'name': 'Contraceptive Assessment',
+                      'description': 'Contraceptive Description'
+                    }
+                  },
+                  <String, dynamic>{
+                    'id': 'some-id',
+                    'active': true,
+                    'questionnaireID': 'some-id80b1',
+                    'questionnaire': <String, dynamic>{
+                      'id': 'some-id',
+                      'active': true,
+                      'name': 'Alcohol and substance Assessment',
+                      'description': 'Alcohol and substance Description'
+                    }
+                  }
+                ],
+                'pagination': <String, dynamic>{
+                  'currentPage': 1,
+                  'limit': 10,
+                  'count': 1,
+                  'totalPages': 1,
+                  'nextPage': null,
+                  'previousPage': null
+                }
+              }
             }
           }),
           200,
@@ -1612,14 +1666,18 @@ class MockTestGraphQlClient extends IGraphQlClient {
     if (queryString.contains(getAssessmentResponsesByToolTypeQuery)) {
       return Future<http.Response>.value(
         http.Response(
-          json.encode(<String, dynamic>{
-            'data': <String, dynamic>{
-              'getAssessmentResponsesByToolType': <dynamic>[
-                mockAssessmentResponsesByToolType,
-                mockAssessmentResponsesByToolType
-              ]
+          json.encode(
+            <String, dynamic>{
+              'data': <String, dynamic>{
+                'getScreeningToolRespondents': <String, dynamic>{
+                  'screeningToolRespondents': <dynamic>[
+                    mockAssessmentResponsesByToolType,
+                    mockAssessmentResponsesByToolType
+                  ]
+                }
+              },
             },
-          }),
+          ),
           200,
         ),
       );
@@ -1704,31 +1762,47 @@ class MockTestGraphQlClient extends IGraphQlClient {
         http.Response(
           json.encode(<String, dynamic>{
             'data': <String, dynamic>{
-              'getScreeningToolServiceRequestResponses': <String, dynamic>{
-                'serviceRequestID': '980ef678-a163-4fc4-babd-f6307244d8e0',
-                'screeningToolResponses': <dynamic>[
+              'getScreeningToolResponse': <String, dynamic>{
+                'id': 'some-id',
+                'screeningToolID': 'tool-id',
+                'facilityID': 'facility-id',
+                'clientID': 'client-id',
+                'questionResponses': <dynamic>[
                   <String, dynamic>{
-                    'toolIndex': 0,
-                    'tool': 'Have you experienced a chough for any duration?',
-                    'response': 'Yes',
+                    'questionType': 'CLOSE_ENDED',
+                    'selectMultiple': false,
+                    'responseValueType': 'STRING',
+                    'sequence': 1,
+                    'questionText':
+                        'Have you experienced a cough for any duration?',
+                    'normalizedResponse': <String, dynamic>{'0': 'Yes'}
                   },
                   <String, dynamic>{
-                    'toolIndex': 1,
-                    'tool': 'Do you have a fever?',
-                    'response': 'Yes',
+                    'questionType': 'CLOSE_ENDED',
+                    'selectMultiple': false,
+                    'responseValueType': 'STRING',
+                    'sequence': 2,
+                    'questionText': 'Do you have a fever?',
+                    'normalizedResponse': <String, dynamic>{'0': 'Yes'}
                   },
                   <String, dynamic>{
-                    'toolIndex': 2,
-                    'tool': 'Have you Noticed any weight loss?',
-                    'response': 'Yes',
+                    'questionType': 'CLOSE_ENDED',
+                    'selectMultiple': false,
+                    'responseValueType': 'STRING',
+                    'sequence': 2,
+                    'questionText': 'Do you have a fever?',
+                    'normalizedResponse': <String, dynamic>{'0': 'Yes'}
                   },
                   <String, dynamic>{
-                    'toolIndex': 3,
-                    'tool': 'Do you experience night sweats?',
-                    'response': 'Yes',
+                    'questionType': 'CLOSE_ENDED',
+                    'selectMultiple': false,
+                    'responseValueType': 'STRING',
+                    'sequence': 4,
+                    'questionText': 'Do you experience night sweats?',
+                    'normalizedResponse': <String, dynamic>{'0': 'Yes'}
                   }
                 ]
-              },
+              }
             }
           }),
           200,

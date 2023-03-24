@@ -6,55 +6,47 @@ import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/core/graphql/mutations.dart';
 import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
-import 'package:prohealth360_daktari/application/redux/actions/service_requests/fetch_assessment_responses_by_tool_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/service_requests/fetch_assessment_respondents_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/service_requests/fetch_available_facility_screening_tools_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/service_requests/fetch_service_request_count_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class ResolveScreeningToolServiceRequestAction extends ReduxAction<AppState> {
-  final IGraphQlClient client;
-  final String serviceRequestId;
-  final String? comments;
-  final List<String> actionsTaken;
-  final ScreeningToolsType screeningToolsType;
-  final VoidCallback? onSuccess;
-  final VoidCallback? onFailure;
-
   ResolveScreeningToolServiceRequestAction({
-    required this.serviceRequestId,
     required this.actionsTaken,
     this.comments,
     required this.client,
-    required this.screeningToolsType,
     this.onSuccess,
     this.onFailure,
+    required this.screeningToolId,
   });
+
+  final List<String> actionsTaken;
+  final IGraphQlClient client;
+  final String? comments;
+  final VoidCallback? onFailure;
+  final VoidCallback? onSuccess;
+  final String screeningToolId;
+
+  @override
+  void after() {
+    dispatch(WaitAction<AppState>.remove(resolveServiceRequestFlag));
+    super.after();
+  }
 
   @override
   void before() {
     super.before();
-    dispatch(
-      WaitAction<AppState>.add(
-        resolveServiceRequestFlag,
-      ),
-    );
-  }
-
-  @override
-  void after() {
-    dispatch(
-      WaitAction<AppState>.remove(
-        resolveServiceRequestFlag,
-      ),
-    );
-    super.after();
+    dispatch(WaitAction<AppState>.add(resolveServiceRequestFlag));
   }
 
   @override
   Future<AppState?> reduce() async {
     final String staffId = state.userProfileState?.userProfile?.id ?? '';
+    final String serviceRequestId = state.serviceRequestState
+            ?.screeningToolsState?.selectedRespondent?.serviceRequestID ??
+        '';
 
     final Map<String, dynamic> variables = <String, dynamic>{
       'staffID': staffId,
@@ -67,8 +59,6 @@ class ResolveScreeningToolServiceRequestAction extends ReduxAction<AppState> {
       resolveServiceRequestMutation,
       variables,
     );
-
-    client.close();
 
     final Map<String, dynamic> payLoad = client.toMap(result);
     final String? error = parseError(payLoad);
@@ -92,21 +82,15 @@ class ResolveScreeningToolServiceRequestAction extends ReduxAction<AppState> {
 
     if (isResolved ?? false) {
       dispatch(
-        FetchAvailableFacilityScreeningToolsAction(
-          client: client,
-        ),
+        FetchAvailableFacilityScreeningToolsAction(client: client),
       );
       dispatch(
-        FetchAssessmentResponsesByToolAction(
+        FetchAssessmentRespondentsAction(
           client: client,
-          toolsType: screeningToolsType,
+          screeningToolID: screeningToolId,
         ),
       );
-      dispatch(
-        FetchServiceRequestsCountAction(
-          client: client,
-        ),
-      );
+      dispatch(FetchServiceRequestsCountAction(client: client));
 
       onSuccess?.call();
       return state;

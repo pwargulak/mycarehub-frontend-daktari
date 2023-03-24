@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:prohealth360_daktari/domain/core/entities/core/screening_tool.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 
 // Project imports:
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
@@ -30,8 +30,8 @@ void main() {
       await buildTestWidget(
         tester: tester,
         store: store,
-        widget: const AssessmentToolResponsesPage(
-          screeningToolsType: ScreeningToolsType.VIOLENCE_ASSESSMENT,
+        widget: AssessmentToolResponsesPage(
+          screeningTool: ScreeningTool.initial(),
         ),
         graphQlClient: MockTestGraphQlClient(),
       );
@@ -47,26 +47,15 @@ void main() {
 
     testWidgets('should show a loading indicator when fetching screening tools',
         (WidgetTester tester) async {
-      final MockShortGraphQlClient mockShortGraphQlClient =
-          MockShortGraphQlClient.withResponse(
-        'idToken',
-        'endpoint',
-        Response(
-          json.encode(<String, dynamic>{
-            'data': <String, dynamic>{'loading': true}
-          }),
-          201,
-        ),
-      );
       store.dispatch(
         WaitAction<AppState>.add(fetchAssessmentResponsesByToolFlag),
       );
       await buildTestWidget(
         tester: tester,
         store: store,
-        graphQlClient: mockShortGraphQlClient,
-        widget: const AssessmentToolResponsesPage(
-          screeningToolsType: ScreeningToolsType.ALCOHOL_SUBSTANCE_ASSESSMENT,
+        graphQlClient: mockGraphQlClient,
+        widget: AssessmentToolResponsesPage(
+          screeningTool: ScreeningTool.initial(),
         ),
       );
 
@@ -89,8 +78,8 @@ void main() {
           tester: tester,
           store: store,
           graphQlClient: mockShortGraphQlClient,
-          widget: const AssessmentToolResponsesPage(
-            screeningToolsType: ScreeningToolsType.CONTRACEPTIVE_ASSESSMENT,
+          widget: AssessmentToolResponsesPage(
+            screeningTool: ScreeningTool.initial(),
           ),
         );
 
@@ -118,7 +107,32 @@ void main() {
           Response(
             json.encode(<String, dynamic>{
               'data': <String, dynamic>{
-                'getAssessmentResponsesByToolType': <dynamic>[]
+                'getFacilityRespondedScreeningTools': <String, dynamic>{
+                  'screeningTools': <dynamic>[
+                    <String, dynamic>{
+                      'id': 'some-id',
+                      'active': true,
+                      'questionnaireID': 'q-id',
+                      'questionnaire': <String, dynamic>{
+                        'id': 'some-id',
+                        'active': true,
+                        'name': 'TB Assessment',
+                        'description': 'TB Description'
+                      }
+                    },
+                  ],
+                  'pagination': <String, dynamic>{
+                    'currentPage': 1,
+                    'limit': 10,
+                    'count': 1,
+                    'totalPages': 1,
+                    'nextPage': null,
+                    'previousPage': null
+                  }
+                },
+                'getScreeningToolRespondents': <String, dynamic>{
+                  'screeningToolRespondents': <dynamic>[]
+                }
               }
             }),
             200,
@@ -135,7 +149,7 @@ void main() {
                 onPressed: () => Navigator.pushNamed(
                   context,
                   AppRoutes.assessmentToolResponsesPage,
-                  arguments: ScreeningToolsType.CONTRACEPTIVE_ASSESSMENT,
+                  arguments: ScreeningTool.initial(),
                 ),
               );
             },

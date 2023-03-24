@@ -1,18 +1,18 @@
+import 'package:prohealth360_daktari/domain/core/entities/core/screening_tool.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
-import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 
 class ScreeningToolsItemWidget extends StatelessWidget {
   final String title;
   final String description;
-  final ScreeningToolsType screeningToolsType;
+  final ScreeningTool screeningTool;
 
   const ScreeningToolsItemWidget({
     required this.title,
     required this.description,
-    required this.screeningToolsType,
+    required this.screeningTool,
   });
 
   @override
@@ -21,7 +21,7 @@ class ScreeningToolsItemWidget extends StatelessWidget {
       onTap: () => Navigator.pushNamed(
         context,
         AppRoutes.assessmentToolResponsesPage,
-        arguments: screeningToolsType,
+        arguments: screeningTool,
       ),
       child: Container(
         decoration: BoxDecoration(

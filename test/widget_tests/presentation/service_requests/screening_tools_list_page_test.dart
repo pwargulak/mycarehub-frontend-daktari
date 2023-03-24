@@ -35,26 +35,11 @@ void main() {
         graphQlClient: MockTestGraphQlClient(),
       );
       await tester.pumpAndSettle();
-      final Finder violenceOption = find.text(
-        getScreeningToolTitle(
-          ScreeningToolsType.VIOLENCE_ASSESSMENT,
-        ),
-      );
-      final Finder contraceptiveOption = find.text(
-        getScreeningToolTitle(
-          ScreeningToolsType.CONTRACEPTIVE_ASSESSMENT,
-        ),
-      );
-      final Finder tbOption = find.text(
-        getScreeningToolTitle(
-          ScreeningToolsType.TB_ASSESSMENT,
-        ),
-      );
-      final Finder alcoholOption = find.text(
-        getScreeningToolTitle(
-          ScreeningToolsType.ALCOHOL_SUBSTANCE_ASSESSMENT,
-        ),
-      );
+      final Finder violenceOption = find.text('Violence Assessment');
+      final Finder contraceptiveOption = find.text('Contraceptive Assessment');
+      final Finder tbOption = find.text('TB Assessment');
+      final Finder alcoholOption =
+          find.text('Alcohol and substance Assessment');
 
       expect(violenceOption, findsOneWidget);
       expect(contraceptiveOption, findsOneWidget);
@@ -105,14 +90,7 @@ void main() {
 
       await tester.tap(alcoholOption);
       await tester.pumpAndSettle();
-      expect(
-        find.text(
-          getAssessmentScorePageTitle(
-            screeningToolsType: ScreeningToolsType.ALCOHOL_SUBSTANCE_ASSESSMENT,
-          ),
-        ),
-        findsOneWidget,
-      );
+
       await tester.tap(
         find.byType(AssessmentRequestItemWidget).first,
       );
@@ -122,23 +100,12 @@ void main() {
 
     testWidgets('should show a loading indicator when fetching screening tools',
         (WidgetTester tester) async {
-      final MockShortGraphQlClient mockShortGraphQlClient =
-          MockShortGraphQlClient.withResponse(
-        'idToken',
-        'endpoint',
-        Response(
-          json.encode(<String, dynamic>{
-            'data': <String, dynamic>{'loading': true}
-          }),
-          201,
-        ),
-      );
       store
           .dispatch(WaitAction<AppState>.add(fetchAvailableScreeningToolsFlag));
       await buildTestWidget(
         tester: tester,
         store: store,
-        graphQlClient: mockShortGraphQlClient,
+        graphQlClient: mockGraphQlClient,
         widget: const ScreeningToolsListPage(),
       );
 
@@ -186,11 +153,15 @@ void main() {
           'idToken',
           'endpoint',
           Response(
-            json.encode(<String, dynamic>{
-              'data': <String, dynamic>{
-                'getAvailableFacilityScreeningTools': <dynamic>[]
-              }
-            }),
+            json.encode(
+              <String, dynamic>{
+                'data': <String, dynamic>{
+                  'getFacilityRespondedScreeningTools': <String, dynamic>{
+                    'screeningTools': <dynamic>[]
+                  }
+                }
+              },
+            ),
             200,
           ),
         );

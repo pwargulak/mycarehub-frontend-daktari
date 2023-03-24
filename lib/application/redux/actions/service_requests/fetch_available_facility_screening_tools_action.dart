@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:prohealth360_daktari/domain/core/entities/core/screening_tool.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:sghi_core/flutter_graphql_client/i_flutter_graphql_client.dart';
@@ -10,8 +11,6 @@ import 'package:prohealth360_daktari/application/redux/actions/service_requests/
 import 'package:prohealth360_daktari/application/redux/actions/service_requests/update_service_requests_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:http/http.dart';
-import 'package:prohealth360_daktari/application/redux/states/service_requests/screening_tools_state.dart';
-import 'package:prohealth360_daktari/domain/core/entities/service_requests/tool_type.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class FetchAvailableFacilityScreeningToolsAction extends ReduxAction<AppState> {
@@ -45,12 +44,15 @@ class FetchAvailableFacilityScreeningToolsAction extends ReduxAction<AppState> {
 
     final Map<String, dynamic> variables = <String, dynamic>{
       'facilityID': facilityID,
+      'pagination': <String, dynamic>{
+        'limit': 20,
+        'currentPage': 1,
+      },
     };
     final Response response = await client.query(
       getAvailableFacilityScreeningToolsQuery,
       variables,
     );
-    client.close();
 
     final Map<String, dynamic> payLoad = client.toMap(response);
 
@@ -73,19 +75,21 @@ class FetchAvailableFacilityScreeningToolsAction extends ReduxAction<AppState> {
 
       return null;
     }
+    final Map<String, dynamic> data = payLoad['data'] as Map<String, dynamic>;
+    final Map<String, dynamic> screeningToolData =
+        data['getFacilityRespondedScreeningTools'] as Map<String, dynamic>;
 
-    final ScreeningToolsState screeningToolsState =
-        ScreeningToolsState.fromJson(
-      payLoad['data'] as Map<String, dynamic>,
-    );
+    final List<ScreeningTool> screeningToolsList = <ScreeningTool>[];
 
-    final List<ToolType> availableTools =
-        screeningToolsState.availableTools ?? <ToolType>[];
+    for (final dynamic toolJSON
+        in screeningToolData['screeningTools'] as List<dynamic>) {
+      screeningToolsList.add(
+        ScreeningTool.fromJson(toolJSON as Map<String, dynamic>),
+      );
+    }
 
     dispatch(
-      UpdateScreeningToolsStateAction(
-        availableTools: availableTools,
-      ),
+      UpdateScreeningToolsStateAction(availableTools: screeningToolsList),
     );
 
     return state;

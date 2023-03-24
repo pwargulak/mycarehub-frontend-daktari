@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:prohealth360_daktari/domain/core/entities/core/screening_tool.dart';
 import 'package:prohealth360_daktari/presentation/admin/admin_page.dart';
 import 'package:prohealth360_daktari/presentation/caregiver/assign_caregiver_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/accept_group_invites_page.dart';
@@ -28,7 +29,6 @@ import 'package:prohealth360_daktari/domain/core/entities/search_user/search_use
 import 'package:prohealth360_daktari/domain/core/entities/service_requests/service_request.dart';
 import 'package:prohealth360_daktari/domain/core/entities/surveys/survey.dart';
 import 'package:prohealth360_daktari/domain/core/entities/surveys/survey_respondent.dart';
-import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/facility_selection/facility_selection_page.dart';
 import 'package:prohealth360_daktari/presentation/search/pages/search_details_view_page.dart';
 import 'package:prohealth360_daktari/presentation/roles/role_created_success_page.dart';
@@ -532,9 +532,9 @@ void main() {
     expect(route?.builder(context), isA<AssessmentCardAnswersPage>());
   });
   test('Test router returns AssessmentToolsCategoryPage', () {
-    const RouteSettings settings = RouteSettings(
+    final RouteSettings settings = RouteSettings(
       name: AppRoutes.assessmentToolResponsesPage,
-      arguments: ScreeningToolsType.VIOLENCE_ASSESSMENT,
+      arguments: ScreeningTool.initial(),
     );
 
     final MaterialPageRoute<AssessmentToolResponsesPage>? route =

@@ -23,7 +23,6 @@ Map<String, dynamic> _$$_SurveyResponseToJson(_$_SurveyResponse instance) =>
     };
 
 const _$QuestionTypeEnumMap = {
-  QuestionType.SINGLE_CHOICE: 'SINGLE_CHOICE',
-  QuestionType.MULTIPLE_CHOICE: 'MULTIPLE_CHOICE',
-  QuestionType.UNKNOWN: 'UNKNOWN',
+  QuestionType.OPEN_ENDED: 'OPEN_ENDED',
+  QuestionType.CLOSE_ENDED: 'CLOSE_ENDED',
 };

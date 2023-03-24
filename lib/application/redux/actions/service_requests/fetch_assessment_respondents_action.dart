@@ -10,18 +10,16 @@ import 'package:prohealth360_daktari/application/redux/actions/service_requests/
 import 'package:prohealth360_daktari/application/redux/actions/service_requests/update_service_requests_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:http/http.dart';
-import 'package:prohealth360_daktari/application/redux/states/service_requests/screening_tools_state.dart';
-import 'package:prohealth360_daktari/application/redux/states/service_requests/tool_assessment_response.dart';
-import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
+import 'package:prohealth360_daktari/application/redux/states/service_requests/screening_tool_respondent.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
-class FetchAssessmentResponsesByToolAction extends ReduxAction<AppState> {
+class FetchAssessmentRespondentsAction extends ReduxAction<AppState> {
   final IGraphQlClient client;
-  final ScreeningToolsType toolsType;
+  final String screeningToolID;
 
-  FetchAssessmentResponsesByToolAction({
-    required this.toolsType,
+  FetchAssessmentRespondentsAction({
     required this.client,
+    required this.screeningToolID,
   });
 
   @override
@@ -48,13 +46,13 @@ class FetchAssessmentResponsesByToolAction extends ReduxAction<AppState> {
 
     final Map<String, dynamic> variables = <String, dynamic>{
       'facilityID': facilityID,
-      'toolType': toolsType.name,
+      'screeningToolID': screeningToolID,
+      'pagination': <String, dynamic>{'limit': 10, 'currentPage': 1}
     };
     final Response response = await client.query(
       getAssessmentResponsesByToolTypeQuery,
       variables,
     );
-    client.close();
 
     final Map<String, dynamic> payLoad = client.toMap(response);
 
@@ -77,17 +75,24 @@ class FetchAssessmentResponsesByToolAction extends ReduxAction<AppState> {
 
       return null;
     }
+    final Map<String, dynamic> data = payLoad['data'] as Map<String, dynamic>;
+    final Map<String, dynamic> respondentsData =
+        data['getScreeningToolRespondents'] as Map<String, dynamic>;
+    final List<ScreeningToolRespondent> screeningToolRespondents =
+        <ScreeningToolRespondent>[];
 
-    final ScreeningToolsState screeningToolsState =
-        ScreeningToolsState.fromJson(
-      payLoad['data'] as Map<String, dynamic>,
-    );
-    final List<ToolAssessmentResponse> toolAssessmentResponses =
-        screeningToolsState.toolAssessmentResponses ??
-            <ToolAssessmentResponse>[];
+    for (final dynamic respondentJSON
+        in respondentsData['screeningToolRespondents'] as List<dynamic>) {
+      screeningToolRespondents.add(
+        ScreeningToolRespondent.fromJson(
+          respondentJSON as Map<String, dynamic>,
+        ),
+      );
+    }
+
     dispatch(
       UpdateScreeningToolsStateAction(
-        toolAssessmentResponses: toolAssessmentResponses,
+        screeningToolRespondents: screeningToolRespondents,
       ),
     );
 

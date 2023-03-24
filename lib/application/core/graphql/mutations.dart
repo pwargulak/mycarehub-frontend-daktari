@@ -124,8 +124,18 @@ mutation assignOrRevokeRoles($userID: String!, $roles: [UserRoleType!]!){
 ''';
 
 const String resolveServiceRequestMutation = r'''
-mutation ResolveServiceRequest($staffID: String!, $requestID: String!, $action: [String!]!, $comment: String){
-  resolveServiceRequest(staffID: $staffID, requestID: $requestID, action: $action, comment: $comment)
+mutation resolveServiceRequest(
+  $staffID: String!,
+  $requestID: String!
+  $action: [String!]!
+  $comment: String
+){
+  resolveServiceRequest(
+    staffID:$staffID
+    requestID:$requestID
+    action: $action
+    comment:$comment
+  )
 }
 ''';
 

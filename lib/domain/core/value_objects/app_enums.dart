@@ -79,12 +79,6 @@ enum ScreeningToolsType {
   ALCOHOL_SUBSTANCE_ASSESSMENT,
 }
 
-extension ScreeningToolsTypeExtension on ScreeningToolsType {
-  String get name {
-    return describeEnum(this);
-  }
-}
-
 enum StreamUserType { STAFF, CLIENT }
 
 /// The types of events that we will collect on myCareHub
@@ -105,6 +99,6 @@ enum AnalyticsEventType {
   ONBOARDING
 }
 
-enum QuestionType { SINGLE_CHOICE, MULTIPLE_CHOICE, UNKNOWN }
+enum QuestionType { OPEN_ENDED, CLOSE_ENDED }
 
 enum ConsentStatus { ACCEPTED, REJECTED, PENDING, UNKNOWN }

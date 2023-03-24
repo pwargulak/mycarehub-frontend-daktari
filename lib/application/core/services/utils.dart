@@ -524,3 +524,19 @@ IGraphQlClient getCustomClient({
     userID: userID,
   );
 }
+
+ScreeningToolsType getScreeningToolType(String toolName) {
+  switch (toolName) {
+    case 'Violence Assessment':
+      return ScreeningToolsType.VIOLENCE_ASSESSMENT;
+
+    case 'Alcohol and Substance Assessment':
+      return ScreeningToolsType.ALCOHOL_SUBSTANCE_ASSESSMENT;
+
+    case 'TB Assessment':
+      return ScreeningToolsType.TB_ASSESSMENT;
+
+    default:
+      return ScreeningToolsType.CONTRACEPTIVE_ASSESSMENT;
+  }
+}

@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:prohealth360_daktari/application/redux/actions/service_requests/update_screening_tools_state_action.dart';
+import 'package:prohealth360_daktari/application/redux/states/service_requests/screening_tool_question_response.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
@@ -9,20 +11,19 @@ import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:http/http.dart';
-import 'package:prohealth360_daktari/application/redux/states/service_requests/tool_assessment_response.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class FetchScreeningToolResponsesAction extends ReduxAction<AppState> {
   final IGraphQlClient client;
   final ScreeningToolsType toolsType;
-  final String clientID;
+  final String screeningToolRespondentId;
   final VoidCallback? onFailure;
 
   FetchScreeningToolResponsesAction({
     required this.toolsType,
     required this.client,
-    required this.clientID,
+    required this.screeningToolRespondentId,
     this.onFailure,
   });
 
@@ -41,8 +42,7 @@ class FetchScreeningToolResponsesAction extends ReduxAction<AppState> {
   @override
   Future<AppState?> reduce() async {
     final Map<String, dynamic> variables = <String, dynamic>{
-      'clientID': clientID,
-      'toolType': toolsType.name,
+      'id': screeningToolRespondentId
     };
     final Response response = await client.query(
       getScreeningToolServiceRequestResponsesQuery,
@@ -67,40 +67,19 @@ class FetchScreeningToolResponsesAction extends ReduxAction<AppState> {
 
       return null;
     }
+    final Map<String, dynamic> data = payLoad['data'] as Map<String, dynamic>;
+    final Map<String, dynamic> responsesData =
+        data['getScreeningToolResponse'] as Map<String, dynamic>;
 
-    final ToolAssessmentResponse loadedAssessmentResponses =
-        ToolAssessmentResponse.fromJson(
-      payLoad['data'] as Map<String, dynamic>,
+    final ScreeningToolQuestionResponses screeningToolQuestionResponses =
+        ScreeningToolQuestionResponses.fromJson(responsesData);
+
+    store.dispatch(
+      UpdateScreeningToolsStateAction(
+        screeningToolQuestionResponses: screeningToolQuestionResponses,
+      ),
     );
 
-    if (loadedAssessmentResponses
-            .toolAssessmentRequestResponse?.questionsResponses?.isNotEmpty ??
-        false) {
-      final List<ToolAssessmentResponse>? toolAssessmentResponses = state
-          .serviceRequestState?.screeningToolsState?.toolAssessmentResponses;
-
-      if (toolAssessmentResponses?.isNotEmpty ?? false) {
-        for (int i = 0; i < toolAssessmentResponses!.length; i++) {
-          if (toolAssessmentResponses[i].clientID == clientID) {
-            toolAssessmentResponses[i] =
-                toolAssessmentResponses[i].copyWith.call(
-                      toolAssessmentRequestResponse: loadedAssessmentResponses
-                          .toolAssessmentRequestResponse,
-                    );
-            break;
-          }
-        }
-      }
-
-      return state.copyWith(
-        serviceRequestState: state.serviceRequestState?.copyWith(
-          screeningToolsState: state.serviceRequestState?.screeningToolsState
-              ?.copyWith(toolAssessmentResponses: toolAssessmentResponses),
-        ),
-      );
-    }
-    onFailure?.call();
-
-    return null;
+    return state;
   }
 }

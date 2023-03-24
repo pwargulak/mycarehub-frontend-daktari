@@ -1,3 +1,4 @@
+import 'package:prohealth360_daktari/domain/core/entities/core/screening_tool.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:async_redux/async_redux.dart';
@@ -8,9 +9,7 @@ import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.d
 import 'package:prohealth360_daktari/application/redux/actions/service_requests/fetch_available_facility_screening_tools_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/service_requests/service_requests_view_model.dart';
-import 'package:prohealth360_daktari/domain/core/entities/service_requests/tool_type.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
-import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
@@ -49,8 +48,8 @@ class _ScreeningToolsListPageState extends State<ScreeningToolsListPage> {
               ServiceRequestsViewModel.fromStore(store),
           builder: (BuildContext context, ServiceRequestsViewModel vm) {
             final bool error = vm.errorFetchingServiceRequests ?? false;
-            final List<ToolType> toolTypes =
-                vm.screeningToolsState?.availableTools ?? <ToolType>[];
+            final List<ScreeningTool> toolTypes =
+                vm.screeningToolsState?.availableTools ?? <ScreeningTool>[];
             return SingleChildScrollView(
               child: Column(
                 children: <Widget>[
@@ -103,15 +102,13 @@ class _ScreeningToolsListPageState extends State<ScreeningToolsListPage> {
                       )
                     else
                       ...List<Widget>.generate(toolTypes.length, (int index) {
-                        final ScreeningToolsType currentToolType =
-                            toolTypes[index].toolType!;
+                        final ScreeningTool tool = toolTypes[index];
                         return Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20.0),
                           child: ScreeningToolsItemWidget(
-                            title: getScreeningToolTitle(currentToolType),
-                            description:
-                                getScreeningToolDescription(currentToolType),
-                            screeningToolsType: currentToolType,
+                            title: tool.questionnaire?.name ?? '',
+                            description: tool.questionnaire?.description ?? '',
+                            screeningTool: tool,
                           ),
                         );
                       })

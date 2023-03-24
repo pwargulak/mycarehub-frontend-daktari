@@ -1,3 +1,5 @@
+import 'package:prohealth360_daktari/application/redux/states/service_requests/question_response.dart';
+import 'package:prohealth360_daktari/application/redux/states/service_requests/screening_tool_question_response.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:async_redux/async_redux.dart';
@@ -8,7 +10,7 @@ import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.d
 import 'package:prohealth360_daktari/application/redux/actions/service_requests/fetch_screening_tool_responses_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/service_requests/resolve_screening_tool_service_request_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/application/redux/states/service_requests/tool_assessment_response.dart';
+import 'package:prohealth360_daktari/application/redux/states/service_requests/screening_tool_respondent.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/service_requests/screening_tools_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/user_profile.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
@@ -43,8 +45,8 @@ class _AssessmentCardAnswersPageState extends State<AssessmentCardAnswersPage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      final ToolAssessmentResponse assessmentResponse =
-          widget.payload['assessmentResponse'] as ToolAssessmentResponse;
+      final ScreeningToolRespondent assessmentResponse =
+          widget.payload['assessmentResponse'] as ScreeningToolRespondent;
       final ScreeningToolsType toolsType =
           widget.payload['toolType'] as ScreeningToolsType;
       StoreProvider.dispatch<AppState>(
@@ -52,7 +54,8 @@ class _AssessmentCardAnswersPageState extends State<AssessmentCardAnswersPage> {
         FetchScreeningToolResponsesAction(
           client: AppWrapperBase.of(context)!.graphQLClient,
           toolsType: toolsType,
-          clientID: assessmentResponse.clientID ?? '',
+          screeningToolRespondentId:
+              assessmentResponse.screeningToolResponseID ?? '',
           onFailure: () => showTextSnackbar(
             ScaffoldMessenger.of(context),
             content: somethingWentWrongText,
@@ -66,18 +69,15 @@ class _AssessmentCardAnswersPageState extends State<AssessmentCardAnswersPage> {
   Widget build(BuildContext context) {
     final TargetPlatform platform = Theme.of(context).platform;
     final TextEditingController notesInputController = TextEditingController();
-    final ToolAssessmentResponse assessmentResponse =
-        widget.payload['assessmentResponse'] as ToolAssessmentResponse;
+    final ScreeningToolRespondent assessmentResponse =
+        widget.payload['assessmentResponse'] as ScreeningToolRespondent;
     final ScreeningToolsType toolsType =
         widget.payload['toolType'] as ScreeningToolsType;
     final UserProfile? userProfileState =
         StoreProvider.state<AppState>(context)?.userProfileState?.userProfile;
-    final String staffFirstName =
-        userProfileState?.user?.firstName ?? '';
-    final String staffLastName =
-        userProfileState?.user?.lastName ?? '';
-    final String facilityName =
-        userProfileState?.defaultFacilityName ?? '';
+    final String staffFirstName = userProfileState?.user?.firstName ?? '';
+    final String staffLastName = userProfileState?.user?.lastName ?? '';
+    final String facilityName = userProfileState?.defaultFacilityName ?? '';
     return Scaffold(
       appBar: const CustomAppBar(title: assessmentCardTitle),
       body: Padding(
@@ -86,12 +86,8 @@ class _AssessmentCardAnswersPageState extends State<AssessmentCardAnswersPage> {
           converter: (Store<AppState> store) =>
               ScreeningToolsViewModel.fromStore(store),
           builder: (BuildContext context, ScreeningToolsViewModel vm) {
-            final ToolAssessmentResponse? toolResponse =
-                vm.toolAssessmentResponses?.firstWhere(
-              (ToolAssessmentResponse response) =>
-                  response.clientID == assessmentResponse.clientID,
-              orElse: () => ToolAssessmentResponse.initial(),
-            );
+            final ScreeningToolQuestionResponses? response =
+                vm.screeningToolQuestionResponses;
             return SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,16 +113,6 @@ class _AssessmentCardAnswersPageState extends State<AssessmentCardAnswersPage> {
                           ),
                           style: normalSize14Text(AppColors.greyTextColor),
                         ),
-                        TextSpan(
-                          text: assessmentToolOnString,
-                          style: normalSize14Text(AppColors.greyTextColor),
-                        ),
-                        TextSpan(
-                          text: formatDate(
-                            assessmentResponse.date ?? '',
-                          ),
-                          style: veryBoldSize14Text(AppColors.greyTextColor),
-                        ),
                       ],
                     ),
                   ),
@@ -141,17 +127,15 @@ class _AssessmentCardAnswersPageState extends State<AssessmentCardAnswersPage> {
                     description: '${getAssessmentScorePageTitle(
                       screeningToolsType: toolsType,
                     )} ${assessmentCardString.toLowerCase()}',
-                    questionsResponses: toolResponse
-                        ?.toolAssessmentRequestResponse?.questionsResponses,
+                    questionsResponses:
+                        response?.questionResponses ?? <QuestionResponse>[],
                     isLoading:
                         vm.wait.isWaitingFor(fetchScreeningToolResponsesFlag),
                   ),
                   mediumVerticalSizedBox,
                   ReachOutWidget(
                     platform: platform,
-                    phoneNumber: toolResponse
-                            ?.toolAssessmentRequestResponse?.phoneNumber ??
-                        '',
+                    phoneNumber: '',
                     clientName: assessmentResponse.name ?? '',
                     staffFirstName: staffFirstName,
                     staffLastName: staffLastName,
@@ -239,11 +223,10 @@ class _AssessmentCardAnswersPageState extends State<AssessmentCardAnswersPage> {
                                       ResolveScreeningToolServiceRequestAction(
                                         client: AppWrapperBase.of(context)!
                                             .graphQLClient,
-                                        serviceRequestId: toolResponse
-                                                ?.toolAssessmentRequestResponse
-                                                ?.serviceRequestID ??
+                                        screeningToolId: vm
+                                                .screeningToolQuestionResponses
+                                                ?.screeningToolId ??
                                             '',
-                                        screeningToolsType: toolsType,
                                         actionsTaken: actionsTaken.contains(
                                           noFurtherActionRequiredString,
                                         )

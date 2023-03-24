@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:prohealth360_daktari/domain/core/entities/core/screening_tool.dart';
 import 'package:prohealth360_daktari/presentation/admin/admin_page.dart';
 import 'package:prohealth360_daktari/presentation/caregiver/assign_caregiver_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/accept_group_invites_page.dart';
@@ -446,7 +447,7 @@ class RouteGenerator {
       case AppRoutes.assessmentToolResponsesPage:
         return MaterialPageRoute<AssessmentToolResponsesPage>(
           builder: (_) => AssessmentToolResponsesPage(
-            screeningToolsType: args as ScreeningToolsType,
+            screeningTool: args as ScreeningTool,
           ),
           settings: const RouteSettings(name: 'AssessmentTool responses page'),
         );

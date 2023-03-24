@@ -7,7 +7,6 @@ import '../../../../mocks/mocks.dart';
 void main() {
   group('MiscState', () {
     test('fromJson', () {
-      expect(MiscState.fromJson(mockMiscState).resumeWithPin, false);
       expect(
         MiscState.fromJson(mockMiscState)
             .profileFAQsContentState

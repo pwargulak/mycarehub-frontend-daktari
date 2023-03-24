@@ -201,9 +201,30 @@ query getUserRoles($userID: String!, $organisationID: String!){
 ''';
 
 const String getAvailableFacilityScreeningToolsQuery = r'''
-query getAvailableFacilityScreeningTools($facilityID: String!){
-  getAvailableFacilityScreeningTools(facilityID: $facilityID){
-    toolType
+query getFacilityRespondedScreeningTools($facilityID: String!, $pagination: PaginationsInput!) {
+  getFacilityRespondedScreeningTools(
+    facilityID: $facilityID
+    paginationInput: $pagination
+  ){
+   	screeningTools{
+      id
+      active
+      questionnaireID
+      questionnaire{
+        id
+        active
+        name
+        description
+      }
+    }
+    pagination{
+      currentPage
+      limit
+      count
+      totalPages
+      nextPage
+      previousPage
+    }
   }
 }
 ''';
@@ -215,17 +236,35 @@ query verifyPin($userID: String!, $flavour:Flavour!, $pin: String!){
 ''';
 
 const String getAssessmentResponsesByToolTypeQuery = r'''
-query getAssessmentResponsesByToolType(
-  $facilityID: String!
-  $toolType: String!
-) {
-  getAssessmentResponsesByToolType(
+query getScreeningToolRespondents(
+	$facilityID: String!
+	$screeningToolID: String!
+  	$searchTerm: String,
+    $pagination: PaginationsInput!
+){
+  getScreeningToolRespondents(
     facilityID: $facilityID
-    toolType: $toolType
-  ) {
-    clientName
-    dateAnswered
-    clientID
+  	screeningToolID: $screeningToolID
+    searchTerm: $searchTerm,
+    paginationInput: $pagination
+  )
+  {
+    screeningToolRespondents {
+      clientID
+      screeningToolResponseID
+      serviceRequestID
+      name
+      phoneNumber
+      serviceRequest
+    }
+    pagination{
+      currentPage
+      limit
+      count
+      totalPages
+      nextPage
+      previousPage
+    }
   }
 }
 ''';
@@ -243,18 +282,22 @@ query getSharedHealthDiaryEntries($clientID: String!, $facilityID: String!){
 ''';
 
 const String getScreeningToolServiceRequestResponsesQuery = r'''
-query getScreeningToolServiceRequestResponses($clientID: String!, $toolType: ScreeningToolType!) {
-  getScreeningToolServiceRequestResponses(
-    clientID: $clientID,
-    toolType: $toolType
-  ) {
-    serviceRequestID
-    clientContact
-    screeningToolResponses {
-      toolIndex
-      tool
-      response
-    }
+query getScreeningToolResponse(
+	$id: String!
+){
+  getScreeningToolResponse(id: $id){
+    id
+    screeningToolID
+    facilityID
+    clientID
+    questionResponses{
+      questionType
+      selectMultiple
+      responseValueType
+      sequence
+      questionText
+      normalizedResponse
+  	}
   }
 }
 ''';

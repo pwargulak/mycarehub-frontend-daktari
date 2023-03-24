@@ -20,11 +20,14 @@ ScreeningToolsState _$ScreeningToolsStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ScreeningToolsState {
-  @JsonKey(name: 'getAvailableFacilityScreeningTools')
-  List<ToolType>? get availableTools => throw _privateConstructorUsedError;
-  @JsonKey(name: 'getAssessmentResponsesByToolType')
-  List<ToolAssessmentResponse>? get toolAssessmentResponses =>
+  List<ScreeningTool>? get availableTools => throw _privateConstructorUsedError;
+  List<ScreeningToolRespondent>? get screeningToolRespondents =>
       throw _privateConstructorUsedError;
+  ScreeningToolRespondent? get selectedRespondent =>
+      throw _privateConstructorUsedError;
+  ScreeningToolQuestionResponses? get screeningToolQuestionResponses =>
+      throw _privateConstructorUsedError;
+  bool? get errorFetchingScreeningTools => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,10 +42,15 @@ abstract class $ScreeningToolsStateCopyWith<$Res> {
       _$ScreeningToolsStateCopyWithImpl<$Res, ScreeningToolsState>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'getAvailableFacilityScreeningTools')
-          List<ToolType>? availableTools,
-      @JsonKey(name: 'getAssessmentResponsesByToolType')
-          List<ToolAssessmentResponse>? toolAssessmentResponses});
+      {List<ScreeningTool>? availableTools,
+      List<ScreeningToolRespondent>? screeningToolRespondents,
+      ScreeningToolRespondent? selectedRespondent,
+      ScreeningToolQuestionResponses? screeningToolQuestionResponses,
+      bool? errorFetchingScreeningTools});
+
+  $ScreeningToolRespondentCopyWith<$Res>? get selectedRespondent;
+  $ScreeningToolQuestionResponsesCopyWith<$Res>?
+      get screeningToolQuestionResponses;
 }
 
 /// @nodoc
@@ -59,18 +67,61 @@ class _$ScreeningToolsStateCopyWithImpl<$Res, $Val extends ScreeningToolsState>
   @override
   $Res call({
     Object? availableTools = freezed,
-    Object? toolAssessmentResponses = freezed,
+    Object? screeningToolRespondents = freezed,
+    Object? selectedRespondent = freezed,
+    Object? screeningToolQuestionResponses = freezed,
+    Object? errorFetchingScreeningTools = freezed,
   }) {
     return _then(_value.copyWith(
       availableTools: freezed == availableTools
           ? _value.availableTools
           : availableTools // ignore: cast_nullable_to_non_nullable
-              as List<ToolType>?,
-      toolAssessmentResponses: freezed == toolAssessmentResponses
-          ? _value.toolAssessmentResponses
-          : toolAssessmentResponses // ignore: cast_nullable_to_non_nullable
-              as List<ToolAssessmentResponse>?,
+              as List<ScreeningTool>?,
+      screeningToolRespondents: freezed == screeningToolRespondents
+          ? _value.screeningToolRespondents
+          : screeningToolRespondents // ignore: cast_nullable_to_non_nullable
+              as List<ScreeningToolRespondent>?,
+      selectedRespondent: freezed == selectedRespondent
+          ? _value.selectedRespondent
+          : selectedRespondent // ignore: cast_nullable_to_non_nullable
+              as ScreeningToolRespondent?,
+      screeningToolQuestionResponses: freezed == screeningToolQuestionResponses
+          ? _value.screeningToolQuestionResponses
+          : screeningToolQuestionResponses // ignore: cast_nullable_to_non_nullable
+              as ScreeningToolQuestionResponses?,
+      errorFetchingScreeningTools: freezed == errorFetchingScreeningTools
+          ? _value.errorFetchingScreeningTools
+          : errorFetchingScreeningTools // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ScreeningToolRespondentCopyWith<$Res>? get selectedRespondent {
+    if (_value.selectedRespondent == null) {
+      return null;
+    }
+
+    return $ScreeningToolRespondentCopyWith<$Res>(_value.selectedRespondent!,
+        (value) {
+      return _then(_value.copyWith(selectedRespondent: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ScreeningToolQuestionResponsesCopyWith<$Res>?
+      get screeningToolQuestionResponses {
+    if (_value.screeningToolQuestionResponses == null) {
+      return null;
+    }
+
+    return $ScreeningToolQuestionResponsesCopyWith<$Res>(
+        _value.screeningToolQuestionResponses!, (value) {
+      return _then(
+          _value.copyWith(screeningToolQuestionResponses: value) as $Val);
+    });
   }
 }
 
@@ -83,10 +134,17 @@ abstract class _$$_ScreeningToolsStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'getAvailableFacilityScreeningTools')
-          List<ToolType>? availableTools,
-      @JsonKey(name: 'getAssessmentResponsesByToolType')
-          List<ToolAssessmentResponse>? toolAssessmentResponses});
+      {List<ScreeningTool>? availableTools,
+      List<ScreeningToolRespondent>? screeningToolRespondents,
+      ScreeningToolRespondent? selectedRespondent,
+      ScreeningToolQuestionResponses? screeningToolQuestionResponses,
+      bool? errorFetchingScreeningTools});
+
+  @override
+  $ScreeningToolRespondentCopyWith<$Res>? get selectedRespondent;
+  @override
+  $ScreeningToolQuestionResponsesCopyWith<$Res>?
+      get screeningToolQuestionResponses;
 }
 
 /// @nodoc
@@ -101,17 +159,32 @@ class __$$_ScreeningToolsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? availableTools = freezed,
-    Object? toolAssessmentResponses = freezed,
+    Object? screeningToolRespondents = freezed,
+    Object? selectedRespondent = freezed,
+    Object? screeningToolQuestionResponses = freezed,
+    Object? errorFetchingScreeningTools = freezed,
   }) {
     return _then(_$_ScreeningToolsState(
       availableTools: freezed == availableTools
           ? _value.availableTools
           : availableTools // ignore: cast_nullable_to_non_nullable
-              as List<ToolType>?,
-      toolAssessmentResponses: freezed == toolAssessmentResponses
-          ? _value.toolAssessmentResponses
-          : toolAssessmentResponses // ignore: cast_nullable_to_non_nullable
-              as List<ToolAssessmentResponse>?,
+              as List<ScreeningTool>?,
+      screeningToolRespondents: freezed == screeningToolRespondents
+          ? _value.screeningToolRespondents
+          : screeningToolRespondents // ignore: cast_nullable_to_non_nullable
+              as List<ScreeningToolRespondent>?,
+      selectedRespondent: freezed == selectedRespondent
+          ? _value.selectedRespondent
+          : selectedRespondent // ignore: cast_nullable_to_non_nullable
+              as ScreeningToolRespondent?,
+      screeningToolQuestionResponses: freezed == screeningToolQuestionResponses
+          ? _value.screeningToolQuestionResponses
+          : screeningToolQuestionResponses // ignore: cast_nullable_to_non_nullable
+              as ScreeningToolQuestionResponses?,
+      errorFetchingScreeningTools: freezed == errorFetchingScreeningTools
+          ? _value.errorFetchingScreeningTools
+          : errorFetchingScreeningTools // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -120,24 +193,29 @@ class __$$_ScreeningToolsStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ScreeningToolsState implements _ScreeningToolsState {
   _$_ScreeningToolsState(
-      {@JsonKey(name: 'getAvailableFacilityScreeningTools')
-          this.availableTools,
-      @JsonKey(name: 'getAssessmentResponsesByToolType')
-          this.toolAssessmentResponses});
+      {this.availableTools,
+      this.screeningToolRespondents,
+      this.selectedRespondent,
+      this.screeningToolQuestionResponses,
+      this.errorFetchingScreeningTools});
 
   factory _$_ScreeningToolsState.fromJson(Map<String, dynamic> json) =>
       _$$_ScreeningToolsStateFromJson(json);
 
   @override
-  @JsonKey(name: 'getAvailableFacilityScreeningTools')
-  final List<ToolType>? availableTools;
+  final List<ScreeningTool>? availableTools;
   @override
-  @JsonKey(name: 'getAssessmentResponsesByToolType')
-  final List<ToolAssessmentResponse>? toolAssessmentResponses;
+  final List<ScreeningToolRespondent>? screeningToolRespondents;
+  @override
+  final ScreeningToolRespondent? selectedRespondent;
+  @override
+  final ScreeningToolQuestionResponses? screeningToolQuestionResponses;
+  @override
+  final bool? errorFetchingScreeningTools;
 
   @override
   String toString() {
-    return 'ScreeningToolsState(availableTools: $availableTools, toolAssessmentResponses: $toolAssessmentResponses)';
+    return 'ScreeningToolsState(availableTools: $availableTools, screeningToolRespondents: $screeningToolRespondents, selectedRespondent: $selectedRespondent, screeningToolQuestionResponses: $screeningToolQuestionResponses, errorFetchingScreeningTools: $errorFetchingScreeningTools)';
   }
 
   @override
@@ -148,7 +226,17 @@ class _$_ScreeningToolsState implements _ScreeningToolsState {
             const DeepCollectionEquality()
                 .equals(other.availableTools, availableTools) &&
             const DeepCollectionEquality().equals(
-                other.toolAssessmentResponses, toolAssessmentResponses));
+                other.screeningToolRespondents, screeningToolRespondents) &&
+            (identical(other.selectedRespondent, selectedRespondent) ||
+                other.selectedRespondent == selectedRespondent) &&
+            (identical(other.screeningToolQuestionResponses,
+                    screeningToolQuestionResponses) ||
+                other.screeningToolQuestionResponses ==
+                    screeningToolQuestionResponses) &&
+            (identical(other.errorFetchingScreeningTools,
+                    errorFetchingScreeningTools) ||
+                other.errorFetchingScreeningTools ==
+                    errorFetchingScreeningTools));
   }
 
   @JsonKey(ignore: true)
@@ -156,7 +244,10 @@ class _$_ScreeningToolsState implements _ScreeningToolsState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(availableTools),
-      const DeepCollectionEquality().hash(toolAssessmentResponses));
+      const DeepCollectionEquality().hash(screeningToolRespondents),
+      selectedRespondent,
+      screeningToolQuestionResponses,
+      errorFetchingScreeningTools);
 
   @JsonKey(ignore: true)
   @override
@@ -175,21 +266,25 @@ class _$_ScreeningToolsState implements _ScreeningToolsState {
 
 abstract class _ScreeningToolsState implements ScreeningToolsState {
   factory _ScreeningToolsState(
-          {@JsonKey(name: 'getAvailableFacilityScreeningTools')
-              final List<ToolType>? availableTools,
-          @JsonKey(name: 'getAssessmentResponsesByToolType')
-              final List<ToolAssessmentResponse>? toolAssessmentResponses}) =
-      _$_ScreeningToolsState;
+      {final List<ScreeningTool>? availableTools,
+      final List<ScreeningToolRespondent>? screeningToolRespondents,
+      final ScreeningToolRespondent? selectedRespondent,
+      final ScreeningToolQuestionResponses? screeningToolQuestionResponses,
+      final bool? errorFetchingScreeningTools}) = _$_ScreeningToolsState;
 
   factory _ScreeningToolsState.fromJson(Map<String, dynamic> json) =
       _$_ScreeningToolsState.fromJson;
 
   @override
-  @JsonKey(name: 'getAvailableFacilityScreeningTools')
-  List<ToolType>? get availableTools;
+  List<ScreeningTool>? get availableTools;
   @override
-  @JsonKey(name: 'getAssessmentResponsesByToolType')
-  List<ToolAssessmentResponse>? get toolAssessmentResponses;
+  List<ScreeningToolRespondent>? get screeningToolRespondents;
+  @override
+  ScreeningToolRespondent? get selectedRespondent;
+  @override
+  ScreeningToolQuestionResponses? get screeningToolQuestionResponses;
+  @override
+  bool? get errorFetchingScreeningTools;
   @override
   @JsonKey(ignore: true)
   _$$_ScreeningToolsStateCopyWith<_$_ScreeningToolsState> get copyWith =>

@@ -1,7 +1,9 @@
+import 'package:async_redux/async_redux.dart';
+import 'package:prohealth360_daktari/application/redux/actions/service_requests/update_screening_tools_state_action.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
-import 'package:prohealth360_daktari/application/redux/states/service_requests/tool_assessment_response.dart';
+import 'package:prohealth360_daktari/application/redux/states/service_requests/screening_tool_respondent.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
@@ -9,24 +11,32 @@ import 'package:prohealth360_daktari/presentation/router/routes.dart';
 class AssessmentRequestItemWidget extends StatelessWidget {
   const AssessmentRequestItemWidget({
     super.key,
-    required this.screeningQuestionsList,
+    required this.selectedRespondent,
     required this.toolsType,
   });
 
-  final ToolAssessmentResponse screeningQuestionsList;
+  final ScreeningToolRespondent selectedRespondent;
   final ScreeningToolsType toolsType;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.pushNamed(
-        context,
-        AppRoutes.assessmentCardAnswersPage,
-        arguments: <String, dynamic>{
-          'toolType': toolsType,
-          'assessmentResponse': screeningQuestionsList,
-        },
-      ),
+      onTap: () {
+        StoreProvider.dispatch(
+          context,
+          UpdateScreeningToolsStateAction(
+            selectedRespondent: selectedRespondent,
+          ),
+        );
+        Navigator.pushNamed(
+          context,
+          AppRoutes.assessmentCardAnswersPage,
+          arguments: <String, dynamic>{
+            'toolType': toolsType,
+            'assessmentResponse': selectedRespondent,
+          },
+        );
+      },
       child: Container(
         decoration: BoxDecoration(
           color: Theme.of(context).primaryColor.withOpacity(0.14),
@@ -41,16 +51,10 @@ class AssessmentRequestItemWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              screeningQuestionsList.name ?? '',
+              selectedRespondent.name ?? '',
               style: veryBoldSize16Text(AppColors.greyTextColor),
             ),
             verySmallVerticalSizedBox,
-            humanizeDate(
-              dateTextStyle: normalSize13Text(
-                AppColors.greyTextColor.withOpacity(0.5),
-              ),
-              loadedDate: screeningQuestionsList.date ?? '',
-            ),
             size15VerticalSizedBox,
             Text(
               assessmentRequestItemDescriptionString,

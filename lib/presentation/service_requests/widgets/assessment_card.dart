@@ -1,13 +1,13 @@
+import 'package:prohealth360_daktari/application/redux/states/service_requests/question_response.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
-import 'package:prohealth360_daktari/application/redux/states/service_requests/assessment_question_response.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/widgets/assessment_list_item.dart';
 
 class AssessmentCard extends StatelessWidget {
   final String username;
   final String description;
-  final List<AssessmentQuestionResponse>? questionsResponses;
+  final List<QuestionResponse>? questionsResponses;
   final bool isLoading;
 
   const AssessmentCard({
@@ -20,12 +20,13 @@ class AssessmentCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<AssessmentListItem> assessmentItems = <AssessmentListItem>[];
-    for (final AssessmentQuestionResponse item
-        in questionsResponses ?? <AssessmentQuestionResponse>[]) {
+    for (final QuestionResponse item
+        in questionsResponses ?? <QuestionResponse>[]) {
+      final String key = (item.normalizedResponse)?.keys.first ?? '';
       assessmentItems.add(
         AssessmentListItem(
-          assessmentResponse: '${item.index! + 1}. ${item.tool}',
-          responseStatus: '${item.response}',
+          assessmentResponse: '${item.sequence!}. ${item.questionText}',
+          responseStatus: '${item.normalizedResponse?[key]}',
         ),
       );
     }

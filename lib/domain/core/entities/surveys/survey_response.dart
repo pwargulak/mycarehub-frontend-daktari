@@ -19,6 +19,5 @@ class SurveyResponse with _$SurveyResponse {
   factory SurveyResponse.initial() => SurveyResponse(
         question: UNKNOWN,
         answers: <String>[],
-        questionType: QuestionType.UNKNOWN,
       );
 }
