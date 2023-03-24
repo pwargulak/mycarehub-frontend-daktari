@@ -666,8 +666,8 @@ query searchPrograms($searchParameter: String!){
 }
 ''';
 
-const String checkIdentifierExistsQuery = r'''
-query checkIdentifierExists($identifierType: ClientIdentifierType!, $identifierValue: String!){
-  checkIdentifierExists(identifierType: $identifierType, identifierValue: $identifierValue)
+const String checkIfPhoneExistsQuery = r'''
+query checkIfPhoneExists($phoneNumber: String!){
+  checkIfPhoneExists(phoneNumber: $phoneNumber)
 }
  ''';

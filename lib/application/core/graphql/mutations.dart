@@ -275,3 +275,7 @@ const String assignCaregiverMutation = r'''
 mutation assignCaregiver($input: ClientCaregiverInput!) {
   assignCaregiver(input: $input)
 }''';
+const String addFacilityToProgramMutation = r'''
+mutation addFacilityToProgram($facilityIDs: [ID!]!) {
+  addFacilityToProgram(facilityIDs: $facilityIDs)
+}''';

@@ -30,7 +30,7 @@ const String fetchNotificationFiltersErrorString =
 const String pinServiceRequestFailedErrorString =
     'Error, PIN service request failed';
 const String registerClientErrorString = 'Error registering client';
-const String checkIdentifierErrorString = 'Error checking if identifier exists';
+const String checkIfPhoneErrorString = 'Error checking if phone number exists';
 const String registerCaregiverErrorString = 'Error registering caregiver';
 const String fetchFacilitiesErrorString = 'Error fetching facilities';
 const String fetchProgramsErrorString = 'Error fetching programs';

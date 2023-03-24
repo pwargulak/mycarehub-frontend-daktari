@@ -521,6 +521,7 @@ class RouteGenerator {
           builder: (_) => SearchFacilitiesPage(
             userID: (args as Map<String, dynamic>?)?['userID'] as String?,
             isClient: args?['isClient'] as bool?,
+            programId: args?['programId'] as String?,
           ),
           settings: const RouteSettings(name: 'Search facilities page'),
         );

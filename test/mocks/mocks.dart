@@ -1385,12 +1385,12 @@ class MockTestGraphQlClient extends IGraphQlClient {
         ),
       );
     }
-    if (queryString.contains(checkIdentifierExistsQuery)) {
+    if (queryString.contains(checkIfPhoneExistsQuery)) {
       return Future<http.Response>.value(
         http.Response(
           json.encode(
             <String, dynamic>{
-              'data': <String, dynamic>{'checkIdentifierExists': true}
+              'data': <String, dynamic>{'checkIfPhoneExists': true}
             },
           ),
           201,

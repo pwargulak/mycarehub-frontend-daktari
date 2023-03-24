@@ -15,15 +15,13 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_events.dart';
 import 'package:http/http.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
-class CheckIfIdentifierExistsAction extends ReduxAction<AppState> {
+class CheckIfPhoneNumberExistsAction extends ReduxAction<AppState> {
   final IGraphQlClient client;
-  final IdentifierType identifierType;
-  final String identifierValue;
+  final String phoneNumber;
 
-  CheckIfIdentifierExistsAction({
+  CheckIfPhoneNumberExistsAction({
     required this.client,
-    required this.identifierType,
-    required this.identifierValue,
+    required this.phoneNumber,
   });
 
   @override
@@ -44,12 +42,11 @@ class CheckIfIdentifierExistsAction extends ReduxAction<AppState> {
   @override
   Future<AppState?> reduce() async {
     final Map<String, dynamic> variables = <String, dynamic>{
-      'identifierType': identifierType.name,
-      'identifierValue': identifierValue,
+      'phoneNumber': phoneNumber,
     };
 
     final Response response = await client.query(
-      checkIdentifierExistsQuery,
+      checkIfPhoneExistsQuery,
       variables,
     );
 
@@ -65,8 +62,8 @@ class CheckIfIdentifierExistsAction extends ReduxAction<AppState> {
 
       if (errors != null) {
         reportErrorToSentry(
-          hint: checkIdentifierErrorString,
-          query: checkIdentifierExistsQuery,
+          hint: checkIfPhoneErrorString,
+          query: checkIfPhoneExistsQuery,
           response: response,
           state: state,
           variables: variables,
@@ -75,14 +72,14 @@ class CheckIfIdentifierExistsAction extends ReduxAction<AppState> {
       }
       final Map<String, dynamic>? data =
           responseMap['data'] as Map<String, dynamic>?;
-      final bool? identifierExists = data?['checkIdentifierExists'] as bool?;
+      final bool? phoneExists = data?['checkIfPhoneExists'] as bool?;
 
-      if (identifierExists ?? false) {
-        dispatch(BatchUpdateMiscStateAction(userExists: identifierExists));
+      if (phoneExists ?? false) {
+        dispatch(BatchUpdateMiscStateAction(userExists: phoneExists));
       }
 
       await AnalyticsService().logEvent(
-        name: checkIfIdentifierExists,
+        name: checkIfPhoneExists,
         eventType: AnalyticsEventType.INTERACTION,
       );
     }

@@ -56,7 +56,6 @@ void main() {
       await tester.pumpAndSettle();
 
       final Finder cccFieldFinder = find.byKey(cccFieldKey);
-      final Finder continueButtonFinder = find.byKey(continueKey);
       expect(cccFieldFinder, findsOneWidget);
       await tester.tap(cccFieldFinder);
       await tester.enterText(cccFieldFinder, '12345678');
@@ -66,12 +65,6 @@ void main() {
       await tester.ensureVisible(usernameFieldFinder);
       await tester.tap(usernameFieldFinder);
       await tester.enterText(usernameFieldFinder, 'testUsername');
-
-      expect(continueButtonFinder, findsOneWidget);
-      await tester.ensureVisible(continueButtonFinder);
-      await tester.tap(continueButtonFinder);
-      await tester.pumpAndSettle();
-      expect(continueButtonFinder, findsNothing);
 
       final Finder facilityFieldFinder =
           find.byKey(facilitySelectOptionFieldKey);
@@ -128,6 +121,7 @@ void main() {
       await tester.pumpAndSettle();
 
       final Finder phoneNumberFieldFinder = find.byKey(patientNumberField);
+      final Finder continueButtonFinder = find.byKey(continueKey);
       expect(phoneNumberFieldFinder, findsOneWidget);
       await tester.tap(phoneNumberFieldFinder);
       await tester.enterText(phoneNumberFieldFinder, '+254798363893');
@@ -145,9 +139,16 @@ void main() {
       await tester.tap(find.text('OK'));
       await tester.pumpAndSettle();
 
+      expect(continueButtonFinder, findsOneWidget);
+      await tester.ensureVisible(continueButtonFinder);
+      await tester.tap(continueButtonFinder);
+      await tester.pumpAndSettle();
+      expect(continueButtonFinder, findsNothing);
+
       final Finder clientTypeFinder =
           find.byKey(ValueKey<String>(ClientType.PMTCT.name));
       expect(clientTypeFinder, findsOneWidget);
+      await tester.ensureVisible(clientTypeFinder);
       await tester.tap(clientTypeFinder);
       await tester.pumpAndSettle();
 
@@ -204,6 +205,18 @@ void main() {
       await tester.tap(saveFacilityBtnFinder);
       await tester.pumpAndSettle();
 
+      final Finder searchFacilityIconBtnFinder =
+          find.byKey(searchFacilityIconBtnKey);
+      await tester.tap(searchFacilityIconBtnFinder);
+      await tester.pumpAndSettle();
+
+      await tester.tap(facilityFieldFinder);
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Kanairo').last);
+      await tester.pumpAndSettle();
+      await tester.tap(saveFacilityBtnFinder);
+      await tester.pumpAndSettle();
+
       final Finder fNameFieldFinder = find.byKey(firstNameKey);
       expect(fNameFieldFinder, findsOneWidget);
       await tester.tap(fNameFieldFinder);
@@ -235,9 +248,10 @@ void main() {
       await tester.pumpAndSettle();
 
       final Finder phoneNumberFieldFinder = find.byKey(patientNumberField);
+      final Finder continueButtonFinder = find.byKey(continueKey);
       expect(phoneNumberFieldFinder, findsOneWidget);
       await tester.tap(phoneNumberFieldFinder);
-      await tester.enterText(phoneNumberFieldFinder, '+254798000000');
+      await tester.enterText(phoneNumberFieldFinder, '+254798363893');
 
       // Enrollment field
       final Finder enrollmentField = find.byKey(enrollmentFieldKey);
@@ -252,9 +266,16 @@ void main() {
       await tester.tap(find.text('OK'));
       await tester.pumpAndSettle();
 
+      expect(continueButtonFinder, findsOneWidget);
+      await tester.ensureVisible(continueButtonFinder);
+      await tester.tap(continueButtonFinder);
+      await tester.pumpAndSettle();
+      expect(continueButtonFinder, findsNothing);
+
       final Finder clientTypeFinder =
           find.byKey(ValueKey<String>(ClientType.PMTCT.name));
       expect(clientTypeFinder, findsOneWidget);
+      await tester.ensureVisible(clientTypeFinder);
       await tester.tap(clientTypeFinder);
       await tester.pumpAndSettle();
 
@@ -283,34 +304,14 @@ void main() {
 
     testWidgets('ccc number field should show error',
         (WidgetTester tester) async {
-      final MockShortGraphQlClient mockShortGraphQlClient =
-          MockShortGraphQlClient.withResponse(
-        'idToken',
-        'endpoint',
-        Response(
-          json.encode(<String, dynamic>{'errors': 'some error occurred'}),
-          201,
-        ),
-      );
       await buildTestWidget(
         store: store,
         tester: tester,
         widget: const RegisterClientPage(),
-        graphQlClient: mockShortGraphQlClient,
       );
       await tester.pumpAndSettle();
 
       final Finder cccFieldFinder = find.byKey(cccFieldKey);
-      expect(cccFieldFinder, findsOneWidget);
-      await tester.tap(cccFieldFinder);
-      await tester.enterText(cccFieldFinder, '12345678');
-
-      final Finder usernameFieldFinder = find.byKey(usernameFieldKey);
-      expect(usernameFieldFinder, findsOneWidget);
-      await tester.ensureVisible(usernameFieldFinder);
-      await tester.tap(usernameFieldFinder);
-      await tester.enterText(usernameFieldFinder, 'testUsername');
-
       await tester.enterText(cccFieldFinder, '1234567890');
       expect(find.text('1234567890'), findsOneWidget);
 
@@ -360,16 +361,32 @@ void main() {
 
     testWidgets('phone number field should show error',
         (WidgetTester tester) async {
+      final MockShortGraphQlClient mockShortGraphQlClient =
+          MockShortGraphQlClient.withResponse(
+        'idToken',
+        'endpoint',
+        Response(
+          json.encode(<String, dynamic>{'errors': 'some error occurred'}),
+          201,
+        ),
+      );
       await buildTestWidget(
         store: store,
         tester: tester,
         widget: const RegisterClientPage(),
+        graphQlClient: mockShortGraphQlClient,
       );
       await tester.pumpAndSettle();
 
       final Finder phoneNumberFieldFinder = find.byKey(patientNumberField);
       expect(phoneNumberFieldFinder, findsOneWidget);
       await tester.enterText(phoneNumberFieldFinder, '+254798363893');
+
+      final Finder usernameFieldFinder = find.byKey(usernameFieldKey);
+      expect(usernameFieldFinder, findsOneWidget);
+      await tester.ensureVisible(usernameFieldFinder);
+      await tester.tap(usernameFieldFinder);
+      await tester.enterText(usernameFieldFinder, 'testUsername');
 
       await tester.enterText(phoneNumberFieldFinder, '');
       await tester.pump();

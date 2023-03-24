@@ -263,7 +263,7 @@ const String firstNameLabel = 'First Name *';
 const String lastNameLabel = 'Last Name *';
 const String birthDateLabel = 'Birth Date *';
 const String genderLabel = 'Gender *';
-const String phoneNoLabel = 'Phone No. *';
+const String phoneNumberLabel = 'Phone Number *';
 const String appInviteText = 'Invite to $consumerAppName';
 const String appReInviteText = 'Reinvite to $consumerAppName';
 const String appAlternateInvite = 'Resend $consumerAppName invite';
@@ -291,7 +291,7 @@ const String searchFacilitiesString = 'Search facilities';
 const String searchOrganisationsString = 'Search organisations';
 const String userAlreadyExistsString = 'User already exists';
 const String selectedProgramDescriptionString = 'The client will be added to this program and organization';
-const String userCCCAlreadyExistsDescriptionString = 'There is an already existing user with that CCC number. Do you still want to continue';
+const String userPhoneAlreadyExistsDescriptionString = 'There is an already existing user with that phone number. Do you still want to continue';
 
 // add new staff page
 const String registerStaffSuccess = 'Successfully registered staff';

@@ -1,6 +1,6 @@
 import 'package:prohealth360_daktari/application/core/services/input_validators.dart';
 import 'package:prohealth360_daktari/application/redux/actions/core/batch_update_misc_state_action.dart';
-import 'package:prohealth360_daktari/application/redux/actions/register_client/check_if_idenfier_exists_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/register_client/check_if_phone_number_exists_action.dart';
 import 'package:prohealth360_daktari/application/redux/actions/register_client/register_client_action.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/connectivity_view_model.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/misc_state_view_model.dart';
@@ -35,7 +35,7 @@ class RegisterClientPage extends StatefulWidget {
 }
 
 class _RegisterClientPageState extends State<RegisterClientPage> {
-  FocusNode focus = FocusNode();
+  FocusNode phoneInputFocus = FocusNode();
   final RegisterClientFormManager _formManager = RegisterClientFormManager();
   final TextEditingController dobTextController = TextEditingController();
   String username = '';
@@ -53,7 +53,7 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
   @override
   void initState() {
     super.initState();
-    focus.addListener(onCCCNumberFocusChange);
+    phoneInputFocus.addListener(onPhoneNumberFocusChange);
     _formManager.inGender.add(Gender.other);
 
     final Map<ClientType, bool> initialClientTypes =
@@ -149,7 +149,6 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
                               AsyncSnapshot<String> snapshot,
                             ) {
                               return PatientDetailsTextFormField(
-                                focusNode: focus,
                                 textFieldKey: cccFieldKey,
                                 hintText: cccNumberHint,
                                 keyboardType: TextInputType.text,
@@ -173,10 +172,62 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
                         ),
                       ],
                     ),
+
+                    const SizedBox(height: 24),
+
+                    // Phone number
+                    const Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        phoneNumberLabel,
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: AppColors.greyTextColor,
+                        ),
+                      ),
+                    ),
+                    smallVerticalSizedBox,
+                    Row(
+                      children: <Widget>[
+                        Flexible(
+                          child: StreamBuilder<String>(
+                            stream: _formManager.phoneNumber,
+                            builder: (
+                              BuildContext context,
+                              AsyncSnapshot<String> snapshot,
+                            ) {
+                              return MyAfyaHubPhoneInput(
+                                focusNode: phoneInputFocus,
+                                textFormFieldKey: patientNumberField,
+                                decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                  filled: true,
+                                  contentPadding: const EdgeInsets.all(8.0),
+                                ),
+                                style: const TextStyle(
+                                  color: AppColors.greyTextColor,
+                                ),
+                                onChanged: (String? value) {
+                                  if (value != null) {
+                                    _formManager.inPhoneNumber.add(value);
+                                  }
+                                },
+                                phoneNumberFormatter: formatPhoneNumber,
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
                     smallVerticalSizedBox,
                     const UserExistsBanner(
                       title: userAlreadyExistsString,
-                      description: userCCCAlreadyExistsDescriptionString,
+                      description: userPhoneAlreadyExistsDescriptionString,
                     ),
                     const SizedBox(height: 24),
                     // Username
@@ -359,45 +410,6 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
                     ),
                     const SizedBox(height: 24),
 
-                    // Phone number
-                    Row(
-                      children: <Widget>[
-                        Flexible(
-                          child: StreamBuilder<String>(
-                            stream: _formManager.phoneNumber,
-                            builder: (
-                              BuildContext context,
-                              AsyncSnapshot<String> snapshot,
-                            ) {
-                              return MyAfyaHubPhoneInput(
-                                textFormFieldKey: patientNumberField,
-                                decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(8),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                  filled: true,
-                                  contentPadding: const EdgeInsets.all(8.0),
-                                ),
-                                style: const TextStyle(
-                                  color: AppColors.greyTextColor,
-                                ),
-                                onChanged: (String? value) {
-                                  if (value != null) {
-                                    _formManager.inPhoneNumber.add(value);
-                                  }
-                                },
-                                phoneNumberFormatter: formatPhoneNumber,
-                                autovalidateMode:
-                                    AutovalidateMode.onUserInteraction,
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 24),
-
                     // Enrollment date
                     Row(
                       children: <Widget>[
@@ -575,8 +587,8 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
   @override
   void dispose() {
     super.dispose();
-    focus.removeListener(onCCCNumberFocusChange);
-    focus.dispose();
+    phoneInputFocus.removeListener(onPhoneNumberFocusChange);
+    phoneInputFocus.dispose();
   }
 
   List<Widget> getCheckBoxes(Map<ClientType, bool> clientTypes) {
@@ -604,14 +616,13 @@ class _RegisterClientPageState extends State<RegisterClientPage> {
     return result;
   }
 
-  void onCCCNumberFocusChange() {
-    if (!focus.hasFocus) {
+  void onPhoneNumberFocusChange() {
+    if (!phoneInputFocus.hasFocus) {
       StoreProvider.dispatch(
         context,
-        CheckIfIdentifierExistsAction(
+        CheckIfPhoneNumberExistsAction(
           client: AppWrapperBase.of(context)!.graphQLClient,
-          identifierType: IdentifierType.CCC,
-          identifierValue: _formManager.submit().cccNumber ?? '',
+          phoneNumber: _formManager.submit().phoneNumber ?? '',
         ),
       );
     }

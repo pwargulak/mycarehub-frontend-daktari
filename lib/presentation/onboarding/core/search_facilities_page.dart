@@ -21,8 +21,14 @@ import 'package:sghi_core/shared_themes/constants.dart';
 class SearchFacilitiesPage extends StatefulWidget {
   final String? userID;
   final bool? isClient;
+  final String? programId;
 
-  const SearchFacilitiesPage({super.key, this.userID, this.isClient});
+  const SearchFacilitiesPage({
+    super.key,
+    this.userID,
+    this.isClient,
+    this.programId,
+  });
   @override
   State<SearchFacilitiesPage> createState() => _SearchFacilitiesPageState();
 }

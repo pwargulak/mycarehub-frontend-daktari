@@ -17,7 +17,6 @@ class ProgramDetailPage extends StatelessWidget {
   const ProgramDetailPage({super.key});
   @override
   Widget build(BuildContext context) {
-
     return StoreConnector<AppState, ProgramsStateViewModel>(
       converter: (Store<AppState> store) =>
           ProgramsStateViewModel.fromStore(store),
@@ -113,6 +112,9 @@ class ProgramDetailPage extends StatelessWidget {
                                   onPressed: () =>
                                       Navigator.of(context).pushNamed(
                                     AppRoutes.searchFacilitiesPage,
+                                    arguments: <String, dynamic>{
+                                      'programId': selectedProgram?.id ?? '',
+                                    },
                                   ),
                                 ),
                               ),
