@@ -12,6 +12,7 @@ class ScreeningToolRespondent with _$ScreeningToolRespondent {
     @JsonKey(name: 'serviceRequestID') String? serviceRequestID,
     @JsonKey(name: 'name') String? name,
     @JsonKey(name: 'serviceRequest') String? serviceRequest,
+    @JsonKey(name: 'phoneNumber') String? phoneNumber,
   }) = _ScreeningToolRespondent;
 
   factory ScreeningToolRespondent.fromJson(Map<String, dynamic> json) =>
@@ -23,5 +24,6 @@ class ScreeningToolRespondent with _$ScreeningToolRespondent {
         screeningToolResponseID: UNKNOWN,
         serviceRequest: UNKNOWN,
         serviceRequestID: UNKNOWN,
+        phoneNumber: UNKNOWN,
       );
 }

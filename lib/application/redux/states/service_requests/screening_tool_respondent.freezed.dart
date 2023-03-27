@@ -31,6 +31,8 @@ mixin _$ScreeningToolRespondent {
   String? get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'serviceRequest')
   String? get serviceRequest => throw _privateConstructorUsedError;
+  @JsonKey(name: 'phoneNumber')
+  String? get phoneNumber => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,7 +51,8 @@ abstract class $ScreeningToolRespondentCopyWith<$Res> {
       @JsonKey(name: 'screeningToolResponseID') String? screeningToolResponseID,
       @JsonKey(name: 'serviceRequestID') String? serviceRequestID,
       @JsonKey(name: 'name') String? name,
-      @JsonKey(name: 'serviceRequest') String? serviceRequest});
+      @JsonKey(name: 'serviceRequest') String? serviceRequest,
+      @JsonKey(name: 'phoneNumber') String? phoneNumber});
 }
 
 /// @nodoc
@@ -71,6 +74,7 @@ class _$ScreeningToolRespondentCopyWithImpl<$Res,
     Object? serviceRequestID = freezed,
     Object? name = freezed,
     Object? serviceRequest = freezed,
+    Object? phoneNumber = freezed,
   }) {
     return _then(_value.copyWith(
       clientID: freezed == clientID
@@ -93,6 +97,10 @@ class _$ScreeningToolRespondentCopyWithImpl<$Res,
           ? _value.serviceRequest
           : serviceRequest // ignore: cast_nullable_to_non_nullable
               as String?,
+      phoneNumber: freezed == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -110,7 +118,8 @@ abstract class _$$_ScreeningToolRespondentCopyWith<$Res>
       @JsonKey(name: 'screeningToolResponseID') String? screeningToolResponseID,
       @JsonKey(name: 'serviceRequestID') String? serviceRequestID,
       @JsonKey(name: 'name') String? name,
-      @JsonKey(name: 'serviceRequest') String? serviceRequest});
+      @JsonKey(name: 'serviceRequest') String? serviceRequest,
+      @JsonKey(name: 'phoneNumber') String? phoneNumber});
 }
 
 /// @nodoc
@@ -130,6 +139,7 @@ class __$$_ScreeningToolRespondentCopyWithImpl<$Res>
     Object? serviceRequestID = freezed,
     Object? name = freezed,
     Object? serviceRequest = freezed,
+    Object? phoneNumber = freezed,
   }) {
     return _then(_$_ScreeningToolRespondent(
       clientID: freezed == clientID
@@ -152,6 +162,10 @@ class __$$_ScreeningToolRespondentCopyWithImpl<$Res>
           ? _value.serviceRequest
           : serviceRequest // ignore: cast_nullable_to_non_nullable
               as String?,
+      phoneNumber: freezed == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -164,7 +178,8 @@ class _$_ScreeningToolRespondent implements _ScreeningToolRespondent {
       @JsonKey(name: 'screeningToolResponseID') this.screeningToolResponseID,
       @JsonKey(name: 'serviceRequestID') this.serviceRequestID,
       @JsonKey(name: 'name') this.name,
-      @JsonKey(name: 'serviceRequest') this.serviceRequest});
+      @JsonKey(name: 'serviceRequest') this.serviceRequest,
+      @JsonKey(name: 'phoneNumber') this.phoneNumber});
 
   factory _$_ScreeningToolRespondent.fromJson(Map<String, dynamic> json) =>
       _$$_ScreeningToolRespondentFromJson(json);
@@ -184,10 +199,13 @@ class _$_ScreeningToolRespondent implements _ScreeningToolRespondent {
   @override
   @JsonKey(name: 'serviceRequest')
   final String? serviceRequest;
+  @override
+  @JsonKey(name: 'phoneNumber')
+  final String? phoneNumber;
 
   @override
   String toString() {
-    return 'ScreeningToolRespondent(clientID: $clientID, screeningToolResponseID: $screeningToolResponseID, serviceRequestID: $serviceRequestID, name: $name, serviceRequest: $serviceRequest)';
+    return 'ScreeningToolRespondent(clientID: $clientID, screeningToolResponseID: $screeningToolResponseID, serviceRequestID: $serviceRequestID, name: $name, serviceRequest: $serviceRequest, phoneNumber: $phoneNumber)';
   }
 
   @override
@@ -204,13 +222,21 @@ class _$_ScreeningToolRespondent implements _ScreeningToolRespondent {
                 other.serviceRequestID == serviceRequestID) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.serviceRequest, serviceRequest) ||
-                other.serviceRequest == serviceRequest));
+                other.serviceRequest == serviceRequest) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, clientID,
-      screeningToolResponseID, serviceRequestID, name, serviceRequest);
+  int get hashCode => Object.hash(
+      runtimeType,
+      clientID,
+      screeningToolResponseID,
+      serviceRequestID,
+      name,
+      serviceRequest,
+      phoneNumber);
 
   @JsonKey(ignore: true)
   @override
@@ -239,7 +265,9 @@ abstract class _ScreeningToolRespondent implements ScreeningToolRespondent {
       @JsonKey(name: 'name')
           final String? name,
       @JsonKey(name: 'serviceRequest')
-          final String? serviceRequest}) = _$_ScreeningToolRespondent;
+          final String? serviceRequest,
+      @JsonKey(name: 'phoneNumber')
+          final String? phoneNumber}) = _$_ScreeningToolRespondent;
 
   factory _ScreeningToolRespondent.fromJson(Map<String, dynamic> json) =
       _$_ScreeningToolRespondent.fromJson;
@@ -259,6 +287,9 @@ abstract class _ScreeningToolRespondent implements ScreeningToolRespondent {
   @override
   @JsonKey(name: 'serviceRequest')
   String? get serviceRequest;
+  @override
+  @JsonKey(name: 'phoneNumber')
+  String? get phoneNumber;
   @override
   @JsonKey(ignore: true)
   _$$_ScreeningToolRespondentCopyWith<_$_ScreeningToolRespondent>

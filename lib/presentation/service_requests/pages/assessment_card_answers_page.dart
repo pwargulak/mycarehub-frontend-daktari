@@ -78,6 +78,7 @@ class _AssessmentCardAnswersPageState extends State<AssessmentCardAnswersPage> {
     final String staffFirstName = userProfileState?.user?.firstName ?? '';
     final String staffLastName = userProfileState?.user?.lastName ?? '';
     final String facilityName = userProfileState?.defaultFacilityName ?? '';
+
     return Scaffold(
       appBar: const CustomAppBar(title: assessmentCardTitle),
       body: Padding(
@@ -88,6 +89,8 @@ class _AssessmentCardAnswersPageState extends State<AssessmentCardAnswersPage> {
           builder: (BuildContext context, ScreeningToolsViewModel vm) {
             final ScreeningToolQuestionResponses? response =
                 vm.screeningToolQuestionResponses;
+            final String respondentPhoneNumber =
+                vm.selectedRespondent?.phoneNumber ?? '';
             return SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -135,7 +138,7 @@ class _AssessmentCardAnswersPageState extends State<AssessmentCardAnswersPage> {
                   mediumVerticalSizedBox,
                   ReachOutWidget(
                     platform: platform,
-                    phoneNumber: '',
+                    phoneNumber: respondentPhoneNumber,
                     clientName: assessmentResponse.name ?? '',
                     staffFirstName: staffFirstName,
                     staffLastName: staffLastName,

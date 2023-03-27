@@ -14,6 +14,7 @@ _$_ScreeningToolRespondent _$$_ScreeningToolRespondentFromJson(
       serviceRequestID: json['serviceRequestID'] as String?,
       name: json['name'] as String?,
       serviceRequest: json['serviceRequest'] as String?,
+      phoneNumber: json['phoneNumber'] as String?,
     );
 
 Map<String, dynamic> _$$_ScreeningToolRespondentToJson(
@@ -24,4 +25,5 @@ Map<String, dynamic> _$$_ScreeningToolRespondentToJson(
       'serviceRequestID': instance.serviceRequestID,
       'name': instance.name,
       'serviceRequest': instance.serviceRequest,
+      'phoneNumber': instance.phoneNumber,
     };

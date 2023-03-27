@@ -23,7 +23,7 @@ mixin _$OrganisationState {
   List<Organisation>? get organisations => throw _privateConstructorUsedError;
   Organisation? get selectedOrganisation => throw _privateConstructorUsedError;
   bool? get errorGettingOrganisations =>
-      throw _privateConstructorUsedError; //User when creating an organisation
+      throw _privateConstructorUsedError; //Used when creating an organisation
   List<Map<String, dynamic>>? get programsPayload =>
       throw _privateConstructorUsedError;
 
@@ -172,7 +172,7 @@ class _$_OrganisationState implements _OrganisationState {
   final Organisation? selectedOrganisation;
   @override
   final bool? errorGettingOrganisations;
-//User when creating an organisation
+//Used when creating an organisation
   @override
   final List<Map<String, dynamic>>? programsPayload;
 
@@ -238,7 +238,7 @@ abstract class _OrganisationState implements OrganisationState {
   Organisation? get selectedOrganisation;
   @override
   bool? get errorGettingOrganisations;
-  @override //User when creating an organisation
+  @override //Used when creating an organisation
   List<Map<String, dynamic>>? get programsPayload;
   @override
   @JsonKey(ignore: true)

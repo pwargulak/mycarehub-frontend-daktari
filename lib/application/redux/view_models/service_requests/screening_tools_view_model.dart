@@ -15,8 +15,9 @@ class ScreeningToolsViewModel extends Vm {
   }) : super(
           equals: <Object?>[
             wait,
-            screeningToolRespondents,
             errorFetchingScreeningTools,
+            availableTools,
+            screeningToolRespondents,
             screeningToolQuestionResponses,
             selectedRespondent,
           ],
@@ -33,6 +34,8 @@ class ScreeningToolsViewModel extends Vm {
           store.state.serviceRequestState?.screeningToolsState?.availableTools,
       screeningToolQuestionResponses: store.state.serviceRequestState
           ?.screeningToolsState?.screeningToolQuestionResponses,
+      selectedRespondent: store
+          .state.serviceRequestState?.screeningToolsState?.selectedRespondent,
     );
   }
 
