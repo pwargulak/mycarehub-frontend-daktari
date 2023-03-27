@@ -20,8 +20,8 @@ import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.da
 import 'package:prohealth360_daktari/presentation/service_requests/widgets/assessment_card.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/widgets/reach_out_widget.dart';
 
-class AssessmentCardAnswersPage extends StatefulWidget {
-  const AssessmentCardAnswersPage({
+class ScreeningToolAnswersPage extends StatefulWidget {
+  const ScreeningToolAnswersPage({
     super.key,
     required this.payload,
   });
@@ -29,11 +29,11 @@ class AssessmentCardAnswersPage extends StatefulWidget {
   final Map<String, dynamic> payload;
 
   @override
-  State<AssessmentCardAnswersPage> createState() =>
-      _AssessmentCardAnswersPageState();
+  State<ScreeningToolAnswersPage> createState() =>
+      _ScreeningToolAnswersPageState();
 }
 
-class _AssessmentCardAnswersPageState extends State<AssessmentCardAnswersPage> {
+class _ScreeningToolAnswersPageState extends State<ScreeningToolAnswersPage> {
   Map<String, bool> actionsList = <String, bool>{
     noFurtherActionRequiredString: false,
     followUpVisitBookedString: false,
@@ -47,13 +47,11 @@ class _AssessmentCardAnswersPageState extends State<AssessmentCardAnswersPage> {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       final ScreeningToolRespondent assessmentResponse =
           widget.payload['assessmentResponse'] as ScreeningToolRespondent;
-      final ScreeningToolsType toolsType =
-          widget.payload['toolType'] as ScreeningToolsType;
+
       StoreProvider.dispatch<AppState>(
         context,
         FetchScreeningToolResponsesAction(
           client: AppWrapperBase.of(context)!.graphQLClient,
-          toolsType: toolsType,
           screeningToolRespondentId:
               assessmentResponse.screeningToolResponseID ?? '',
           onFailure: () => showTextSnackbar(

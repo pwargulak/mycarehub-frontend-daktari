@@ -85,7 +85,7 @@ class ResolveScreeningToolServiceRequestAction extends ReduxAction<AppState> {
         FetchAvailableFacilityScreeningToolsAction(client: client),
       );
       dispatch(
-        FetchAssessmentRespondentsAction(
+        FetchScreeningToolsRespondentsAction(
           client: client,
           screeningToolID: screeningToolId,
         ),

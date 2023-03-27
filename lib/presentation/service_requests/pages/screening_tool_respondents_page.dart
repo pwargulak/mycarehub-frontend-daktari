@@ -16,11 +16,11 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
-import 'package:prohealth360_daktari/presentation/service_requests/widgets/assessment_request_item_widget.dart';
+import 'package:prohealth360_daktari/presentation/service_requests/widgets/screening_tool_respondent_widget.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 
-class AssessmentToolResponsesPage extends StatefulWidget {
-  const AssessmentToolResponsesPage({
+class ScreeningToolRespondentsPage extends StatefulWidget {
+  const ScreeningToolRespondentsPage({
     super.key,
     required this.screeningTool,
   });
@@ -28,19 +28,19 @@ class AssessmentToolResponsesPage extends StatefulWidget {
   final ScreeningTool screeningTool;
 
   @override
-  State<AssessmentToolResponsesPage> createState() =>
-      _AssessmentToolResponsesPageState();
+  State<ScreeningToolRespondentsPage> createState() =>
+      _ScreeningToolRespondentsPageState();
 }
 
-class _AssessmentToolResponsesPageState
-    extends State<AssessmentToolResponsesPage> {
+class _ScreeningToolRespondentsPageState
+    extends State<ScreeningToolRespondentsPage> {
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       StoreProvider.dispatch<AppState>(
         context,
-        FetchAssessmentRespondentsAction(
+        FetchScreeningToolsRespondentsAction(
           client: AppWrapperBase.of(context)!.graphQLClient,
           screeningToolID: widget.screeningTool.id ?? '',
         ),
@@ -93,7 +93,7 @@ class _AssessmentToolResponsesPageState
                       )
                     } else if (responses?.isNotEmpty ?? false)
                       ...List<Widget>.generate(responses!.length, (int index) {
-                        return AssessmentRequestItemWidget(
+                        return ScreeningToolRespondentWidget(
                           selectedRespondent: responses[index],
                           toolsType: toolType,
                         );
@@ -135,7 +135,7 @@ class _AssessmentToolResponsesPageState
                       recoverCallback: () {
                         StoreProvider.dispatch<AppState>(
                           context,
-                          FetchAssessmentRespondentsAction(
+                          FetchScreeningToolsRespondentsAction(
                             client: AppWrapperBase.of(context)!.graphQLClient,
                             screeningToolID: widget.screeningTool.id ?? '',
                           ),

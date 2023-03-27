@@ -13,9 +13,9 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
-import 'package:prohealth360_daktari/presentation/service_requests/pages/assessment_card_answers_page.dart';
+import 'package:prohealth360_daktari/presentation/service_requests/pages/screening_tool_answers_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/screening_tools_list_page.dart';
-import 'package:prohealth360_daktari/presentation/service_requests/widgets/assessment_request_item_widget.dart';
+import 'package:prohealth360_daktari/presentation/service_requests/widgets/screening_tool_respondent_widget.dart';
 import '../../../mocks/mocks.dart';
 import '../../../mocks/test_helpers.dart';
 
@@ -92,10 +92,10 @@ void main() {
       await tester.pumpAndSettle();
 
       await tester.tap(
-        find.byType(AssessmentRequestItemWidget).first,
+        find.byType(ScreeningToolRespondentWidget).first,
       );
       await tester.pumpAndSettle();
-      expect(find.byType(AssessmentCardAnswersPage), findsOneWidget);
+      expect(find.byType(ScreeningToolAnswersPage), findsOneWidget);
     });
 
     testWidgets('should show a loading indicator when fetching screening tools',
@@ -111,6 +111,33 @@ void main() {
 
       expect(find.byType(PlatformLoader), findsOneWidget);
     });
+
+    testWidgets(
+      'Handles no data',
+      (WidgetTester tester) async {
+        final MockShortGraphQlClient mockShortGraphQlClient =
+            MockShortGraphQlClient.withResponse(
+          'idToken',
+          'endpoint',
+          Response(
+            json.encode(<String, dynamic>{'data': null}),
+            201,
+          ),
+        );
+
+        await buildTestWidget(
+          tester: tester,
+          store: store,
+          graphQlClient: mockShortGraphQlClient,
+          widget: const ScreeningToolsListPage(),
+        );
+
+        await tester.pumpAndSettle();
+        final Finder genericNoDataButton = find.byType(GenericErrorWidget);
+
+        expect(genericNoDataButton, findsOneWidget);
+      },
+    );
     testWidgets(
       'should show an error widget when fetching screening tools',
       (WidgetTester tester) async {

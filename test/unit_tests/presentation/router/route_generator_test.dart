@@ -68,8 +68,8 @@ import 'package:prohealth360_daktari/presentation/roles/widgets/staff_assign_rol
 import 'package:prohealth360_daktari/presentation/router/route_generator.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:prohealth360_daktari/presentation/search/pages/search_page.dart';
-import 'package:prohealth360_daktari/presentation/service_requests/pages/assessment_card_answers_page.dart';
-import 'package:prohealth360_daktari/presentation/service_requests/pages/assessment_tools_responses_page.dart';
+import 'package:prohealth360_daktari/presentation/service_requests/pages/screening_tool_answers_page.dart';
+import 'package:prohealth360_daktari/presentation/service_requests/pages/screening_tool_respondents_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/pin_reset_requests_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/red_flag_actions_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/red_flags_page.dart';
@@ -524,12 +524,12 @@ void main() {
       arguments: <String, dynamic>{},
     );
 
-    final MaterialPageRoute<AssessmentCardAnswersPage>? route =
+    final MaterialPageRoute<ScreeningToolAnswersPage>? route =
         routeGenerator(settings)
-            as MaterialPageRoute<AssessmentCardAnswersPage>?;
+            as MaterialPageRoute<ScreeningToolAnswersPage>?;
 
-    expect(route, isA<MaterialPageRoute<AssessmentCardAnswersPage>>());
-    expect(route?.builder(context), isA<AssessmentCardAnswersPage>());
+    expect(route, isA<MaterialPageRoute<ScreeningToolAnswersPage>>());
+    expect(route?.builder(context), isA<ScreeningToolAnswersPage>());
   });
   test('Test router returns AssessmentToolsCategoryPage', () {
     final RouteSettings settings = RouteSettings(
@@ -537,12 +537,12 @@ void main() {
       arguments: ScreeningTool.initial(),
     );
 
-    final MaterialPageRoute<AssessmentToolResponsesPage>? route =
+    final MaterialPageRoute<ScreeningToolRespondentsPage>? route =
         routeGenerator(settings)
-            as MaterialPageRoute<AssessmentToolResponsesPage>?;
+            as MaterialPageRoute<ScreeningToolRespondentsPage>?;
 
-    expect(route, isA<MaterialPageRoute<AssessmentToolResponsesPage>>());
-    expect(route?.builder(context), isA<AssessmentToolResponsesPage>());
+    expect(route, isA<MaterialPageRoute<ScreeningToolRespondentsPage>>());
+    expect(route?.builder(context), isA<ScreeningToolRespondentsPage>());
   });
 
   test('Test router returns successful resume pin connector', () {

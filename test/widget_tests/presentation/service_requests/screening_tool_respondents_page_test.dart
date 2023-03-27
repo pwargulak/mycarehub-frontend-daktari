@@ -12,14 +12,14 @@ import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 // Project imports:
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
-import 'package:prohealth360_daktari/presentation/service_requests/pages/assessment_tools_responses_page.dart';
-import 'package:prohealth360_daktari/presentation/service_requests/pages/assessment_card_answers_page.dart';
-import 'package:prohealth360_daktari/presentation/service_requests/widgets/assessment_request_item_widget.dart';
+import 'package:prohealth360_daktari/presentation/service_requests/pages/screening_tool_respondents_page.dart';
+import 'package:prohealth360_daktari/presentation/service_requests/pages/screening_tool_answers_page.dart';
+import 'package:prohealth360_daktari/presentation/service_requests/widgets/screening_tool_respondent_widget.dart';
 import '../../../mocks/mocks.dart';
 import '../../../mocks/test_helpers.dart';
 
 void main() {
-  group('AssessmentToolResponsesPage', () {
+  group('ScreeningToolRespondentsPage', () {
     late Store<AppState> store;
 
     setUp(() {
@@ -30,19 +30,19 @@ void main() {
       await buildTestWidget(
         tester: tester,
         store: store,
-        widget: AssessmentToolResponsesPage(
+        widget: ScreeningToolRespondentsPage(
           screeningTool: ScreeningTool.initial(),
         ),
         graphQlClient: MockTestGraphQlClient(),
       );
       await tester.pumpAndSettle();
-      final Finder responseItem = find.byType(AssessmentRequestItemWidget);
+      final Finder responseItem = find.byType(ScreeningToolRespondentWidget);
 
       expect(responseItem, findsNWidgets(2));
 
       await tester.tap(responseItem.first);
       await tester.pumpAndSettle();
-      expect(find.byType(AssessmentCardAnswersPage), findsOneWidget);
+      expect(find.byType(ScreeningToolAnswersPage), findsOneWidget);
     });
 
     testWidgets('should show a loading indicator when fetching screening tools',
@@ -54,7 +54,7 @@ void main() {
         tester: tester,
         store: store,
         graphQlClient: mockGraphQlClient,
-        widget: AssessmentToolResponsesPage(
+        widget: ScreeningToolRespondentsPage(
           screeningTool: ScreeningTool.initial(),
         ),
       );
@@ -78,7 +78,44 @@ void main() {
           tester: tester,
           store: store,
           graphQlClient: mockShortGraphQlClient,
-          widget: AssessmentToolResponsesPage(
+          widget: ScreeningToolRespondentsPage(
+            screeningTool: ScreeningTool.initial(),
+          ),
+        );
+
+        await tester.pumpAndSettle();
+        final Finder genericNoDataButton = find.byKey(helpNoDataWidgetKey);
+
+        expect(genericNoDataButton, findsOneWidget);
+
+        /// Refresh and expect the same thing
+        await tester.ensureVisible(genericNoDataButton);
+        await tester.pumpAndSettle();
+        await tester.tap(find.byKey(helpNoDataWidgetKey));
+
+        await tester.pumpAndSettle();
+        expect(genericNoDataButton, findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      'should show an error correctly when fetching screening tools',
+      (WidgetTester tester) async {
+        final MockShortGraphQlClient mockShortGraphQlClient =
+            MockShortGraphQlClient.withResponse(
+          'idToken',
+          'endpoint',
+          Response(
+            json.encode(<String, dynamic>{'data': null}),
+            201,
+          ),
+        );
+
+        await buildTestWidget(
+          tester: tester,
+          store: store,
+          graphQlClient: mockShortGraphQlClient,
+          widget: ScreeningToolRespondentsPage(
             screeningTool: ScreeningTool.initial(),
           ),
         );

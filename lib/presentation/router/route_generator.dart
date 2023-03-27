@@ -73,8 +73,8 @@ import 'package:prohealth360_daktari/presentation/roles/update_role_page.dart';
 import 'package:prohealth360_daktari/presentation/roles/widgets/staff_assign_role_page.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:prohealth360_daktari/presentation/search/pages/search_page.dart';
-import 'package:prohealth360_daktari/presentation/service_requests/pages/assessment_card_answers_page.dart';
-import 'package:prohealth360_daktari/presentation/service_requests/pages/assessment_tools_responses_page.dart';
+import 'package:prohealth360_daktari/presentation/service_requests/pages/screening_tool_answers_page.dart';
+import 'package:prohealth360_daktari/presentation/service_requests/pages/screening_tool_respondents_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/pin_reset_requests_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/red_flag_actions_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/red_flags_page.dart';
@@ -445,16 +445,16 @@ class RouteGenerator {
           settings: const RouteSettings(name: 'Screening tools list page'),
         );
       case AppRoutes.assessmentToolResponsesPage:
-        return MaterialPageRoute<AssessmentToolResponsesPage>(
-          builder: (_) => AssessmentToolResponsesPage(
+        return MaterialPageRoute<ScreeningToolRespondentsPage>(
+          builder: (_) => ScreeningToolRespondentsPage(
             screeningTool: args as ScreeningTool,
           ),
           settings: const RouteSettings(name: 'AssessmentTool responses page'),
         );
 
       case AppRoutes.assessmentCardAnswersPage:
-        return MaterialPageRoute<AssessmentCardAnswersPage>(
-          builder: (_) => AssessmentCardAnswersPage(
+        return MaterialPageRoute<ScreeningToolAnswersPage>(
+          builder: (_) => ScreeningToolAnswersPage(
             payload: args as Map<String, dynamic>,
           ),
           settings: const RouteSettings(name: 'Assessment card answers page'),
@@ -649,8 +649,7 @@ class RouteGenerator {
 
       case AppRoutes.manageProgramsPageRoute:
         return MaterialPageRoute<ManageProgramsPage>(
-          builder: (_) => const ManageProgramsPage(
-          ),
+          builder: (_) => const ManageProgramsPage(),
           settings: const RouteSettings(name: 'Manage Programs Page'),
         );
 

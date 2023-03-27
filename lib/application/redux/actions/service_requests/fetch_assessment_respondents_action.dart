@@ -13,11 +13,11 @@ import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/redux/states/service_requests/screening_tool_respondent.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
-class FetchAssessmentRespondentsAction extends ReduxAction<AppState> {
+class FetchScreeningToolsRespondentsAction extends ReduxAction<AppState> {
   final IGraphQlClient client;
   final String screeningToolID;
 
-  FetchAssessmentRespondentsAction({
+  FetchScreeningToolsRespondentsAction({
     required this.client,
     required this.screeningToolID,
   });
@@ -75,26 +75,35 @@ class FetchAssessmentRespondentsAction extends ReduxAction<AppState> {
 
       return null;
     }
-    final Map<String, dynamic> data = payLoad['data'] as Map<String, dynamic>;
-    final Map<String, dynamic> respondentsData =
-        data['getScreeningToolRespondents'] as Map<String, dynamic>;
-    final List<ScreeningToolRespondent> screeningToolRespondents =
-        <ScreeningToolRespondent>[];
+    final Map<String, dynamic>? data = payLoad['data'] as Map<String, dynamic>?;
+    if ((data?['getScreeningToolRespondents'] as Map<String, dynamic>?) !=
+        null) {
+      final Map<String, dynamic> respondentsData =
+          data?['getScreeningToolRespondents'] as Map<String, dynamic>;
+      final List<ScreeningToolRespondent> screeningToolRespondents =
+          <ScreeningToolRespondent>[];
 
-    for (final dynamic respondentJSON
-        in respondentsData['screeningToolRespondents'] as List<dynamic>) {
-      screeningToolRespondents.add(
-        ScreeningToolRespondent.fromJson(
-          respondentJSON as Map<String, dynamic>,
+      for (final dynamic respondentJSON
+          in respondentsData['screeningToolRespondents'] as List<dynamic>) {
+        screeningToolRespondents.add(
+          ScreeningToolRespondent.fromJson(
+            respondentJSON as Map<String, dynamic>,
+          ),
+        );
+      }
+
+      dispatch(
+        UpdateScreeningToolsStateAction(
+          screeningToolRespondents: screeningToolRespondents,
+        ),
+      );
+    } else {
+      dispatch(
+        UpdateServiceRequestsStateAction(
+          errorFetchingPendingServiceRequests: true,
         ),
       );
     }
-
-    dispatch(
-      UpdateScreeningToolsStateAction(
-        screeningToolRespondents: screeningToolRespondents,
-      ),
-    );
 
     return state;
   }

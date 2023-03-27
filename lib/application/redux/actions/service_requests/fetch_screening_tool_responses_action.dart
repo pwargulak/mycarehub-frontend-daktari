@@ -11,17 +11,14 @@ import 'package:prohealth360_daktari/application/core/services/utils.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:http/http.dart';
-import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class FetchScreeningToolResponsesAction extends ReduxAction<AppState> {
   final IGraphQlClient client;
-  final ScreeningToolsType toolsType;
   final String screeningToolRespondentId;
   final VoidCallback? onFailure;
 
   FetchScreeningToolResponsesAction({
-    required this.toolsType,
     required this.client,
     required this.screeningToolRespondentId,
     this.onFailure,
@@ -67,18 +64,22 @@ class FetchScreeningToolResponsesAction extends ReduxAction<AppState> {
 
       return null;
     }
-    final Map<String, dynamic> data = payLoad['data'] as Map<String, dynamic>;
-    final Map<String, dynamic> responsesData =
-        data['getScreeningToolResponse'] as Map<String, dynamic>;
+    final Map<String, dynamic>? data = payLoad['data'] as Map<String, dynamic>?;
+    if ((data?['getScreeningToolResponse'] as Map<String, dynamic>?) != null) {
+      final Map<String, dynamic> responsesData =
+          data!['getScreeningToolResponse'] as Map<String, dynamic>;
 
-    final ScreeningToolQuestionResponses screeningToolQuestionResponses =
-        ScreeningToolQuestionResponses.fromJson(responsesData);
+      final ScreeningToolQuestionResponses screeningToolQuestionResponses =
+          ScreeningToolQuestionResponses.fromJson(responsesData);
 
-    store.dispatch(
-      UpdateScreeningToolsStateAction(
-        screeningToolQuestionResponses: screeningToolQuestionResponses,
-      ),
-    );
+      store.dispatch(
+        UpdateScreeningToolsStateAction(
+          screeningToolQuestionResponses: screeningToolQuestionResponses,
+        ),
+      );
+    } else {
+      onFailure?.call();
+    }
 
     return state;
   }

@@ -75,22 +75,32 @@ class FetchAvailableFacilityScreeningToolsAction extends ReduxAction<AppState> {
 
       return null;
     }
-    final Map<String, dynamic> data = payLoad['data'] as Map<String, dynamic>;
-    final Map<String, dynamic> screeningToolData =
-        data['getFacilityRespondedScreeningTools'] as Map<String, dynamic>;
+    final Map<String, dynamic>? data = payLoad['data'] as Map<String, dynamic>?;
+    if ((data?['getFacilityRespondedScreeningTools']
+            as Map<String, dynamic>?) !=
+        null) {
+      final Map<String, dynamic> screeningToolData =
+          data!['getFacilityRespondedScreeningTools'] as Map<String, dynamic>;
 
-    final List<ScreeningTool> screeningToolsList = <ScreeningTool>[];
+      final List<ScreeningTool> screeningToolsList = <ScreeningTool>[];
 
-    for (final dynamic toolJSON
-        in screeningToolData['screeningTools'] as List<dynamic>) {
-      screeningToolsList.add(
-        ScreeningTool.fromJson(toolJSON as Map<String, dynamic>),
+      for (final dynamic toolJSON
+          in screeningToolData['screeningTools'] as List<dynamic>) {
+        screeningToolsList.add(
+          ScreeningTool.fromJson(toolJSON as Map<String, dynamic>),
+        );
+      }
+
+      dispatch(
+        UpdateScreeningToolsStateAction(availableTools: screeningToolsList),
+      );
+    } else {
+      dispatch(
+        UpdateServiceRequestsStateAction(
+          errorFetchingPendingServiceRequests: true,
+        ),
       );
     }
-
-    dispatch(
-      UpdateScreeningToolsStateAction(availableTools: screeningToolsList),
-    );
 
     return state;
   }

@@ -17,13 +17,13 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart'
 
 // Project imports:
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
-import 'package:prohealth360_daktari/presentation/service_requests/pages/assessment_card_answers_page.dart';
+import 'package:prohealth360_daktari/presentation/service_requests/pages/screening_tool_answers_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/widgets/assessment_card.dart';
 import '../../../mocks/mocks.dart';
 import '../../../mocks/test_helpers.dart';
 
 void main() {
-  group('AssessmentToolResponsesPage', () {
+  group('ScreeningToolAnswersPage', () {
     late Store<AppState> store;
 
     setUp(() {
@@ -34,7 +34,7 @@ void main() {
       await buildTestWidget(
         tester: tester,
         store: store,
-        widget: AssessmentCardAnswersPage(
+        widget: ScreeningToolAnswersPage(
           payload: <String, dynamic>{
             'toolType': ScreeningToolsType.ALCOHOL_SUBSTANCE_ASSESSMENT,
             'assessmentResponse': ScreeningToolRespondent.fromJson(
@@ -58,7 +58,7 @@ void main() {
         tester: tester,
         store: store,
         graphQlClient: mockGraphQlClient,
-        widget: AssessmentCardAnswersPage(
+        widget: ScreeningToolAnswersPage(
           payload: <String, dynamic>{
             'toolType': ScreeningToolsType.ALCOHOL_SUBSTANCE_ASSESSMENT,
             'assessmentResponse': ScreeningToolRespondent.fromJson(
@@ -87,7 +87,45 @@ void main() {
           tester: tester,
           store: store,
           graphQlClient: mockShortGraphQlClient,
-          widget: AssessmentCardAnswersPage(
+          widget: ScreeningToolAnswersPage(
+            payload: <String, dynamic>{
+              'toolType': ScreeningToolsType.ALCOHOL_SUBSTANCE_ASSESSMENT,
+              'assessmentResponse': ScreeningToolRespondent.fromJson(
+                mockAssessmentResponsesByToolType,
+              ),
+            },
+          ),
+        );
+
+        await tester.pumpAndSettle();
+        expect(find.byType(SnackBar), findsOneWidget);
+        expect(find.text(somethingWentWrongText), findsOneWidget);
+        expect(find.text(closeString), findsOneWidget);
+
+        await tester.tap(find.text(closeString));
+        await tester.pumpAndSettle();
+        expect(find.byType(SnackBar), findsNothing);
+      },
+    );
+
+    testWidgets(
+      'should show an error snackbar when API response is empty',
+      (WidgetTester tester) async {
+        final MockShortGraphQlClient mockShortGraphQlClient =
+            MockShortGraphQlClient.withResponse(
+          'idToken',
+          'endpoint',
+          Response(
+            json.encode(<String, dynamic>{'data': null}),
+            201,
+          ),
+        );
+
+        await buildTestWidget(
+          tester: tester,
+          store: store,
+          graphQlClient: mockShortGraphQlClient,
+          widget: ScreeningToolAnswersPage(
             payload: <String, dynamic>{
               'toolType': ScreeningToolsType.ALCOHOL_SUBSTANCE_ASSESSMENT,
               'assessmentResponse': ScreeningToolRespondent.fromJson(
@@ -124,7 +162,7 @@ void main() {
         tester: tester,
         store: store,
         graphQlClient: MockTestGraphQlClient(),
-        widget: AssessmentCardAnswersPage(
+        widget: ScreeningToolAnswersPage(
           payload: <String, dynamic>{
             'toolType': ScreeningToolsType.ALCOHOL_SUBSTANCE_ASSESSMENT,
             'assessmentResponse': ScreeningToolRespondent.fromJson(
@@ -214,7 +252,7 @@ void main() {
         tester: tester,
         store: store,
         graphQlClient: mockShortGraphQlClient,
-        widget: AssessmentCardAnswersPage(
+        widget: ScreeningToolAnswersPage(
           payload: <String, dynamic>{
             'toolType': ScreeningToolsType.ALCOHOL_SUBSTANCE_ASSESSMENT,
             'assessmentResponse': ScreeningToolRespondent.fromJson(

@@ -8,8 +8,8 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 
-class AssessmentRequestItemWidget extends StatelessWidget {
-  const AssessmentRequestItemWidget({
+class ScreeningToolRespondentWidget extends StatelessWidget {
+  const ScreeningToolRespondentWidget({
     super.key,
     required this.selectedRespondent,
     required this.toolsType,
