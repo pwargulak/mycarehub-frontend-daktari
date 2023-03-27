@@ -286,6 +286,6 @@ mutation assignCaregiver($input: ClientCaregiverInput!) {
   assignCaregiver(input: $input)
 }''';
 const String addFacilityToProgramMutation = r'''
-mutation addFacilityToProgram($facilityIDs: [ID!]!) {
-  addFacilityToProgram(facilityIDs: $facilityIDs)
+mutation addFacilityToProgram($facilityIDs: [ID!]!, $programID: String!) {
+  addFacilityToProgram(facilityIDs: $facilityIDs, programID: $programID)
 }''';

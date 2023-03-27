@@ -5,10 +5,8 @@ import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/facilities/facility.dart';
 import 'package:prohealth360_daktari/domain/core/entities/facilities/facility_identifier.dart';
 import 'package:prohealth360_daktari/domain/core/entities/programs/program.dart';
-import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
-import 'package:prohealth360_daktari/presentation/onboarding/core/search_facilities_page.dart';
 import 'package:prohealth360_daktari/presentation/organization_management/pages/program_detail_page.dart';
-import 'package:prohealth360_daktari/presentation/organization_management/widgets/program_list_item_widget.dart';
+import 'package:prohealth360_daktari/presentation/search/widgets/list_card_with_cancel_button.dart';
 
 import '../../../mocks/mocks.dart';
 import '../../../mocks/test_helpers.dart';
@@ -51,30 +49,7 @@ void main() {
         widget: const ProgramDetailPage(),
       );
       await tester.pumpAndSettle();
-      expect(find.byType(ProgramListItem), findsNWidgets(2));
-
-      await tester.tap(find.byKey(cancelButtonKey).first);
-      await tester.tap(find.byKey(cancelButtonKey).last);
-      await tester.pumpAndSettle();
-      //TODO(Byron) Add more expectations when backend data is available
-    });
-
-    testWidgets('add facility button works correctly',
-        (WidgetTester tester) async {
-      await buildTestWidget(
-        tester: tester,
-        store: store,
-        graphQlClient: MockTestGraphQlClient(),
-        widget: const ProgramDetailPage(),
-      );
-      await tester.pumpAndSettle();
-      expect(find.byType(ProgramListItem), findsNWidgets(2));
-
-      await tester.ensureVisible(find.byKey(addFacilityButtonKey));
-      await tester.tap(find.byKey(addFacilityButtonKey));
-      await tester.pumpAndSettle();
-
-      expect(find.byType(SearchFacilitiesPage), findsOneWidget);
+      expect(find.byType(ListCardWithCancelButton), findsNWidgets(2));
     });
   });
 }

@@ -9,6 +9,7 @@ const String updateFacilityInfoErrorString =
     'Error getting updated facility information';
 const String setNicknameErrorString = 'Error setting nickname';
 const String addFacilityErrorString = 'Error adding facility to user profile';
+const String addFacilityToProgramErrorString = 'Error adding facility to user program';
 const String acceptCommunitiesInviteErrorString =
     'Error accepting communities invite';
 const String declineCommunitiesInviteErrorString =

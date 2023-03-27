@@ -7,10 +7,8 @@ import 'package:prohealth360_daktari/application/redux/view_models/onboarding/pr
 import 'package:prohealth360_daktari/domain/core/entities/programs/program.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
-import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
-import 'package:prohealth360_daktari/presentation/organization_management/widgets/program_list_item_widget.dart';
-import 'package:prohealth360_daktari/presentation/router/routes.dart';
+import 'package:prohealth360_daktari/presentation/organization_management/widgets/linked_program_facilities_widget.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 
 class ProgramDetailPage extends StatelessWidget {
@@ -67,59 +65,10 @@ class ProgramDetailPage extends StatelessWidget {
                             style: normalSize14Text(AppColors.greyTextColor),
                           ),
                           mediumVerticalSizedBox,
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
-                                facilitiesString,
-                                style: heavySize16Text(AppColors.blackColor),
-                              ),
-                              smallVerticalSizedBox,
-                              Text(
-                                runningFacilitiesString,
-                                style:
-                                    normalSize14Text(AppColors.greyTextColor),
-                              ),
-                              smallVerticalSizedBox,
-                              if (selectedProgram?.facilities?.isNotEmpty ??
-                                  false)
-                                ListView.builder(
-                                  shrinkWrap: true,
-                                  itemCount:
-                                      selectedProgram?.facilities?.length,
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    return ProgramListItem(
-                                      title: selectedProgram!
-                                              .facilities?[index]?.name ??
-                                          '',
-                                      description: selectedProgram
-                                              .facilities?[index]
-                                              ?.description ??
-                                          '',
-                                      onCancel: () {},
-                                    );
-                                  },
-                                ),
-                              mediumVerticalSizedBox,
-                              SizedBox(
-                                width: double.infinity,
-                                height: 48,
-                                child: MyAfyaHubPrimaryButton(
-                                  borderColor: Colors.transparent,
-                                  buttonKey: addFacilityButtonKey,
-                                  text: addFacilityString,
-                                  onPressed: () =>
-                                      Navigator.of(context).pushNamed(
-                                    AppRoutes.searchFacilitiesPage,
-                                    arguments: <String, dynamic>{
-                                      'programId': selectedProgram?.id ?? '',
-                                    },
-                                  ),
-                                ),
-                              ),
-                            ],
+                          LinkedProgramFacilitiesWidget(
+                            programId: selectedProgram?.id ?? '',
                           ),
+                       
                         ],
                       ),
                     ),

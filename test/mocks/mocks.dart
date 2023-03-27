@@ -1192,6 +1192,20 @@ class MockTestGraphQlClient extends IGraphQlClient {
         ),
       );
     }
+    if (queryString.contains(addFacilityToProgramMutation)) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(
+            <String, dynamic>{
+              'data': <String, dynamic>{
+                'addFacilityToProgram': true
+              }
+            },
+          ),
+          201,
+        ),
+      );
+    }
     if (queryString.contains(getCaregiverManagedClientsQuery)) {
       return Future<http.Response>.value(
         http.Response(
@@ -1395,6 +1409,18 @@ class MockTestGraphQlClient extends IGraphQlClient {
           json.encode(
             <String, dynamic>{
               'data': <String, dynamic>{'checkIfPhoneExists': true}
+            },
+          ),
+          201,
+        ),
+      );
+    }
+    if (queryString.contains(getProgramFacilitiesQuery)) {
+      return Future<http.Response>.value(
+        http.Response(
+          json.encode(
+            <String, dynamic>{
+              'data': <String, dynamic>{'getProgramFacilities': mockFacilities}
             },
           ),
           201,

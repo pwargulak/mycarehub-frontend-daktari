@@ -1,4 +1,5 @@
 import 'package:prohealth360_daktari/application/redux/actions/facilities/add_facility_to_staff_profile_action.dart';
+import 'package:prohealth360_daktari/application/redux/actions/programs/add_facility_to_program_action.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:async_redux/async_redux.dart';
@@ -322,101 +323,7 @@ class _SearchFacilitiesPageState extends State<SearchFacilitiesPage> {
                                   ? null
                                   : (vm.updateFacility ?? false)
                                       ? () {
-                                          if (widget.isClient ?? false) {
-                                            StoreProvider.dispatch<AppState>(
-                                              context,
-                                              AddFacilityToClientProfileAction(
-                                                client:
-                                                    AppWrapperBase.of(context)!
-                                                        .graphQLClient,
-                                                onFailure: (String message) {
-                                                  ScaffoldMessenger.of(context)
-                                                    ..hideCurrentSnackBar()
-                                                    ..showSnackBar(
-                                                      SnackBar(
-                                                        content: Text(
-                                                          message,
-                                                        ),
-                                                        duration:
-                                                            const Duration(
-                                                          seconds: 5,
-                                                        ),
-                                                        action: dismissSnackBar(
-                                                          closeString,
-                                                          Colors.white,
-                                                          context,
-                                                        ),
-                                                      ),
-                                                    );
-                                                },
-                                                onSuccess: () {
-                                                  ScaffoldMessenger.of(context)
-                                                      .showSnackBar(
-                                                    const SnackBar(
-                                                      content: Text(
-                                                        addFacilitySuccessString,
-                                                      ),
-                                                      duration: Duration(
-                                                        seconds:
-                                                            kShortSnackBarDuration,
-                                                      ),
-                                                    ),
-                                                  );
-                                                  Navigator.pop(context);
-                                                },
-                                                clientId: widget.userID ?? '',
-                                                facilityId:
-                                                    selectedFacility.id ?? '',
-                                              ),
-                                            );
-                                          } else {
-                                            StoreProvider.dispatch<AppState>(
-                                              context,
-                                              AddFacilityToStaffProfileAction(
-                                                client:
-                                                    AppWrapperBase.of(context)!
-                                                        .graphQLClient,
-                                                onFailure: (String message) {
-                                                  ScaffoldMessenger.of(context)
-                                                    ..hideCurrentSnackBar()
-                                                    ..showSnackBar(
-                                                      SnackBar(
-                                                        content: Text(
-                                                          message,
-                                                        ),
-                                                        duration:
-                                                            const Duration(
-                                                          seconds: 5,
-                                                        ),
-                                                        action: dismissSnackBar(
-                                                          closeString,
-                                                          Colors.white,
-                                                          context,
-                                                        ),
-                                                      ),
-                                                    );
-                                                },
-                                                onSuccess: () {
-                                                  ScaffoldMessenger.of(context)
-                                                      .showSnackBar(
-                                                    const SnackBar(
-                                                      content: Text(
-                                                        addFacilitySuccessString,
-                                                      ),
-                                                      duration: Duration(
-                                                        seconds:
-                                                            kShortSnackBarDuration,
-                                                      ),
-                                                    ),
-                                                  );
-                                                  Navigator.pop(context);
-                                                },
-                                                staffId: widget.userID ?? '',
-                                                facilityId:
-                                                    selectedFacility.id ?? '',
-                                              ),
-                                            );
-                                          }
+                                          addFacility();
                                         }
                                       : () {
                                           StoreProvider.dispatch<AppState>(
@@ -440,5 +347,132 @@ class _SearchFacilitiesPageState extends State<SearchFacilitiesPage> {
         },
       ),
     );
+  }
+
+  void addFacility() {
+    if (widget.isClient ?? false) {
+      StoreProvider.dispatch<AppState>(
+        context,
+        AddFacilityToClientProfileAction(
+          client: AppWrapperBase.of(context)!.graphQLClient,
+          onFailure: (String message) {
+            ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(
+                SnackBar(
+                  content: Text(
+                    message,
+                  ),
+                  duration: const Duration(
+                    seconds: 5,
+                  ),
+                  action: dismissSnackBar(
+                    closeString,
+                    Colors.white,
+                    context,
+                  ),
+                ),
+              );
+          },
+          onSuccess: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text(
+                  addFacilitySuccessString,
+                ),
+                duration: Duration(
+                  seconds: kShortSnackBarDuration,
+                ),
+              ),
+            );
+            Navigator.pop(context);
+          },
+          clientId: widget.userID ?? '',
+          facilityId: selectedFacility.id ?? '',
+        ),
+      );
+    } else if (widget.userID?.isNotEmpty ?? false) {
+      StoreProvider.dispatch<AppState>(
+        context,
+        AddFacilityToStaffProfileAction(
+          client: AppWrapperBase.of(context)!.graphQLClient,
+          onFailure: (String message) {
+            ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(
+                SnackBar(
+                  content: Text(
+                    message,
+                  ),
+                  duration: const Duration(
+                    seconds: 5,
+                  ),
+                  action: dismissSnackBar(
+                    closeString,
+                    Colors.white,
+                    context,
+                  ),
+                ),
+              );
+          },
+          onSuccess: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text(
+                  addFacilitySuccessString,
+                ),
+                duration: Duration(
+                  seconds: kShortSnackBarDuration,
+                ),
+              ),
+            );
+            Navigator.pop(context);
+          },
+          staffId: widget.userID ?? '',
+          facilityId: selectedFacility.id ?? '',
+        ),
+      );
+    } else if (widget.programId?.isNotEmpty ?? false) {
+      StoreProvider.dispatch<AppState>(
+        context,
+        AddFacilityToProgramAction(
+          client: AppWrapperBase.of(context)!.graphQLClient,
+          onFailure: (String message) {
+            ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(
+                SnackBar(
+                  content: Text(
+                    message,
+                  ),
+                  duration: const Duration(
+                    seconds: 5,
+                  ),
+                  action: dismissSnackBar(
+                    closeString,
+                    Colors.white,
+                    context,
+                  ),
+                ),
+              );
+          },
+          onSuccess: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text(
+                  addFacilitySuccessString,
+                ),
+                duration: Duration(
+                  seconds: kShortSnackBarDuration,
+                ),
+              ),
+            );
+            Navigator.pop(context);
+          },
+          programId: widget.programId ?? '',
+          facilityId: selectedFacility.id ?? '',
+        ),
+      );
+    }
   }
 }

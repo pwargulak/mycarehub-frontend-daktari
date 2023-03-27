@@ -714,3 +714,12 @@ query checkIfPhoneExists($phoneNumber: String!){
   checkIfPhoneExists(phoneNumber: $phoneNumber)
 }
  ''';
+const String getProgramFacilitiesQuery = r'''
+query getProgramFacilities($programID: ID!){
+  getProgramFacilities(programID: $programID){
+    id
+    name
+    description
+  }
+}
+ ''';

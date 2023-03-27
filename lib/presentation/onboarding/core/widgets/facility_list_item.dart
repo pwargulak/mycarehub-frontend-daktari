@@ -25,42 +25,49 @@ class FacilityListItem extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Row(
-              children: <Widget>[
-                Container(
-                  height: 38,
-                  width: 38,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColors.galleryColor,
-                  ),
-                  child: Center(
-                    child: Text(
-                      facility.name!.trim()[0].toUpperCase(),
-                      style: boldSize14Text(AppColors.primaryColor),
+            Expanded(
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    height: 38,
+                    width: 38,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: AppColors.galleryColor,
                     ),
-                  ),
-                ),
-                smallHorizontalSizedBox,
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      facility.name!,
-                      style: boldSize14Text().copyWith(),
-                    ),
-                    if (facility.facilityIdentifier?.value != null)
-                      Text(
-                        facility.facilityIdentifier?.value?.toString() ?? '',
-                        style: boldSize12Text().copyWith(
-                          color: greyTextColor.withOpacity(0.6),
-                          fontSize: 10,
-                        ),
+                    child: Center(
+                      child: Text(
+                        facility.name!.trim()[0].toUpperCase(),
+                        style: boldSize14Text(AppColors.primaryColor),
                       ),
-                  ],
-                ),
-              ],
+                    ),
+                  ),
+                  smallHorizontalSizedBox,
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          facility.name!,
+                          style: boldSize14Text().copyWith(),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
+                        ),
+                        if (facility.facilityIdentifier?.value != null)
+                          Text(
+                            facility.facilityIdentifier?.value?.toString() ??
+                                '',
+                            style: boldSize12Text().copyWith(
+                              color: greyTextColor.withOpacity(0.6),
+                              fontSize: 10,
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
             if (isSelected)
               SvgPicture.asset(doneIconSvgPath)
