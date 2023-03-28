@@ -35,10 +35,6 @@ class RegisterStaffFormManager with Validator {
   Stream<String> get staffNumber => _staffNumber.stream.transform(validateName);
   Sink<String> get inStaffNumber => _staffNumber.sink;
 
-  final BehaviorSubject<RoleValue> _role = BehaviorSubject<RoleValue>();
-  Stream<RoleValue> get role => _role.stream;
-  Sink<RoleValue> get inRole => _role.sink;
-
   final BehaviorSubject<bool> _inviteStaff = BehaviorSubject<bool>();
   Stream<bool> get inviteClient => _inviteStaff.stream;
   Sink<bool> get inInviteClient => _inviteStaff.sink;
@@ -85,7 +81,7 @@ class RegisterStaffFormManager with Validator {
       phoneNumber: _phoneNumber.valueOrNull,
       idNumber: _idNumber.valueOrNull,
       staffNumber: _staffNumber.valueOrNull,
-      role: _role.valueOrNull,
+      role: RoleValue.CLIENT_MANAGEMENT,
       inviteStaff: inviteStaff ?? false,
     );
   }

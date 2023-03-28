@@ -64,7 +64,6 @@ import 'package:prohealth360_daktari/presentation/profile/pages/user_profile_pag
 import 'package:prohealth360_daktari/presentation/resume_with_pin/resume_pin_connector.dart';
 import 'package:prohealth360_daktari/presentation/roles/manage_roles_page.dart';
 import 'package:prohealth360_daktari/presentation/roles/update_role_page.dart';
-import 'package:prohealth360_daktari/presentation/roles/widgets/staff_assign_role_page.dart';
 import 'package:prohealth360_daktari/presentation/router/route_generator.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:prohealth360_daktari/presentation/search/pages/search_page.dart';
@@ -718,18 +717,7 @@ void main() {
     expect(route, isA<MaterialPageRoute<SearchRolePage>>());
     expect(route?.builder(context), isA<SearchRolePage>());
   });
-
-  test('Test router returns successful Search Role Page', () {
-    const RouteSettings settings = RouteSettings(
-      name: AppRoutes.staffAssignRolePage,
-    );
-
-    final MaterialPageRoute<StaffAssignRolePage>? route =
-        routeGenerator(settings) as MaterialPageRoute<StaffAssignRolePage>?;
-
-    expect(route, isA<MaterialPageRoute<StaffAssignRolePage>>());
-    expect(route?.builder(context), isA<StaffAssignRolePage>());
-  });
+  
   test('Test router returns successful Role Details Page', () {
     const RouteSettings settings = RouteSettings(
       name: AppRoutes.roleDetailsPage,

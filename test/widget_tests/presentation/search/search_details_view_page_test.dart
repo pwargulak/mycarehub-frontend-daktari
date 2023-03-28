@@ -11,7 +11,6 @@ import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.d
 import 'package:prohealth360_daktari/application/redux/actions/search_users/update_search_user_response_state_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/facilities/facility.dart';
-import 'package:prohealth360_daktari/domain/core/entities/search_user/roles_list.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
@@ -64,23 +63,6 @@ void main() {
         expect(find.byType(SearchFacilitiesPage), findsOneWidget);
       });
 
-      testWidgets('renders loading indicator correctly',
-          (WidgetTester tester) async {
-        await buildTestWidget(
-          tester: tester,
-          graphQlClient: MockTestGraphQlClient(),
-          store: store,
-          widget: SearchPageDetailView(
-            searchUserResponse: SearchUserResponse.initial(),
-            isClient: false,
-          ),
-        );
-        store.dispatch(WaitAction<AppState>.add(getUserRolesFlag));
-
-        await tester.pump();
-        expect(find.byType(PlatformLoader), findsOneWidget);
-      });
-
       testWidgets(
           'renders loading indicator correctly when searching for staff member',
           (WidgetTester tester) async {
@@ -123,11 +105,6 @@ void main() {
               user: UserData.initial(),
               staffNumber: '123',
               id: '123',
-              rolesList: RolesList(
-                roles: <Role>[
-                  Role(name: RoleValue.CONTENT_MANAGEMENT, roleID: 'some_id'),
-                ],
-              ),
             ),
           ),
         );
@@ -420,62 +397,6 @@ void main() {
         await tester.tap(find.byKey(reinviteStaffButtonKey));
         await tester.pumpAndSettle();
 
-        expect(find.byType(SnackBar), findsOneWidget);
-        expect(find.byType(HomePage), findsOneWidget);
-      });
-
-      testWidgets('update roles button works correctly',
-          (WidgetTester tester) async {
-        await buildTestWidget(
-          tester: tester,
-          graphQlClient: MockTestGraphQlClient(),
-          widget: SearchPageDetailView(
-            searchUserResponse: SearchUserResponse.initial(),
-            isClient: false,
-          ),
-        );
-
-        await tester.pumpAndSettle();
-        await tester.ensureVisible(find.byKey(addRoleButtonKey));
-
-        expect(find.byKey(addRoleButtonKey), findsOneWidget);
-        expect(find.byType(SearchDetailsInformationWidget), findsOneWidget);
-
-        await tester.tap(find.byKey(addRoleButtonKey));
-        await tester.pumpAndSettle();
-
-        expect(find.byType(SnackBar), findsOneWidget);
-      });
-
-      testWidgets('assigning roles fails when api returns an error',
-          (WidgetTester tester) async {
-        final MockShortGraphQlClient mockShortSILGraphQlClient =
-            MockShortGraphQlClient.withResponse(
-          'idToken',
-          'endpoint',
-          Response(
-            json.encode(<String, dynamic>{
-              'data': <String, dynamic>{'assignRoles': false}
-            }),
-            200,
-          ),
-        );
-        await buildTestWidget(
-          tester: tester,
-          graphQlClient: mockShortSILGraphQlClient,
-          widget: SearchPageDetailView(
-            searchUserResponse: SearchUserResponse.initial(),
-            isClient: false,
-          ),
-        );
-
-        await tester.pumpAndSettle();
-        await tester.ensureVisible(find.byKey(addRoleButtonKey));
-
-        expect(find.text(addRoleString), findsOneWidget);
-        await tester.tap(find.text(addRoleString));
-
-        await tester.pumpAndSettle();
         expect(find.byType(SnackBar), findsOneWidget);
         expect(find.byType(HomePage), findsOneWidget);
       });

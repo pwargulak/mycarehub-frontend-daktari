@@ -86,9 +86,6 @@ const String searchStaffMemberFlag = 'search_staff_member_flag';
 //pin reset service request
 const String pinResetServiceRequestFlag = 'pin_reset_service_request_flag';
 
-// assign roles
-const String assignRolesFlag = 'assign_roles_flag';
-
 // invite staff
 const String inviteStaffFlag = 'invite_staff_flag';
 
@@ -108,8 +105,6 @@ const String promoteToAdminFlag = 'promote_to_admin_flag';
 
 //pin reset service request
 const String staffPinResetServiceRequestFlag = 'pin_reset_service_request_flag';
-// get user roles
-const String getUserRolesFlag = 'get_user-roles_flag';
 
 // flagged messages
 const String fetchFlaggedMessagesFlag = 'fetch_flagged_messages_flag';

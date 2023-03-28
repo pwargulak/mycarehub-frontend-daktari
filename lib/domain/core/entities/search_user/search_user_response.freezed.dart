@@ -35,8 +35,6 @@ mixin _$SearchUserResponse {
   UserData? get user => throw _privateConstructorUsedError;
   @JsonKey(name: 'defaultFacility')
   Facility? get defaultFacility => throw _privateConstructorUsedError;
-  @JsonKey(name: 'rolesList')
-  RolesList? get rolesList => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -56,12 +54,10 @@ abstract class $SearchUserResponseCopyWith<$Res> {
       @JsonKey(name: 'active') bool? isActive,
       @JsonKey(name: 'staffNumber') String? staffNumber,
       @JsonKey(name: 'user') UserData? user,
-      @JsonKey(name: 'defaultFacility') Facility? defaultFacility,
-      @JsonKey(name: 'rolesList') RolesList? rolesList});
+      @JsonKey(name: 'defaultFacility') Facility? defaultFacility});
 
   $UserDataCopyWith<$Res>? get user;
   $FacilityCopyWith<$Res>? get defaultFacility;
-  $RolesListCopyWith<$Res>? get rolesList;
 }
 
 /// @nodoc
@@ -83,7 +79,6 @@ class _$SearchUserResponseCopyWithImpl<$Res, $Val extends SearchUserResponse>
     Object? staffNumber = freezed,
     Object? user = freezed,
     Object? defaultFacility = freezed,
-    Object? rolesList = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -110,10 +105,6 @@ class _$SearchUserResponseCopyWithImpl<$Res, $Val extends SearchUserResponse>
           ? _value.defaultFacility
           : defaultFacility // ignore: cast_nullable_to_non_nullable
               as Facility?,
-      rolesList: freezed == rolesList
-          ? _value.rolesList
-          : rolesList // ignore: cast_nullable_to_non_nullable
-              as RolesList?,
     ) as $Val);
   }
 
@@ -140,18 +131,6 @@ class _$SearchUserResponseCopyWithImpl<$Res, $Val extends SearchUserResponse>
       return _then(_value.copyWith(defaultFacility: value) as $Val);
     });
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RolesListCopyWith<$Res>? get rolesList {
-    if (_value.rolesList == null) {
-      return null;
-    }
-
-    return $RolesListCopyWith<$Res>(_value.rolesList!, (value) {
-      return _then(_value.copyWith(rolesList: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -168,15 +147,12 @@ abstract class _$$_SearchUserResponseCopyWith<$Res>
       @JsonKey(name: 'active') bool? isActive,
       @JsonKey(name: 'staffNumber') String? staffNumber,
       @JsonKey(name: 'user') UserData? user,
-      @JsonKey(name: 'defaultFacility') Facility? defaultFacility,
-      @JsonKey(name: 'rolesList') RolesList? rolesList});
+      @JsonKey(name: 'defaultFacility') Facility? defaultFacility});
 
   @override
   $UserDataCopyWith<$Res>? get user;
   @override
   $FacilityCopyWith<$Res>? get defaultFacility;
-  @override
-  $RolesListCopyWith<$Res>? get rolesList;
 }
 
 /// @nodoc
@@ -196,7 +172,6 @@ class __$$_SearchUserResponseCopyWithImpl<$Res>
     Object? staffNumber = freezed,
     Object? user = freezed,
     Object? defaultFacility = freezed,
-    Object? rolesList = freezed,
   }) {
     return _then(_$_SearchUserResponse(
       id: freezed == id
@@ -223,10 +198,6 @@ class __$$_SearchUserResponseCopyWithImpl<$Res>
           ? _value.defaultFacility
           : defaultFacility // ignore: cast_nullable_to_non_nullable
               as Facility?,
-      rolesList: freezed == rolesList
-          ? _value.rolesList
-          : rolesList // ignore: cast_nullable_to_non_nullable
-              as RolesList?,
     ));
   }
 }
@@ -240,8 +211,7 @@ class _$_SearchUserResponse implements _SearchUserResponse {
       @JsonKey(name: 'active') this.isActive,
       @JsonKey(name: 'staffNumber') this.staffNumber,
       @JsonKey(name: 'user') this.user,
-      @JsonKey(name: 'defaultFacility') this.defaultFacility,
-      @JsonKey(name: 'rolesList') this.rolesList});
+      @JsonKey(name: 'defaultFacility') this.defaultFacility});
 
   factory _$_SearchUserResponse.fromJson(Map<String, dynamic> json) =>
       _$$_SearchUserResponseFromJson(json);
@@ -267,13 +237,10 @@ class _$_SearchUserResponse implements _SearchUserResponse {
   @override
   @JsonKey(name: 'defaultFacility')
   final Facility? defaultFacility;
-  @override
-  @JsonKey(name: 'rolesList')
-  final RolesList? rolesList;
 
   @override
   String toString() {
-    return 'SearchUserResponse(id: $id, clientCCCNumber: $clientCCCNumber, isActive: $isActive, staffNumber: $staffNumber, user: $user, defaultFacility: $defaultFacility, rolesList: $rolesList)';
+    return 'SearchUserResponse(id: $id, clientCCCNumber: $clientCCCNumber, isActive: $isActive, staffNumber: $staffNumber, user: $user, defaultFacility: $defaultFacility)';
   }
 
   @override
@@ -290,15 +257,13 @@ class _$_SearchUserResponse implements _SearchUserResponse {
                 other.staffNumber == staffNumber) &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.defaultFacility, defaultFacility) ||
-                other.defaultFacility == defaultFacility) &&
-            (identical(other.rolesList, rolesList) ||
-                other.rolesList == rolesList));
+                other.defaultFacility == defaultFacility));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, clientCCCNumber, isActive,
-      staffNumber, user, defaultFacility, rolesList);
+      staffNumber, user, defaultFacility);
 
   @JsonKey(ignore: true)
   @override
@@ -322,8 +287,7 @@ abstract class _SearchUserResponse implements SearchUserResponse {
           @JsonKey(name: 'active') final bool? isActive,
           @JsonKey(name: 'staffNumber') final String? staffNumber,
           @JsonKey(name: 'user') final UserData? user,
-          @JsonKey(name: 'defaultFacility') final Facility? defaultFacility,
-          @JsonKey(name: 'rolesList') final RolesList? rolesList}) =
+          @JsonKey(name: 'defaultFacility') final Facility? defaultFacility}) =
       _$_SearchUserResponse;
 
   factory _SearchUserResponse.fromJson(Map<String, dynamic> json) =
@@ -347,9 +311,6 @@ abstract class _SearchUserResponse implements SearchUserResponse {
   @override
   @JsonKey(name: 'defaultFacility')
   Facility? get defaultFacility;
-  @override
-  @JsonKey(name: 'rolesList')
-  RolesList? get rolesList;
   @override
   @JsonKey(ignore: true)
   _$$_SearchUserResponseCopyWith<_$_SearchUserResponse> get copyWith =>

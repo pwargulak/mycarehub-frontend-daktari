@@ -70,7 +70,6 @@ import 'package:prohealth360_daktari/presentation/profile/widgets/edit_informati
 import 'package:prohealth360_daktari/presentation/resume_with_pin/resume_pin_connector.dart';
 import 'package:prohealth360_daktari/presentation/roles/manage_roles_page.dart';
 import 'package:prohealth360_daktari/presentation/roles/update_role_page.dart';
-import 'package:prohealth360_daktari/presentation/roles/widgets/staff_assign_role_page.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import 'package:prohealth360_daktari/presentation/search/pages/search_page.dart';
 import 'package:prohealth360_daktari/presentation/service_requests/pages/screening_tool_answers_page.dart';
@@ -585,12 +584,6 @@ class RouteGenerator {
         return MaterialPageRoute<SearchRolePage>(
           builder: (_) => const SearchRolePage(),
           settings: const RouteSettings(name: 'Search Role Page'),
-        );
-
-      case AppRoutes.staffAssignRolePage:
-        return MaterialPageRoute<StaffAssignRolePage>(
-          builder: (_) => const StaffAssignRolePage(),
-          settings: const RouteSettings(name: 'Staff Assign Role Page'),
         );
 
       case AppRoutes.createRolePage:

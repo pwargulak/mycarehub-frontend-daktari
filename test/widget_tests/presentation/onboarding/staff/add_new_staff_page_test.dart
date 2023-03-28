@@ -113,13 +113,6 @@ void main() {
       await tester.tap(staffNumberFinder);
       await tester.enterText(staffNumberFinder, '12345678');
 
-      final Finder roleTypeFinder = find.byKey(const Key('role_key'));
-      expect(roleTypeFinder, findsOneWidget);
-      await tester.tap(roleTypeFinder);
-      await tester.pumpAndSettle();
-      await tester.tap(find.text('Client management').last);
-      await tester.pumpAndSettle();
-
       final Finder appInviteCheckBox = find.byKey(myAfyaHubInviteKey);
       expect(appInviteCheckBox, findsOneWidget);
       await tester.ensureVisible(appInviteCheckBox);
@@ -214,13 +207,6 @@ void main() {
       await tester.ensureVisible(staffNumberFinder);
       await tester.tap(staffNumberFinder);
       await tester.enterText(staffNumberFinder, '12345678');
-
-      final Finder roleTypeFinder = find.byKey(const Key('role_key'));
-      expect(roleTypeFinder, findsOneWidget);
-      await tester.tap(roleTypeFinder);
-      await tester.pumpAndSettle();
-      await tester.tap(find.text('Client management').last);
-      await tester.pumpAndSettle();
 
       final Finder appInviteCheckBox = find.byKey(myAfyaHubInviteKey);
       expect(appInviteCheckBox, findsOneWidget);

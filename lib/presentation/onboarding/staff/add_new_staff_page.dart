@@ -45,7 +45,6 @@ class _AddNewStaffPageState extends State<AddNewStaffPage> {
   void initState() {
     super.initState();
     _formManager.inGender.add(Gender.other);
-    _formManager.inRole.add(RoleValue.CLIENT_MANAGEMENT);
   }
 
   @override
@@ -347,52 +346,6 @@ class _AddNewStaffPageState extends State<AddNewStaffPage> {
                   ],
                 ),
                 const SizedBox(height: 24),
-                // Role
-                Row(
-                  children: <Widget>[
-                    Flexible(
-                      child: Column(
-                        children: <Widget>[
-                          const Align(
-                            alignment: Alignment.topLeft,
-                            child: Text(
-                              'Staff roles *',
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: AppColors.greyTextColor,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          StreamBuilder<RoleValue>(
-                            stream: _formManager.role,
-                            builder: (_, AsyncSnapshot<RoleValue> snapshot) {
-                              final RoleValue? data = snapshot.data;
-
-                              return SelectOptionField(
-                                decoration: dropdownDecoration,
-                                dropDownInputKey: const Key('role_key'),
-                                value: data == null
-                                    ? capitalizeFirst(
-                                        RoleValue.CLIENT_MANAGEMENT.name,
-                                      )
-                                    : capitalizeFirst(data.name),
-                                options: getRoleList(),
-                                onChanged: (String? value) {
-                                  if (value != null) {
-                                    _formManager.inRole
-                                        .add(_roleValueFromString(value));
-                                  }
-                                },
-                              );
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 24),
                 Row(
                   children: <Widget>[
                     Column(
@@ -497,26 +450,6 @@ class _AddNewStaffPageState extends State<AddNewStaffPage> {
     }
 
     return result;
-  }
-
-  List<String> getRoleList() {
-    final List<String> result = <String>[];
-
-    for (final RoleValue role in RoleValue.values) {
-      result.add(capitalizeFirst(role.name));
-    }
-
-    return result;
-  }
-
-  RoleValue _roleValueFromString(String? roleString) {
-    if (roleString == null || roleString.isEmpty || roleString == UNKNOWN) {
-      return RoleValue.CONTENT_MANAGEMENT;
-    }
-
-    return RoleValue.values.firstWhere((RoleValue role) {
-      return role.name.toLowerCase() == roleString.toLowerCase();
-    });
   }
 
   void _processAndNavigate(bool hasConnection) {

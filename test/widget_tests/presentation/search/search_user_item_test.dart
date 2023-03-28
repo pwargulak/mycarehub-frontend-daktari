@@ -1,7 +1,6 @@
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:prohealth360_daktari/domain/core/entities/facilities/facility.dart';
-import 'package:prohealth360_daktari/domain/core/entities/search_user/roles_list.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/presentation/search/widgets/staff_search_widget.dart';
 import 'package:prohealth360_daktari/presentation/client_details/widgets/search_user_item.dart';
@@ -18,7 +17,6 @@ void main() {
             defaultFacility: Facility.initial(),
             id: UNKNOWN,
             isActive: true,
-            rolesList: RolesList.initial(),
             staffNumber: UNKNOWN,
             user: UserData.initial(),
           ),

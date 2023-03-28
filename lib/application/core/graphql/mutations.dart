@@ -117,12 +117,6 @@ mutation inviteUser($userID: String!, $phoneNumber: String!, $flavour: Flavour!,
 }
 ''';
 
-const String assignOrRevokeRolesMutation = r'''
-mutation assignOrRevokeRoles($userID: String!, $roles: [UserRoleType!]!){
-  assignOrRevokeRoles(userID: $userID, roles: $roles)
-}
-''';
-
 const String resolveServiceRequestMutation = r'''
 mutation resolveServiceRequest(
   $staffID: String!,

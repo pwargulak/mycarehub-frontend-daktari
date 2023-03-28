@@ -1549,38 +1549,6 @@ class MockTestGraphQlClient extends IGraphQlClient {
       );
     }
 
-    if (queryString.contains(assignOrRevokeRolesMutation)) {
-      return Future<http.Response>.value(
-        http.Response(
-          json.encode(
-            <String, dynamic>{
-              'data': <String, dynamic>{'assignOrRevokeRoles': true}
-            },
-          ),
-          201,
-        ),
-      );
-    }
-
-    if (queryString.contains(getUserRolesQuery)) {
-      return Future<http.Response>.value(
-        http.Response(
-          json.encode(<String, dynamic>{
-            'data': <String, dynamic>{
-              'getUserRoles': <dynamic>[
-                <String, dynamic>{
-                  'authorityRoleID': 'some_id',
-                  'name': 'CONTENT_MANAGEMENT',
-                  'active': true
-                },
-              ]
-            }
-          }),
-          200,
-        ),
-      );
-    }
-
     if (queryString.contains(listSurveysQuery)) {
       return Future<http.Response>.value(
         http.Response(

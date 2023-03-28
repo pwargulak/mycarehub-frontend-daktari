@@ -190,16 +190,6 @@ query searchStaffUser($searchParameter: String!) {
 }
 ''';
 
-const String getUserRolesQuery = r'''
-query getUserRoles($userID: String!, $organisationID: String!){
-  getUserRoles(userID: $userID, organisationID: $organisationID){
-    authorityRoleID
-    name
-    active
-  }
-}
-''';
-
 const String getAvailableFacilityScreeningToolsQuery = r'''
 query getFacilityRespondedScreeningTools($facilityID: String!, $pagination: PaginationsInput!) {
   getFacilityRespondedScreeningTools(

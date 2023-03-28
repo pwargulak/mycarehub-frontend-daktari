@@ -137,7 +137,6 @@ class AppRoutes {
   static const String manageRolesPage = '/manageRolesPage';
   static const String updateRolePage = '/updateRolePage';
   static const String searchRolePage = '/searchRolePage';
-  static const String staffAssignRolePage = '/staffAssignRolePage';
   static const String roleDetailsPage = '/roleDetailsPage';
   static const String createRolePage = '/createRolePage';
   static const String roleCreateSuccessPage = '/roleCreateSuccessPage';
