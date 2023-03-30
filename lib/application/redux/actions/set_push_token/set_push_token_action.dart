@@ -57,9 +57,9 @@ class SetPushToken extends ReduxAction<AppState> {
           state: state,
           variables: variables,
         );
-      }
 
-      return null;
+        throw const UserException('Failed to set push token');
+      }
     }
 
     return null;

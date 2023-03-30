@@ -2,20 +2,15 @@ import 'dart:convert';
 
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
-import 'package:sghi_core/flutter_graphql_client/i_flutter_graphql_client.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/actions/search_users/search_client_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/connectivity_state.dart';
 
 import '../../../../../mocks/mocks.dart';
-import 'search_client_action_test.mocks.dart';
 
-@GenerateMocks(<Type>[IGraphQlClient])
 void main() {
   group('SearchClientAction', () {
     late StoreTester<AppState> storeTester;
@@ -92,15 +87,16 @@ void main() {
     });
 
     test('should handle unexpected error', () async {
-      final MockIGraphQlClient client = MockIGraphQlClient();
-
-      when(
-        client.query(any, any),
-      ).thenThrow(MyAfyaException(cause: 'cause', message: 'message'));
-
       storeTester.dispatch(
         SearchClientAction(
-          client: client,
+          client: MockShortGraphQlClient.withResponse(
+            '',
+            '',
+            Response(
+              jsonEncode(<String, String>{'wrong': 'error occurred'}),
+              400,
+            ),
+          ),
           searchParameter: '',
         ),
       );

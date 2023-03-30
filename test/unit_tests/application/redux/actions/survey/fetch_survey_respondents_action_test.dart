@@ -2,18 +2,13 @@ import 'dart:convert';
 
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
-import 'package:sghi_core/flutter_graphql_client/i_flutter_graphql_client.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
 import 'package:prohealth360_daktari/application/redux/actions/surveys/fetch_survey_respondents_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 
 import '../../../../../mocks/mocks.dart';
-import 'fetch_surveys_action_test.mocks.dart';
 
-@GenerateMocks(<Type>[IGraphQlClient])
 void main() {
   group('FetchSurveyRespondentsAction', () {
     late StoreTester<AppState> storeTester;
@@ -54,15 +49,16 @@ void main() {
     });
 
     test('should handle exception', () async {
-      final MockIGraphQlClient client = MockIGraphQlClient();
-
-      when(
-        client.query(any, any),
-      ).thenThrow(MyAfyaException(cause: 'cause', message: 'message'));
-
       storeTester.dispatch(
         FetchSurveyRespondentsAction(
-          client: client,
+          client: MockShortGraphQlClient.withResponse(
+            '',
+            '',
+            Response(
+              jsonEncode(<String, String>{'wrong error': 'error occurred'}),
+              400,
+            ),
+          ),
           projectID: 1,
           formID: '',
         ),

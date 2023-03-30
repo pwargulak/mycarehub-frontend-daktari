@@ -4,20 +4,15 @@ import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:sghi_core/flutter_graphql_client/i_flutter_graphql_client.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
 import 'package:prohealth360_daktari/application/redux/actions/set_push_token/set_push_token_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/auth_credentials.dart';
 import 'package:firebase_messaging_platform_interface/firebase_messaging_platform_interface.dart';
 
 import '../../../../../mocks/mocks.dart';
-import 'set_push_token_action_test.mocks.dart';
 
-@GenerateMocks(<Type>[IGraphQlClient])
 void main() {
   group('SetPushToken', () {
     late StoreTester<AppState> storeTester;
@@ -82,16 +77,17 @@ void main() {
     });
 
     test('should handle uncaught errors', () async {
-      final MockIGraphQlClient client = MockIGraphQlClient();
-
-      when(
-        client.query(any, any),
-      ).thenThrow(MyAfyaException(cause: 'cause', message: 'message'));
-
       storeTester.dispatch(
         SetPushToken(
           firebaseMessaging: messaging,
-          client: client,
+          client: MockShortGraphQlClient.withResponse(
+            '',
+            '',
+            Response(
+              jsonEncode(<String, String>{'wrong error': 'error occurred'}),
+              400,
+            ),
+          ),
         ),
       );
 

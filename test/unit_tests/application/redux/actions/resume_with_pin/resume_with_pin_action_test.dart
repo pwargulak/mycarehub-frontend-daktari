@@ -3,10 +3,8 @@ import 'dart:convert';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:sghi_core/flutter_graphql_client/i_flutter_graphql_client.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
-import 'package:mockito/annotations.dart';
 import 'package:prohealth360_daktari/application/redux/actions/resume_with_pin_action/resume_with_pin_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
@@ -14,7 +12,6 @@ import 'package:prohealth360_daktari/infrastructure/endpoints.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 import '../../../../../mocks/mocks.dart';
 
-@GenerateMocks(<Type>[IGraphQlClient])
 void main() {
   group('ResumeWithPinAction', () {
     late StoreTester<AppState> storeTester;

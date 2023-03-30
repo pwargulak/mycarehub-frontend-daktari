@@ -2,16 +2,13 @@ import 'dart:convert';
 
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
-import 'package:sghi_core/flutter_graphql_client/i_flutter_graphql_client.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
 import 'package:prohealth360_daktari/application/redux/actions/service_requests/search_service_requests_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:http/http.dart';
 
 import '../../../../../mocks/mocks.dart';
 
-@GenerateMocks(<Type>[IGraphQlClient])
 void main() {
   group('SearchServiceRequestsAction', () {
     late StoreTester<AppState> storeTester;

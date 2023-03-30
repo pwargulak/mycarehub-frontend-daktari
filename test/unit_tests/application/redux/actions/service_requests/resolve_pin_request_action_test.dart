@@ -3,11 +3,8 @@ import 'dart:convert';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:sghi_core/flutter_graphql_client/i_flutter_graphql_client.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
 import 'package:prohealth360_daktari/application/redux/actions/service_requests/resolve_pin_request_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/states/service_requests/service_requests_state.dart';
@@ -16,9 +13,6 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_enums.dart';
 
 import '../../../../../mocks/mocks.dart';
 
-import 'resolve_pin_request_action_test.mocks.dart';
-
-@GenerateMocks(<Type>[IGraphQlClient])
 void main() {
   group('ResolvePinRequestAction', () {
     late StoreTester<AppState> storeTester;
@@ -163,12 +157,6 @@ void main() {
     });
 
     test('should handle unexpected error', () async {
-      final MockIGraphQlClient client = MockIGraphQlClient();
-
-      when(
-        client.query(any, any),
-      ).thenThrow(MyAfyaException(cause: 'cause', message: 'message'));
-
       int pinVerified = 0;
 
       storeTester.dispatch(
@@ -178,7 +166,14 @@ void main() {
           cccNumber: '',
           phoneNumber: '',
           physicalIdentityVerified: true,
-          httpClient: client,
+          httpClient: MockShortGraphQlClient.withResponse(
+            '',
+            '',
+            Response(
+              jsonEncode(<String, String>{'wrong error': 'error occurred'}),
+              400,
+            ),
+          ),
           onPinVerified: () => pinVerified++,
           pinResetState: PinResetState.APPROVED,
         ),
