@@ -455,6 +455,8 @@ class MockShortGraphQlClient extends IGraphQlClient {
     required String endpoint,
     required String method,
     Map<String, dynamic>? variables,
+    Duration? timeout,
+    Map<String, String>? customHeaders,
   }) {
     return Future<http.Response>.value(response);
   }
@@ -462,9 +464,9 @@ class MockShortGraphQlClient extends IGraphQlClient {
   @override
   Future<http.Response> query(
     String queryString,
-    Map<String, dynamic> variables, [
-    ContentType contentType = ContentType.json,
-  ]) {
+    Map<String, dynamic> variables, {
+    Duration? timeout,
+  }) {
     return Future<http.Response>.value(response);
   }
 }
@@ -486,6 +488,8 @@ class MockCustomGraphQlClient extends IGraphQlClient implements CustomClient {
     required String endpoint,
     required String method,
     Map<String, dynamic>? variables,
+    Duration? timeout,
+    Map<String, String>? customHeaders,
   }) {
     return Future<http.Response>.value(response);
   }
@@ -493,9 +497,9 @@ class MockCustomGraphQlClient extends IGraphQlClient implements CustomClient {
   @override
   Future<http.Response> query(
     String queryString,
-    Map<String, dynamic> variables, [
-    ContentType contentType = ContentType.json,
-  ]) {
+    Map<String, dynamic> variables, {
+    Duration? timeout,
+  }) {
     return Future<http.Response>.value(response);
   }
 
@@ -533,6 +537,8 @@ class MockTestGraphQlClient extends IGraphQlClient {
     required String endpoint,
     required String method,
     Map<String, dynamic>? variables,
+    Duration? timeout,
+    Map<String, String>? customHeaders,
   }) async {
     if (endpoint.contains('upload')) {
       return Future<http.Response>.value(
@@ -745,9 +751,9 @@ class MockTestGraphQlClient extends IGraphQlClient {
   @override
   Future<http.Response> query(
     String queryString,
-    Map<String, dynamic> variables, [
-    ContentType contentType = ContentType.json,
-  ]) async {
+    Map<String, dynamic> variables, {
+    Duration? timeout,
+  }) async {
     final String otpVariables = json.encode(<String, dynamic>{
       'msisdn': '+254717356476',
       'email': 'abiud.orina@savannahinformatics.com'
@@ -1197,9 +1203,7 @@ class MockTestGraphQlClient extends IGraphQlClient {
         http.Response(
           json.encode(
             <String, dynamic>{
-              'data': <String, dynamic>{
-                'addFacilityToProgram': true
-              }
+              'data': <String, dynamic>{'addFacilityToProgram': true}
             },
           ),
           201,
@@ -2220,7 +2224,9 @@ final Map<String, dynamic> clientResponseMock = <String, dynamic>{
   'searchClientUser': <dynamic>[
     <String, dynamic>{
       'id': 'some-id',
-      'cccNumber': '1234',
+      'identifiers': <dynamic>[
+        <String, dynamic>{'id': 'testId', 'type': 'CCC', 'value': 'myCCCNumber'}
+      ],
       'active': true,
       'user': <String, dynamic>{
         'id': 'some-id',

@@ -1,6 +1,7 @@
 import 'package:prohealth360_daktari/application/core/services/input_validators.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/connectivity_view_model.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
+import 'package:sghi_core/afya_moja_core/src/domain/core/entities/identifier.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/foundation.dart';
@@ -319,7 +320,10 @@ class _RegisterCaregiverPageState extends State<RegisterCaregiverPage> {
                                   child: ListCardWithCancelButton(
                                     title: clientItem?.user?.name ?? '',
                                     description:
-                                        '$cccNoShortText ${clientItem?.clientCCCNumber}',
+                                        '$cccNoShortText ${clientItem?.identifiers?.firstWhere(
+                                              (Identifier element) =>
+                                                  element.type == IdentifierType.CCC, orElse: () => Identifier.initial(),
+                                            ).value}',
                                     onCancelCallback: () {
                                       final List<SearchUserResponse?>
                                           updatedSelectedUsers =
@@ -328,8 +332,26 @@ class _RegisterCaregiverPageState extends State<RegisterCaregiverPage> {
                                                 (
                                                   SearchUserResponse? element,
                                                 ) =>
-                                                    element?.clientCCCNumber !=
-                                                    clientItem?.clientCCCNumber,
+                                                    element?.identifiers
+                                                        ?.firstWhere(
+                                                          (
+                                                            Identifier element,
+                                                          ) =>
+                                                              element.type ==
+                                                              IdentifierType
+                                                                  .CCC,
+                                                        )
+                                                        .value !=
+                                                    clientItem?.identifiers
+                                                        ?.firstWhere(
+                                                          (
+                                                            Identifier element,
+                                                          ) =>
+                                                              element.type ==
+                                                              IdentifierType
+                                                                  .CCC,
+                                                        )
+                                                        .value,
                                               )
                                               .toList();
 

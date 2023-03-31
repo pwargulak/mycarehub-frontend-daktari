@@ -5,6 +5,7 @@ import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/application/redux/actions/search_users/update_search_user_response_state_action.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
+import 'package:sghi_core/afya_moja_core/src/domain/core/entities/identifier.dart';
 
 class SearchUserItem extends StatefulWidget {
   const SearchUserItem({
@@ -77,7 +78,10 @@ class _SearchUserItemState extends State<SearchUserItem> {
                     ),
                     Text(
                       widget.isCCCNumber
-                          ? 'CCC#: ${widget.searchUserResponse.clientCCCNumber}'
+                          ? 'CCC#: ${widget.searchUserResponse.identifiers?.firstWhere(
+                                (Identifier element) =>
+                                    element.type == IdentifierType.CCC, orElse: () => Identifier.initial(),
+                              ).value}'
                           : widget.searchUserResponse.staffNumber ?? '',
                       style: normalSize12Text(AppColors.greyTextColor),
                     ),

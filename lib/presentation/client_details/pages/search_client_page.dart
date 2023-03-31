@@ -14,6 +14,7 @@ import 'package:prohealth360_daktari/presentation/client_details/widgets/search_
 import 'package:prohealth360_daktari/presentation/client_details/widgets/search_user_item.dart';
 import 'package:prohealth360_daktari/presentation/core/app_bar/custom_app_bar.dart';
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
+import 'package:sghi_core/afya_moja_core/src/domain/core/entities/identifier.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
 import 'package:sghi_core/user_profile/shared/widget_keys.dart';
 
@@ -163,10 +164,19 @@ class _SearchClientPageState extends State<SearchClientPage> {
                                                   (
                                                     SearchUserResponse? element,
                                                   ) =>
-                                                      element
-                                                          ?.clientCCCNumber !=
+                                                      element?.identifiers
+                                                          ?.firstWhere(
+                                                        (Identifier element) =>
+                                                            element.type ==
+                                                            IdentifierType.CCC,
+                                                      ).value !=
                                                       searchUserResponse
-                                                          .clientCCCNumber,
+                                                          .identifiers
+                                                          ?.firstWhere(
+                                                        (Identifier element) =>
+                                                            element.type ==
+                                                            IdentifierType.CCC,
+                                                      ).value,
                                                 )
                                                 .toList();
                                           } else {

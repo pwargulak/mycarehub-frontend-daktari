@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/core/theme/app_themes.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
+import 'package:sghi_core/afya_moja_core/src/domain/core/entities/identifier.dart';
 
 class SearchDetailsInformationWidget extends StatelessWidget {
   const SearchDetailsInformationWidget({
@@ -21,7 +22,10 @@ class SearchDetailsInformationWidget extends StatelessWidget {
         searchUserResponse?.user?.primaryContact?.value ?? noNumberAvailable;
 
     final String number = isClient
-        ? '${searchUserResponse?.clientCCCNumber}'
+        ? '${searchUserResponse?.identifiers?.firstWhere(
+              (Identifier element) => element.type == IdentifierType.CCC,
+              orElse: () => Identifier.initial(),
+            ).value}'
         : '${searchUserResponse?.staffNumber}';
 
     final String userName = searchUserResponse?.user?.userName ?? '';

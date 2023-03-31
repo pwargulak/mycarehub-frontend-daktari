@@ -13,6 +13,7 @@ import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.d
 import 'package:prohealth360_daktari/presentation/client_details/widgets/search_client_item.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/caregiver/register_caregiver_page.dart';
 import 'package:prohealth360_daktari/presentation/search/widgets/list_card_with_cancel_button.dart';
+import 'package:sghi_core/afya_moja_core/src/domain/core/entities/identifier.dart';
 import '../../../../mocks/mocks.dart';
 import '../../../../mocks/test_helpers.dart';
 
@@ -111,8 +112,23 @@ void main() {
       store.dispatch(
         UpdateSearchUserResponseStateAction(
           selectedUsers: <SearchUserResponse>[
-            SearchUserResponse.initial(),
-            SearchUserResponse(user: UserData(name: 'Test'))
+            SearchUserResponse.initial().copyWith(
+              identifiers: <Identifier>[
+                Identifier(
+                    type: IdentifierType.CCC,
+                    id: 'testId',
+                    value: 'myCCCNumber',)
+              ],
+            ),
+            SearchUserResponse(
+              user: UserData(name: 'Test'),
+              identifiers: <Identifier>[
+                Identifier(
+                    type: IdentifierType.CCC,
+                    id: 'testId2',
+                    value: 'myCCCNumber2',)
+              ],
+            )
           ],
         ),
       );

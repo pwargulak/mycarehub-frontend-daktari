@@ -134,8 +134,9 @@ class MockIGraphQlClient extends _i1.Mock implements _i3.IGraphQlClient {
   @override
   _i4.Future<_i2.Response> query(
     String? queryString,
-    Map<String, dynamic>? variables,
-  ) =>
+    Map<String, dynamic>? variables, {
+    Duration? timeout,
+  }) =>
       (super.noSuchMethod(
         Invocation.method(
           #query,
@@ -143,6 +144,7 @@ class MockIGraphQlClient extends _i1.Mock implements _i3.IGraphQlClient {
             queryString,
             variables,
           ],
+          {#timeout: timeout},
         ),
         returnValue: _i4.Future<_i2.Response>.value(_FakeResponse_1(
           this,
@@ -152,21 +154,27 @@ class MockIGraphQlClient extends _i1.Mock implements _i3.IGraphQlClient {
               queryString,
               variables,
             ],
+            {#timeout: timeout},
           ),
         )),
       ) as _i4.Future<_i2.Response>);
   @override
-  _i4.Future<_i2.Response> postWithTimeout(Map<String, dynamic>? bodyMap) =>
+  _i4.Future<_i2.Response> postWithTimeout(
+    Map<String, dynamic>? bodyMap, {
+    Duration? timeout,
+  }) =>
       (super.noSuchMethod(
         Invocation.method(
           #postWithTimeout,
           [bodyMap],
+          {#timeout: timeout},
         ),
         returnValue: _i4.Future<_i2.Response>.value(_FakeResponse_1(
           this,
           Invocation.method(
             #postWithTimeout,
             [bodyMap],
+            {#timeout: timeout},
           ),
         )),
       ) as _i4.Future<_i2.Response>);
@@ -175,6 +183,8 @@ class MockIGraphQlClient extends _i1.Mock implements _i3.IGraphQlClient {
     required String? endpoint,
     required String? method,
     Map<String, dynamic>? variables,
+    Duration? timeout,
+    Map<String, String>? customHeaders,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -184,6 +194,8 @@ class MockIGraphQlClient extends _i1.Mock implements _i3.IGraphQlClient {
             #endpoint: endpoint,
             #method: method,
             #variables: variables,
+            #timeout: timeout,
+            #customHeaders: customHeaders,
           },
         ),
         returnValue: _i4.Future<_i2.Response>.value(_FakeResponse_1(
@@ -195,6 +207,40 @@ class MockIGraphQlClient extends _i1.Mock implements _i3.IGraphQlClient {
               #endpoint: endpoint,
               #method: method,
               #variables: variables,
+              #timeout: timeout,
+              #customHeaders: customHeaders,
+            },
+          ),
+        )),
+      ) as _i4.Future<_i2.Response>);
+  @override
+  _i4.Future<_i2.Response> uploadMedia({
+    required String? endpoint,
+    required Map<String, String>? uploadHeaders,
+    dynamic Function(_i2.StreamedRequest)? updateSink,
+    Duration? timeout,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #uploadMedia,
+          [],
+          {
+            #endpoint: endpoint,
+            #uploadHeaders: uploadHeaders,
+            #updateSink: updateSink,
+            #timeout: timeout,
+          },
+        ),
+        returnValue: _i4.Future<_i2.Response>.value(_FakeResponse_1(
+          this,
+          Invocation.method(
+            #uploadMedia,
+            [],
+            {
+              #endpoint: endpoint,
+              #uploadHeaders: uploadHeaders,
+              #updateSink: updateSink,
+              #timeout: timeout,
             },
           ),
         )),

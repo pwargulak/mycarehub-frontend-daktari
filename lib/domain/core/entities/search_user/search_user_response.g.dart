@@ -10,7 +10,9 @@ _$_SearchUserResponse _$$_SearchUserResponseFromJson(
         Map<String, dynamic> json) =>
     _$_SearchUserResponse(
       id: json['id'] as String?,
-      clientCCCNumber: json['cccNumber'] as String?,
+      identifiers: (json['identifiers'] as List<dynamic>?)
+          ?.map((e) => Identifier.fromJson(e as Map<String, dynamic>))
+          .toList(),
       isActive: json['active'] as bool?,
       staffNumber: json['staffNumber'] as String?,
       user: json['user'] == null
@@ -25,7 +27,7 @@ Map<String, dynamic> _$$_SearchUserResponseToJson(
         _$_SearchUserResponse instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'cccNumber': instance.clientCCCNumber,
+      'identifiers': instance.identifiers,
       'active': instance.isActive,
       'staffNumber': instance.staffNumber,
       'user': instance.user,

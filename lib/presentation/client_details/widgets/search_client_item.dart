@@ -7,6 +7,7 @@ import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
 import 'package:prohealth360_daktari/application/redux/view_models/search/search_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/entities/search_user/search_user_response.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_asset_strings.dart';
+import 'package:sghi_core/afya_moja_core/src/domain/core/entities/identifier.dart';
 
 class SearchClientItem extends StatelessWidget {
   const SearchClientItem({
@@ -55,7 +56,10 @@ class SearchClientItem extends StatelessWidget {
                           style: boldSize12Text(),
                         ),
                         Text(
-                          'CCC#: ${searchUserResponse.clientCCCNumber}',
+                          'CCC#: ${searchUserResponse.identifiers?.firstWhere(
+                                (Identifier element) =>
+                                    element.type == IdentifierType.CCC, orElse: () => Identifier.initial(),
+                              ).value}',
                           style: normalSize12Text(AppColors.greyTextColor),
                         ),
                       ],

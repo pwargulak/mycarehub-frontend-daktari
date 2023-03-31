@@ -129,7 +129,11 @@ const String searchClientQuery = r'''
 query searchClientUser($searchParameter: String!) {
   searchClientUser(searchParameter: $searchParameter){
     id
-    cccNumber
+    identifiers{
+      id
+      type
+      value
+    }
     active 
     user{
       id

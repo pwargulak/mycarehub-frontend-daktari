@@ -22,8 +22,8 @@ SearchUserResponse _$SearchUserResponseFromJson(Map<String, dynamic> json) {
 mixin _$SearchUserResponse {
   @JsonKey(name: 'id')
   String? get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'cccNumber')
-  String? get clientCCCNumber =>
+  @JsonKey(name: 'identifiers')
+  List<Identifier>? get identifiers =>
       throw _privateConstructorUsedError; // This is the CCCNumber if the person being searched is a client
   @JsonKey(name: 'active')
   bool? get isActive =>
@@ -50,7 +50,7 @@ abstract class $SearchUserResponseCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'id') String? id,
-      @JsonKey(name: 'cccNumber') String? clientCCCNumber,
+      @JsonKey(name: 'identifiers') List<Identifier>? identifiers,
       @JsonKey(name: 'active') bool? isActive,
       @JsonKey(name: 'staffNumber') String? staffNumber,
       @JsonKey(name: 'user') UserData? user,
@@ -74,7 +74,7 @@ class _$SearchUserResponseCopyWithImpl<$Res, $Val extends SearchUserResponse>
   @override
   $Res call({
     Object? id = freezed,
-    Object? clientCCCNumber = freezed,
+    Object? identifiers = freezed,
     Object? isActive = freezed,
     Object? staffNumber = freezed,
     Object? user = freezed,
@@ -85,10 +85,10 @@ class _$SearchUserResponseCopyWithImpl<$Res, $Val extends SearchUserResponse>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      clientCCCNumber: freezed == clientCCCNumber
-          ? _value.clientCCCNumber
-          : clientCCCNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
+      identifiers: freezed == identifiers
+          ? _value.identifiers
+          : identifiers // ignore: cast_nullable_to_non_nullable
+              as List<Identifier>?,
       isActive: freezed == isActive
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
@@ -143,7 +143,7 @@ abstract class _$$_SearchUserResponseCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'id') String? id,
-      @JsonKey(name: 'cccNumber') String? clientCCCNumber,
+      @JsonKey(name: 'identifiers') List<Identifier>? identifiers,
       @JsonKey(name: 'active') bool? isActive,
       @JsonKey(name: 'staffNumber') String? staffNumber,
       @JsonKey(name: 'user') UserData? user,
@@ -167,7 +167,7 @@ class __$$_SearchUserResponseCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? clientCCCNumber = freezed,
+    Object? identifiers = freezed,
     Object? isActive = freezed,
     Object? staffNumber = freezed,
     Object? user = freezed,
@@ -178,10 +178,10 @@ class __$$_SearchUserResponseCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      clientCCCNumber: freezed == clientCCCNumber
-          ? _value.clientCCCNumber
-          : clientCCCNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
+      identifiers: freezed == identifiers
+          ? _value._identifiers
+          : identifiers // ignore: cast_nullable_to_non_nullable
+              as List<Identifier>?,
       isActive: freezed == isActive
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
@@ -207,11 +207,12 @@ class __$$_SearchUserResponseCopyWithImpl<$Res>
 class _$_SearchUserResponse implements _SearchUserResponse {
   _$_SearchUserResponse(
       {@JsonKey(name: 'id') this.id,
-      @JsonKey(name: 'cccNumber') this.clientCCCNumber,
+      @JsonKey(name: 'identifiers') final List<Identifier>? identifiers,
       @JsonKey(name: 'active') this.isActive,
       @JsonKey(name: 'staffNumber') this.staffNumber,
       @JsonKey(name: 'user') this.user,
-      @JsonKey(name: 'defaultFacility') this.defaultFacility});
+      @JsonKey(name: 'defaultFacility') this.defaultFacility})
+      : _identifiers = identifiers;
 
   factory _$_SearchUserResponse.fromJson(Map<String, dynamic> json) =>
       _$$_SearchUserResponseFromJson(json);
@@ -219,9 +220,16 @@ class _$_SearchUserResponse implements _SearchUserResponse {
   @override
   @JsonKey(name: 'id')
   final String? id;
+  final List<Identifier>? _identifiers;
   @override
-  @JsonKey(name: 'cccNumber')
-  final String? clientCCCNumber;
+  @JsonKey(name: 'identifiers')
+  List<Identifier>? get identifiers {
+    final value = _identifiers;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
 // This is the CCCNumber if the person being searched is a client
   @override
   @JsonKey(name: 'active')
@@ -240,7 +248,7 @@ class _$_SearchUserResponse implements _SearchUserResponse {
 
   @override
   String toString() {
-    return 'SearchUserResponse(id: $id, clientCCCNumber: $clientCCCNumber, isActive: $isActive, staffNumber: $staffNumber, user: $user, defaultFacility: $defaultFacility)';
+    return 'SearchUserResponse(id: $id, identifiers: $identifiers, isActive: $isActive, staffNumber: $staffNumber, user: $user, defaultFacility: $defaultFacility)';
   }
 
   @override
@@ -249,8 +257,8 @@ class _$_SearchUserResponse implements _SearchUserResponse {
         (other.runtimeType == runtimeType &&
             other is _$_SearchUserResponse &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.clientCCCNumber, clientCCCNumber) ||
-                other.clientCCCNumber == clientCCCNumber) &&
+            const DeepCollectionEquality()
+                .equals(other._identifiers, _identifiers) &&
             (identical(other.isActive, isActive) ||
                 other.isActive == isActive) &&
             (identical(other.staffNumber, staffNumber) ||
@@ -262,8 +270,14 @@ class _$_SearchUserResponse implements _SearchUserResponse {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, clientCCCNumber, isActive,
-      staffNumber, user, defaultFacility);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      const DeepCollectionEquality().hash(_identifiers),
+      isActive,
+      staffNumber,
+      user,
+      defaultFacility);
 
   @JsonKey(ignore: true)
   @override
@@ -283,7 +297,7 @@ class _$_SearchUserResponse implements _SearchUserResponse {
 abstract class _SearchUserResponse implements SearchUserResponse {
   factory _SearchUserResponse(
           {@JsonKey(name: 'id') final String? id,
-          @JsonKey(name: 'cccNumber') final String? clientCCCNumber,
+          @JsonKey(name: 'identifiers') final List<Identifier>? identifiers,
           @JsonKey(name: 'active') final bool? isActive,
           @JsonKey(name: 'staffNumber') final String? staffNumber,
           @JsonKey(name: 'user') final UserData? user,
@@ -297,8 +311,8 @@ abstract class _SearchUserResponse implements SearchUserResponse {
   @JsonKey(name: 'id')
   String? get id;
   @override
-  @JsonKey(name: 'cccNumber')
-  String? get clientCCCNumber;
+  @JsonKey(name: 'identifiers')
+  List<Identifier>? get identifiers;
   @override // This is the CCCNumber if the person being searched is a client
   @JsonKey(name: 'active')
   bool? get isActive;
