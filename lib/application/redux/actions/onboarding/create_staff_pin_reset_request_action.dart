@@ -39,9 +39,9 @@ class CreateStaffPINResetRequestAction extends ReduxAction<AppState> {
 
   @override
   Future<AppState?> reduce() async {
-    final String phoneNumber = state.onboardingState?.phoneNumber ?? '';
+    final String username = state.onboardingState?.username ?? '';
     final Map<String, dynamic> variables = <String, dynamic>{
-      'phoneNumber': phoneNumber,
+      'username': username,
       'flavour': Flavour.pro.name,
     };
     final Response response = await client.callRESTAPI(
@@ -49,7 +49,6 @@ class CreateStaffPINResetRequestAction extends ReduxAction<AppState> {
       method: httpPOST,
       variables: variables,
     );
-    client.close();
     final Map<String, dynamic> payLoad = client.toMap(response);
     final ProcessedResponse processedResponse = processHttpResponse(response);
     if (processedResponse.ok) {

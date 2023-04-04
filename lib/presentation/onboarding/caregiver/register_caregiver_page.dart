@@ -322,8 +322,7 @@ class _RegisterCaregiverPageState extends State<RegisterCaregiverPage> {
                                     description:
                                         '$cccNoShortText ${clientItem?.identifiers?.firstWhere(
                                               (Identifier element) =>
-                                                  element.type == IdentifierType.CCC, orElse: () => Identifier.initial(),
-                                            ).value}',
+                                                  element.type == IdentifierType.CCC, orElse: () => Identifier.initial(),).value}',
                                     onCancelCallback: () {
                                       final List<SearchUserResponse?>
                                           updatedSelectedUsers =
