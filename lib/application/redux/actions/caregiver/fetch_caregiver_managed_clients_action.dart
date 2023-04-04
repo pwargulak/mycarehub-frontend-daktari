@@ -42,7 +42,7 @@ class FetchCaregiverManagedClientsAction extends ReduxAction<AppState> {
   @override
   Future<AppState?> reduce() async {
     final Map<String, dynamic> variables = <String, dynamic>{
-      'caregiverID': caregiverId,
+      'userID': caregiverId,
       'paginationInput': <String, dynamic>{
         'limit': 20,
         'currentPage': 1,
@@ -61,7 +61,7 @@ class FetchCaregiverManagedClientsAction extends ReduxAction<AppState> {
       final String? error = parseError(payLoad);
 
       if (error != null) {
-        onFailure?.call(getErrorMessage('managed caregivers'));
+        onFailure?.call(getErrorMessage('managed clients'));
         reportErrorToSentry(
           hint: fetchManagedErrorString,
           query: getCaregiverManagedClientsQuery,
@@ -82,7 +82,7 @@ class FetchCaregiverManagedClientsAction extends ReduxAction<AppState> {
 
       dispatch(UpdateUserProfileAction(managedClients: managedClients));
     } else {
-      onFailure?.call(getErrorMessage('managed caregivers'));
+      onFailure?.call(getErrorMessage('managed clients'));
       reportErrorToSentry(
         hint: fetchManagedErrorString,
         query: getCaregiverManagedClientsQuery,

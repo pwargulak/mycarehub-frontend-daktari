@@ -548,11 +548,11 @@ query getClientFacilities($clientID: ID! $paginationInput: PaginationsInput!){
 
 const String getCaregiverManagedClientsQuery = r'''
 query getCaregiverManagedClients(
-  $caregiverID: ID!, 
+  $userID: ID!, 
   $paginationInput: PaginationsInput!
 ){
   getCaregiverManagedClients(
-    caregiverID: $caregiverID
+    userID: $userID
     paginationInput: $paginationInput
   ){
     managedClients{

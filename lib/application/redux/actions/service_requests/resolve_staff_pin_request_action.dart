@@ -62,7 +62,7 @@ class ResolveStaffPinRequestAction extends ReduxAction<AppState> {
     };
 
     final Response result = await httpClient.query(
-      verifyStaffPinResetServiceRequestQuery,
+      verifyStaffPinResetServiceRequestQMutation,
       variables,
     );
 
@@ -78,7 +78,7 @@ class ResolveStaffPinRequestAction extends ReduxAction<AppState> {
       if (error != null) {
         reportErrorToSentry(
           hint: acceptPINRequestErrorString,
-          query: verifyStaffPinResetServiceRequestQuery,
+          query: verifyStaffPinResetServiceRequestQMutation,
           response: result,
           state: state,
           variables: variables,
@@ -123,7 +123,7 @@ class ResolveStaffPinRequestAction extends ReduxAction<AppState> {
     } else {
       reportErrorToSentry(
         hint: acceptPINRequestErrorString,
-        query: verifyStaffPinResetServiceRequestQuery,
+        query: verifyStaffPinResetServiceRequestQMutation,
         response: result,
         state: state,
         variables: variables,

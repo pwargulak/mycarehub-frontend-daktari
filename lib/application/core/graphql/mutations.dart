@@ -105,7 +105,7 @@ mutation verifyClientPinResetServiceRequest(
 }
 ''';
 
-const String verifyStaffPinResetServiceRequestQuery = r'''
+const String verifyStaffPinResetServiceRequestQMutation = r'''
 mutation verifyStaffPinResetServiceRequest($phoneNumber: String!, $serviceRequestID: String!, $verificationStatus: String!){
   verifyStaffPinResetServiceRequest(phoneNumber: $phoneNumber, serviceRequestID: $serviceRequestID, verificationStatus: $verificationStatus)
 }

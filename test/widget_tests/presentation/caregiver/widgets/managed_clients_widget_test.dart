@@ -57,7 +57,7 @@ void main() {
 
         await tester.pumpAndSettle();
         expect(
-          find.text(getErrorMessage('managed caregivers')),
+          find.text(getErrorMessage('managed clients')),
           findsOneWidget,
         );
       },
@@ -86,7 +86,7 @@ void main() {
         );
         await tester.pumpAndSettle();
         expect(
-          find.text(getErrorMessage('managed caregivers')),
+          find.text(getErrorMessage('managed clients')),
           findsOneWidget,
         );
       },
