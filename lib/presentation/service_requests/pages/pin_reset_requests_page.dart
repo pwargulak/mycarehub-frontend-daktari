@@ -121,10 +121,7 @@ class _PinResetRequestsPageState extends State<PinResetRequestsPage> {
                         onAccept: () {
                           isCccNumberVerified
                               ? _resolvePinRequest(
-                                  clientId: clientId,
                                   serviceRequestId: serviceRequestId,
-                                  cccNumber: cccNumber,
-                                  phoneNumber: phoneNumber,
                                   pinResetState: PinResetState.APPROVED,
                                 )
                               : showDialog(
@@ -142,10 +139,7 @@ class _PinResetRequestsPageState extends State<PinResetRequestsPage> {
                         },
                         onReject: () {
                           _resolvePinRequest(
-                            clientId: clientId,
                             serviceRequestId: serviceRequestId,
-                            cccNumber: cccNumber,
-                            phoneNumber: phoneNumber,
                             pinResetState: PinResetState.REJECTED,
                           );
                         },
@@ -283,19 +277,13 @@ class _PinResetRequestsPageState extends State<PinResetRequestsPage> {
   }
 
   void _resolvePinRequest({
-    required String clientId,
     required String serviceRequestId,
-    required String cccNumber,
-    required String phoneNumber,
     required PinResetState pinResetState,
   }) {
     StoreProvider.dispatch(
       context,
       ResolvePinRequestAction(
-        clientId: clientId,
         serviceRequestId: serviceRequestId,
-        cccNumber: cccNumber,
-        phoneNumber: phoneNumber,
         physicalIdentityVerified: true,
         pinResetState: pinResetState,
         httpClient: AppWrapperBase.of(context)!.graphQLClient,

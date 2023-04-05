@@ -31,10 +31,7 @@ void main() {
 
       storeTester.dispatch(
         ResolvePinRequestAction(
-          clientId: '',
           serviceRequestId: '',
-          cccNumber: '',
-          phoneNumber: '',
           physicalIdentityVerified: true,
           httpClient: MockTestGraphQlClient(),
           onPinVerified: () => pinVerified++,
@@ -74,10 +71,7 @@ void main() {
 
       storeTester.dispatch(
         ResolvePinRequestAction(
-          clientId: '',
           serviceRequestId: 'service-request-id',
-          cccNumber: '',
-          phoneNumber: '',
           physicalIdentityVerified: true,
           httpClient: MockTestGraphQlClient(),
           onPinVerified: () => pinVerified++,
@@ -106,10 +100,7 @@ void main() {
 
       storeTester.dispatch(
         ResolvePinRequestAction(
-          clientId: '',
           serviceRequestId: '',
-          cccNumber: '',
-          phoneNumber: '',
           physicalIdentityVerified: true,
           httpClient: client,
           onPinVerified: () => pinVerified++,
@@ -138,10 +129,7 @@ void main() {
 
       storeTester.dispatch(
         ResolvePinRequestAction(
-          clientId: '',
           serviceRequestId: '',
-          cccNumber: '',
-          phoneNumber: '',
           physicalIdentityVerified: true,
           httpClient: client,
           onPinVerified: () => pinVerified++,
@@ -161,10 +149,7 @@ void main() {
 
       storeTester.dispatch(
         ResolvePinRequestAction(
-          clientId: '',
           serviceRequestId: '',
-          cccNumber: '',
-          phoneNumber: '',
           physicalIdentityVerified: true,
           httpClient: MockShortGraphQlClient.withResponse(
             '',

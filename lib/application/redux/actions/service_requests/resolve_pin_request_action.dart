@@ -17,20 +17,14 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 class ResolvePinRequestAction extends ReduxAction<AppState> {
   final IGraphQlClient httpClient;
-  final String clientId;
   final String serviceRequestId;
-  final String cccNumber;
-  final String phoneNumber;
   final bool physicalIdentityVerified;
   final PinResetState pinResetState;
   final VoidCallback? onPinVerified;
   final VoidCallback? onDone;
 
   ResolvePinRequestAction({
-    required this.clientId,
     required this.serviceRequestId,
-    required this.cccNumber,
-    required this.phoneNumber,
     required this.physicalIdentityVerified,
     required this.httpClient,
     required this.pinResetState,
@@ -62,16 +56,13 @@ class ResolvePinRequestAction extends ReduxAction<AppState> {
   @override
   Future<AppState?> reduce() async {
     final Map<String, dynamic> variables = <String, dynamic>{
-      'clientID': clientId,
       'serviceRequestID': serviceRequestId,
-      'cccNumber': cccNumber,
-      'phoneNumber': phoneNumber,
       'physicalIdentityVerified': physicalIdentityVerified,
-      'state': pinResetState.name,
+      'status': pinResetState.name,
     };
 
     final Response result = await httpClient.query(
-      verifyClientPinResetServiceRequestQuery,
+      verifyClientPinResetServiceRequestMutation,
       variables,
     );
 
@@ -91,7 +82,7 @@ class ResolvePinRequestAction extends ReduxAction<AppState> {
       if (error != null) {
         reportErrorToSentry(
           hint: sentryHint,
-          query: verifyClientPinResetServiceRequestQuery,
+          query: verifyClientPinResetServiceRequestMutation,
           response: result,
           state: state,
           variables: variables,
@@ -128,7 +119,6 @@ class ResolvePinRequestAction extends ReduxAction<AppState> {
           name: resolvePinRequest,
           eventType: AnalyticsEventType.INTERACTION,
           parameters: <String, dynamic>{
-            'clientID': clientId,
             'serviceRequestID': serviceRequestId,
           },
         );
@@ -136,7 +126,7 @@ class ResolvePinRequestAction extends ReduxAction<AppState> {
     } else {
       reportErrorToSentry(
         hint: sentryHint,
-        query: verifyClientPinResetServiceRequestQuery,
+        query: verifyClientPinResetServiceRequestMutation,
         response: result,
         state: state,
         variables: variables,

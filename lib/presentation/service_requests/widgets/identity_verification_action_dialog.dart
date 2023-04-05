@@ -104,10 +104,7 @@ class _IdentityVerificationActionDialogState
                             StoreProvider.dispatch(
                               context,
                               ResolvePinRequestAction(
-                                clientId: widget.clientId,
                                 serviceRequestId: widget.serviceRequestId,
-                                cccNumber: widget.cccNumber,
-                                phoneNumber: widget.phoneNumber,
                                 physicalIdentityVerified:
                                     physicalIdentityVerified,
                                 pinResetState: widget.pinResetState,

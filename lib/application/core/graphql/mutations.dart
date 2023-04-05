@@ -85,22 +85,16 @@ mutation inviteUser($userID: String!, $phoneNumber: String!, $flavour: Flavour!)
 }
  ''';
 
-const String verifyClientPinResetServiceRequestQuery = r'''
+const String verifyClientPinResetServiceRequestMutation = r'''
 mutation verifyClientPinResetServiceRequest(
-  $clientID: String!
   $serviceRequestID: String!
-  $cccNumber: String!
-  $phoneNumber: String!
   $physicalIdentityVerified: Boolean!
-  $state:String!
+  $status:PINResetVerificationStatus!
 ) {
   verifyClientPinResetServiceRequest(
-    clientID: $clientID
     serviceRequestID: $serviceRequestID
-    cccNumber: $cccNumber
-    phoneNumber: $phoneNumber
     physicalIdentityVerified: $physicalIdentityVerified
-    state: $state
+    status: $status
   )
 }
 ''';
