@@ -100,8 +100,8 @@ mutation verifyClientPinResetServiceRequest(
 ''';
 
 const String verifyStaffPinResetServiceRequestQMutation = r'''
-mutation verifyStaffPinResetServiceRequest($phoneNumber: String!, $serviceRequestID: String!, $verificationStatus: String!){
-  verifyStaffPinResetServiceRequest(phoneNumber: $phoneNumber, serviceRequestID: $serviceRequestID, verificationStatus: $verificationStatus)
+mutation verifyStaffPinResetServiceRequest($serviceRequestID: String!, $status:  PINResetVerificationStatus!){
+  verifyStaffPinResetServiceRequest(serviceRequestID: $serviceRequestID, status: $status)
 }
 ''';
 

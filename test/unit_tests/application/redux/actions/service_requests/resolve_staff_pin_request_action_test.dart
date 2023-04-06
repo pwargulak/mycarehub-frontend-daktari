@@ -33,7 +33,6 @@ void main() {
         ResolveStaffPinRequestAction(
           staffId: '',
           serviceRequestId: '',
-          phoneNumber: '',
           httpClient: MockTestGraphQlClient(),
           onPinVerified: () => pinVerified++,
           pinResetState: PinResetState.APPROVED,
@@ -74,7 +73,6 @@ void main() {
         ResolveStaffPinRequestAction(
           staffId: '',
           serviceRequestId: 'service-request-id',
-          phoneNumber: '',
           httpClient: MockTestGraphQlClient(),
           onPinVerified: () => pinVerified++,
           pinResetState: PinResetState.APPROVED,
@@ -104,7 +102,6 @@ void main() {
         ResolveStaffPinRequestAction(
           staffId: '',
           serviceRequestId: '',
-          phoneNumber: '',
           httpClient: client,
           onPinVerified: () => pinVerified++,
           pinResetState: PinResetState.APPROVED,
@@ -134,7 +131,6 @@ void main() {
         ResolveStaffPinRequestAction(
           staffId: '',
           serviceRequestId: '',
-          phoneNumber: '',
           httpClient: client,
           onPinVerified: () => pinVerified++,
           pinResetState: PinResetState.APPROVED,
@@ -155,7 +151,6 @@ void main() {
         ResolveStaffPinRequestAction(
           staffId: '',
           serviceRequestId: '',
-          phoneNumber: '',
           httpClient: MockShortGraphQlClient.withResponse(
             '',
             '',

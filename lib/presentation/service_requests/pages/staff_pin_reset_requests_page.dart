@@ -112,7 +112,6 @@ class _StaffPinResetRequestsPageState extends State<StaffPinResetRequestsPage> {
                         onAccept: () => _resolvePinRequest(
                           staffId: staffId,
                           serviceRequestId: serviceRequestId,
-                          phoneNumber: phoneNumber,
                           pinResetState: PinResetState.APPROVED,
                         ),
                       ),
@@ -247,7 +246,6 @@ class _StaffPinResetRequestsPageState extends State<StaffPinResetRequestsPage> {
   void _resolvePinRequest({
     required String staffId,
     required String serviceRequestId,
-    required String phoneNumber,
     required PinResetState pinResetState,
   }) {
     StoreProvider.dispatch(
@@ -255,7 +253,6 @@ class _StaffPinResetRequestsPageState extends State<StaffPinResetRequestsPage> {
       ResolveStaffPinRequestAction(
         staffId: staffId,
         serviceRequestId: serviceRequestId,
-        phoneNumber: phoneNumber,
         pinResetState: pinResetState,
         httpClient: AppWrapperBase.of(context)!.graphQLClient,
         onPinVerified: () {

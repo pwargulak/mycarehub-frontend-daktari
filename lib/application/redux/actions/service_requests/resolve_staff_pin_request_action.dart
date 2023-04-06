@@ -20,7 +20,6 @@ class ResolveStaffPinRequestAction extends ReduxAction<AppState> {
   final IGraphQlClient httpClient;
   final String staffId;
   final String serviceRequestId;
-  final String phoneNumber;
   final PinResetState pinResetState;
   final VoidCallback? onPinVerified;
 
@@ -28,7 +27,6 @@ class ResolveStaffPinRequestAction extends ReduxAction<AppState> {
     required this.staffId,
     required this.pinResetState,
     required this.serviceRequestId,
-    required this.phoneNumber,
     required this.httpClient,
     this.onPinVerified,
   });
@@ -57,8 +55,7 @@ class ResolveStaffPinRequestAction extends ReduxAction<AppState> {
   Future<AppState?> reduce() async {
     final Map<String, dynamic> variables = <String, dynamic>{
       'serviceRequestID': serviceRequestId,
-      'phoneNumber': phoneNumber,
-      'verificationStatus': pinResetState.name,
+      'status': pinResetState.name,
     };
 
     final Response result = await httpClient.query(
