@@ -21,7 +21,7 @@ FetchFacilitiesResponse _$FetchFacilitiesResponseFromJson(
 
 /// @nodoc
 mixin _$FetchFacilitiesResponse {
-  @JsonKey(name: 'searchFacility')
+  @JsonKey(name: 'facilities')
   List<Facility>? get facilities => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ abstract class $FetchFacilitiesResponseCopyWith<$Res> {
           $Res Function(FetchFacilitiesResponse) then) =
       _$FetchFacilitiesResponseCopyWithImpl<$Res, FetchFacilitiesResponse>;
   @useResult
-  $Res call({@JsonKey(name: 'searchFacility') List<Facility>? facilities});
+  $Res call({@JsonKey(name: 'facilities') List<Facility>? facilities});
 }
 
 /// @nodoc
@@ -72,7 +72,7 @@ abstract class _$$_FetchFacilitiesResponseCopyWith<$Res>
       __$$_FetchFacilitiesResponseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'searchFacility') List<Facility>? facilities});
+  $Res call({@JsonKey(name: 'facilities') List<Facility>? facilities});
 }
 
 /// @nodoc
@@ -102,7 +102,7 @@ class __$$_FetchFacilitiesResponseCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_FetchFacilitiesResponse implements _FetchFacilitiesResponse {
   _$_FetchFacilitiesResponse(
-      {@JsonKey(name: 'searchFacility') final List<Facility>? facilities})
+      {@JsonKey(name: 'facilities') final List<Facility>? facilities})
       : _facilities = facilities;
 
   factory _$_FetchFacilitiesResponse.fromJson(Map<String, dynamic> json) =>
@@ -110,7 +110,7 @@ class _$_FetchFacilitiesResponse implements _FetchFacilitiesResponse {
 
   final List<Facility>? _facilities;
   @override
-  @JsonKey(name: 'searchFacility')
+  @JsonKey(name: 'facilities')
   List<Facility>? get facilities {
     final value = _facilities;
     if (value == null) return null;
@@ -155,14 +155,14 @@ class _$_FetchFacilitiesResponse implements _FetchFacilitiesResponse {
 
 abstract class _FetchFacilitiesResponse implements FetchFacilitiesResponse {
   factory _FetchFacilitiesResponse(
-          {@JsonKey(name: 'searchFacility') final List<Facility>? facilities}) =
+          {@JsonKey(name: 'facilities') final List<Facility>? facilities}) =
       _$_FetchFacilitiesResponse;
 
   factory _FetchFacilitiesResponse.fromJson(Map<String, dynamic> json) =
       _$_FetchFacilitiesResponse.fromJson;
 
   @override
-  @JsonKey(name: 'searchFacility')
+  @JsonKey(name: 'facilities')
   List<Facility>? get facilities;
   @override
   @JsonKey(ignore: true)

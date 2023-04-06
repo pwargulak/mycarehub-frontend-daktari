@@ -112,6 +112,7 @@ class LinkedProgramFacilitiesWidget extends StatelessWidget {
                       AppRoutes.searchFacilitiesPage,
                       arguments: <String, dynamic>{
                         'programId': programId,
+                        'searchFromProgram': false,
                       },
                     );
                   },

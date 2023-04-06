@@ -23,12 +23,14 @@ class SearchFacilitiesPage extends StatefulWidget {
   final String? userID;
   final bool? isClient;
   final String? programId;
+  final bool searchFromProgram;
 
   const SearchFacilitiesPage({
     super.key,
     this.userID,
     this.isClient,
     this.programId,
+    this.searchFromProgram = true,
   });
   @override
   State<SearchFacilitiesPage> createState() => _SearchFacilitiesPageState();
@@ -47,21 +49,16 @@ class _SearchFacilitiesPageState extends State<SearchFacilitiesPage> {
       StoreProvider.dispatch(
         context,
         SearchFacilitiesAction(
+          searchFromProgram: widget.searchFromProgram,
           client: AppWrapperBase.of(context)!.graphQLClient,
           onFailure: (String message) {
             ScaffoldMessenger.of(context)
               ..hideCurrentSnackBar()
               ..showSnackBar(
                 SnackBar(
-                  content: const Text(
-                    connectionLostText,
-                  ),
+                  content: const Text(connectionLostText),
                   duration: const Duration(seconds: 5),
-                  action: dismissSnackBar(
-                    closeString,
-                    Colors.white,
-                    context,
-                  ),
+                  action: dismissSnackBar(closeString, Colors.white, context),
                 ),
               );
           },
@@ -142,6 +139,7 @@ class _SearchFacilitiesPageState extends State<SearchFacilitiesPage> {
                               onPressed: () => StoreProvider.dispatch(
                                 context,
                                 SearchFacilitiesAction(
+                                  searchFromProgram: widget.searchFromProgram,
                                   client:
                                       AppWrapperBase.of(context)!.graphQLClient,
                                   onFailure: (String message) {
@@ -173,6 +171,7 @@ class _SearchFacilitiesPageState extends State<SearchFacilitiesPage> {
                           onSubmitted: (_) => StoreProvider.dispatch(
                             context,
                             SearchFacilitiesAction(
+                              searchFromProgram: widget.searchFromProgram,
                               client: AppWrapperBase.of(context)!.graphQLClient,
                               onFailure: (String message) {
                                 ScaffoldMessenger.of(context)
@@ -225,6 +224,7 @@ class _SearchFacilitiesPageState extends State<SearchFacilitiesPage> {
                               StoreProvider.dispatch(
                                 context,
                                 SearchFacilitiesAction(
+                                  searchFromProgram: widget.searchFromProgram,
                                   client:
                                       AppWrapperBase.of(context)!.graphQLClient,
                                   onFailure: (String message) {
@@ -445,14 +445,8 @@ class _SearchFacilitiesPageState extends State<SearchFacilitiesPage> {
                   content: Text(
                     message,
                   ),
-                  duration: const Duration(
-                    seconds: 5,
-                  ),
-                  action: dismissSnackBar(
-                    closeString,
-                    Colors.white,
-                    context,
-                  ),
+                  duration: const Duration(seconds: 5),
+                  action: dismissSnackBar(closeString, Colors.white, context),
                 ),
               );
           },

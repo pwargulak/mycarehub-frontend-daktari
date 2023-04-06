@@ -18,18 +18,65 @@ query getSecurityQuestions($flavour: Flavour!) {
   }
 }
 ''';
+const String searchProgramFacilitiesQuery = r'''
+query listProgramFacilities($searchTerm: String, $filterInput: [FiltersInput],$paginationInput :PaginationsInput!) {
+		listProgramFacilities (searchTerm: $searchTerm, filterInput: $filterInput, paginationInput: $paginationInput){
+			pagination{
+				limit
+				currentPage
+				count
+				totalPages
+				nextPage
+				previousPage
+			}
+  			facilities {
+				id
+				name
+				phone
+				active
+				country
+				description
+				fhirOrganisationID
+				identifier {
+					id
+					active
+					type
+					value
+				}
+			}
+		}
+	  }''';
+
 const String searchFacilityQuery = r'''
-query searchFacility($searchParameter: String) {
-  searchFacility(searchParameter: $searchParameter) {
-    id
-    name
-    identifier{
-      id
-      value
-      type
-    }
-  }
-}
+query listFacilities($searchTerm: String, $filterInput: [FiltersInput],$paginationInput :PaginationsInput!) {
+		listFacilities (searchTerm: $searchTerm, filterInput: $filterInput, paginationInput: $paginationInput){
+			pagination{
+				limit
+				currentPage
+				count
+				totalPages
+				nextPage
+				previousPage
+			}
+  			facilities {
+				id
+				name
+				phone
+				active
+				country
+				description
+				fhirOrganisationID
+				identifier {
+					id
+					active
+					type
+					value
+				}
+			}
+		}
+	  }
+
+
 ''';
 
 const String getServiceRequestsQuery = r'''

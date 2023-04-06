@@ -14,27 +14,29 @@ import 'package:http/http.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/error_strings.dart';
 
 class SearchFacilitiesAction extends ReduxAction<AppState> {
-  final IGraphQlClient client;
-  final void Function(String message)? onFailure;
-  final String mflCode;
-
   SearchFacilitiesAction({
     required this.client,
     this.onFailure,
     required this.mflCode,
+    required this.searchFromProgram,
   });
+
+  final void Function(String message)? onFailure;
+  final IGraphQlClient client;
+  final String mflCode;
+  final bool searchFromProgram;
+
+  @override
+  void after() {
+    dispatch(WaitAction<AppState>.remove(fetchFacilitiesFlag));
+    super.after();
+  }
 
   @override
   void before() {
     super.before();
     dispatch(UpdateUserProfileAction(facilities: <Facility>[]));
     dispatch(WaitAction<AppState>.add(fetchFacilitiesFlag));
-  }
-
-  @override
-  void after() {
-    dispatch(WaitAction<AppState>.remove(fetchFacilitiesFlag));
-    super.after();
   }
 
   @override
@@ -47,16 +49,21 @@ class SearchFacilitiesAction extends ReduxAction<AppState> {
 
     final Map<String, dynamic> variables = <String, dynamic>{
       'searchParameter': mflCode,
+      'paginationInput': <String, dynamic>{
+        'limit': 20,
+        'currentPage': 1,
+      },
     };
 
-    final Response response =
-        await client.query(searchFacilityQuery, variables);
+    final Response response = await client.query(
+      searchFromProgram ? searchProgramFacilitiesQuery : searchFacilityQuery,
+      variables,
+    );
 
     final ProcessedResponse processedResponse = processHttpResponse(response);
 
     if (processedResponse.ok) {
       final Map<String, dynamic> body = client.toMap(response);
-      client.close();
 
       final String? errors = client.parseError(body);
 
@@ -72,13 +79,17 @@ class SearchFacilitiesAction extends ReduxAction<AppState> {
 
         throw UserException(getErrorMessage('fetching facilities'));
       }
+      final Map<String, dynamic>? data = body['data'] as Map<String, dynamic>?;
+      final Map<String, dynamic>? programData = searchFromProgram
+          ? (data?['listProgramFacilities'] as Map<String, dynamic>?)
+          : data?['listFacilities'] as Map<String, dynamic>?;
 
-      final FetchFacilitiesResponse facilities =
-          FetchFacilitiesResponse.fromJson(
-        body['data'] as Map<String, dynamic>,
-      );
+      if (programData?.isNotEmpty ?? false) {
+        final FetchFacilitiesResponse facilities =
+            FetchFacilitiesResponse.fromJson(programData!);
 
-      dispatch(UpdateUserProfileAction(facilities: facilities.facilities));
+        dispatch(UpdateUserProfileAction(facilities: facilities.facilities));
+      }
     } else {
       throw UserException(processedResponse.message);
     }

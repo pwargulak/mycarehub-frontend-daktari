@@ -22,9 +22,31 @@ void main() {
       );
     });
 
+    test('should run successfully for program', () async {
+      storeTester.dispatch(
+        SearchFacilitiesAction(
+          client: MockTestGraphQlClient(),
+          mflCode: '',
+          searchFromProgram: true,
+        ),
+      );
+
+      final TestInfo<AppState> info =
+          await storeTester.waitUntil(SearchFacilitiesAction);
+
+      expect(
+        info.state.userProfileState?.userProfile?.facilities?.first.name,
+        'Test Facility',
+      );
+    });
+
     test('should run successfully', () async {
       storeTester.dispatch(
-        SearchFacilitiesAction(client: MockTestGraphQlClient(), mflCode: ''),
+        SearchFacilitiesAction(
+          client: MockTestGraphQlClient(),
+          mflCode: '',
+          searchFromProgram: false,
+        ),
       );
 
       final TestInfo<AppState> info =
@@ -39,6 +61,7 @@ void main() {
     test('should throw error if api call is not 200', () async {
       storeTester.dispatch(
         SearchFacilitiesAction(
+          searchFromProgram: false,
           client: MockShortGraphQlClient.withResponse(
             '',
             '',
@@ -69,6 +92,7 @@ void main() {
     test('should throw error if response has error', () async {
       storeTester.dispatch(
         SearchFacilitiesAction(
+          searchFromProgram: true,
           client: MockShortGraphQlClient.withResponse(
             '',
             '',
