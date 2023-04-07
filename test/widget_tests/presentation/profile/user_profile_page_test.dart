@@ -2,7 +2,6 @@
 import 'dart:convert';
 
 import 'package:prohealth360_daktari/application/redux/states/user_profile_state.dart';
-import 'package:prohealth360_daktari/presentation/communities/pages/invited_groups_page.dart';
 import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:async_redux/async_redux.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -196,23 +195,6 @@ void main() {
       await tester.tap(appBarBackButton);
       await tester.pumpAndSettle();
       expect(find.byType(UserProfilePage), findsOneWidget);
-    });
-
-    testWidgets('navigates to invited groups page correctly',
-        (WidgetTester tester) async {
-      await buildTestWidget(
-        tester: tester,
-        graphQlClient: mockShortSILGraphQlClient,
-        widget: Builder(
-          builder: (BuildContext context) {
-            return UserProfilePage();
-          },
-        ),
-      );
-
-      await tester.tap(find.text(conversationsInvitesTitle));
-      await tester.pumpAndSettle(const Duration(seconds: 1));
-      expect(find.byType(InvitedGroupsPage), findsOneWidget);
     });
 
     testWidgets('navigates to settings page correctly',

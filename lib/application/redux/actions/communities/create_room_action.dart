@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:async_redux/async_redux.dart';
+import 'package:http/http.dart';
 import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
+import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
 import 'package:sghi_core/communities/core/chat_api.dart';
 import 'package:sghi_core/flutter_graphql_client/i_flutter_graphql_client.dart';
 
@@ -10,11 +14,14 @@ class CreateRoomAction extends ReduxAction<AppState> {
     required this.topic,
     required this.client,
     this.onSuccess,
+    this.onError,
   });
 
   final String? roomName;
   final String? topic;
   final Function(String roomID)? onSuccess;
+  final Function(String error)? onError;
+
   final IGraphQlClient client;
 
   @override
@@ -31,16 +38,22 @@ class CreateRoomAction extends ReduxAction<AppState> {
 
   @override
   Future<AppState?> reduce() async {
-    final Map<String, dynamic> decodedResponse = await ChatAPI.createRoom(
+    final Response response = await ChatAPI.createRoom(
       client: client,
       roomName: roomName ?? '',
       topic: topic ?? '',
     );
 
-    if (decodedResponse['room_id'] != null) {
-      onSuccess?.call(decodedResponse['room_id']?.toString() ?? '');
+    final ProcessedResponse processedResponse = processHttpResponse(response);
 
-      return state;
+    if (processedResponse.ok) {
+      final Map<String, dynamic> decodedResponse =
+          json.decode(processedResponse.response.body) as Map<String, dynamic>;
+
+      if (decodedResponse.containsKey('room_id')) {
+        onSuccess?.call(decodedResponse['room_id']?.toString() ?? '');
+        return state;
+      }
     }
 
     return null;

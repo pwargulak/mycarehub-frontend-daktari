@@ -26,12 +26,13 @@ List<BottomNavItem> bottomNavItems = <BottomNavItem>[
     onTapRoute: AppRoutes.homePage,
     index: BottomNavIndex.home.index,
   ),
-  BottomNavItem(
-    iconUrl: communityIconSvgPath,
-    text: 'Conversations',
-    onTapRoute: AppRoutes.roomListPage,
-    index: BottomNavIndex.communities.index,
-  ),
+  // TODO!!(abiud): Restore this after upgrades
+  // BottomNavItem(
+  //   iconUrl: communityIconSvgPath,
+  //   text: 'Conversations',
+  //   onTapRoute: AppRoutes.roomListPage,
+  //   index: BottomNavIndex.communities.index,
+  // ),
   BottomNavItem(
     iconUrl: notificationIconSvgPath,
     text: 'Notifications',

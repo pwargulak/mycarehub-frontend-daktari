@@ -406,11 +406,6 @@ bool resumeWithPIN(AppState appState) {
 
 NotificationActionInfo getNotificationInfo(NotificationType notificationType) {
   switch (notificationType) {
-    case NotificationType.COMMUNITIES:
-      return NotificationActionInfo(
-        actionTitle: 'View Community Invites',
-        route: AppRoutes.groupInvitesPage,
-      );
     case NotificationType.SERVICE_REQUEST:
       return NotificationActionInfo(
         actionTitle: 'View Service requests',

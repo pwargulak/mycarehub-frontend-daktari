@@ -488,13 +488,4 @@ void main() {
     );
     expect(resumeWithPIN(AppState.initial()), false);
   });
-  test('getNotificationInfo  return the correct value', () {
-    expect(
-      getNotificationInfo(NotificationType.COMMUNITIES),
-      NotificationActionInfo(
-        actionTitle: 'View Community Invites',
-        route: AppRoutes.groupInvitesPage,
-      ),
-    );
-  });
 }

@@ -35,37 +35,26 @@ class UserProfilePage extends StatelessWidget {
                 AppStateViewModel.fromStore(store),
             builder: (BuildContext context, AppStateViewModel vm) {
               final TargetPlatform platform = Theme.of(context).platform;
-              final UserProfile? userProfileState = vm.state.userProfileState?.userProfile;
+              final UserProfile? userProfileState =
+                  vm.state.userProfileState?.userProfile;
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   mediumVerticalSizedBox,
                   local.UserDetailsCard(
                     clinicName: UNKNOWN,
-                    gender: userProfileState?.user?.gender ??
-                        Gender.unknown,
+                    gender: userProfileState?.user?.gender ?? Gender.unknown,
                     name: userProfileState?.user?.name ?? UNKNOWN,
-                    licenseNumber:
-                        userProfileState?.staffNumber ?? UNKNOWN,
-                    phoneNumber: userProfileState
-                            ?.user?.primaryContact?.value ??
-                        UNKNOWN,
+                    licenseNumber: userProfileState?.staffNumber ?? UNKNOWN,
+                    phoneNumber:
+                        userProfileState?.user?.primaryContact?.value ??
+                            UNKNOWN,
                     profession: profession,
                     defaultHospitalName:
-                        userProfileState?.defaultFacilityName ??
-                            UNKNOWN,
-                    nickName: userProfileState?.user?.username ??
-                        UNKNOWN,
+                        userProfileState?.defaultFacilityName ?? UNKNOWN,
+                    nickName: userProfileState?.user?.username ?? UNKNOWN,
                   ),
                   mediumVerticalSizedBox,
-                  // conversation invites
-                  UserProfileItem(
-                    iconPath: communityIconSvgPath,
-                    title: conversationsInvitesTitle,
-                    itemBackgroundColor: AppColors.profileListCardColor,
-                    onTap: () => Navigator.of(context)
-                        .pushNamed(AppRoutes.groupInvitesPage),
-                  ),
                   // contact admin
                   UserProfileItem(
                     iconPath: phoneIconSvgPath,

@@ -2,11 +2,7 @@
 import 'package:prohealth360_daktari/domain/core/entities/core/screening_tool.dart';
 import 'package:prohealth360_daktari/presentation/admin/admin_page.dart';
 import 'package:prohealth360_daktari/presentation/caregiver/assign_caregiver_page.dart';
-import 'package:prohealth360_daktari/presentation/communities/pages/accept_group_invites_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/create_room_page.dart';
-import 'package:prohealth360_daktari/presentation/communities/pages/invite_users_page.dart';
-import 'package:prohealth360_daktari/presentation/communities/pages/room_list_page.dart';
-import 'package:prohealth360_daktari/presentation/communities/pages/room_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/core/search_organization_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/login/pages/login_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/program_selection/program_selection_page.dart';
@@ -85,7 +81,6 @@ import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_page.dar
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_respondents_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_responses_preview_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_send_configuration_page.dart';
-import 'package:sghi_core/communities/models/room.dart';
 
 import '../../../mocks/mocks.dart';
 
@@ -451,23 +446,6 @@ void main() {
     expect(route?.builder(context), isA<VerifySecurityQuestionsHelpPage>());
   });
 
-  test('Test router returns accept decline invites page', () {
-    const RouteSettings settings = RouteSettings(
-      name: AppRoutes.acceptGroupInvitesPage,
-      arguments: <String, dynamic>{
-        'groupId': '',
-        'groupName': '',
-        'numberOfMembers': 0,
-      },
-    );
-
-    final MaterialPageRoute<AcceptGroupInvitesPage>? route =
-        routeGenerator(settings) as MaterialPageRoute<AcceptGroupInvitesPage>?;
-
-    expect(route, isA<MaterialPageRoute<AcceptGroupInvitesPage>>());
-    expect(route?.builder(context), isA<AcceptGroupInvitesPage>());
-  });
-
   test('Test router returns StaffPinResetRequestsPage', () {
     const RouteSettings settings = RouteSettings(
       name: AppRoutes.staffPinResetRequestsPage,
@@ -717,7 +695,7 @@ void main() {
     expect(route, isA<MaterialPageRoute<SearchRolePage>>());
     expect(route?.builder(context), isA<SearchRolePage>());
   });
-  
+
   test('Test router returns successful Role Details Page', () {
     const RouteSettings settings = RouteSettings(
       name: AppRoutes.roleDetailsPage,
@@ -841,29 +819,7 @@ void main() {
     expect(route, isA<MaterialPageRoute<SearchOrganisationsPage>>());
     expect(route?.builder(context), isA<SearchOrganisationsPage>());
   });
-  test('Test router returns Room List Page', () {
-    const RouteSettings settings = RouteSettings(
-      name: AppRoutes.roomListPage,
-    );
 
-    final MaterialPageRoute<RoomListPage>? route =
-        routeGenerator(settings) as MaterialPageRoute<RoomListPage>?;
-
-    expect(route, isA<MaterialPageRoute<RoomListPage>>());
-    expect(route?.builder(context), isA<RoomListPage>());
-  });
-  test('Test router returns Room Page', () {
-    final RouteSettings settings = RouteSettings(
-      name: AppRoutes.roomPage,
-      arguments: Room.initial(),
-    );
-
-    final MaterialPageRoute<RoomPage>? route =
-        routeGenerator(settings) as MaterialPageRoute<RoomPage>?;
-
-    expect(route, isA<MaterialPageRoute<RoomPage>>());
-    expect(route?.builder(context), isA<RoomPage>());
-  });
   test('Test router returns Create Room Page', () {
     const RouteSettings settings = RouteSettings(
       name: AppRoutes.createRoomPage,
@@ -874,17 +830,5 @@ void main() {
 
     expect(route, isA<MaterialPageRoute<CreateRoomPage>>());
     expect(route?.builder(context), isA<CreateRoomPage>());
-  });
-  test('Test router returns Invite Users Page', () {
-    final RouteSettings settings = RouteSettings(
-      name: AppRoutes.inviteUsersPage,
-      arguments: Room.initial(),
-    );
-
-    final MaterialPageRoute<InviteUsersPage>? route =
-        routeGenerator(settings) as MaterialPageRoute<InviteUsersPage>?;
-
-    expect(route, isA<MaterialPageRoute<InviteUsersPage>>());
-    expect(route?.builder(context), isA<InviteUsersPage>());
   });
 }

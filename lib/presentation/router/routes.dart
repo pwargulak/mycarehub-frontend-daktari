@@ -41,9 +41,6 @@ class AppRoutes {
 
   static const String newBroadcastPage = '/newBroadcastPage';
 
-  static const String groupInvitesPage = '/groupInvitesPage';
-  static const String acceptGroupInvitesPage = '/acceptGroupInvitesPage';
-
   static const String surveysPage = '/surveys';
   static const String surveysSenderListPage = '/surveysSenderListPage';
   static const String surveysSendConfigurationsPage =
@@ -153,9 +150,10 @@ class AppRoutes {
   static const String adminPage = '/adminPage';
 
   // Communities
-  static const String roomListPage = '/roomListPage';
-  static const String roomPage = '/roomPage';
-  static const String roomInfoPage = '/roomInfoPage';
+  // TODO!!(abiud): Restore these after the new upgrades
+  // static const String roomListPage = '/roomListPage';
+  // static const String roomPage = '/roomPage';
+  // static const String roomInfoPage = '/roomInfoPage';
   static const String createRoomPage = '/createRoomPage';
-  static const String inviteUsersPage = '/inviteUsersPage';
+  // static const String inviteUsersPage = '/inviteUsersPage';
 }

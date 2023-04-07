@@ -30,7 +30,7 @@ void main() {
             body: 'Your Teleconsult with Dr Tibu for 11am has been set. '
                 'Click this link to join ',
             createdAt: 'July 12 2021',
-            type: NotificationType.COMMUNITIES,
+            type: NotificationType.APPOINTMENT,
           ),
         ),
       );
