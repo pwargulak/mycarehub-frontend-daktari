@@ -37,8 +37,7 @@ mixin _$ServiceRequestMeta {
 abstract class $ServiceRequestMetaCopyWith<$Res> {
   factory $ServiceRequestMetaCopyWith(
           ServiceRequestMeta value, $Res Function(ServiceRequestMeta) then) =
-      _$ServiceRequestMetaCopyWithImpl<$Res, ServiceRequestMeta>;
-  @useResult
+      _$ServiceRequestMetaCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'ccc_number') String? cccNumber,
       @JsonKey(name: 'is_ccc_number_valid') bool? isCccNumberValid,
@@ -46,16 +45,14 @@ abstract class $ServiceRequestMetaCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ServiceRequestMetaCopyWithImpl<$Res, $Val extends ServiceRequestMeta>
+class _$ServiceRequestMetaCopyWithImpl<$Res>
     implements $ServiceRequestMetaCopyWith<$Res> {
   _$ServiceRequestMetaCopyWithImpl(this._value, this._then);
 
+  final ServiceRequestMeta _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(ServiceRequestMeta) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? cccNumber = freezed,
@@ -63,19 +60,19 @@ class _$ServiceRequestMetaCopyWithImpl<$Res, $Val extends ServiceRequestMeta>
     Object? note = freezed,
   }) {
     return _then(_value.copyWith(
-      cccNumber: freezed == cccNumber
+      cccNumber: cccNumber == freezed
           ? _value.cccNumber
           : cccNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      isCccNumberValid: freezed == isCccNumberValid
+      isCccNumberValid: isCccNumberValid == freezed
           ? _value.isCccNumberValid
           : isCccNumberValid // ignore: cast_nullable_to_non_nullable
               as bool?,
-      note: freezed == note
+      note: note == freezed
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -86,7 +83,6 @@ abstract class _$$_ServiceRequestMetaCopyWith<$Res>
           $Res Function(_$_ServiceRequestMeta) then) =
       __$$_ServiceRequestMetaCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'ccc_number') String? cccNumber,
       @JsonKey(name: 'is_ccc_number_valid') bool? isCccNumberValid,
@@ -95,13 +91,15 @@ abstract class _$$_ServiceRequestMetaCopyWith<$Res>
 
 /// @nodoc
 class __$$_ServiceRequestMetaCopyWithImpl<$Res>
-    extends _$ServiceRequestMetaCopyWithImpl<$Res, _$_ServiceRequestMeta>
+    extends _$ServiceRequestMetaCopyWithImpl<$Res>
     implements _$$_ServiceRequestMetaCopyWith<$Res> {
   __$$_ServiceRequestMetaCopyWithImpl(
       _$_ServiceRequestMeta _value, $Res Function(_$_ServiceRequestMeta) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_ServiceRequestMeta));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_ServiceRequestMeta get _value => super._value as _$_ServiceRequestMeta;
+
   @override
   $Res call({
     Object? cccNumber = freezed,
@@ -109,15 +107,15 @@ class __$$_ServiceRequestMetaCopyWithImpl<$Res>
     Object? note = freezed,
   }) {
     return _then(_$_ServiceRequestMeta(
-      cccNumber: freezed == cccNumber
+      cccNumber: cccNumber == freezed
           ? _value.cccNumber
           : cccNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      isCccNumberValid: freezed == isCccNumberValid
+      isCccNumberValid: isCccNumberValid == freezed
           ? _value.isCccNumberValid
           : isCccNumberValid // ignore: cast_nullable_to_non_nullable
               as bool?,
-      note: freezed == note
+      note: note == freezed
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -156,21 +154,22 @@ class _$_ServiceRequestMeta implements _ServiceRequestMeta {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ServiceRequestMeta &&
-            (identical(other.cccNumber, cccNumber) ||
-                other.cccNumber == cccNumber) &&
-            (identical(other.isCccNumberValid, isCccNumberValid) ||
-                other.isCccNumberValid == isCccNumberValid) &&
-            (identical(other.note, note) || other.note == note));
+            const DeepCollectionEquality().equals(other.cccNumber, cccNumber) &&
+            const DeepCollectionEquality()
+                .equals(other.isCccNumberValid, isCccNumberValid) &&
+            const DeepCollectionEquality().equals(other.note, note));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, cccNumber, isCccNumberValid, note);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(cccNumber),
+      const DeepCollectionEquality().hash(isCccNumberValid),
+      const DeepCollectionEquality().hash(note));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_ServiceRequestMetaCopyWith<_$_ServiceRequestMeta> get copyWith =>
       __$$_ServiceRequestMetaCopyWithImpl<_$_ServiceRequestMeta>(
           this, _$identity);

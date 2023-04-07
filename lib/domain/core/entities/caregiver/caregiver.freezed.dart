@@ -40,8 +40,7 @@ mixin _$Caregiver {
 /// @nodoc
 abstract class $CaregiverCopyWith<$Res> {
   factory $CaregiverCopyWith(Caregiver value, $Res Function(Caregiver) then) =
-      _$CaregiverCopyWithImpl<$Res, Caregiver>;
-  @useResult
+      _$CaregiverCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'user') UserData? caregiverUser,
@@ -54,16 +53,13 @@ abstract class $CaregiverCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CaregiverCopyWithImpl<$Res, $Val extends Caregiver>
-    implements $CaregiverCopyWith<$Res> {
+class _$CaregiverCopyWithImpl<$Res> implements $CaregiverCopyWith<$Res> {
   _$CaregiverCopyWithImpl(this._value, this._then);
 
+  final Caregiver _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(Caregiver) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -73,50 +69,48 @@ class _$CaregiverCopyWithImpl<$Res, $Val extends Caregiver>
     Object? consent = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      caregiverUser: freezed == caregiverUser
+      caregiverUser: caregiverUser == freezed
           ? _value.caregiverUser
           : caregiverUser // ignore: cast_nullable_to_non_nullable
               as UserData?,
-      caregiverNumber: freezed == caregiverNumber
+      caregiverNumber: caregiverNumber == freezed
           ? _value.caregiverNumber
           : caregiverNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      isClient: freezed == isClient
+      isClient: isClient == freezed
           ? _value.isClient
           : isClient // ignore: cast_nullable_to_non_nullable
               as bool?,
-      consent: freezed == consent
+      consent: consent == freezed
           ? _value.consent
           : consent // ignore: cast_nullable_to_non_nullable
               as Consent?,
-    ) as $Val);
+    ));
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $UserDataCopyWith<$Res>? get caregiverUser {
     if (_value.caregiverUser == null) {
       return null;
     }
 
     return $UserDataCopyWith<$Res>(_value.caregiverUser!, (value) {
-      return _then(_value.copyWith(caregiverUser: value) as $Val);
+      return _then(_value.copyWith(caregiverUser: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $ConsentCopyWith<$Res>? get consent {
     if (_value.consent == null) {
       return null;
     }
 
     return $ConsentCopyWith<$Res>(_value.consent!, (value) {
-      return _then(_value.copyWith(consent: value) as $Val);
+      return _then(_value.copyWith(consent: value));
     });
   }
 }
@@ -127,7 +121,6 @@ abstract class _$$_CaregiverCopyWith<$Res> implements $CaregiverCopyWith<$Res> {
           _$_Caregiver value, $Res Function(_$_Caregiver) then) =
       __$$_CaregiverCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'user') UserData? caregiverUser,
@@ -142,14 +135,15 @@ abstract class _$$_CaregiverCopyWith<$Res> implements $CaregiverCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_CaregiverCopyWithImpl<$Res>
-    extends _$CaregiverCopyWithImpl<$Res, _$_Caregiver>
+class __$$_CaregiverCopyWithImpl<$Res> extends _$CaregiverCopyWithImpl<$Res>
     implements _$$_CaregiverCopyWith<$Res> {
   __$$_CaregiverCopyWithImpl(
       _$_Caregiver _value, $Res Function(_$_Caregiver) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_Caregiver));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_Caregiver get _value => super._value as _$_Caregiver;
+
   @override
   $Res call({
     Object? id = freezed,
@@ -159,23 +153,23 @@ class __$$_CaregiverCopyWithImpl<$Res>
     Object? consent = freezed,
   }) {
     return _then(_$_Caregiver(
-      id: freezed == id
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      caregiverUser: freezed == caregiverUser
+      caregiverUser: caregiverUser == freezed
           ? _value.caregiverUser
           : caregiverUser // ignore: cast_nullable_to_non_nullable
               as UserData?,
-      caregiverNumber: freezed == caregiverNumber
+      caregiverNumber: caregiverNumber == freezed
           ? _value.caregiverNumber
           : caregiverNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      isClient: freezed == isClient
+      isClient: isClient == freezed
           ? _value.isClient
           : isClient // ignore: cast_nullable_to_non_nullable
               as bool?,
-      consent: freezed == consent
+      consent: consent == freezed
           ? _value.consent
           : consent // ignore: cast_nullable_to_non_nullable
               as Consent?,
@@ -222,24 +216,27 @@ class _$_Caregiver implements _Caregiver {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Caregiver &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.caregiverUser, caregiverUser) ||
-                other.caregiverUser == caregiverUser) &&
-            (identical(other.caregiverNumber, caregiverNumber) ||
-                other.caregiverNumber == caregiverNumber) &&
-            (identical(other.isClient, isClient) ||
-                other.isClient == isClient) &&
-            (identical(other.consent, consent) || other.consent == consent));
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality()
+                .equals(other.caregiverUser, caregiverUser) &&
+            const DeepCollectionEquality()
+                .equals(other.caregiverNumber, caregiverNumber) &&
+            const DeepCollectionEquality().equals(other.isClient, isClient) &&
+            const DeepCollectionEquality().equals(other.consent, consent));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, caregiverUser, caregiverNumber, isClient, consent);
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(caregiverUser),
+      const DeepCollectionEquality().hash(caregiverNumber),
+      const DeepCollectionEquality().hash(isClient),
+      const DeepCollectionEquality().hash(consent));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_CaregiverCopyWith<_$_Caregiver> get copyWith =>
       __$$_CaregiverCopyWithImpl<_$_Caregiver>(this, _$identity);
 

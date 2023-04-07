@@ -37,8 +37,7 @@ mixin _$PendingServiceRequest {
 abstract class $PendingServiceRequestCopyWith<$Res> {
   factory $PendingServiceRequestCopyWith(PendingServiceRequest value,
           $Res Function(PendingServiceRequest) then) =
-      _$PendingServiceRequestCopyWithImpl<$Res, PendingServiceRequest>;
-  @useResult
+      _$PendingServiceRequestCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'total')
           int? total,
@@ -47,32 +46,29 @@ abstract class $PendingServiceRequestCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PendingServiceRequestCopyWithImpl<$Res,
-        $Val extends PendingServiceRequest>
+class _$PendingServiceRequestCopyWithImpl<$Res>
     implements $PendingServiceRequestCopyWith<$Res> {
   _$PendingServiceRequestCopyWithImpl(this._value, this._then);
 
+  final PendingServiceRequest _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(PendingServiceRequest) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? total = freezed,
     Object? serviceRequestsCount = freezed,
   }) {
     return _then(_value.copyWith(
-      total: freezed == total
+      total: total == freezed
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
               as int?,
-      serviceRequestsCount: freezed == serviceRequestsCount
+      serviceRequestsCount: serviceRequestsCount == freezed
           ? _value.serviceRequestsCount
           : serviceRequestsCount // ignore: cast_nullable_to_non_nullable
               as List<ServiceRequestCount>?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -83,7 +79,6 @@ abstract class _$$_PendingServiceRequestCopyWith<$Res>
           $Res Function(_$_PendingServiceRequest) then) =
       __$$_PendingServiceRequestCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'total')
           int? total,
@@ -93,24 +88,27 @@ abstract class _$$_PendingServiceRequestCopyWith<$Res>
 
 /// @nodoc
 class __$$_PendingServiceRequestCopyWithImpl<$Res>
-    extends _$PendingServiceRequestCopyWithImpl<$Res, _$_PendingServiceRequest>
+    extends _$PendingServiceRequestCopyWithImpl<$Res>
     implements _$$_PendingServiceRequestCopyWith<$Res> {
   __$$_PendingServiceRequestCopyWithImpl(_$_PendingServiceRequest _value,
       $Res Function(_$_PendingServiceRequest) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_PendingServiceRequest));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_PendingServiceRequest get _value =>
+      super._value as _$_PendingServiceRequest;
+
   @override
   $Res call({
     Object? total = freezed,
     Object? serviceRequestsCount = freezed,
   }) {
     return _then(_$_PendingServiceRequest(
-      total: freezed == total
+      total: total == freezed
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
               as int?,
-      serviceRequestsCount: freezed == serviceRequestsCount
+      serviceRequestsCount: serviceRequestsCount == freezed
           ? _value._serviceRequestsCount
           : serviceRequestsCount // ignore: cast_nullable_to_non_nullable
               as List<ServiceRequestCount>?,
@@ -154,19 +152,20 @@ class _$_PendingServiceRequest implements _PendingServiceRequest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PendingServiceRequest &&
-            (identical(other.total, total) || other.total == total) &&
+            const DeepCollectionEquality().equals(other.total, total) &&
             const DeepCollectionEquality()
                 .equals(other._serviceRequestsCount, _serviceRequestsCount));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, total,
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(total),
       const DeepCollectionEquality().hash(_serviceRequestsCount));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_PendingServiceRequestCopyWith<_$_PendingServiceRequest> get copyWith =>
       __$$_PendingServiceRequestCopyWithImpl<_$_PendingServiceRequest>(
           this, _$identity);

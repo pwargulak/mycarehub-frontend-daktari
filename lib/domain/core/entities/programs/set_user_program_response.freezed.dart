@@ -23,8 +23,8 @@ SetUserProgramResponse _$SetUserProgramResponseFromJson(
 mixin _$SetUserProgramResponse {
   @JsonKey(name: 'staffProfile')
   StaffProfileResponse? get staffProfile => throw _privateConstructorUsedError;
-  @JsonKey(name: 'communityToken')
-  String? get communityToken => throw _privateConstructorUsedError;
+  @JsonKey(name: 'communityProfile')
+  CommunityProfile? get communityProfile => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,53 +36,60 @@ mixin _$SetUserProgramResponse {
 abstract class $SetUserProgramResponseCopyWith<$Res> {
   factory $SetUserProgramResponseCopyWith(SetUserProgramResponse value,
           $Res Function(SetUserProgramResponse) then) =
-      _$SetUserProgramResponseCopyWithImpl<$Res, SetUserProgramResponse>;
-  @useResult
+      _$SetUserProgramResponseCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'staffProfile') StaffProfileResponse? staffProfile,
-      @JsonKey(name: 'communityToken') String? communityToken});
+      @JsonKey(name: 'communityProfile') CommunityProfile? communityProfile});
 
   $StaffProfileResponseCopyWith<$Res>? get staffProfile;
+  $CommunityProfileCopyWith<$Res>? get communityProfile;
 }
 
 /// @nodoc
-class _$SetUserProgramResponseCopyWithImpl<$Res,
-        $Val extends SetUserProgramResponse>
+class _$SetUserProgramResponseCopyWithImpl<$Res>
     implements $SetUserProgramResponseCopyWith<$Res> {
   _$SetUserProgramResponseCopyWithImpl(this._value, this._then);
 
+  final SetUserProgramResponse _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(SetUserProgramResponse) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? staffProfile = freezed,
-    Object? communityToken = freezed,
+    Object? communityProfile = freezed,
   }) {
     return _then(_value.copyWith(
-      staffProfile: freezed == staffProfile
+      staffProfile: staffProfile == freezed
           ? _value.staffProfile
           : staffProfile // ignore: cast_nullable_to_non_nullable
               as StaffProfileResponse?,
-      communityToken: freezed == communityToken
-          ? _value.communityToken
-          : communityToken // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+      communityProfile: communityProfile == freezed
+          ? _value.communityProfile
+          : communityProfile // ignore: cast_nullable_to_non_nullable
+              as CommunityProfile?,
+    ));
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $StaffProfileResponseCopyWith<$Res>? get staffProfile {
     if (_value.staffProfile == null) {
       return null;
     }
 
     return $StaffProfileResponseCopyWith<$Res>(_value.staffProfile!, (value) {
-      return _then(_value.copyWith(staffProfile: value) as $Val);
+      return _then(_value.copyWith(staffProfile: value));
+    });
+  }
+
+  @override
+  $CommunityProfileCopyWith<$Res>? get communityProfile {
+    if (_value.communityProfile == null) {
+      return null;
+    }
+
+    return $CommunityProfileCopyWith<$Res>(_value.communityProfile!, (value) {
+      return _then(_value.copyWith(communityProfile: value));
     });
   }
 }
@@ -94,39 +101,42 @@ abstract class _$$_SetUserProgramResponseCopyWith<$Res>
           $Res Function(_$_SetUserProgramResponse) then) =
       __$$_SetUserProgramResponseCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'staffProfile') StaffProfileResponse? staffProfile,
-      @JsonKey(name: 'communityToken') String? communityToken});
+      @JsonKey(name: 'communityProfile') CommunityProfile? communityProfile});
 
   @override
   $StaffProfileResponseCopyWith<$Res>? get staffProfile;
+  @override
+  $CommunityProfileCopyWith<$Res>? get communityProfile;
 }
 
 /// @nodoc
 class __$$_SetUserProgramResponseCopyWithImpl<$Res>
-    extends _$SetUserProgramResponseCopyWithImpl<$Res,
-        _$_SetUserProgramResponse>
+    extends _$SetUserProgramResponseCopyWithImpl<$Res>
     implements _$$_SetUserProgramResponseCopyWith<$Res> {
   __$$_SetUserProgramResponseCopyWithImpl(_$_SetUserProgramResponse _value,
       $Res Function(_$_SetUserProgramResponse) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_SetUserProgramResponse));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_SetUserProgramResponse get _value =>
+      super._value as _$_SetUserProgramResponse;
+
   @override
   $Res call({
     Object? staffProfile = freezed,
-    Object? communityToken = freezed,
+    Object? communityProfile = freezed,
   }) {
     return _then(_$_SetUserProgramResponse(
-      staffProfile: freezed == staffProfile
+      staffProfile: staffProfile == freezed
           ? _value.staffProfile
           : staffProfile // ignore: cast_nullable_to_non_nullable
               as StaffProfileResponse?,
-      communityToken: freezed == communityToken
-          ? _value.communityToken
-          : communityToken // ignore: cast_nullable_to_non_nullable
-              as String?,
+      communityProfile: communityProfile == freezed
+          ? _value.communityProfile
+          : communityProfile // ignore: cast_nullable_to_non_nullable
+              as CommunityProfile?,
     ));
   }
 }
@@ -136,7 +146,7 @@ class __$$_SetUserProgramResponseCopyWithImpl<$Res>
 class _$_SetUserProgramResponse implements _SetUserProgramResponse {
   _$_SetUserProgramResponse(
       {@JsonKey(name: 'staffProfile') this.staffProfile,
-      @JsonKey(name: 'communityToken') this.communityToken});
+      @JsonKey(name: 'communityProfile') this.communityProfile});
 
   factory _$_SetUserProgramResponse.fromJson(Map<String, dynamic> json) =>
       _$$_SetUserProgramResponseFromJson(json);
@@ -145,12 +155,12 @@ class _$_SetUserProgramResponse implements _SetUserProgramResponse {
   @JsonKey(name: 'staffProfile')
   final StaffProfileResponse? staffProfile;
   @override
-  @JsonKey(name: 'communityToken')
-  final String? communityToken;
+  @JsonKey(name: 'communityProfile')
+  final CommunityProfile? communityProfile;
 
   @override
   String toString() {
-    return 'SetUserProgramResponse(staffProfile: $staffProfile, communityToken: $communityToken)';
+    return 'SetUserProgramResponse(staffProfile: $staffProfile, communityProfile: $communityProfile)';
   }
 
   @override
@@ -158,19 +168,21 @@ class _$_SetUserProgramResponse implements _SetUserProgramResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SetUserProgramResponse &&
-            (identical(other.staffProfile, staffProfile) ||
-                other.staffProfile == staffProfile) &&
-            (identical(other.communityToken, communityToken) ||
-                other.communityToken == communityToken));
+            const DeepCollectionEquality()
+                .equals(other.staffProfile, staffProfile) &&
+            const DeepCollectionEquality()
+                .equals(other.communityProfile, communityProfile));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, staffProfile, communityToken);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(staffProfile),
+      const DeepCollectionEquality().hash(communityProfile));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_SetUserProgramResponseCopyWith<_$_SetUserProgramResponse> get copyWith =>
       __$$_SetUserProgramResponseCopyWithImpl<_$_SetUserProgramResponse>(
           this, _$identity);
@@ -185,10 +197,11 @@ class _$_SetUserProgramResponse implements _SetUserProgramResponse {
 
 abstract class _SetUserProgramResponse implements SetUserProgramResponse {
   factory _SetUserProgramResponse(
-      {@JsonKey(name: 'staffProfile')
-          final StaffProfileResponse? staffProfile,
-      @JsonKey(name: 'communityToken')
-          final String? communityToken}) = _$_SetUserProgramResponse;
+          {@JsonKey(name: 'staffProfile')
+              final StaffProfileResponse? staffProfile,
+          @JsonKey(name: 'communityProfile')
+              final CommunityProfile? communityProfile}) =
+      _$_SetUserProgramResponse;
 
   factory _SetUserProgramResponse.fromJson(Map<String, dynamic> json) =
       _$_SetUserProgramResponse.fromJson;
@@ -197,8 +210,8 @@ abstract class _SetUserProgramResponse implements SetUserProgramResponse {
   @JsonKey(name: 'staffProfile')
   StaffProfileResponse? get staffProfile;
   @override
-  @JsonKey(name: 'communityToken')
-  String? get communityToken;
+  @JsonKey(name: 'communityProfile')
+  CommunityProfile? get communityProfile;
   @override
   @JsonKey(ignore: true)
   _$$_SetUserProgramResponseCopyWith<_$_SetUserProgramResponse> get copyWith =>

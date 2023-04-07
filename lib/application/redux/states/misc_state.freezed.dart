@@ -44,8 +44,7 @@ mixin _$MiscState {
 /// @nodoc
 abstract class $MiscStateCopyWith<$Res> {
   factory $MiscStateCopyWith(MiscState value, $Res Function(MiscState) then) =
-      _$MiscStateCopyWithImpl<$Res, MiscState>;
-  @useResult
+      _$MiscStateCopyWithImpl<$Res>;
   $Res call(
       {String? initialRoute,
       String? error,
@@ -67,16 +66,13 @@ abstract class $MiscStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MiscStateCopyWithImpl<$Res, $Val extends MiscState>
-    implements $MiscStateCopyWith<$Res> {
+class _$MiscStateCopyWithImpl<$Res> implements $MiscStateCopyWith<$Res> {
   _$MiscStateCopyWithImpl(this._value, this._then);
 
+  final MiscState _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(MiscState) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? initialRoute = freezed,
@@ -92,55 +88,54 @@ class _$MiscStateCopyWithImpl<$Res, $Val extends MiscState>
     Object? userExists = freezed,
   }) {
     return _then(_value.copyWith(
-      initialRoute: freezed == initialRoute
+      initialRoute: initialRoute == freezed
           ? _value.initialRoute
           : initialRoute // ignore: cast_nullable_to_non_nullable
               as String?,
-      error: freezed == error
+      error: error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
-      profileFAQsContentState: freezed == profileFAQsContentState
+      profileFAQsContentState: profileFAQsContentState == freezed
           ? _value.profileFAQsContentState
           : profileFAQsContentState // ignore: cast_nullable_to_non_nullable
               as FAQsContentState?,
-      selectedFacility: freezed == selectedFacility
+      selectedFacility: selectedFacility == freezed
           ? _value.selectedFacility
           : selectedFacility // ignore: cast_nullable_to_non_nullable
               as Facility?,
-      selectedOrganisation: freezed == selectedOrganisation
+      selectedOrganisation: selectedOrganisation == freezed
           ? _value.selectedOrganisation
           : selectedOrganisation // ignore: cast_nullable_to_non_nullable
               as Organisation?,
-      searchUserResponseState: freezed == searchUserResponseState
+      searchUserResponseState: searchUserResponseState == freezed
           ? _value.searchUserResponseState
           : searchUserResponseState // ignore: cast_nullable_to_non_nullable
               as SearchUserResponseState?,
-      inactiveTime: freezed == inactiveTime
+      inactiveTime: inactiveTime == freezed
           ? _value.inactiveTime
           : inactiveTime // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumeWithPin: freezed == resumeWithPin
+      resumeWithPin: resumeWithPin == freezed
           ? _value.resumeWithPin
           : resumeWithPin // ignore: cast_nullable_to_non_nullable
               as bool?,
-      updateFacility: freezed == updateFacility
+      updateFacility: updateFacility == freezed
           ? _value.updateFacility
           : updateFacility // ignore: cast_nullable_to_non_nullable
               as bool?,
-      searchCaregiverResponseState: freezed == searchCaregiverResponseState
+      searchCaregiverResponseState: searchCaregiverResponseState == freezed
           ? _value.searchCaregiverResponseState
           : searchCaregiverResponseState // ignore: cast_nullable_to_non_nullable
               as SearchCaregiverResponseState?,
-      userExists: freezed == userExists
+      userExists: userExists == freezed
           ? _value.userExists
           : userExists // ignore: cast_nullable_to_non_nullable
               as bool?,
-    ) as $Val);
+    ));
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $FAQsContentStateCopyWith<$Res>? get profileFAQsContentState {
     if (_value.profileFAQsContentState == null) {
       return null;
@@ -148,36 +143,33 @@ class _$MiscStateCopyWithImpl<$Res, $Val extends MiscState>
 
     return $FAQsContentStateCopyWith<$Res>(_value.profileFAQsContentState!,
         (value) {
-      return _then(_value.copyWith(profileFAQsContentState: value) as $Val);
+      return _then(_value.copyWith(profileFAQsContentState: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $FacilityCopyWith<$Res>? get selectedFacility {
     if (_value.selectedFacility == null) {
       return null;
     }
 
     return $FacilityCopyWith<$Res>(_value.selectedFacility!, (value) {
-      return _then(_value.copyWith(selectedFacility: value) as $Val);
+      return _then(_value.copyWith(selectedFacility: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $OrganisationCopyWith<$Res>? get selectedOrganisation {
     if (_value.selectedOrganisation == null) {
       return null;
     }
 
     return $OrganisationCopyWith<$Res>(_value.selectedOrganisation!, (value) {
-      return _then(_value.copyWith(selectedOrganisation: value) as $Val);
+      return _then(_value.copyWith(selectedOrganisation: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $SearchUserResponseStateCopyWith<$Res>? get searchUserResponseState {
     if (_value.searchUserResponseState == null) {
       return null;
@@ -185,12 +177,11 @@ class _$MiscStateCopyWithImpl<$Res, $Val extends MiscState>
 
     return $SearchUserResponseStateCopyWith<$Res>(
         _value.searchUserResponseState!, (value) {
-      return _then(_value.copyWith(searchUserResponseState: value) as $Val);
+      return _then(_value.copyWith(searchUserResponseState: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $SearchCaregiverResponseStateCopyWith<$Res>?
       get searchCaregiverResponseState {
     if (_value.searchCaregiverResponseState == null) {
@@ -199,8 +190,7 @@ class _$MiscStateCopyWithImpl<$Res, $Val extends MiscState>
 
     return $SearchCaregiverResponseStateCopyWith<$Res>(
         _value.searchCaregiverResponseState!, (value) {
-      return _then(
-          _value.copyWith(searchCaregiverResponseState: value) as $Val);
+      return _then(_value.copyWith(searchCaregiverResponseState: value));
     });
   }
 }
@@ -211,7 +201,6 @@ abstract class _$$_MiscStateCopyWith<$Res> implements $MiscStateCopyWith<$Res> {
           _$_MiscState value, $Res Function(_$_MiscState) then) =
       __$$_MiscStateCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {String? initialRoute,
       String? error,
@@ -238,14 +227,15 @@ abstract class _$$_MiscStateCopyWith<$Res> implements $MiscStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_MiscStateCopyWithImpl<$Res>
-    extends _$MiscStateCopyWithImpl<$Res, _$_MiscState>
+class __$$_MiscStateCopyWithImpl<$Res> extends _$MiscStateCopyWithImpl<$Res>
     implements _$$_MiscStateCopyWith<$Res> {
   __$$_MiscStateCopyWithImpl(
       _$_MiscState _value, $Res Function(_$_MiscState) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_MiscState));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_MiscState get _value => super._value as _$_MiscState;
+
   @override
   $Res call({
     Object? initialRoute = freezed,
@@ -261,47 +251,47 @@ class __$$_MiscStateCopyWithImpl<$Res>
     Object? userExists = freezed,
   }) {
     return _then(_$_MiscState(
-      initialRoute: freezed == initialRoute
+      initialRoute: initialRoute == freezed
           ? _value.initialRoute
           : initialRoute // ignore: cast_nullable_to_non_nullable
               as String?,
-      error: freezed == error
+      error: error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
-      profileFAQsContentState: freezed == profileFAQsContentState
+      profileFAQsContentState: profileFAQsContentState == freezed
           ? _value.profileFAQsContentState
           : profileFAQsContentState // ignore: cast_nullable_to_non_nullable
               as FAQsContentState?,
-      selectedFacility: freezed == selectedFacility
+      selectedFacility: selectedFacility == freezed
           ? _value.selectedFacility
           : selectedFacility // ignore: cast_nullable_to_non_nullable
               as Facility?,
-      selectedOrganisation: freezed == selectedOrganisation
+      selectedOrganisation: selectedOrganisation == freezed
           ? _value.selectedOrganisation
           : selectedOrganisation // ignore: cast_nullable_to_non_nullable
               as Organisation?,
-      searchUserResponseState: freezed == searchUserResponseState
+      searchUserResponseState: searchUserResponseState == freezed
           ? _value.searchUserResponseState
           : searchUserResponseState // ignore: cast_nullable_to_non_nullable
               as SearchUserResponseState?,
-      inactiveTime: freezed == inactiveTime
+      inactiveTime: inactiveTime == freezed
           ? _value.inactiveTime
           : inactiveTime // ignore: cast_nullable_to_non_nullable
               as String?,
-      resumeWithPin: freezed == resumeWithPin
+      resumeWithPin: resumeWithPin == freezed
           ? _value.resumeWithPin
           : resumeWithPin // ignore: cast_nullable_to_non_nullable
               as bool?,
-      updateFacility: freezed == updateFacility
+      updateFacility: updateFacility == freezed
           ? _value.updateFacility
           : updateFacility // ignore: cast_nullable_to_non_nullable
               as bool?,
-      searchCaregiverResponseState: freezed == searchCaregiverResponseState
+      searchCaregiverResponseState: searchCaregiverResponseState == freezed
           ? _value.searchCaregiverResponseState
           : searchCaregiverResponseState // ignore: cast_nullable_to_non_nullable
               as SearchCaregiverResponseState?,
-      userExists: freezed == userExists
+      userExists: userExists == freezed
           ? _value.userExists
           : userExists // ignore: cast_nullable_to_non_nullable
               as bool?,
@@ -361,52 +351,48 @@ class _$_MiscState implements _MiscState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MiscState &&
-            (identical(other.initialRoute, initialRoute) ||
-                other.initialRoute == initialRoute) &&
-            (identical(other.error, error) || other.error == error) &&
-            (identical(
-                    other.profileFAQsContentState, profileFAQsContentState) ||
-                other.profileFAQsContentState == profileFAQsContentState) &&
-            (identical(other.selectedFacility, selectedFacility) ||
-                other.selectedFacility == selectedFacility) &&
-            (identical(other.selectedOrganisation, selectedOrganisation) ||
-                other.selectedOrganisation == selectedOrganisation) &&
-            (identical(
-                    other.searchUserResponseState, searchUserResponseState) ||
-                other.searchUserResponseState == searchUserResponseState) &&
-            (identical(other.inactiveTime, inactiveTime) ||
-                other.inactiveTime == inactiveTime) &&
-            (identical(other.resumeWithPin, resumeWithPin) ||
-                other.resumeWithPin == resumeWithPin) &&
-            (identical(other.updateFacility, updateFacility) ||
-                other.updateFacility == updateFacility) &&
-            (identical(other.searchCaregiverResponseState,
-                    searchCaregiverResponseState) ||
-                other.searchCaregiverResponseState ==
-                    searchCaregiverResponseState) &&
-            (identical(other.userExists, userExists) ||
-                other.userExists == userExists));
+            const DeepCollectionEquality()
+                .equals(other.initialRoute, initialRoute) &&
+            const DeepCollectionEquality().equals(other.error, error) &&
+            const DeepCollectionEquality().equals(
+                other.profileFAQsContentState, profileFAQsContentState) &&
+            const DeepCollectionEquality()
+                .equals(other.selectedFacility, selectedFacility) &&
+            const DeepCollectionEquality()
+                .equals(other.selectedOrganisation, selectedOrganisation) &&
+            const DeepCollectionEquality().equals(
+                other.searchUserResponseState, searchUserResponseState) &&
+            const DeepCollectionEquality()
+                .equals(other.inactiveTime, inactiveTime) &&
+            const DeepCollectionEquality()
+                .equals(other.resumeWithPin, resumeWithPin) &&
+            const DeepCollectionEquality()
+                .equals(other.updateFacility, updateFacility) &&
+            const DeepCollectionEquality().equals(
+                other.searchCaregiverResponseState,
+                searchCaregiverResponseState) &&
+            const DeepCollectionEquality()
+                .equals(other.userExists, userExists));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      initialRoute,
-      error,
-      profileFAQsContentState,
-      selectedFacility,
-      selectedOrganisation,
-      searchUserResponseState,
-      inactiveTime,
-      resumeWithPin,
-      updateFacility,
-      searchCaregiverResponseState,
-      userExists);
+      const DeepCollectionEquality().hash(initialRoute),
+      const DeepCollectionEquality().hash(error),
+      const DeepCollectionEquality().hash(profileFAQsContentState),
+      const DeepCollectionEquality().hash(selectedFacility),
+      const DeepCollectionEquality().hash(selectedOrganisation),
+      const DeepCollectionEquality().hash(searchUserResponseState),
+      const DeepCollectionEquality().hash(inactiveTime),
+      const DeepCollectionEquality().hash(resumeWithPin),
+      const DeepCollectionEquality().hash(updateFacility),
+      const DeepCollectionEquality().hash(searchCaregiverResponseState),
+      const DeepCollectionEquality().hash(userExists));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_MiscStateCopyWith<_$_MiscState> get copyWith =>
       __$$_MiscStateCopyWithImpl<_$_MiscState>(this, _$identity);
 

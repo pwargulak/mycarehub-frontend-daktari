@@ -70,6 +70,7 @@ class SetUserProgramAction extends ReduxAction<AppState> {
         onFailure?.call(getErrorMessage('setting your program'));
         return state;
       }
+
       final Map<String, dynamic>? data = body['data'] as Map<String, dynamic>?;
 
       final SetUserProgramResponse setUserProgramResponse =
@@ -85,6 +86,7 @@ class SetUserProgramAction extends ReduxAction<AppState> {
         active: setUserProgramResponse.staffProfile?.user?.active,
         chatRoomToken: setUserProgramResponse.communityToken,
       );
+
       final UserProfile? userProfile =
           state.userProfileState?.userProfile?.copyWith(
         id: setUserProgramResponse.staffProfile?.id,
@@ -92,20 +94,13 @@ class SetUserProgramAction extends ReduxAction<AppState> {
         staffNumber: setUserProgramResponse.staffProfile?.staffNumber,
         defaultFacility: setUserProgramResponse.staffProfile?.defaultFacility,
       );
+
+      dispatch(UpdateUserProfileStateAction(userProfile: userProfile));
+
+      dispatch(UpdateProgramsStateAction(selectedUserProgram: program));
+
       dispatch(
-        UpdateUserProfileStateAction(
-          userProfile: userProfile,
-        ),
-      );
-      dispatch(
-        UpdateProgramsStateAction(
-          selectedUserProgram: program,
-        ),
-      );
-      dispatch(
-        NavigateAction<AppState>.pushNamed(
-          AppRoutes.facilitySelectionPage,
-        ),
+        NavigateAction<AppState>.pushNamed(AppRoutes.facilitySelectionPage),
       );
     } else {
       onFailure?.call(getErrorMessage('setting your program'));

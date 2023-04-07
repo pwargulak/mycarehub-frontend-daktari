@@ -62,7 +62,6 @@ const String getFAQsFlag = 'get_faqs_flag';
 const String editInformationFlag = 'edit_information_flag';
 
 // invite members page
-const String inviteMembersFlag = 'invite_members_flag';
 const String fetchMembersFlag = 'fetch_members_flag';
 
 // communities
@@ -106,10 +105,6 @@ const String promoteToAdminFlag = 'promote_to_admin_flag';
 //pin reset service request
 const String staffPinResetServiceRequestFlag = 'pin_reset_service_request_flag';
 
-// flagged messages
-const String fetchFlaggedMessagesFlag = 'fetch_flagged_messages_flag';
-const String deleteCommunityMessageFlag = 'delete_community_messages_flag';
-
 // resume with pin
 const String resumeWithPinFlag = 'resume_with_pin';
 
@@ -145,16 +140,14 @@ const String listOrganizationsFlag = 'list_organizations_flag';
 const String searchOrganizationsFlag = 'search_organizations_flag';
 const String createProgramFlag = 'create_program_flag';
 
-// Communities
-const String communitiesSignOutFlag = 'communitiesSignOutFlag';
-
-const String createRoomFlag = 'createRoomFlag';
+//communities
+const String signInFlag = 'signInFlag';
 
 const String fetchRoomInfoFlag = 'fetchRoomInfoFlag';
 
 const String searchRoomMembersFlag = 'searchRoomMembersFlag';
 
-const String communitiesInviteMembersFlag = 'communitiesInviteMembersFlag';
+const String inviteMembersFlag = 'inviteMembersFlag';
 
 const String listRoomsFlag = 'listRoomsFlag';
 
@@ -173,3 +166,19 @@ const String startingSyncObserverFlag = 'startingSyncObserverFlag';
 const String joinRoomFlag = 'joinRoomFlag';
 
 const String leaveRoomFlag = 'leaveRoomFlag';
+
+const String uploadMediaFlag = 'uploadMediaFlag';
+
+const String promoteToModFlag = 'promoteToModFlag';
+
+const String fetchBannedMembersFlag = 'fetchBannedMembersFlag';
+
+const String fetchEventReport = 'fetchEventReport';
+
+const String deleteMessageEventReport = 'deleteMessageEventReport';
+
+const String fetchFlaggedMessagesFlag = 'fetchFlaggedMessagesFlag';
+
+const String createRoomFlag = 'createRoomFlag';
+
+const String reportMessageFlag = 'reportMessageFlag';

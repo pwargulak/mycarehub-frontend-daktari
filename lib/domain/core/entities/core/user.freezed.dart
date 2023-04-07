@@ -73,7 +73,6 @@ mixin _$User {
   /// This is used to trigger the change PIN workflow
   @JsonKey(name: 'pinUpdateRequired', defaultValue: false)
   bool? get pinUpdateRequired => throw _privateConstructorUsedError;
-  String? get chatRoomToken => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -83,8 +82,7 @@ mixin _$User {
 /// @nodoc
 abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
-      _$UserCopyWithImpl<$Res, User>;
-  @useResult
+      _$UserCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'id')
           String? userId,
@@ -133,24 +131,20 @@ abstract class $UserCopyWith<$Res> {
       @JsonKey(name: 'roles')
           List<Role>? roles,
       @JsonKey(name: 'pinUpdateRequired', defaultValue: false)
-          bool? pinUpdateRequired,
-      String? chatRoomToken});
+          bool? pinUpdateRequired});
 
   $ContactCopyWith<$Res>? get contact;
   $ContactCopyWith<$Res>? get primaryContact;
 }
 
 /// @nodoc
-class _$UserCopyWithImpl<$Res, $Val extends User>
-    implements $UserCopyWith<$Res> {
+class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
   _$UserCopyWithImpl(this._value, this._then);
 
+  final User _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(User) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? userId = freezed,
@@ -177,133 +171,126 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? avatar = freezed,
     Object? roles = freezed,
     Object? pinUpdateRequired = freezed,
-    Object? chatRoomToken = freezed,
   }) {
     return _then(_value.copyWith(
-      userId: freezed == userId
+      userId: userId == freezed
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String?,
-      username: freezed == username
+      username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: freezed == name
+      name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      gender: freezed == gender
+      gender: gender == freezed
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as Gender?,
-      active: freezed == active
+      active: active == freezed
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
               as bool?,
-      contact: freezed == contact
+      contact: contact == freezed
           ? _value.contact
           : contact // ignore: cast_nullable_to_non_nullable
               as Contact?,
-      firstName: freezed == firstName
+      firstName: firstName == freezed
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastName: freezed == lastName
+      lastName: lastName == freezed
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String?,
-      userType: freezed == userType
+      userType: userType == freezed
           ? _value.userType
           : userType // ignore: cast_nullable_to_non_nullable
               as String?,
-      primaryContact: freezed == primaryContact
+      primaryContact: primaryContact == freezed
           ? _value.primaryContact
           : primaryContact // ignore: cast_nullable_to_non_nullable
               as Contact?,
-      lastSuccessfulLogin: freezed == lastSuccessfulLogin
+      lastSuccessfulLogin: lastSuccessfulLogin == freezed
           ? _value.lastSuccessfulLogin
           : lastSuccessfulLogin // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastFailedLogin: freezed == lastFailedLogin
+      lastFailedLogin: lastFailedLogin == freezed
           ? _value.lastFailedLogin
           : lastFailedLogin // ignore: cast_nullable_to_non_nullable
               as String?,
-      failedLoginCount: freezed == failedLoginCount
+      failedLoginCount: failedLoginCount == freezed
           ? _value.failedLoginCount
           : failedLoginCount // ignore: cast_nullable_to_non_nullable
               as int?,
-      nextAllowedLogin: freezed == nextAllowedLogin
+      nextAllowedLogin: nextAllowedLogin == freezed
           ? _value.nextAllowedLogin
           : nextAllowedLogin // ignore: cast_nullable_to_non_nullable
               as String?,
-      pinChangeRequired: freezed == pinChangeRequired
+      pinChangeRequired: pinChangeRequired == freezed
           ? _value.pinChangeRequired
           : pinChangeRequired // ignore: cast_nullable_to_non_nullable
               as bool?,
-      hasSetPin: freezed == hasSetPin
+      hasSetPin: hasSetPin == freezed
           ? _value.hasSetPin
           : hasSetPin // ignore: cast_nullable_to_non_nullable
               as bool?,
-      isPhoneVerified: freezed == isPhoneVerified
+      isPhoneVerified: isPhoneVerified == freezed
           ? _value.isPhoneVerified
           : isPhoneVerified // ignore: cast_nullable_to_non_nullable
               as bool?,
-      hasSetSecurityQuestions: freezed == hasSetSecurityQuestions
+      hasSetSecurityQuestions: hasSetSecurityQuestions == freezed
           ? _value.hasSetSecurityQuestions
           : hasSetSecurityQuestions // ignore: cast_nullable_to_non_nullable
               as bool?,
-      termsAccepted: freezed == termsAccepted
+      termsAccepted: termsAccepted == freezed
           ? _value.termsAccepted
           : termsAccepted // ignore: cast_nullable_to_non_nullable
               as bool?,
-      acceptedTermsID: freezed == acceptedTermsID
+      acceptedTermsID: acceptedTermsID == freezed
           ? _value.acceptedTermsID
           : acceptedTermsID // ignore: cast_nullable_to_non_nullable
               as int?,
-      suspended: freezed == suspended
+      suspended: suspended == freezed
           ? _value.suspended
           : suspended // ignore: cast_nullable_to_non_nullable
               as bool?,
-      avatar: freezed == avatar
+      avatar: avatar == freezed
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
               as String?,
-      roles: freezed == roles
+      roles: roles == freezed
           ? _value.roles
           : roles // ignore: cast_nullable_to_non_nullable
               as List<Role>?,
-      pinUpdateRequired: freezed == pinUpdateRequired
+      pinUpdateRequired: pinUpdateRequired == freezed
           ? _value.pinUpdateRequired
           : pinUpdateRequired // ignore: cast_nullable_to_non_nullable
               as bool?,
-      chatRoomToken: freezed == chatRoomToken
-          ? _value.chatRoomToken
-          : chatRoomToken // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    ));
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $ContactCopyWith<$Res>? get contact {
     if (_value.contact == null) {
       return null;
     }
 
     return $ContactCopyWith<$Res>(_value.contact!, (value) {
-      return _then(_value.copyWith(contact: value) as $Val);
+      return _then(_value.copyWith(contact: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $ContactCopyWith<$Res>? get primaryContact {
     if (_value.primaryContact == null) {
       return null;
     }
 
     return $ContactCopyWith<$Res>(_value.primaryContact!, (value) {
-      return _then(_value.copyWith(primaryContact: value) as $Val);
+      return _then(_value.copyWith(primaryContact: value));
     });
   }
 }
@@ -313,7 +300,6 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$$_UserCopyWith(_$_User value, $Res Function(_$_User) then) =
       __$$_UserCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'id')
           String? userId,
@@ -362,8 +348,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       @JsonKey(name: 'roles')
           List<Role>? roles,
       @JsonKey(name: 'pinUpdateRequired', defaultValue: false)
-          bool? pinUpdateRequired,
-      String? chatRoomToken});
+          bool? pinUpdateRequired});
 
   @override
   $ContactCopyWith<$Res>? get contact;
@@ -372,12 +357,14 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
+class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     implements _$$_UserCopyWith<$Res> {
   __$$_UserCopyWithImpl(_$_User _value, $Res Function(_$_User) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_User));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_User get _value => super._value as _$_User;
+
   @override
   $Res call({
     Object? userId = freezed,
@@ -404,109 +391,104 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
     Object? avatar = freezed,
     Object? roles = freezed,
     Object? pinUpdateRequired = freezed,
-    Object? chatRoomToken = freezed,
   }) {
     return _then(_$_User(
-      userId: freezed == userId
+      userId: userId == freezed
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String?,
-      username: freezed == username
+      username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: freezed == name
+      name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      gender: freezed == gender
+      gender: gender == freezed
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as Gender?,
-      active: freezed == active
+      active: active == freezed
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
               as bool?,
-      contact: freezed == contact
+      contact: contact == freezed
           ? _value.contact
           : contact // ignore: cast_nullable_to_non_nullable
               as Contact?,
-      firstName: freezed == firstName
+      firstName: firstName == freezed
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastName: freezed == lastName
+      lastName: lastName == freezed
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String?,
-      userType: freezed == userType
+      userType: userType == freezed
           ? _value.userType
           : userType // ignore: cast_nullable_to_non_nullable
               as String?,
-      primaryContact: freezed == primaryContact
+      primaryContact: primaryContact == freezed
           ? _value.primaryContact
           : primaryContact // ignore: cast_nullable_to_non_nullable
               as Contact?,
-      lastSuccessfulLogin: freezed == lastSuccessfulLogin
+      lastSuccessfulLogin: lastSuccessfulLogin == freezed
           ? _value.lastSuccessfulLogin
           : lastSuccessfulLogin // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastFailedLogin: freezed == lastFailedLogin
+      lastFailedLogin: lastFailedLogin == freezed
           ? _value.lastFailedLogin
           : lastFailedLogin // ignore: cast_nullable_to_non_nullable
               as String?,
-      failedLoginCount: freezed == failedLoginCount
+      failedLoginCount: failedLoginCount == freezed
           ? _value.failedLoginCount
           : failedLoginCount // ignore: cast_nullable_to_non_nullable
               as int?,
-      nextAllowedLogin: freezed == nextAllowedLogin
+      nextAllowedLogin: nextAllowedLogin == freezed
           ? _value.nextAllowedLogin
           : nextAllowedLogin // ignore: cast_nullable_to_non_nullable
               as String?,
-      pinChangeRequired: freezed == pinChangeRequired
+      pinChangeRequired: pinChangeRequired == freezed
           ? _value.pinChangeRequired
           : pinChangeRequired // ignore: cast_nullable_to_non_nullable
               as bool?,
-      hasSetPin: freezed == hasSetPin
+      hasSetPin: hasSetPin == freezed
           ? _value.hasSetPin
           : hasSetPin // ignore: cast_nullable_to_non_nullable
               as bool?,
-      isPhoneVerified: freezed == isPhoneVerified
+      isPhoneVerified: isPhoneVerified == freezed
           ? _value.isPhoneVerified
           : isPhoneVerified // ignore: cast_nullable_to_non_nullable
               as bool?,
-      hasSetSecurityQuestions: freezed == hasSetSecurityQuestions
+      hasSetSecurityQuestions: hasSetSecurityQuestions == freezed
           ? _value.hasSetSecurityQuestions
           : hasSetSecurityQuestions // ignore: cast_nullable_to_non_nullable
               as bool?,
-      termsAccepted: freezed == termsAccepted
+      termsAccepted: termsAccepted == freezed
           ? _value.termsAccepted
           : termsAccepted // ignore: cast_nullable_to_non_nullable
               as bool?,
-      acceptedTermsID: freezed == acceptedTermsID
+      acceptedTermsID: acceptedTermsID == freezed
           ? _value.acceptedTermsID
           : acceptedTermsID // ignore: cast_nullable_to_non_nullable
               as int?,
-      suspended: freezed == suspended
+      suspended: suspended == freezed
           ? _value.suspended
           : suspended // ignore: cast_nullable_to_non_nullable
               as bool?,
-      avatar: freezed == avatar
+      avatar: avatar == freezed
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
               as String?,
-      roles: freezed == roles
+      roles: roles == freezed
           ? _value._roles
           : roles // ignore: cast_nullable_to_non_nullable
               as List<Role>?,
-      pinUpdateRequired: freezed == pinUpdateRequired
+      pinUpdateRequired: pinUpdateRequired == freezed
           ? _value.pinUpdateRequired
           : pinUpdateRequired // ignore: cast_nullable_to_non_nullable
               as bool?,
-      chatRoomToken: freezed == chatRoomToken
-          ? _value.chatRoomToken
-          : chatRoomToken // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -562,8 +544,7 @@ class _$_User implements _User {
       @JsonKey(name: 'roles')
           final List<Role>? roles,
       @JsonKey(name: 'pinUpdateRequired', defaultValue: false)
-          this.pinUpdateRequired,
-      this.chatRoomToken})
+          this.pinUpdateRequired})
       : _roles = roles;
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
@@ -651,12 +632,10 @@ class _$_User implements _User {
   @override
   @JsonKey(name: 'pinUpdateRequired', defaultValue: false)
   final bool? pinUpdateRequired;
-  @override
-  final String? chatRoomToken;
 
   @override
   String toString() {
-    return 'User(userId: $userId, username: $username, name: $name, gender: $gender, active: $active, contact: $contact, firstName: $firstName, lastName: $lastName, userType: $userType, primaryContact: $primaryContact, lastSuccessfulLogin: $lastSuccessfulLogin, lastFailedLogin: $lastFailedLogin, failedLoginCount: $failedLoginCount, nextAllowedLogin: $nextAllowedLogin, pinChangeRequired: $pinChangeRequired, hasSetPin: $hasSetPin, isPhoneVerified: $isPhoneVerified, hasSetSecurityQuestions: $hasSetSecurityQuestions, termsAccepted: $termsAccepted, acceptedTermsID: $acceptedTermsID, suspended: $suspended, avatar: $avatar, roles: $roles, pinUpdateRequired: $pinUpdateRequired, chatRoomToken: $chatRoomToken)';
+    return 'User(userId: $userId, username: $username, name: $name, gender: $gender, active: $active, contact: $contact, firstName: $firstName, lastName: $lastName, userType: $userType, primaryContact: $primaryContact, lastSuccessfulLogin: $lastSuccessfulLogin, lastFailedLogin: $lastFailedLogin, failedLoginCount: $failedLoginCount, nextAllowedLogin: $nextAllowedLogin, pinChangeRequired: $pinChangeRequired, hasSetPin: $hasSetPin, isPhoneVerified: $isPhoneVerified, hasSetSecurityQuestions: $hasSetSecurityQuestions, termsAccepted: $termsAccepted, acceptedTermsID: $acceptedTermsID, suspended: $suspended, avatar: $avatar, roles: $roles, pinUpdateRequired: $pinUpdateRequired)';
   }
 
   @override
@@ -664,86 +643,75 @@ class _$_User implements _User {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_User &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.username, username) ||
-                other.username == username) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.gender, gender) || other.gender == gender) &&
-            (identical(other.active, active) || other.active == active) &&
-            (identical(other.contact, contact) || other.contact == contact) &&
-            (identical(other.firstName, firstName) ||
-                other.firstName == firstName) &&
-            (identical(other.lastName, lastName) ||
-                other.lastName == lastName) &&
-            (identical(other.userType, userType) ||
-                other.userType == userType) &&
-            (identical(other.primaryContact, primaryContact) ||
-                other.primaryContact == primaryContact) &&
-            (identical(other.lastSuccessfulLogin, lastSuccessfulLogin) ||
-                other.lastSuccessfulLogin == lastSuccessfulLogin) &&
-            (identical(other.lastFailedLogin, lastFailedLogin) ||
-                other.lastFailedLogin == lastFailedLogin) &&
-            (identical(other.failedLoginCount, failedLoginCount) ||
-                other.failedLoginCount == failedLoginCount) &&
-            (identical(other.nextAllowedLogin, nextAllowedLogin) ||
-                other.nextAllowedLogin == nextAllowedLogin) &&
-            (identical(other.pinChangeRequired, pinChangeRequired) ||
-                other.pinChangeRequired == pinChangeRequired) &&
-            (identical(other.hasSetPin, hasSetPin) ||
-                other.hasSetPin == hasSetPin) &&
-            (identical(other.isPhoneVerified, isPhoneVerified) ||
-                other.isPhoneVerified == isPhoneVerified) &&
-            (identical(
-                    other.hasSetSecurityQuestions, hasSetSecurityQuestions) ||
-                other.hasSetSecurityQuestions == hasSetSecurityQuestions) &&
-            (identical(other.termsAccepted, termsAccepted) ||
-                other.termsAccepted == termsAccepted) &&
-            (identical(other.acceptedTermsID, acceptedTermsID) ||
-                other.acceptedTermsID == acceptedTermsID) &&
-            (identical(other.suspended, suspended) ||
-                other.suspended == suspended) &&
-            (identical(other.avatar, avatar) || other.avatar == avatar) &&
+            const DeepCollectionEquality().equals(other.userId, userId) &&
+            const DeepCollectionEquality().equals(other.username, username) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.gender, gender) &&
+            const DeepCollectionEquality().equals(other.active, active) &&
+            const DeepCollectionEquality().equals(other.contact, contact) &&
+            const DeepCollectionEquality().equals(other.firstName, firstName) &&
+            const DeepCollectionEquality().equals(other.lastName, lastName) &&
+            const DeepCollectionEquality().equals(other.userType, userType) &&
+            const DeepCollectionEquality()
+                .equals(other.primaryContact, primaryContact) &&
+            const DeepCollectionEquality()
+                .equals(other.lastSuccessfulLogin, lastSuccessfulLogin) &&
+            const DeepCollectionEquality()
+                .equals(other.lastFailedLogin, lastFailedLogin) &&
+            const DeepCollectionEquality()
+                .equals(other.failedLoginCount, failedLoginCount) &&
+            const DeepCollectionEquality()
+                .equals(other.nextAllowedLogin, nextAllowedLogin) &&
+            const DeepCollectionEquality()
+                .equals(other.pinChangeRequired, pinChangeRequired) &&
+            const DeepCollectionEquality().equals(other.hasSetPin, hasSetPin) &&
+            const DeepCollectionEquality()
+                .equals(other.isPhoneVerified, isPhoneVerified) &&
+            const DeepCollectionEquality().equals(
+                other.hasSetSecurityQuestions, hasSetSecurityQuestions) &&
+            const DeepCollectionEquality()
+                .equals(other.termsAccepted, termsAccepted) &&
+            const DeepCollectionEquality()
+                .equals(other.acceptedTermsID, acceptedTermsID) &&
+            const DeepCollectionEquality().equals(other.suspended, suspended) &&
+            const DeepCollectionEquality().equals(other.avatar, avatar) &&
             const DeepCollectionEquality().equals(other._roles, _roles) &&
-            (identical(other.pinUpdateRequired, pinUpdateRequired) ||
-                other.pinUpdateRequired == pinUpdateRequired) &&
-            (identical(other.chatRoomToken, chatRoomToken) ||
-                other.chatRoomToken == chatRoomToken));
+            const DeepCollectionEquality()
+                .equals(other.pinUpdateRequired, pinUpdateRequired));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        userId,
-        username,
-        name,
-        gender,
-        active,
-        contact,
-        firstName,
-        lastName,
-        userType,
-        primaryContact,
-        lastSuccessfulLogin,
-        lastFailedLogin,
-        failedLoginCount,
-        nextAllowedLogin,
-        pinChangeRequired,
-        hasSetPin,
-        isPhoneVerified,
-        hasSetSecurityQuestions,
-        termsAccepted,
-        acceptedTermsID,
-        suspended,
-        avatar,
+        const DeepCollectionEquality().hash(userId),
+        const DeepCollectionEquality().hash(username),
+        const DeepCollectionEquality().hash(name),
+        const DeepCollectionEquality().hash(gender),
+        const DeepCollectionEquality().hash(active),
+        const DeepCollectionEquality().hash(contact),
+        const DeepCollectionEquality().hash(firstName),
+        const DeepCollectionEquality().hash(lastName),
+        const DeepCollectionEquality().hash(userType),
+        const DeepCollectionEquality().hash(primaryContact),
+        const DeepCollectionEquality().hash(lastSuccessfulLogin),
+        const DeepCollectionEquality().hash(lastFailedLogin),
+        const DeepCollectionEquality().hash(failedLoginCount),
+        const DeepCollectionEquality().hash(nextAllowedLogin),
+        const DeepCollectionEquality().hash(pinChangeRequired),
+        const DeepCollectionEquality().hash(hasSetPin),
+        const DeepCollectionEquality().hash(isPhoneVerified),
+        const DeepCollectionEquality().hash(hasSetSecurityQuestions),
+        const DeepCollectionEquality().hash(termsAccepted),
+        const DeepCollectionEquality().hash(acceptedTermsID),
+        const DeepCollectionEquality().hash(suspended),
+        const DeepCollectionEquality().hash(avatar),
         const DeepCollectionEquality().hash(_roles),
-        pinUpdateRequired,
-        chatRoomToken
+        const DeepCollectionEquality().hash(pinUpdateRequired)
       ]);
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_UserCopyWith<_$_User> get copyWith =>
       __$$_UserCopyWithImpl<_$_User>(this, _$identity);
 
@@ -804,8 +772,7 @@ abstract class _User implements User {
       @JsonKey(name: 'roles')
           final List<Role>? roles,
       @JsonKey(name: 'pinUpdateRequired', defaultValue: false)
-          final bool? pinUpdateRequired,
-      final String? chatRoomToken}) = _$_User;
+          final bool? pinUpdateRequired}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
@@ -885,8 +852,6 @@ abstract class _User implements User {
   /// This is used to trigger the change PIN workflow
   @JsonKey(name: 'pinUpdateRequired', defaultValue: false)
   bool? get pinUpdateRequired;
-  @override
-  String? get chatRoomToken;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

@@ -52,8 +52,7 @@ class _HomePageState extends State<HomePage> {
           converter: (Store<AppState> store) =>
               UserProfileViewModel.fromStore(store),
           builder: (BuildContext context, UserProfileViewModel vm) {
-            final String firstName =
-                vm.userProfile?.user?.firstName ?? UNKNOWN;
+            final String firstName = vm.userProfile?.user?.firstName ?? UNKNOWN;
 
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -172,10 +171,10 @@ class _HomePageState extends State<HomePage> {
                         title: createGroupText,
                         iconUrl: newGroupImage,
                         onTap: () {
-                          Navigator.pushNamed(context, AppRoutes.createRoomPage);
+                          Navigator.pushNamed(
+                              context, AppRoutes.createRoomPageRoute);
                         },
                       ),
-                      
                     ],
                   ),
                 ),

@@ -1,8 +1,19 @@
 // Flutter imports:
+import 'dart:io';
+
+import 'package:prohealth360_daktari/application/redux/states/chat/event_report.dart';
 import 'package:prohealth360_daktari/domain/core/entities/core/screening_tool.dart';
 import 'package:prohealth360_daktari/presentation/admin/admin_page.dart';
 import 'package:prohealth360_daktari/presentation/caregiver/assign_caregiver_page.dart';
+import 'package:prohealth360_daktari/presentation/communities/pages/banned_members_page.dart';
 import 'package:prohealth360_daktari/presentation/communities/pages/create_room_page.dart';
+import 'package:prohealth360_daktari/presentation/communities/pages/flagged_message_preview_page.dart';
+import 'package:prohealth360_daktari/presentation/communities/pages/flagged_messages_page.dart';
+import 'package:prohealth360_daktari/presentation/communities/pages/image_preview_page.dart';
+import 'package:prohealth360_daktari/presentation/communities/pages/preview_upload_image_page.dart';
+import 'package:prohealth360_daktari/presentation/communities/pages/room_info_page.dart';
+import 'package:prohealth360_daktari/presentation/communities/pages/room_list_page.dart';
+import 'package:prohealth360_daktari/presentation/communities/pages/room_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/core/search_organization_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/login/pages/login_page.dart';
 import 'package:prohealth360_daktari/presentation/onboarding/program_selection/program_selection_page.dart';
@@ -86,6 +97,7 @@ import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_page.dar
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_respondents_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_responses_preview_page.dart';
 import 'package:prohealth360_daktari/presentation/surveys/pages/surveys_send_configuration_page.dart';
+import 'package:sghi_core/communities/models/room.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -637,10 +649,88 @@ class RouteGenerator {
           settings: const RouteSettings(name: 'Create Program Page'),
         );
 
-      case AppRoutes.createRoomPage:
+      case AppRoutes.createRoomPageRoute:
         return MaterialPageRoute<CreateRoomPage>(
           builder: (_) => const CreateRoomPage(),
           settings: const RouteSettings(name: 'Create Room Page'),
+        );
+
+      case AppRoutes.roomListPageRoute:
+        return MaterialPageRoute<RoomListPage>(
+          builder: (_) => const RoomListPage(),
+          settings: const RouteSettings(name: 'Room list page'),
+        );
+
+      case AppRoutes.roomPageRoute:
+        final dynamic roomArgs = args;
+
+        return MaterialPageRoute<RoomPage>(
+          builder: (_) => RoomPage(room: roomArgs as Room),
+          settings: const RouteSettings(name: 'Room page route'),
+        );
+
+      case AppRoutes.roomInfoPageRoute:
+        final dynamic roomArgs = args;
+
+        return MaterialPageRoute<RoomInfoPage>(
+          builder: (_) => RoomInfoPage(room: roomArgs as Room),
+          settings: const RouteSettings(name: 'Room info page'),
+        );
+
+      case AppRoutes.previewUploadMediaRoute:
+        final Map<String, dynamic> params = args as Map<String, dynamic>;
+        final String roomID = params['roomID'] as String;
+        final File img = params['img'] as File;
+
+        return MaterialPageRoute<PreviewUploadImage>(
+          builder: (_) => PreviewUploadImage(
+            image: img,
+            roomID: roomID,
+          ),
+          settings: const RouteSettings(name: 'Media upload preview page'),
+        );
+
+      case AppRoutes.imagePreviewRoute:
+        final Map<String, dynamic> params = args as Map<String, dynamic>;
+
+        final String imageURL = params['imageURL'] as String;
+        final bool wasSentByUser = params['wasSentByUser'] as bool;
+        final Widget sender = params['sender'] as Widget;
+        final String timestamp = params['timestamp'] as String;
+
+        return MaterialPageRoute<ImagePreviewPage>(
+          builder: (_) => ImagePreviewPage(
+            url: imageURL,
+            wasSentByUser: wasSentByUser,
+            sender: sender,
+            time: timestamp,
+          ),
+          settings: const RouteSettings(name: 'Image preview page'),
+        );
+
+      case AppRoutes.bannedMembersRoute:
+        final dynamic roomArgs = args;
+
+        return MaterialPageRoute<BannedMembersPage>(
+          builder: (_) => BannedMembersPage(room: roomArgs as Room),
+          settings: const RouteSettings(name: 'Banned members page'),
+        );
+
+      case AppRoutes.flaggedMessagesRoute:
+        final dynamic roomArgs = args;
+
+        return MaterialPageRoute<FlaggedMessagesPage>(
+          builder: (_) => FlaggedMessagesPage(room: roomArgs as Room),
+          settings: const RouteSettings(name: 'Flagged messages page'),
+        );
+
+      case AppRoutes.flaggedMessagePreviewRoute:
+        final dynamic eventReportArgs = args;
+
+        return MaterialPageRoute<FlaggedMessagePreviewPage>(
+          builder: (_) =>
+              FlaggedMessagePreviewPage(event: eventReportArgs as EventReport),
+          settings: const RouteSettings(name: 'Preview flagged message page'),
         );
 
       default:

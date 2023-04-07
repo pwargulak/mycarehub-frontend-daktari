@@ -39,8 +39,7 @@ mixin _$ScreeningToolsState {
 abstract class $ScreeningToolsStateCopyWith<$Res> {
   factory $ScreeningToolsStateCopyWith(
           ScreeningToolsState value, $Res Function(ScreeningToolsState) then) =
-      _$ScreeningToolsStateCopyWithImpl<$Res, ScreeningToolsState>;
-  @useResult
+      _$ScreeningToolsStateCopyWithImpl<$Res>;
   $Res call(
       {List<ScreeningTool>? availableTools,
       List<ScreeningToolRespondent>? screeningToolRespondents,
@@ -54,16 +53,14 @@ abstract class $ScreeningToolsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ScreeningToolsStateCopyWithImpl<$Res, $Val extends ScreeningToolsState>
+class _$ScreeningToolsStateCopyWithImpl<$Res>
     implements $ScreeningToolsStateCopyWith<$Res> {
   _$ScreeningToolsStateCopyWithImpl(this._value, this._then);
 
+  final ScreeningToolsState _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(ScreeningToolsState) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? availableTools = freezed,
@@ -73,31 +70,30 @@ class _$ScreeningToolsStateCopyWithImpl<$Res, $Val extends ScreeningToolsState>
     Object? errorFetchingScreeningTools = freezed,
   }) {
     return _then(_value.copyWith(
-      availableTools: freezed == availableTools
+      availableTools: availableTools == freezed
           ? _value.availableTools
           : availableTools // ignore: cast_nullable_to_non_nullable
               as List<ScreeningTool>?,
-      screeningToolRespondents: freezed == screeningToolRespondents
+      screeningToolRespondents: screeningToolRespondents == freezed
           ? _value.screeningToolRespondents
           : screeningToolRespondents // ignore: cast_nullable_to_non_nullable
               as List<ScreeningToolRespondent>?,
-      selectedRespondent: freezed == selectedRespondent
+      selectedRespondent: selectedRespondent == freezed
           ? _value.selectedRespondent
           : selectedRespondent // ignore: cast_nullable_to_non_nullable
               as ScreeningToolRespondent?,
-      screeningToolQuestionResponses: freezed == screeningToolQuestionResponses
+      screeningToolQuestionResponses: screeningToolQuestionResponses == freezed
           ? _value.screeningToolQuestionResponses
           : screeningToolQuestionResponses // ignore: cast_nullable_to_non_nullable
               as ScreeningToolQuestionResponses?,
-      errorFetchingScreeningTools: freezed == errorFetchingScreeningTools
+      errorFetchingScreeningTools: errorFetchingScreeningTools == freezed
           ? _value.errorFetchingScreeningTools
           : errorFetchingScreeningTools // ignore: cast_nullable_to_non_nullable
               as bool?,
-    ) as $Val);
+    ));
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $ScreeningToolRespondentCopyWith<$Res>? get selectedRespondent {
     if (_value.selectedRespondent == null) {
       return null;
@@ -105,12 +101,11 @@ class _$ScreeningToolsStateCopyWithImpl<$Res, $Val extends ScreeningToolsState>
 
     return $ScreeningToolRespondentCopyWith<$Res>(_value.selectedRespondent!,
         (value) {
-      return _then(_value.copyWith(selectedRespondent: value) as $Val);
+      return _then(_value.copyWith(selectedRespondent: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $ScreeningToolQuestionResponsesCopyWith<$Res>?
       get screeningToolQuestionResponses {
     if (_value.screeningToolQuestionResponses == null) {
@@ -119,8 +114,7 @@ class _$ScreeningToolsStateCopyWithImpl<$Res, $Val extends ScreeningToolsState>
 
     return $ScreeningToolQuestionResponsesCopyWith<$Res>(
         _value.screeningToolQuestionResponses!, (value) {
-      return _then(
-          _value.copyWith(screeningToolQuestionResponses: value) as $Val);
+      return _then(_value.copyWith(screeningToolQuestionResponses: value));
     });
   }
 }
@@ -132,7 +126,6 @@ abstract class _$$_ScreeningToolsStateCopyWith<$Res>
           $Res Function(_$_ScreeningToolsState) then) =
       __$$_ScreeningToolsStateCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {List<ScreeningTool>? availableTools,
       List<ScreeningToolRespondent>? screeningToolRespondents,
@@ -149,13 +142,15 @@ abstract class _$$_ScreeningToolsStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_ScreeningToolsStateCopyWithImpl<$Res>
-    extends _$ScreeningToolsStateCopyWithImpl<$Res, _$_ScreeningToolsState>
+    extends _$ScreeningToolsStateCopyWithImpl<$Res>
     implements _$$_ScreeningToolsStateCopyWith<$Res> {
   __$$_ScreeningToolsStateCopyWithImpl(_$_ScreeningToolsState _value,
       $Res Function(_$_ScreeningToolsState) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_ScreeningToolsState));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_ScreeningToolsState get _value => super._value as _$_ScreeningToolsState;
+
   @override
   $Res call({
     Object? availableTools = freezed,
@@ -165,23 +160,23 @@ class __$$_ScreeningToolsStateCopyWithImpl<$Res>
     Object? errorFetchingScreeningTools = freezed,
   }) {
     return _then(_$_ScreeningToolsState(
-      availableTools: freezed == availableTools
+      availableTools: availableTools == freezed
           ? _value.availableTools
           : availableTools // ignore: cast_nullable_to_non_nullable
               as List<ScreeningTool>?,
-      screeningToolRespondents: freezed == screeningToolRespondents
+      screeningToolRespondents: screeningToolRespondents == freezed
           ? _value.screeningToolRespondents
           : screeningToolRespondents // ignore: cast_nullable_to_non_nullable
               as List<ScreeningToolRespondent>?,
-      selectedRespondent: freezed == selectedRespondent
+      selectedRespondent: selectedRespondent == freezed
           ? _value.selectedRespondent
           : selectedRespondent // ignore: cast_nullable_to_non_nullable
               as ScreeningToolRespondent?,
-      screeningToolQuestionResponses: freezed == screeningToolQuestionResponses
+      screeningToolQuestionResponses: screeningToolQuestionResponses == freezed
           ? _value.screeningToolQuestionResponses
           : screeningToolQuestionResponses // ignore: cast_nullable_to_non_nullable
               as ScreeningToolQuestionResponses?,
-      errorFetchingScreeningTools: freezed == errorFetchingScreeningTools
+      errorFetchingScreeningTools: errorFetchingScreeningTools == freezed
           ? _value.errorFetchingScreeningTools
           : errorFetchingScreeningTools // ignore: cast_nullable_to_non_nullable
               as bool?,
@@ -227,16 +222,14 @@ class _$_ScreeningToolsState implements _ScreeningToolsState {
                 .equals(other.availableTools, availableTools) &&
             const DeepCollectionEquality().equals(
                 other.screeningToolRespondents, screeningToolRespondents) &&
-            (identical(other.selectedRespondent, selectedRespondent) ||
-                other.selectedRespondent == selectedRespondent) &&
-            (identical(other.screeningToolQuestionResponses,
-                    screeningToolQuestionResponses) ||
-                other.screeningToolQuestionResponses ==
-                    screeningToolQuestionResponses) &&
-            (identical(other.errorFetchingScreeningTools,
-                    errorFetchingScreeningTools) ||
-                other.errorFetchingScreeningTools ==
-                    errorFetchingScreeningTools));
+            const DeepCollectionEquality()
+                .equals(other.selectedRespondent, selectedRespondent) &&
+            const DeepCollectionEquality().equals(
+                other.screeningToolQuestionResponses,
+                screeningToolQuestionResponses) &&
+            const DeepCollectionEquality().equals(
+                other.errorFetchingScreeningTools,
+                errorFetchingScreeningTools));
   }
 
   @JsonKey(ignore: true)
@@ -245,13 +238,12 @@ class _$_ScreeningToolsState implements _ScreeningToolsState {
       runtimeType,
       const DeepCollectionEquality().hash(availableTools),
       const DeepCollectionEquality().hash(screeningToolRespondents),
-      selectedRespondent,
-      screeningToolQuestionResponses,
-      errorFetchingScreeningTools);
+      const DeepCollectionEquality().hash(selectedRespondent),
+      const DeepCollectionEquality().hash(screeningToolQuestionResponses),
+      const DeepCollectionEquality().hash(errorFetchingScreeningTools));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_ScreeningToolsStateCopyWith<_$_ScreeningToolsState> get copyWith =>
       __$$_ScreeningToolsStateCopyWithImpl<_$_ScreeningToolsState>(
           this, _$identity);

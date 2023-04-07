@@ -36,41 +36,36 @@ mixin _$ClientConfigurationPayload {
 abstract class $ClientConfigurationPayloadCopyWith<$Res> {
   factory $ClientConfigurationPayloadCopyWith(ClientConfigurationPayload value,
           $Res Function(ClientConfigurationPayload) then) =
-      _$ClientConfigurationPayloadCopyWithImpl<$Res,
-          ClientConfigurationPayload>;
-  @useResult
+      _$ClientConfigurationPayloadCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'clientTypes') List<ClientType>? clientTypes,
       @JsonKey(name: 'gender') List<Gender>? gender});
 }
 
 /// @nodoc
-class _$ClientConfigurationPayloadCopyWithImpl<$Res,
-        $Val extends ClientConfigurationPayload>
+class _$ClientConfigurationPayloadCopyWithImpl<$Res>
     implements $ClientConfigurationPayloadCopyWith<$Res> {
   _$ClientConfigurationPayloadCopyWithImpl(this._value, this._then);
 
+  final ClientConfigurationPayload _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(ClientConfigurationPayload) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? clientTypes = freezed,
     Object? gender = freezed,
   }) {
     return _then(_value.copyWith(
-      clientTypes: freezed == clientTypes
+      clientTypes: clientTypes == freezed
           ? _value.clientTypes
           : clientTypes // ignore: cast_nullable_to_non_nullable
               as List<ClientType>?,
-      gender: freezed == gender
+      gender: gender == freezed
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as List<Gender>?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -82,7 +77,6 @@ abstract class _$$_ClientConfigurationPayloadCopyWith<$Res>
           $Res Function(_$_ClientConfigurationPayload) then) =
       __$$_ClientConfigurationPayloadCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'clientTypes') List<ClientType>? clientTypes,
       @JsonKey(name: 'gender') List<Gender>? gender});
@@ -90,26 +84,28 @@ abstract class _$$_ClientConfigurationPayloadCopyWith<$Res>
 
 /// @nodoc
 class __$$_ClientConfigurationPayloadCopyWithImpl<$Res>
-    extends _$ClientConfigurationPayloadCopyWithImpl<$Res,
-        _$_ClientConfigurationPayload>
+    extends _$ClientConfigurationPayloadCopyWithImpl<$Res>
     implements _$$_ClientConfigurationPayloadCopyWith<$Res> {
   __$$_ClientConfigurationPayloadCopyWithImpl(
       _$_ClientConfigurationPayload _value,
       $Res Function(_$_ClientConfigurationPayload) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_ClientConfigurationPayload));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_ClientConfigurationPayload get _value =>
+      super._value as _$_ClientConfigurationPayload;
+
   @override
   $Res call({
     Object? clientTypes = freezed,
     Object? gender = freezed,
   }) {
     return _then(_$_ClientConfigurationPayload(
-      clientTypes: freezed == clientTypes
+      clientTypes: clientTypes == freezed
           ? _value._clientTypes
           : clientTypes // ignore: cast_nullable_to_non_nullable
               as List<ClientType>?,
-      gender: freezed == gender
+      gender: gender == freezed
           ? _value._gender
           : gender // ignore: cast_nullable_to_non_nullable
               as List<Gender>?,
@@ -174,7 +170,6 @@ class _$_ClientConfigurationPayload implements _ClientConfigurationPayload {
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_ClientConfigurationPayloadCopyWith<_$_ClientConfigurationPayload>
       get copyWith => __$$_ClientConfigurationPayloadCopyWithImpl<
           _$_ClientConfigurationPayload>(this, _$identity);

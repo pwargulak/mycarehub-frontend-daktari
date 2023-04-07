@@ -39,8 +39,7 @@ mixin _$Organisation {
 abstract class $OrganisationCopyWith<$Res> {
   factory $OrganisationCopyWith(
           Organisation value, $Res Function(Organisation) then) =
-      _$OrganisationCopyWithImpl<$Res, Organisation>;
-  @useResult
+      _$OrganisationCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'name') String? name,
@@ -49,16 +48,13 @@ abstract class $OrganisationCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$OrganisationCopyWithImpl<$Res, $Val extends Organisation>
-    implements $OrganisationCopyWith<$Res> {
+class _$OrganisationCopyWithImpl<$Res> implements $OrganisationCopyWith<$Res> {
   _$OrganisationCopyWithImpl(this._value, this._then);
 
+  final Organisation _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(Organisation) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -67,23 +63,23 @@ class _$OrganisationCopyWithImpl<$Res, $Val extends Organisation>
     Object? programs = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: freezed == name
+      name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: freezed == description
+      description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      programs: freezed == programs
+      programs: programs == freezed
           ? _value.programs
           : programs // ignore: cast_nullable_to_non_nullable
               as List<Program?>?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -94,7 +90,6 @@ abstract class _$$_OrganizationCopyWith<$Res>
           _$_Organization value, $Res Function(_$_Organization) then) =
       __$$_OrganizationCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'name') String? name,
@@ -104,13 +99,15 @@ abstract class _$$_OrganizationCopyWith<$Res>
 
 /// @nodoc
 class __$$_OrganizationCopyWithImpl<$Res>
-    extends _$OrganisationCopyWithImpl<$Res, _$_Organization>
+    extends _$OrganisationCopyWithImpl<$Res>
     implements _$$_OrganizationCopyWith<$Res> {
   __$$_OrganizationCopyWithImpl(
       _$_Organization _value, $Res Function(_$_Organization) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_Organization));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_Organization get _value => super._value as _$_Organization;
+
   @override
   $Res call({
     Object? id = freezed,
@@ -119,19 +116,19 @@ class __$$_OrganizationCopyWithImpl<$Res>
     Object? programs = freezed,
   }) {
     return _then(_$_Organization(
-      id: freezed == id
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: freezed == name
+      name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: freezed == description
+      description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      programs: freezed == programs
+      programs: programs == freezed
           ? _value._programs
           : programs // ignore: cast_nullable_to_non_nullable
               as List<Program?>?,
@@ -181,21 +178,24 @@ class _$_Organization implements _Organization {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Organization &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other._programs, _programs));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, description,
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(_programs));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_OrganizationCopyWith<_$_Organization> get copyWith =>
       __$$_OrganizationCopyWithImpl<_$_Organization>(this, _$identity);
 

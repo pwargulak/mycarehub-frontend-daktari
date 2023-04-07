@@ -764,6 +764,11 @@ const String responseNotMatchingText = 'One or more responses do not match';
 const String flaggedMessagesString = 'Flagged messages';
 const String flaggedMessagesDescription =
     'Here are messages that have been marked as inappropriate or offensive by this group’s members';
+
+const String flaggedMessagesCopy =
+    'Here are reports from users for messages they have deemed inappropriate. '
+    'Tap on the report for more information';
+
 const String deleteMessageString = 'Delete Message';
 const String muteUserString = 'Mute User';
 const String noAvailableFlaggedMessagesDescription =
@@ -1184,6 +1189,7 @@ const String countryString = 'Country';
 const String physicalAddressString = 'Physical Address';
 const String createProgramSuccess = 'Successfully created program';
 
+/// Communities
 const String defaultString = 'Default';
 const String acceptGroupInvites = 'Accept group invites';
 const String invitedGroups = 'Invited groups';
@@ -1231,3 +1237,109 @@ const String sendATextMessageString = 'Send a text message...';
 const String typeYourTextMessageString = 'Type your text message...';
 const String roomsZeroStateDescriptionText =
     'Sorry, You have no rooms yet. No worries though, tap the button below to create your first group';
+
+const String bannedMembersString = 'Banned members';
+const String noBannedMembers = 'No banned members';
+const String tapToViewBannedMembersString = 'Tap to view banned members';
+const String noBannedMembersDescription =
+    'There are no banned members for this group';
+
+const String bannedMembersInstructions =
+    'Tap on a member to unban them from this group';
+
+const String okThanks = 'OK Thanks';
+
+const String noNameText = 'No name';
+const String noFlaggedMessagesDescription =
+    'There are no flagged messages in this group';
+const String flaggedMessageString = 'Flagged message';
+
+const String flaggedMessagePreviewCopy = 'Here is a messages that has been '
+    'marked as inappropriate or offensive by a member of this group.\n\n'
+    'Long press on the message for more options';
+
+const String imageInfoString = 'Image details';
+
+const String sentBy = 'Sent by: ';
+const String sentOn = 'Sent on: ';
+const String emptyRoomText = 'Empty room';
+const String promoteToModText = 'Promote to moderator';
+const String actionsString = 'Actions';
+const String successRemoveFromGroup = 'User removed from group successfully!';
+String modSuccessMessage(String name) => '$name is now a moderator';
+String inviteSuccessMessage(String name) =>
+    '$name has been invited successfully';
+
+const String youText = 'You ';
+
+const String leaveRoom = 'Leave room';
+const String searchMembersDescription =
+    'Search for members to invite to the group';
+const String searchUsers = 'Search users';
+const String noMembers = 'No members';
+const String optionsWillBeAvailable =
+    'Options for this media item will be available soon';
+const String messageOptions = 'Message options';
+const String replyInThread = 'Reply in thread';
+const String deleteMessage = 'Delete message';
+const String invitedString = 'You were invited. Tap for more info';
+String groupMembersCount(String groupMembers) => '$groupMembers members';
+const String leaveRoomDescription = 'Are you sure you want to leave the room?';
+const String yourInformation = 'Your information';
+const String syncingString = 'Organizing your rooms...';
+const String sendMessageString = 'Send a message...';
+const String sendImageString = 'Send Image';
+const String uploadImageString = 'Upload Image';
+
+const String failedToSendMsg = 'Failed to send message. Please try again later';
+
+const String leaveGroupPrompt =
+    'You will no longer access this group once you leave it';
+const String successBanText = 'User banned from group successfully!';
+
+const String inviteMembersText = 'Invite Members';
+const String nothingYetText = 'nothing yet';
+
+const String deletedMsgText = 'This message was deleted';
+
+String topicSetMsg(String topic) => 'The topic was set to $topic';
+
+String groupCreationMsg(String creator, String timeStamp) =>
+    '$creator created the group on $timeStamp';
+
+String roomInformationString(String roomName) => '$roomName info';
+
+const String noMessagesTitleString = 'No messages';
+
+const String noMessagesDescriptionString =
+    'You\'re all caught up. Check back later for more messages';
+
+const String longPressInstruction =
+    'Long press on a member to promote them to a moderator, '
+    'remove or ban them from this group';
+
+const String communityPageString = 'Conversations';
+
+const String unBanUserSuccess = 'User unbanned successfully!!';
+const String failedToUnban = 'Failed to unban user, please try again later';
+
+const String yesContinue = 'Yes, continue';
+
+const String noUserID = 'No user ID';
+
+String reportedByString(String formattedReporter, String timeStamp) =>
+    'Reported by $formattedReporter on $timeStamp';
+
+const String reportMessageText = 'Report Message';
+const String reportMessagePrompt =
+    'Are you sure you want to report this message? A moderator will review '
+    'it and delete it if it is deemed as inappropriate';
+
+const String deleteMessagePrompt =
+    'Are you sure you want to delete this message?';
+
+const String removeMessageReport = 'Remove message report';
+
+String invitedInstructions(String roomName) =>
+    'You have been invite to join the $roomName group. Tap the options '
+    'below to accept or decline the group invite';

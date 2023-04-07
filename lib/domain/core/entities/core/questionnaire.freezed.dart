@@ -39,8 +39,7 @@ mixin _$Questionnaire {
 abstract class $QuestionnaireCopyWith<$Res> {
   factory $QuestionnaireCopyWith(
           Questionnaire value, $Res Function(Questionnaire) then) =
-      _$QuestionnaireCopyWithImpl<$Res, Questionnaire>;
-  @useResult
+      _$QuestionnaireCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'active') bool? active,
@@ -49,16 +48,14 @@ abstract class $QuestionnaireCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$QuestionnaireCopyWithImpl<$Res, $Val extends Questionnaire>
+class _$QuestionnaireCopyWithImpl<$Res>
     implements $QuestionnaireCopyWith<$Res> {
   _$QuestionnaireCopyWithImpl(this._value, this._then);
 
+  final Questionnaire _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(Questionnaire) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -67,23 +64,23 @@ class _$QuestionnaireCopyWithImpl<$Res, $Val extends Questionnaire>
     Object? description = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      active: freezed == active
+      active: active == freezed
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
               as bool?,
-      name: freezed == name
+      name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: freezed == description
+      description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -94,7 +91,6 @@ abstract class _$$_QuestionnaireCopyWith<$Res>
           _$_Questionnaire value, $Res Function(_$_Questionnaire) then) =
       __$$_QuestionnaireCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'active') bool? active,
@@ -104,13 +100,15 @@ abstract class _$$_QuestionnaireCopyWith<$Res>
 
 /// @nodoc
 class __$$_QuestionnaireCopyWithImpl<$Res>
-    extends _$QuestionnaireCopyWithImpl<$Res, _$_Questionnaire>
+    extends _$QuestionnaireCopyWithImpl<$Res>
     implements _$$_QuestionnaireCopyWith<$Res> {
   __$$_QuestionnaireCopyWithImpl(
       _$_Questionnaire _value, $Res Function(_$_Questionnaire) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_Questionnaire));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_Questionnaire get _value => super._value as _$_Questionnaire;
+
   @override
   $Res call({
     Object? id = freezed,
@@ -119,19 +117,19 @@ class __$$_QuestionnaireCopyWithImpl<$Res>
     Object? description = freezed,
   }) {
     return _then(_$_Questionnaire(
-      id: freezed == id
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      active: freezed == active
+      active: active == freezed
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
               as bool?,
-      name: freezed == name
+      name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: freezed == description
+      description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -174,20 +172,24 @@ class _$_Questionnaire implements _Questionnaire {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Questionnaire &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.active, active) || other.active == active) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) ||
-                other.description == description));
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.active, active) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, active, name, description);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(active),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(description));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_QuestionnaireCopyWith<_$_Questionnaire> get copyWith =>
       __$$_QuestionnaireCopyWithImpl<_$_Questionnaire>(this, _$identity);
 

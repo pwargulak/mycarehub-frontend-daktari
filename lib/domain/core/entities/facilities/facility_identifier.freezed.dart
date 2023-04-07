@@ -37,8 +37,7 @@ mixin _$FacilityIdentifier {
 abstract class $FacilityIdentifierCopyWith<$Res> {
   factory $FacilityIdentifierCopyWith(
           FacilityIdentifier value, $Res Function(FacilityIdentifier) then) =
-      _$FacilityIdentifierCopyWithImpl<$Res, FacilityIdentifier>;
-  @useResult
+      _$FacilityIdentifierCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'value') String? value,
@@ -46,16 +45,14 @@ abstract class $FacilityIdentifierCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FacilityIdentifierCopyWithImpl<$Res, $Val extends FacilityIdentifier>
+class _$FacilityIdentifierCopyWithImpl<$Res>
     implements $FacilityIdentifierCopyWith<$Res> {
   _$FacilityIdentifierCopyWithImpl(this._value, this._then);
 
+  final FacilityIdentifier _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(FacilityIdentifier) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -63,19 +60,19 @@ class _$FacilityIdentifierCopyWithImpl<$Res, $Val extends FacilityIdentifier>
     Object? type = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      value: freezed == value
+      value: value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as String?,
-      type: freezed == type
+      type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -86,7 +83,6 @@ abstract class _$$_FacilityIdentifierCopyWith<$Res>
           $Res Function(_$_FacilityIdentifier) then) =
       __$$_FacilityIdentifierCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'value') String? value,
@@ -95,13 +91,15 @@ abstract class _$$_FacilityIdentifierCopyWith<$Res>
 
 /// @nodoc
 class __$$_FacilityIdentifierCopyWithImpl<$Res>
-    extends _$FacilityIdentifierCopyWithImpl<$Res, _$_FacilityIdentifier>
+    extends _$FacilityIdentifierCopyWithImpl<$Res>
     implements _$$_FacilityIdentifierCopyWith<$Res> {
   __$$_FacilityIdentifierCopyWithImpl(
       _$_FacilityIdentifier _value, $Res Function(_$_FacilityIdentifier) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_FacilityIdentifier));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_FacilityIdentifier get _value => super._value as _$_FacilityIdentifier;
+
   @override
   $Res call({
     Object? id = freezed,
@@ -109,15 +107,15 @@ class __$$_FacilityIdentifierCopyWithImpl<$Res>
     Object? type = freezed,
   }) {
     return _then(_$_FacilityIdentifier(
-      id: freezed == id
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      value: freezed == value
+      value: value == freezed
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as String?,
-      type: freezed == type
+      type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -156,18 +154,21 @@ class _$_FacilityIdentifier implements _FacilityIdentifier {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FacilityIdentifier &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.value, value) || other.value == value) &&
-            (identical(other.type, type) || other.type == type));
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.value, value) &&
+            const DeepCollectionEquality().equals(other.type, type));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, value, type);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(value),
+      const DeepCollectionEquality().hash(type));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_FacilityIdentifierCopyWith<_$_FacilityIdentifier> get copyWith =>
       __$$_FacilityIdentifierCopyWithImpl<_$_FacilityIdentifier>(
           this, _$identity);

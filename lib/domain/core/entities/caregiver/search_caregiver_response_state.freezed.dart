@@ -37,9 +37,7 @@ abstract class $SearchCaregiverResponseStateCopyWith<$Res> {
   factory $SearchCaregiverResponseStateCopyWith(
           SearchCaregiverResponseState value,
           $Res Function(SearchCaregiverResponseState) then) =
-      _$SearchCaregiverResponseStateCopyWithImpl<$Res,
-          SearchCaregiverResponseState>;
-  @useResult
+      _$SearchCaregiverResponseStateCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'searchCaregiverUser') List<Caregiver?>? caregivers,
       bool? errorFetchingCaregivers,
@@ -47,17 +45,14 @@ abstract class $SearchCaregiverResponseStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SearchCaregiverResponseStateCopyWithImpl<$Res,
-        $Val extends SearchCaregiverResponseState>
+class _$SearchCaregiverResponseStateCopyWithImpl<$Res>
     implements $SearchCaregiverResponseStateCopyWith<$Res> {
   _$SearchCaregiverResponseStateCopyWithImpl(this._value, this._then);
 
+  final SearchCaregiverResponseState _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(SearchCaregiverResponseState) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? caregivers = freezed,
@@ -65,19 +60,19 @@ class _$SearchCaregiverResponseStateCopyWithImpl<$Res,
     Object? noCaregiversFound = freezed,
   }) {
     return _then(_value.copyWith(
-      caregivers: freezed == caregivers
+      caregivers: caregivers == freezed
           ? _value.caregivers
           : caregivers // ignore: cast_nullable_to_non_nullable
               as List<Caregiver?>?,
-      errorFetchingCaregivers: freezed == errorFetchingCaregivers
+      errorFetchingCaregivers: errorFetchingCaregivers == freezed
           ? _value.errorFetchingCaregivers
           : errorFetchingCaregivers // ignore: cast_nullable_to_non_nullable
               as bool?,
-      noCaregiversFound: freezed == noCaregiversFound
+      noCaregiversFound: noCaregiversFound == freezed
           ? _value.noCaregiversFound
           : noCaregiversFound // ignore: cast_nullable_to_non_nullable
               as bool?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -89,7 +84,6 @@ abstract class _$$_SearchCaregiverResponseStateCopyWith<$Res>
           $Res Function(_$_SearchCaregiverResponseState) then) =
       __$$_SearchCaregiverResponseStateCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'searchCaregiverUser') List<Caregiver?>? caregivers,
       bool? errorFetchingCaregivers,
@@ -98,15 +92,17 @@ abstract class _$$_SearchCaregiverResponseStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_SearchCaregiverResponseStateCopyWithImpl<$Res>
-    extends _$SearchCaregiverResponseStateCopyWithImpl<$Res,
-        _$_SearchCaregiverResponseState>
+    extends _$SearchCaregiverResponseStateCopyWithImpl<$Res>
     implements _$$_SearchCaregiverResponseStateCopyWith<$Res> {
   __$$_SearchCaregiverResponseStateCopyWithImpl(
       _$_SearchCaregiverResponseState _value,
       $Res Function(_$_SearchCaregiverResponseState) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_SearchCaregiverResponseState));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_SearchCaregiverResponseState get _value =>
+      super._value as _$_SearchCaregiverResponseState;
+
   @override
   $Res call({
     Object? caregivers = freezed,
@@ -114,15 +110,15 @@ class __$$_SearchCaregiverResponseStateCopyWithImpl<$Res>
     Object? noCaregiversFound = freezed,
   }) {
     return _then(_$_SearchCaregiverResponseState(
-      caregivers: freezed == caregivers
+      caregivers: caregivers == freezed
           ? _value._caregivers
           : caregivers // ignore: cast_nullable_to_non_nullable
               as List<Caregiver?>?,
-      errorFetchingCaregivers: freezed == errorFetchingCaregivers
+      errorFetchingCaregivers: errorFetchingCaregivers == freezed
           ? _value.errorFetchingCaregivers
           : errorFetchingCaregivers // ignore: cast_nullable_to_non_nullable
               as bool?,
-      noCaregiversFound: freezed == noCaregiversFound
+      noCaregiversFound: noCaregiversFound == freezed
           ? _value.noCaregiversFound
           : noCaregiversFound // ignore: cast_nullable_to_non_nullable
               as bool?,
@@ -169,11 +165,10 @@ class _$_SearchCaregiverResponseState implements _SearchCaregiverResponseState {
             other is _$_SearchCaregiverResponseState &&
             const DeepCollectionEquality()
                 .equals(other._caregivers, _caregivers) &&
-            (identical(
-                    other.errorFetchingCaregivers, errorFetchingCaregivers) ||
-                other.errorFetchingCaregivers == errorFetchingCaregivers) &&
-            (identical(other.noCaregiversFound, noCaregiversFound) ||
-                other.noCaregiversFound == noCaregiversFound));
+            const DeepCollectionEquality().equals(
+                other.errorFetchingCaregivers, errorFetchingCaregivers) &&
+            const DeepCollectionEquality()
+                .equals(other.noCaregiversFound, noCaregiversFound));
   }
 
   @JsonKey(ignore: true)
@@ -181,12 +176,11 @@ class _$_SearchCaregiverResponseState implements _SearchCaregiverResponseState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_caregivers),
-      errorFetchingCaregivers,
-      noCaregiversFound);
+      const DeepCollectionEquality().hash(errorFetchingCaregivers),
+      const DeepCollectionEquality().hash(noCaregiversFound));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_SearchCaregiverResponseStateCopyWith<_$_SearchCaregiverResponseState>
       get copyWith => __$$_SearchCaregiverResponseStateCopyWithImpl<
           _$_SearchCaregiverResponseState>(this, _$identity);

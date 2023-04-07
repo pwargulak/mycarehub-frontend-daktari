@@ -36,8 +36,7 @@ mixin _$ProgramsState {
 abstract class $ProgramsStateCopyWith<$Res> {
   factory $ProgramsStateCopyWith(
           ProgramsState value, $Res Function(ProgramsState) then) =
-      _$ProgramsStateCopyWithImpl<$Res, ProgramsState>;
-  @useResult
+      _$ProgramsStateCopyWithImpl<$Res>;
   $Res call(
       {List<Program>? userPrograms,
       List<Program>? programs,
@@ -49,16 +48,14 @@ abstract class $ProgramsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ProgramsStateCopyWithImpl<$Res, $Val extends ProgramsState>
+class _$ProgramsStateCopyWithImpl<$Res>
     implements $ProgramsStateCopyWith<$Res> {
   _$ProgramsStateCopyWithImpl(this._value, this._then);
 
+  final ProgramsState _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(ProgramsState) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? userPrograms = freezed,
@@ -68,38 +65,37 @@ class _$ProgramsStateCopyWithImpl<$Res, $Val extends ProgramsState>
     Object? errorGettingPrograms = freezed,
   }) {
     return _then(_value.copyWith(
-      userPrograms: freezed == userPrograms
+      userPrograms: userPrograms == freezed
           ? _value.userPrograms
           : userPrograms // ignore: cast_nullable_to_non_nullable
               as List<Program>?,
-      programs: freezed == programs
+      programs: programs == freezed
           ? _value.programs
           : programs // ignore: cast_nullable_to_non_nullable
               as List<Program>?,
-      selectedPrograms: freezed == selectedPrograms
+      selectedPrograms: selectedPrograms == freezed
           ? _value.selectedPrograms
           : selectedPrograms // ignore: cast_nullable_to_non_nullable
               as List<Program>?,
-      selectedUserProgram: freezed == selectedUserProgram
+      selectedUserProgram: selectedUserProgram == freezed
           ? _value.selectedUserProgram
           : selectedUserProgram // ignore: cast_nullable_to_non_nullable
               as Program?,
-      errorGettingPrograms: freezed == errorGettingPrograms
+      errorGettingPrograms: errorGettingPrograms == freezed
           ? _value.errorGettingPrograms
           : errorGettingPrograms // ignore: cast_nullable_to_non_nullable
               as bool?,
-    ) as $Val);
+    ));
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $ProgramCopyWith<$Res>? get selectedUserProgram {
     if (_value.selectedUserProgram == null) {
       return null;
     }
 
     return $ProgramCopyWith<$Res>(_value.selectedUserProgram!, (value) {
-      return _then(_value.copyWith(selectedUserProgram: value) as $Val);
+      return _then(_value.copyWith(selectedUserProgram: value));
     });
   }
 }
@@ -111,7 +107,6 @@ abstract class _$$_ProgramsStateCopyWith<$Res>
           _$_ProgramsState value, $Res Function(_$_ProgramsState) then) =
       __$$_ProgramsStateCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {List<Program>? userPrograms,
       List<Program>? programs,
@@ -125,13 +120,15 @@ abstract class _$$_ProgramsStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_ProgramsStateCopyWithImpl<$Res>
-    extends _$ProgramsStateCopyWithImpl<$Res, _$_ProgramsState>
+    extends _$ProgramsStateCopyWithImpl<$Res>
     implements _$$_ProgramsStateCopyWith<$Res> {
   __$$_ProgramsStateCopyWithImpl(
       _$_ProgramsState _value, $Res Function(_$_ProgramsState) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_ProgramsState));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_ProgramsState get _value => super._value as _$_ProgramsState;
+
   @override
   $Res call({
     Object? userPrograms = freezed,
@@ -141,23 +138,23 @@ class __$$_ProgramsStateCopyWithImpl<$Res>
     Object? errorGettingPrograms = freezed,
   }) {
     return _then(_$_ProgramsState(
-      userPrograms: freezed == userPrograms
+      userPrograms: userPrograms == freezed
           ? _value.userPrograms
           : userPrograms // ignore: cast_nullable_to_non_nullable
               as List<Program>?,
-      programs: freezed == programs
+      programs: programs == freezed
           ? _value.programs
           : programs // ignore: cast_nullable_to_non_nullable
               as List<Program>?,
-      selectedPrograms: freezed == selectedPrograms
+      selectedPrograms: selectedPrograms == freezed
           ? _value.selectedPrograms
           : selectedPrograms // ignore: cast_nullable_to_non_nullable
               as List<Program>?,
-      selectedUserProgram: freezed == selectedUserProgram
+      selectedUserProgram: selectedUserProgram == freezed
           ? _value.selectedUserProgram
           : selectedUserProgram // ignore: cast_nullable_to_non_nullable
               as Program?,
-      errorGettingPrograms: freezed == errorGettingPrograms
+      errorGettingPrograms: errorGettingPrograms == freezed
           ? _value.errorGettingPrograms
           : errorGettingPrograms // ignore: cast_nullable_to_non_nullable
               as bool?,
@@ -204,10 +201,10 @@ class _$_ProgramsState implements _ProgramsState {
             const DeepCollectionEquality().equals(other.programs, programs) &&
             const DeepCollectionEquality()
                 .equals(other.selectedPrograms, selectedPrograms) &&
-            (identical(other.selectedUserProgram, selectedUserProgram) ||
-                other.selectedUserProgram == selectedUserProgram) &&
-            (identical(other.errorGettingPrograms, errorGettingPrograms) ||
-                other.errorGettingPrograms == errorGettingPrograms));
+            const DeepCollectionEquality()
+                .equals(other.selectedUserProgram, selectedUserProgram) &&
+            const DeepCollectionEquality()
+                .equals(other.errorGettingPrograms, errorGettingPrograms));
   }
 
   @JsonKey(ignore: true)
@@ -217,12 +214,11 @@ class _$_ProgramsState implements _ProgramsState {
       const DeepCollectionEquality().hash(userPrograms),
       const DeepCollectionEquality().hash(programs),
       const DeepCollectionEquality().hash(selectedPrograms),
-      selectedUserProgram,
-      errorGettingPrograms);
+      const DeepCollectionEquality().hash(selectedUserProgram),
+      const DeepCollectionEquality().hash(errorGettingPrograms));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_ProgramsStateCopyWith<_$_ProgramsState> get copyWith =>
       __$$_ProgramsStateCopyWithImpl<_$_ProgramsState>(this, _$identity);
 

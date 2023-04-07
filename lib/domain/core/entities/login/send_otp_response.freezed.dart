@@ -35,39 +35,36 @@ mixin _$SendOTPResponse {
 abstract class $SendOTPResponseCopyWith<$Res> {
   factory $SendOTPResponseCopyWith(
           SendOTPResponse value, $Res Function(SendOTPResponse) then) =
-      _$SendOTPResponseCopyWithImpl<$Res, SendOTPResponse>;
-  @useResult
+      _$SendOTPResponseCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'otp') String? otp,
       @JsonKey(name: 'phoneNumber') String? phoneNumber});
 }
 
 /// @nodoc
-class _$SendOTPResponseCopyWithImpl<$Res, $Val extends SendOTPResponse>
+class _$SendOTPResponseCopyWithImpl<$Res>
     implements $SendOTPResponseCopyWith<$Res> {
   _$SendOTPResponseCopyWithImpl(this._value, this._then);
 
+  final SendOTPResponse _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(SendOTPResponse) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? otp = freezed,
     Object? phoneNumber = freezed,
   }) {
     return _then(_value.copyWith(
-      otp: freezed == otp
+      otp: otp == freezed
           ? _value.otp
           : otp // ignore: cast_nullable_to_non_nullable
               as String?,
-      phoneNumber: freezed == phoneNumber
+      phoneNumber: phoneNumber == freezed
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -78,7 +75,6 @@ abstract class _$$_SendOTPResponseCopyWith<$Res>
           _$_SendOTPResponse value, $Res Function(_$_SendOTPResponse) then) =
       __$$_SendOTPResponseCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'otp') String? otp,
       @JsonKey(name: 'phoneNumber') String? phoneNumber});
@@ -86,24 +82,26 @@ abstract class _$$_SendOTPResponseCopyWith<$Res>
 
 /// @nodoc
 class __$$_SendOTPResponseCopyWithImpl<$Res>
-    extends _$SendOTPResponseCopyWithImpl<$Res, _$_SendOTPResponse>
+    extends _$SendOTPResponseCopyWithImpl<$Res>
     implements _$$_SendOTPResponseCopyWith<$Res> {
   __$$_SendOTPResponseCopyWithImpl(
       _$_SendOTPResponse _value, $Res Function(_$_SendOTPResponse) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_SendOTPResponse));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_SendOTPResponse get _value => super._value as _$_SendOTPResponse;
+
   @override
   $Res call({
     Object? otp = freezed,
     Object? phoneNumber = freezed,
   }) {
     return _then(_$_SendOTPResponse(
-      otp: freezed == otp
+      otp: otp == freezed
           ? _value.otp
           : otp // ignore: cast_nullable_to_non_nullable
               as String?,
-      phoneNumber: freezed == phoneNumber
+      phoneNumber: phoneNumber == freezed
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -138,18 +136,20 @@ class _$_SendOTPResponse implements _SendOTPResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SendOTPResponse &&
-            (identical(other.otp, otp) || other.otp == otp) &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber));
+            const DeepCollectionEquality().equals(other.otp, otp) &&
+            const DeepCollectionEquality()
+                .equals(other.phoneNumber, phoneNumber));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, otp, phoneNumber);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(otp),
+      const DeepCollectionEquality().hash(phoneNumber));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_SendOTPResponseCopyWith<_$_SendOTPResponse> get copyWith =>
       __$$_SendOTPResponseCopyWithImpl<_$_SendOTPResponse>(this, _$identity);
 

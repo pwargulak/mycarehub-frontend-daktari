@@ -150,10 +150,15 @@ class AppRoutes {
   static const String adminPage = '/adminPage';
 
   // Communities
-  // TODO!!(abiud): Restore these after the new upgrades
-  // static const String roomListPage = '/roomListPage';
-  // static const String roomPage = '/roomPage';
-  // static const String roomInfoPage = '/roomInfoPage';
-  static const String createRoomPage = '/createRoomPage';
-  // static const String inviteUsersPage = '/inviteUsersPage';
+  static const String createRoomPageRoute = '/createRoomPageRoute';
+  static const String roomListPageRoute = '/roomListPageRoute';
+  static const String roomPageRoute = '/roomPageRoute';
+  static const String roomInfoPageRoute = '/roomInfoPageRoute';
+  static const String inviteUsersPageRoute = '/inviteUsersPageRoute';
+  static const String previewUploadMediaRoute = '/previewUploadMediaRoute';
+  static const String imagePreviewRoute = '/imagePreviewRoute';
+  static const String bannedMembersRoute = '/bannedMembersRoute';
+  static const String flaggedMessagesRoute = '/flaggedMessagesRoute';
+  static const String flaggedMessagePreviewRoute =
+      '/flaggedMessagePreviewRoute';
 }

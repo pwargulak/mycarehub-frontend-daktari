@@ -36,7 +36,6 @@ const Key contentCardKey = Key('content_card_key');
 const Key surveysCardKey = Key('surveys_card_key');
 const Key faqsCardKey = Key('faqs_card_key');
 
-
 //Service Requests keys
 const Key pinRequestApproveButtonKey = Key('pin_request_approve_button_key');
 const Key pinRequestApproveCheckboxKey =
@@ -235,7 +234,8 @@ const Key emailKey = Key('email_key');
 const Key addressKey = Key('address_key');
 const Key programNameFieldKey = Key('program_name_field');
 const Key programDescriptionFieldKey = Key('program_description_field');
-const Key organizationSelectOptionFieldKey = Key('organization_select_option_field');
+const Key organizationSelectOptionFieldKey =
+    Key('organization_select_option_field');
 const Key searchOrganisationconBtnKey = Key('search_organisation_icon_btn_key');
 const Key addNewProgramButtonKey = Key('add_new_program_button_key');
 
@@ -282,4 +282,23 @@ const Key sendMessageIconKey = Key('sendMessageIconKey');
 const Key roomListItemKey = Key('roomListItemKey');
 
 const Key confirmLeaveRoomKey = Key('confirmLeaveRoomKey');
+
 const Key cancelLeaveRoomKey = Key('cancelLeaveRoomKey');
+
+const Key emptyBannedMembersKey = Key('emptyBannedMembersKey');
+
+const Key changeFacilityKey = Key('change_facility_key');
+
+const Key addAttachmentIconKey = Key('addAttachmentIconKey');
+
+const Key openUserListOptionDialogKey = Key('openUserListOptionDialog');
+
+const Key previewImageMessageKey = Key('previewImageMessageKey');
+
+const Key reportMessageKey = Key('reportMessageKey');
+
+const Key deleteMessageReportKey = Key('deleteMessageReportKey');
+
+const Key emptyFlaggedMessagesKey = Key('emptyFlaggedMessagesKey');
+
+const Key emptyMessagesKey = Key('emptyMessagesKey');

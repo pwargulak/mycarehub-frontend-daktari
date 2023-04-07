@@ -38,9 +38,7 @@ mixin _$PendingServiceRequestCount {
 abstract class $PendingServiceRequestCountCopyWith<$Res> {
   factory $PendingServiceRequestCountCopyWith(PendingServiceRequestCount value,
           $Res Function(PendingServiceRequestCount) then) =
-      _$PendingServiceRequestCountCopyWithImpl<$Res,
-          PendingServiceRequestCount>;
-  @useResult
+      _$PendingServiceRequestCountCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'clientsServiceRequestCount')
           ServiceRequestTypeCount? clientsServiceRequestCount,
@@ -52,36 +50,32 @@ abstract class $PendingServiceRequestCountCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PendingServiceRequestCountCopyWithImpl<$Res,
-        $Val extends PendingServiceRequestCount>
+class _$PendingServiceRequestCountCopyWithImpl<$Res>
     implements $PendingServiceRequestCountCopyWith<$Res> {
   _$PendingServiceRequestCountCopyWithImpl(this._value, this._then);
 
+  final PendingServiceRequestCount _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(PendingServiceRequestCount) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? clientsServiceRequestCount = freezed,
     Object? staffServiceRequestCount = freezed,
   }) {
     return _then(_value.copyWith(
-      clientsServiceRequestCount: freezed == clientsServiceRequestCount
+      clientsServiceRequestCount: clientsServiceRequestCount == freezed
           ? _value.clientsServiceRequestCount
           : clientsServiceRequestCount // ignore: cast_nullable_to_non_nullable
               as ServiceRequestTypeCount?,
-      staffServiceRequestCount: freezed == staffServiceRequestCount
+      staffServiceRequestCount: staffServiceRequestCount == freezed
           ? _value.staffServiceRequestCount
           : staffServiceRequestCount // ignore: cast_nullable_to_non_nullable
               as ServiceRequestTypeCount?,
-    ) as $Val);
+    ));
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $ServiceRequestTypeCountCopyWith<$Res>? get clientsServiceRequestCount {
     if (_value.clientsServiceRequestCount == null) {
       return null;
@@ -89,12 +83,11 @@ class _$PendingServiceRequestCountCopyWithImpl<$Res,
 
     return $ServiceRequestTypeCountCopyWith<$Res>(
         _value.clientsServiceRequestCount!, (value) {
-      return _then(_value.copyWith(clientsServiceRequestCount: value) as $Val);
+      return _then(_value.copyWith(clientsServiceRequestCount: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $ServiceRequestTypeCountCopyWith<$Res>? get staffServiceRequestCount {
     if (_value.staffServiceRequestCount == null) {
       return null;
@@ -102,7 +95,7 @@ class _$PendingServiceRequestCountCopyWithImpl<$Res,
 
     return $ServiceRequestTypeCountCopyWith<$Res>(
         _value.staffServiceRequestCount!, (value) {
-      return _then(_value.copyWith(staffServiceRequestCount: value) as $Val);
+      return _then(_value.copyWith(staffServiceRequestCount: value));
     });
   }
 }
@@ -115,7 +108,6 @@ abstract class _$$_PendingServiceRequestCountCopyWith<$Res>
           $Res Function(_$_PendingServiceRequestCount) then) =
       __$$_PendingServiceRequestCountCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'clientsServiceRequestCount')
           ServiceRequestTypeCount? clientsServiceRequestCount,
@@ -130,26 +122,28 @@ abstract class _$$_PendingServiceRequestCountCopyWith<$Res>
 
 /// @nodoc
 class __$$_PendingServiceRequestCountCopyWithImpl<$Res>
-    extends _$PendingServiceRequestCountCopyWithImpl<$Res,
-        _$_PendingServiceRequestCount>
+    extends _$PendingServiceRequestCountCopyWithImpl<$Res>
     implements _$$_PendingServiceRequestCountCopyWith<$Res> {
   __$$_PendingServiceRequestCountCopyWithImpl(
       _$_PendingServiceRequestCount _value,
       $Res Function(_$_PendingServiceRequestCount) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_PendingServiceRequestCount));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_PendingServiceRequestCount get _value =>
+      super._value as _$_PendingServiceRequestCount;
+
   @override
   $Res call({
     Object? clientsServiceRequestCount = freezed,
     Object? staffServiceRequestCount = freezed,
   }) {
     return _then(_$_PendingServiceRequestCount(
-      clientsServiceRequestCount: freezed == clientsServiceRequestCount
+      clientsServiceRequestCount: clientsServiceRequestCount == freezed
           ? _value.clientsServiceRequestCount
           : clientsServiceRequestCount // ignore: cast_nullable_to_non_nullable
               as ServiceRequestTypeCount?,
-      staffServiceRequestCount: freezed == staffServiceRequestCount
+      staffServiceRequestCount: staffServiceRequestCount == freezed
           ? _value.staffServiceRequestCount
           : staffServiceRequestCount // ignore: cast_nullable_to_non_nullable
               as ServiceRequestTypeCount?,
@@ -186,23 +180,21 @@ class _$_PendingServiceRequestCount implements _PendingServiceRequestCount {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PendingServiceRequestCount &&
-            (identical(other.clientsServiceRequestCount,
-                    clientsServiceRequestCount) ||
-                other.clientsServiceRequestCount ==
-                    clientsServiceRequestCount) &&
-            (identical(
-                    other.staffServiceRequestCount, staffServiceRequestCount) ||
-                other.staffServiceRequestCount == staffServiceRequestCount));
+            const DeepCollectionEquality().equals(
+                other.clientsServiceRequestCount, clientsServiceRequestCount) &&
+            const DeepCollectionEquality().equals(
+                other.staffServiceRequestCount, staffServiceRequestCount));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, clientsServiceRequestCount, staffServiceRequestCount);
+      runtimeType,
+      const DeepCollectionEquality().hash(clientsServiceRequestCount),
+      const DeepCollectionEquality().hash(staffServiceRequestCount));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_PendingServiceRequestCountCopyWith<_$_PendingServiceRequestCount>
       get copyWith => __$$_PendingServiceRequestCountCopyWithImpl<
           _$_PendingServiceRequestCount>(this, _$identity);

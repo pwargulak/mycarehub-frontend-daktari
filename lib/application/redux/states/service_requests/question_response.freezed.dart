@@ -44,8 +44,7 @@ mixin _$QuestionResponse {
 abstract class $QuestionResponseCopyWith<$Res> {
   factory $QuestionResponseCopyWith(
           QuestionResponse value, $Res Function(QuestionResponse) then) =
-      _$QuestionResponseCopyWithImpl<$Res, QuestionResponse>;
-  @useResult
+      _$QuestionResponseCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'questionType')
           QuestionType? questionType,
@@ -62,16 +61,14 @@ abstract class $QuestionResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$QuestionResponseCopyWithImpl<$Res, $Val extends QuestionResponse>
+class _$QuestionResponseCopyWithImpl<$Res>
     implements $QuestionResponseCopyWith<$Res> {
   _$QuestionResponseCopyWithImpl(this._value, this._then);
 
+  final QuestionResponse _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(QuestionResponse) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? questionType = freezed,
@@ -82,31 +79,31 @@ class _$QuestionResponseCopyWithImpl<$Res, $Val extends QuestionResponse>
     Object? normalizedResponse = freezed,
   }) {
     return _then(_value.copyWith(
-      questionType: freezed == questionType
+      questionType: questionType == freezed
           ? _value.questionType
           : questionType // ignore: cast_nullable_to_non_nullable
               as QuestionType?,
-      selectMultiple: freezed == selectMultiple
+      selectMultiple: selectMultiple == freezed
           ? _value.selectMultiple
           : selectMultiple // ignore: cast_nullable_to_non_nullable
               as bool?,
-      responseValueType: freezed == responseValueType
+      responseValueType: responseValueType == freezed
           ? _value.responseValueType
           : responseValueType // ignore: cast_nullable_to_non_nullable
               as String?,
-      sequence: freezed == sequence
+      sequence: sequence == freezed
           ? _value.sequence
           : sequence // ignore: cast_nullable_to_non_nullable
               as int?,
-      questionText: freezed == questionText
+      questionText: questionText == freezed
           ? _value.questionText
           : questionText // ignore: cast_nullable_to_non_nullable
               as String?,
-      normalizedResponse: freezed == normalizedResponse
+      normalizedResponse: normalizedResponse == freezed
           ? _value.normalizedResponse
           : normalizedResponse // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -117,7 +114,6 @@ abstract class _$$_QuestionResponseCopyWith<$Res>
           _$_QuestionResponse value, $Res Function(_$_QuestionResponse) then) =
       __$$_QuestionResponseCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'questionType')
           QuestionType? questionType,
@@ -135,13 +131,15 @@ abstract class _$$_QuestionResponseCopyWith<$Res>
 
 /// @nodoc
 class __$$_QuestionResponseCopyWithImpl<$Res>
-    extends _$QuestionResponseCopyWithImpl<$Res, _$_QuestionResponse>
+    extends _$QuestionResponseCopyWithImpl<$Res>
     implements _$$_QuestionResponseCopyWith<$Res> {
   __$$_QuestionResponseCopyWithImpl(
       _$_QuestionResponse _value, $Res Function(_$_QuestionResponse) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_QuestionResponse));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_QuestionResponse get _value => super._value as _$_QuestionResponse;
+
   @override
   $Res call({
     Object? questionType = freezed,
@@ -152,27 +150,27 @@ class __$$_QuestionResponseCopyWithImpl<$Res>
     Object? normalizedResponse = freezed,
   }) {
     return _then(_$_QuestionResponse(
-      questionType: freezed == questionType
+      questionType: questionType == freezed
           ? _value.questionType
           : questionType // ignore: cast_nullable_to_non_nullable
               as QuestionType?,
-      selectMultiple: freezed == selectMultiple
+      selectMultiple: selectMultiple == freezed
           ? _value.selectMultiple
           : selectMultiple // ignore: cast_nullable_to_non_nullable
               as bool?,
-      responseValueType: freezed == responseValueType
+      responseValueType: responseValueType == freezed
           ? _value.responseValueType
           : responseValueType // ignore: cast_nullable_to_non_nullable
               as String?,
-      sequence: freezed == sequence
+      sequence: sequence == freezed
           ? _value.sequence
           : sequence // ignore: cast_nullable_to_non_nullable
               as int?,
-      questionText: freezed == questionText
+      questionText: questionText == freezed
           ? _value.questionText
           : questionText // ignore: cast_nullable_to_non_nullable
               as String?,
-      normalizedResponse: freezed == normalizedResponse
+      normalizedResponse: normalizedResponse == freezed
           ? _value._normalizedResponse
           : normalizedResponse // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>?,
@@ -236,16 +234,15 @@ class _$_QuestionResponse implements _QuestionResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_QuestionResponse &&
-            (identical(other.questionType, questionType) ||
-                other.questionType == questionType) &&
-            (identical(other.selectMultiple, selectMultiple) ||
-                other.selectMultiple == selectMultiple) &&
-            (identical(other.responseValueType, responseValueType) ||
-                other.responseValueType == responseValueType) &&
-            (identical(other.sequence, sequence) ||
-                other.sequence == sequence) &&
-            (identical(other.questionText, questionText) ||
-                other.questionText == questionText) &&
+            const DeepCollectionEquality()
+                .equals(other.questionType, questionType) &&
+            const DeepCollectionEquality()
+                .equals(other.selectMultiple, selectMultiple) &&
+            const DeepCollectionEquality()
+                .equals(other.responseValueType, responseValueType) &&
+            const DeepCollectionEquality().equals(other.sequence, sequence) &&
+            const DeepCollectionEquality()
+                .equals(other.questionText, questionText) &&
             const DeepCollectionEquality()
                 .equals(other._normalizedResponse, _normalizedResponse));
   }
@@ -254,16 +251,15 @@ class _$_QuestionResponse implements _QuestionResponse {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      questionType,
-      selectMultiple,
-      responseValueType,
-      sequence,
-      questionText,
+      const DeepCollectionEquality().hash(questionType),
+      const DeepCollectionEquality().hash(selectMultiple),
+      const DeepCollectionEquality().hash(responseValueType),
+      const DeepCollectionEquality().hash(sequence),
+      const DeepCollectionEquality().hash(questionText),
       const DeepCollectionEquality().hash(_normalizedResponse));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_QuestionResponseCopyWith<_$_QuestionResponse> get copyWith =>
       __$$_QuestionResponseCopyWithImpl<_$_QuestionResponse>(this, _$identity);
 

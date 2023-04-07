@@ -33,32 +33,29 @@ mixin _$LinkedFacilities {
 abstract class $LinkedFacilitiesCopyWith<$Res> {
   factory $LinkedFacilitiesCopyWith(
           LinkedFacilities value, $Res Function(LinkedFacilities) then) =
-      _$LinkedFacilitiesCopyWithImpl<$Res, LinkedFacilities>;
-  @useResult
+      _$LinkedFacilitiesCopyWithImpl<$Res>;
   $Res call({@JsonKey(name: 'facilities') List<Facility>? facilities});
 }
 
 /// @nodoc
-class _$LinkedFacilitiesCopyWithImpl<$Res, $Val extends LinkedFacilities>
+class _$LinkedFacilitiesCopyWithImpl<$Res>
     implements $LinkedFacilitiesCopyWith<$Res> {
   _$LinkedFacilitiesCopyWithImpl(this._value, this._then);
 
+  final LinkedFacilities _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(LinkedFacilities) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? facilities = freezed,
   }) {
     return _then(_value.copyWith(
-      facilities: freezed == facilities
+      facilities: facilities == freezed
           ? _value.facilities
           : facilities // ignore: cast_nullable_to_non_nullable
               as List<Facility>?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -69,25 +66,26 @@ abstract class _$$_LinkedFacilitiesCopyWith<$Res>
           _$_LinkedFacilities value, $Res Function(_$_LinkedFacilities) then) =
       __$$_LinkedFacilitiesCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call({@JsonKey(name: 'facilities') List<Facility>? facilities});
 }
 
 /// @nodoc
 class __$$_LinkedFacilitiesCopyWithImpl<$Res>
-    extends _$LinkedFacilitiesCopyWithImpl<$Res, _$_LinkedFacilities>
+    extends _$LinkedFacilitiesCopyWithImpl<$Res>
     implements _$$_LinkedFacilitiesCopyWith<$Res> {
   __$$_LinkedFacilitiesCopyWithImpl(
       _$_LinkedFacilities _value, $Res Function(_$_LinkedFacilities) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_LinkedFacilities));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_LinkedFacilities get _value => super._value as _$_LinkedFacilities;
+
   @override
   $Res call({
     Object? facilities = freezed,
   }) {
     return _then(_$_LinkedFacilities(
-      facilities: freezed == facilities
+      facilities: facilities == freezed
           ? _value._facilities
           : facilities // ignore: cast_nullable_to_non_nullable
               as List<Facility>?,
@@ -136,7 +134,6 @@ class _$_LinkedFacilities implements _LinkedFacilities {
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_LinkedFacilitiesCopyWith<_$_LinkedFacilities> get copyWith =>
       __$$_LinkedFacilitiesCopyWithImpl<_$_LinkedFacilities>(this, _$identity);
 

@@ -15,7 +15,6 @@ class User with _$User {
         Gender? gender,
     @JsonKey(name: 'active', defaultValue: false) bool? active,
     @JsonKey(name: 'contacts') Contact? contact,
-
     @JsonKey(name: 'firstName') String? firstName,
     @JsonKey(name: 'lastName') String? lastName,
     @JsonKey(name: 'userType') String? userType,
@@ -39,7 +38,6 @@ class User with _$User {
     /// This is used to trigger the change PIN workflow
     @JsonKey(name: 'pinUpdateRequired', defaultValue: false)
         bool? pinUpdateRequired,
-    String? chatRoomToken,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

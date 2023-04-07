@@ -254,7 +254,12 @@ mutation setStaffProgram($programID: ID!) {
         name
       }
     }
-    communityToken
+    communityProfile {
+      userID
+      accessToken
+      homeServer
+      deviceID
+    }
   }
 }
 ''';

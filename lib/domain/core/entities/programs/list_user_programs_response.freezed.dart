@@ -38,8 +38,7 @@ mixin _$ListUserProgramsResponse {
 abstract class $ListUserProgramsResponseCopyWith<$Res> {
   factory $ListUserProgramsResponseCopyWith(ListUserProgramsResponse value,
           $Res Function(ListUserProgramsResponse) then) =
-      _$ListUserProgramsResponseCopyWithImpl<$Res, ListUserProgramsResponse>;
-  @useResult
+      _$ListUserProgramsResponseCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'count') int? count,
       @JsonKey(name: 'programs') List<Program>? userPrograms,
@@ -47,17 +46,14 @@ abstract class $ListUserProgramsResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ListUserProgramsResponseCopyWithImpl<$Res,
-        $Val extends ListUserProgramsResponse>
+class _$ListUserProgramsResponseCopyWithImpl<$Res>
     implements $ListUserProgramsResponseCopyWith<$Res> {
   _$ListUserProgramsResponseCopyWithImpl(this._value, this._then);
 
+  final ListUserProgramsResponse _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(ListUserProgramsResponse) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? count = freezed,
@@ -65,19 +61,19 @@ class _$ListUserProgramsResponseCopyWithImpl<$Res,
     Object? programs = freezed,
   }) {
     return _then(_value.copyWith(
-      count: freezed == count
+      count: count == freezed
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int?,
-      userPrograms: freezed == userPrograms
+      userPrograms: userPrograms == freezed
           ? _value.userPrograms
           : userPrograms // ignore: cast_nullable_to_non_nullable
               as List<Program>?,
-      programs: freezed == programs
+      programs: programs == freezed
           ? _value.programs
           : programs // ignore: cast_nullable_to_non_nullable
               as List<Program>?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -89,7 +85,6 @@ abstract class _$$_ListUserProgramsResponseCopyWith<$Res>
           $Res Function(_$_ListUserProgramsResponse) then) =
       __$$_ListUserProgramsResponseCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'count') int? count,
       @JsonKey(name: 'programs') List<Program>? userPrograms,
@@ -98,14 +93,16 @@ abstract class _$$_ListUserProgramsResponseCopyWith<$Res>
 
 /// @nodoc
 class __$$_ListUserProgramsResponseCopyWithImpl<$Res>
-    extends _$ListUserProgramsResponseCopyWithImpl<$Res,
-        _$_ListUserProgramsResponse>
+    extends _$ListUserProgramsResponseCopyWithImpl<$Res>
     implements _$$_ListUserProgramsResponseCopyWith<$Res> {
   __$$_ListUserProgramsResponseCopyWithImpl(_$_ListUserProgramsResponse _value,
       $Res Function(_$_ListUserProgramsResponse) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_ListUserProgramsResponse));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_ListUserProgramsResponse get _value =>
+      super._value as _$_ListUserProgramsResponse;
+
   @override
   $Res call({
     Object? count = freezed,
@@ -113,15 +110,15 @@ class __$$_ListUserProgramsResponseCopyWithImpl<$Res>
     Object? programs = freezed,
   }) {
     return _then(_$_ListUserProgramsResponse(
-      count: freezed == count
+      count: count == freezed
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int?,
-      userPrograms: freezed == userPrograms
+      userPrograms: userPrograms == freezed
           ? _value._userPrograms
           : userPrograms // ignore: cast_nullable_to_non_nullable
               as List<Program>?,
-      programs: freezed == programs
+      programs: programs == freezed
           ? _value._programs
           : programs // ignore: cast_nullable_to_non_nullable
               as List<Program>?,
@@ -175,7 +172,7 @@ class _$_ListUserProgramsResponse implements _ListUserProgramsResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ListUserProgramsResponse &&
-            (identical(other.count, count) || other.count == count) &&
+            const DeepCollectionEquality().equals(other.count, count) &&
             const DeepCollectionEquality()
                 .equals(other._userPrograms, _userPrograms) &&
             const DeepCollectionEquality().equals(other._programs, _programs));
@@ -185,13 +182,12 @@ class _$_ListUserProgramsResponse implements _ListUserProgramsResponse {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      count,
+      const DeepCollectionEquality().hash(count),
       const DeepCollectionEquality().hash(_userPrograms),
       const DeepCollectionEquality().hash(_programs));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_ListUserProgramsResponseCopyWith<_$_ListUserProgramsResponse>
       get copyWith => __$$_ListUserProgramsResponseCopyWithImpl<
           _$_ListUserProgramsResponse>(this, _$identity);

@@ -1,0 +1,228 @@
+import 'package:async_redux/async_redux.dart';
+import 'package:prohealth360_daktari/application/redux/actions/flags/app_flags.dart';
+import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
+import 'package:prohealth360_daktari/application/redux/states/chat/event_report.dart';
+import 'package:sghi_core/afya_moja_core/afya_moja_core.dart';
+import 'package:sghi_core/communities/models/room.dart';
+import 'package:sghi_core/communities/models/user.dart';
+
+class RoomListViewModel extends Vm {
+  RoomListViewModel({
+    required this.rooms,
+    required this.syncing,
+    required this.displayName,
+  }) : super(equals: <Object?>[syncing, displayName, rooms]);
+
+  factory RoomListViewModel.fromStore(Store<AppState> store) {
+    final List<Room?> allRooms = <Room?>[
+      ...?store.state.chatState?.syncResponse?.rooms?.invitedRooms?.values,
+      ...?store.state.chatState?.syncResponse?.rooms?.joinedRooms?.values,
+    ];
+
+    return RoomListViewModel(
+      syncing: store.state.wait?.isWaitingFor(syncingEventsFlag) ?? false,
+      displayName: store.state.chatState?.userProfile?.userID,
+      rooms: allRooms,
+    );
+  }
+
+  final bool syncing;
+  final String? displayName;
+  final List<Room?>? rooms;
+}
+
+class RoomInfoViewModel extends Vm {
+  RoomInfoViewModel({
+    required this.groupInfoMembers,
+    required this.fetchingMembers,
+    required this.authUserID,
+    required this.leavingRoom,
+    required this.promotingToMod,
+    required this.joiningRoom,
+  }) : super(
+          equals: <Object?>[
+            groupInfoMembers,
+            authUserID,
+            leavingRoom,
+            fetchingMembers,
+            promotingToMod,
+            joiningRoom,
+          ],
+        );
+
+  factory RoomInfoViewModel.fromStore(Store<AppState> store) {
+    final AppState state = store.state;
+    return RoomInfoViewModel(
+      fetchingMembers:
+          store.state.wait?.isWaitingFor(fetchRoomMembersFlag) ?? false,
+      leavingRoom: store.state.wait?.isWaitingFor(leaveRoomFlag) ?? false,
+      promotingToMod: store.state.wait?.isWaitingFor(promoteToModFlag) ?? false,
+      joiningRoom: store.state.wait?.isWaitingFor(joinRoomFlag) ?? false,
+      groupInfoMembers: state.chatState?.groupInfoMembers,
+      authUserID: state.chatState?.userProfile?.userID ?? UNKNOWN,
+    );
+  }
+
+  final List<RoomUser>? groupInfoMembers;
+
+  /// User ID of the currently signed in user
+  final String authUserID;
+
+  final bool fetchingMembers;
+
+  final bool leavingRoom;
+
+  final bool promotingToMod;
+
+  final bool joiningRoom;
+}
+
+class SearchPageViewModel extends Vm {
+  SearchPageViewModel({
+    required this.searchMemberResults,
+    required this.authUserID,
+    this.wait,
+  }) : super(equals: <Object?>[searchMemberResults, wait, authUserID]);
+
+  factory SearchPageViewModel.fromStore(Store<AppState> store) {
+    return SearchPageViewModel(
+      wait: store.state.wait,
+      searchMemberResults: store.state.chatState?.searchMemberResults,
+      authUserID: store.state.chatState?.userProfile?.userID ?? UNKNOWN,
+    );
+  }
+
+  final List<User>? searchMemberResults;
+  final String authUserID;
+  final Wait? wait;
+}
+
+class RoomPageViewModel extends Vm {
+  RoomPageViewModel({required this.selectedRoom})
+      : super(equals: <Object?>[selectedRoom]);
+
+  factory RoomPageViewModel.fromStore(Store<AppState> store) {
+    final String? selectedRoomID = store.state.chatState?.selectedRoom;
+
+    final List<Room?> allRooms = <Room?>[
+      ...?store.state.chatState?.syncResponse?.rooms?.invitedRooms?.values,
+      ...?store.state.chatState?.syncResponse?.rooms?.joinedRooms?.values,
+    ];
+
+    final Room? selected = allRooms.firstWhere(
+      (Room? r) => r?.roomID == selectedRoomID,
+    );
+
+    return RoomPageViewModel(selectedRoom: selected);
+  }
+
+  final Room? selectedRoom;
+}
+
+class MessageOptionsViewModel extends Vm {
+  MessageOptionsViewModel({required this.isDeletingMessage})
+      : super(equals: <Object?>[isDeletingMessage]);
+
+  factory MessageOptionsViewModel.fromStore(Store<AppState> store) {
+    return MessageOptionsViewModel(
+      isDeletingMessage:
+          store.state.wait?.isWaitingFor(deleteMessageFlag) ?? false,
+    );
+  }
+
+  final bool isDeletingMessage;
+}
+
+class ImageUploadViewModel extends Vm {
+  ImageUploadViewModel({required this.uploadingImage})
+      : super(equals: <Object?>[uploadingImage]);
+
+  factory ImageUploadViewModel.fromStore(Store<AppState> store) {
+    return ImageUploadViewModel(
+      uploadingImage: store.state.wait?.isWaitingFor(uploadMediaFlag) ?? false,
+    );
+  }
+
+  final bool uploadingImage;
+}
+
+class MessageInputViewModel extends Vm {
+  MessageInputViewModel({required this.isSending})
+      : super(equals: <Object?>[isSending]);
+
+  factory MessageInputViewModel.fromStore(Store<AppState> store) {
+    return MessageInputViewModel(
+      isSending: store.state.wait?.isWaitingFor(sendMessageFlag) ?? false,
+    );
+  }
+
+  final bool isSending;
+}
+
+class BannedMembersViewModel extends Vm {
+  BannedMembersViewModel({
+    required this.bannedUserIDs,
+    required this.fetchingMembers,
+  }) : super(equals: <Object?>[bannedUserIDs, fetchingMembers]);
+
+  factory BannedMembersViewModel.fromStore(Store<AppState> store) {
+    return BannedMembersViewModel(
+      bannedUserIDs: store.state.chatState?.bannedUserIDs ?? <String>[],
+      fetchingMembers:
+          store.state.wait?.isWaitingFor(fetchBannedMembersFlag) ?? false,
+    );
+  }
+
+  final List<String?>? bannedUserIDs;
+  final bool fetchingMembers;
+}
+
+class FlaggedMessagesViewModel extends Vm {
+  FlaggedMessagesViewModel({
+    required this.flaggedMessageEvents,
+    required this.fetchingMembers,
+  }) : super(equals: <Object?>[flaggedMessageEvents, fetchingMembers]);
+
+  factory FlaggedMessagesViewModel.fromStore(Store<AppState> store) {
+    return FlaggedMessagesViewModel(
+      flaggedMessageEvents:
+          store.state.chatState?.flaggedMessageEvents ?? <EventReport>[],
+      fetchingMembers:
+          store.state.wait?.isWaitingFor(fetchFlaggedMessagesFlag) ?? false,
+    );
+  }
+
+  final List<EventReport?>? flaggedMessageEvents;
+  final bool fetchingMembers;
+}
+
+class FlaggedMessagePreviewViewModel extends Vm {
+  FlaggedMessagePreviewViewModel({
+    required this.selectedFlaggedMessage,
+    required this.fetchingMessageReport,
+  }) : super(equals: <Object?>[selectedFlaggedMessage, fetchingMessageReport]);
+
+  factory FlaggedMessagePreviewViewModel.fromStore(Store<AppState> store) {
+    return FlaggedMessagePreviewViewModel(
+      selectedFlaggedMessage: store.state.chatState?.selectedFlaggedMessage,
+      fetchingMessageReport:
+          store.state.wait?.isWaitingFor(fetchEventReport) ?? false,
+    );
+  }
+
+  final EventReport? selectedFlaggedMessage;
+  final bool fetchingMessageReport;
+}
+
+class CreateRoomViewModel extends Vm {
+  CreateRoomViewModel({required this.isCreatingRoom})
+      : super(equals: <Object?>[isCreatingRoom]);
+
+  factory CreateRoomViewModel.fromStore(Store<AppState> store) {
+    return CreateRoomViewModel(
+      isCreatingRoom: store.state.wait?.isWaitingFor(createRoomFlag) ?? false,
+    );
+  }
+
+  final bool isCreatingRoom;
+}

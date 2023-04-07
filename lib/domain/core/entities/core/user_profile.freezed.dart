@@ -78,8 +78,7 @@ mixin _$UserProfile {
 abstract class $UserProfileCopyWith<$Res> {
   factory $UserProfileCopyWith(
           UserProfile value, $Res Function(UserProfile) then) =
-      _$UserProfileCopyWithImpl<$Res, UserProfile>;
-  @useResult
+      _$UserProfileCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'username') String? username,
@@ -114,16 +113,13 @@ abstract class $UserProfileCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserProfileCopyWithImpl<$Res, $Val extends UserProfile>
-    implements $UserProfileCopyWith<$Res> {
+class _$UserProfileCopyWithImpl<$Res> implements $UserProfileCopyWith<$Res> {
   _$UserProfileCopyWithImpl(this._value, this._then);
 
+  final UserProfile _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(UserProfile) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -153,135 +149,132 @@ class _$UserProfileCopyWithImpl<$Res, $Val extends UserProfile>
     Object? currentFacility = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      username: freezed == username
+      username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: freezed == name
+      name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      pinChangeRequired: freezed == pinChangeRequired
+      pinChangeRequired: pinChangeRequired == freezed
           ? _value.pinChangeRequired
           : pinChangeRequired // ignore: cast_nullable_to_non_nullable
               as bool?,
-      hasSetPin: freezed == hasSetPin
+      hasSetPin: hasSetPin == freezed
           ? _value.hasSetPin
           : hasSetPin // ignore: cast_nullable_to_non_nullable
               as bool?,
-      isPhoneVerified: freezed == isPhoneVerified
+      isPhoneVerified: isPhoneVerified == freezed
           ? _value.isPhoneVerified
           : isPhoneVerified // ignore: cast_nullable_to_non_nullable
               as bool?,
-      hasSetSecurityQuestions: freezed == hasSetSecurityQuestions
+      hasSetSecurityQuestions: hasSetSecurityQuestions == freezed
           ? _value.hasSetSecurityQuestions
           : hasSetSecurityQuestions // ignore: cast_nullable_to_non_nullable
               as bool?,
-      hasSetNickname: freezed == hasSetNickname
+      hasSetNickname: hasSetNickname == freezed
           ? _value.hasSetNickname
           : hasSetNickname // ignore: cast_nullable_to_non_nullable
               as bool?,
-      pinUpdateRequired: freezed == pinUpdateRequired
+      pinUpdateRequired: pinUpdateRequired == freezed
           ? _value.pinUpdateRequired
           : pinUpdateRequired // ignore: cast_nullable_to_non_nullable
               as bool?,
-      termsAccepted: freezed == termsAccepted
+      termsAccepted: termsAccepted == freezed
           ? _value.termsAccepted
           : termsAccepted // ignore: cast_nullable_to_non_nullable
               as bool?,
-      suspended: freezed == suspended
+      suspended: suspended == freezed
           ? _value.suspended
           : suspended // ignore: cast_nullable_to_non_nullable
               as bool?,
-      userId: freezed == userId
+      userId: userId == freezed
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String?,
-      active: freezed == active
+      active: active == freezed
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
               as bool?,
-      facilities: freezed == facilities
+      facilities: facilities == freezed
           ? _value.facilities
           : facilities // ignore: cast_nullable_to_non_nullable
               as List<Facility>?,
-      staffNumber: freezed == staffNumber
+      staffNumber: staffNumber == freezed
           ? _value.staffNumber
           : staffNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      defaultFacility: freezed == defaultFacility
+      defaultFacility: defaultFacility == freezed
           ? _value.defaultFacility
           : defaultFacility // ignore: cast_nullable_to_non_nullable
               as Facility?,
-      linkedFacilities: freezed == linkedFacilities
+      linkedFacilities: linkedFacilities == freezed
           ? _value.linkedFacilities
           : linkedFacilities // ignore: cast_nullable_to_non_nullable
               as List<Facility>?,
-      user: freezed == user
+      user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User?,
-      defaultFacilityName: freezed == defaultFacilityName
+      defaultFacilityName: defaultFacilityName == freezed
           ? _value.defaultFacilityName
           : defaultFacilityName // ignore: cast_nullable_to_non_nullable
               as String?,
-      clientSharedDiaryEntries: freezed == clientSharedDiaryEntries
+      clientSharedDiaryEntries: clientSharedDiaryEntries == freezed
           ? _value.clientSharedDiaryEntries
           : clientSharedDiaryEntries // ignore: cast_nullable_to_non_nullable
               as List<HealthDiaryEntry?>?,
-      notifications: freezed == notifications
+      notifications: notifications == freezed
           ? _value.notifications
           : notifications // ignore: cast_nullable_to_non_nullable
               as List<NotificationDetails?>?,
-      clientCaregivers: freezed == clientCaregivers
+      clientCaregivers: clientCaregivers == freezed
           ? _value.clientCaregivers
           : clientCaregivers // ignore: cast_nullable_to_non_nullable
               as List<Caregiver?>?,
-      managedClients: freezed == managedClients
+      managedClients: managedClients == freezed
           ? _value.managedClients
           : managedClients // ignore: cast_nullable_to_non_nullable
               as List<ManagedClient>?,
-      notificationFilterState: freezed == notificationFilterState
+      notificationFilterState: notificationFilterState == freezed
           ? _value.notificationFilterState
           : notificationFilterState // ignore: cast_nullable_to_non_nullable
               as NotificationFilterState?,
-      currentFacility: freezed == currentFacility
+      currentFacility: currentFacility == freezed
           ? _value.currentFacility
           : currentFacility // ignore: cast_nullable_to_non_nullable
               as Facility?,
-    ) as $Val);
+    ));
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $FacilityCopyWith<$Res>? get defaultFacility {
     if (_value.defaultFacility == null) {
       return null;
     }
 
     return $FacilityCopyWith<$Res>(_value.defaultFacility!, (value) {
-      return _then(_value.copyWith(defaultFacility: value) as $Val);
+      return _then(_value.copyWith(defaultFacility: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $UserCopyWith<$Res>? get user {
     if (_value.user == null) {
       return null;
     }
 
     return $UserCopyWith<$Res>(_value.user!, (value) {
-      return _then(_value.copyWith(user: value) as $Val);
+      return _then(_value.copyWith(user: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $NotificationFilterStateCopyWith<$Res>? get notificationFilterState {
     if (_value.notificationFilterState == null) {
       return null;
@@ -289,19 +282,18 @@ class _$UserProfileCopyWithImpl<$Res, $Val extends UserProfile>
 
     return $NotificationFilterStateCopyWith<$Res>(
         _value.notificationFilterState!, (value) {
-      return _then(_value.copyWith(notificationFilterState: value) as $Val);
+      return _then(_value.copyWith(notificationFilterState: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $FacilityCopyWith<$Res>? get currentFacility {
     if (_value.currentFacility == null) {
       return null;
     }
 
     return $FacilityCopyWith<$Res>(_value.currentFacility!, (value) {
-      return _then(_value.copyWith(currentFacility: value) as $Val);
+      return _then(_value.copyWith(currentFacility: value));
     });
   }
 }
@@ -313,7 +305,6 @@ abstract class _$$_UserProfileCopyWith<$Res>
           _$_UserProfile value, $Res Function(_$_UserProfile) then) =
       __$$_UserProfileCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'username') String? username,
@@ -352,14 +343,15 @@ abstract class _$$_UserProfileCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UserProfileCopyWithImpl<$Res>
-    extends _$UserProfileCopyWithImpl<$Res, _$_UserProfile>
+class __$$_UserProfileCopyWithImpl<$Res> extends _$UserProfileCopyWithImpl<$Res>
     implements _$$_UserProfileCopyWith<$Res> {
   __$$_UserProfileCopyWithImpl(
       _$_UserProfile _value, $Res Function(_$_UserProfile) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_UserProfile));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_UserProfile get _value => super._value as _$_UserProfile;
+
   @override
   $Res call({
     Object? id = freezed,
@@ -389,103 +381,103 @@ class __$$_UserProfileCopyWithImpl<$Res>
     Object? currentFacility = freezed,
   }) {
     return _then(_$_UserProfile(
-      id: freezed == id
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      username: freezed == username
+      username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: freezed == name
+      name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      pinChangeRequired: freezed == pinChangeRequired
+      pinChangeRequired: pinChangeRequired == freezed
           ? _value.pinChangeRequired
           : pinChangeRequired // ignore: cast_nullable_to_non_nullable
               as bool?,
-      hasSetPin: freezed == hasSetPin
+      hasSetPin: hasSetPin == freezed
           ? _value.hasSetPin
           : hasSetPin // ignore: cast_nullable_to_non_nullable
               as bool?,
-      isPhoneVerified: freezed == isPhoneVerified
+      isPhoneVerified: isPhoneVerified == freezed
           ? _value.isPhoneVerified
           : isPhoneVerified // ignore: cast_nullable_to_non_nullable
               as bool?,
-      hasSetSecurityQuestions: freezed == hasSetSecurityQuestions
+      hasSetSecurityQuestions: hasSetSecurityQuestions == freezed
           ? _value.hasSetSecurityQuestions
           : hasSetSecurityQuestions // ignore: cast_nullable_to_non_nullable
               as bool?,
-      hasSetNickname: freezed == hasSetNickname
+      hasSetNickname: hasSetNickname == freezed
           ? _value.hasSetNickname
           : hasSetNickname // ignore: cast_nullable_to_non_nullable
               as bool?,
-      pinUpdateRequired: freezed == pinUpdateRequired
+      pinUpdateRequired: pinUpdateRequired == freezed
           ? _value.pinUpdateRequired
           : pinUpdateRequired // ignore: cast_nullable_to_non_nullable
               as bool?,
-      termsAccepted: freezed == termsAccepted
+      termsAccepted: termsAccepted == freezed
           ? _value.termsAccepted
           : termsAccepted // ignore: cast_nullable_to_non_nullable
               as bool?,
-      suspended: freezed == suspended
+      suspended: suspended == freezed
           ? _value.suspended
           : suspended // ignore: cast_nullable_to_non_nullable
               as bool?,
-      userId: freezed == userId
+      userId: userId == freezed
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String?,
-      active: freezed == active
+      active: active == freezed
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
               as bool?,
-      facilities: freezed == facilities
+      facilities: facilities == freezed
           ? _value._facilities
           : facilities // ignore: cast_nullable_to_non_nullable
               as List<Facility>?,
-      staffNumber: freezed == staffNumber
+      staffNumber: staffNumber == freezed
           ? _value.staffNumber
           : staffNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      defaultFacility: freezed == defaultFacility
+      defaultFacility: defaultFacility == freezed
           ? _value.defaultFacility
           : defaultFacility // ignore: cast_nullable_to_non_nullable
               as Facility?,
-      linkedFacilities: freezed == linkedFacilities
+      linkedFacilities: linkedFacilities == freezed
           ? _value._linkedFacilities
           : linkedFacilities // ignore: cast_nullable_to_non_nullable
               as List<Facility>?,
-      user: freezed == user
+      user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User?,
-      defaultFacilityName: freezed == defaultFacilityName
+      defaultFacilityName: defaultFacilityName == freezed
           ? _value.defaultFacilityName
           : defaultFacilityName // ignore: cast_nullable_to_non_nullable
               as String?,
-      clientSharedDiaryEntries: freezed == clientSharedDiaryEntries
+      clientSharedDiaryEntries: clientSharedDiaryEntries == freezed
           ? _value._clientSharedDiaryEntries
           : clientSharedDiaryEntries // ignore: cast_nullable_to_non_nullable
               as List<HealthDiaryEntry?>?,
-      notifications: freezed == notifications
+      notifications: notifications == freezed
           ? _value._notifications
           : notifications // ignore: cast_nullable_to_non_nullable
               as List<NotificationDetails?>?,
-      clientCaregivers: freezed == clientCaregivers
+      clientCaregivers: clientCaregivers == freezed
           ? _value._clientCaregivers
           : clientCaregivers // ignore: cast_nullable_to_non_nullable
               as List<Caregiver?>?,
-      managedClients: freezed == managedClients
+      managedClients: managedClients == freezed
           ? _value._managedClients
           : managedClients // ignore: cast_nullable_to_non_nullable
               as List<ManagedClient>?,
-      notificationFilterState: freezed == notificationFilterState
+      notificationFilterState: notificationFilterState == freezed
           ? _value.notificationFilterState
           : notificationFilterState // ignore: cast_nullable_to_non_nullable
               as NotificationFilterState?,
-      currentFacility: freezed == currentFacility
+      currentFacility: currentFacility == freezed
           ? _value.currentFacility
           : currentFacility // ignore: cast_nullable_to_non_nullable
               as Facility?,
@@ -658,40 +650,36 @@ class _$_UserProfile implements _UserProfile {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UserProfile &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.username, username) ||
-                other.username == username) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.pinChangeRequired, pinChangeRequired) ||
-                other.pinChangeRequired == pinChangeRequired) &&
-            (identical(other.hasSetPin, hasSetPin) ||
-                other.hasSetPin == hasSetPin) &&
-            (identical(other.isPhoneVerified, isPhoneVerified) ||
-                other.isPhoneVerified == isPhoneVerified) &&
-            (identical(
-                    other.hasSetSecurityQuestions, hasSetSecurityQuestions) ||
-                other.hasSetSecurityQuestions == hasSetSecurityQuestions) &&
-            (identical(other.hasSetNickname, hasSetNickname) ||
-                other.hasSetNickname == hasSetNickname) &&
-            (identical(other.pinUpdateRequired, pinUpdateRequired) ||
-                other.pinUpdateRequired == pinUpdateRequired) &&
-            (identical(other.termsAccepted, termsAccepted) ||
-                other.termsAccepted == termsAccepted) &&
-            (identical(other.suspended, suspended) ||
-                other.suspended == suspended) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.active, active) || other.active == active) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.username, username) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality()
+                .equals(other.pinChangeRequired, pinChangeRequired) &&
+            const DeepCollectionEquality().equals(other.hasSetPin, hasSetPin) &&
+            const DeepCollectionEquality()
+                .equals(other.isPhoneVerified, isPhoneVerified) &&
+            const DeepCollectionEquality().equals(
+                other.hasSetSecurityQuestions, hasSetSecurityQuestions) &&
+            const DeepCollectionEquality()
+                .equals(other.hasSetNickname, hasSetNickname) &&
+            const DeepCollectionEquality()
+                .equals(other.pinUpdateRequired, pinUpdateRequired) &&
+            const DeepCollectionEquality()
+                .equals(other.termsAccepted, termsAccepted) &&
+            const DeepCollectionEquality().equals(other.suspended, suspended) &&
+            const DeepCollectionEquality().equals(other.userId, userId) &&
+            const DeepCollectionEquality().equals(other.active, active) &&
             const DeepCollectionEquality()
                 .equals(other._facilities, _facilities) &&
-            (identical(other.staffNumber, staffNumber) ||
-                other.staffNumber == staffNumber) &&
-            (identical(other.defaultFacility, defaultFacility) ||
-                other.defaultFacility == defaultFacility) &&
+            const DeepCollectionEquality()
+                .equals(other.staffNumber, staffNumber) &&
+            const DeepCollectionEquality()
+                .equals(other.defaultFacility, defaultFacility) &&
             const DeepCollectionEquality()
                 .equals(other._linkedFacilities, _linkedFacilities) &&
-            (identical(other.user, user) || other.user == user) &&
-            (identical(other.defaultFacilityName, defaultFacilityName) ||
-                other.defaultFacilityName == defaultFacilityName) &&
+            const DeepCollectionEquality().equals(other.user, user) &&
+            const DeepCollectionEquality()
+                .equals(other.defaultFacilityName, defaultFacilityName) &&
             const DeepCollectionEquality().equals(
                 other._clientSharedDiaryEntries, _clientSharedDiaryEntries) &&
             const DeepCollectionEquality()
@@ -700,47 +688,45 @@ class _$_UserProfile implements _UserProfile {
                 .equals(other._clientCaregivers, _clientCaregivers) &&
             const DeepCollectionEquality()
                 .equals(other._managedClients, _managedClients) &&
-            (identical(
-                    other.notificationFilterState, notificationFilterState) ||
-                other.notificationFilterState == notificationFilterState) &&
-            (identical(other.currentFacility, currentFacility) ||
-                other.currentFacility == currentFacility));
+            const DeepCollectionEquality().equals(
+                other.notificationFilterState, notificationFilterState) &&
+            const DeepCollectionEquality()
+                .equals(other.currentFacility, currentFacility));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        id,
-        username,
-        name,
-        pinChangeRequired,
-        hasSetPin,
-        isPhoneVerified,
-        hasSetSecurityQuestions,
-        hasSetNickname,
-        pinUpdateRequired,
-        termsAccepted,
-        suspended,
-        userId,
-        active,
+        const DeepCollectionEquality().hash(id),
+        const DeepCollectionEquality().hash(username),
+        const DeepCollectionEquality().hash(name),
+        const DeepCollectionEquality().hash(pinChangeRequired),
+        const DeepCollectionEquality().hash(hasSetPin),
+        const DeepCollectionEquality().hash(isPhoneVerified),
+        const DeepCollectionEquality().hash(hasSetSecurityQuestions),
+        const DeepCollectionEquality().hash(hasSetNickname),
+        const DeepCollectionEquality().hash(pinUpdateRequired),
+        const DeepCollectionEquality().hash(termsAccepted),
+        const DeepCollectionEquality().hash(suspended),
+        const DeepCollectionEquality().hash(userId),
+        const DeepCollectionEquality().hash(active),
         const DeepCollectionEquality().hash(_facilities),
-        staffNumber,
-        defaultFacility,
+        const DeepCollectionEquality().hash(staffNumber),
+        const DeepCollectionEquality().hash(defaultFacility),
         const DeepCollectionEquality().hash(_linkedFacilities),
-        user,
-        defaultFacilityName,
+        const DeepCollectionEquality().hash(user),
+        const DeepCollectionEquality().hash(defaultFacilityName),
         const DeepCollectionEquality().hash(_clientSharedDiaryEntries),
         const DeepCollectionEquality().hash(_notifications),
         const DeepCollectionEquality().hash(_clientCaregivers),
         const DeepCollectionEquality().hash(_managedClients),
-        notificationFilterState,
-        currentFacility
+        const DeepCollectionEquality().hash(notificationFilterState),
+        const DeepCollectionEquality().hash(currentFacility)
       ]);
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_UserProfileCopyWith<_$_UserProfile> get copyWith =>
       __$$_UserProfileCopyWithImpl<_$_UserProfile>(this, _$identity);
 

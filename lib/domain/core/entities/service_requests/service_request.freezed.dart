@@ -62,8 +62,7 @@ mixin _$ServiceRequest {
 abstract class $ServiceRequestCopyWith<$Res> {
   factory $ServiceRequestCopyWith(
           ServiceRequest value, $Res Function(ServiceRequest) then) =
-      _$ServiceRequestCopyWithImpl<$Res, ServiceRequest>;
-  @useResult
+      _$ServiceRequestCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'request') String? description,
@@ -85,16 +84,14 @@ abstract class $ServiceRequestCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ServiceRequestCopyWithImpl<$Res, $Val extends ServiceRequest>
+class _$ServiceRequestCopyWithImpl<$Res>
     implements $ServiceRequestCopyWith<$Res> {
   _$ServiceRequestCopyWithImpl(this._value, this._then);
 
+  final ServiceRequest _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(ServiceRequest) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -114,78 +111,77 @@ class _$ServiceRequestCopyWithImpl<$Res, $Val extends ServiceRequest>
     Object? staffPhoneNumber = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: freezed == description
+      description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      serviceRequestType: freezed == serviceRequestType
+      serviceRequestType: serviceRequestType == freezed
           ? _value.serviceRequestType
           : serviceRequestType // ignore: cast_nullable_to_non_nullable
               as ServiceRequestType?,
-      clientId: freezed == clientId
+      clientId: clientId == freezed
           ? _value.clientId
           : clientId // ignore: cast_nullable_to_non_nullable
               as String?,
-      clientName: freezed == clientName
+      clientName: clientName == freezed
           ? _value.clientName
           : clientName // ignore: cast_nullable_to_non_nullable
               as String?,
-      clientPhoneNumber: freezed == clientPhoneNumber
+      clientPhoneNumber: clientPhoneNumber == freezed
           ? _value.clientPhoneNumber
           : clientPhoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: freezed == status
+      status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as RequestStatus?,
-      resolvedTime: freezed == resolvedTime
+      resolvedTime: resolvedTime == freezed
           ? _value.resolvedTime
           : resolvedTime // ignore: cast_nullable_to_non_nullable
               as String?,
-      resolvedBy: freezed == resolvedBy
+      resolvedBy: resolvedBy == freezed
           ? _value.resolvedBy
           : resolvedBy // ignore: cast_nullable_to_non_nullable
               as String?,
-      resolvedByName: freezed == resolvedByName
+      resolvedByName: resolvedByName == freezed
           ? _value.resolvedByName
           : resolvedByName // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdAt: freezed == createdAt
+      createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      meta: freezed == meta
+      meta: meta == freezed
           ? _value.meta
           : meta // ignore: cast_nullable_to_non_nullable
               as ServiceRequestMeta?,
-      staffId: freezed == staffId
+      staffId: staffId == freezed
           ? _value.staffId
           : staffId // ignore: cast_nullable_to_non_nullable
               as String?,
-      staffName: freezed == staffName
+      staffName: staffName == freezed
           ? _value.staffName
           : staffName // ignore: cast_nullable_to_non_nullable
               as String?,
-      staffPhoneNumber: freezed == staffPhoneNumber
+      staffPhoneNumber: staffPhoneNumber == freezed
           ? _value.staffPhoneNumber
           : staffPhoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-    ) as $Val);
+    ));
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $ServiceRequestMetaCopyWith<$Res>? get meta {
     if (_value.meta == null) {
       return null;
     }
 
     return $ServiceRequestMetaCopyWith<$Res>(_value.meta!, (value) {
-      return _then(_value.copyWith(meta: value) as $Val);
+      return _then(_value.copyWith(meta: value));
     });
   }
 }
@@ -197,7 +193,6 @@ abstract class _$$_ServiceRequestCopyWith<$Res>
           _$_ServiceRequest value, $Res Function(_$_ServiceRequest) then) =
       __$$_ServiceRequestCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'request') String? description,
@@ -221,13 +216,15 @@ abstract class _$$_ServiceRequestCopyWith<$Res>
 
 /// @nodoc
 class __$$_ServiceRequestCopyWithImpl<$Res>
-    extends _$ServiceRequestCopyWithImpl<$Res, _$_ServiceRequest>
+    extends _$ServiceRequestCopyWithImpl<$Res>
     implements _$$_ServiceRequestCopyWith<$Res> {
   __$$_ServiceRequestCopyWithImpl(
       _$_ServiceRequest _value, $Res Function(_$_ServiceRequest) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_ServiceRequest));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_ServiceRequest get _value => super._value as _$_ServiceRequest;
+
   @override
   $Res call({
     Object? id = freezed,
@@ -247,63 +244,63 @@ class __$$_ServiceRequestCopyWithImpl<$Res>
     Object? staffPhoneNumber = freezed,
   }) {
     return _then(_$_ServiceRequest(
-      id: freezed == id
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: freezed == description
+      description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      serviceRequestType: freezed == serviceRequestType
+      serviceRequestType: serviceRequestType == freezed
           ? _value.serviceRequestType
           : serviceRequestType // ignore: cast_nullable_to_non_nullable
               as ServiceRequestType?,
-      clientId: freezed == clientId
+      clientId: clientId == freezed
           ? _value.clientId
           : clientId // ignore: cast_nullable_to_non_nullable
               as String?,
-      clientName: freezed == clientName
+      clientName: clientName == freezed
           ? _value.clientName
           : clientName // ignore: cast_nullable_to_non_nullable
               as String?,
-      clientPhoneNumber: freezed == clientPhoneNumber
+      clientPhoneNumber: clientPhoneNumber == freezed
           ? _value.clientPhoneNumber
           : clientPhoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: freezed == status
+      status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as RequestStatus?,
-      resolvedTime: freezed == resolvedTime
+      resolvedTime: resolvedTime == freezed
           ? _value.resolvedTime
           : resolvedTime // ignore: cast_nullable_to_non_nullable
               as String?,
-      resolvedBy: freezed == resolvedBy
+      resolvedBy: resolvedBy == freezed
           ? _value.resolvedBy
           : resolvedBy // ignore: cast_nullable_to_non_nullable
               as String?,
-      resolvedByName: freezed == resolvedByName
+      resolvedByName: resolvedByName == freezed
           ? _value.resolvedByName
           : resolvedByName // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdAt: freezed == createdAt
+      createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      meta: freezed == meta
+      meta: meta == freezed
           ? _value.meta
           : meta // ignore: cast_nullable_to_non_nullable
               as ServiceRequestMeta?,
-      staffId: freezed == staffId
+      staffId: staffId == freezed
           ? _value.staffId
           : staffId // ignore: cast_nullable_to_non_nullable
               as String?,
-      staffName: freezed == staffName
+      staffName: staffName == freezed
           ? _value.staffName
           : staffName // ignore: cast_nullable_to_non_nullable
               as String?,
-      staffPhoneNumber: freezed == staffPhoneNumber
+      staffPhoneNumber: staffPhoneNumber == freezed
           ? _value.staffPhoneNumber
           : staffPhoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -390,57 +387,53 @@ class _$_ServiceRequest implements _ServiceRequest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ServiceRequest &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.serviceRequestType, serviceRequestType) ||
-                other.serviceRequestType == serviceRequestType) &&
-            (identical(other.clientId, clientId) ||
-                other.clientId == clientId) &&
-            (identical(other.clientName, clientName) ||
-                other.clientName == clientName) &&
-            (identical(other.clientPhoneNumber, clientPhoneNumber) ||
-                other.clientPhoneNumber == clientPhoneNumber) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.resolvedTime, resolvedTime) ||
-                other.resolvedTime == resolvedTime) &&
-            (identical(other.resolvedBy, resolvedBy) ||
-                other.resolvedBy == resolvedBy) &&
-            (identical(other.resolvedByName, resolvedByName) ||
-                other.resolvedByName == resolvedByName) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.meta, meta) || other.meta == meta) &&
-            (identical(other.staffId, staffId) || other.staffId == staffId) &&
-            (identical(other.staffName, staffName) ||
-                other.staffName == staffName) &&
-            (identical(other.staffPhoneNumber, staffPhoneNumber) ||
-                other.staffPhoneNumber == staffPhoneNumber));
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
+            const DeepCollectionEquality()
+                .equals(other.serviceRequestType, serviceRequestType) &&
+            const DeepCollectionEquality().equals(other.clientId, clientId) &&
+            const DeepCollectionEquality()
+                .equals(other.clientName, clientName) &&
+            const DeepCollectionEquality()
+                .equals(other.clientPhoneNumber, clientPhoneNumber) &&
+            const DeepCollectionEquality().equals(other.status, status) &&
+            const DeepCollectionEquality()
+                .equals(other.resolvedTime, resolvedTime) &&
+            const DeepCollectionEquality()
+                .equals(other.resolvedBy, resolvedBy) &&
+            const DeepCollectionEquality()
+                .equals(other.resolvedByName, resolvedByName) &&
+            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            const DeepCollectionEquality().equals(other.meta, meta) &&
+            const DeepCollectionEquality().equals(other.staffId, staffId) &&
+            const DeepCollectionEquality().equals(other.staffName, staffName) &&
+            const DeepCollectionEquality()
+                .equals(other.staffPhoneNumber, staffPhoneNumber));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      id,
-      description,
-      serviceRequestType,
-      clientId,
-      clientName,
-      clientPhoneNumber,
-      status,
-      resolvedTime,
-      resolvedBy,
-      resolvedByName,
-      createdAt,
-      meta,
-      staffId,
-      staffName,
-      staffPhoneNumber);
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(serviceRequestType),
+      const DeepCollectionEquality().hash(clientId),
+      const DeepCollectionEquality().hash(clientName),
+      const DeepCollectionEquality().hash(clientPhoneNumber),
+      const DeepCollectionEquality().hash(status),
+      const DeepCollectionEquality().hash(resolvedTime),
+      const DeepCollectionEquality().hash(resolvedBy),
+      const DeepCollectionEquality().hash(resolvedByName),
+      const DeepCollectionEquality().hash(createdAt),
+      const DeepCollectionEquality().hash(meta),
+      const DeepCollectionEquality().hash(staffId),
+      const DeepCollectionEquality().hash(staffName),
+      const DeepCollectionEquality().hash(staffPhoneNumber));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_ServiceRequestCopyWith<_$_ServiceRequest> get copyWith =>
       __$$_ServiceRequestCopyWithImpl<_$_ServiceRequest>(this, _$identity);
 

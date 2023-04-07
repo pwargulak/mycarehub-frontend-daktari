@@ -36,8 +36,7 @@ mixin _$SurveyRespondentsState {
 abstract class $SurveyRespondentsStateCopyWith<$Res> {
   factory $SurveyRespondentsStateCopyWith(SurveyRespondentsState value,
           $Res Function(SurveyRespondentsState) then) =
-      _$SurveyRespondentsStateCopyWithImpl<$Res, SurveyRespondentsState>;
-  @useResult
+      _$SurveyRespondentsStateCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'surveyRespondents')
           List<SurveyRespondent?>? surveyRespondents,
@@ -45,32 +44,29 @@ abstract class $SurveyRespondentsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SurveyRespondentsStateCopyWithImpl<$Res,
-        $Val extends SurveyRespondentsState>
+class _$SurveyRespondentsStateCopyWithImpl<$Res>
     implements $SurveyRespondentsStateCopyWith<$Res> {
   _$SurveyRespondentsStateCopyWithImpl(this._value, this._then);
 
+  final SurveyRespondentsState _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(SurveyRespondentsState) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? surveyRespondents = freezed,
     Object? errorOccurred = freezed,
   }) {
     return _then(_value.copyWith(
-      surveyRespondents: freezed == surveyRespondents
+      surveyRespondents: surveyRespondents == freezed
           ? _value.surveyRespondents
           : surveyRespondents // ignore: cast_nullable_to_non_nullable
               as List<SurveyRespondent?>?,
-      errorOccurred: freezed == errorOccurred
+      errorOccurred: errorOccurred == freezed
           ? _value.errorOccurred
           : errorOccurred // ignore: cast_nullable_to_non_nullable
               as bool?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -81,7 +77,6 @@ abstract class _$$_SurveyRespondentsStateCopyWith<$Res>
           $Res Function(_$_SurveyRespondentsState) then) =
       __$$_SurveyRespondentsStateCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'surveyRespondents')
           List<SurveyRespondent?>? surveyRespondents,
@@ -90,25 +85,27 @@ abstract class _$$_SurveyRespondentsStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_SurveyRespondentsStateCopyWithImpl<$Res>
-    extends _$SurveyRespondentsStateCopyWithImpl<$Res,
-        _$_SurveyRespondentsState>
+    extends _$SurveyRespondentsStateCopyWithImpl<$Res>
     implements _$$_SurveyRespondentsStateCopyWith<$Res> {
   __$$_SurveyRespondentsStateCopyWithImpl(_$_SurveyRespondentsState _value,
       $Res Function(_$_SurveyRespondentsState) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_SurveyRespondentsState));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_SurveyRespondentsState get _value =>
+      super._value as _$_SurveyRespondentsState;
+
   @override
   $Res call({
     Object? surveyRespondents = freezed,
     Object? errorOccurred = freezed,
   }) {
     return _then(_$_SurveyRespondentsState(
-      surveyRespondents: freezed == surveyRespondents
+      surveyRespondents: surveyRespondents == freezed
           ? _value._surveyRespondents
           : surveyRespondents // ignore: cast_nullable_to_non_nullable
               as List<SurveyRespondent?>?,
-      errorOccurred: freezed == errorOccurred
+      errorOccurred: errorOccurred == freezed
           ? _value.errorOccurred
           : errorOccurred // ignore: cast_nullable_to_non_nullable
               as bool?,
@@ -153,18 +150,19 @@ class _$_SurveyRespondentsState implements _SurveyRespondentsState {
             other is _$_SurveyRespondentsState &&
             const DeepCollectionEquality()
                 .equals(other._surveyRespondents, _surveyRespondents) &&
-            (identical(other.errorOccurred, errorOccurred) ||
-                other.errorOccurred == errorOccurred));
+            const DeepCollectionEquality()
+                .equals(other.errorOccurred, errorOccurred));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_surveyRespondents), errorOccurred);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_surveyRespondents),
+      const DeepCollectionEquality().hash(errorOccurred));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_SurveyRespondentsStateCopyWith<_$_SurveyRespondentsState> get copyWith =>
       __$$_SurveyRespondentsStateCopyWithImpl<_$_SurveyRespondentsState>(
           this, _$identity);

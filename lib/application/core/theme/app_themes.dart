@@ -78,6 +78,7 @@ class AppColors {
   static const Color blueChillColor = Color(0xFF119496);
   static const Color selectedBottomNavColor = Color(0xFFF79E25);
   static const Color hintTextColor = Color(0xFFC4C4C4);
+  static const Color purpleChillColor = Color(0xFF9269AD);
   static const Color lightGrey = Color(0xFF696979);
   static const Color warningColor = Color(0xFFDC0000);
   static const Color whiteColor = Colors.white;
@@ -116,6 +117,6 @@ const TextStyle titleStyle =
 
 const TextStyle bodyStyle =
     TextStyle(fontSize: 16, fontWeight: FontWeight.w300);
-    
+
 TextStyle coloredBodyStyle(Color? color) =>
     TextStyle(fontSize: 16, fontWeight: FontWeight.w300, color: color);

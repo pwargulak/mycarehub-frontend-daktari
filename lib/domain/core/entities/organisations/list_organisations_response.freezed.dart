@@ -34,34 +34,30 @@ mixin _$ListOrganisationsResponse {
 abstract class $ListOrganisationsResponseCopyWith<$Res> {
   factory $ListOrganisationsResponseCopyWith(ListOrganisationsResponse value,
           $Res Function(ListOrganisationsResponse) then) =
-      _$ListOrganisationsResponseCopyWithImpl<$Res, ListOrganisationsResponse>;
-  @useResult
+      _$ListOrganisationsResponseCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'organisations') List<Organisation>? organisations});
 }
 
 /// @nodoc
-class _$ListOrganisationsResponseCopyWithImpl<$Res,
-        $Val extends ListOrganisationsResponse>
+class _$ListOrganisationsResponseCopyWithImpl<$Res>
     implements $ListOrganisationsResponseCopyWith<$Res> {
   _$ListOrganisationsResponseCopyWithImpl(this._value, this._then);
 
+  final ListOrganisationsResponse _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(ListOrganisationsResponse) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? organisations = freezed,
   }) {
     return _then(_value.copyWith(
-      organisations: freezed == organisations
+      organisations: organisations == freezed
           ? _value.organisations
           : organisations // ignore: cast_nullable_to_non_nullable
               as List<Organisation>?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -73,28 +69,29 @@ abstract class _$$_ListOrganisationsResponseCopyWith<$Res>
           $Res Function(_$_ListOrganisationsResponse) then) =
       __$$_ListOrganisationsResponseCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'organisations') List<Organisation>? organisations});
 }
 
 /// @nodoc
 class __$$_ListOrganisationsResponseCopyWithImpl<$Res>
-    extends _$ListOrganisationsResponseCopyWithImpl<$Res,
-        _$_ListOrganisationsResponse>
+    extends _$ListOrganisationsResponseCopyWithImpl<$Res>
     implements _$$_ListOrganisationsResponseCopyWith<$Res> {
   __$$_ListOrganisationsResponseCopyWithImpl(
       _$_ListOrganisationsResponse _value,
       $Res Function(_$_ListOrganisationsResponse) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_ListOrganisationsResponse));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_ListOrganisationsResponse get _value =>
+      super._value as _$_ListOrganisationsResponse;
+
   @override
   $Res call({
     Object? organisations = freezed,
   }) {
     return _then(_$_ListOrganisationsResponse(
-      organisations: freezed == organisations
+      organisations: organisations == freezed
           ? _value._organisations
           : organisations // ignore: cast_nullable_to_non_nullable
               as List<Organisation>?,
@@ -143,7 +140,6 @@ class _$_ListOrganisationsResponse implements _ListOrganisationsResponse {
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_ListOrganisationsResponseCopyWith<_$_ListOrganisationsResponse>
       get copyWith => __$$_ListOrganisationsResponseCopyWithImpl<
           _$_ListOrganisationsResponse>(this, _$identity);

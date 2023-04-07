@@ -6,6 +6,7 @@ import 'package:prohealth360_daktari/application/redux/states/chat/sync_response
 import 'package:prohealth360_daktari/domain/core/value_objects/communities/event_types.dart';
 import 'package:sghi_core/communities/client/utils.dart';
 import 'package:sghi_core/communities/core/enums.dart';
+import 'package:sghi_core/communities/core/utils.dart';
 import 'package:sghi_core/communities/models/message.dart';
 import 'package:sghi_core/communities/models/room.dart';
 
@@ -46,7 +47,7 @@ void main() {
 
     test('should fetch room power levels', () async {
       final Map<String, dynamic> powerLevels =
-          await fetchRoomPowerLevels('test-room', MockTestGraphQlClient());
+          await fetchRoomPowerLevels('test-room', MockGraphQlClient());
 
       expect(powerLevels, isA<Map<String, dynamic>>());
       expect(powerLevels.containsKey('users'), true);
@@ -59,7 +60,7 @@ void main() {
         roomID: '!testRoom:chat.savannahghi.org',
         userID: '@abiudrn:chat.savannahghi.org',
         senderID: '@abiudrn:chat.savannahghi.org',
-        client: MockTestGraphQlClient(),
+        client: MockGraphQlClient(),
       );
 
       expect(canDelete, true);
@@ -70,7 +71,7 @@ void main() {
         roomID: '!testRoom:chat.savannahghi.org',
         userID: '@kowalski:chat.savannahghi.org',
         senderID: '@abiudrn:chat.savannahghi.org',
-        client: MockTestGraphQlClient(),
+        client: MockGraphQlClient(),
       );
 
       expect(canDelete, false);
@@ -108,12 +109,41 @@ void main() {
       );
     });
 
+    test('should update room data when server data is null', () async {
+      final Map<String, Room>? updatedRoomData = updateRoomData(
+        fromServer: <String, Room>{
+          '!testRoom:chat.savannahghi.org': Room.fromJson(roomMockWithoutTopic)
+        },
+        fromState: <String, Room>{
+          '!testRoom:chat.savannahghi.org':
+              Room.fromJson(roomMock).copyWith.call(
+                    timeline: RoomTimeline.initial(),
+                    state: RoomState.initial(),
+                  )
+        },
+      );
+
+      expect(updatedRoomData?.values.first.timeline?.events?.isEmpty, true);
+      expect(updatedRoomData?.values.first.state?.events?.isEmpty, false);
+
+      expect(updatedRoomData?.values.first.timeline?.events?.length, 0);
+      expect(updatedRoomData?.values.first.state?.events?.length, 1);
+
+      expect(
+        updatedRoomData?.values.first.state?.events?.first?.eventType,
+        EventTypes.name,
+      );
+
+      expect(
+        updatedRoomData?.values.first.state?.events?.first?.sender,
+        '@test:chat.savannahghi.org',
+      );
+    });
+
     test('should update room data', () async {
       final Map<String, Room>? updatedRoomData = updateRoomData(
-        <String, Room>{
-          '!testRoom:chat.savannahghi.org': Room.fromJson(roomMock)
-        },
-        <String, Room>{
+        fromServer: SyncResponse.fromJson(syncResponseMock).rooms?.joinedRooms,
+        fromState: <String, Room>{
           '!testRoom:chat.savannahghi.org':
               Room.fromJson(roomMock).copyWith.call(
                     timeline: RoomTimeline.initial(),
@@ -149,7 +179,7 @@ void main() {
     });
 
     test('should parse sync data for a joined room', () async {
-      final Map<String, Room>? syncedRoomsData = parseSyncRooms(
+      final Map<String, Room>? syncedRoomsData = enrichRooms(
         SyncResponse.fromJson(syncResponseMock).rooms?.joinedRooms,
       );
 
@@ -180,7 +210,7 @@ void main() {
     });
 
     test('should parse sync data for an invited room', () async {
-      final Map<String, Room>? syncedRoomsData = parseSyncRooms(
+      final Map<String, Room>? syncedRoomsData = enrichRooms(
         SyncResponse.fromJson(syncResponseMock).rooms?.joinedRooms,
         invite: true,
       );
@@ -197,7 +227,7 @@ void main() {
     });
 
     test('should parse the room name from the timeline', () async {
-      final Map<String, Room>? syncedRoomsData = parseSyncRooms(
+      final Map<String, Room>? syncedRoomsData = enrichRooms(
         SyncResponse.fromJson(syncResponseMock).rooms?.copyWith.call(
           joinedRooms: <String, Room>{
             '!testRoom:chat.savannahghi.org': Room.initial().copyWith.call(
@@ -225,7 +255,7 @@ void main() {
     });
 
     test('should parse the room name from the state', () async {
-      final Map<String, Room>? syncedRoomsData = parseSyncRooms(
+      final Map<String, Room>? syncedRoomsData = enrichRooms(
         SyncResponse.fromJson(syncResponseMock).rooms?.copyWith.call(
           joinedRooms: <String, Room>{
             '!testRoom:chat.savannahghi.org': Room.initial().copyWith.call(

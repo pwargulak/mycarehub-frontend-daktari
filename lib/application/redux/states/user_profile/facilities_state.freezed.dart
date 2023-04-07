@@ -34,8 +34,7 @@ mixin _$FacilitiesState {
 abstract class $FacilitiesStateCopyWith<$Res> {
   factory $FacilitiesStateCopyWith(
           FacilitiesState value, $Res Function(FacilitiesState) then) =
-      _$FacilitiesStateCopyWithImpl<$Res, FacilitiesState>;
-  @useResult
+      _$FacilitiesStateCopyWithImpl<$Res>;
   $Res call(
       {List<Facility>? programFacilities,
       Facility? selectedFacility,
@@ -45,16 +44,14 @@ abstract class $FacilitiesStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FacilitiesStateCopyWithImpl<$Res, $Val extends FacilitiesState>
+class _$FacilitiesStateCopyWithImpl<$Res>
     implements $FacilitiesStateCopyWith<$Res> {
   _$FacilitiesStateCopyWithImpl(this._value, this._then);
 
+  final FacilitiesState _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(FacilitiesState) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? programFacilities = freezed,
@@ -62,30 +59,29 @@ class _$FacilitiesStateCopyWithImpl<$Res, $Val extends FacilitiesState>
     Object? errorGettingFacilities = freezed,
   }) {
     return _then(_value.copyWith(
-      programFacilities: freezed == programFacilities
+      programFacilities: programFacilities == freezed
           ? _value.programFacilities
           : programFacilities // ignore: cast_nullable_to_non_nullable
               as List<Facility>?,
-      selectedFacility: freezed == selectedFacility
+      selectedFacility: selectedFacility == freezed
           ? _value.selectedFacility
           : selectedFacility // ignore: cast_nullable_to_non_nullable
               as Facility?,
-      errorGettingFacilities: freezed == errorGettingFacilities
+      errorGettingFacilities: errorGettingFacilities == freezed
           ? _value.errorGettingFacilities
           : errorGettingFacilities // ignore: cast_nullable_to_non_nullable
               as bool?,
-    ) as $Val);
+    ));
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $FacilityCopyWith<$Res>? get selectedFacility {
     if (_value.selectedFacility == null) {
       return null;
     }
 
     return $FacilityCopyWith<$Res>(_value.selectedFacility!, (value) {
-      return _then(_value.copyWith(selectedFacility: value) as $Val);
+      return _then(_value.copyWith(selectedFacility: value));
     });
   }
 }
@@ -97,7 +93,6 @@ abstract class _$$_FacilitiesStateCopyWith<$Res>
           _$_FacilitiesState value, $Res Function(_$_FacilitiesState) then) =
       __$$_FacilitiesStateCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {List<Facility>? programFacilities,
       Facility? selectedFacility,
@@ -109,13 +104,15 @@ abstract class _$$_FacilitiesStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_FacilitiesStateCopyWithImpl<$Res>
-    extends _$FacilitiesStateCopyWithImpl<$Res, _$_FacilitiesState>
+    extends _$FacilitiesStateCopyWithImpl<$Res>
     implements _$$_FacilitiesStateCopyWith<$Res> {
   __$$_FacilitiesStateCopyWithImpl(
       _$_FacilitiesState _value, $Res Function(_$_FacilitiesState) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_FacilitiesState));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_FacilitiesState get _value => super._value as _$_FacilitiesState;
+
   @override
   $Res call({
     Object? programFacilities = freezed,
@@ -123,15 +120,15 @@ class __$$_FacilitiesStateCopyWithImpl<$Res>
     Object? errorGettingFacilities = freezed,
   }) {
     return _then(_$_FacilitiesState(
-      programFacilities: freezed == programFacilities
+      programFacilities: programFacilities == freezed
           ? _value._programFacilities
           : programFacilities // ignore: cast_nullable_to_non_nullable
               as List<Facility>?,
-      selectedFacility: freezed == selectedFacility
+      selectedFacility: selectedFacility == freezed
           ? _value.selectedFacility
           : selectedFacility // ignore: cast_nullable_to_non_nullable
               as Facility?,
-      errorGettingFacilities: freezed == errorGettingFacilities
+      errorGettingFacilities: errorGettingFacilities == freezed
           ? _value.errorGettingFacilities
           : errorGettingFacilities // ignore: cast_nullable_to_non_nullable
               as bool?,
@@ -177,10 +174,10 @@ class _$_FacilitiesState implements _FacilitiesState {
             other is _$_FacilitiesState &&
             const DeepCollectionEquality()
                 .equals(other._programFacilities, _programFacilities) &&
-            (identical(other.selectedFacility, selectedFacility) ||
-                other.selectedFacility == selectedFacility) &&
-            (identical(other.errorGettingFacilities, errorGettingFacilities) ||
-                other.errorGettingFacilities == errorGettingFacilities));
+            const DeepCollectionEquality()
+                .equals(other.selectedFacility, selectedFacility) &&
+            const DeepCollectionEquality()
+                .equals(other.errorGettingFacilities, errorGettingFacilities));
   }
 
   @JsonKey(ignore: true)
@@ -188,12 +185,11 @@ class _$_FacilitiesState implements _FacilitiesState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_programFacilities),
-      selectedFacility,
-      errorGettingFacilities);
+      const DeepCollectionEquality().hash(selectedFacility),
+      const DeepCollectionEquality().hash(errorGettingFacilities));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_FacilitiesStateCopyWith<_$_FacilitiesState> get copyWith =>
       __$$_FacilitiesStateCopyWithImpl<_$_FacilitiesState>(this, _$identity);
 

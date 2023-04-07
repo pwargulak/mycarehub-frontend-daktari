@@ -44,8 +44,7 @@ mixin _$ScreeningToolRespondent {
 abstract class $ScreeningToolRespondentCopyWith<$Res> {
   factory $ScreeningToolRespondentCopyWith(ScreeningToolRespondent value,
           $Res Function(ScreeningToolRespondent) then) =
-      _$ScreeningToolRespondentCopyWithImpl<$Res, ScreeningToolRespondent>;
-  @useResult
+      _$ScreeningToolRespondentCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'clientID') String? clientID,
       @JsonKey(name: 'screeningToolResponseID') String? screeningToolResponseID,
@@ -56,17 +55,14 @@ abstract class $ScreeningToolRespondentCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ScreeningToolRespondentCopyWithImpl<$Res,
-        $Val extends ScreeningToolRespondent>
+class _$ScreeningToolRespondentCopyWithImpl<$Res>
     implements $ScreeningToolRespondentCopyWith<$Res> {
   _$ScreeningToolRespondentCopyWithImpl(this._value, this._then);
 
+  final ScreeningToolRespondent _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(ScreeningToolRespondent) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? clientID = freezed,
@@ -77,31 +73,31 @@ class _$ScreeningToolRespondentCopyWithImpl<$Res,
     Object? phoneNumber = freezed,
   }) {
     return _then(_value.copyWith(
-      clientID: freezed == clientID
+      clientID: clientID == freezed
           ? _value.clientID
           : clientID // ignore: cast_nullable_to_non_nullable
               as String?,
-      screeningToolResponseID: freezed == screeningToolResponseID
+      screeningToolResponseID: screeningToolResponseID == freezed
           ? _value.screeningToolResponseID
           : screeningToolResponseID // ignore: cast_nullable_to_non_nullable
               as String?,
-      serviceRequestID: freezed == serviceRequestID
+      serviceRequestID: serviceRequestID == freezed
           ? _value.serviceRequestID
           : serviceRequestID // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: freezed == name
+      name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      serviceRequest: freezed == serviceRequest
+      serviceRequest: serviceRequest == freezed
           ? _value.serviceRequest
           : serviceRequest // ignore: cast_nullable_to_non_nullable
               as String?,
-      phoneNumber: freezed == phoneNumber
+      phoneNumber: phoneNumber == freezed
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -112,7 +108,6 @@ abstract class _$$_ScreeningToolRespondentCopyWith<$Res>
           $Res Function(_$_ScreeningToolRespondent) then) =
       __$$_ScreeningToolRespondentCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'clientID') String? clientID,
       @JsonKey(name: 'screeningToolResponseID') String? screeningToolResponseID,
@@ -124,14 +119,16 @@ abstract class _$$_ScreeningToolRespondentCopyWith<$Res>
 
 /// @nodoc
 class __$$_ScreeningToolRespondentCopyWithImpl<$Res>
-    extends _$ScreeningToolRespondentCopyWithImpl<$Res,
-        _$_ScreeningToolRespondent>
+    extends _$ScreeningToolRespondentCopyWithImpl<$Res>
     implements _$$_ScreeningToolRespondentCopyWith<$Res> {
   __$$_ScreeningToolRespondentCopyWithImpl(_$_ScreeningToolRespondent _value,
       $Res Function(_$_ScreeningToolRespondent) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_ScreeningToolRespondent));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_ScreeningToolRespondent get _value =>
+      super._value as _$_ScreeningToolRespondent;
+
   @override
   $Res call({
     Object? clientID = freezed,
@@ -142,27 +139,27 @@ class __$$_ScreeningToolRespondentCopyWithImpl<$Res>
     Object? phoneNumber = freezed,
   }) {
     return _then(_$_ScreeningToolRespondent(
-      clientID: freezed == clientID
+      clientID: clientID == freezed
           ? _value.clientID
           : clientID // ignore: cast_nullable_to_non_nullable
               as String?,
-      screeningToolResponseID: freezed == screeningToolResponseID
+      screeningToolResponseID: screeningToolResponseID == freezed
           ? _value.screeningToolResponseID
           : screeningToolResponseID // ignore: cast_nullable_to_non_nullable
               as String?,
-      serviceRequestID: freezed == serviceRequestID
+      serviceRequestID: serviceRequestID == freezed
           ? _value.serviceRequestID
           : serviceRequestID // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: freezed == name
+      name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      serviceRequest: freezed == serviceRequest
+      serviceRequest: serviceRequest == freezed
           ? _value.serviceRequest
           : serviceRequest // ignore: cast_nullable_to_non_nullable
               as String?,
-      phoneNumber: freezed == phoneNumber
+      phoneNumber: phoneNumber == freezed
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -213,34 +210,31 @@ class _$_ScreeningToolRespondent implements _ScreeningToolRespondent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ScreeningToolRespondent &&
-            (identical(other.clientID, clientID) ||
-                other.clientID == clientID) &&
-            (identical(
-                    other.screeningToolResponseID, screeningToolResponseID) ||
-                other.screeningToolResponseID == screeningToolResponseID) &&
-            (identical(other.serviceRequestID, serviceRequestID) ||
-                other.serviceRequestID == serviceRequestID) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.serviceRequest, serviceRequest) ||
-                other.serviceRequest == serviceRequest) &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber));
+            const DeepCollectionEquality().equals(other.clientID, clientID) &&
+            const DeepCollectionEquality().equals(
+                other.screeningToolResponseID, screeningToolResponseID) &&
+            const DeepCollectionEquality()
+                .equals(other.serviceRequestID, serviceRequestID) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality()
+                .equals(other.serviceRequest, serviceRequest) &&
+            const DeepCollectionEquality()
+                .equals(other.phoneNumber, phoneNumber));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      clientID,
-      screeningToolResponseID,
-      serviceRequestID,
-      name,
-      serviceRequest,
-      phoneNumber);
+      const DeepCollectionEquality().hash(clientID),
+      const DeepCollectionEquality().hash(screeningToolResponseID),
+      const DeepCollectionEquality().hash(serviceRequestID),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(serviceRequest),
+      const DeepCollectionEquality().hash(phoneNumber));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_ScreeningToolRespondentCopyWith<_$_ScreeningToolRespondent>
       get copyWith =>
           __$$_ScreeningToolRespondentCopyWithImpl<_$_ScreeningToolRespondent>(

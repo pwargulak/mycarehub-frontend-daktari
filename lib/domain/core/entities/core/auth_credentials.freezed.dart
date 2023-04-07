@@ -43,8 +43,7 @@ mixin _$AuthCredentials {
 abstract class $AuthCredentialsCopyWith<$Res> {
   factory $AuthCredentialsCopyWith(
           AuthCredentials value, $Res Function(AuthCredentials) then) =
-      _$AuthCredentialsCopyWithImpl<$Res, AuthCredentials>;
-  @useResult
+      _$AuthCredentialsCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'idToken') String? idToken,
       @JsonKey(name: 'expiresIn') String? expiresIn,
@@ -56,16 +55,14 @@ abstract class $AuthCredentialsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AuthCredentialsCopyWithImpl<$Res, $Val extends AuthCredentials>
+class _$AuthCredentialsCopyWithImpl<$Res>
     implements $AuthCredentialsCopyWith<$Res> {
   _$AuthCredentialsCopyWithImpl(this._value, this._then);
 
+  final AuthCredentials _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(AuthCredentials) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? idToken = freezed,
@@ -77,35 +74,35 @@ class _$AuthCredentialsCopyWithImpl<$Res, $Val extends AuthCredentials>
     Object? pushToken = freezed,
   }) {
     return _then(_value.copyWith(
-      idToken: freezed == idToken
+      idToken: idToken == freezed
           ? _value.idToken
           : idToken // ignore: cast_nullable_to_non_nullable
               as String?,
-      expiresIn: freezed == expiresIn
+      expiresIn: expiresIn == freezed
           ? _value.expiresIn
           : expiresIn // ignore: cast_nullable_to_non_nullable
               as String?,
-      refreshToken: freezed == refreshToken
+      refreshToken: refreshToken == freezed
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
               as String?,
-      tokenExpiryTimestamp: freezed == tokenExpiryTimestamp
+      tokenExpiryTimestamp: tokenExpiryTimestamp == freezed
           ? _value.tokenExpiryTimestamp
           : tokenExpiryTimestamp // ignore: cast_nullable_to_non_nullable
               as String?,
-      isSignedIn: freezed == isSignedIn
+      isSignedIn: isSignedIn == freezed
           ? _value.isSignedIn
           : isSignedIn // ignore: cast_nullable_to_non_nullable
               as bool?,
-      signedInTime: freezed == signedInTime
+      signedInTime: signedInTime == freezed
           ? _value.signedInTime
           : signedInTime // ignore: cast_nullable_to_non_nullable
               as String?,
-      pushToken: freezed == pushToken
+      pushToken: pushToken == freezed
           ? _value.pushToken
           : pushToken // ignore: cast_nullable_to_non_nullable
               as String?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -116,7 +113,6 @@ abstract class _$$_AuthCredentialsCopyWith<$Res>
           _$_AuthCredentials value, $Res Function(_$_AuthCredentials) then) =
       __$$_AuthCredentialsCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'idToken') String? idToken,
       @JsonKey(name: 'expiresIn') String? expiresIn,
@@ -129,13 +125,15 @@ abstract class _$$_AuthCredentialsCopyWith<$Res>
 
 /// @nodoc
 class __$$_AuthCredentialsCopyWithImpl<$Res>
-    extends _$AuthCredentialsCopyWithImpl<$Res, _$_AuthCredentials>
+    extends _$AuthCredentialsCopyWithImpl<$Res>
     implements _$$_AuthCredentialsCopyWith<$Res> {
   __$$_AuthCredentialsCopyWithImpl(
       _$_AuthCredentials _value, $Res Function(_$_AuthCredentials) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_AuthCredentials));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_AuthCredentials get _value => super._value as _$_AuthCredentials;
+
   @override
   $Res call({
     Object? idToken = freezed,
@@ -147,31 +145,31 @@ class __$$_AuthCredentialsCopyWithImpl<$Res>
     Object? pushToken = freezed,
   }) {
     return _then(_$_AuthCredentials(
-      idToken: freezed == idToken
+      idToken: idToken == freezed
           ? _value.idToken
           : idToken // ignore: cast_nullable_to_non_nullable
               as String?,
-      expiresIn: freezed == expiresIn
+      expiresIn: expiresIn == freezed
           ? _value.expiresIn
           : expiresIn // ignore: cast_nullable_to_non_nullable
               as String?,
-      refreshToken: freezed == refreshToken
+      refreshToken: refreshToken == freezed
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
               as String?,
-      tokenExpiryTimestamp: freezed == tokenExpiryTimestamp
+      tokenExpiryTimestamp: tokenExpiryTimestamp == freezed
           ? _value.tokenExpiryTimestamp
           : tokenExpiryTimestamp // ignore: cast_nullable_to_non_nullable
               as String?,
-      isSignedIn: freezed == isSignedIn
+      isSignedIn: isSignedIn == freezed
           ? _value.isSignedIn
           : isSignedIn // ignore: cast_nullable_to_non_nullable
               as bool?,
-      signedInTime: freezed == signedInTime
+      signedInTime: signedInTime == freezed
           ? _value.signedInTime
           : signedInTime // ignore: cast_nullable_to_non_nullable
               as String?,
-      pushToken: freezed == pushToken
+      pushToken: pushToken == freezed
           ? _value.pushToken
           : pushToken // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -224,29 +222,33 @@ class _$_AuthCredentials implements _AuthCredentials {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AuthCredentials &&
-            (identical(other.idToken, idToken) || other.idToken == idToken) &&
-            (identical(other.expiresIn, expiresIn) ||
-                other.expiresIn == expiresIn) &&
-            (identical(other.refreshToken, refreshToken) ||
-                other.refreshToken == refreshToken) &&
-            (identical(other.tokenExpiryTimestamp, tokenExpiryTimestamp) ||
-                other.tokenExpiryTimestamp == tokenExpiryTimestamp) &&
-            (identical(other.isSignedIn, isSignedIn) ||
-                other.isSignedIn == isSignedIn) &&
-            (identical(other.signedInTime, signedInTime) ||
-                other.signedInTime == signedInTime) &&
-            (identical(other.pushToken, pushToken) ||
-                other.pushToken == pushToken));
+            const DeepCollectionEquality().equals(other.idToken, idToken) &&
+            const DeepCollectionEquality().equals(other.expiresIn, expiresIn) &&
+            const DeepCollectionEquality()
+                .equals(other.refreshToken, refreshToken) &&
+            const DeepCollectionEquality()
+                .equals(other.tokenExpiryTimestamp, tokenExpiryTimestamp) &&
+            const DeepCollectionEquality()
+                .equals(other.isSignedIn, isSignedIn) &&
+            const DeepCollectionEquality()
+                .equals(other.signedInTime, signedInTime) &&
+            const DeepCollectionEquality().equals(other.pushToken, pushToken));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, idToken, expiresIn, refreshToken,
-      tokenExpiryTimestamp, isSignedIn, signedInTime, pushToken);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(idToken),
+      const DeepCollectionEquality().hash(expiresIn),
+      const DeepCollectionEquality().hash(refreshToken),
+      const DeepCollectionEquality().hash(tokenExpiryTimestamp),
+      const DeepCollectionEquality().hash(isSignedIn),
+      const DeepCollectionEquality().hash(signedInTime),
+      const DeepCollectionEquality().hash(pushToken));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_AuthCredentialsCopyWith<_$_AuthCredentials> get copyWith =>
       __$$_AuthCredentialsCopyWithImpl<_$_AuthCredentials>(this, _$identity);
 

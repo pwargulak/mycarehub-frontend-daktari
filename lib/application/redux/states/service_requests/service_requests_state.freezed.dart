@@ -48,8 +48,7 @@ mixin _$ServiceRequestState {
 abstract class $ServiceRequestStateCopyWith<$Res> {
   factory $ServiceRequestStateCopyWith(
           ServiceRequestState value, $Res Function(ServiceRequestState) then) =
-      _$ServiceRequestStateCopyWithImpl<$Res, ServiceRequestState>;
-  @useResult
+      _$ServiceRequestStateCopyWithImpl<$Res>;
   $Res call(
       {List<ServiceRequest>? clientServiceRequests,
       List<ServiceRequest>? staffServiceRequests,
@@ -65,16 +64,14 @@ abstract class $ServiceRequestStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ServiceRequestStateCopyWithImpl<$Res, $Val extends ServiceRequestState>
+class _$ServiceRequestStateCopyWithImpl<$Res>
     implements $ServiceRequestStateCopyWith<$Res> {
   _$ServiceRequestStateCopyWithImpl(this._value, this._then);
 
+  final ServiceRequestState _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(ServiceRequestState) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? clientServiceRequests = freezed,
@@ -86,40 +83,39 @@ class _$ServiceRequestStateCopyWithImpl<$Res, $Val extends ServiceRequestState>
     Object? errorFetchingPendingServiceRequests = freezed,
   }) {
     return _then(_value.copyWith(
-      clientServiceRequests: freezed == clientServiceRequests
+      clientServiceRequests: clientServiceRequests == freezed
           ? _value.clientServiceRequests
           : clientServiceRequests // ignore: cast_nullable_to_non_nullable
               as List<ServiceRequest>?,
-      staffServiceRequests: freezed == staffServiceRequests
+      staffServiceRequests: staffServiceRequests == freezed
           ? _value.staffServiceRequests
           : staffServiceRequests // ignore: cast_nullable_to_non_nullable
               as List<ServiceRequest>?,
-      resolvedServiceRequests: freezed == resolvedServiceRequests
+      resolvedServiceRequests: resolvedServiceRequests == freezed
           ? _value.resolvedServiceRequests
           : resolvedServiceRequests // ignore: cast_nullable_to_non_nullable
               as List<ServiceRequest>?,
-      pendingServiceRequestsCount: freezed == pendingServiceRequestsCount
+      pendingServiceRequestsCount: pendingServiceRequestsCount == freezed
           ? _value.pendingServiceRequestsCount
           : pendingServiceRequestsCount // ignore: cast_nullable_to_non_nullable
               as PendingServiceRequestCount?,
-      screeningToolsState: freezed == screeningToolsState
+      screeningToolsState: screeningToolsState == freezed
           ? _value.screeningToolsState
           : screeningToolsState // ignore: cast_nullable_to_non_nullable
               as ScreeningToolsState?,
-      surveyServiceRequestState: freezed == surveyServiceRequestState
+      surveyServiceRequestState: surveyServiceRequestState == freezed
           ? _value.surveyServiceRequestState
           : surveyServiceRequestState // ignore: cast_nullable_to_non_nullable
               as SurveyServiceRequestState?,
-      errorFetchingPendingServiceRequests: freezed ==
-              errorFetchingPendingServiceRequests
+      errorFetchingPendingServiceRequests: errorFetchingPendingServiceRequests ==
+              freezed
           ? _value.errorFetchingPendingServiceRequests
           : errorFetchingPendingServiceRequests // ignore: cast_nullable_to_non_nullable
               as bool?,
-    ) as $Val);
+    ));
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $PendingServiceRequestCountCopyWith<$Res>? get pendingServiceRequestsCount {
     if (_value.pendingServiceRequestsCount == null) {
       return null;
@@ -127,12 +123,11 @@ class _$ServiceRequestStateCopyWithImpl<$Res, $Val extends ServiceRequestState>
 
     return $PendingServiceRequestCountCopyWith<$Res>(
         _value.pendingServiceRequestsCount!, (value) {
-      return _then(_value.copyWith(pendingServiceRequestsCount: value) as $Val);
+      return _then(_value.copyWith(pendingServiceRequestsCount: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $ScreeningToolsStateCopyWith<$Res>? get screeningToolsState {
     if (_value.screeningToolsState == null) {
       return null;
@@ -140,12 +135,11 @@ class _$ServiceRequestStateCopyWithImpl<$Res, $Val extends ServiceRequestState>
 
     return $ScreeningToolsStateCopyWith<$Res>(_value.screeningToolsState!,
         (value) {
-      return _then(_value.copyWith(screeningToolsState: value) as $Val);
+      return _then(_value.copyWith(screeningToolsState: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $SurveyServiceRequestStateCopyWith<$Res>? get surveyServiceRequestState {
     if (_value.surveyServiceRequestState == null) {
       return null;
@@ -153,7 +147,7 @@ class _$ServiceRequestStateCopyWithImpl<$Res, $Val extends ServiceRequestState>
 
     return $SurveyServiceRequestStateCopyWith<$Res>(
         _value.surveyServiceRequestState!, (value) {
-      return _then(_value.copyWith(surveyServiceRequestState: value) as $Val);
+      return _then(_value.copyWith(surveyServiceRequestState: value));
     });
   }
 }
@@ -165,7 +159,6 @@ abstract class _$$_ServiceRequestStateCopyWith<$Res>
           $Res Function(_$_ServiceRequestState) then) =
       __$$_ServiceRequestStateCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {List<ServiceRequest>? clientServiceRequests,
       List<ServiceRequest>? staffServiceRequests,
@@ -185,13 +178,15 @@ abstract class _$$_ServiceRequestStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_ServiceRequestStateCopyWithImpl<$Res>
-    extends _$ServiceRequestStateCopyWithImpl<$Res, _$_ServiceRequestState>
+    extends _$ServiceRequestStateCopyWithImpl<$Res>
     implements _$$_ServiceRequestStateCopyWith<$Res> {
   __$$_ServiceRequestStateCopyWithImpl(_$_ServiceRequestState _value,
       $Res Function(_$_ServiceRequestState) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_ServiceRequestState));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_ServiceRequestState get _value => super._value as _$_ServiceRequestState;
+
   @override
   $Res call({
     Object? clientServiceRequests = freezed,
@@ -203,32 +198,32 @@ class __$$_ServiceRequestStateCopyWithImpl<$Res>
     Object? errorFetchingPendingServiceRequests = freezed,
   }) {
     return _then(_$_ServiceRequestState(
-      clientServiceRequests: freezed == clientServiceRequests
+      clientServiceRequests: clientServiceRequests == freezed
           ? _value.clientServiceRequests
           : clientServiceRequests // ignore: cast_nullable_to_non_nullable
               as List<ServiceRequest>?,
-      staffServiceRequests: freezed == staffServiceRequests
+      staffServiceRequests: staffServiceRequests == freezed
           ? _value.staffServiceRequests
           : staffServiceRequests // ignore: cast_nullable_to_non_nullable
               as List<ServiceRequest>?,
-      resolvedServiceRequests: freezed == resolvedServiceRequests
+      resolvedServiceRequests: resolvedServiceRequests == freezed
           ? _value.resolvedServiceRequests
           : resolvedServiceRequests // ignore: cast_nullable_to_non_nullable
               as List<ServiceRequest>?,
-      pendingServiceRequestsCount: freezed == pendingServiceRequestsCount
+      pendingServiceRequestsCount: pendingServiceRequestsCount == freezed
           ? _value.pendingServiceRequestsCount
           : pendingServiceRequestsCount // ignore: cast_nullable_to_non_nullable
               as PendingServiceRequestCount?,
-      screeningToolsState: freezed == screeningToolsState
+      screeningToolsState: screeningToolsState == freezed
           ? _value.screeningToolsState
           : screeningToolsState // ignore: cast_nullable_to_non_nullable
               as ScreeningToolsState?,
-      surveyServiceRequestState: freezed == surveyServiceRequestState
+      surveyServiceRequestState: surveyServiceRequestState == freezed
           ? _value.surveyServiceRequestState
           : surveyServiceRequestState // ignore: cast_nullable_to_non_nullable
               as SurveyServiceRequestState?,
-      errorFetchingPendingServiceRequests: freezed ==
-              errorFetchingPendingServiceRequests
+      errorFetchingPendingServiceRequests: errorFetchingPendingServiceRequests ==
+              freezed
           ? _value.errorFetchingPendingServiceRequests
           : errorFetchingPendingServiceRequests // ignore: cast_nullable_to_non_nullable
               as bool?,
@@ -289,19 +284,16 @@ class _$_ServiceRequestState implements _ServiceRequestState {
                 .equals(other.staffServiceRequests, staffServiceRequests) &&
             const DeepCollectionEquality().equals(
                 other.resolvedServiceRequests, resolvedServiceRequests) &&
-            (identical(other.pendingServiceRequestsCount,
-                    pendingServiceRequestsCount) ||
-                other.pendingServiceRequestsCount ==
-                    pendingServiceRequestsCount) &&
-            (identical(other.screeningToolsState, screeningToolsState) ||
-                other.screeningToolsState == screeningToolsState) &&
-            (identical(other.surveyServiceRequestState,
-                    surveyServiceRequestState) ||
-                other.surveyServiceRequestState == surveyServiceRequestState) &&
-            (identical(other.errorFetchingPendingServiceRequests,
-                    errorFetchingPendingServiceRequests) ||
-                other.errorFetchingPendingServiceRequests ==
-                    errorFetchingPendingServiceRequests));
+            const DeepCollectionEquality().equals(
+                other.pendingServiceRequestsCount,
+                pendingServiceRequestsCount) &&
+            const DeepCollectionEquality()
+                .equals(other.screeningToolsState, screeningToolsState) &&
+            const DeepCollectionEquality().equals(
+                other.surveyServiceRequestState, surveyServiceRequestState) &&
+            const DeepCollectionEquality().equals(
+                other.errorFetchingPendingServiceRequests,
+                errorFetchingPendingServiceRequests));
   }
 
   @JsonKey(ignore: true)
@@ -311,14 +303,13 @@ class _$_ServiceRequestState implements _ServiceRequestState {
       const DeepCollectionEquality().hash(clientServiceRequests),
       const DeepCollectionEquality().hash(staffServiceRequests),
       const DeepCollectionEquality().hash(resolvedServiceRequests),
-      pendingServiceRequestsCount,
-      screeningToolsState,
-      surveyServiceRequestState,
-      errorFetchingPendingServiceRequests);
+      const DeepCollectionEquality().hash(pendingServiceRequestsCount),
+      const DeepCollectionEquality().hash(screeningToolsState),
+      const DeepCollectionEquality().hash(surveyServiceRequestState),
+      const DeepCollectionEquality().hash(errorFetchingPendingServiceRequests));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_ServiceRequestStateCopyWith<_$_ServiceRequestState> get copyWith =>
       __$$_ServiceRequestStateCopyWithImpl<_$_ServiceRequestState>(
           this, _$identity);

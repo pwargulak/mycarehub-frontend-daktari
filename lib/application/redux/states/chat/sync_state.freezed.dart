@@ -56,8 +56,7 @@ mixin _$SyncState {
 /// @nodoc
 abstract class $SyncStateCopyWith<$Res> {
   factory $SyncStateCopyWith(SyncState value, $Res Function(SyncState) then) =
-      _$SyncStateCopyWithImpl<$Res, SyncState>;
-  @useResult
+      _$SyncStateCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'syncInterval') int? syncInterval,
       @JsonKey(name: 'syncPollTimeout') int? syncPollTimeout,
@@ -69,16 +68,13 @@ abstract class $SyncStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SyncStateCopyWithImpl<$Res, $Val extends SyncState>
-    implements $SyncStateCopyWith<$Res> {
+class _$SyncStateCopyWithImpl<$Res> implements $SyncStateCopyWith<$Res> {
   _$SyncStateCopyWithImpl(this._value, this._then);
 
+  final SyncState _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(SyncState) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? syncInterval = freezed,
@@ -90,35 +86,35 @@ class _$SyncStateCopyWithImpl<$Res, $Val extends SyncState>
     Object? backOff = freezed,
   }) {
     return _then(_value.copyWith(
-      syncInterval: freezed == syncInterval
+      syncInterval: syncInterval == freezed
           ? _value.syncInterval
           : syncInterval // ignore: cast_nullable_to_non_nullable
               as int?,
-      syncPollTimeout: freezed == syncPollTimeout
+      syncPollTimeout: syncPollTimeout == freezed
           ? _value.syncPollTimeout
           : syncPollTimeout // ignore: cast_nullable_to_non_nullable
               as int?,
-      lastUpdate: freezed == lastUpdate
+      lastUpdate: lastUpdate == freezed
           ? _value.lastUpdate
           : lastUpdate // ignore: cast_nullable_to_non_nullable
               as int?,
-      lastAttempt: freezed == lastAttempt
+      lastAttempt: lastAttempt == freezed
           ? _value.lastAttempt
           : lastAttempt // ignore: cast_nullable_to_non_nullable
               as int?,
-      lastSince: freezed == lastSince
+      lastSince: lastSince == freezed
           ? _value.lastSince
           : lastSince // ignore: cast_nullable_to_non_nullable
               as String?,
-      syncObserver: freezed == syncObserver
+      syncObserver: syncObserver == freezed
           ? _value.syncObserver
           : syncObserver // ignore: cast_nullable_to_non_nullable
               as Timer?,
-      backOff: freezed == backOff
+      backOff: backOff == freezed
           ? _value.backOff
           : backOff // ignore: cast_nullable_to_non_nullable
               as int?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -128,7 +124,6 @@ abstract class _$$_SyncStateCopyWith<$Res> implements $SyncStateCopyWith<$Res> {
           _$_SyncState value, $Res Function(_$_SyncState) then) =
       __$$_SyncStateCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'syncInterval') int? syncInterval,
       @JsonKey(name: 'syncPollTimeout') int? syncPollTimeout,
@@ -140,14 +135,15 @@ abstract class _$$_SyncStateCopyWith<$Res> implements $SyncStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SyncStateCopyWithImpl<$Res>
-    extends _$SyncStateCopyWithImpl<$Res, _$_SyncState>
+class __$$_SyncStateCopyWithImpl<$Res> extends _$SyncStateCopyWithImpl<$Res>
     implements _$$_SyncStateCopyWith<$Res> {
   __$$_SyncStateCopyWithImpl(
       _$_SyncState _value, $Res Function(_$_SyncState) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_SyncState));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_SyncState get _value => super._value as _$_SyncState;
+
   @override
   $Res call({
     Object? syncInterval = freezed,
@@ -159,31 +155,31 @@ class __$$_SyncStateCopyWithImpl<$Res>
     Object? backOff = freezed,
   }) {
     return _then(_$_SyncState(
-      syncInterval: freezed == syncInterval
+      syncInterval: syncInterval == freezed
           ? _value.syncInterval
           : syncInterval // ignore: cast_nullable_to_non_nullable
               as int?,
-      syncPollTimeout: freezed == syncPollTimeout
+      syncPollTimeout: syncPollTimeout == freezed
           ? _value.syncPollTimeout
           : syncPollTimeout // ignore: cast_nullable_to_non_nullable
               as int?,
-      lastUpdate: freezed == lastUpdate
+      lastUpdate: lastUpdate == freezed
           ? _value.lastUpdate
           : lastUpdate // ignore: cast_nullable_to_non_nullable
               as int?,
-      lastAttempt: freezed == lastAttempt
+      lastAttempt: lastAttempt == freezed
           ? _value.lastAttempt
           : lastAttempt // ignore: cast_nullable_to_non_nullable
               as int?,
-      lastSince: freezed == lastSince
+      lastSince: lastSince == freezed
           ? _value.lastSince
           : lastSince // ignore: cast_nullable_to_non_nullable
               as String?,
-      syncObserver: freezed == syncObserver
+      syncObserver: syncObserver == freezed
           ? _value.syncObserver
           : syncObserver // ignore: cast_nullable_to_non_nullable
               as Timer?,
-      backOff: freezed == backOff
+      backOff: backOff == freezed
           ? _value.backOff
           : backOff // ignore: cast_nullable_to_non_nullable
               as int?,
@@ -250,29 +246,34 @@ class _$_SyncState implements _SyncState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SyncState &&
-            (identical(other.syncInterval, syncInterval) ||
-                other.syncInterval == syncInterval) &&
-            (identical(other.syncPollTimeout, syncPollTimeout) ||
-                other.syncPollTimeout == syncPollTimeout) &&
-            (identical(other.lastUpdate, lastUpdate) ||
-                other.lastUpdate == lastUpdate) &&
-            (identical(other.lastAttempt, lastAttempt) ||
-                other.lastAttempt == lastAttempt) &&
-            (identical(other.lastSince, lastSince) ||
-                other.lastSince == lastSince) &&
-            (identical(other.syncObserver, syncObserver) ||
-                other.syncObserver == syncObserver) &&
-            (identical(other.backOff, backOff) || other.backOff == backOff));
+            const DeepCollectionEquality()
+                .equals(other.syncInterval, syncInterval) &&
+            const DeepCollectionEquality()
+                .equals(other.syncPollTimeout, syncPollTimeout) &&
+            const DeepCollectionEquality()
+                .equals(other.lastUpdate, lastUpdate) &&
+            const DeepCollectionEquality()
+                .equals(other.lastAttempt, lastAttempt) &&
+            const DeepCollectionEquality().equals(other.lastSince, lastSince) &&
+            const DeepCollectionEquality()
+                .equals(other.syncObserver, syncObserver) &&
+            const DeepCollectionEquality().equals(other.backOff, backOff));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, syncInterval, syncPollTimeout,
-      lastUpdate, lastAttempt, lastSince, syncObserver, backOff);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(syncInterval),
+      const DeepCollectionEquality().hash(syncPollTimeout),
+      const DeepCollectionEquality().hash(lastUpdate),
+      const DeepCollectionEquality().hash(lastAttempt),
+      const DeepCollectionEquality().hash(lastSince),
+      const DeepCollectionEquality().hash(syncObserver),
+      const DeepCollectionEquality().hash(backOff));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_SyncStateCopyWith<_$_SyncState> get copyWith =>
       __$$_SyncStateCopyWithImpl<_$_SyncState>(this, _$identity);
 

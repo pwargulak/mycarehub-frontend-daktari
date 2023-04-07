@@ -32,32 +32,29 @@ mixin _$ConnectivityState {
 abstract class $ConnectivityStateCopyWith<$Res> {
   factory $ConnectivityStateCopyWith(
           ConnectivityState value, $Res Function(ConnectivityState) then) =
-      _$ConnectivityStateCopyWithImpl<$Res, ConnectivityState>;
-  @useResult
+      _$ConnectivityStateCopyWithImpl<$Res>;
   $Res call({bool isConnected});
 }
 
 /// @nodoc
-class _$ConnectivityStateCopyWithImpl<$Res, $Val extends ConnectivityState>
+class _$ConnectivityStateCopyWithImpl<$Res>
     implements $ConnectivityStateCopyWith<$Res> {
   _$ConnectivityStateCopyWithImpl(this._value, this._then);
 
+  final ConnectivityState _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(ConnectivityState) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isConnected = null,
+    Object? isConnected = freezed,
   }) {
     return _then(_value.copyWith(
-      isConnected: null == isConnected
+      isConnected: isConnected == freezed
           ? _value.isConnected
           : isConnected // ignore: cast_nullable_to_non_nullable
               as bool,
-    ) as $Val);
+    ));
   }
 }
 
@@ -68,25 +65,26 @@ abstract class _$$_ConnectivityStateCopyWith<$Res>
           $Res Function(_$_ConnectivityState) then) =
       __$$_ConnectivityStateCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call({bool isConnected});
 }
 
 /// @nodoc
 class __$$_ConnectivityStateCopyWithImpl<$Res>
-    extends _$ConnectivityStateCopyWithImpl<$Res, _$_ConnectivityState>
+    extends _$ConnectivityStateCopyWithImpl<$Res>
     implements _$$_ConnectivityStateCopyWith<$Res> {
   __$$_ConnectivityStateCopyWithImpl(
       _$_ConnectivityState _value, $Res Function(_$_ConnectivityState) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_ConnectivityState));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_ConnectivityState get _value => super._value as _$_ConnectivityState;
+
   @override
   $Res call({
-    Object? isConnected = null,
+    Object? isConnected = freezed,
   }) {
     return _then(_$_ConnectivityState(
-      isConnected: null == isConnected
+      isConnected: isConnected == freezed
           ? _value.isConnected
           : isConnected // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -115,17 +113,17 @@ class _$_ConnectivityState implements _ConnectivityState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ConnectivityState &&
-            (identical(other.isConnected, isConnected) ||
-                other.isConnected == isConnected));
+            const DeepCollectionEquality()
+                .equals(other.isConnected, isConnected));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, isConnected);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(isConnected));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_ConnectivityStateCopyWith<_$_ConnectivityState> get copyWith =>
       __$$_ConnectivityStateCopyWithImpl<_$_ConnectivityState>(
           this, _$identity);

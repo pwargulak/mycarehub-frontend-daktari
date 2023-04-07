@@ -13,12 +13,15 @@ _$_SetUserProgramResponse _$$_SetUserProgramResponseFromJson(
           ? null
           : StaffProfileResponse.fromJson(
               json['staffProfile'] as Map<String, dynamic>),
-      communityToken: json['communityToken'] as String?,
+      communityProfile: json['communityProfile'] == null
+          ? null
+          : CommunityProfile.fromJson(
+              json['communityProfile'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_SetUserProgramResponseToJson(
         _$_SetUserProgramResponse instance) =>
     <String, dynamic>{
       'staffProfile': instance.staffProfile,
-      'communityToken': instance.communityToken,
+      'communityProfile': instance.communityProfile,
     };

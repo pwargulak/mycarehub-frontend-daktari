@@ -35,36 +35,31 @@ abstract class $SearchOrganisationsResponseCopyWith<$Res> {
   factory $SearchOrganisationsResponseCopyWith(
           SearchOrganisationsResponse value,
           $Res Function(SearchOrganisationsResponse) then) =
-      _$SearchOrganisationsResponseCopyWithImpl<$Res,
-          SearchOrganisationsResponse>;
-  @useResult
+      _$SearchOrganisationsResponseCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'searchOrganisations')
           List<Organisation>? organisations});
 }
 
 /// @nodoc
-class _$SearchOrganisationsResponseCopyWithImpl<$Res,
-        $Val extends SearchOrganisationsResponse>
+class _$SearchOrganisationsResponseCopyWithImpl<$Res>
     implements $SearchOrganisationsResponseCopyWith<$Res> {
   _$SearchOrganisationsResponseCopyWithImpl(this._value, this._then);
 
+  final SearchOrganisationsResponse _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(SearchOrganisationsResponse) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? organisations = freezed,
   }) {
     return _then(_value.copyWith(
-      organisations: freezed == organisations
+      organisations: organisations == freezed
           ? _value.organisations
           : organisations // ignore: cast_nullable_to_non_nullable
               as List<Organisation>?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -76,7 +71,6 @@ abstract class _$$_SearchOrganisationsResponseCopyWith<$Res>
           $Res Function(_$_SearchOrganisationsResponse) then) =
       __$$_SearchOrganisationsResponseCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'searchOrganisations')
           List<Organisation>? organisations});
@@ -84,21 +78,23 @@ abstract class _$$_SearchOrganisationsResponseCopyWith<$Res>
 
 /// @nodoc
 class __$$_SearchOrganisationsResponseCopyWithImpl<$Res>
-    extends _$SearchOrganisationsResponseCopyWithImpl<$Res,
-        _$_SearchOrganisationsResponse>
+    extends _$SearchOrganisationsResponseCopyWithImpl<$Res>
     implements _$$_SearchOrganisationsResponseCopyWith<$Res> {
   __$$_SearchOrganisationsResponseCopyWithImpl(
       _$_SearchOrganisationsResponse _value,
       $Res Function(_$_SearchOrganisationsResponse) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_SearchOrganisationsResponse));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_SearchOrganisationsResponse get _value =>
+      super._value as _$_SearchOrganisationsResponse;
+
   @override
   $Res call({
     Object? organisations = freezed,
   }) {
     return _then(_$_SearchOrganisationsResponse(
-      organisations: freezed == organisations
+      organisations: organisations == freezed
           ? _value._organisations
           : organisations // ignore: cast_nullable_to_non_nullable
               as List<Organisation>?,
@@ -148,7 +144,6 @@ class _$_SearchOrganisationsResponse implements _SearchOrganisationsResponse {
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_SearchOrganisationsResponseCopyWith<_$_SearchOrganisationsResponse>
       get copyWith => __$$_SearchOrganisationsResponseCopyWithImpl<
           _$_SearchOrganisationsResponse>(this, _$identity);

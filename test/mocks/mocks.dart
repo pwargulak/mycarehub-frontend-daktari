@@ -21,10 +21,7 @@ import 'package:prohealth360_daktari/infrastructure/repository/initialize_db.dar
 import 'package:prohealth360_daktari/presentation/router/routes.dart';
 // Project imports:
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-import 'package:firebase_analytics_platform_interface/firebase_analytics_platform_interface.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_core_platform_interface/firebase_core_platform_interface.dart';
-import 'package:firebase_messaging_platform_interface/firebase_messaging_platform_interface.dart';
 import 'package:sqflite/sqlite_api.dart';
 
 import 'mock_utils.dart';

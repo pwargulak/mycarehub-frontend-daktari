@@ -45,8 +45,7 @@ mixin _$AppState {
 /// @nodoc
 abstract class $AppStateCopyWith<$Res> {
   factory $AppStateCopyWith(AppState value, $Res Function(AppState) then) =
-      _$AppStateCopyWithImpl<$Res, AppState>;
-  @useResult
+      _$AppStateCopyWithImpl<$Res>;
   $Res call(
       {AuthCredentials? credentials,
       HomeState? homeState,
@@ -73,16 +72,13 @@ abstract class $AppStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
-    implements $AppStateCopyWith<$Res> {
+class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
   _$AppStateCopyWithImpl(this._value, this._then);
 
+  final AppState _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(AppState) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? credentials = freezed,
@@ -98,91 +94,87 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
     Object? wait = freezed,
   }) {
     return _then(_value.copyWith(
-      credentials: freezed == credentials
+      credentials: credentials == freezed
           ? _value.credentials
           : credentials // ignore: cast_nullable_to_non_nullable
               as AuthCredentials?,
-      homeState: freezed == homeState
+      homeState: homeState == freezed
           ? _value.homeState
           : homeState // ignore: cast_nullable_to_non_nullable
               as HomeState?,
-      onboardingState: freezed == onboardingState
+      onboardingState: onboardingState == freezed
           ? _value.onboardingState
           : onboardingState // ignore: cast_nullable_to_non_nullable
               as OnboardingState?,
-      bottomNavigationState: freezed == bottomNavigationState
+      bottomNavigationState: bottomNavigationState == freezed
           ? _value.bottomNavigationState
           : bottomNavigationState // ignore: cast_nullable_to_non_nullable
               as BottomNavigationState?,
-      miscState: freezed == miscState
+      miscState: miscState == freezed
           ? _value.miscState
           : miscState // ignore: cast_nullable_to_non_nullable
               as MiscState?,
-      userProfileState: freezed == userProfileState
+      userProfileState: userProfileState == freezed
           ? _value.userProfileState
           : userProfileState // ignore: cast_nullable_to_non_nullable
               as UserProfileState?,
-      surveyState: freezed == surveyState
+      surveyState: surveyState == freezed
           ? _value.surveyState
           : surveyState // ignore: cast_nullable_to_non_nullable
               as SurveyState?,
-      serviceRequestState: freezed == serviceRequestState
+      serviceRequestState: serviceRequestState == freezed
           ? _value.serviceRequestState
           : serviceRequestState // ignore: cast_nullable_to_non_nullable
               as ServiceRequestState?,
-      connectivityState: freezed == connectivityState
+      connectivityState: connectivityState == freezed
           ? _value.connectivityState
           : connectivityState // ignore: cast_nullable_to_non_nullable
               as ConnectivityState?,
-      chatState: freezed == chatState
+      chatState: chatState == freezed
           ? _value.chatState
           : chatState // ignore: cast_nullable_to_non_nullable
               as ChatState?,
-      wait: freezed == wait
+      wait: wait == freezed
           ? _value.wait
           : wait // ignore: cast_nullable_to_non_nullable
               as Wait?,
-    ) as $Val);
+    ));
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $AuthCredentialsCopyWith<$Res>? get credentials {
     if (_value.credentials == null) {
       return null;
     }
 
     return $AuthCredentialsCopyWith<$Res>(_value.credentials!, (value) {
-      return _then(_value.copyWith(credentials: value) as $Val);
+      return _then(_value.copyWith(credentials: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $HomeStateCopyWith<$Res>? get homeState {
     if (_value.homeState == null) {
       return null;
     }
 
     return $HomeStateCopyWith<$Res>(_value.homeState!, (value) {
-      return _then(_value.copyWith(homeState: value) as $Val);
+      return _then(_value.copyWith(homeState: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $OnboardingStateCopyWith<$Res>? get onboardingState {
     if (_value.onboardingState == null) {
       return null;
     }
 
     return $OnboardingStateCopyWith<$Res>(_value.onboardingState!, (value) {
-      return _then(_value.copyWith(onboardingState: value) as $Val);
+      return _then(_value.copyWith(onboardingState: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $BottomNavigationStateCopyWith<$Res>? get bottomNavigationState {
     if (_value.bottomNavigationState == null) {
       return null;
@@ -190,48 +182,44 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
 
     return $BottomNavigationStateCopyWith<$Res>(_value.bottomNavigationState!,
         (value) {
-      return _then(_value.copyWith(bottomNavigationState: value) as $Val);
+      return _then(_value.copyWith(bottomNavigationState: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $MiscStateCopyWith<$Res>? get miscState {
     if (_value.miscState == null) {
       return null;
     }
 
     return $MiscStateCopyWith<$Res>(_value.miscState!, (value) {
-      return _then(_value.copyWith(miscState: value) as $Val);
+      return _then(_value.copyWith(miscState: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $UserProfileStateCopyWith<$Res>? get userProfileState {
     if (_value.userProfileState == null) {
       return null;
     }
 
     return $UserProfileStateCopyWith<$Res>(_value.userProfileState!, (value) {
-      return _then(_value.copyWith(userProfileState: value) as $Val);
+      return _then(_value.copyWith(userProfileState: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $SurveyStateCopyWith<$Res>? get surveyState {
     if (_value.surveyState == null) {
       return null;
     }
 
     return $SurveyStateCopyWith<$Res>(_value.surveyState!, (value) {
-      return _then(_value.copyWith(surveyState: value) as $Val);
+      return _then(_value.copyWith(surveyState: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $ServiceRequestStateCopyWith<$Res>? get serviceRequestState {
     if (_value.serviceRequestState == null) {
       return null;
@@ -239,31 +227,29 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
 
     return $ServiceRequestStateCopyWith<$Res>(_value.serviceRequestState!,
         (value) {
-      return _then(_value.copyWith(serviceRequestState: value) as $Val);
+      return _then(_value.copyWith(serviceRequestState: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $ConnectivityStateCopyWith<$Res>? get connectivityState {
     if (_value.connectivityState == null) {
       return null;
     }
 
     return $ConnectivityStateCopyWith<$Res>(_value.connectivityState!, (value) {
-      return _then(_value.copyWith(connectivityState: value) as $Val);
+      return _then(_value.copyWith(connectivityState: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $ChatStateCopyWith<$Res>? get chatState {
     if (_value.chatState == null) {
       return null;
     }
 
     return $ChatStateCopyWith<$Res>(_value.chatState!, (value) {
-      return _then(_value.copyWith(chatState: value) as $Val);
+      return _then(_value.copyWith(chatState: value));
     });
   }
 }
@@ -273,7 +259,6 @@ abstract class _$$_StateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
   factory _$$_StateCopyWith(_$_State value, $Res Function(_$_State) then) =
       __$$_StateCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {AuthCredentials? credentials,
       HomeState? homeState,
@@ -310,13 +295,14 @@ abstract class _$$_StateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_StateCopyWithImpl<$Res>
-    extends _$AppStateCopyWithImpl<$Res, _$_State>
+class __$$_StateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
     implements _$$_StateCopyWith<$Res> {
   __$$_StateCopyWithImpl(_$_State _value, $Res Function(_$_State) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_State));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_State get _value => super._value as _$_State;
+
   @override
   $Res call({
     Object? credentials = freezed,
@@ -332,47 +318,47 @@ class __$$_StateCopyWithImpl<$Res>
     Object? wait = freezed,
   }) {
     return _then(_$_State(
-      credentials: freezed == credentials
+      credentials: credentials == freezed
           ? _value.credentials
           : credentials // ignore: cast_nullable_to_non_nullable
               as AuthCredentials?,
-      homeState: freezed == homeState
+      homeState: homeState == freezed
           ? _value.homeState
           : homeState // ignore: cast_nullable_to_non_nullable
               as HomeState?,
-      onboardingState: freezed == onboardingState
+      onboardingState: onboardingState == freezed
           ? _value.onboardingState
           : onboardingState // ignore: cast_nullable_to_non_nullable
               as OnboardingState?,
-      bottomNavigationState: freezed == bottomNavigationState
+      bottomNavigationState: bottomNavigationState == freezed
           ? _value.bottomNavigationState
           : bottomNavigationState // ignore: cast_nullable_to_non_nullable
               as BottomNavigationState?,
-      miscState: freezed == miscState
+      miscState: miscState == freezed
           ? _value.miscState
           : miscState // ignore: cast_nullable_to_non_nullable
               as MiscState?,
-      userProfileState: freezed == userProfileState
+      userProfileState: userProfileState == freezed
           ? _value.userProfileState
           : userProfileState // ignore: cast_nullable_to_non_nullable
               as UserProfileState?,
-      surveyState: freezed == surveyState
+      surveyState: surveyState == freezed
           ? _value.surveyState
           : surveyState // ignore: cast_nullable_to_non_nullable
               as SurveyState?,
-      serviceRequestState: freezed == serviceRequestState
+      serviceRequestState: serviceRequestState == freezed
           ? _value.serviceRequestState
           : serviceRequestState // ignore: cast_nullable_to_non_nullable
               as ServiceRequestState?,
-      connectivityState: freezed == connectivityState
+      connectivityState: connectivityState == freezed
           ? _value.connectivityState
           : connectivityState // ignore: cast_nullable_to_non_nullable
               as ConnectivityState?,
-      chatState: freezed == chatState
+      chatState: chatState == freezed
           ? _value.chatState
           : chatState // ignore: cast_nullable_to_non_nullable
               as ChatState?,
-      wait: freezed == wait
+      wait: wait == freezed
           ? _value.wait
           : wait // ignore: cast_nullable_to_non_nullable
               as Wait?,
@@ -433,48 +419,44 @@ class _$_State implements _State {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_State &&
-            (identical(other.credentials, credentials) ||
-                other.credentials == credentials) &&
-            (identical(other.homeState, homeState) ||
-                other.homeState == homeState) &&
-            (identical(other.onboardingState, onboardingState) ||
-                other.onboardingState == onboardingState) &&
-            (identical(other.bottomNavigationState, bottomNavigationState) ||
-                other.bottomNavigationState == bottomNavigationState) &&
-            (identical(other.miscState, miscState) ||
-                other.miscState == miscState) &&
-            (identical(other.userProfileState, userProfileState) ||
-                other.userProfileState == userProfileState) &&
-            (identical(other.surveyState, surveyState) ||
-                other.surveyState == surveyState) &&
-            (identical(other.serviceRequestState, serviceRequestState) ||
-                other.serviceRequestState == serviceRequestState) &&
-            (identical(other.connectivityState, connectivityState) ||
-                other.connectivityState == connectivityState) &&
-            (identical(other.chatState, chatState) ||
-                other.chatState == chatState) &&
-            (identical(other.wait, wait) || other.wait == wait));
+            const DeepCollectionEquality()
+                .equals(other.credentials, credentials) &&
+            const DeepCollectionEquality().equals(other.homeState, homeState) &&
+            const DeepCollectionEquality()
+                .equals(other.onboardingState, onboardingState) &&
+            const DeepCollectionEquality()
+                .equals(other.bottomNavigationState, bottomNavigationState) &&
+            const DeepCollectionEquality().equals(other.miscState, miscState) &&
+            const DeepCollectionEquality()
+                .equals(other.userProfileState, userProfileState) &&
+            const DeepCollectionEquality()
+                .equals(other.surveyState, surveyState) &&
+            const DeepCollectionEquality()
+                .equals(other.serviceRequestState, serviceRequestState) &&
+            const DeepCollectionEquality()
+                .equals(other.connectivityState, connectivityState) &&
+            const DeepCollectionEquality().equals(other.chatState, chatState) &&
+            const DeepCollectionEquality().equals(other.wait, wait));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      credentials,
-      homeState,
-      onboardingState,
-      bottomNavigationState,
-      miscState,
-      userProfileState,
-      surveyState,
-      serviceRequestState,
-      connectivityState,
-      chatState,
-      wait);
+      const DeepCollectionEquality().hash(credentials),
+      const DeepCollectionEquality().hash(homeState),
+      const DeepCollectionEquality().hash(onboardingState),
+      const DeepCollectionEquality().hash(bottomNavigationState),
+      const DeepCollectionEquality().hash(miscState),
+      const DeepCollectionEquality().hash(userProfileState),
+      const DeepCollectionEquality().hash(surveyState),
+      const DeepCollectionEquality().hash(serviceRequestState),
+      const DeepCollectionEquality().hash(connectivityState),
+      const DeepCollectionEquality().hash(chatState),
+      const DeepCollectionEquality().hash(wait));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_StateCopyWith<_$_State> get copyWith =>
       __$$_StateCopyWithImpl<_$_State>(this, _$identity);
 

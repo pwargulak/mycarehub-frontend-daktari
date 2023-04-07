@@ -1,0 +1,76 @@
+import 'package:async_redux/async_redux.dart';
+import 'package:flutter/material.dart';
+import 'package:prohealth360_daktari/application/redux/actions/communities/invite_user_action.dart';
+import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
+import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
+import 'package:prohealth360_daktari/presentation/communities/widgets/avatar.dart';
+import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';
+import 'package:sghi_core/communities/models/strings.dart';
+import 'package:sghi_core/communities/models/user.dart';
+
+class InviteUserWidget extends StatelessWidget {
+  const InviteUserWidget({
+    required this.user,
+    required this.authUserID,
+    required this.roomID,
+  });
+
+  final User user;
+
+  final String authUserID;
+
+  final String roomID;
+
+  @override
+  Widget build(BuildContext context) {
+    final String name = user.displayName ?? noNameText;
+    final String? userID = user.userID;
+    final bool isSelf = userID == authUserID;
+
+    return InkWell(
+      key: Key(userID ?? UNKNOWN),
+      onTap: () async {
+        if (!isSelf) {
+          StoreProvider.dispatch<AppState>(
+            context,
+            InviteUserAction(
+              roomID: roomID,
+              userID: userID!,
+              client: AppWrapperBase.of(context)!.communitiesClient!,
+              onSuccess: () {
+                ScaffoldMessenger.of(context)
+                  ..hideCurrentSnackBar()
+                  ..showSnackBar(
+                    SnackBar(content: Text(inviteSuccessMessage(name))),
+                  );
+
+                Navigator.of(context).pop();
+              },
+            ),
+          );
+        }
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(5.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Avatar(avatarURI: UNKNOWN, displayName: name),
+                const SizedBox(width: 10),
+                Text(
+                  name,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w300,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

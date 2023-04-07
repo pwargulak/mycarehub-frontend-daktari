@@ -41,8 +41,7 @@ mixin _$Program {
 /// @nodoc
 abstract class $ProgramCopyWith<$Res> {
   factory $ProgramCopyWith(Program value, $Res Function(Program) then) =
-      _$ProgramCopyWithImpl<$Res, Program>;
-  @useResult
+      _$ProgramCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'name') String? name,
@@ -55,16 +54,13 @@ abstract class $ProgramCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ProgramCopyWithImpl<$Res, $Val extends Program>
-    implements $ProgramCopyWith<$Res> {
+class _$ProgramCopyWithImpl<$Res> implements $ProgramCopyWith<$Res> {
   _$ProgramCopyWithImpl(this._value, this._then);
 
+  final Program _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(Program) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -75,42 +71,41 @@ class _$ProgramCopyWithImpl<$Res, $Val extends Program>
     Object? facilities = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: freezed == name
+      name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: freezed == description
+      description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      active: freezed == active
+      active: active == freezed
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
               as bool?,
-      organisation: freezed == organisation
+      organisation: organisation == freezed
           ? _value.organisation
           : organisation // ignore: cast_nullable_to_non_nullable
               as Organisation?,
-      facilities: freezed == facilities
+      facilities: facilities == freezed
           ? _value.facilities
           : facilities // ignore: cast_nullable_to_non_nullable
               as List<Facility?>?,
-    ) as $Val);
+    ));
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $OrganisationCopyWith<$Res>? get organisation {
     if (_value.organisation == null) {
       return null;
     }
 
     return $OrganisationCopyWith<$Res>(_value.organisation!, (value) {
-      return _then(_value.copyWith(organisation: value) as $Val);
+      return _then(_value.copyWith(organisation: value));
     });
   }
 }
@@ -121,7 +116,6 @@ abstract class _$$_ProgramCopyWith<$Res> implements $ProgramCopyWith<$Res> {
           _$_Program value, $Res Function(_$_Program) then) =
       __$$_ProgramCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'name') String? name,
@@ -135,13 +129,14 @@ abstract class _$$_ProgramCopyWith<$Res> implements $ProgramCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ProgramCopyWithImpl<$Res>
-    extends _$ProgramCopyWithImpl<$Res, _$_Program>
+class __$$_ProgramCopyWithImpl<$Res> extends _$ProgramCopyWithImpl<$Res>
     implements _$$_ProgramCopyWith<$Res> {
   __$$_ProgramCopyWithImpl(_$_Program _value, $Res Function(_$_Program) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_Program));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_Program get _value => super._value as _$_Program;
+
   @override
   $Res call({
     Object? id = freezed,
@@ -152,27 +147,27 @@ class __$$_ProgramCopyWithImpl<$Res>
     Object? facilities = freezed,
   }) {
     return _then(_$_Program(
-      id: freezed == id
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: freezed == name
+      name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: freezed == description
+      description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      active: freezed == active
+      active: active == freezed
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
               as bool?,
-      organisation: freezed == organisation
+      organisation: organisation == freezed
           ? _value.organisation
           : organisation // ignore: cast_nullable_to_non_nullable
               as Organisation?,
-      facilities: freezed == facilities
+      facilities: facilities == freezed
           ? _value._facilities
           : facilities // ignore: cast_nullable_to_non_nullable
               as List<Facility?>?,
@@ -230,25 +225,30 @@ class _$_Program implements _Program {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Program &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.active, active) || other.active == active) &&
-            (identical(other.organisation, organisation) ||
-                other.organisation == organisation) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
+            const DeepCollectionEquality().equals(other.active, active) &&
+            const DeepCollectionEquality()
+                .equals(other.organisation, organisation) &&
             const DeepCollectionEquality()
                 .equals(other._facilities, _facilities));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, description, active,
-      organisation, const DeepCollectionEquality().hash(_facilities));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(active),
+      const DeepCollectionEquality().hash(organisation),
+      const DeepCollectionEquality().hash(_facilities));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_ProgramCopyWith<_$_Program> get copyWith =>
       __$$_ProgramCopyWithImpl<_$_Program>(this, _$identity);
 

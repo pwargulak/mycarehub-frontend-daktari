@@ -2,7 +2,7 @@ import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:prohealth360_daktari/application/redux/actions/communities/create_room_action.dart';
 import 'package:prohealth360_daktari/application/redux/states/app_state.dart';
-import 'package:prohealth360_daktari/application/redux/view_models/communities/create_room_view_model.dart';
+import 'package:prohealth360_daktari/application/redux/view_models/communities/communities_view_model.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_strings.dart';
 import 'package:prohealth360_daktari/domain/core/value_objects/app_widget_keys.dart';
 import 'package:sghi_core/app_wrapper/app_wrapper_base.dart';

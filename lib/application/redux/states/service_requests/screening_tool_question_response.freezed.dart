@@ -44,9 +44,7 @@ abstract class $ScreeningToolQuestionResponsesCopyWith<$Res> {
   factory $ScreeningToolQuestionResponsesCopyWith(
           ScreeningToolQuestionResponses value,
           $Res Function(ScreeningToolQuestionResponses) then) =
-      _$ScreeningToolQuestionResponsesCopyWithImpl<$Res,
-          ScreeningToolQuestionResponses>;
-  @useResult
+      _$ScreeningToolQuestionResponsesCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'id')
           String? id,
@@ -61,17 +59,14 @@ abstract class $ScreeningToolQuestionResponsesCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ScreeningToolQuestionResponsesCopyWithImpl<$Res,
-        $Val extends ScreeningToolQuestionResponses>
+class _$ScreeningToolQuestionResponsesCopyWithImpl<$Res>
     implements $ScreeningToolQuestionResponsesCopyWith<$Res> {
   _$ScreeningToolQuestionResponsesCopyWithImpl(this._value, this._then);
 
+  final ScreeningToolQuestionResponses _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(ScreeningToolQuestionResponses) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -81,27 +76,27 @@ class _$ScreeningToolQuestionResponsesCopyWithImpl<$Res,
     Object? questionResponses = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      screeningToolId: freezed == screeningToolId
+      screeningToolId: screeningToolId == freezed
           ? _value.screeningToolId
           : screeningToolId // ignore: cast_nullable_to_non_nullable
               as String?,
-      facilityId: freezed == facilityId
+      facilityId: facilityId == freezed
           ? _value.facilityId
           : facilityId // ignore: cast_nullable_to_non_nullable
               as String?,
-      clientId: freezed == clientId
+      clientId: clientId == freezed
           ? _value.clientId
           : clientId // ignore: cast_nullable_to_non_nullable
               as String?,
-      questionResponses: freezed == questionResponses
+      questionResponses: questionResponses == freezed
           ? _value.questionResponses
           : questionResponses // ignore: cast_nullable_to_non_nullable
               as List<QuestionResponse>?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -113,7 +108,6 @@ abstract class _$$_ScreeningToolQuestionResponsesCopyWith<$Res>
           $Res Function(_$_ScreeningToolQuestionResponses) then) =
       __$$_ScreeningToolQuestionResponsesCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'id')
           String? id,
@@ -129,15 +123,17 @@ abstract class _$$_ScreeningToolQuestionResponsesCopyWith<$Res>
 
 /// @nodoc
 class __$$_ScreeningToolQuestionResponsesCopyWithImpl<$Res>
-    extends _$ScreeningToolQuestionResponsesCopyWithImpl<$Res,
-        _$_ScreeningToolQuestionResponses>
+    extends _$ScreeningToolQuestionResponsesCopyWithImpl<$Res>
     implements _$$_ScreeningToolQuestionResponsesCopyWith<$Res> {
   __$$_ScreeningToolQuestionResponsesCopyWithImpl(
       _$_ScreeningToolQuestionResponses _value,
       $Res Function(_$_ScreeningToolQuestionResponses) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_ScreeningToolQuestionResponses));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_ScreeningToolQuestionResponses get _value =>
+      super._value as _$_ScreeningToolQuestionResponses;
+
   @override
   $Res call({
     Object? id = freezed,
@@ -147,23 +143,23 @@ class __$$_ScreeningToolQuestionResponsesCopyWithImpl<$Res>
     Object? questionResponses = freezed,
   }) {
     return _then(_$_ScreeningToolQuestionResponses(
-      id: freezed == id
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      screeningToolId: freezed == screeningToolId
+      screeningToolId: screeningToolId == freezed
           ? _value.screeningToolId
           : screeningToolId // ignore: cast_nullable_to_non_nullable
               as String?,
-      facilityId: freezed == facilityId
+      facilityId: facilityId == freezed
           ? _value.facilityId
           : facilityId // ignore: cast_nullable_to_non_nullable
               as String?,
-      clientId: freezed == clientId
+      clientId: clientId == freezed
           ? _value.clientId
           : clientId // ignore: cast_nullable_to_non_nullable
               as String?,
-      questionResponses: freezed == questionResponses
+      questionResponses: questionResponses == freezed
           ? _value.questionResponses
           : questionResponses // ignore: cast_nullable_to_non_nullable
               as List<QuestionResponse>?,
@@ -212,25 +208,28 @@ class _$_ScreeningToolQuestionResponses
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ScreeningToolQuestionResponses &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.screeningToolId, screeningToolId) ||
-                other.screeningToolId == screeningToolId) &&
-            (identical(other.facilityId, facilityId) ||
-                other.facilityId == facilityId) &&
-            (identical(other.clientId, clientId) ||
-                other.clientId == clientId) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality()
+                .equals(other.screeningToolId, screeningToolId) &&
+            const DeepCollectionEquality()
+                .equals(other.facilityId, facilityId) &&
+            const DeepCollectionEquality().equals(other.clientId, clientId) &&
             const DeepCollectionEquality()
                 .equals(other.questionResponses, questionResponses));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, screeningToolId, facilityId,
-      clientId, const DeepCollectionEquality().hash(questionResponses));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(screeningToolId),
+      const DeepCollectionEquality().hash(facilityId),
+      const DeepCollectionEquality().hash(clientId),
+      const DeepCollectionEquality().hash(questionResponses));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_ScreeningToolQuestionResponsesCopyWith<_$_ScreeningToolQuestionResponses>
       get copyWith => __$$_ScreeningToolQuestionResponsesCopyWithImpl<
           _$_ScreeningToolQuestionResponses>(this, _$identity);

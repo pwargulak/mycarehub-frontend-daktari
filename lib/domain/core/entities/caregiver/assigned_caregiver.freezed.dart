@@ -37,8 +37,7 @@ mixin _$AssignedCaregiver {
 abstract class $AssignedCaregiverCopyWith<$Res> {
   factory $AssignedCaregiverCopyWith(
           AssignedCaregiver value, $Res Function(AssignedCaregiver) then) =
-      _$AssignedCaregiverCopyWithImpl<$Res, AssignedCaregiver>;
-  @useResult
+      _$AssignedCaregiverCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'clientID') String? clientID,
       @JsonKey(name: 'caregiverID') String? caregiverID,
@@ -46,16 +45,14 @@ abstract class $AssignedCaregiverCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AssignedCaregiverCopyWithImpl<$Res, $Val extends AssignedCaregiver>
+class _$AssignedCaregiverCopyWithImpl<$Res>
     implements $AssignedCaregiverCopyWith<$Res> {
   _$AssignedCaregiverCopyWithImpl(this._value, this._then);
 
+  final AssignedCaregiver _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(AssignedCaregiver) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? clientID = freezed,
@@ -63,19 +60,19 @@ class _$AssignedCaregiverCopyWithImpl<$Res, $Val extends AssignedCaregiver>
     Object? caregiverType = freezed,
   }) {
     return _then(_value.copyWith(
-      clientID: freezed == clientID
+      clientID: clientID == freezed
           ? _value.clientID
           : clientID // ignore: cast_nullable_to_non_nullable
               as String?,
-      caregiverID: freezed == caregiverID
+      caregiverID: caregiverID == freezed
           ? _value.caregiverID
           : caregiverID // ignore: cast_nullable_to_non_nullable
               as String?,
-      caregiverType: freezed == caregiverType
+      caregiverType: caregiverType == freezed
           ? _value.caregiverType
           : caregiverType // ignore: cast_nullable_to_non_nullable
               as CaregiverType?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -86,7 +83,6 @@ abstract class _$$_AssignedCaregiverCopyWith<$Res>
           $Res Function(_$_AssignedCaregiver) then) =
       __$$_AssignedCaregiverCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'clientID') String? clientID,
       @JsonKey(name: 'caregiverID') String? caregiverID,
@@ -95,13 +91,15 @@ abstract class _$$_AssignedCaregiverCopyWith<$Res>
 
 /// @nodoc
 class __$$_AssignedCaregiverCopyWithImpl<$Res>
-    extends _$AssignedCaregiverCopyWithImpl<$Res, _$_AssignedCaregiver>
+    extends _$AssignedCaregiverCopyWithImpl<$Res>
     implements _$$_AssignedCaregiverCopyWith<$Res> {
   __$$_AssignedCaregiverCopyWithImpl(
       _$_AssignedCaregiver _value, $Res Function(_$_AssignedCaregiver) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_AssignedCaregiver));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_AssignedCaregiver get _value => super._value as _$_AssignedCaregiver;
+
   @override
   $Res call({
     Object? clientID = freezed,
@@ -109,15 +107,15 @@ class __$$_AssignedCaregiverCopyWithImpl<$Res>
     Object? caregiverType = freezed,
   }) {
     return _then(_$_AssignedCaregiver(
-      clientID: freezed == clientID
+      clientID: clientID == freezed
           ? _value.clientID
           : clientID // ignore: cast_nullable_to_non_nullable
               as String?,
-      caregiverID: freezed == caregiverID
+      caregiverID: caregiverID == freezed
           ? _value.caregiverID
           : caregiverID // ignore: cast_nullable_to_non_nullable
               as String?,
-      caregiverType: freezed == caregiverType
+      caregiverType: caregiverType == freezed
           ? _value.caregiverType
           : caregiverType // ignore: cast_nullable_to_non_nullable
               as CaregiverType?,
@@ -156,22 +154,23 @@ class _$_AssignedCaregiver implements _AssignedCaregiver {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AssignedCaregiver &&
-            (identical(other.clientID, clientID) ||
-                other.clientID == clientID) &&
-            (identical(other.caregiverID, caregiverID) ||
-                other.caregiverID == caregiverID) &&
-            (identical(other.caregiverType, caregiverType) ||
-                other.caregiverType == caregiverType));
+            const DeepCollectionEquality().equals(other.clientID, clientID) &&
+            const DeepCollectionEquality()
+                .equals(other.caregiverID, caregiverID) &&
+            const DeepCollectionEquality()
+                .equals(other.caregiverType, caregiverType));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, clientID, caregiverID, caregiverType);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(clientID),
+      const DeepCollectionEquality().hash(caregiverID),
+      const DeepCollectionEquality().hash(caregiverType));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_AssignedCaregiverCopyWith<_$_AssignedCaregiver> get copyWith =>
       __$$_AssignedCaregiverCopyWithImpl<_$_AssignedCaregiver>(
           this, _$identity);

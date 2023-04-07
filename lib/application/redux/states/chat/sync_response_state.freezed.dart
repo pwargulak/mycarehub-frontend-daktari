@@ -37,8 +37,7 @@ mixin _$SyncResponse {
 abstract class $SyncResponseCopyWith<$Res> {
   factory $SyncResponseCopyWith(
           SyncResponse value, $Res Function(SyncResponse) then) =
-      _$SyncResponseCopyWithImpl<$Res, SyncResponse>;
-  @useResult
+      _$SyncResponseCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'presence') SyncPresence? presence,
       @JsonKey(name: 'rooms') SyncRoomResponse? rooms,
@@ -49,16 +48,13 @@ abstract class $SyncResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SyncResponseCopyWithImpl<$Res, $Val extends SyncResponse>
-    implements $SyncResponseCopyWith<$Res> {
+class _$SyncResponseCopyWithImpl<$Res> implements $SyncResponseCopyWith<$Res> {
   _$SyncResponseCopyWithImpl(this._value, this._then);
 
+  final SyncResponse _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(SyncResponse) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? presence = freezed,
@@ -66,42 +62,40 @@ class _$SyncResponseCopyWithImpl<$Res, $Val extends SyncResponse>
     Object? nextBatch = freezed,
   }) {
     return _then(_value.copyWith(
-      presence: freezed == presence
+      presence: presence == freezed
           ? _value.presence
           : presence // ignore: cast_nullable_to_non_nullable
               as SyncPresence?,
-      rooms: freezed == rooms
+      rooms: rooms == freezed
           ? _value.rooms
           : rooms // ignore: cast_nullable_to_non_nullable
               as SyncRoomResponse?,
-      nextBatch: freezed == nextBatch
+      nextBatch: nextBatch == freezed
           ? _value.nextBatch
           : nextBatch // ignore: cast_nullable_to_non_nullable
               as String?,
-    ) as $Val);
+    ));
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $SyncPresenceCopyWith<$Res>? get presence {
     if (_value.presence == null) {
       return null;
     }
 
     return $SyncPresenceCopyWith<$Res>(_value.presence!, (value) {
-      return _then(_value.copyWith(presence: value) as $Val);
+      return _then(_value.copyWith(presence: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $SyncRoomResponseCopyWith<$Res>? get rooms {
     if (_value.rooms == null) {
       return null;
     }
 
     return $SyncRoomResponseCopyWith<$Res>(_value.rooms!, (value) {
-      return _then(_value.copyWith(rooms: value) as $Val);
+      return _then(_value.copyWith(rooms: value));
     });
   }
 }
@@ -113,7 +107,6 @@ abstract class _$$_SyncResponseCopyWith<$Res>
           _$_SyncResponse value, $Res Function(_$_SyncResponse) then) =
       __$$_SyncResponseCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'presence') SyncPresence? presence,
       @JsonKey(name: 'rooms') SyncRoomResponse? rooms,
@@ -127,13 +120,15 @@ abstract class _$$_SyncResponseCopyWith<$Res>
 
 /// @nodoc
 class __$$_SyncResponseCopyWithImpl<$Res>
-    extends _$SyncResponseCopyWithImpl<$Res, _$_SyncResponse>
+    extends _$SyncResponseCopyWithImpl<$Res>
     implements _$$_SyncResponseCopyWith<$Res> {
   __$$_SyncResponseCopyWithImpl(
       _$_SyncResponse _value, $Res Function(_$_SyncResponse) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_SyncResponse));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_SyncResponse get _value => super._value as _$_SyncResponse;
+
   @override
   $Res call({
     Object? presence = freezed,
@@ -141,15 +136,15 @@ class __$$_SyncResponseCopyWithImpl<$Res>
     Object? nextBatch = freezed,
   }) {
     return _then(_$_SyncResponse(
-      presence: freezed == presence
+      presence: presence == freezed
           ? _value.presence
           : presence // ignore: cast_nullable_to_non_nullable
               as SyncPresence?,
-      rooms: freezed == rooms
+      rooms: rooms == freezed
           ? _value.rooms
           : rooms // ignore: cast_nullable_to_non_nullable
               as SyncRoomResponse?,
-      nextBatch: freezed == nextBatch
+      nextBatch: nextBatch == freezed
           ? _value.nextBatch
           : nextBatch // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -188,20 +183,21 @@ class _$_SyncResponse implements _SyncResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SyncResponse &&
-            (identical(other.presence, presence) ||
-                other.presence == presence) &&
-            (identical(other.rooms, rooms) || other.rooms == rooms) &&
-            (identical(other.nextBatch, nextBatch) ||
-                other.nextBatch == nextBatch));
+            const DeepCollectionEquality().equals(other.presence, presence) &&
+            const DeepCollectionEquality().equals(other.rooms, rooms) &&
+            const DeepCollectionEquality().equals(other.nextBatch, nextBatch));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, presence, rooms, nextBatch);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(presence),
+      const DeepCollectionEquality().hash(rooms),
+      const DeepCollectionEquality().hash(nextBatch));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_SyncResponseCopyWith<_$_SyncResponse> get copyWith =>
       __$$_SyncResponseCopyWithImpl<_$_SyncResponse>(this, _$identity);
 
@@ -256,32 +252,28 @@ mixin _$SyncPresence {
 abstract class $SyncPresenceCopyWith<$Res> {
   factory $SyncPresenceCopyWith(
           SyncPresence value, $Res Function(SyncPresence) then) =
-      _$SyncPresenceCopyWithImpl<$Res, SyncPresence>;
-  @useResult
+      _$SyncPresenceCopyWithImpl<$Res>;
   $Res call({@JsonKey(name: 'events') List<Message?>? events});
 }
 
 /// @nodoc
-class _$SyncPresenceCopyWithImpl<$Res, $Val extends SyncPresence>
-    implements $SyncPresenceCopyWith<$Res> {
+class _$SyncPresenceCopyWithImpl<$Res> implements $SyncPresenceCopyWith<$Res> {
   _$SyncPresenceCopyWithImpl(this._value, this._then);
 
+  final SyncPresence _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(SyncPresence) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? events = freezed,
   }) {
     return _then(_value.copyWith(
-      events: freezed == events
+      events: events == freezed
           ? _value.events
           : events // ignore: cast_nullable_to_non_nullable
               as List<Message?>?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -292,25 +284,26 @@ abstract class _$$_SyncPresenceCopyWith<$Res>
           _$_SyncPresence value, $Res Function(_$_SyncPresence) then) =
       __$$_SyncPresenceCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call({@JsonKey(name: 'events') List<Message?>? events});
 }
 
 /// @nodoc
 class __$$_SyncPresenceCopyWithImpl<$Res>
-    extends _$SyncPresenceCopyWithImpl<$Res, _$_SyncPresence>
+    extends _$SyncPresenceCopyWithImpl<$Res>
     implements _$$_SyncPresenceCopyWith<$Res> {
   __$$_SyncPresenceCopyWithImpl(
       _$_SyncPresence _value, $Res Function(_$_SyncPresence) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_SyncPresence));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_SyncPresence get _value => super._value as _$_SyncPresence;
+
   @override
   $Res call({
     Object? events = freezed,
   }) {
     return _then(_$_SyncPresence(
-      events: freezed == events
+      events: events == freezed
           ? _value._events
           : events // ignore: cast_nullable_to_non_nullable
               as List<Message?>?,
@@ -357,7 +350,6 @@ class _$_SyncPresence implements _SyncPresence {
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_SyncPresenceCopyWith<_$_SyncPresence> get copyWith =>
       __$$_SyncPresenceCopyWithImpl<_$_SyncPresence>(this, _$identity);
 
@@ -412,8 +404,7 @@ mixin _$SyncRoomResponse {
 abstract class $SyncRoomResponseCopyWith<$Res> {
   factory $SyncRoomResponseCopyWith(
           SyncRoomResponse value, $Res Function(SyncRoomResponse) then) =
-      _$SyncRoomResponseCopyWithImpl<$Res, SyncRoomResponse>;
-  @useResult
+      _$SyncRoomResponseCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'join') Map<String, Room>? joinedRooms,
       @JsonKey(name: 'invite') Map<String, Room>? invitedRooms,
@@ -422,16 +413,14 @@ abstract class $SyncRoomResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SyncRoomResponseCopyWithImpl<$Res, $Val extends SyncRoomResponse>
+class _$SyncRoomResponseCopyWithImpl<$Res>
     implements $SyncRoomResponseCopyWith<$Res> {
   _$SyncRoomResponseCopyWithImpl(this._value, this._then);
 
+  final SyncRoomResponse _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(SyncRoomResponse) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? joinedRooms = freezed,
@@ -440,23 +429,23 @@ class _$SyncRoomResponseCopyWithImpl<$Res, $Val extends SyncRoomResponse>
     Object? leftRooms = freezed,
   }) {
     return _then(_value.copyWith(
-      joinedRooms: freezed == joinedRooms
+      joinedRooms: joinedRooms == freezed
           ? _value.joinedRooms
           : joinedRooms // ignore: cast_nullable_to_non_nullable
               as Map<String, Room>?,
-      invitedRooms: freezed == invitedRooms
+      invitedRooms: invitedRooms == freezed
           ? _value.invitedRooms
           : invitedRooms // ignore: cast_nullable_to_non_nullable
               as Map<String, Room>?,
-      knockedRooms: freezed == knockedRooms
+      knockedRooms: knockedRooms == freezed
           ? _value.knockedRooms
           : knockedRooms // ignore: cast_nullable_to_non_nullable
               as Map<String, Room>?,
-      leftRooms: freezed == leftRooms
+      leftRooms: leftRooms == freezed
           ? _value.leftRooms
           : leftRooms // ignore: cast_nullable_to_non_nullable
               as Map<String, Room>?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -467,7 +456,6 @@ abstract class _$$_SyncRoomResponseCopyWith<$Res>
           _$_SyncRoomResponse value, $Res Function(_$_SyncRoomResponse) then) =
       __$$_SyncRoomResponseCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'join') Map<String, Room>? joinedRooms,
       @JsonKey(name: 'invite') Map<String, Room>? invitedRooms,
@@ -477,13 +465,15 @@ abstract class _$$_SyncRoomResponseCopyWith<$Res>
 
 /// @nodoc
 class __$$_SyncRoomResponseCopyWithImpl<$Res>
-    extends _$SyncRoomResponseCopyWithImpl<$Res, _$_SyncRoomResponse>
+    extends _$SyncRoomResponseCopyWithImpl<$Res>
     implements _$$_SyncRoomResponseCopyWith<$Res> {
   __$$_SyncRoomResponseCopyWithImpl(
       _$_SyncRoomResponse _value, $Res Function(_$_SyncRoomResponse) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_SyncRoomResponse));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_SyncRoomResponse get _value => super._value as _$_SyncRoomResponse;
+
   @override
   $Res call({
     Object? joinedRooms = freezed,
@@ -492,19 +482,19 @@ class __$$_SyncRoomResponseCopyWithImpl<$Res>
     Object? leftRooms = freezed,
   }) {
     return _then(_$_SyncRoomResponse(
-      joinedRooms: freezed == joinedRooms
+      joinedRooms: joinedRooms == freezed
           ? _value.joinedRooms
           : joinedRooms // ignore: cast_nullable_to_non_nullable
               as Map<String, Room>?,
-      invitedRooms: freezed == invitedRooms
+      invitedRooms: invitedRooms == freezed
           ? _value.invitedRooms
           : invitedRooms // ignore: cast_nullable_to_non_nullable
               as Map<String, Room>?,
-      knockedRooms: freezed == knockedRooms
+      knockedRooms: knockedRooms == freezed
           ? _value.knockedRooms
           : knockedRooms // ignore: cast_nullable_to_non_nullable
               as Map<String, Room>?,
-      leftRooms: freezed == leftRooms
+      leftRooms: leftRooms == freezed
           ? _value.leftRooms
           : leftRooms // ignore: cast_nullable_to_non_nullable
               as Map<String, Room>?,
@@ -568,7 +558,6 @@ class _$_SyncRoomResponse implements _SyncRoomResponse {
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_SyncRoomResponseCopyWith<_$_SyncRoomResponse> get copyWith =>
       __$$_SyncRoomResponseCopyWithImpl<_$_SyncRoomResponse>(this, _$identity);
 

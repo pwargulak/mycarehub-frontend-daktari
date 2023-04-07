@@ -47,8 +47,7 @@ mixin _$SurveyRespondent {
 abstract class $SurveyRespondentCopyWith<$Res> {
   factory $SurveyRespondentCopyWith(
           SurveyRespondent value, $Res Function(SurveyRespondent) then) =
-      _$SurveyRespondentCopyWithImpl<$Res, SurveyRespondent>;
-  @useResult
+      _$SurveyRespondentCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'name') String? name,
@@ -61,16 +60,14 @@ abstract class $SurveyRespondentCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SurveyRespondentCopyWithImpl<$Res, $Val extends SurveyRespondent>
+class _$SurveyRespondentCopyWithImpl<$Res>
     implements $SurveyRespondentCopyWith<$Res> {
   _$SurveyRespondentCopyWithImpl(this._value, this._then);
 
+  final SurveyRespondent _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(SurveyRespondent) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -83,39 +80,39 @@ class _$SurveyRespondentCopyWithImpl<$Res, $Val extends SurveyRespondent>
     Object? phoneNumber = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: freezed == name
+      name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      projectID: freezed == projectID
+      projectID: projectID == freezed
           ? _value.projectID
           : projectID // ignore: cast_nullable_to_non_nullable
               as int?,
-      submitterID: freezed == submitterID
+      submitterID: submitterID == freezed
           ? _value.submitterID
           : submitterID // ignore: cast_nullable_to_non_nullable
               as int?,
-      formID: freezed == formID
+      formID: formID == freezed
           ? _value.formID
           : formID // ignore: cast_nullable_to_non_nullable
               as String?,
-      surveyName: freezed == surveyName
+      surveyName: surveyName == freezed
           ? _value.surveyName
           : surveyName // ignore: cast_nullable_to_non_nullable
               as String?,
-      serviceRequestID: freezed == serviceRequestID
+      serviceRequestID: serviceRequestID == freezed
           ? _value.serviceRequestID
           : serviceRequestID // ignore: cast_nullable_to_non_nullable
               as String?,
-      phoneNumber: freezed == phoneNumber
+      phoneNumber: phoneNumber == freezed
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -126,7 +123,6 @@ abstract class _$$_SurveyRespondentCopyWith<$Res>
           _$_SurveyRespondent value, $Res Function(_$_SurveyRespondent) then) =
       __$$_SurveyRespondentCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'name') String? name,
@@ -140,13 +136,15 @@ abstract class _$$_SurveyRespondentCopyWith<$Res>
 
 /// @nodoc
 class __$$_SurveyRespondentCopyWithImpl<$Res>
-    extends _$SurveyRespondentCopyWithImpl<$Res, _$_SurveyRespondent>
+    extends _$SurveyRespondentCopyWithImpl<$Res>
     implements _$$_SurveyRespondentCopyWith<$Res> {
   __$$_SurveyRespondentCopyWithImpl(
       _$_SurveyRespondent _value, $Res Function(_$_SurveyRespondent) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_SurveyRespondent));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_SurveyRespondent get _value => super._value as _$_SurveyRespondent;
+
   @override
   $Res call({
     Object? id = freezed,
@@ -159,35 +157,35 @@ class __$$_SurveyRespondentCopyWithImpl<$Res>
     Object? phoneNumber = freezed,
   }) {
     return _then(_$_SurveyRespondent(
-      id: freezed == id
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: freezed == name
+      name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      projectID: freezed == projectID
+      projectID: projectID == freezed
           ? _value.projectID
           : projectID // ignore: cast_nullable_to_non_nullable
               as int?,
-      submitterID: freezed == submitterID
+      submitterID: submitterID == freezed
           ? _value.submitterID
           : submitterID // ignore: cast_nullable_to_non_nullable
               as int?,
-      formID: freezed == formID
+      formID: formID == freezed
           ? _value.formID
           : formID // ignore: cast_nullable_to_non_nullable
               as String?,
-      surveyName: freezed == surveyName
+      surveyName: surveyName == freezed
           ? _value.surveyName
           : surveyName // ignore: cast_nullable_to_non_nullable
               as String?,
-      serviceRequestID: freezed == serviceRequestID
+      serviceRequestID: serviceRequestID == freezed
           ? _value.serviceRequestID
           : serviceRequestID // ignore: cast_nullable_to_non_nullable
               as String?,
-      phoneNumber: freezed == phoneNumber
+      phoneNumber: phoneNumber == freezed
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -246,29 +244,35 @@ class _$_SurveyRespondent implements _SurveyRespondent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SurveyRespondent &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.projectID, projectID) ||
-                other.projectID == projectID) &&
-            (identical(other.submitterID, submitterID) ||
-                other.submitterID == submitterID) &&
-            (identical(other.formID, formID) || other.formID == formID) &&
-            (identical(other.surveyName, surveyName) ||
-                other.surveyName == surveyName) &&
-            (identical(other.serviceRequestID, serviceRequestID) ||
-                other.serviceRequestID == serviceRequestID) &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber));
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.projectID, projectID) &&
+            const DeepCollectionEquality()
+                .equals(other.submitterID, submitterID) &&
+            const DeepCollectionEquality().equals(other.formID, formID) &&
+            const DeepCollectionEquality()
+                .equals(other.surveyName, surveyName) &&
+            const DeepCollectionEquality()
+                .equals(other.serviceRequestID, serviceRequestID) &&
+            const DeepCollectionEquality()
+                .equals(other.phoneNumber, phoneNumber));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, projectID, submitterID,
-      formID, surveyName, serviceRequestID, phoneNumber);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(projectID),
+      const DeepCollectionEquality().hash(submitterID),
+      const DeepCollectionEquality().hash(formID),
+      const DeepCollectionEquality().hash(surveyName),
+      const DeepCollectionEquality().hash(serviceRequestID),
+      const DeepCollectionEquality().hash(phoneNumber));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_SurveyRespondentCopyWith<_$_SurveyRespondent> get copyWith =>
       __$$_SurveyRespondentCopyWithImpl<_$_SurveyRespondent>(this, _$identity);
 

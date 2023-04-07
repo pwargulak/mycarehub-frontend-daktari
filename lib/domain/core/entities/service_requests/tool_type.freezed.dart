@@ -32,32 +32,28 @@ mixin _$ToolType {
 /// @nodoc
 abstract class $ToolTypeCopyWith<$Res> {
   factory $ToolTypeCopyWith(ToolType value, $Res Function(ToolType) then) =
-      _$ToolTypeCopyWithImpl<$Res, ToolType>;
-  @useResult
+      _$ToolTypeCopyWithImpl<$Res>;
   $Res call({@JsonKey(name: 'toolType') ScreeningToolsType? toolType});
 }
 
 /// @nodoc
-class _$ToolTypeCopyWithImpl<$Res, $Val extends ToolType>
-    implements $ToolTypeCopyWith<$Res> {
+class _$ToolTypeCopyWithImpl<$Res> implements $ToolTypeCopyWith<$Res> {
   _$ToolTypeCopyWithImpl(this._value, this._then);
 
+  final ToolType _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(ToolType) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? toolType = freezed,
   }) {
     return _then(_value.copyWith(
-      toolType: freezed == toolType
+      toolType: toolType == freezed
           ? _value.toolType
           : toolType // ignore: cast_nullable_to_non_nullable
               as ScreeningToolsType?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -67,25 +63,25 @@ abstract class _$$_ToolTypeCopyWith<$Res> implements $ToolTypeCopyWith<$Res> {
           _$_ToolType value, $Res Function(_$_ToolType) then) =
       __$$_ToolTypeCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call({@JsonKey(name: 'toolType') ScreeningToolsType? toolType});
 }
 
 /// @nodoc
-class __$$_ToolTypeCopyWithImpl<$Res>
-    extends _$ToolTypeCopyWithImpl<$Res, _$_ToolType>
+class __$$_ToolTypeCopyWithImpl<$Res> extends _$ToolTypeCopyWithImpl<$Res>
     implements _$$_ToolTypeCopyWith<$Res> {
   __$$_ToolTypeCopyWithImpl(
       _$_ToolType _value, $Res Function(_$_ToolType) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_ToolType));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_ToolType get _value => super._value as _$_ToolType;
+
   @override
   $Res call({
     Object? toolType = freezed,
   }) {
     return _then(_$_ToolType(
-      toolType: freezed == toolType
+      toolType: toolType == freezed
           ? _value.toolType
           : toolType // ignore: cast_nullable_to_non_nullable
               as ScreeningToolsType?,
@@ -115,17 +111,16 @@ class _$_ToolType implements _ToolType {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ToolType &&
-            (identical(other.toolType, toolType) ||
-                other.toolType == toolType));
+            const DeepCollectionEquality().equals(other.toolType, toolType));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, toolType);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(toolType));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_ToolTypeCopyWith<_$_ToolType> get copyWith =>
       __$$_ToolTypeCopyWithImpl<_$_ToolType>(this, _$identity);
 

@@ -37,8 +37,7 @@ mixin _$OrganisationState {
 abstract class $OrganisationStateCopyWith<$Res> {
   factory $OrganisationStateCopyWith(
           OrganisationState value, $Res Function(OrganisationState) then) =
-      _$OrganisationStateCopyWithImpl<$Res, OrganisationState>;
-  @useResult
+      _$OrganisationStateCopyWithImpl<$Res>;
   $Res call(
       {List<Organisation>? organisations,
       Organisation? selectedOrganisation,
@@ -49,16 +48,14 @@ abstract class $OrganisationStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$OrganisationStateCopyWithImpl<$Res, $Val extends OrganisationState>
+class _$OrganisationStateCopyWithImpl<$Res>
     implements $OrganisationStateCopyWith<$Res> {
   _$OrganisationStateCopyWithImpl(this._value, this._then);
 
+  final OrganisationState _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(OrganisationState) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? organisations = freezed,
@@ -67,34 +64,33 @@ class _$OrganisationStateCopyWithImpl<$Res, $Val extends OrganisationState>
     Object? programsPayload = freezed,
   }) {
     return _then(_value.copyWith(
-      organisations: freezed == organisations
+      organisations: organisations == freezed
           ? _value.organisations
           : organisations // ignore: cast_nullable_to_non_nullable
               as List<Organisation>?,
-      selectedOrganisation: freezed == selectedOrganisation
+      selectedOrganisation: selectedOrganisation == freezed
           ? _value.selectedOrganisation
           : selectedOrganisation // ignore: cast_nullable_to_non_nullable
               as Organisation?,
-      errorGettingOrganisations: freezed == errorGettingOrganisations
+      errorGettingOrganisations: errorGettingOrganisations == freezed
           ? _value.errorGettingOrganisations
           : errorGettingOrganisations // ignore: cast_nullable_to_non_nullable
               as bool?,
-      programsPayload: freezed == programsPayload
+      programsPayload: programsPayload == freezed
           ? _value.programsPayload
           : programsPayload // ignore: cast_nullable_to_non_nullable
               as List<Map<String, dynamic>>?,
-    ) as $Val);
+    ));
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $OrganisationCopyWith<$Res>? get selectedOrganisation {
     if (_value.selectedOrganisation == null) {
       return null;
     }
 
     return $OrganisationCopyWith<$Res>(_value.selectedOrganisation!, (value) {
-      return _then(_value.copyWith(selectedOrganisation: value) as $Val);
+      return _then(_value.copyWith(selectedOrganisation: value));
     });
   }
 }
@@ -106,7 +102,6 @@ abstract class _$$_OrganisationStateCopyWith<$Res>
           $Res Function(_$_OrganisationState) then) =
       __$$_OrganisationStateCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {List<Organisation>? organisations,
       Organisation? selectedOrganisation,
@@ -119,13 +114,15 @@ abstract class _$$_OrganisationStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_OrganisationStateCopyWithImpl<$Res>
-    extends _$OrganisationStateCopyWithImpl<$Res, _$_OrganisationState>
+    extends _$OrganisationStateCopyWithImpl<$Res>
     implements _$$_OrganisationStateCopyWith<$Res> {
   __$$_OrganisationStateCopyWithImpl(
       _$_OrganisationState _value, $Res Function(_$_OrganisationState) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_OrganisationState));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_OrganisationState get _value => super._value as _$_OrganisationState;
+
   @override
   $Res call({
     Object? organisations = freezed,
@@ -134,19 +131,19 @@ class __$$_OrganisationStateCopyWithImpl<$Res>
     Object? programsPayload = freezed,
   }) {
     return _then(_$_OrganisationState(
-      organisations: freezed == organisations
+      organisations: organisations == freezed
           ? _value.organisations
           : organisations // ignore: cast_nullable_to_non_nullable
               as List<Organisation>?,
-      selectedOrganisation: freezed == selectedOrganisation
+      selectedOrganisation: selectedOrganisation == freezed
           ? _value.selectedOrganisation
           : selectedOrganisation // ignore: cast_nullable_to_non_nullable
               as Organisation?,
-      errorGettingOrganisations: freezed == errorGettingOrganisations
+      errorGettingOrganisations: errorGettingOrganisations == freezed
           ? _value.errorGettingOrganisations
           : errorGettingOrganisations // ignore: cast_nullable_to_non_nullable
               as bool?,
-      programsPayload: freezed == programsPayload
+      programsPayload: programsPayload == freezed
           ? _value.programsPayload
           : programsPayload // ignore: cast_nullable_to_non_nullable
               as List<Map<String, dynamic>>?,
@@ -188,11 +185,10 @@ class _$_OrganisationState implements _OrganisationState {
             other is _$_OrganisationState &&
             const DeepCollectionEquality()
                 .equals(other.organisations, organisations) &&
-            (identical(other.selectedOrganisation, selectedOrganisation) ||
-                other.selectedOrganisation == selectedOrganisation) &&
-            (identical(other.errorGettingOrganisations,
-                    errorGettingOrganisations) ||
-                other.errorGettingOrganisations == errorGettingOrganisations) &&
+            const DeepCollectionEquality()
+                .equals(other.selectedOrganisation, selectedOrganisation) &&
+            const DeepCollectionEquality().equals(
+                other.errorGettingOrganisations, errorGettingOrganisations) &&
             const DeepCollectionEquality()
                 .equals(other.programsPayload, programsPayload));
   }
@@ -202,13 +198,12 @@ class _$_OrganisationState implements _OrganisationState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(organisations),
-      selectedOrganisation,
-      errorGettingOrganisations,
+      const DeepCollectionEquality().hash(selectedOrganisation),
+      const DeepCollectionEquality().hash(errorGettingOrganisations),
       const DeepCollectionEquality().hash(programsPayload));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_OrganisationStateCopyWith<_$_OrganisationState> get copyWith =>
       __$$_OrganisationStateCopyWithImpl<_$_OrganisationState>(
           this, _$identity);

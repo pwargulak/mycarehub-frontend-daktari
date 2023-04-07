@@ -41,8 +41,7 @@ mixin _$SearchUserResponseState {
 abstract class $SearchUserResponseStateCopyWith<$Res> {
   factory $SearchUserResponseStateCopyWith(SearchUserResponseState value,
           $Res Function(SearchUserResponseState) then) =
-      _$SearchUserResponseStateCopyWithImpl<$Res, SearchUserResponseState>;
-  @useResult
+      _$SearchUserResponseStateCopyWithImpl<$Res>;
   $Res call(
       {List<SearchUserResponse?>? searchUserResponses,
       List<SearchUserResponse?>? selectedUsers,
@@ -55,17 +54,14 @@ abstract class $SearchUserResponseStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SearchUserResponseStateCopyWithImpl<$Res,
-        $Val extends SearchUserResponseState>
+class _$SearchUserResponseStateCopyWithImpl<$Res>
     implements $SearchUserResponseStateCopyWith<$Res> {
   _$SearchUserResponseStateCopyWithImpl(this._value, this._then);
 
+  final SearchUserResponseState _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(SearchUserResponseState) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? searchUserResponses = freezed,
@@ -76,35 +72,34 @@ class _$SearchUserResponseStateCopyWithImpl<$Res,
     Object? noUserFound = freezed,
   }) {
     return _then(_value.copyWith(
-      searchUserResponses: freezed == searchUserResponses
+      searchUserResponses: searchUserResponses == freezed
           ? _value.searchUserResponses
           : searchUserResponses // ignore: cast_nullable_to_non_nullable
               as List<SearchUserResponse?>?,
-      selectedUsers: freezed == selectedUsers
+      selectedUsers: selectedUsers == freezed
           ? _value.selectedUsers
           : selectedUsers // ignore: cast_nullable_to_non_nullable
               as List<SearchUserResponse?>?,
-      selectedSearchUserResponse: freezed == selectedSearchUserResponse
+      selectedSearchUserResponse: selectedSearchUserResponse == freezed
           ? _value.selectedSearchUserResponse
           : selectedSearchUserResponse // ignore: cast_nullable_to_non_nullable
               as SearchUserResponse?,
-      errorSearchingUser: freezed == errorSearchingUser
+      errorSearchingUser: errorSearchingUser == freezed
           ? _value.errorSearchingUser
           : errorSearchingUser // ignore: cast_nullable_to_non_nullable
               as bool?,
-      timeoutSearchingUser: freezed == timeoutSearchingUser
+      timeoutSearchingUser: timeoutSearchingUser == freezed
           ? _value.timeoutSearchingUser
           : timeoutSearchingUser // ignore: cast_nullable_to_non_nullable
               as bool?,
-      noUserFound: freezed == noUserFound
+      noUserFound: noUserFound == freezed
           ? _value.noUserFound
           : noUserFound // ignore: cast_nullable_to_non_nullable
               as bool?,
-    ) as $Val);
+    ));
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $SearchUserResponseCopyWith<$Res>? get selectedSearchUserResponse {
     if (_value.selectedSearchUserResponse == null) {
       return null;
@@ -112,7 +107,7 @@ class _$SearchUserResponseStateCopyWithImpl<$Res,
 
     return $SearchUserResponseCopyWith<$Res>(_value.selectedSearchUserResponse!,
         (value) {
-      return _then(_value.copyWith(selectedSearchUserResponse: value) as $Val);
+      return _then(_value.copyWith(selectedSearchUserResponse: value));
     });
   }
 }
@@ -124,7 +119,6 @@ abstract class _$$_SearchUserResponseStateCopyWith<$Res>
           $Res Function(_$_SearchUserResponseState) then) =
       __$$_SearchUserResponseStateCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {List<SearchUserResponse?>? searchUserResponses,
       List<SearchUserResponse?>? selectedUsers,
@@ -139,14 +133,16 @@ abstract class _$$_SearchUserResponseStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_SearchUserResponseStateCopyWithImpl<$Res>
-    extends _$SearchUserResponseStateCopyWithImpl<$Res,
-        _$_SearchUserResponseState>
+    extends _$SearchUserResponseStateCopyWithImpl<$Res>
     implements _$$_SearchUserResponseStateCopyWith<$Res> {
   __$$_SearchUserResponseStateCopyWithImpl(_$_SearchUserResponseState _value,
       $Res Function(_$_SearchUserResponseState) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_SearchUserResponseState));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_SearchUserResponseState get _value =>
+      super._value as _$_SearchUserResponseState;
+
   @override
   $Res call({
     Object? searchUserResponses = freezed,
@@ -157,27 +153,27 @@ class __$$_SearchUserResponseStateCopyWithImpl<$Res>
     Object? noUserFound = freezed,
   }) {
     return _then(_$_SearchUserResponseState(
-      searchUserResponses: freezed == searchUserResponses
+      searchUserResponses: searchUserResponses == freezed
           ? _value._searchUserResponses
           : searchUserResponses // ignore: cast_nullable_to_non_nullable
               as List<SearchUserResponse?>?,
-      selectedUsers: freezed == selectedUsers
+      selectedUsers: selectedUsers == freezed
           ? _value._selectedUsers
           : selectedUsers // ignore: cast_nullable_to_non_nullable
               as List<SearchUserResponse?>?,
-      selectedSearchUserResponse: freezed == selectedSearchUserResponse
+      selectedSearchUserResponse: selectedSearchUserResponse == freezed
           ? _value.selectedSearchUserResponse
           : selectedSearchUserResponse // ignore: cast_nullable_to_non_nullable
               as SearchUserResponse?,
-      errorSearchingUser: freezed == errorSearchingUser
+      errorSearchingUser: errorSearchingUser == freezed
           ? _value.errorSearchingUser
           : errorSearchingUser // ignore: cast_nullable_to_non_nullable
               as bool?,
-      timeoutSearchingUser: freezed == timeoutSearchingUser
+      timeoutSearchingUser: timeoutSearchingUser == freezed
           ? _value.timeoutSearchingUser
           : timeoutSearchingUser // ignore: cast_nullable_to_non_nullable
               as bool?,
-      noUserFound: freezed == noUserFound
+      noUserFound: noUserFound == freezed
           ? _value.noUserFound
           : noUserFound // ignore: cast_nullable_to_non_nullable
               as bool?,
@@ -243,16 +239,14 @@ class _$_SearchUserResponseState implements _SearchUserResponseState {
                 .equals(other._searchUserResponses, _searchUserResponses) &&
             const DeepCollectionEquality()
                 .equals(other._selectedUsers, _selectedUsers) &&
-            (identical(other.selectedSearchUserResponse,
-                    selectedSearchUserResponse) ||
-                other.selectedSearchUserResponse ==
-                    selectedSearchUserResponse) &&
-            (identical(other.errorSearchingUser, errorSearchingUser) ||
-                other.errorSearchingUser == errorSearchingUser) &&
-            (identical(other.timeoutSearchingUser, timeoutSearchingUser) ||
-                other.timeoutSearchingUser == timeoutSearchingUser) &&
-            (identical(other.noUserFound, noUserFound) ||
-                other.noUserFound == noUserFound));
+            const DeepCollectionEquality().equals(
+                other.selectedSearchUserResponse, selectedSearchUserResponse) &&
+            const DeepCollectionEquality()
+                .equals(other.errorSearchingUser, errorSearchingUser) &&
+            const DeepCollectionEquality()
+                .equals(other.timeoutSearchingUser, timeoutSearchingUser) &&
+            const DeepCollectionEquality()
+                .equals(other.noUserFound, noUserFound));
   }
 
   @JsonKey(ignore: true)
@@ -261,14 +255,13 @@ class _$_SearchUserResponseState implements _SearchUserResponseState {
       runtimeType,
       const DeepCollectionEquality().hash(_searchUserResponses),
       const DeepCollectionEquality().hash(_selectedUsers),
-      selectedSearchUserResponse,
-      errorSearchingUser,
-      timeoutSearchingUser,
-      noUserFound);
+      const DeepCollectionEquality().hash(selectedSearchUserResponse),
+      const DeepCollectionEquality().hash(errorSearchingUser),
+      const DeepCollectionEquality().hash(timeoutSearchingUser),
+      const DeepCollectionEquality().hash(noUserFound));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_SearchUserResponseStateCopyWith<_$_SearchUserResponseState>
       get copyWith =>
           __$$_SearchUserResponseStateCopyWithImpl<_$_SearchUserResponseState>(

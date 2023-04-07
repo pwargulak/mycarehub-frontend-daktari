@@ -33,32 +33,29 @@ mixin _$AcceptTermsResponse {
 abstract class $AcceptTermsResponseCopyWith<$Res> {
   factory $AcceptTermsResponseCopyWith(
           AcceptTermsResponse value, $Res Function(AcceptTermsResponse) then) =
-      _$AcceptTermsResponseCopyWithImpl<$Res, AcceptTermsResponse>;
-  @useResult
+      _$AcceptTermsResponseCopyWithImpl<$Res>;
   $Res call({@JsonKey(name: 'acceptTerms') bool acceptTerms});
 }
 
 /// @nodoc
-class _$AcceptTermsResponseCopyWithImpl<$Res, $Val extends AcceptTermsResponse>
+class _$AcceptTermsResponseCopyWithImpl<$Res>
     implements $AcceptTermsResponseCopyWith<$Res> {
   _$AcceptTermsResponseCopyWithImpl(this._value, this._then);
 
+  final AcceptTermsResponse _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(AcceptTermsResponse) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? acceptTerms = null,
+    Object? acceptTerms = freezed,
   }) {
     return _then(_value.copyWith(
-      acceptTerms: null == acceptTerms
+      acceptTerms: acceptTerms == freezed
           ? _value.acceptTerms
           : acceptTerms // ignore: cast_nullable_to_non_nullable
               as bool,
-    ) as $Val);
+    ));
   }
 }
 
@@ -69,25 +66,26 @@ abstract class _$$_AcceptTermsResponseCopyWith<$Res>
           $Res Function(_$_AcceptTermsResponse) then) =
       __$$_AcceptTermsResponseCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call({@JsonKey(name: 'acceptTerms') bool acceptTerms});
 }
 
 /// @nodoc
 class __$$_AcceptTermsResponseCopyWithImpl<$Res>
-    extends _$AcceptTermsResponseCopyWithImpl<$Res, _$_AcceptTermsResponse>
+    extends _$AcceptTermsResponseCopyWithImpl<$Res>
     implements _$$_AcceptTermsResponseCopyWith<$Res> {
   __$$_AcceptTermsResponseCopyWithImpl(_$_AcceptTermsResponse _value,
       $Res Function(_$_AcceptTermsResponse) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_AcceptTermsResponse));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_AcceptTermsResponse get _value => super._value as _$_AcceptTermsResponse;
+
   @override
   $Res call({
-    Object? acceptTerms = null,
+    Object? acceptTerms = freezed,
   }) {
     return _then(_$_AcceptTermsResponse(
-      acceptTerms: null == acceptTerms
+      acceptTerms: acceptTerms == freezed
           ? _value.acceptTerms
           : acceptTerms // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -118,17 +116,17 @@ class _$_AcceptTermsResponse implements _AcceptTermsResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AcceptTermsResponse &&
-            (identical(other.acceptTerms, acceptTerms) ||
-                other.acceptTerms == acceptTerms));
+            const DeepCollectionEquality()
+                .equals(other.acceptTerms, acceptTerms));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, acceptTerms);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(acceptTerms));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_AcceptTermsResponseCopyWith<_$_AcceptTermsResponse> get copyWith =>
       __$$_AcceptTermsResponseCopyWithImpl<_$_AcceptTermsResponse>(
           this, _$identity);

@@ -49,9 +49,7 @@ abstract class $RegisterOrganisationInputPayloadCopyWith<$Res> {
   factory $RegisterOrganisationInputPayloadCopyWith(
           RegisterOrganisationInputPayload value,
           $Res Function(RegisterOrganisationInputPayload) then) =
-      _$RegisterOrganisationInputPayloadCopyWithImpl<$Res,
-          RegisterOrganisationInputPayload>;
-  @useResult
+      _$RegisterOrganisationInputPayloadCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'code') String? registrationNumber,
       @JsonKey(name: 'name') String? name,
@@ -64,17 +62,14 @@ abstract class $RegisterOrganisationInputPayloadCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RegisterOrganisationInputPayloadCopyWithImpl<$Res,
-        $Val extends RegisterOrganisationInputPayload>
+class _$RegisterOrganisationInputPayloadCopyWithImpl<$Res>
     implements $RegisterOrganisationInputPayloadCopyWith<$Res> {
   _$RegisterOrganisationInputPayloadCopyWithImpl(this._value, this._then);
 
+  final RegisterOrganisationInputPayload _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(RegisterOrganisationInputPayload) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? registrationNumber = freezed,
@@ -87,39 +82,39 @@ class _$RegisterOrganisationInputPayloadCopyWithImpl<$Res,
     Object? physicalAddress = freezed,
   }) {
     return _then(_value.copyWith(
-      registrationNumber: freezed == registrationNumber
+      registrationNumber: registrationNumber == freezed
           ? _value.registrationNumber
           : registrationNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: freezed == name
+      name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: freezed == description
+      description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      country: freezed == country
+      country: country == freezed
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as String?,
-      phoneNumber: freezed == phoneNumber
+      phoneNumber: phoneNumber == freezed
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      emailAddress: freezed == emailAddress
+      emailAddress: emailAddress == freezed
           ? _value.emailAddress
           : emailAddress // ignore: cast_nullable_to_non_nullable
               as String?,
-      postalAddress: freezed == postalAddress
+      postalAddress: postalAddress == freezed
           ? _value.postalAddress
           : postalAddress // ignore: cast_nullable_to_non_nullable
               as String?,
-      physicalAddress: freezed == physicalAddress
+      physicalAddress: physicalAddress == freezed
           ? _value.physicalAddress
           : physicalAddress // ignore: cast_nullable_to_non_nullable
               as String?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -131,7 +126,6 @@ abstract class _$$_RegisterOrganisationInputPayloadCopyWith<$Res>
           $Res Function(_$_RegisterOrganisationInputPayload) then) =
       __$$_RegisterOrganisationInputPayloadCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'code') String? registrationNumber,
       @JsonKey(name: 'name') String? name,
@@ -145,15 +139,17 @@ abstract class _$$_RegisterOrganisationInputPayloadCopyWith<$Res>
 
 /// @nodoc
 class __$$_RegisterOrganisationInputPayloadCopyWithImpl<$Res>
-    extends _$RegisterOrganisationInputPayloadCopyWithImpl<$Res,
-        _$_RegisterOrganisationInputPayload>
+    extends _$RegisterOrganisationInputPayloadCopyWithImpl<$Res>
     implements _$$_RegisterOrganisationInputPayloadCopyWith<$Res> {
   __$$_RegisterOrganisationInputPayloadCopyWithImpl(
       _$_RegisterOrganisationInputPayload _value,
       $Res Function(_$_RegisterOrganisationInputPayload) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_RegisterOrganisationInputPayload));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_RegisterOrganisationInputPayload get _value =>
+      super._value as _$_RegisterOrganisationInputPayload;
+
   @override
   $Res call({
     Object? registrationNumber = freezed,
@@ -166,35 +162,35 @@ class __$$_RegisterOrganisationInputPayloadCopyWithImpl<$Res>
     Object? physicalAddress = freezed,
   }) {
     return _then(_$_RegisterOrganisationInputPayload(
-      registrationNumber: freezed == registrationNumber
+      registrationNumber: registrationNumber == freezed
           ? _value.registrationNumber
           : registrationNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: freezed == name
+      name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: freezed == description
+      description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      country: freezed == country
+      country: country == freezed
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as String?,
-      phoneNumber: freezed == phoneNumber
+      phoneNumber: phoneNumber == freezed
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      emailAddress: freezed == emailAddress
+      emailAddress: emailAddress == freezed
           ? _value.emailAddress
           : emailAddress // ignore: cast_nullable_to_non_nullable
               as String?,
-      postalAddress: freezed == postalAddress
+      postalAddress: postalAddress == freezed
           ? _value.postalAddress
           : postalAddress // ignore: cast_nullable_to_non_nullable
               as String?,
-      physicalAddress: freezed == physicalAddress
+      physicalAddress: physicalAddress == freezed
           ? _value.physicalAddress
           : physicalAddress // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -255,38 +251,37 @@ class _$_RegisterOrganisationInputPayload
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_RegisterOrganisationInputPayload &&
-            (identical(other.registrationNumber, registrationNumber) ||
-                other.registrationNumber == registrationNumber) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.country, country) || other.country == country) &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber) &&
-            (identical(other.emailAddress, emailAddress) ||
-                other.emailAddress == emailAddress) &&
-            (identical(other.postalAddress, postalAddress) ||
-                other.postalAddress == postalAddress) &&
-            (identical(other.physicalAddress, physicalAddress) ||
-                other.physicalAddress == physicalAddress));
+            const DeepCollectionEquality()
+                .equals(other.registrationNumber, registrationNumber) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
+            const DeepCollectionEquality().equals(other.country, country) &&
+            const DeepCollectionEquality()
+                .equals(other.phoneNumber, phoneNumber) &&
+            const DeepCollectionEquality()
+                .equals(other.emailAddress, emailAddress) &&
+            const DeepCollectionEquality()
+                .equals(other.postalAddress, postalAddress) &&
+            const DeepCollectionEquality()
+                .equals(other.physicalAddress, physicalAddress));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      registrationNumber,
-      name,
-      description,
-      country,
-      phoneNumber,
-      emailAddress,
-      postalAddress,
-      physicalAddress);
+      const DeepCollectionEquality().hash(registrationNumber),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(country),
+      const DeepCollectionEquality().hash(phoneNumber),
+      const DeepCollectionEquality().hash(emailAddress),
+      const DeepCollectionEquality().hash(postalAddress),
+      const DeepCollectionEquality().hash(physicalAddress));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_RegisterOrganisationInputPayloadCopyWith<
           _$_RegisterOrganisationInputPayload>
       get copyWith => __$$_RegisterOrganisationInputPayloadCopyWithImpl<

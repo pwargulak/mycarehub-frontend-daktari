@@ -169,3 +169,5 @@ const String manageRolesImage = 'assets/images/manage_roles.svg';
 const String roleNotFoundImage = 'assets/images/role_not_found.svg';
 const String organizationImage = 'assets/images/organization.svg';
 const String programAmicoImage = 'assets/images/program_amico.svg';
+
+const String noBannedMembersImage = 'assets/images/no_banned_members.svg';

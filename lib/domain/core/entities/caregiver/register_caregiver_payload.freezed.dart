@@ -49,8 +49,7 @@ mixin _$RegisterCaregiverPayload {
 abstract class $RegisterCaregiverPayloadCopyWith<$Res> {
   factory $RegisterCaregiverPayloadCopyWith(RegisterCaregiverPayload value,
           $Res Function(RegisterCaregiverPayload) then) =
-      _$RegisterCaregiverPayloadCopyWithImpl<$Res, RegisterCaregiverPayload>;
-  @useResult
+      _$RegisterCaregiverPayloadCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'name') String? name,
       @JsonKey(name: 'username') String? username,
@@ -63,17 +62,14 @@ abstract class $RegisterCaregiverPayloadCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RegisterCaregiverPayloadCopyWithImpl<$Res,
-        $Val extends RegisterCaregiverPayload>
+class _$RegisterCaregiverPayloadCopyWithImpl<$Res>
     implements $RegisterCaregiverPayloadCopyWith<$Res> {
   _$RegisterCaregiverPayloadCopyWithImpl(this._value, this._then);
 
+  final RegisterCaregiverPayload _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(RegisterCaregiverPayload) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? name = freezed,
@@ -86,39 +82,39 @@ class _$RegisterCaregiverPayloadCopyWithImpl<$Res,
     Object? assignedClients = freezed,
   }) {
     return _then(_value.copyWith(
-      name: freezed == name
+      name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      username: freezed == username
+      username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String?,
-      gender: freezed == gender
+      gender: gender == freezed
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as Gender?,
-      dateOfBirth: freezed == dateOfBirth
+      dateOfBirth: dateOfBirth == freezed
           ? _value.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      phoneNumber: freezed == phoneNumber
+      phoneNumber: phoneNumber == freezed
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      caregiverNumber: freezed == caregiverNumber
+      caregiverNumber: caregiverNumber == freezed
           ? _value.caregiverNumber
           : caregiverNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      sendInvite: freezed == sendInvite
+      sendInvite: sendInvite == freezed
           ? _value.sendInvite
           : sendInvite // ignore: cast_nullable_to_non_nullable
               as bool?,
-      assignedClients: freezed == assignedClients
+      assignedClients: assignedClients == freezed
           ? _value.assignedClients
           : assignedClients // ignore: cast_nullable_to_non_nullable
               as List<AssignedClient>?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -130,7 +126,6 @@ abstract class _$$_RegisterCaregiverPayloadCopyWith<$Res>
           $Res Function(_$_RegisterCaregiverPayload) then) =
       __$$_RegisterCaregiverPayloadCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'name') String? name,
       @JsonKey(name: 'username') String? username,
@@ -144,14 +139,16 @@ abstract class _$$_RegisterCaregiverPayloadCopyWith<$Res>
 
 /// @nodoc
 class __$$_RegisterCaregiverPayloadCopyWithImpl<$Res>
-    extends _$RegisterCaregiverPayloadCopyWithImpl<$Res,
-        _$_RegisterCaregiverPayload>
+    extends _$RegisterCaregiverPayloadCopyWithImpl<$Res>
     implements _$$_RegisterCaregiverPayloadCopyWith<$Res> {
   __$$_RegisterCaregiverPayloadCopyWithImpl(_$_RegisterCaregiverPayload _value,
       $Res Function(_$_RegisterCaregiverPayload) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_RegisterCaregiverPayload));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_RegisterCaregiverPayload get _value =>
+      super._value as _$_RegisterCaregiverPayload;
+
   @override
   $Res call({
     Object? name = freezed,
@@ -164,35 +161,35 @@ class __$$_RegisterCaregiverPayloadCopyWithImpl<$Res>
     Object? assignedClients = freezed,
   }) {
     return _then(_$_RegisterCaregiverPayload(
-      name: freezed == name
+      name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      username: freezed == username
+      username: username == freezed
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String?,
-      gender: freezed == gender
+      gender: gender == freezed
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as Gender?,
-      dateOfBirth: freezed == dateOfBirth
+      dateOfBirth: dateOfBirth == freezed
           ? _value.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      phoneNumber: freezed == phoneNumber
+      phoneNumber: phoneNumber == freezed
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      caregiverNumber: freezed == caregiverNumber
+      caregiverNumber: caregiverNumber == freezed
           ? _value.caregiverNumber
           : caregiverNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      sendInvite: freezed == sendInvite
+      sendInvite: sendInvite == freezed
           ? _value.sendInvite
           : sendInvite // ignore: cast_nullable_to_non_nullable
               as bool?,
-      assignedClients: freezed == assignedClients
+      assignedClients: assignedClients == freezed
           ? _value._assignedClients
           : assignedClients // ignore: cast_nullable_to_non_nullable
               as List<AssignedClient>?,
@@ -267,18 +264,17 @@ class _$_RegisterCaregiverPayload implements _RegisterCaregiverPayload {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_RegisterCaregiverPayload &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.username, username) ||
-                other.username == username) &&
-            (identical(other.gender, gender) || other.gender == gender) &&
-            (identical(other.dateOfBirth, dateOfBirth) ||
-                other.dateOfBirth == dateOfBirth) &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber) &&
-            (identical(other.caregiverNumber, caregiverNumber) ||
-                other.caregiverNumber == caregiverNumber) &&
-            (identical(other.sendInvite, sendInvite) ||
-                other.sendInvite == sendInvite) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.username, username) &&
+            const DeepCollectionEquality().equals(other.gender, gender) &&
+            const DeepCollectionEquality()
+                .equals(other.dateOfBirth, dateOfBirth) &&
+            const DeepCollectionEquality()
+                .equals(other.phoneNumber, phoneNumber) &&
+            const DeepCollectionEquality()
+                .equals(other.caregiverNumber, caregiverNumber) &&
+            const DeepCollectionEquality()
+                .equals(other.sendInvite, sendInvite) &&
             const DeepCollectionEquality()
                 .equals(other._assignedClients, _assignedClients));
   }
@@ -287,18 +283,17 @@ class _$_RegisterCaregiverPayload implements _RegisterCaregiverPayload {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      name,
-      username,
-      gender,
-      dateOfBirth,
-      phoneNumber,
-      caregiverNumber,
-      sendInvite,
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(username),
+      const DeepCollectionEquality().hash(gender),
+      const DeepCollectionEquality().hash(dateOfBirth),
+      const DeepCollectionEquality().hash(phoneNumber),
+      const DeepCollectionEquality().hash(caregiverNumber),
+      const DeepCollectionEquality().hash(sendInvite),
       const DeepCollectionEquality().hash(_assignedClients));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_RegisterCaregiverPayloadCopyWith<_$_RegisterCaregiverPayload>
       get copyWith => __$$_RegisterCaregiverPayloadCopyWithImpl<
           _$_RegisterCaregiverPayload>(this, _$identity);

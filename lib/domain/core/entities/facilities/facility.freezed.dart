@@ -50,8 +50,7 @@ mixin _$Facility {
 /// @nodoc
 abstract class $FacilityCopyWith<$Res> {
   factory $FacilityCopyWith(Facility value, $Res Function(Facility) then) =
-      _$FacilityCopyWithImpl<$Res, Facility>;
-  @useResult
+      _$FacilityCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'id')
           String? id,
@@ -77,16 +76,13 @@ abstract class $FacilityCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FacilityCopyWithImpl<$Res, $Val extends Facility>
-    implements $FacilityCopyWith<$Res> {
+class _$FacilityCopyWithImpl<$Res> implements $FacilityCopyWith<$Res> {
   _$FacilityCopyWithImpl(this._value, this._then);
 
+  final Facility _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(Facility) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -100,47 +96,46 @@ class _$FacilityCopyWithImpl<$Res, $Val extends Facility>
     Object? workStationDetails = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: freezed == name
+      name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      phone: freezed == phone
+      phone: phone == freezed
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String?,
-      active: freezed == active
+      active: active == freezed
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
               as bool?,
-      country: freezed == country
+      country: country == freezed
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as String?,
-      facilityIdentifier: freezed == facilityIdentifier
+      facilityIdentifier: facilityIdentifier == freezed
           ? _value.facilityIdentifier
           : facilityIdentifier // ignore: cast_nullable_to_non_nullable
               as FacilityIdentifier?,
-      description: freezed == description
+      description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      fhirOrganisationID: freezed == fhirOrganisationID
+      fhirOrganisationID: fhirOrganisationID == freezed
           ? _value.fhirOrganisationID
           : fhirOrganisationID // ignore: cast_nullable_to_non_nullable
               as String?,
-      workStationDetails: freezed == workStationDetails
+      workStationDetails: workStationDetails == freezed
           ? _value.workStationDetails
           : workStationDetails // ignore: cast_nullable_to_non_nullable
               as WorkStationDetails?,
-    ) as $Val);
+    ));
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $FacilityIdentifierCopyWith<$Res>? get facilityIdentifier {
     if (_value.facilityIdentifier == null) {
       return null;
@@ -148,12 +143,11 @@ class _$FacilityCopyWithImpl<$Res, $Val extends Facility>
 
     return $FacilityIdentifierCopyWith<$Res>(_value.facilityIdentifier!,
         (value) {
-      return _then(_value.copyWith(facilityIdentifier: value) as $Val);
+      return _then(_value.copyWith(facilityIdentifier: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $WorkStationDetailsCopyWith<$Res>? get workStationDetails {
     if (_value.workStationDetails == null) {
       return null;
@@ -161,7 +155,7 @@ class _$FacilityCopyWithImpl<$Res, $Val extends Facility>
 
     return $WorkStationDetailsCopyWith<$Res>(_value.workStationDetails!,
         (value) {
-      return _then(_value.copyWith(workStationDetails: value) as $Val);
+      return _then(_value.copyWith(workStationDetails: value));
     });
   }
 }
@@ -172,7 +166,6 @@ abstract class _$$_FacilityCopyWith<$Res> implements $FacilityCopyWith<$Res> {
           _$_Facility value, $Res Function(_$_Facility) then) =
       __$$_FacilityCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'id')
           String? id,
@@ -200,14 +193,15 @@ abstract class _$$_FacilityCopyWith<$Res> implements $FacilityCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_FacilityCopyWithImpl<$Res>
-    extends _$FacilityCopyWithImpl<$Res, _$_Facility>
+class __$$_FacilityCopyWithImpl<$Res> extends _$FacilityCopyWithImpl<$Res>
     implements _$$_FacilityCopyWith<$Res> {
   __$$_FacilityCopyWithImpl(
       _$_Facility _value, $Res Function(_$_Facility) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_Facility));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_Facility get _value => super._value as _$_Facility;
+
   @override
   $Res call({
     Object? id = freezed,
@@ -221,39 +215,39 @@ class __$$_FacilityCopyWithImpl<$Res>
     Object? workStationDetails = freezed,
   }) {
     return _then(_$_Facility(
-      id: freezed == id
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: freezed == name
+      name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      phone: freezed == phone
+      phone: phone == freezed
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String?,
-      active: freezed == active
+      active: active == freezed
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
               as bool?,
-      country: freezed == country
+      country: country == freezed
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as String?,
-      facilityIdentifier: freezed == facilityIdentifier
+      facilityIdentifier: facilityIdentifier == freezed
           ? _value.facilityIdentifier
           : facilityIdentifier // ignore: cast_nullable_to_non_nullable
               as FacilityIdentifier?,
-      description: freezed == description
+      description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      fhirOrganisationID: freezed == fhirOrganisationID
+      fhirOrganisationID: fhirOrganisationID == freezed
           ? _value.fhirOrganisationID
           : fhirOrganisationID // ignore: cast_nullable_to_non_nullable
               as String?,
-      workStationDetails: freezed == workStationDetails
+      workStationDetails: workStationDetails == freezed
           ? _value.workStationDetails
           : workStationDetails // ignore: cast_nullable_to_non_nullable
               as WorkStationDetails?,
@@ -316,29 +310,37 @@ class _$_Facility implements _Facility {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Facility &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.active, active) || other.active == active) &&
-            (identical(other.country, country) || other.country == country) &&
-            (identical(other.facilityIdentifier, facilityIdentifier) ||
-                other.facilityIdentifier == facilityIdentifier) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.fhirOrganisationID, fhirOrganisationID) ||
-                other.fhirOrganisationID == fhirOrganisationID) &&
-            (identical(other.workStationDetails, workStationDetails) ||
-                other.workStationDetails == workStationDetails));
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.phone, phone) &&
+            const DeepCollectionEquality().equals(other.active, active) &&
+            const DeepCollectionEquality().equals(other.country, country) &&
+            const DeepCollectionEquality()
+                .equals(other.facilityIdentifier, facilityIdentifier) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
+            const DeepCollectionEquality()
+                .equals(other.fhirOrganisationID, fhirOrganisationID) &&
+            const DeepCollectionEquality()
+                .equals(other.workStationDetails, workStationDetails));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, phone, active, country,
-      facilityIdentifier, description, fhirOrganisationID, workStationDetails);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(phone),
+      const DeepCollectionEquality().hash(active),
+      const DeepCollectionEquality().hash(country),
+      const DeepCollectionEquality().hash(facilityIdentifier),
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(fhirOrganisationID),
+      const DeepCollectionEquality().hash(workStationDetails));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_FacilityCopyWith<_$_Facility> get copyWith =>
       __$$_FacilityCopyWithImpl<_$_Facility>(this, _$identity);
 

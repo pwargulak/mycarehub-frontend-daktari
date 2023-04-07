@@ -36,8 +36,7 @@ mixin _$UserProfileState {
 abstract class $UserProfileStateCopyWith<$Res> {
   factory $UserProfileStateCopyWith(
           UserProfileState value, $Res Function(UserProfileState) then) =
-      _$UserProfileStateCopyWithImpl<$Res, UserProfileState>;
-  @useResult
+      _$UserProfileStateCopyWithImpl<$Res>;
   $Res call(
       {UserProfile? userProfile,
       ProgramsState? programsState,
@@ -51,16 +50,14 @@ abstract class $UserProfileStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserProfileStateCopyWithImpl<$Res, $Val extends UserProfileState>
+class _$UserProfileStateCopyWithImpl<$Res>
     implements $UserProfileStateCopyWith<$Res> {
   _$UserProfileStateCopyWithImpl(this._value, this._then);
 
+  final UserProfileState _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(UserProfileState) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? userProfile = freezed,
@@ -69,70 +66,66 @@ class _$UserProfileStateCopyWithImpl<$Res, $Val extends UserProfileState>
     Object? organizationState = freezed,
   }) {
     return _then(_value.copyWith(
-      userProfile: freezed == userProfile
+      userProfile: userProfile == freezed
           ? _value.userProfile
           : userProfile // ignore: cast_nullable_to_non_nullable
               as UserProfile?,
-      programsState: freezed == programsState
+      programsState: programsState == freezed
           ? _value.programsState
           : programsState // ignore: cast_nullable_to_non_nullable
               as ProgramsState?,
-      facilitiesState: freezed == facilitiesState
+      facilitiesState: facilitiesState == freezed
           ? _value.facilitiesState
           : facilitiesState // ignore: cast_nullable_to_non_nullable
               as FacilitiesState?,
-      organizationState: freezed == organizationState
+      organizationState: organizationState == freezed
           ? _value.organizationState
           : organizationState // ignore: cast_nullable_to_non_nullable
               as OrganisationState?,
-    ) as $Val);
+    ));
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $UserProfileCopyWith<$Res>? get userProfile {
     if (_value.userProfile == null) {
       return null;
     }
 
     return $UserProfileCopyWith<$Res>(_value.userProfile!, (value) {
-      return _then(_value.copyWith(userProfile: value) as $Val);
+      return _then(_value.copyWith(userProfile: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $ProgramsStateCopyWith<$Res>? get programsState {
     if (_value.programsState == null) {
       return null;
     }
 
     return $ProgramsStateCopyWith<$Res>(_value.programsState!, (value) {
-      return _then(_value.copyWith(programsState: value) as $Val);
+      return _then(_value.copyWith(programsState: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $FacilitiesStateCopyWith<$Res>? get facilitiesState {
     if (_value.facilitiesState == null) {
       return null;
     }
 
     return $FacilitiesStateCopyWith<$Res>(_value.facilitiesState!, (value) {
-      return _then(_value.copyWith(facilitiesState: value) as $Val);
+      return _then(_value.copyWith(facilitiesState: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $OrganisationStateCopyWith<$Res>? get organizationState {
     if (_value.organizationState == null) {
       return null;
     }
 
     return $OrganisationStateCopyWith<$Res>(_value.organizationState!, (value) {
-      return _then(_value.copyWith(organizationState: value) as $Val);
+      return _then(_value.copyWith(organizationState: value));
     });
   }
 }
@@ -144,7 +137,6 @@ abstract class _$$_UserProfileStateCopyWith<$Res>
           _$_UserProfileState value, $Res Function(_$_UserProfileState) then) =
       __$$_UserProfileStateCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {UserProfile? userProfile,
       ProgramsState? programsState,
@@ -163,13 +155,15 @@ abstract class _$$_UserProfileStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_UserProfileStateCopyWithImpl<$Res>
-    extends _$UserProfileStateCopyWithImpl<$Res, _$_UserProfileState>
+    extends _$UserProfileStateCopyWithImpl<$Res>
     implements _$$_UserProfileStateCopyWith<$Res> {
   __$$_UserProfileStateCopyWithImpl(
       _$_UserProfileState _value, $Res Function(_$_UserProfileState) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_UserProfileState));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_UserProfileState get _value => super._value as _$_UserProfileState;
+
   @override
   $Res call({
     Object? userProfile = freezed,
@@ -178,19 +172,19 @@ class __$$_UserProfileStateCopyWithImpl<$Res>
     Object? organizationState = freezed,
   }) {
     return _then(_$_UserProfileState(
-      userProfile: freezed == userProfile
+      userProfile: userProfile == freezed
           ? _value.userProfile
           : userProfile // ignore: cast_nullable_to_non_nullable
               as UserProfile?,
-      programsState: freezed == programsState
+      programsState: programsState == freezed
           ? _value.programsState
           : programsState // ignore: cast_nullable_to_non_nullable
               as ProgramsState?,
-      facilitiesState: freezed == facilitiesState
+      facilitiesState: facilitiesState == freezed
           ? _value.facilitiesState
           : facilitiesState // ignore: cast_nullable_to_non_nullable
               as FacilitiesState?,
-      organizationState: freezed == organizationState
+      organizationState: organizationState == freezed
           ? _value.organizationState
           : organizationState // ignore: cast_nullable_to_non_nullable
               as OrganisationState?,
@@ -229,24 +223,27 @@ class _$_UserProfileState implements _UserProfileState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UserProfileState &&
-            (identical(other.userProfile, userProfile) ||
-                other.userProfile == userProfile) &&
-            (identical(other.programsState, programsState) ||
-                other.programsState == programsState) &&
-            (identical(other.facilitiesState, facilitiesState) ||
-                other.facilitiesState == facilitiesState) &&
-            (identical(other.organizationState, organizationState) ||
-                other.organizationState == organizationState));
+            const DeepCollectionEquality()
+                .equals(other.userProfile, userProfile) &&
+            const DeepCollectionEquality()
+                .equals(other.programsState, programsState) &&
+            const DeepCollectionEquality()
+                .equals(other.facilitiesState, facilitiesState) &&
+            const DeepCollectionEquality()
+                .equals(other.organizationState, organizationState));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, userProfile, programsState,
-      facilitiesState, organizationState);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(userProfile),
+      const DeepCollectionEquality().hash(programsState),
+      const DeepCollectionEquality().hash(facilitiesState),
+      const DeepCollectionEquality().hash(organizationState));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_UserProfileStateCopyWith<_$_UserProfileState> get copyWith =>
       __$$_UserProfileStateCopyWithImpl<_$_UserProfileState>(this, _$identity);
 

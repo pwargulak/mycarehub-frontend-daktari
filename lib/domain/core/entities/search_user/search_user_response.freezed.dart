@@ -46,8 +46,7 @@ mixin _$SearchUserResponse {
 abstract class $SearchUserResponseCopyWith<$Res> {
   factory $SearchUserResponseCopyWith(
           SearchUserResponse value, $Res Function(SearchUserResponse) then) =
-      _$SearchUserResponseCopyWithImpl<$Res, SearchUserResponse>;
-  @useResult
+      _$SearchUserResponseCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'identifiers') List<Identifier>? identifiers,
@@ -61,16 +60,14 @@ abstract class $SearchUserResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SearchUserResponseCopyWithImpl<$Res, $Val extends SearchUserResponse>
+class _$SearchUserResponseCopyWithImpl<$Res>
     implements $SearchUserResponseCopyWith<$Res> {
   _$SearchUserResponseCopyWithImpl(this._value, this._then);
 
+  final SearchUserResponse _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(SearchUserResponse) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -81,54 +78,52 @@ class _$SearchUserResponseCopyWithImpl<$Res, $Val extends SearchUserResponse>
     Object? defaultFacility = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      identifiers: freezed == identifiers
+      identifiers: identifiers == freezed
           ? _value.identifiers
           : identifiers // ignore: cast_nullable_to_non_nullable
               as List<Identifier>?,
-      isActive: freezed == isActive
+      isActive: isActive == freezed
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
               as bool?,
-      staffNumber: freezed == staffNumber
+      staffNumber: staffNumber == freezed
           ? _value.staffNumber
           : staffNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      user: freezed == user
+      user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as UserData?,
-      defaultFacility: freezed == defaultFacility
+      defaultFacility: defaultFacility == freezed
           ? _value.defaultFacility
           : defaultFacility // ignore: cast_nullable_to_non_nullable
               as Facility?,
-    ) as $Val);
+    ));
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $UserDataCopyWith<$Res>? get user {
     if (_value.user == null) {
       return null;
     }
 
     return $UserDataCopyWith<$Res>(_value.user!, (value) {
-      return _then(_value.copyWith(user: value) as $Val);
+      return _then(_value.copyWith(user: value));
     });
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $FacilityCopyWith<$Res>? get defaultFacility {
     if (_value.defaultFacility == null) {
       return null;
     }
 
     return $FacilityCopyWith<$Res>(_value.defaultFacility!, (value) {
-      return _then(_value.copyWith(defaultFacility: value) as $Val);
+      return _then(_value.copyWith(defaultFacility: value));
     });
   }
 }
@@ -140,7 +135,6 @@ abstract class _$$_SearchUserResponseCopyWith<$Res>
           $Res Function(_$_SearchUserResponse) then) =
       __$$_SearchUserResponseCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'identifiers') List<Identifier>? identifiers,
@@ -157,13 +151,15 @@ abstract class _$$_SearchUserResponseCopyWith<$Res>
 
 /// @nodoc
 class __$$_SearchUserResponseCopyWithImpl<$Res>
-    extends _$SearchUserResponseCopyWithImpl<$Res, _$_SearchUserResponse>
+    extends _$SearchUserResponseCopyWithImpl<$Res>
     implements _$$_SearchUserResponseCopyWith<$Res> {
   __$$_SearchUserResponseCopyWithImpl(
       _$_SearchUserResponse _value, $Res Function(_$_SearchUserResponse) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_SearchUserResponse));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_SearchUserResponse get _value => super._value as _$_SearchUserResponse;
+
   @override
   $Res call({
     Object? id = freezed,
@@ -174,27 +170,27 @@ class __$$_SearchUserResponseCopyWithImpl<$Res>
     Object? defaultFacility = freezed,
   }) {
     return _then(_$_SearchUserResponse(
-      id: freezed == id
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      identifiers: freezed == identifiers
+      identifiers: identifiers == freezed
           ? _value._identifiers
           : identifiers // ignore: cast_nullable_to_non_nullable
               as List<Identifier>?,
-      isActive: freezed == isActive
+      isActive: isActive == freezed
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
               as bool?,
-      staffNumber: freezed == staffNumber
+      staffNumber: staffNumber == freezed
           ? _value.staffNumber
           : staffNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      user: freezed == user
+      user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as UserData?,
-      defaultFacility: freezed == defaultFacility
+      defaultFacility: defaultFacility == freezed
           ? _value.defaultFacility
           : defaultFacility // ignore: cast_nullable_to_non_nullable
               as Facility?,
@@ -256,32 +252,30 @@ class _$_SearchUserResponse implements _SearchUserResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SearchUserResponse &&
-            (identical(other.id, id) || other.id == id) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality()
                 .equals(other._identifiers, _identifiers) &&
-            (identical(other.isActive, isActive) ||
-                other.isActive == isActive) &&
-            (identical(other.staffNumber, staffNumber) ||
-                other.staffNumber == staffNumber) &&
-            (identical(other.user, user) || other.user == user) &&
-            (identical(other.defaultFacility, defaultFacility) ||
-                other.defaultFacility == defaultFacility));
+            const DeepCollectionEquality().equals(other.isActive, isActive) &&
+            const DeepCollectionEquality()
+                .equals(other.staffNumber, staffNumber) &&
+            const DeepCollectionEquality().equals(other.user, user) &&
+            const DeepCollectionEquality()
+                .equals(other.defaultFacility, defaultFacility));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      id,
+      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(_identifiers),
-      isActive,
-      staffNumber,
-      user,
-      defaultFacility);
+      const DeepCollectionEquality().hash(isActive),
+      const DeepCollectionEquality().hash(staffNumber),
+      const DeepCollectionEquality().hash(user),
+      const DeepCollectionEquality().hash(defaultFacility));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_SearchUserResponseCopyWith<_$_SearchUserResponse> get copyWith =>
       __$$_SearchUserResponseCopyWithImpl<_$_SearchUserResponse>(
           this, _$identity);

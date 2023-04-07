@@ -35,8 +35,7 @@ mixin _$NotificationFilterState {
 abstract class $NotificationFilterStateCopyWith<$Res> {
   factory $NotificationFilterStateCopyWith(NotificationFilterState value,
           $Res Function(NotificationFilterState) then) =
-      _$NotificationFilterStateCopyWithImpl<$Res, NotificationFilterState>;
-  @useResult
+      _$NotificationFilterStateCopyWithImpl<$Res>;
   $Res call(
       {List<NotificationFilter?>? notificationFilters,
       NotificationFilter? selectedFilter});
@@ -45,43 +44,39 @@ abstract class $NotificationFilterStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$NotificationFilterStateCopyWithImpl<$Res,
-        $Val extends NotificationFilterState>
+class _$NotificationFilterStateCopyWithImpl<$Res>
     implements $NotificationFilterStateCopyWith<$Res> {
   _$NotificationFilterStateCopyWithImpl(this._value, this._then);
 
+  final NotificationFilterState _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(NotificationFilterState) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? notificationFilters = freezed,
     Object? selectedFilter = freezed,
   }) {
     return _then(_value.copyWith(
-      notificationFilters: freezed == notificationFilters
+      notificationFilters: notificationFilters == freezed
           ? _value.notificationFilters
           : notificationFilters // ignore: cast_nullable_to_non_nullable
               as List<NotificationFilter?>?,
-      selectedFilter: freezed == selectedFilter
+      selectedFilter: selectedFilter == freezed
           ? _value.selectedFilter
           : selectedFilter // ignore: cast_nullable_to_non_nullable
               as NotificationFilter?,
-    ) as $Val);
+    ));
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $NotificationFilterCopyWith<$Res>? get selectedFilter {
     if (_value.selectedFilter == null) {
       return null;
     }
 
     return $NotificationFilterCopyWith<$Res>(_value.selectedFilter!, (value) {
-      return _then(_value.copyWith(selectedFilter: value) as $Val);
+      return _then(_value.copyWith(selectedFilter: value));
     });
   }
 }
@@ -93,7 +88,6 @@ abstract class _$$_NotificationFilterStateCopyWith<$Res>
           $Res Function(_$_NotificationFilterState) then) =
       __$$_NotificationFilterStateCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {List<NotificationFilter?>? notificationFilters,
       NotificationFilter? selectedFilter});
@@ -104,25 +98,27 @@ abstract class _$$_NotificationFilterStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_NotificationFilterStateCopyWithImpl<$Res>
-    extends _$NotificationFilterStateCopyWithImpl<$Res,
-        _$_NotificationFilterState>
+    extends _$NotificationFilterStateCopyWithImpl<$Res>
     implements _$$_NotificationFilterStateCopyWith<$Res> {
   __$$_NotificationFilterStateCopyWithImpl(_$_NotificationFilterState _value,
       $Res Function(_$_NotificationFilterState) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_NotificationFilterState));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_NotificationFilterState get _value =>
+      super._value as _$_NotificationFilterState;
+
   @override
   $Res call({
     Object? notificationFilters = freezed,
     Object? selectedFilter = freezed,
   }) {
     return _then(_$_NotificationFilterState(
-      notificationFilters: freezed == notificationFilters
+      notificationFilters: notificationFilters == freezed
           ? _value._notificationFilters
           : notificationFilters // ignore: cast_nullable_to_non_nullable
               as List<NotificationFilter?>?,
-      selectedFilter: freezed == selectedFilter
+      selectedFilter: selectedFilter == freezed
           ? _value.selectedFilter
           : selectedFilter // ignore: cast_nullable_to_non_nullable
               as NotificationFilter?,
@@ -165,8 +161,8 @@ class _$_NotificationFilterState implements _NotificationFilterState {
             other is _$_NotificationFilterState &&
             const DeepCollectionEquality()
                 .equals(other._notificationFilters, _notificationFilters) &&
-            (identical(other.selectedFilter, selectedFilter) ||
-                other.selectedFilter == selectedFilter));
+            const DeepCollectionEquality()
+                .equals(other.selectedFilter, selectedFilter));
   }
 
   @JsonKey(ignore: true)
@@ -174,11 +170,10 @@ class _$_NotificationFilterState implements _NotificationFilterState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_notificationFilters),
-      selectedFilter);
+      const DeepCollectionEquality().hash(selectedFilter));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_NotificationFilterStateCopyWith<_$_NotificationFilterState>
       get copyWith =>
           __$$_NotificationFilterStateCopyWithImpl<_$_NotificationFilterState>(

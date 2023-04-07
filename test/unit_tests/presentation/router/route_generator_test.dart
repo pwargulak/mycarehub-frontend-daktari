@@ -822,7 +822,7 @@ void main() {
 
   test('Test router returns Create Room Page', () {
     const RouteSettings settings = RouteSettings(
-      name: AppRoutes.createRoomPage,
+      name: AppRoutes.createRoomPageRoute,
     );
 
     final MaterialPageRoute<CreateRoomPage>? route =

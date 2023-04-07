@@ -33,32 +33,29 @@ mixin _$CaregiversList {
 abstract class $CaregiversListCopyWith<$Res> {
   factory $CaregiversListCopyWith(
           CaregiversList value, $Res Function(CaregiversList) then) =
-      _$CaregiversListCopyWithImpl<$Res, CaregiversList>;
-  @useResult
+      _$CaregiversListCopyWithImpl<$Res>;
   $Res call({@JsonKey(name: 'caregivers') List<Caregiver?>? caregivers});
 }
 
 /// @nodoc
-class _$CaregiversListCopyWithImpl<$Res, $Val extends CaregiversList>
+class _$CaregiversListCopyWithImpl<$Res>
     implements $CaregiversListCopyWith<$Res> {
   _$CaregiversListCopyWithImpl(this._value, this._then);
 
+  final CaregiversList _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(CaregiversList) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? caregivers = freezed,
   }) {
     return _then(_value.copyWith(
-      caregivers: freezed == caregivers
+      caregivers: caregivers == freezed
           ? _value.caregivers
           : caregivers // ignore: cast_nullable_to_non_nullable
               as List<Caregiver?>?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -69,25 +66,26 @@ abstract class _$$_CaregiversListCopyWith<$Res>
           _$_CaregiversList value, $Res Function(_$_CaregiversList) then) =
       __$$_CaregiversListCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call({@JsonKey(name: 'caregivers') List<Caregiver?>? caregivers});
 }
 
 /// @nodoc
 class __$$_CaregiversListCopyWithImpl<$Res>
-    extends _$CaregiversListCopyWithImpl<$Res, _$_CaregiversList>
+    extends _$CaregiversListCopyWithImpl<$Res>
     implements _$$_CaregiversListCopyWith<$Res> {
   __$$_CaregiversListCopyWithImpl(
       _$_CaregiversList _value, $Res Function(_$_CaregiversList) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_CaregiversList));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_CaregiversList get _value => super._value as _$_CaregiversList;
+
   @override
   $Res call({
     Object? caregivers = freezed,
   }) {
     return _then(_$_CaregiversList(
-      caregivers: freezed == caregivers
+      caregivers: caregivers == freezed
           ? _value._caregivers
           : caregivers // ignore: cast_nullable_to_non_nullable
               as List<Caregiver?>?,
@@ -136,7 +134,6 @@ class _$_CaregiversList implements _CaregiversList {
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_CaregiversListCopyWith<_$_CaregiversList> get copyWith =>
       __$$_CaregiversListCopyWithImpl<_$_CaregiversList>(this, _$identity);
 

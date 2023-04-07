@@ -35,36 +35,31 @@ abstract class $ListProgramFacilitiesResponseCopyWith<$Res> {
   factory $ListProgramFacilitiesResponseCopyWith(
           ListProgramFacilitiesResponse value,
           $Res Function(ListProgramFacilitiesResponse) then) =
-      _$ListProgramFacilitiesResponseCopyWithImpl<$Res,
-          ListProgramFacilitiesResponse>;
-  @useResult
+      _$ListProgramFacilitiesResponseCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'getProgramFacilities')
           List<Facility>? programFacilities});
 }
 
 /// @nodoc
-class _$ListProgramFacilitiesResponseCopyWithImpl<$Res,
-        $Val extends ListProgramFacilitiesResponse>
+class _$ListProgramFacilitiesResponseCopyWithImpl<$Res>
     implements $ListProgramFacilitiesResponseCopyWith<$Res> {
   _$ListProgramFacilitiesResponseCopyWithImpl(this._value, this._then);
 
+  final ListProgramFacilitiesResponse _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(ListProgramFacilitiesResponse) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? programFacilities = freezed,
   }) {
     return _then(_value.copyWith(
-      programFacilities: freezed == programFacilities
+      programFacilities: programFacilities == freezed
           ? _value.programFacilities
           : programFacilities // ignore: cast_nullable_to_non_nullable
               as List<Facility>?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -76,7 +71,6 @@ abstract class _$$_ListProgramFacilitiesResponseCopyWith<$Res>
           $Res Function(_$_ListProgramFacilitiesResponse) then) =
       __$$_ListProgramFacilitiesResponseCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'getProgramFacilities')
           List<Facility>? programFacilities});
@@ -84,21 +78,23 @@ abstract class _$$_ListProgramFacilitiesResponseCopyWith<$Res>
 
 /// @nodoc
 class __$$_ListProgramFacilitiesResponseCopyWithImpl<$Res>
-    extends _$ListProgramFacilitiesResponseCopyWithImpl<$Res,
-        _$_ListProgramFacilitiesResponse>
+    extends _$ListProgramFacilitiesResponseCopyWithImpl<$Res>
     implements _$$_ListProgramFacilitiesResponseCopyWith<$Res> {
   __$$_ListProgramFacilitiesResponseCopyWithImpl(
       _$_ListProgramFacilitiesResponse _value,
       $Res Function(_$_ListProgramFacilitiesResponse) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_ListProgramFacilitiesResponse));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_ListProgramFacilitiesResponse get _value =>
+      super._value as _$_ListProgramFacilitiesResponse;
+
   @override
   $Res call({
     Object? programFacilities = freezed,
   }) {
     return _then(_$_ListProgramFacilitiesResponse(
-      programFacilities: freezed == programFacilities
+      programFacilities: programFacilities == freezed
           ? _value._programFacilities
           : programFacilities // ignore: cast_nullable_to_non_nullable
               as List<Facility>?,
@@ -150,7 +146,6 @@ class _$_ListProgramFacilitiesResponse
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_ListProgramFacilitiesResponseCopyWith<_$_ListProgramFacilitiesResponse>
       get copyWith => __$$_ListProgramFacilitiesResponseCopyWithImpl<
           _$_ListProgramFacilitiesResponse>(this, _$identity);

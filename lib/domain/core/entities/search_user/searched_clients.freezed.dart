@@ -33,33 +33,30 @@ mixin _$SearchedClients {
 abstract class $SearchedClientsCopyWith<$Res> {
   factory $SearchedClientsCopyWith(
           SearchedClients value, $Res Function(SearchedClients) then) =
-      _$SearchedClientsCopyWithImpl<$Res, SearchedClients>;
-  @useResult
+      _$SearchedClientsCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'searchClientUser') List<SearchUserResponse>? clients});
 }
 
 /// @nodoc
-class _$SearchedClientsCopyWithImpl<$Res, $Val extends SearchedClients>
+class _$SearchedClientsCopyWithImpl<$Res>
     implements $SearchedClientsCopyWith<$Res> {
   _$SearchedClientsCopyWithImpl(this._value, this._then);
 
+  final SearchedClients _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(SearchedClients) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? clients = freezed,
   }) {
     return _then(_value.copyWith(
-      clients: freezed == clients
+      clients: clients == freezed
           ? _value.clients
           : clients // ignore: cast_nullable_to_non_nullable
               as List<SearchUserResponse>?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -70,26 +67,27 @@ abstract class _$$_SearchedClientsCopyWith<$Res>
           _$_SearchedClients value, $Res Function(_$_SearchedClients) then) =
       __$$_SearchedClientsCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'searchClientUser') List<SearchUserResponse>? clients});
 }
 
 /// @nodoc
 class __$$_SearchedClientsCopyWithImpl<$Res>
-    extends _$SearchedClientsCopyWithImpl<$Res, _$_SearchedClients>
+    extends _$SearchedClientsCopyWithImpl<$Res>
     implements _$$_SearchedClientsCopyWith<$Res> {
   __$$_SearchedClientsCopyWithImpl(
       _$_SearchedClients _value, $Res Function(_$_SearchedClients) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_SearchedClients));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_SearchedClients get _value => super._value as _$_SearchedClients;
+
   @override
   $Res call({
     Object? clients = freezed,
   }) {
     return _then(_$_SearchedClients(
-      clients: freezed == clients
+      clients: clients == freezed
           ? _value._clients
           : clients // ignore: cast_nullable_to_non_nullable
               as List<SearchUserResponse>?,
@@ -138,7 +136,6 @@ class _$_SearchedClients implements _SearchedClients {
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_SearchedClientsCopyWith<_$_SearchedClients> get copyWith =>
       __$$_SearchedClientsCopyWithImpl<_$_SearchedClients>(this, _$identity);
 

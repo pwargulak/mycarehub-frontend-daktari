@@ -34,8 +34,7 @@ mixin _$ClientCaregiversResponse {
 abstract class $ClientCaregiversResponseCopyWith<$Res> {
   factory $ClientCaregiversResponseCopyWith(ClientCaregiversResponse value,
           $Res Function(ClientCaregiversResponse) then) =
-      _$ClientCaregiversResponseCopyWithImpl<$Res, ClientCaregiversResponse>;
-  @useResult
+      _$ClientCaregiversResponseCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'listClientsCaregivers') CaregiversList? caregiversList});
 
@@ -43,38 +42,34 @@ abstract class $ClientCaregiversResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ClientCaregiversResponseCopyWithImpl<$Res,
-        $Val extends ClientCaregiversResponse>
+class _$ClientCaregiversResponseCopyWithImpl<$Res>
     implements $ClientCaregiversResponseCopyWith<$Res> {
   _$ClientCaregiversResponseCopyWithImpl(this._value, this._then);
 
+  final ClientCaregiversResponse _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(ClientCaregiversResponse) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? caregiversList = freezed,
   }) {
     return _then(_value.copyWith(
-      caregiversList: freezed == caregiversList
+      caregiversList: caregiversList == freezed
           ? _value.caregiversList
           : caregiversList // ignore: cast_nullable_to_non_nullable
               as CaregiversList?,
-    ) as $Val);
+    ));
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $CaregiversListCopyWith<$Res>? get caregiversList {
     if (_value.caregiversList == null) {
       return null;
     }
 
     return $CaregiversListCopyWith<$Res>(_value.caregiversList!, (value) {
-      return _then(_value.copyWith(caregiversList: value) as $Val);
+      return _then(_value.copyWith(caregiversList: value));
     });
   }
 }
@@ -87,7 +82,6 @@ abstract class _$$_ClientCaregiversResponseCopyWith<$Res>
           $Res Function(_$_ClientCaregiversResponse) then) =
       __$$_ClientCaregiversResponseCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'listClientsCaregivers') CaregiversList? caregiversList});
 
@@ -97,20 +91,22 @@ abstract class _$$_ClientCaregiversResponseCopyWith<$Res>
 
 /// @nodoc
 class __$$_ClientCaregiversResponseCopyWithImpl<$Res>
-    extends _$ClientCaregiversResponseCopyWithImpl<$Res,
-        _$_ClientCaregiversResponse>
+    extends _$ClientCaregiversResponseCopyWithImpl<$Res>
     implements _$$_ClientCaregiversResponseCopyWith<$Res> {
   __$$_ClientCaregiversResponseCopyWithImpl(_$_ClientCaregiversResponse _value,
       $Res Function(_$_ClientCaregiversResponse) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_ClientCaregiversResponse));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_ClientCaregiversResponse get _value =>
+      super._value as _$_ClientCaregiversResponse;
+
   @override
   $Res call({
     Object? caregiversList = freezed,
   }) {
     return _then(_$_ClientCaregiversResponse(
-      caregiversList: freezed == caregiversList
+      caregiversList: caregiversList == freezed
           ? _value.caregiversList
           : caregiversList // ignore: cast_nullable_to_non_nullable
               as CaregiversList?,
@@ -141,17 +137,17 @@ class _$_ClientCaregiversResponse implements _ClientCaregiversResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ClientCaregiversResponse &&
-            (identical(other.caregiversList, caregiversList) ||
-                other.caregiversList == caregiversList));
+            const DeepCollectionEquality()
+                .equals(other.caregiversList, caregiversList));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, caregiversList);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(caregiversList));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_ClientCaregiversResponseCopyWith<_$_ClientCaregiversResponse>
       get copyWith => __$$_ClientCaregiversResponseCopyWithImpl<
           _$_ClientCaregiversResponse>(this, _$identity);

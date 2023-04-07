@@ -33,37 +33,34 @@ mixin _$ScreeningQuestion {
 abstract class $ScreeningQuestionCopyWith<$Res> {
   factory $ScreeningQuestionCopyWith(
           ScreeningQuestion value, $Res Function(ScreeningQuestion) then) =
-      _$ScreeningQuestionCopyWithImpl<$Res, ScreeningQuestion>;
-  @useResult
+      _$ScreeningQuestionCopyWithImpl<$Res>;
   $Res call({String? questionText, String? answer});
 }
 
 /// @nodoc
-class _$ScreeningQuestionCopyWithImpl<$Res, $Val extends ScreeningQuestion>
+class _$ScreeningQuestionCopyWithImpl<$Res>
     implements $ScreeningQuestionCopyWith<$Res> {
   _$ScreeningQuestionCopyWithImpl(this._value, this._then);
 
+  final ScreeningQuestion _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(ScreeningQuestion) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? questionText = freezed,
     Object? answer = freezed,
   }) {
     return _then(_value.copyWith(
-      questionText: freezed == questionText
+      questionText: questionText == freezed
           ? _value.questionText
           : questionText // ignore: cast_nullable_to_non_nullable
               as String?,
-      answer: freezed == answer
+      answer: answer == freezed
           ? _value.answer
           : answer // ignore: cast_nullable_to_non_nullable
               as String?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -74,30 +71,31 @@ abstract class _$$_ScreeningQuestionCopyWith<$Res>
           $Res Function(_$_ScreeningQuestion) then) =
       __$$_ScreeningQuestionCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call({String? questionText, String? answer});
 }
 
 /// @nodoc
 class __$$_ScreeningQuestionCopyWithImpl<$Res>
-    extends _$ScreeningQuestionCopyWithImpl<$Res, _$_ScreeningQuestion>
+    extends _$ScreeningQuestionCopyWithImpl<$Res>
     implements _$$_ScreeningQuestionCopyWith<$Res> {
   __$$_ScreeningQuestionCopyWithImpl(
       _$_ScreeningQuestion _value, $Res Function(_$_ScreeningQuestion) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_ScreeningQuestion));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_ScreeningQuestion get _value => super._value as _$_ScreeningQuestion;
+
   @override
   $Res call({
     Object? questionText = freezed,
     Object? answer = freezed,
   }) {
     return _then(_$_ScreeningQuestion(
-      questionText: freezed == questionText
+      questionText: questionText == freezed
           ? _value.questionText
           : questionText // ignore: cast_nullable_to_non_nullable
               as String?,
-      answer: freezed == answer
+      answer: answer == freezed
           ? _value.answer
           : answer // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -128,18 +126,20 @@ class _$_ScreeningQuestion implements _ScreeningQuestion {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ScreeningQuestion &&
-            (identical(other.questionText, questionText) ||
-                other.questionText == questionText) &&
-            (identical(other.answer, answer) || other.answer == answer));
+            const DeepCollectionEquality()
+                .equals(other.questionText, questionText) &&
+            const DeepCollectionEquality().equals(other.answer, answer));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, questionText, answer);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(questionText),
+      const DeepCollectionEquality().hash(answer));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_ScreeningQuestionCopyWith<_$_ScreeningQuestion> get copyWith =>
       __$$_ScreeningQuestionCopyWithImpl<_$_ScreeningQuestion>(
           this, _$identity);

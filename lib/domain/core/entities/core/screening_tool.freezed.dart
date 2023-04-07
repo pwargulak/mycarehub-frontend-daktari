@@ -41,8 +41,7 @@ mixin _$ScreeningTool {
 abstract class $ScreeningToolCopyWith<$Res> {
   factory $ScreeningToolCopyWith(
           ScreeningTool value, $Res Function(ScreeningTool) then) =
-      _$ScreeningToolCopyWithImpl<$Res, ScreeningTool>;
-  @useResult
+      _$ScreeningToolCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'active') bool? active,
@@ -54,16 +53,14 @@ abstract class $ScreeningToolCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ScreeningToolCopyWithImpl<$Res, $Val extends ScreeningTool>
+class _$ScreeningToolCopyWithImpl<$Res>
     implements $ScreeningToolCopyWith<$Res> {
   _$ScreeningToolCopyWithImpl(this._value, this._then);
 
+  final ScreeningTool _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(ScreeningTool) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -73,38 +70,37 @@ class _$ScreeningToolCopyWithImpl<$Res, $Val extends ScreeningTool>
     Object? questionnaire = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      active: freezed == active
+      active: active == freezed
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
               as bool?,
-      questionnaireId: freezed == questionnaireId
+      questionnaireId: questionnaireId == freezed
           ? _value.questionnaireId
           : questionnaireId // ignore: cast_nullable_to_non_nullable
               as String?,
-      threshold: freezed == threshold
+      threshold: threshold == freezed
           ? _value.threshold
           : threshold // ignore: cast_nullable_to_non_nullable
               as int?,
-      questionnaire: freezed == questionnaire
+      questionnaire: questionnaire == freezed
           ? _value.questionnaire
           : questionnaire // ignore: cast_nullable_to_non_nullable
               as Questionnaire?,
-    ) as $Val);
+    ));
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $QuestionnaireCopyWith<$Res>? get questionnaire {
     if (_value.questionnaire == null) {
       return null;
     }
 
     return $QuestionnaireCopyWith<$Res>(_value.questionnaire!, (value) {
-      return _then(_value.copyWith(questionnaire: value) as $Val);
+      return _then(_value.copyWith(questionnaire: value));
     });
   }
 }
@@ -116,7 +112,6 @@ abstract class _$$_ScreeningToolCopyWith<$Res>
           _$_ScreeningTool value, $Res Function(_$_ScreeningTool) then) =
       __$$_ScreeningToolCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'id') String? id,
       @JsonKey(name: 'active') bool? active,
@@ -130,13 +125,15 @@ abstract class _$$_ScreeningToolCopyWith<$Res>
 
 /// @nodoc
 class __$$_ScreeningToolCopyWithImpl<$Res>
-    extends _$ScreeningToolCopyWithImpl<$Res, _$_ScreeningTool>
+    extends _$ScreeningToolCopyWithImpl<$Res>
     implements _$$_ScreeningToolCopyWith<$Res> {
   __$$_ScreeningToolCopyWithImpl(
       _$_ScreeningTool _value, $Res Function(_$_ScreeningTool) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_ScreeningTool));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_ScreeningTool get _value => super._value as _$_ScreeningTool;
+
   @override
   $Res call({
     Object? id = freezed,
@@ -146,23 +143,23 @@ class __$$_ScreeningToolCopyWithImpl<$Res>
     Object? questionnaire = freezed,
   }) {
     return _then(_$_ScreeningTool(
-      id: freezed == id
+      id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      active: freezed == active
+      active: active == freezed
           ? _value.active
           : active // ignore: cast_nullable_to_non_nullable
               as bool?,
-      questionnaireId: freezed == questionnaireId
+      questionnaireId: questionnaireId == freezed
           ? _value.questionnaireId
           : questionnaireId // ignore: cast_nullable_to_non_nullable
               as String?,
-      threshold: freezed == threshold
+      threshold: threshold == freezed
           ? _value.threshold
           : threshold // ignore: cast_nullable_to_non_nullable
               as int?,
-      questionnaire: freezed == questionnaire
+      questionnaire: questionnaire == freezed
           ? _value.questionnaire
           : questionnaire // ignore: cast_nullable_to_non_nullable
               as Questionnaire?,
@@ -209,24 +206,27 @@ class _$_ScreeningTool implements _ScreeningTool {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ScreeningTool &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.active, active) || other.active == active) &&
-            (identical(other.questionnaireId, questionnaireId) ||
-                other.questionnaireId == questionnaireId) &&
-            (identical(other.threshold, threshold) ||
-                other.threshold == threshold) &&
-            (identical(other.questionnaire, questionnaire) ||
-                other.questionnaire == questionnaire));
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.active, active) &&
+            const DeepCollectionEquality()
+                .equals(other.questionnaireId, questionnaireId) &&
+            const DeepCollectionEquality().equals(other.threshold, threshold) &&
+            const DeepCollectionEquality()
+                .equals(other.questionnaire, questionnaire));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, active, questionnaireId, threshold, questionnaire);
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(active),
+      const DeepCollectionEquality().hash(questionnaireId),
+      const DeepCollectionEquality().hash(threshold),
+      const DeepCollectionEquality().hash(questionnaire));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_ScreeningToolCopyWith<_$_ScreeningTool> get copyWith =>
       __$$_ScreeningToolCopyWithImpl<_$_ScreeningTool>(this, _$identity);
 
